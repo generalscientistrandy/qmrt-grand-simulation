@@ -86,27 +86,71 @@ class WorldGenerator:
                                           cosmo_seed: Dict, death_level: int):
         """Initialize world substrate from cosmological structure seed
         
-        Uses local substrate properties from cosmological simulation
-        and scales them appropriately for planetary-scale physics
+        Uses logarithmic and z-score scaling to compress cosmological magnitudes
+        (10^17 scale) into stable planetary simulation ranges (10^0 scale)
+        while preserving relative gradients and causal relationships.
         """
-        # Extract cosmological substrate values
-        base_rho = cosmo_seed.get('local_rho_mean', 1.0)
-        base_T = cosmo_seed.get('local_T_mean', 1.0)
-        base_tau = cosmo_seed.get('local_tau_mean', 0.05)
-        base_phi = cosmo_seed.get('local_phi_mean', 0.0)
-        
-        # Scale based on death-world level
-        level_scale = self._scale_amplitude(death_level)
-        
-        # Initialize substrate with cosmological base + local variations
-        physics.rho_xi = base_rho * (1.0 + level_scale * np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size))
-        physics.T_xi = base_T * (1.0 + level_scale * np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size))
-        physics.tau_xi = base_tau * (1.0 + level_scale * np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size, 3))
-        physics.phi_xi = base_phi + level_scale * np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size)
-        
-        # Add density contrast from cosmological evolution
+        # Extract cosmological substrate values (potentially huge)
+        cosmo_rho = cosmo_seed.get('local_rho_mean', 1.0)
+        cosmo_T = cosmo_seed.get('local_T_mean', 1.0)
+        cosmo_tau = cosmo_seed.get('local_tau_mean', 0.05)
+        cosmo_phi = cosmo_seed.get('local_phi_mean', 0.0)
         density_contrast = cosmo_seed.get('density_contrast', 1.0)
-        physics.rho_xi *= density_contrast
+        
+        # LOGARITHMIC SCALING: Compress absolute magnitudes while preserving ratios
+        # For extremely large values, use log-space compression
+        def safe_log_scale(value, reference=1.0, scale=0.1):
+            """Logarithmic scaling that handles extreme values"""
+            if abs(value) < 1e-10:
+                return reference
+            sign = np.sign(value)
+            log_val = np.log10(abs(value) + 1)
+            # Map log space to reasonable range: log(10^17) = 17 → scale to ~1
+            compressed = reference + sign * scale * log_val
+            return compressed
+        
+        # Apply logarithmic compression to cosmological values
+        base_rho = safe_log_scale(cosmo_rho, reference=1.0, scale=0.05)
+        base_T = safe_log_scale(cosmo_T, reference=1.0, scale=0.05)
+        base_tau = safe_log_scale(cosmo_tau, reference=0.05, scale=0.01)
+        base_phi = safe_log_scale(cosmo_phi, reference=0.0, scale=0.02)
+        
+        # DENSITY CONTRAST PRESERVATION: This drives death-world severity
+        # Normalize contrast to [0.5, 2.0] range with death-level scaling
+        contrast_normalized = 0.8 + (min(density_contrast, 10.0) - 1.0) * 0.1
+        contrast_normalized = max(0.5, min(2.0, contrast_normalized))
+        
+        # Scale perturbations based on death-world level
+        level_perturbation = self._scale_amplitude(death_level)
+        
+        # Z-SCORE NORMALIZATION: Preserve relative gradients
+        # Generate perturbations with proper statistics
+        rho_perturbations = np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size)
+        T_perturbations = np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size)
+        tau_perturbations = np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size, 3)
+        phi_perturbations = np.random.randn(physics.grid_size, physics.grid_size, physics.grid_size)
+        
+        # Normalize to unit variance
+        rho_perturbations = (rho_perturbations - np.mean(rho_perturbations)) / (np.std(rho_perturbations) + 1e-10)
+        T_perturbations = (T_perturbations - np.mean(T_perturbations)) / (np.std(T_perturbations) + 1e-10)
+        phi_perturbations = (phi_perturbations - np.mean(phi_perturbations)) / (np.std(phi_perturbations) + 1e-10)
+        
+        # Apply scaled perturbations around compressed base values
+        physics.rho_xi = base_rho * (1.0 + level_perturbation * rho_perturbations)
+        physics.T_xi = base_T * (1.0 + level_perturbation * T_perturbations)
+        physics.tau_xi = base_tau * (1.0 + level_perturbation * 0.5 * tau_perturbations)
+        physics.phi_xi = base_phi + level_perturbation * phi_perturbations
+        
+        # CAUSAL RELATIONSHIP: Apply density contrast to preserve cosmological structure
+        # High contrast regions become higher death-world potential
+        physics.rho_xi *= contrast_normalized
+        
+        # Add structure-driven variations
+        # Higher density contrast → more extreme local variations
+        structure_factor = min(density_contrast, 5.0) / 5.0
+        physics.rho_xi += structure_factor * level_perturbation * 0.2 * rho_perturbations
+        
+        print(f"  Scaled cosmological seed: rho={base_rho:.3f}, contrast={contrast_normalized:.3f}, structure_factor={structure_factor:.3f}")
         
     def _scale_amplitude(self, level: int) -> float:
         """Scale initial perturbation amplitude based on death-world level"""

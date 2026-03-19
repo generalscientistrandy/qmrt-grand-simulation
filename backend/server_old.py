@@ -386,6 +386,20 @@ async def substrate_info():
         "shared_equations": "Both modes use identical QMRT substrate equations - Mode 1 for full evolution, Mode 2 for snapshot-based generation"
     }
 
+
+# Include the router in the main app
+app.include_router(api_router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
 @api_router.post("/worlds/{world_id}/ecology/initialize")
 async def initialize_world_ecology(world_id: str, species_count: int = 10):
     """
@@ -491,20 +505,6 @@ async def get_predator_tiers():
                 "death_world_range": "13-14",
                 "threat_level": 9
             },
-            {
-                "tier": PredatorTier.TIER_4,
-                "name": "World Eater",
-                "description": "Apocalypse-level predators",
-                "death_world_range": "15",
-                "threat_level": 10
-            }
-        ],
-        "pressure_scaling": "Exponential with death-world level, modified by substrate torsion and temperature extremes"
-    }
-
-# Include the router in the main app
-app.include_router(api_router)
-
             {
                 "tier": PredatorTier.TIER_4,
                 "name": "World Eater",

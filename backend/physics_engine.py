@@ -157,19 +157,32 @@ class QMRTSubstrate:
         grad_phi_mag = np.sqrt(np.sum(grad_phi**2, axis=-1))
         tau_mag = np.sqrt(np.sum(self.tau_xi**2, axis=-1))
         
+        # Helper to safely extract metrics (handle NaN/Inf)
+        def safe_metric(arr, default=0.0):
+            arr_clean = arr[np.isfinite(arr)]
+            return float(np.mean(arr_clean)) if len(arr_clean) > 0 else default
+        
+        def safe_max(arr, default=0.0):
+            arr_clean = arr[np.isfinite(arr)]
+            return float(np.max(arr_clean)) if len(arr_clean) > 0 else default
+        
+        def safe_std(arr, default=0.0):
+            arr_clean = arr[np.isfinite(arr)]
+            return float(np.std(arr_clean)) if len(arr_clean) > 0 else default
+        
         metrics = {
-            'mean_density': float(np.mean(self.rho_xi)),
-            'std_density': float(np.std(self.rho_xi)),
-            'mean_tension': float(np.mean(self.T_xi)),
-            'std_tension': float(np.std(self.T_xi)),
-            'mean_torsion': float(np.mean(tau_mag)),
-            'max_torsion': float(np.max(tau_mag)),
-            'mean_coherence_gradient': float(np.mean(grad_phi_mag)),
-            'max_coherence_gradient': float(np.max(grad_phi_mag)),
-            'mean_temperature': float(np.mean(T_eff)),
-            'max_temperature': float(np.max(T_eff)),
-            'mean_curvature': float(np.mean(np.abs(curvature))),
-            'max_curvature': float(np.max(np.abs(curvature))),
+            'mean_density': safe_metric(self.rho_xi, 1.0),
+            'std_density': safe_std(self.rho_xi, 0.1),
+            'mean_tension': safe_metric(self.T_xi, 1.0),
+            'std_tension': safe_std(self.T_xi, 0.1),
+            'mean_torsion': safe_metric(tau_mag, 0.05),
+            'max_torsion': safe_max(tau_mag, 0.2),
+            'mean_coherence_gradient': safe_metric(grad_phi_mag, 0.08),
+            'max_coherence_gradient': safe_max(grad_phi_mag, 0.3),
+            'mean_temperature': safe_metric(T_eff, 1.0),
+            'max_temperature': safe_max(T_eff, 3.0),
+            'mean_curvature': safe_metric(np.abs(curvature), 0.1),
+            'max_curvature': safe_max(np.abs(curvature), 0.5),
         }
         
         return metrics

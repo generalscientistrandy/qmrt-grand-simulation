@@ -63,7 +63,11 @@ class World(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     last_updated: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     
-    # Future: lineage, ecology, civilization data
+    # Phase B: Ecology
+    ecology_initialized: bool = False
+    ecology_summary: Optional[Dict[str, Any]] = None
+    
+    # Future: lineage, apex qualification
     lineage_origin: Optional[str] = None
     apex_qualified: bool = False
     
