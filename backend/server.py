@@ -25,6 +25,7 @@ from cosmological_simulator import CosmologicalSimulator
 from universe_simulator import UniverseSimulator
 from engine_api import router as engine_router
 from mesoscopic_api import router as mesoscopic_router
+from qmrt_canonical_api import router as qmrt_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -848,6 +849,13 @@ async def get_ancestry_chain(entity_id: str):
     }
 
 
+# Include routers
+api_router.include_router(engine_router)
+api_router.include_router(mesoscopic_router)
+api_router.include_router(qmrt_router)
+
+# Mount API router
+app.include_router(api_router)
 
 
 # Configure logging

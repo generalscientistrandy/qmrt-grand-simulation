@@ -58,6 +58,8 @@ Design and build programmable systems for a persistent simulation universe based
 
 ## What's Been Implemented
 
+## What's Been Implemented
+
 ### December 2025 - Mesoscopic Substrate Simulation
 - **Energy-conserving field evolution** using symplectic integration
 - **Four fundamental QMRT fields**: density (ρΞ), tension (TΞ), torsion (τΞ), coherence (ΦΞ)
@@ -77,6 +79,15 @@ Design and build programmable systems for a persistent simulation universe based
 - **Energy conservation display**: Initial/final energy, drift percentage
 - **Playback controls**: Play, pause, reset, and scrub through evolution
 - **Parameter controls**: Grid size, amplitude, duration sliders
+
+### December 2025 - QMRT Canonical Hamiltonian Engine
+- **Exact Hamiltonian implementation** from user-provided QMRT equations
+- **Four fields with conjugate momenta**: (ρ,π_ρ), (σ,π_σ), (τ,π_τ), (φ,π_φ)
+- **Complete potential**: U_ρ(ρ) = (a/2)ρ² + (b/3)ρ³ + (c/4)ρ⁴
+- **All coupling terms**: λ_ρσ, λ_ρτ, λ_στ, λ_σφ, λ_τφ, λ_ρφ
+- **Emergent cosmology**: Scale factor a(t) from field dynamics, NOT injected
+- **Structure criteria**: Stabilization functional S(x,t), proton formation Π_p
+- **API endpoints**: `/api/qmrt/run`, `/api/qmrt/theory`
 
 ### Previous Work
 - World generation from QMRT substrate metrics
