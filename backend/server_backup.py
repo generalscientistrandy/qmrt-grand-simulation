@@ -27,7 +27,7 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
 # Create the main app without a prefix
-app = FastAPI(title="QMRT Simulation Universe", version="2.0.0")
+app = FastAPI(title="QMRT Simulation Universe", version="1.0.0")
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -43,29 +43,32 @@ async def root():
         "version": "2.0.0",
         "substrate": "Quark Medium Relativity Theory",
         "modes": {
-            "mode_1": "Full Cosmological Simulation (primordial \u2192 structure formation)",
+            "mode_1": "Full Cosmological Simulation (primordial → structure formation)",
             "mode_2": "Gameplay Universe Generation (seeded or direct)"
         }
     }
 
 
-@api_router.get("/simulation-modes", response_model=List[SimulationMode])
-async def get_simulation_modes():
-    """Get information about the two simulation modes"""
-    return [
-        SimulationMode(
-            mode="mode_1",
-            name="Full Cosmological Simulation",
-            description="Evolves universe from primordial quantum fluctuations through inflation, radiation era, matter era, to structure formation. Produces structure seeds for Mode 2.",
-            use_case="Scientific experimentation, universe evolution studies, generating authentic cosmological seeds"
-        ),
-        SimulationMode(
-            mode="mode_2",
-            name="Gameplay Universe Generation",
-            description="Generates playable worlds either from cosmological structure seeds (Mode 2A) or direct initialization (Mode 2B). Fast generation for gameplay.",
-            use_case="Game world creation, rapid prototyping, seeded from Mode 1 or standalone"
-        )
-    ]
+@api_router.post("/worlds", response_model=WorldResponse)
+async def create_world(request: WorldCreateRequest):
+    """
+    Generate a new world using QMRT substrate physics.
+    
+    Death-world levels:
+    - 1-3: Sanctuary worlds (low difficulty)
+    - 4-6: Garden/Frontier worlds (moderate)
+    - 7-9: Contested/Harsh worlds (challenging)
+    - 10: Earth-class world (reference standard)
+    - 11-12: Death worlds (extreme)
+    - 13-14: Extreme death worlds (apocalyptic)
+    - 15: Apocalypse world (maximum chaos)
+    """
+    try:
+        # Generate world using physics engine
+        world_data = world_gen.generate_world(
+            death_world_level=request.death_world_level,
+            seed=request.seed,
+            evolution_steps=request.evolution_steps
 
 
 @api_router.post("/cosmological-simulations", response_model=CosmologicalSimulationResponse)
@@ -145,7 +148,7 @@ async def list_cosmological_simulations(limit: int = 50, skip: int = 0):
                 scale_factor=s['scale_factor'],
                 num_structure_seeds=s['num_structure_seeds'],
                 structure_seeds=s.get('structure_seeds', []),
-                snapshots=0,
+                snapshots=0,  # Not stored in list view
                 created_at=s['created_at']
             )
             for s in sims
@@ -188,56 +191,6 @@ async def delete_cosmological_simulation(sim_id: str):
     return {"message": "Cosmological simulation deleted successfully", "id": sim_id}
 
 
-@api_router.post("/worlds", response_model=WorldResponse)
-async def create_world(request: WorldCreateRequest):
-    """
-    MODE 2: Generate a new world using QMRT substrate physics.
-    
-    Can be initialized in two ways:
-    - Mode 2A: From cosmological simulation structure seed (if cosmological_simulation_id provided)
-    - Mode 2B: Direct initialization with random perturbations (default, fast)
-    
-    Death-world levels:
-    - 1-3: Sanctuary worlds (low difficulty)
-    - 4-6: Garden/Frontier worlds (moderate)
-    - 7-9: Contested/Harsh worlds (challenging)
-    - 10: Earth-class world (reference standard)
-    - 11-12: Death worlds (extreme)
-    - 13-14: Extreme death worlds (apocalyptic)
-    - 15: Apocalypse world (maximum chaos)
-    """
-    try:
-        cosmological_seed = None
-        
-        # If cosmological simulation ID provided, fetch structure seed
-        if request.cosmological_simulation_id:
-            cosmo_sim = await db.cosmological_simulations.find_one(
-                {"id": request.cosmological_simulation_id}, 
-                {"_id": 0}
-            )
-            
-            if not cosmo_sim:
-                raise HTTPException(status_code=404, detail="Cosmological simulation not found")
-            
-            structure_seeds = cosmo_sim.get('structure_seeds', [])
-            if not structure_seeds:
-                raise HTTPException(status_code=400, detail="No structure seeds in cosmological simulation")
-            
-            # Use specified seed index or random one
-            if request.structure_seed_index is not None:
-                if request.structure_seed_index >= len(structure_seeds):
-                    raise HTTPException(status_code=400, detail="Structure seed index out of range")
-                cosmological_seed = structure_seeds[request.structure_seed_index]
-            else:
-                import random
-                cosmological_seed = random.choice(structure_seeds)
-        
-        # Generate world using physics engine
-        world_data = world_gen.generate_world(
-            death_world_level=request.death_world_level,
-            seed=request.seed,
-            evolution_steps=request.evolution_steps,
-            cosmological_seed=cosmological_seed
         )
         
         # Create world model
@@ -249,8 +202,7 @@ async def create_world(request: WorldCreateRequest):
             substrate_metrics=SubstrateMetrics(**world_data['substrate_metrics']),
             world_parameters=WorldParameters(**{k: v for k, v in world_data.items() 
                                                 if k not in ['death_world_level', 'seed', 
-                                                           'substrate_metrics', 'classification',
-                                                           'cosmological_origin', 'cosmological_seed_position']}),
+                                                           'substrate_metrics', 'classification']}),
             apex_qualified=(request.death_world_level >= 10)
         )
         
@@ -260,10 +212,6 @@ async def create_world(request: WorldCreateRequest):
         world_dict['last_updated'] = world_dict['last_updated'].isoformat()
         world_dict['substrate_metrics'] = world_dict['substrate_metrics']
         world_dict['world_parameters'] = world_dict['world_parameters']
-        world_dict['cosmological_origin'] = world_data.get('cosmological_origin', False)
-        if request.cosmological_simulation_id:
-            world_dict['cosmological_simulation_id'] = request.cosmological_simulation_id
-            world_dict['cosmological_seed_position'] = world_data.get('cosmological_seed_position')
         
         await db.worlds.insert_one(world_dict)
         
@@ -280,8 +228,6 @@ async def create_world(request: WorldCreateRequest):
             apex_qualified=world.apex_qualified
         )
         
-    except HTTPException:
-        raise
     except Exception as e:
         logging.error(f"Error generating world: {str(e)}")
         raise HTTPException(status_code=500, detail=f"World generation failed: {str(e)}")
@@ -355,33 +301,25 @@ async def substrate_info():
     return {
         "theory": "Quark Medium Relativity Theory (QMRT)",
         "substrate_properties": [
-            {"name": "\u03c1\u039e (Density)", "description": "Determines inertia and gravitational behavior"},
-            {"name": "T\u039e (Tension)", "description": "Governs wave speed and electromagnetic analogs"},
-            {"name": "\u03c4\u039e (Torsion)", "description": "Rotational degrees of freedom, spin, magnetic alignment"},
-            {"name": "\u03a6\u039e (Coherence Phase)", "description": "Interference, quantum phenomena, biological viability"}
+            {"name": "ρΞ (Density)", "description": "Determines inertia and gravitational behavior"},
+            {"name": "TΞ (Tension)", "description": "Governs wave speed and electromagnetic analogs"},
+            {"name": "τΞ (Torsion)", "description": "Rotational degrees of freedom, spin, magnetic alignment"},
+            {"name": "ΦΞ (Coherence Phase)", "description": "Interference, quantum phenomena, biological viability"}
         ],
-        "simulation_modes": {
-            "mode_1": {
-                "name": "Full Cosmological Simulation",
-                "epochs": ["primordial", "inflation", "radiation", "matter", "structure", "stellar", "planetary"],
-                "purpose": "Scientific universe evolution from quantum fluctuations to structure formation"
-            },
-            "mode_2": {
-                "name": "Gameplay Universe Generation",
-                "variants": {
-                    "mode_2a": "Seeded from Mode 1 cosmological structure seeds",
-                    "mode_2b": "Direct initialization for fast gameplay world generation"
-                },
-                "purpose": "Rapid playable world creation"
-            }
-        },
         "death_world_scaling": {
             "min": 1,
             "max": 15,
             "earth_reference": 10,
             "apex_threshold": 10
         },
-        "shared_equations": "Both modes use identical QMRT substrate equations - Mode 1 for full evolution, Mode 2 for snapshot-based generation"
+        "world_generation": "Worlds emerge from coupled wave equations evolving substrate properties",
+        "future_systems": [
+            "Ecological simulation (Phase B)",
+            "Evolutionary dynamics (Phase B)",
+            "Apex qualification tracking (Phase C)",
+            "Hidden lineage system (Phase C)",
+            "Civilization emergence (Phase C)"
+        ]
     }
 
 
