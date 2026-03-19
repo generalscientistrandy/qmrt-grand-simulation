@@ -74,6 +74,48 @@ class World(BaseModel):
 
 class WorldCreateRequest(BaseModel):
     """Request to create a new world"""
+
+
+
+class LineageRecord(BaseModel):
+    """Lineage tracking record"""
+    model_config = ConfigDict(extra="ignore")
+    
+    entity_id: str
+    entity_name: str
+    generation: int
+    birth_world_id: str
+    birth_death_level: int
+    parent_id: Optional[str] = None
+    born_at: str
+    
+    # Survival metrics
+    worlds_survived: List[str]
+    total_predator_encounters: int = 0
+    successful_hunts: int = 0
+    times_hunted: int = 0
+    max_death_level_survived: int
+    
+    # Apex status
+    apex_qualified: bool = False
+    apex_verified: bool = False
+    predator_dominance_score: float = 0.0
+
+
+class LineageCreateRequest(BaseModel):
+    """Request to create lineage"""
+    entity_name: str
+    birth_world_id: str
+    parent_id: Optional[str] = None
+
+
+class LineageUpdateRequest(BaseModel):
+    """Request to update lineage survival metrics"""
+    world_id: Optional[str] = None
+    death_level: Optional[int] = None
+    was_hunter: Optional[bool] = None
+    hunt_success: Optional[bool] = None
+
     name: str
     death_world_level: int = Field(ge=1, le=15, description="Death-world difficulty (1-15, Earth=10)")
     seed: Optional[int] = None

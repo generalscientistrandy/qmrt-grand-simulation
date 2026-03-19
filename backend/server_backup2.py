@@ -5,19 +5,17 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from typing import List, Dict
-from datetime import datetime, timezone
+from typing import List
+from datetime import datetime
 
 from models import (
     World, WorldCreateRequest, WorldResponse, WorldListResponse,
     SubstrateMetrics, WorldParameters,
     CosmologicalSimulation, CosmologicalSimulationRequest, CosmologicalSimulationResponse,
-    SimulationMode,
-    LineageRecord, LineageCreateRequest, LineageUpdateRequest
+    SimulationMode
 )
 from world_generator_v2 import WorldGenerator
 from ecological_engine import EcologicalEngine, PredatorTier
-from lineage_system import LineageTracker
 
 from cosmological_simulator import CosmologicalSimulator
 
@@ -38,9 +36,6 @@ api_router = APIRouter(prefix="/api")
 
 # World generator instance
 world_gen = WorldGenerator()
-
-# Lineage tracker instance
-lineage_tracker = LineageTracker()
 
 
 @api_router.get("/")
@@ -393,6 +388,18 @@ async def substrate_info():
 
 
 # Include the router in the main app
+app.include_router(api_router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
 @api_router.post("/worlds/{world_id}/ecology/initialize")
 async def initialize_world_ecology(world_id: str, species_count: int = 10):
     """
@@ -508,239 +515,6 @@ async def get_predator_tiers():
         ],
         "pressure_scaling": "Exponential with death-world level, modified by substrate torsion and temperature extremes"
     }
-
-
-app.include_router(api_router)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-
-@api_router.post("/lineage/create", response_model=Dict)
-async def create_lineage(request: LineageCreateRequest):
-    """
-    Create new lineage entry for entity (player, species, civilization)
-    
-    Tracks origin world, generation, and cross-session identity
-    """
-    try:
-        # Get birth world
-        world = await db.worlds.find_one({"id": request.birth_world_id}, {"_id": 0})
-        if not world:
-            raise HTTPException(status_code=404, detail="Birth world not found")
-        
-        # Create lineage
-        node = lineage_tracker.create_lineage(
-            entity_name=request.entity_name,
-            birth_world_id=request.birth_world_id,
-            birth_death_level=world['death_world_level'],
-            parent_id=request.parent_id
-        )
-        
-        # Save to database
-        lineage_dict = lineage_tracker.to_dict(node.entity_id)
-        await db.lineages.insert_one(lineage_dict)
-        
-        return {
-            "entity_id": node.entity_id,
-            "entity_name": node.entity_name,
-            "generation": node.generation,
-            "birth_death_level": node.birth_death_level,
-            "apex_qualified": node.apex_qualified,
-            "message": f"Lineage created for {node.entity_name} (Generation {node.generation})"
-        }
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        logging.error(f"Error creating lineage: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Lineage creation failed: {str(e)}")
-
-
-@api_router.get("/lineage/{entity_id}")
-async def get_lineage(entity_id: str):
-    """Get complete lineage information for entity"""
-    # Try memory first
-    if entity_id in lineage_tracker.lineages:
-        return lineage_tracker.get_lineage_summary(entity_id)
-    
-    # Load from database
-    lineage_data = await db.lineages.find_one({"entity_id": entity_id}, {"_id": 0})
-    if not lineage_data:
-        raise HTTPException(status_code=404, detail="Lineage not found")
-    
-    # Load into tracker
-    lineage_tracker.from_dict(lineage_data)
-    
-    # Load ancestry if needed
-    current_parent = lineage_data.get("parent_id")
-    while current_parent:
-        if current_parent not in lineage_tracker.lineages:
-            parent_data = await db.lineages.find_one({"entity_id": current_parent}, {"_id": 0})
-            if parent_data:
-                lineage_tracker.from_dict(parent_data)
-                current_parent = parent_data.get("parent_id")
-            else:
-                break
-        else:
-            break
-    
-    return lineage_tracker.get_lineage_summary(entity_id)
-
-
-@api_router.post("/lineage/{entity_id}/record-survival")
-async def record_survival(entity_id: str, world_id: str, death_level: int):
-    """Record that entity survived in a world"""
-    # Load lineage if needed
-    if entity_id not in lineage_tracker.lineages:
-        lineage_data = await db.lineages.find_one({"entity_id": entity_id}, {"_id": 0})
-        if not lineage_data:
-            raise HTTPException(status_code=404, detail="Lineage not found")
-        lineage_tracker.from_dict(lineage_data)
-    
-    # Record survival
-    lineage_tracker.record_world_survival(entity_id, world_id, death_level)
-    
-    # Update database
-    updated = lineage_tracker.to_dict(entity_id)
-    await db.lineages.update_one(
-        {"entity_id": entity_id},
-        {"$set": updated}
-    )
-    
-    return {
-        "entity_id": entity_id,
-        "world_id": world_id,
-        "death_level": death_level,
-        "message": "Survival recorded"
-    }
-
-
-@api_router.post("/lineage/{entity_id}/record-encounter")
-async def record_encounter(entity_id: str, was_hunter: bool, success: bool):
-    """Record predator-prey encounter"""
-    # Load lineage if needed
-    if entity_id not in lineage_tracker.lineages:
-        lineage_data = await db.lineages.find_one({"entity_id": entity_id}, {"_id": 0})
-        if not lineage_data:
-            raise HTTPException(status_code=404, detail="Lineage not found")
-        lineage_tracker.from_dict(lineage_data)
-    
-    # Record encounter
-    lineage_tracker.record_predator_encounter(entity_id, was_hunter, success)
-    
-    # Update database
-    updated = lineage_tracker.to_dict(entity_id)
-    await db.lineages.update_one(
-        {"entity_id": entity_id},
-        {"$set": updated}
-    )
-    
-    node = lineage_tracker.lineages[entity_id]
-    return {
-        "entity_id": entity_id,
-        "was_hunter": was_hunter,
-        "success": success,
-        "predator_dominance_score": round(node.predator_dominance_score, 3),
-        "message": "Encounter recorded"
-    }
-
-
-@api_router.get("/lineage/{entity_id}/apex-check")
-async def check_apex_qualification(entity_id: str):
-    """Check if entity qualifies for apex status"""
-    # Load lineage if needed
-    if entity_id not in lineage_tracker.lineages:
-        lineage_data = await db.lineages.find_one({"entity_id": entity_id}, {"_id": 0})
-        if not lineage_data:
-            raise HTTPException(status_code=404, detail="Lineage not found")
-        lineage_tracker.from_dict(lineage_data)
-        
-        # Load ancestry
-        current_parent = lineage_data.get("parent_id")
-        while current_parent:
-            if current_parent not in lineage_tracker.lineages:
-                parent_data = await db.lineages.find_one({"entity_id": current_parent}, {"_id": 0})
-                if parent_data:
-                    lineage_tracker.from_dict(parent_data)
-                    current_parent = parent_data.get("parent_id")
-                else:
-                    break
-            else:
-                break
-    
-    result = lineage_tracker.check_apex_qualification(entity_id)
-    
-    # If qualified and not verified, mark as verified
-    if result["qualified"] and entity_id in lineage_tracker.lineages:
-        node = lineage_tracker.lineages[entity_id]
-        if not node.apex_verified:
-            node.apex_verified = True
-            await db.lineages.update_one(
-                {"entity_id": entity_id},
-                {"$set": {"apex_verified": True}}
-            )
-    
-    return result
-
-
-@api_router.get("/lineage/{entity_id}/ancestry")
-async def get_ancestry_chain(entity_id: str):
-    """Get full ancestry chain"""
-    # Load lineage and ancestors
-    if entity_id not in lineage_tracker.lineages:
-        lineage_data = await db.lineages.find_one({"entity_id": entity_id}, {"_id": 0})
-        if not lineage_data:
-            raise HTTPException(status_code=404, detail="Lineage not found")
-        lineage_tracker.from_dict(lineage_data)
-        
-        # Load all ancestors
-        current_parent = lineage_data.get("parent_id")
-        while current_parent:
-            if current_parent not in lineage_tracker.lineages:
-                parent_data = await db.lineages.find_one({"entity_id": current_parent}, {"_id": 0})
-                if parent_data:
-                    lineage_tracker.from_dict(parent_data)
-                    current_parent = parent_data.get("parent_id")
-                else:
-                    break
-            else:
-                parent = lineage_tracker.lineages[current_parent]
-                current_parent = parent.parent_id
-    
-    chain = lineage_tracker.get_ancestry_chain(entity_id)
-    origin = lineage_tracker.get_origin_classification(entity_id)
-    
-    return {
-        "entity_id": entity_id,
-        "ancestry_chain": [
-            {
-                "entity_id": node.entity_id,
-                "entity_name": node.entity_name,
-                "generation": node.generation,
-                "birth_death_level": node.birth_death_level,
-                "predator_dominance": round(node.predator_dominance_score, 3),
-                "apex_verified": node.apex_verified
-            }
-            for node in chain
-        ],
-        "origin_classification": origin
-    }
-
-
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
 
 
 # Configure logging
