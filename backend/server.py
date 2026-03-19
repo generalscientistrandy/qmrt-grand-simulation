@@ -24,6 +24,7 @@ from lineage_system import LineageTracker
 from cosmological_simulator import CosmologicalSimulator
 from universe_simulator import UniverseSimulator
 from engine_api import router as engine_router
+from mesoscopic_api import router as mesoscopic_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -622,6 +623,7 @@ async def get_habitable_worlds(universe_id: str):
 
 app.include_router(api_router)
 app.include_router(engine_router, prefix="/api")
+app.include_router(mesoscopic_router, prefix="/api")
 
 
 app.add_middleware(
