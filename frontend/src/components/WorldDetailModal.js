@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
@@ -55,6 +55,9 @@ export const WorldDetailModal = ({ world, open, onClose, onWorldDeleted }) => {
               <DialogTitle className="text-3xl font-bold tracking-tight mb-2" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                 {world.name}
               </DialogTitle>
+              <DialogDescription className="sr-only">
+                Detailed view of {world.name} - a {world.classification} at death-world level {world.death_world_level}
+              </DialogDescription>
               <div className="flex items-center gap-3">
                 <span className={`text-xs font-mono uppercase px-2 py-1 rounded-full border ${
                   world.classification.includes('Sanctuary') ? 'text-green-500 border-green-500/50' :

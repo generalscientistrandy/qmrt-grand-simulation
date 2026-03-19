@@ -67,7 +67,7 @@ export const CreateWorldModal = ({ open, onClose, onWorldCreated }) => {
             Initialize New World
           </DialogTitle>
           <DialogDescription className="font-mono text-xs text-muted-foreground">
-            Configure substrate parameters to generate a persistent world
+            Configure substrate parameters to generate a persistent world. Set death-world level (1-15) and optional seed for reproducibility.
           </DialogDescription>
         </DialogHeader>
 

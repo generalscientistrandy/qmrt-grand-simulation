@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Atom, Zap, Wind, Activity } from 'lucide-react';
 
 const SubstrateProperty = ({ icon: Icon, name, symbol, description }) => (
@@ -25,9 +25,9 @@ export const SubstrateInfoModal = ({ open, onClose }) => {
           <DialogTitle className="text-3xl font-bold tracking-tight uppercase mb-2" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
             QMRT Substrate Physics
           </DialogTitle>
-          <p className="text-sm text-muted-foreground">
-            Quark Medium Relativity Theory - The Authoritative Physical Foundation
-          </p>
+          <DialogDescription className="text-sm text-muted-foreground">
+            Quark Medium Relativity Theory - The Authoritative Physical Foundation. Learn about the four substrate properties and death-world scaling.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6 py-4">
