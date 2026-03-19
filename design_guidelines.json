@@ -1,0 +1,159 @@
+{
+  "brand_identity": {
+    "name": "QMRT Nexus",
+    "persona": "The Architect's Terminal",
+    "description": "A high-fidelity scientific interface for monitoring and manipulating the fabric of reality. It feels like a tool used by a Type II civilization engineer.",
+    "aesthetic": "Scientific Brutalism meets Cyberpunk HUD. Dense, precise, and dark.",
+    "principles": [
+      "Data over Decoration: Every pixel must convey information or structure.",
+      "Immersive Depth: Use layers (z-index), glassmorphism, and borders to create a sense of looking 'into' the simulation.",
+      "Reactive Feedback: The interface feels alive. Hover states are instant, data updates pulse.",
+      "Safety Colors: Use universal hazard colors (Red/Amber/Cyan) to communicate system stability."
+    ]
+  },
+  "typography": {
+    "fonts": {
+      "display": {
+        "family": "Rajdhani, Inter, sans-serif",
+        "usage": "Headings, Section Titles, massive metrics",
+        "weights": ["500", "600", "700"]
+      },
+      "body": {
+        "family": "Inter, system-ui, sans-serif",
+        "usage": "General text, descriptions, labels",
+        "weights": ["400", "500"]
+      },
+      "mono": {
+        "family": "JetBrains Mono, Fira Code, monospace",
+        "usage": "Data values, coordinates, IDs, technical parameters",
+        "weights": ["400", "500"]
+      }
+    },
+    "scaling": {
+      "h1": "text-4xl md:text-5xl font-bold tracking-tight uppercase",
+      "h2": "text-2xl md:text-3xl font-semibold tracking-tight",
+      "h3": "text-xl font-medium tracking-normal text-muted-foreground",
+      "label": "text-xs font-mono uppercase tracking-widest text-muted-foreground",
+      "metric": "text-3xl md:text-4xl font-mono font-bold"
+    }
+  },
+  "colors": {
+    "theme": "dark",
+    "palette": {
+      "background": {
+        "default": "#050505",
+        "subtle": "#0A0A0B",
+        "overlay": "#000000"
+      },
+      "surface": {
+        "default": "#121212",
+        "raised": "#18181B",
+        "glass": "rgba(20, 20, 25, 0.7)"
+      },
+      "primary": {
+        "default": "#00F0FF",
+        "dim": "rgba(0, 240, 255, 0.2)",
+        "glow": "0 0 20px rgba(0, 240, 255, 0.5)"
+      },
+      "secondary": {
+        "default": "#7C3AED",
+        "dim": "rgba(124, 58, 237, 0.2)"
+      },
+      "status": {
+        "stable": "#10B981",
+        "warning": "#F59E0B",
+        "critical": "#EF4444",
+        "info": "#3B82F6"
+      },
+      "text": {
+        "primary": "#EDEDED",
+        "secondary": "#A1A1AA",
+        "muted": "#52525B"
+      },
+      "border": {
+        "default": "#27272A",
+        "active": "#3F3F46"
+      }
+    }
+  },
+  "layout_strategy": {
+    "grid_system": "Bento Grid (Mode B)",
+    "container": "max-w-7xl mx-auto p-4 md:p-8",
+    "spacing": {
+      "section_gap": "gap-8",
+      "component_gap": "gap-4",
+      "internal_padding": "p-6"
+    },
+    "z_index": {
+      "base": "z-0",
+      "overlay": "z-10",
+      "modal": "z-50",
+      "toast": "z-100"
+    }
+  },
+  "components": {
+    "cards": {
+      "style": "bg-card/40 backdrop-blur-md border border-border/50 rounded-lg overflow-hidden",
+      "hover": "hover:border-primary/50 transition-colors duration-300",
+      "header": "border-b border-border/50 p-4 bg-muted/20",
+      "content": "p-4"
+    },
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm font-mono uppercase tracking-wider text-sm h-10 px-6",
+      "secondary": "bg-secondary/20 text-secondary-foreground hover:bg-secondary/30 border border-secondary/50 rounded-sm font-mono uppercase text-sm h-10 px-4",
+      "ghost": "hover:bg-muted text-muted-foreground hover:text-foreground rounded-sm"
+    },
+    "inputs": {
+      "default": "bg-background/50 border-border focus:border-primary focus:ring-1 focus:ring-primary/50 rounded-sm font-mono text-sm h-10"
+    },
+    "visualizations": {
+      "charts": "Recharts with custom tooltips, minimal axes, and glowing lines",
+      "progress": "h-2 bg-muted rounded-full overflow-hidden [&>div]:bg-primary [&>div]:shadow-[0_0_10px_currentColor]",
+      "badges": "rounded-full px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider border"
+    }
+  },
+  "visual_enhancers": {
+    "borders": "1px solid border-color",
+    "shadows": "shadow-lg shadow-black/50",
+    "glassmorphism": "backdrop-blur-xl bg-background/60",
+    "decorations": [
+      "Corner accents (top-left, bottom-right)",
+      "Scanlines overlay (optional for retro feel)",
+      "Grid background pattern"
+    ]
+  },
+  "motion": {
+    "library": "framer-motion (Recommended)",
+    "transitions": {
+      "default": "transition-all duration-200 ease-out",
+      "slow": "transition-all duration-500 ease-in-out"
+    },
+    "animations": {
+      "fade_in": { "initial": { "opacity": 0 }, "animate": { "opacity": 1 } },
+      "slide_up": { "initial": { "y": 20, "opacity": 0 }, "animate": { "y": 0, "opacity": 1 } },
+      "pulse": "animate-pulse"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Install 'lucide-react' for icons if not present.",
+    "Install 'clsx' and 'tailwind-merge' for class handling.",
+    "Create a 'Layout' component that wraps the app with a dark background, grid pattern, and navigation.",
+    "Use 'Recharts' for all data visualization (density, torsion, etc.).",
+    "Implement a 'WorldCard' component that displays key metrics (Death Level, Population, Stability) in a compact grid item.",
+    "The 'Create World' flow should feel like initiating a simulation protocol. Use a multi-step form or a dense control panel.",
+    "Strictly follow the color palette. Do NOT use default blue/slate colors. Use the specific neon accents defined.",
+    "Ensure all text has sufficient contrast. Use light gray (#A1A1AA) for labels and white (#EDEDED) for values.",
+    "Add 'data-testid' to all interactive elements."
+  ],
+  "accessibility": {
+    "contrast_check": "Ensure text meets WCAG AA standards (4.5:1 for normal text).",
+    "focus_states": "Visible focus rings on all interactive elements using 'ring-primary'.",
+    "labels": "All inputs and buttons must have aria-labels or visible labels."
+  },
+  "universal_guidelines": [
+    "Do not use generic gradients. Use subtle radial gradients for spotlights.",
+    "Avoid 'Inter' for everything. Use 'JetBrains Mono' (or similar) for numbers and data.",
+    "Spacing is key. Don't crowd the interface. Use 'gap-6' or 'gap-8' for main layouts.",
+    "Use 'sonner' for toast notifications (simulating system alerts)."
+  ]
+}
