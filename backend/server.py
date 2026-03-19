@@ -4,8 +4,9 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import uuid
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional
 from datetime import datetime, timezone
 
 from models import (
@@ -13,13 +14,15 @@ from models import (
     SubstrateMetrics, WorldParameters,
     CosmologicalSimulation, CosmologicalSimulationRequest, CosmologicalSimulationResponse,
     SimulationMode,
-    LineageRecord, LineageCreateRequest, LineageUpdateRequest
+    LineageRecord, LineageCreateRequest, LineageUpdateRequest,
+    UniverseSimulationResponse
 )
 from world_generator_v2 import WorldGenerator
 from ecological_engine import EcologicalEngine, PredatorTier
 from lineage_system import LineageTracker
 
 from cosmological_simulator import CosmologicalSimulator
+from universe_simulator import UniverseSimulator
 
 
 ROOT_DIR = Path(__file__).parent
@@ -510,6 +513,112 @@ async def get_predator_tiers():
     }
 
 
+
+
+
+@api_router.post("/universe/simulate", response_model=UniverseSimulationResponse)
+async def run_universe_simulation(name: str, seed: Optional[int] = None, grid_size: int = 32):
+    """
+    Run full universe simulation: Big Bang → Stellar Systems → Planetary Formation
+    
+    This extends cosmological simulation through stellar and planetary formation,
+    identifying habitable worlds that can seed gameplay (Mode 2) worlds.
+    """
+    try:
+        # Create universe simulator
+        universe = UniverseSimulator(grid_size=grid_size, hubble_parameter=0.07)
+        
+        # Run full simulation
+        result = universe.run_full_universe_simulation(seed=seed)
+        
+        # Create database entry
+        universe_sim = {
+            'id': str(uuid.uuid4()),
+            'name': name,
+            'seed': seed,
+            'cosmic_time': result['cosmological_time'],
+            'scale_factor': result['scale_factor'],
+            'structure_seeds': result['structure_seeds'],
+            'stellar_systems': result['stellar_systems'],
+            'stellar_distribution': result['stellar_distribution'],
+            'total_planets': result['total_planets'],
+            'habitable_worlds': result['habitable_worlds'],
+            'habitable_worlds_data': result['habitable_worlds_data'],
+            'stellar_systems_data': result['stellar_systems_data'],
+            'created_at': datetime.now(timezone.utc).isoformat(),
+            'simulation_type': 'universe_full'
+        }
+        
+        await db.universe_simulations.insert_one(universe_sim)
+        
+        return UniverseSimulationResponse(**universe_sim)
+        
+    except Exception as e:
+        logging.error(f"Error running universe simulation: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Universe simulation failed: {str(e)}")
+
+
+@api_router.get("/universe/simulations")
+async def list_universe_simulations(limit: int = 20):
+    """List all universe simulations"""
+    try:
+        sims_cursor = db.universe_simulations.find({}, {"_id": 0}).sort("created_at", -1).limit(limit)
+        sims = await sims_cursor.to_list(length=limit)
+        return sims
+    except Exception as e:
+        logging.error(f"Error listing universe simulations: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@api_router.get("/universe/{universe_id}")
+async def get_universe_simulation(universe_id: str):
+    """Get specific universe simulation"""
+    sim = await db.universe_simulations.find_one({"id": universe_id}, {"_id": 0})
+    if not sim:
+        raise HTTPException(status_code=404, detail="Universe simulation not found")
+    return sim
+
+
+@api_router.get("/universe/{universe_id}/habitable-worlds")
+async def get_habitable_worlds(universe_id: str):
+    """Get all habitable worlds from a universe simulation"""
+    sim = await db.universe_simulations.find_one({"id": universe_id}, {"_id": 0})
+    if not sim:
+        raise HTTPException(status_code=404, detail="Universe simulation not found")
+    
+    habitable = sim.get('habitable_worlds_data', [])
+    
+    # Calculate gameplay-ready seeds
+    seeds = []
+    for i, hw in enumerate(habitable):
+        substrate = hw.get('substrate_origin', {})
+        density_contrast = substrate.get('density_contrast', 1.0)
+        torsion = substrate.get('torsion', 0.05)
+        
+        # Estimate death-world level
+        death_level = 5
+        death_level += min(int(density_contrast * 3), 5)
+        death_level += min(int(torsion * 30), 5)
+        death_level = max(1, min(15, death_level))
+        
+        seeds.append({
+            'habitable_world_id': i,
+            'stellar_system_id': hw.get('stellar_system_id'),
+            'star_type': hw.get('star_type'),
+            'planet_mass_earth': hw.get('mass_earth'),
+            'orbit_au': hw.get('orbit_au'),
+            'estimated_death_level': death_level,
+            'substrate_seed': substrate
+        })
+    
+    return {
+        'universe_id': universe_id,
+        'universe_name': sim.get('name'),
+        'total_habitable_worlds': len(habitable),
+        'habitable_worlds': seeds
+    }
+
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -732,13 +841,6 @@ async def get_ancestry_chain(entity_id: str):
         ],
         "origin_classification": origin
     }
-
-
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 

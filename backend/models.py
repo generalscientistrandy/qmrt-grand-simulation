@@ -53,23 +53,32 @@ class World(BaseModel):
     seed: Optional[int] = None
     classification: str
     
-    # Physics substrate
-    substrate_metrics: SubstrateMetrics
+
+
+
+class UniverseSimulationResponse(BaseModel):
+    """Response from full universe simulation"""
+    model_config = ConfigDict(extra="ignore")
     
-    # World parameters
-    world_parameters: WorldParameters
+    id: str
+    name: str
+    seed: Optional[int]
     
-    # Metadata
-    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    last_updated: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    # Cosmological data
+    cosmic_time: float
+    scale_factor: float
+    structure_seeds: int
     
-    # Phase B: Ecology
-    ecology_initialized: bool = False
-    ecology_summary: Optional[Dict[str, Any]] = None
+    # Stellar data
+    stellar_systems: int
+    stellar_distribution: Dict[str, int]
     
-    # Future: lineage, apex qualification
-    lineage_origin: Optional[str] = None
-    apex_qualified: bool = False
+    # Planetary data
+    total_planets: int
+    habitable_worlds: int
+    
+    created_at: str
+
     
 
 class WorldCreateRequest(BaseModel):
