@@ -69,6 +69,15 @@ Design and build programmable systems for a persistent simulation universe based
   - `/api/mesoscopic/run` - Complete simulation workflow
   - `/api/mesoscopic/stability-test` - Numerical stability validation
 
+### December 2025 - Mesoscopic Visualizer (Frontend)
+- **Real-time substrate visualization** with interactive controls
+- **Three-tab interface**: Simulation, Structures, Energy
+- **Field dynamics chart**: Density and variance over time
+- **Structure formation chart**: Vortices, strain nodes, particles over time
+- **Energy conservation display**: Initial/final energy, drift percentage
+- **Playback controls**: Play, pause, reset, and scrub through evolution
+- **Parameter controls**: Grid size, amplitude, duration sliders
+
 ### Previous Work
 - World generation from QMRT substrate metrics
 - Cosmological simulation (Mode 1)

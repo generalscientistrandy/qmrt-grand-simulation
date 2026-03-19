@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, RefreshCw, Loader2 } from 'lucide-react';
+import { Plus, RefreshCw, Loader2, Atom } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { WorldCard } from '@/components/WorldCard';
 import { CreateWorldModal } from '@/components/CreateWorldModal';
 import { WorldDetailModal } from '@/components/WorldDetailModal';
 import { SubstrateInfoModal } from '@/components/SubstrateInfoModal';
+import { MesoscopicVisualizer } from '@/components/MesoscopicVisualizer';
 import axios from 'axios';
 import { toast } from 'sonner';
 
@@ -18,6 +19,7 @@ export const Dashboard = () => {
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [selectedWorld, setSelectedWorld] = useState(null);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
+  const [visualizerOpen, setVisualizerOpen] = useState(false);
 
   const fetchWorlds = async () => {
     setLoading(true);
@@ -64,6 +66,15 @@ export const Dashboard = () => {
           </div>
           
           <div className="flex items-center gap-3">
+            <Button
+              data-testid="visualizer-button"
+              onClick={() => setVisualizerOpen(true)}
+              variant="outline"
+              className="bg-primary/20 text-primary hover:bg-primary/30 border border-primary/50 rounded-sm font-mono uppercase text-sm h-10 px-4"
+            >
+              <Atom className="w-4 h-4 mr-2" />
+              Substrate Lab
+            </Button>
             <Button
               data-testid="substrate-info-button"
               onClick={() => setInfoModalOpen(true)}
@@ -185,6 +196,11 @@ export const Dashboard = () => {
       <SubstrateInfoModal
         open={infoModalOpen}
         onClose={() => setInfoModalOpen(false)}
+      />
+
+      <MesoscopicVisualizer
+        open={visualizerOpen}
+        onClose={() => setVisualizerOpen(false)}
       />
     </div>
   );
