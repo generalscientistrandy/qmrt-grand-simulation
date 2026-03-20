@@ -37,6 +37,15 @@ from qmrt_advanced_validation import (
     complete_scaling_validation
 )
 
+from qmrt_basin_diagnosis import (
+    diagnose_basin_decay,
+    test_isolated_frequency_dynamics,
+    test_gradient_free_dynamics,
+    test_stronger_potential,
+    test_combined_fixes,
+    run_full_basin_diagnosis
+)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -153,6 +162,11 @@ class CompleteScalingRequest(BaseModel):
     grid_sizes: List[int] = Field(default=[12, 16, 20, 24])
     simulation_time: float = Field(default=10.0, ge=5.0, le=30.0)
     dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class BasinDiagnosisRequest(BaseModel):
+    """Request for basin decay diagnosis"""
     seed: Optional[int] = Field(default=42)
 
 
@@ -720,3 +734,34 @@ async def validate_complete_scaling(request: CompleteScalingRequest):
     except Exception as e:
         logger.error(f"Scaling validation error: {str(e)}\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Validation error: {str(e)}")
+
+
+@router.post("/diagnose/basin_decay")
+async def diagnose_basin_decay_endpoint(request: BasinDiagnosisRequest):
+    """
+    Run comprehensive basin decay diagnosis.
+    
+    Tests:
+    1. Energy component tracking - which terms change most
+    2. Isolated frequency dynamics - couplings disabled
+    3. Gradient-free test - K_omega = 0
+    4. Stronger potential test - a_omega x10
+    5. Combined parameter fixes
+    
+    Identifies root cause of basin instability.
+    """
+    try:
+        logger.info("Starting basin decay diagnosis")
+        
+        result = run_full_basin_diagnosis(seed=request.seed)
+        
+        logger.info(f"Basin diagnosis complete. Best stability: {result['summary']['best_stability_time']:.1f}s")
+        
+        return {
+            'test_name': 'basin_decay_diagnosis',
+            'result': result
+        }
+        
+    except Exception as e:
+        logger.error(f"Basin diagnosis error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Diagnosis error: {str(e)}")

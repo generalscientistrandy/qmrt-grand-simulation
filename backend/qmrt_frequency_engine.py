@@ -195,22 +195,22 @@ class QMRTFrequencyParameters:
     # V_band(ω) = a_ω(ω² − ω₀²)²
     # Creates double-well with minima at ω = ±ω₀
     omega_0: float = 1.0      # Equilibrium frequency (basin centers at ±ω₀)
-    a_omega: float = 0.1      # Strength of frequency potential
+    a_omega: float = 1.0      # Strength of frequency potential (TUNED: was 0.1, now 1.0 for stability)
     
     # Gradient coefficients
     K_rho: float = 0.5
     K_sigma: float = 0.5
     K_tau: float = 0.5
     K_phi: float = 0.5
-    K_omega: float = 0.5      # Frequency gradient energy
+    K_omega: float = 0.05     # Frequency gradient energy (TUNED: was 0.5, now 0.05 for stability)
     
     # FREQUENCY-PHASE COUPLING (Phase 2 physics)
     # g_omega_phi * ω * |∇φ|²  → matter prefers certain frequency bands
-    g_omega_phi: float = 0.05
+    g_omega_phi: float = 0.005  # (TUNED: was 0.05, now 0.005 for stability)
     
     # FREQUENCY-DENSITY COUPLING
     # g_omega_rho * ω * (ρ - ρ₀)²  → density-frequency coupling
-    g_omega_rho: float = 0.02
+    g_omega_rho: float = 0.002  # (TUNED: was 0.02, now 0.002 for stability)
     
     # Other couplings (existing)
     lambda_rho_sigma: float = 0.02
