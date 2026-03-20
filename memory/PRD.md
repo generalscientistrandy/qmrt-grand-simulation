@@ -23,7 +23,8 @@ Design and build programmable systems for a persistent simulation universe based
 - [x] Core Universe Evolution Engine (state, timesteps, snapshots, branching)
 - [x] Mesoscopic Substrate Simulation (energy-conserving)
 - [x] QMRT Canonical Hamiltonian Engine (Yoshida 4th-order)
-- [x] **Quark-Level Dual-Basin Attractor Engine** (NEW - December 2025)
+- [x] Quark-Level Dual-Basin Attractor Engine
+- [x] **Frequency-Domain Substrate Engine** (NEW - December 2025)
 - [ ] Structure clustering & composite formation (hadrons)
 - [ ] Civilization emergence systems
 - [ ] Hidden lineage and scan-detection
@@ -68,7 +69,19 @@ Design and build programmable systems for a persistent simulation universe based
 
 ## What's Been Implemented
 
-### December 2025 - Quark-Level Dual-Basin Attractor Engine (LATEST)
+### December 2025 - Frequency-Domain Substrate Engine (LATEST)
+- **Explicit frequency field (ω)**: Fifth fundamental field - medium state variable enabling spectral universes
+- **Band potential**: V_band(ω) = a_ω(ω² − ω₀²)² creates double-well with basins at ±ω₀
+- **Frequency-phase coupling**: g_ωφ·ω·|∇φ|² - matter structures prefer certain frequency bands
+- **Frequency-density coupling**: g_ωρ·ω·(ρ−ρ₀)² - density-frequency interaction
+- **Five fields**: (ρ, σ, τ, φ, ω) with five conjugate momenta
+- **Spectral universe formation**: Frequency clustering observed from turbulent initial conditions
+- **Energy conservation**: 0.0000% drift via Yoshida4 + velocity rescaling
+- **Structure classification**: Both phase_basin AND frequency_band
+- **API Endpoints**: 8 endpoints at `/api/qmrt_frequency/`
+- **Test Results**: 33/33 tests passed (100%)
+
+### December 2025 - Quark-Level Dual-Basin Attractor Engine
 - **Dual-basin phase potential**: U_φ(φ) = -a_φ cos(φ) creates symmetric minima at φ=0 (matter) and φ=±π (antimatter)
 - **Phase convention**: φ ∈ (−π, +π) symmetric around zero
 - **Antimatter as phase-inverted attractor**: NOT a separate species, same field solution family
@@ -141,27 +154,36 @@ Design and build programmable systems for a persistent simulation universe based
 | `/api/qmrt_quark/test_persistence` | POST | Structure persistence test |
 | `/api/qmrt_quark/initialize` | POST | Initialize quark engine |
 | `/api/qmrt_quark/{id}/evolve` | POST | Evolve quark engine |
+| `/api/qmrt_frequency/theory` | GET | Frequency-domain theory summary |
+| `/api/qmrt_frequency/test_frequency_domains` | POST | Test frequency basin separation |
+| `/api/qmrt_frequency/test_spectral_universes` | POST | Test spectral universe formation |
+| `/api/qmrt_frequency/initialize` | POST | Initialize frequency engine |
+| `/api/qmrt_frequency/{id}/evolve` | POST | Evolve frequency engine |
 
 ## Test Coverage
 - **Backend tests**: 
   - `/app/backend/tests/test_mesoscopic_api.py` (23 tests)
   - `/app/backend/tests/test_qmrt_quark_api.py` (19 tests)
+  - `/app/backend/tests/test_qmrt_frequency_api.py` (33 tests)
 - **Test reports**: 
   - `/app/test_reports/iteration_2.json` (mesoscopic)
   - `/app/test_reports/iteration_3.json` (quark engine)
-- **Results**: 42/42 tests passed (100%)
+  - `/app/test_reports/iteration_4.json` (frequency engine)
+- **Results**: 75/75 tests passed (100%)
 
 ## Prioritized Backlog
 
 ### P0 - Complete
 - [x] Mesoscopic substrate simulation with energy conservation
 - [x] QMRT Canonical Hamiltonian Engine with Yoshida4 integrator
-- [x] **Quark-Level Dual-Basin Attractor Engine** (validates ontology)
+- [x] Quark-Level Dual-Basin Attractor Engine (validates ontology)
+- [x] **Frequency-Domain Substrate Engine** (spectral universes)
 
-### P1 - Next
-- [ ] **Structure Clustering & Composite Formation**: Model how stable quark-like structures cluster to form hadron-like composites
-- [ ] **Tune Annihilation Dynamics**: Adjust overlap radius/parameters so annihilation events occur more readily
-- [ ] **Update Frontend Visualizer**: Point `MesoscopicVisualizer.js` to quark engine API
+### P1 - Next (Scale Ladder)
+- [ ] **Quark-like Node Persistence**: Validate stable structures in frequency basins survive long-term
+- [ ] **Hadron Confinement Regime**: Model transition from quark structures to confined composites
+- [ ] **Tune Frequency Parameters**: Optimize ω₀, a_ω, coupling strengths for cleaner basin separation
+- [ ] **Update Frontend Visualizer**: Display frequency domain statistics
 
 ### P2 - Planned
 - [ ] Expand Apex Qualification System with multi-generational metrics
