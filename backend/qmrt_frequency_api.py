@@ -22,6 +22,14 @@ from qmrt_frequency_engine import (
     run_spectral_universe_test
 )
 
+from qmrt_physics_validation import (
+    measure_basin_stability,
+    measure_cross_basin_collision,
+    measure_scaling_behavior,
+    measure_spectral_energy_transport,
+    run_full_physics_validation
+)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -70,6 +78,44 @@ class EvolveRequest(BaseModel):
     """Request for evolving an engine"""
     steps: int = Field(default=100, ge=1, le=5000)
     dt: float = Field(default=0.01, ge=0.001, le=0.1)
+
+
+class BasinStabilityRequest(BaseModel):
+    """Request for basin stability measurement"""
+    grid_size: int = Field(default=24, ge=12, le=48)
+    total_time: float = Field(default=50.0, ge=10.0, le=200.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class CollisionTestRequest(BaseModel):
+    """Request for cross-basin collision test"""
+    grid_size: int = Field(default=24, ge=16, le=48)
+    total_time: float = Field(default=30.0, ge=10.0, le=100.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class ScalingTestRequest(BaseModel):
+    """Request for scaling behavior test"""
+    grid_sizes: List[int] = Field(default=[12, 16, 20, 24])
+    simulation_time: float = Field(default=15.0, ge=5.0, le=50.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class EnergyTransportRequest(BaseModel):
+    """Request for spectral energy transport measurement"""
+    grid_size: int = Field(default=24, ge=12, le=48)
+    total_time: float = Field(default=30.0, ge=10.0, le=100.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class FullValidationRequest(BaseModel):
+    """Request for full physics validation suite"""
+    quick_mode: bool = Field(default=True, description="Use smaller grids for faster testing")
+    seed: Optional[int] = Field(default=42)
 
 
 @router.get("/theory")
@@ -302,3 +348,190 @@ async def delete_engine(engine_id: str):
     
     del engines[engine_id]
     return {"message": f"Engine {engine_id} deleted", "remaining": len(engines)}
+
+
+# =============================================================================
+# Physics Validation Endpoints
+# =============================================================================
+
+@router.post("/validate/basin_stability")
+async def validate_basin_stability(request: BasinStabilityRequest):
+    """
+    Measure basin stability time.
+    
+    Tests how long frequency domains survive.
+    If they stabilize → supports multiverse band idea.
+    """
+    try:
+        logger.info(f"Starting basin stability test: {request.grid_size}³, {request.total_time}s")
+        
+        result = measure_basin_stability(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Basin stability test complete. Stable: {result.is_stable}")
+        
+        return {
+            'test_name': 'basin_stability',
+            'result': result.to_dict(),
+            'interpretation': {
+                'is_stable': result.is_stable,
+                'stability_time': result.stability_time,
+                'half_life': result.half_life,
+                'supports_multiverse': result.is_stable,
+                'note': 'Basins remain stable' if result.is_stable else 'Basins decay - may need parameter tuning'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Basin stability test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/validate/cross_basin_collision")
+async def validate_cross_basin_collision(request: CollisionTestRequest):
+    """
+    Test cross-basin collision dynamics.
+    
+    What happens when opposite-polarity frequency domains collide?
+    - Annihilation: Domains destroy each other
+    - Reflection: Domains bounce off
+    - Merge: Domains combine
+    - Tunnel: Domains pass through
+    
+    Tests the antimatter separation hypothesis.
+    """
+    try:
+        logger.info(f"Starting cross-basin collision test: {request.grid_size}³")
+        
+        result = measure_cross_basin_collision(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Collision test complete. Type: {result.collision_type}")
+        
+        return {
+            'test_name': 'cross_basin_collision',
+            'result': result.to_dict(),
+            'interpretation': {
+                'collision_type': result.collision_type,
+                'supports_antimatter_separation': result.collision_type in ['reflection', 'tunnel'],
+                'energy_conserved': abs(result.pre_collision_energy - result.post_collision_energy) / result.pre_collision_energy < 0.01,
+                'note': f'Collision outcome: {result.collision_type}'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Collision test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/validate/scaling_behavior")
+async def validate_scaling_behavior(request: ScalingTestRequest):
+    """
+    Test scaling behavior across different resolutions.
+    
+    Checks if physics is resolution-independent:
+    - If basin size scales and structure density remains invariant → Real physics
+    - If physics changes with resolution → Numerical artifact
+    """
+    try:
+        logger.info(f"Starting scaling test: grids {request.grid_sizes}")
+        
+        result = measure_scaling_behavior(
+            grid_sizes=request.grid_sizes,
+            simulation_time=request.simulation_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Scaling test complete. Invariant: {result.is_scale_invariant}")
+        
+        return {
+            'test_name': 'scaling_behavior',
+            'result': result.to_dict(),
+            'interpretation': {
+                'is_scale_invariant': result.is_scale_invariant,
+                'structure_density_exponent': result.scaling_exponents['structure_density_exponent'],
+                'is_real_physics': result.is_scale_invariant,
+                'note': 'Real regime physics' if result.is_scale_invariant else 'May be numerical artifact - need finer resolution'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Scaling test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/validate/energy_transport")
+async def validate_energy_transport(request: EnergyTransportRequest):
+    """
+    Measure spectral energy transport.
+    
+    Tracks energy flow across frequency gradient:
+    - Does energy prefer certain frequency bands?
+    - If yes → Shows medium band thermodynamics (original result)
+    """
+    try:
+        logger.info(f"Starting energy transport test: {request.grid_size}³, {request.total_time}s")
+        
+        result = measure_spectral_energy_transport(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Energy transport test complete. Preferred band: {result.preferred_band}")
+        
+        return {
+            'test_name': 'spectral_energy_transport',
+            'result': result.to_dict(),
+            'interpretation': {
+                'has_preferred_band': result.preferred_band != 'neutral',
+                'preferred_band': result.preferred_band,
+                'transport_coefficient': result.transport_coefficient,
+                'shows_band_thermodynamics': result.transport_coefficient > 0.1,
+                'note': 'Shows medium band thermodynamics' if result.transport_coefficient > 0.1 else 'Weak energy transport'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Energy transport test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/validate/full_suite")
+async def validate_full_suite(request: FullValidationRequest):
+    """
+    Run complete physics validation suite.
+    
+    Tests all four validation criteria:
+    1. Basin stability time
+    2. Cross-basin collision dynamics
+    3. Scaling behavior
+    4. Spectral energy transport
+    
+    Returns comprehensive assessment of QMRT physics validity.
+    """
+    try:
+        logger.info(f"Starting full validation suite. Quick mode: {request.quick_mode}")
+        
+        result = run_full_physics_validation(
+            quick_mode=request.quick_mode,
+            seed=request.seed
+        )
+        
+        logger.info(f"Full validation complete. Validity: {result['overall_assessment']['physics_validity']}")
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Full validation error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Validation error: {str(e)}")
