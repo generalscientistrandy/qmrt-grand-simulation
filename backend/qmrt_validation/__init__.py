@@ -44,6 +44,16 @@ from .entropy_test import (
     compute_frequency_entropy
 )
 
+from .phase_diagram import (
+    PhaseDiagramResult,
+    HysteresisPoint,
+    InteractionRegimePoint,
+    run_phase_diagram_refinement,
+    run_hysteresis_scan,
+    run_long_time_plateau_test,
+    run_interaction_regime_map
+)
+
 __all__ = [
     # Eigenmode
     'EigenmodeResult',
@@ -68,5 +78,13 @@ __all__ = [
     'EntropyTrajectory',
     'EntropyProductionResult',
     'run_entropy_production_test',
-    'compute_frequency_entropy'
+    'compute_frequency_entropy',
+    # Phase Diagram
+    'PhaseDiagramResult',
+    'HysteresisPoint',
+    'InteractionRegimePoint',
+    'run_phase_diagram_refinement',
+    'run_hysteresis_scan',
+    'run_long_time_plateau_test',
+    'run_interaction_regime_map'
 ]
