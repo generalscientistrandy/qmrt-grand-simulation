@@ -41,6 +41,10 @@ from qmrt_validation.phase_diagram import (
     run_interaction_regime_map
 )
 
+from qmrt_validation.layered_entropy import (
+    run_layered_entropy_dynamics
+)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -112,6 +116,16 @@ class EntropyProductionRequest(BaseModel):
 class PhaseDiagramRequest(BaseModel):
     """Request for phase diagram refinement"""
     grid_size: int = Field(default=14, ge=10, le=20)
+    seed: Optional[int] = Field(default=42)
+
+
+class LayeredEntropyRequest(BaseModel):
+    """Request for layered entropy dynamics simulation"""
+    grid_size: int = Field(default=14, ge=10, le=24)
+    total_time: float = Field(default=50.0, ge=20.0, le=100.0)
+    dt: float = Field(default=0.02, ge=0.01, le=0.05)
+    alpha: float = Field(default=0.05, ge=0.01, le=0.2, description="Entropy drive coefficient")
+    beta: float = Field(default=0.01, ge=0.001, le=0.1, description="Gradient suppression coefficient")
     seed: Optional[int] = Field(default=42)
 
 
@@ -542,4 +556,76 @@ async def run_phase_diagram_test(request: PhaseDiagramRequest):
         
     except Exception as e:
         logger.error(f"Phase diagram error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+# =============================================================================
+# Layered Entropy Dynamics
+# =============================================================================
+
+@router.post("/layered_entropy")
+async def run_layered_entropy_test(request: LayeredEntropyRequest):
+    """
+    Layered Entropy Dynamics Simulation
+    
+    Tests the dynamic entropy evolution equation:
+    
+        dS/dt = α(S_eq_layer - S) - β|∇ψ|²
+    
+    Where:
+    - α = entropy drive coefficient (growth toward layer equilibrium)
+    - β = gradient suppression coefficient (ordering suppresses entropy)
+    - S_eq_layer = λ_L × S_max (layer-constrained equilibrium)
+    - λ_L = layer enforcement coefficient (fraction of accessible phase space)
+    
+    Physical interpretation:
+    - λ_L ≈ 0.73 means substrate ordering blocks ~27% of disorder channels
+    - This is analogous to: gauge fixing, symmetry-protected phases, topological order
+    - Entropy maximization is CONDITIONAL on substrate constraints
+    
+    Key equation: S_layer = λ_L × S_max
+    
+    This validates the QMRT entropy hierarchy hypothesis.
+    """
+    try:
+        logger.info(f"Starting layered entropy dynamics: {request.grid_size}³, α={request.alpha}, β={request.beta}")
+        
+        result = run_layered_entropy_dynamics(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            alpha=request.alpha,
+            beta=request.beta,
+            seed=request.seed
+        )
+        
+        result_dict = result.to_dict()
+        
+        return {
+            'test_name': 'layered_entropy_dynamics',
+            'model': 'dS/dt = α(S_eq_layer - S) - β|∇ψ|²',
+            'result': result_dict,
+            'key_findings': {
+                'layer_enforcement': {
+                    'lambda_L': result.lambda_L_mean,
+                    'blocked_channels_percent': result.blocked_channels_percent,
+                    'interpretation': f"Substrate ordering blocks {result.blocked_channels_percent:.1f}% of disorder channels"
+                },
+                'entropy_plateau': {
+                    'observed': result.plateau_observed,
+                    'predicted': result.plateau_predicted,
+                    'agreement': abs(result.plateau_observed - result.plateau_predicted) < 0.1
+                },
+                'fitted_parameters': {
+                    'alpha': result.alpha_fit,
+                    'beta': result.beta_fit
+                },
+                'model_fit_r_squared': result.model_r_squared
+            },
+            'physical_interpretation': result_dict['physical_interpretation']['interpretation'],
+            'entropy_hierarchy_validated': result.model_r_squared > 0.8 and abs(result.plateau_observed - result.plateau_predicted) < 0.15
+        }
+        
+    except Exception as e:
+        logger.error(f"Layered entropy error: {str(e)}\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")

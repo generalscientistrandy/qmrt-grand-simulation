@@ -135,6 +135,22 @@ Design and build programmable systems for a persistent simulation universe based
 4. **First-Order Transition**: Hysteresis observed around a_ω ≈ 0.75
 5. **Half-Entropy Regime**: S/S_max ≈ 0.73 plateau confirms ordered metastable state
 
+### Layered Entropy Model (Mathematical Framework)
+**Key equation**: `dS/dt = α(S_eq_layer - S) - β|∇ψ|²`
+
+- **Layer enforcement coefficient**: λ_L ≈ 0.749
+- **Blocked disorder channels**: ~25%
+- **Physical interpretation**: Substrate ordering restricts accessible phase space
+- Analogous to: gauge fixing, symmetry-protected phases, topological order
+
+**Landau functional candidate**:
+```
+F = ∫dV [a_ω|ψ|² + b|ψ|⁴ + κ_ω|∇ψ|² + γ·Φ_layer(|ψ|)]
+```
+Where Φ_layer = phase-space restriction potential
+
+Files: `/app/backend/qmrt_validation/layered_entropy.py`
+
 ### December 2025 - Comprehensive Physics Validation Suite
 - **Scaling Persistence Test**: Validates basin stability at larger grid sizes (32, 48, 64)
 - **Long-time Entropy Drift Test**: S(t) = -Σ P_k log P_k, tests "half-entropy regime" hypothesis

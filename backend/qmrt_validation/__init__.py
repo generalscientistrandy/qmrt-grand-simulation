@@ -54,6 +54,15 @@ from .phase_diagram import (
     run_interaction_regime_map
 )
 
+from .layered_entropy import (
+    LayeredEntropyState,
+    LayeredEntropyResult,
+    run_layered_entropy_dynamics,
+    compute_layer_enforcement,
+    compute_gradient_energy,
+    validate_entropy_evolution_equation
+)
+
 __all__ = [
     # Eigenmode
     'EigenmodeResult',
@@ -86,5 +95,12 @@ __all__ = [
     'run_phase_diagram_refinement',
     'run_hysteresis_scan',
     'run_long_time_plateau_test',
-    'run_interaction_regime_map'
+    'run_interaction_regime_map',
+    # Layered Entropy Dynamics
+    'LayeredEntropyState',
+    'LayeredEntropyResult',
+    'run_layered_entropy_dynamics',
+    'compute_layer_enforcement',
+    'compute_gradient_energy',
+    'validate_entropy_evolution_equation'
 ]
