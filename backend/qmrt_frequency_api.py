@@ -30,6 +30,13 @@ from qmrt_physics_validation import (
     run_full_physics_validation
 )
 
+from qmrt_advanced_validation import (
+    test_reflection_robustness,
+    measure_spectral_energy_spectrum,
+    test_mexican_hat_stability,
+    complete_scaling_validation
+)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -115,6 +122,37 @@ class EnergyTransportRequest(BaseModel):
 class FullValidationRequest(BaseModel):
     """Request for full physics validation suite"""
     quick_mode: bool = Field(default=True, description="Use smaller grids for faster testing")
+    seed: Optional[int] = Field(default=42)
+
+
+class ReflectionRobustnessRequest(BaseModel):
+    """Request for reflection robustness testing"""
+    seed: Optional[int] = Field(default=42)
+
+
+class SpectralAnalysisRequest(BaseModel):
+    """Request for spectral energy spectrum analysis"""
+    grid_size: int = Field(default=24, ge=16, le=48)
+    total_time: float = Field(default=20.0, ge=5.0, le=60.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class MexicanHatRequest(BaseModel):
+    """Request for Mexican hat potential stability test"""
+    grid_size: int = Field(default=20, ge=12, le=40)
+    total_time: float = Field(default=30.0, ge=10.0, le=100.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    mu_squared: float = Field(default=0.5, ge=0.1, le=2.0)
+    lambda_coeff: float = Field(default=0.25, ge=0.05, le=1.0)
+    seed: Optional[int] = Field(default=42)
+
+
+class CompleteScalingRequest(BaseModel):
+    """Request for complete scaling validation"""
+    grid_sizes: List[int] = Field(default=[12, 16, 20, 24])
+    simulation_time: float = Field(default=10.0, ge=5.0, le=30.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
     seed: Optional[int] = Field(default=42)
 
 
@@ -534,4 +572,151 @@ async def validate_full_suite(request: FullValidationRequest):
         
     except Exception as e:
         logger.error(f"Full validation error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Validation error: {str(e)}")
+
+
+# =============================================================================
+# Advanced Validation Endpoints
+# =============================================================================
+
+@router.post("/validate/reflection_robustness")
+async def validate_reflection_robustness(request: ReflectionRobustnessRequest):
+    """
+    Test if reflection behavior is robust under parameter variations.
+    
+    Tests:
+    1. Vary coupling constants
+    2. Vary grid resolution  
+    3. Add noise to initial conditions
+    
+    If reflection persists → real physics
+    If it doesn't → numerical artifact
+    """
+    try:
+        logger.info("Starting reflection robustness test")
+        
+        result = test_reflection_robustness(seed=request.seed)
+        
+        logger.info(f"Reflection robustness test complete. Robust: {result.reflection_robust}")
+        
+        return {
+            'test_name': 'reflection_robustness',
+            'result': result.to_dict()
+        }
+        
+    except Exception as e:
+        logger.error(f"Reflection robustness test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/validate/spectral_analysis")
+async def validate_spectral_analysis(request: SpectralAnalysisRequest):
+    """
+    Measure spectral energy spectrum E(k) and power law.
+    
+    Looking for E(k) ∝ k^α where:
+    - α < 0: Forward cascade (energy to small scales)
+    - α > 0: Inverse cascade (energy to large scales)
+    - α ≈ -5/3: Kolmogorov-like turbulence
+    """
+    try:
+        logger.info(f"Starting spectral analysis: {request.grid_size}³, {request.total_time}s")
+        
+        result = measure_spectral_energy_spectrum(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Spectral analysis complete. α = {result.power_law_exponent:.2f}")
+        
+        return {
+            'test_name': 'spectral_energy_spectrum',
+            'result': result.to_dict(),
+            'interpretation': {
+                'power_law_exponent': result.power_law_exponent,
+                'cascade_direction': result.cascade_type,
+                'kolmogorov_like': result.kolmogorov_like,
+                'fit_quality': result.power_law_r_squared,
+                'note': f'E(k) ∝ k^{result.power_law_exponent:.2f}, cascade: {result.cascade_type}'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Spectral analysis error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/validate/mexican_hat_stability")
+async def validate_mexican_hat_stability(request: MexicanHatRequest):
+    """
+    Test basin stability with Mexican hat potential.
+    
+    V(ω) = -½μ²ω² + ¼λω⁴
+    
+    Creates deeper minima at ω = ±√(μ²/λ) for improved stability.
+    """
+    try:
+        logger.info(f"Starting Mexican hat stability test: μ²={request.mu_squared}, λ={request.lambda_coeff}")
+        
+        result = test_mexican_hat_stability(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            mu_squared=request.mu_squared,
+            lambda_coeff=request.lambda_coeff,
+            seed=request.seed
+        )
+        
+        logger.info(f"Mexican hat test complete. Stable: {result['is_stable']}")
+        
+        return {
+            'test_name': 'mexican_hat_stability',
+            'result': result,
+            'interpretation': {
+                'is_stable': result['is_stable'],
+                'stability_time': result['stability_time'],
+                'improvement': 'YES' if result['improvement_over_quartic'] else 'NO',
+                'omega_minima': result['parameters']['omega_min'],
+                'note': f"Stability time: {result['stability_time']:.1f}s (vs 0.3s baseline)"
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Mexican hat test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/validate/complete_scaling")
+async def validate_complete_scaling(request: CompleteScalingRequest):
+    """
+    Complete scaling validation across multiple resolutions.
+    
+    Checks if physics is resolution-independent:
+    - Basin fraction
+    - Structure density
+    - Spectral clustering rate
+    
+    If invariant → real physics, not numerical artifact.
+    """
+    try:
+        logger.info(f"Starting complete scaling validation: grids {request.grid_sizes}")
+        
+        result = complete_scaling_validation(
+            grid_sizes=request.grid_sizes,
+            simulation_time=request.simulation_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Scaling validation complete. Invariant: {result['scaling_analysis']['is_scale_invariant']}")
+        
+        return {
+            'test_name': 'complete_scaling_validation',
+            'result': result
+        }
+        
+    except Exception as e:
+        logger.error(f"Scaling validation error: {str(e)}\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Validation error: {str(e)}")
