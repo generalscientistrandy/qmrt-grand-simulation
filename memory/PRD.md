@@ -73,7 +73,31 @@ Design and build programmable systems for a persistent simulation universe based
 
 ## What's Been Implemented
 
-### December 2025 - Comprehensive Physics Validation Suite (LATEST)
+### December 2025 - Groundwork Validation Suite (LATEST)
+**Scientific order strictly followed:**
+1. ✅ **Step 1: Eigenmode Stability Test**
+   - Result: **BARRIER STABILITY** (not attractor stability)
+   - Basin occupation preserved (99.6%), local perturbations grow (11.6x)
+   - Physics type: Phase separation, not soliton dynamics
+   - Files: `/app/backend/qmrt_validation/eigenmode_test.py`
+   
+2. ✅ **Step 2: Interaction Classification**
+   - Result: **100% REFLECTION** across all collision types
+   - Same-frequency: T=0% M=0% R=100%
+   - Cross-frequency: T=0% A=0% R=100%
+   - Scattering law: Elastic barriers prevent merging/tunneling/annihilation
+   - Files: `/app/backend/qmrt_validation/interaction_test.py`
+
+3. ⏳ **Step 3: Scaling Laws** - Pending (depends on 1,2)
+4. ⏳ **Step 4: Entropy Production** - Pending (depends on 1,2,3)
+
+**API Endpoints**: `/api/qmrt_groundwork/`
+- `/comprehensive_stability` - Full stability analysis
+- `/eigenmode` - Local perturbation decay test
+- `/interaction` - Collision scattering law
+- `/multi_perturbation` - Robustness testing
+
+### December 2025 - Comprehensive Physics Validation Suite
 - **Scaling Persistence Test**: Validates basin stability at larger grid sizes (32, 48, 64)
 - **Long-time Entropy Drift Test**: S(t) = -Σ P_k log P_k, tests "half-entropy regime" hypothesis
 - **Basin Identity Tracking**: Measures merge probability, tunneling probability, decay rates
