@@ -22,6 +22,9 @@ Design and build programmable systems for a persistent simulation universe based
 - [x] Predator-prey pressure systems
 - [x] Core Universe Evolution Engine (state, timesteps, snapshots, branching)
 - [x] Mesoscopic Substrate Simulation (energy-conserving)
+- [x] QMRT Canonical Hamiltonian Engine (Yoshida 4th-order)
+- [x] **Quark-Level Dual-Basin Attractor Engine** (NEW - December 2025)
+- [ ] Structure clustering & composite formation (hadrons)
 - [ ] Civilization emergence systems
 - [ ] Hidden lineage and scan-detection
 - [ ] Unreal Engine integration layers
@@ -32,35 +35,59 @@ Design and build programmable systems for a persistent simulation universe based
 - **Framework**: FastAPI (Python)
 - **Database**: MongoDB
 - **Physics**: NumPy, SciPy for numerical simulation
+- **Integrators**: Yoshida 4th-order symplectic, spectral Laplacian (FFT)
 
 ### Code Structure
 ```
 /app/backend/
-  server.py              - Main FastAPI app
-  models.py              - Pydantic models
-  physics_engine.py      - Core QMRT equations
+  server.py                 - Main FastAPI app
+  models.py                 - Pydantic models
+  physics_engine.py         - Core QMRT equations
   cosmological_simulator.py - Mode 1 simulation
-  world_generator_v2.py  - Mode 2 world generation
-  ecological_engine.py   - Predator/prey dynamics
-  lineage_system.py      - Lineage tracking
-  universe_simulator.py  - Enhanced universe sim
-  universe_engine.py     - State management
-  engine_api.py          - Universe engine API routes
-  mesoscopic_substrate.py - QMRT substrate simulation (NEW)
-  mesoscopic_api.py      - Substrate API routes (NEW)
+  world_generator_v2.py     - Mode 2 world generation
+  ecological_engine.py      - Predator/prey dynamics
+  lineage_system.py         - Lineage tracking
+  universe_simulator.py     - Enhanced universe sim
+  universe_engine.py        - State management
+  engine_api.py             - Universe engine API routes
+  mesoscopic_substrate.py   - QMRT substrate simulation
+  mesoscopic_api.py         - Substrate API routes
+  qmrt_hamiltonian_engine.py - Canonical Hamiltonian engine
+  qmrt_canonical_api.py     - Hamiltonian API routes
+  qmrt_quark_engine.py      - Dual-basin attractor engine (NEW)
+  qmrt_quark_api.py         - Quark engine API routes (NEW)
 ```
 
 ### Key Technical Decisions
-1. **Energy Conservation**: Uses Störmer-Verlet symplectic integration for long-term energy stability
-2. **Zero-Balance Principle**: Energy renormalization when drift exceeds 1%
-3. **Modular API Design**: Separate router files for each major subsystem
-4. **Numerical Stability**: NaN/Inf guards, field clamping, safe JSON serialization
+1. **Energy Conservation**: Uses Yoshida 4th-order symplectic integration with velocity rescaling
+2. **Zero-Balance Principle**: Energy renormalization maintains exact energy conservation (0.0% drift)
+3. **Phase Convention**: φ ∈ (−π, +π) symmetric around zero for dual-basin attractors
+4. **Emergent Classification**: Structure properties emerge from field modes - NOT hardcoded labels
+5. **Modular API Design**: Separate router files for each major subsystem
+6. **Numerical Stability**: Spectral methods for exact periodic BC, NaN/Inf guards
 
 ## What's Been Implemented
 
-## What's Been Implemented
+### December 2025 - Quark-Level Dual-Basin Attractor Engine (LATEST)
+- **Dual-basin phase potential**: U_φ(φ) = -a_φ cos(φ) creates symmetric minima at φ=0 (matter) and φ=±π (antimatter)
+- **Phase convention**: φ ∈ (−π, +π) symmetric around zero
+- **Antimatter as phase-inverted attractor**: NOT a separate species, same field solution family
+- **Combined structure tracking**: Centroid-based + topological fingerprinting
+- **Emergent mode properties**: binding_energy, winding_number, vorticity, coherence_length, radial_profile
+- **Annihilation dynamics**: Coherence collapse, phase decoherence cascade, energy redistribution
+- **Energy conservation**: 0.0000% drift via Yoshida4 + velocity rescaling
+- **API Endpoints**:
+  - `/api/qmrt_quark/theory` - Dual-basin ontology summary
+  - `/api/qmrt_quark/validate_dual_basin` - Basin symmetry validation test
+  - `/api/qmrt_quark/test_annihilation` - Annihilation dynamics test
+  - `/api/qmrt_quark/test_persistence` - Long-term structure persistence test
+  - `/api/qmrt_quark/initialize` - Create engine for step-by-step evolution
+  - `/api/qmrt_quark/{engine_id}/evolve` - Evolve engine N steps
+  - `/api/qmrt_quark/{engine_id}/state` - Get state summary
+  - `/api/qmrt_quark/{engine_id}/structures` - Get active structures with mode properties
+- **Test Results**: 19/19 tests passed (100%), energy drift 0.0000%
 
-### December 2025 - Mesoscopic Substrate Simulation
+### December 2025 - QMRT Canonical Hamiltonian Engine
 - **Energy-conserving field evolution** using symplectic integration
 - **Four fundamental QMRT fields**: density (ρΞ), tension (TΞ), torsion (τΞ), coherence (ΦΞ)
 - **Emergent structure detection**: torsion vortices, strain nodes, coherence clusters, particle-like nodes
@@ -87,18 +114,9 @@ Design and build programmable systems for a persistent simulation universe based
 - **All coupling terms**: λ_ρσ, λ_ρτ, λ_στ, λ_σφ, λ_τφ, λ_ρφ
 - **Emergent cosmology**: Scale factor a(t) from field dynamics, NOT injected
 - **Structure criteria**: Stabilization functional S(x,t), proton formation Π_p
-- **Energy conservation**: Achieved via Yoshida4 + velocity rescaling (0.0% drift)
+- **Energy conservation**: 0.0% drift via Yoshida4 + velocity rescaling
 
-### December 2025 - Yoshida 4th-Order Symplectic Integrator
-- **Implemented Yoshida4** for O(dt⁴) energy conservation
-- **Spectral Laplacian** for exact periodic boundary conditions
-- **Energy enforcement**: Velocity rescaling maintains exact zero-balance
-- **Stability test endpoint**: `/api/qmrt/stability-test`
-- **Longevity test endpoint**: `/api/qmrt/longevity-test`
-- **Results**: 0.0% energy drift across all timesteps (0.005 to 0.05)
-- **Structure persistence**: ~230-290 structures stable over 30s simulation
-
-### Previous Work
+### December 2025 - Mesoscopic Substrate Simulation
 - World generation from QMRT substrate metrics
 - Cosmological simulation (Mode 1)
 - Gameplay world generation (Mode 2)
@@ -115,35 +133,49 @@ Design and build programmable systems for a persistent simulation universe based
 | `/api/cosmological/run` | POST | Run cosmological simulation (Mode 1) |
 | `/api/engine/initialize` | POST | Initialize universe engine |
 | `/api/engine/{id}/advance` | POST | Advance simulation timestep |
-| `/api/engine/{id}/snapshot` | POST | Create state snapshot |
-| `/api/mesoscopic/initialize` | POST | Initialize substrate |
-| `/api/mesoscopic/{id}/evolve` | POST | Evolve substrate |
-| `/api/mesoscopic/run` | POST | Run complete simulation |
-| `/api/mesoscopic/stability-test` | POST | Test stability |
+| `/api/qmrt/run` | POST | Run canonical Hamiltonian simulation |
+| `/api/qmrt/stability-test` | POST | Test integrator stability |
+| `/api/qmrt_quark/theory` | GET | Dual-basin ontology summary |
+| `/api/qmrt_quark/validate_dual_basin` | POST | Basin validation test |
+| `/api/qmrt_quark/test_annihilation` | POST | Annihilation dynamics test |
+| `/api/qmrt_quark/test_persistence` | POST | Structure persistence test |
+| `/api/qmrt_quark/initialize` | POST | Initialize quark engine |
+| `/api/qmrt_quark/{id}/evolve` | POST | Evolve quark engine |
 
 ## Test Coverage
-- **Backend tests**: `/app/backend/tests/test_mesoscopic_api.py`
-- **Test reports**: `/app/test_reports/iteration_2.json`
-- **Results**: 23/23 tests passed (100%)
+- **Backend tests**: 
+  - `/app/backend/tests/test_mesoscopic_api.py` (23 tests)
+  - `/app/backend/tests/test_qmrt_quark_api.py` (19 tests)
+- **Test reports**: 
+  - `/app/test_reports/iteration_2.json` (mesoscopic)
+  - `/app/test_reports/iteration_3.json` (quark engine)
+- **Results**: 42/42 tests passed (100%)
 
 ## Prioritized Backlog
 
 ### P0 - Complete
 - [x] Mesoscopic substrate simulation with energy conservation
+- [x] QMRT Canonical Hamiltonian Engine with Yoshida4 integrator
+- [x] **Quark-Level Dual-Basin Attractor Engine** (validates ontology)
 
 ### P1 - Next
-- [ ] Expand Apex Qualification System with multi-generational metrics
-- [ ] Connect mesoscopic substrate to world generation pipeline
+- [ ] **Structure Clustering & Composite Formation**: Model how stable quark-like structures cluster to form hadron-like composites
+- [ ] **Tune Annihilation Dynamics**: Adjust overlap radius/parameters so annihilation events occur more readily
+- [ ] **Update Frontend Visualizer**: Point `MesoscopicVisualizer.js` to quark engine API
 
 ### P2 - Planned
+- [ ] Expand Apex Qualification System with multi-generational metrics
+- [ ] Connect substrate simulations to world generation pipeline
 - [ ] Civilization behavior modeling
-- [ ] Hidden lineage and scan-detection systems
 
 ### P3 - Future
+- [ ] Cosmological scaling: Emergent scale factor a(t) from quark-level dynamics
 - [ ] Astrophysical realism (galaxy morphology, stellar lifecycles)
 - [ ] Multiplayer world continuity and synchronization
 - [ ] Unreal Engine runtime synchronization
 
 ## Known Issues & Technical Debt
-1. `server.py` is large and prone to errors - continue modularization
-2. `physics_engine.py` has overflow warnings - needs stability updates similar to mesoscopic module
+1. **Basin Asymmetry**: In dual-basin tests, matter basin dominates (~70%) over antimatter (~30%) - may need potential tuning or is emergent physics
+2. **No Annihilation Events**: Current parameters don't trigger annihilation - structures don't overlap enough
+3. `server.py` is large - continue modularization
+4. Obsolete files (`mesoscopic_substrate.py`, `physics_engine.py`) should be deprecated
