@@ -30,6 +30,13 @@ from .interaction_test import (
     run_single_collision_test
 )
 
+from .scaling_test import (
+    ScalingMetrics,
+    ScalingConvergenceResult,
+    run_scaling_convergence_test,
+    run_scaling_at_resolution
+)
+
 __all__ = [
     # Eigenmode
     'EigenmodeResult',
@@ -44,5 +51,10 @@ __all__ = [
     'CollisionEvent',
     'InteractionResult',
     'run_interaction_classification',
-    'run_single_collision_test'
+    'run_single_collision_test',
+    # Scaling
+    'ScalingMetrics',
+    'ScalingConvergenceResult',
+    'run_scaling_convergence_test',
+    'run_scaling_at_resolution'
 ]
