@@ -10,7 +10,9 @@ import traceback
 from qmrt_hamiltonian_engine import (
     QMRTSubstrateEngine, 
     QMRTParameters, 
-    run_qmrt_simulation
+    run_qmrt_simulation,
+    run_stability_test,
+    run_structure_longevity_test
 )
 
 logging.basicConfig(level=logging.INFO)
@@ -30,14 +32,33 @@ class SimulationRequest(BaseModel):
     total_time: float = 10.0
     dt: float = 0.01
     seed: Optional[int] = None
+    integrator: str = 'yoshida4'  # 'yoshida4' or 'verlet'
     
     # Optional parameter overrides
     a_rho: Optional[float] = None
-    b_rho: Optional[float] = None
     c_rho: Optional[float] = None
     chi_sigma: Optional[float] = None
     chi_tau: Optional[float] = None
     chi_phi: Optional[float] = None
+
+
+class StabilityTestRequest(BaseModel):
+    """Request for stability curve test"""
+    grid_size: int = 24
+    amplitude: float = 0.05
+    duration_per_test: float = 10.0
+    seed: int = 42
+    timesteps: Optional[list] = None  # Default: [0.1, 0.05, 0.02, 0.01, 0.005, 0.002, 0.001]
+
+
+class LongevityTestRequest(BaseModel):
+    """Request for structure longevity test"""
+    grid_size: int = 32
+    amplitude: float = 0.08
+    total_time: float = 50.0
+    dt: float = 0.01
+    seed: int = 42
+    sample_interval: float = 1.0
 
 
 class InitializeRequest(BaseModel):
@@ -72,8 +93,6 @@ async def run_simulation(request: SimulationRequest):
         
         if request.a_rho is not None:
             params.a_rho = request.a_rho
-        if request.b_rho is not None:
-            params.b_rho = request.b_rho
         if request.c_rho is not None:
             params.c_rho = request.c_rho
         if request.chi_sigma is not None:
@@ -91,7 +110,8 @@ async def run_simulation(request: SimulationRequest):
             total_time=request.total_time,
             dt=request.dt,
             seed=request.seed,
-            params=params
+            params=params,
+            integrator=request.integrator
         )
         
         logger.info(f"Simulation complete: energy drift = {result['energy_conservation']['drift_pct']:.4f}%")
@@ -228,8 +248,11 @@ async def get_theory_summary():
             "gradient": "(K/2)|∇field|² for all fields"
         },
         "evolution": {
-            "method": "Störmer-Verlet symplectic integration",
-            "energy_conservation": "Intrinsic (no artificial correction needed)",
+            "methods": {
+                "yoshida4": "Yoshida 4th-order symplectic (O(dt^4) energy conservation)",
+                "verlet": "Störmer-Verlet 2nd-order symplectic (O(dt^2) energy conservation)"
+            },
+            "default": "yoshida4",
             "equations": "Hamilton's canonical equations: dq/dt = ∂H/∂π, dπ/dt = -∂H/∂q"
         },
         "emergent_features": {
@@ -244,3 +267,63 @@ async def get_theory_summary():
             "singularities": "No point sources - only smooth field configurations"
         }
     }
+
+
+@router.post("/stability-test")
+async def stability_test(request: StabilityTestRequest):
+    """
+    Run stability tests across multiple timestep scales
+    
+    Produces stability curves comparing Yoshida4 vs Verlet integrators
+    to determine the maximum stable timestep for <1% energy drift.
+    """
+    try:
+        logger.info(f"Starting stability test: {request.grid_size}³ grid")
+        
+        result = run_stability_test(
+            grid_size=request.grid_size,
+            amplitude=request.amplitude,
+            timesteps=request.timesteps,
+            duration_per_test=request.duration_per_test,
+            seed=request.seed
+        )
+        
+        logger.info(f"Stability test complete. Yoshida4 max stable dt: {result['stability_thresholds']['yoshida4_max_stable_dt']}")
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Stability test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/longevity-test")
+async def longevity_test(request: LongevityTestRequest):
+    """
+    Run structure longevity test over extended runtime
+    
+    Tracks:
+    - Torsion vortex coherence
+    - Particle-like structure persistence
+    - Proton candidate formation/dissolution rates
+    """
+    try:
+        logger.info(f"Starting longevity test: {request.total_time}s simulation")
+        
+        result = run_structure_longevity_test(
+            grid_size=request.grid_size,
+            amplitude=request.amplitude,
+            total_time=request.total_time,
+            dt=request.dt,
+            seed=request.seed,
+            sample_interval=request.sample_interval
+        )
+        
+        logger.info(f"Longevity test complete. Final drift: {result['summary']['final_energy_drift_pct']:.4f}%")
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Longevity test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
+

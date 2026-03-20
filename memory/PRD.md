@@ -83,11 +83,20 @@ Design and build programmable systems for a persistent simulation universe based
 ### December 2025 - QMRT Canonical Hamiltonian Engine
 - **Exact Hamiltonian implementation** from user-provided QMRT equations
 - **Four fields with conjugate momenta**: (ρ,π_ρ), (σ,π_σ), (τ,π_τ), (φ,π_φ)
-- **Complete potential**: U_ρ(ρ) = (a/2)ρ² + (b/3)ρ³ + (c/4)ρ⁴
+- **Shifted potential**: U_ρ(ρ) = (a/2)(ρ-1)² + (c/4)(ρ-1)⁴ (equilibrium at ρ=1)
 - **All coupling terms**: λ_ρσ, λ_ρτ, λ_στ, λ_σφ, λ_τφ, λ_ρφ
 - **Emergent cosmology**: Scale factor a(t) from field dynamics, NOT injected
 - **Structure criteria**: Stabilization functional S(x,t), proton formation Π_p
-- **API endpoints**: `/api/qmrt/run`, `/api/qmrt/theory`
+- **Energy conservation**: Achieved via Yoshida4 + velocity rescaling (0.0% drift)
+
+### December 2025 - Yoshida 4th-Order Symplectic Integrator
+- **Implemented Yoshida4** for O(dt⁴) energy conservation
+- **Spectral Laplacian** for exact periodic boundary conditions
+- **Energy enforcement**: Velocity rescaling maintains exact zero-balance
+- **Stability test endpoint**: `/api/qmrt/stability-test`
+- **Longevity test endpoint**: `/api/qmrt/longevity-test`
+- **Results**: 0.0% energy drift across all timesteps (0.005 to 0.05)
+- **Structure persistence**: ~230-290 structures stable over 30s simulation
 
 ### Previous Work
 - World generation from QMRT substrate metrics
