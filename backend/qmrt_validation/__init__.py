@@ -37,6 +37,13 @@ from .scaling_test import (
     run_scaling_at_resolution
 )
 
+from .entropy_test import (
+    EntropyTrajectory,
+    EntropyProductionResult,
+    run_entropy_production_test,
+    compute_frequency_entropy
+)
+
 __all__ = [
     # Eigenmode
     'EigenmodeResult',
@@ -56,5 +63,10 @@ __all__ = [
     'ScalingMetrics',
     'ScalingConvergenceResult',
     'run_scaling_convergence_test',
-    'run_scaling_at_resolution'
+    'run_scaling_at_resolution',
+    # Entropy
+    'EntropyTrajectory',
+    'EntropyProductionResult',
+    'run_entropy_production_test',
+    'compute_frequency_entropy'
 ]

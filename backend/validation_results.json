@@ -1,0 +1,1587 @@
+{
+  "scaling_persistence": {
+    "grid_sizes": [
+      20,
+      24,
+      32
+    ],
+    "basin_lifetimes": [
+      30.0,
+      30.0,
+      30.0
+    ],
+    "number_densities": [
+      0.003125,
+      0.003616898148148148,
+      0.003875732421875
+    ],
+    "spectral_widths": [
+      0.9354172735386406,
+      0.9336491113804949,
+      0.9344534299568277
+    ],
+    "stability_persists": true,
+    "scaling_exponents": {
+      "lifetime_exponent": 1.1151094302373136e-15,
+      "density_exponent": 0.4384853616028041,
+      "spectral_width_exponent": -0.0017267998278028957
+    },
+    "raw_data": [
+      {
+        "grid_size": 20,
+        "volume": 8000,
+        "basin_lifetime": 30.0,
+        "number_density": 0.003125,
+        "spectral_width": 0.9354172735386406,
+        "final_basin_fraction": 0.98525,
+        "structures": 25,
+        "is_stable": true
+      },
+      {
+        "grid_size": 24,
+        "volume": 13824,
+        "basin_lifetime": 30.0,
+        "number_density": 0.003616898148148148,
+        "spectral_width": 0.9336491113804949,
+        "final_basin_fraction": 0.9835792824074074,
+        "structures": 50,
+        "is_stable": true
+      },
+      {
+        "grid_size": 32,
+        "volume": 32768,
+        "basin_lifetime": 30.0,
+        "number_density": 0.003875732421875,
+        "spectral_width": 0.9344534299568277,
+        "final_basin_fraction": 0.982940673828125,
+        "structures": 127,
+        "is_stable": true
+      }
+    ]
+  },
+  "entropy_drift": {
+    "total_time": 60.0,
+    "entropy_initial": 1.8104701792383464,
+    "entropy_final": 2.704629792283473,
+    "entropy_plateau": 2.7203058036443024,
+    "plateau_time": 20.41000000000039,
+    "entropy_plateaus": true,
+    "half_entropy_regime": true,
+    "time_series": [
+      {
+        "time": 0.01,
+        "entropy": 1.80892544322811,
+        "entropy_normalized": 0.46240153514386984,
+        "omega_std": 1.0004779086660414,
+        "basin_fraction": 1.0
+      },
+      {
+        "time": 0.6100000000000003,
+        "entropy": 1.9799414908867885,
+        "entropy_normalized": 0.5061170366686267,
+        "omega_std": 0.9397181293432364,
+        "basin_fraction": 1.0
+      },
+      {
+        "time": 1.2100000000000009,
+        "entropy": 2.7134764325092284,
+        "entropy_normalized": 0.6936248658926932,
+        "omega_std": 0.8716384271417937,
+        "basin_fraction": 0.966625
+      },
+      {
+        "time": 1.8100000000000014,
+        "entropy": 2.481049339909977,
+        "entropy_normalized": 0.634211336811513,
+        "omega_std": 0.9096626210073611,
+        "basin_fraction": 0.9795
+      },
+      {
+        "time": 2.4099999999999926,
+        "entropy": 1.917102955896135,
+        "entropy_normalized": 0.490054110938522,
+        "omega_std": 0.9873896830576451,
+        "basin_fraction": 0.998875
+      },
+      {
+        "time": 3.00999999999998,
+        "entropy": 1.7545146380460037,
+        "entropy_normalized": 0.448492924405485,
+        "omega_std": 0.955532078934344,
+        "basin_fraction": 0.999875
+      },
+      {
+        "time": 3.609999999999967,
+        "entropy": 2.51358420306672,
+        "entropy_normalized": 0.6425279707146365,
+        "omega_std": 0.8808161505370751,
+        "basin_fraction": 1.0
+      },
+      {
+        "time": 4.209999999999955,
+        "entropy": 2.5815224229440745,
+        "entropy_normalized": 0.6598944892098209,
+        "omega_std": 0.9067764353312286,
+        "basin_fraction": 0.968125
+      },
+      {
+        "time": 4.809999999999942,
+        "entropy": 2.1419086535653555,
+        "entropy_normalized": 0.5475194421385917,
+        "omega_std": 0.9783618580253106,
+        "basin_fraction": 0.989375
+      },
+      {
+        "time": 5.409999999999929,
+        "entropy": 1.950908882528496,
+        "entropy_normalized": 0.4986956569073094,
+        "omega_std": 0.9553842444532277,
+        "basin_fraction": 0.997625
+      },
+      {
+        "time": 6.009999999999916,
+        "entropy": 2.395155217412857,
+        "entropy_normalized": 0.6122548906510642,
+        "omega_std": 0.8903446917990786,
+        "basin_fraction": 0.9995
+      },
+      {
+        "time": 6.6099999999999035,
+        "entropy": 2.588352786789297,
+        "entropy_normalized": 0.6616404819700231,
+        "omega_std": 0.9103055128324823,
+        "basin_fraction": 0.993875
+      },
+      {
+        "time": 7.209999999999891,
+        "entropy": 2.2909077053672315,
+        "entropy_normalized": 0.585606910334748,
+        "omega_std": 0.9704144886500349,
+        "basin_fraction": 0.986875
+      },
+      {
+        "time": 7.809999999999878,
+        "entropy": 2.1217537160475586,
+        "entropy_normalized": 0.542367392293836,
+        "omega_std": 0.9505954996728522,
+        "basin_fraction": 0.991625
+      },
+      {
+        "time": 8.409999999999865,
+        "entropy": 2.4248044373921407,
+        "entropy_normalized": 0.6198338900429757,
+        "omega_std": 0.8972378911239328,
+        "basin_fraction": 0.99675
+      },
+      {
+        "time": 9.009999999999852,
+        "entropy": 2.6098135292984574,
+        "entropy_normalized": 0.6671263245837763,
+        "omega_std": 0.9161582160519552,
+        "basin_fraction": 0.99525
+      },
+      {
+        "time": 9.60999999999984,
+        "entropy": 2.387651612701264,
+        "entropy_normalized": 0.6103368025669242,
+        "omega_std": 0.9644076908565389,
+        "basin_fraction": 0.993
+      },
+      {
+        "time": 10.209999999999827,
+        "entropy": 2.246913969461836,
+        "entropy_normalized": 0.5743611339565539,
+        "omega_std": 0.9444798494978833,
+        "basin_fraction": 0.989
+      },
+      {
+        "time": 10.809999999999814,
+        "entropy": 2.46011509664792,
+        "entropy_normalized": 0.6288600791034141,
+        "omega_std": 0.902164552372606,
+        "basin_fraction": 0.9915
+      },
+      {
+        "time": 11.409999999999801,
+        "entropy": 2.6135942589641425,
+        "entropy_normalized": 0.6680927630889791,
+        "omega_std": 0.9214120722680257,
+        "basin_fraction": 0.9945
+      },
+      {
+        "time": 12.009999999999788,
+        "entropy": 2.4463907227501824,
+        "entropy_normalized": 0.6253518241982937,
+        "omega_std": 0.9603177105364132,
+        "basin_fraction": 0.99325
+      },
+      {
+        "time": 12.609999999999776,
+        "entropy": 2.3403329926339027,
+        "entropy_normalized": 0.598241111922543,
+        "omega_std": 0.939650715693453,
+        "basin_fraction": 0.9895
+      },
+      {
+        "time": 13.209999999999763,
+        "entropy": 2.5180716551429505,
+        "entropy_normalized": 0.6436750631703823,
+        "omega_std": 0.905924028279459,
+        "basin_fraction": 0.989625
+      },
+      {
+        "time": 13.80999999999975,
+        "entropy": 2.623556951103551,
+        "entropy_normalized": 0.6706394485572355,
+        "omega_std": 0.9256507210505082,
+        "basin_fraction": 0.990125
+      },
+      {
+        "time": 14.409999999999737,
+        "entropy": 2.4947976499072313,
+        "entropy_normalized": 0.6377257103154974,
+        "omega_std": 0.9559858503000714,
+        "basin_fraction": 0.9935
+      },
+      {
+        "time": 15.009999999999724,
+        "entropy": 2.4253193591437348,
+        "entropy_normalized": 0.6199655154835417,
+        "omega_std": 0.9361543515697394,
+        "basin_fraction": 0.99125
+      },
+      {
+        "time": 15.609999999999712,
+        "entropy": 2.5776359404548743,
+        "entropy_normalized": 0.6589010179332441,
+        "omega_std": 0.9099159181850988,
+        "basin_fraction": 0.987875
+      },
+      {
+        "time": 16.209999999999734,
+        "entropy": 2.6401379515922145,
+        "entropy_normalized": 0.6748779206893412,
+        "omega_std": 0.928480445884267,
+        "basin_fraction": 0.990125
+      },
+      {
+        "time": 16.809999999999828,
+        "entropy": 2.534731911219917,
+        "entropy_normalized": 0.6479337947918092,
+        "omega_std": 0.9517844259273329,
+        "basin_fraction": 0.990625
+      },
+      {
+        "time": 17.409999999999922,
+        "entropy": 2.486820933721995,
+        "entropy_normalized": 0.635686684426803,
+        "omega_std": 0.9338700102510445,
+        "basin_fraction": 0.990375
+      },
+      {
+        "time": 18.010000000000016,
+        "entropy": 2.5989491856058904,
+        "entropy_normalized": 0.6643491569450656,
+        "omega_std": 0.9137594580605211,
+        "basin_fraction": 0.987
+      },
+      {
+        "time": 18.61000000000011,
+        "entropy": 2.6433198591719673,
+        "entropy_normalized": 0.6756912869643702,
+        "omega_std": 0.9303486982294391,
+        "basin_fraction": 0.988125
+      },
+      {
+        "time": 19.210000000000203,
+        "entropy": 2.5527412827649734,
+        "entropy_normalized": 0.6525373903023846,
+        "omega_std": 0.9482635406729529,
+        "basin_fraction": 0.989625
+      },
+      {
+        "time": 19.810000000000297,
+        "entropy": 2.521504594333167,
+        "entropy_normalized": 0.6445525987026255,
+        "omega_std": 0.9325345025109352,
+        "basin_fraction": 0.9895
+      },
+      {
+        "time": 20.41000000000039,
+        "entropy": 2.624565932233509,
+        "entropy_normalized": 0.6708973665522366,
+        "omega_std": 0.9168168328565276,
+        "basin_fraction": 0.989125
+      },
+      {
+        "time": 21.010000000000485,
+        "entropy": 2.6538597060174656,
+        "entropy_normalized": 0.6783855059990931,
+        "omega_std": 0.9312609313293938,
+        "basin_fraction": 0.985125
+      },
+      {
+        "time": 21.61000000000058,
+        "entropy": 2.545848443419802,
+        "entropy_normalized": 0.6507754274162749,
+        "omega_std": 0.9444248878477159,
+        "basin_fraction": 0.991125
+      },
+      {
+        "time": 22.210000000000672,
+        "entropy": 2.5723618739019845,
+        "entropy_normalized": 0.657552849339764,
+        "omega_std": 0.9322418616003343,
+        "basin_fraction": 0.988625
+      },
+      {
+        "time": 22.810000000000766,
+        "entropy": 2.620611632629463,
+        "entropy_normalized": 0.6698865597143014,
+        "omega_std": 0.9196068626083936,
+        "basin_fraction": 0.9875
+      },
+      {
+        "time": 23.41000000000086,
+        "entropy": 2.663175519724549,
+        "entropy_normalized": 0.6807668349672912,
+        "omega_std": 0.9313105650513337,
+        "basin_fraction": 0.986375
+      },
+      {
+        "time": 24.010000000000954,
+        "entropy": 2.5717918137391016,
+        "entropy_normalized": 0.6574071292961723,
+        "omega_std": 0.9413535327650799,
+        "basin_fraction": 0.987
+      },
+      {
+        "time": 24.610000000001047,
+        "entropy": 2.6163217468621127,
+        "entropy_normalized": 0.6687899695967593,
+        "omega_std": 0.9315493572240479,
+        "basin_fraction": 0.988125
+      },
+      {
+        "time": 25.21000000000114,
+        "entropy": 2.6414194599070053,
+        "entropy_normalized": 0.6752055026879676,
+        "omega_std": 0.9216665700967074,
+        "basin_fraction": 0.986125
+      },
+      {
+        "time": 25.810000000001235,
+        "entropy": 2.6731350859394176,
+        "entropy_normalized": 0.6833127213797814,
+        "omega_std": 0.9311010429580318,
+        "basin_fraction": 0.98575
+      },
+      {
+        "time": 26.41000000000133,
+        "entropy": 2.5841037620224694,
+        "entropy_normalized": 0.6605543368320902,
+        "omega_std": 0.9394720064863292,
+        "basin_fraction": 0.985625
+      },
+      {
+        "time": 27.010000000001423,
+        "entropy": 2.6340050344537724,
+        "entropy_normalized": 0.673310210803706,
+        "omega_std": 0.9315338011344666,
+        "basin_fraction": 0.98675
+      },
+      {
+        "time": 27.610000000001516,
+        "entropy": 2.6433690738829725,
+        "entropy_normalized": 0.6757038673379868,
+        "omega_std": 0.9235326510497979,
+        "basin_fraction": 0.984875
+      },
+      {
+        "time": 28.21000000000161,
+        "entropy": 2.6063124539809337,
+        "entropy_normalized": 0.6662313719435015,
+        "omega_std": 0.9305595776958652,
+        "basin_fraction": 0.985
+      },
+      {
+        "time": 28.810000000001704,
+        "entropy": 2.6235635213428954,
+        "entropy_normalized": 0.6706411280563938,
+        "omega_std": 0.9374588342166577,
+        "basin_fraction": 0.984375
+      },
+      {
+        "time": 29.410000000001798,
+        "entropy": 2.6315874638883594,
+        "entropy_normalized": 0.6726922260520677,
+        "omega_std": 0.9317359161647656,
+        "basin_fraction": 0.985375
+      },
+      {
+        "time": 30.01000000000189,
+        "entropy": 2.560601544040038,
+        "entropy_normalized": 0.65454664772857,
+        "omega_std": 0.9251095318169784,
+        "basin_fraction": 0.9835
+      },
+      {
+        "time": 30.610000000001985,
+        "entropy": 2.681561840428671,
+        "entropy_normalized": 0.6854667870582195,
+        "omega_std": 0.9296143356974303,
+        "basin_fraction": 0.984875
+      },
+      {
+        "time": 31.21000000000208,
+        "entropy": 2.5101925043775015,
+        "entropy_normalized": 0.6416609771707559,
+        "omega_std": 0.9364676616874926,
+        "basin_fraction": 0.98525
+      },
+      {
+        "time": 31.810000000002173,
+        "entropy": 2.636677772373381,
+        "entropy_normalized": 0.6739934220005471,
+        "omega_std": 0.932291415884153,
+        "basin_fraction": 0.985625
+      },
+      {
+        "time": 32.41000000000212,
+        "entropy": 2.6905258303782595,
+        "entropy_normalized": 0.6877581820569582,
+        "omega_std": 0.9259980043970558,
+        "basin_fraction": 0.9835
+      },
+      {
+        "time": 33.010000000002,
+        "entropy": 2.6430617969308976,
+        "entropy_normalized": 0.6756253205217619,
+        "omega_std": 0.9285887612865815,
+        "basin_fraction": 0.983125
+      },
+      {
+        "time": 33.61000000000188,
+        "entropy": 2.655937251625438,
+        "entropy_normalized": 0.678916572816719,
+        "omega_std": 0.9346454976892324,
+        "basin_fraction": 0.983
+      },
+      {
+        "time": 34.21000000000176,
+        "entropy": 2.639594587770053,
+        "entropy_normalized": 0.674739024823594,
+        "omega_std": 0.9330946982775411,
+        "basin_fraction": 0.986
+      },
+      {
+        "time": 34.810000000001644,
+        "entropy": 2.6127332712377798,
+        "entropy_normalized": 0.6678726754961485,
+        "omega_std": 0.9275438895613684,
+        "basin_fraction": 0.98225
+      },
+      {
+        "time": 35.410000000001524,
+        "entropy": 2.6691762534586,
+        "entropy_normalized": 0.6823007558378292,
+        "omega_std": 0.927408810175632,
+        "basin_fraction": 0.9785
+      },
+      {
+        "time": 36.010000000001405,
+        "entropy": 2.6524021180250736,
+        "entropy_normalized": 0.6780129141226217,
+        "omega_std": 0.9327363580778268,
+        "basin_fraction": 0.98225
+      },
+      {
+        "time": 36.610000000001286,
+        "entropy": 2.5488640823657396,
+        "entropy_normalized": 0.6515462917342386,
+        "omega_std": 0.9339244975501554,
+        "basin_fraction": 0.9855
+      },
+      {
+        "time": 37.210000000001166,
+        "entropy": 2.692446379444041,
+        "entropy_normalized": 0.6882491170701512,
+        "omega_std": 0.9289772691944459,
+        "basin_fraction": 0.985875
+      },
+      {
+        "time": 37.81000000000105,
+        "entropy": 2.641635344127294,
+        "entropy_normalized": 0.6752606874913263,
+        "omega_std": 0.9273294937382704,
+        "basin_fraction": 0.97725
+      },
+      {
+        "time": 38.41000000000093,
+        "entropy": 2.6888976654468904,
+        "entropy_normalized": 0.6873419869248973,
+        "omega_std": 0.9298130594077627,
+        "basin_fraction": 0.979875
+      },
+      {
+        "time": 39.01000000000081,
+        "entropy": 2.5660958559973537,
+        "entropy_normalized": 0.6559511159409736,
+        "omega_std": 0.9333861498181686,
+        "basin_fraction": 0.98275
+      },
+      {
+        "time": 39.61000000000069,
+        "entropy": 2.676190947136936,
+        "entropy_normalized": 0.6840938673989326,
+        "omega_std": 0.9309183190664738,
+        "basin_fraction": 0.986
+      },
+      {
+        "time": 40.21000000000057,
+        "entropy": 2.7334429062246186,
+        "entropy_normalized": 0.6987287402021453,
+        "omega_std": 0.9280450607529829,
+        "basin_fraction": 0.981375
+      },
+      {
+        "time": 40.81000000000045,
+        "entropy": 2.6961602492027072,
+        "entropy_normalized": 0.6891984646975842,
+        "omega_std": 0.9288543839606317,
+        "basin_fraction": 0.97775
+      },
+      {
+        "time": 41.41000000000033,
+        "entropy": 2.595812743633994,
+        "entropy_normalized": 0.6635474126895884,
+        "omega_std": 0.9318698192547545,
+        "basin_fraction": 0.9785
+      },
+      {
+        "time": 42.01000000000021,
+        "entropy": 2.6886860014497547,
+        "entropy_normalized": 0.6872878809043443,
+        "omega_std": 0.9308692936410364,
+        "basin_fraction": 0.98275
+      },
+      {
+        "time": 42.61000000000009,
+        "entropy": 2.676243642683773,
+        "entropy_normalized": 0.6841073375515273,
+        "omega_std": 0.9289061077830225,
+        "basin_fraction": 0.9805
+      },
+      {
+        "time": 43.20999999999997,
+        "entropy": 2.687126939668225,
+        "entropy_normalized": 0.6868893500727602,
+        "omega_std": 0.9281613481883961,
+        "basin_fraction": 0.977
+      },
+      {
+        "time": 43.80999999999985,
+        "entropy": 2.7090210454899943,
+        "entropy_normalized": 0.6924859699779575,
+        "omega_std": 0.9306709072574845,
+        "basin_fraction": 0.97975
+      },
+      {
+        "time": 44.409999999999734,
+        "entropy": 2.661192108342007,
+        "entropy_normalized": 0.6802598309492193,
+        "omega_std": 0.9317099638171917,
+        "basin_fraction": 0.97875
+      },
+      {
+        "time": 45.009999999999614,
+        "entropy": 2.6272429833825988,
+        "entropy_normalized": 0.6715816803063671,
+        "omega_std": 0.9290910688867496,
+        "basin_fraction": 0.981
+      },
+      {
+        "time": 45.609999999999495,
+        "entropy": 2.607294077450036,
+        "entropy_normalized": 0.666482296712538,
+        "omega_std": 0.9278843898266825,
+        "basin_fraction": 0.976375
+      },
+      {
+        "time": 46.209999999999376,
+        "entropy": 2.7345929268859943,
+        "entropy_normalized": 0.6990227110350826,
+        "omega_std": 0.9298496509000358,
+        "basin_fraction": 0.977875
+      },
+      {
+        "time": 46.809999999999256,
+        "entropy": 2.7168083686130946,
+        "entropy_normalized": 0.6944765827919147,
+        "omega_std": 0.9316297159893426,
+        "basin_fraction": 0.97775
+      },
+      {
+        "time": 47.40999999999914,
+        "entropy": 2.73139899966884,
+        "entropy_normalized": 0.6982062722736739,
+        "omega_std": 0.9294142507809541,
+        "basin_fraction": 0.979875
+      },
+      {
+        "time": 48.00999999999902,
+        "entropy": 2.74350058004763,
+        "entropy_normalized": 0.701299705099094,
+        "omega_std": 0.9274783336089536,
+        "basin_fraction": 0.9775
+      },
+      {
+        "time": 48.6099999999989,
+        "entropy": 2.6309096524306237,
+        "entropy_normalized": 0.6725189623834248,
+        "omega_std": 0.9294197461097781,
+        "basin_fraction": 0.97575
+      },
+      {
+        "time": 49.20999999999878,
+        "entropy": 2.7408497133550003,
+        "entropy_normalized": 0.7006220846738175,
+        "omega_std": 0.9310390390486292,
+        "basin_fraction": 0.97775
+      },
+      {
+        "time": 49.80999999999866,
+        "entropy": 2.74766162123772,
+        "entropy_normalized": 0.7023633596799377,
+        "omega_std": 0.9295449621285024,
+        "basin_fraction": 0.975
+      },
+      {
+        "time": 50.40999999999854,
+        "entropy": 2.67114124534151,
+        "entropy_normalized": 0.682803051422539,
+        "omega_std": 0.9275178046470443,
+        "basin_fraction": 0.977875
+      },
+      {
+        "time": 51.00999999999842,
+        "entropy": 2.7188373910544303,
+        "entropy_normalized": 0.6949952460100298,
+        "omega_std": 0.9286628785202191,
+        "basin_fraction": 0.9755
+      },
+      {
+        "time": 51.6099999999983,
+        "entropy": 2.740625085408967,
+        "entropy_normalized": 0.700564664779885,
+        "omega_std": 0.9309836465569056,
+        "basin_fraction": 0.976125
+      },
+      {
+        "time": 52.20999999999818,
+        "entropy": 2.6726771136852703,
+        "entropy_normalized": 0.6831956534961028,
+        "omega_std": 0.929407128289002,
+        "basin_fraction": 0.97325
+      },
+      {
+        "time": 52.80999999999806,
+        "entropy": 2.7787650512908026,
+        "entropy_normalized": 0.7103140874772756,
+        "omega_std": 0.9267809940869636,
+        "basin_fraction": 0.973875
+      },
+      {
+        "time": 53.40999999999794,
+        "entropy": 2.6374871338836736,
+        "entropy_normalized": 0.6742003127854862,
+        "omega_std": 0.928585513338265,
+        "basin_fraction": 0.97625
+      },
+      {
+        "time": 54.009999999997824,
+        "entropy": 2.667054567147849,
+        "entropy_normalized": 0.6817584056758268,
+        "omega_std": 0.9315930860238126,
+        "basin_fraction": 0.976
+      },
+      {
+        "time": 54.609999999997704,
+        "entropy": 2.7572796720889037,
+        "entropy_normalized": 0.7048219471774648,
+        "omega_std": 0.9294619949640786,
+        "basin_fraction": 0.9745
+      },
+      {
+        "time": 55.209999999997585,
+        "entropy": 2.777644763454537,
+        "entropy_normalized": 0.7100277170150592,
+        "omega_std": 0.9265645848024164,
+        "basin_fraction": 0.973875
+      },
+      {
+        "time": 55.809999999997466,
+        "entropy": 2.6457971001563667,
+        "entropy_normalized": 0.6763245248008968,
+        "omega_std": 0.9281659363251151,
+        "basin_fraction": 0.97175
+      },
+      {
+        "time": 56.409999999997346,
+        "entropy": 2.77533479790445,
+        "entropy_normalized": 0.7094372384961748,
+        "omega_std": 0.9306814111472965,
+        "basin_fraction": 0.9745
+      },
+      {
+        "time": 57.00999999999723,
+        "entropy": 2.7046507184003445,
+        "entropy_normalized": 0.6913688172711392,
+        "omega_std": 0.9297098978613636,
+        "basin_fraction": 0.9745
+      },
+      {
+        "time": 57.60999999999711,
+        "entropy": 2.7407411260237144,
+        "entropy_normalized": 0.7005943273392785,
+        "omega_std": 0.9267628821973162,
+        "basin_fraction": 0.97175
+      },
+      {
+        "time": 58.20999999999699,
+        "entropy": 2.7937235984115256,
+        "entropy_normalized": 0.714137824479836,
+        "omega_std": 0.9277532717369195,
+        "basin_fraction": 0.97125
+      },
+      {
+        "time": 58.80999999999687,
+        "entropy": 2.7568053492792552,
+        "entropy_normalized": 0.7047006997285131,
+        "omega_std": 0.930394513661925,
+        "basin_fraction": 0.97175
+      },
+      {
+        "time": 59.40999999999675,
+        "entropy": 2.704629792283473,
+        "entropy_normalized": 0.6913634680907171,
+        "omega_std": 0.928567406414197,
+        "basin_fraction": 0.97325
+      }
+    ]
+  },
+  "basin_tracking": {
+    "total_basins_formed": 101,
+    "total_merges": 0,
+    "total_tunneling_events": 100,
+    "total_spontaneous_decays": 0,
+    "merge_probability": 0.0,
+    "tunneling_probability": 0.9900990099009901,
+    "decay_rate": 0.0,
+    "mean_spectral_drift": 1.7571456760030842e-07,
+    "lifetime_distribution": {
+      "mean": 0.2971287128713059,
+      "std": 0.028747333364524806,
+      "max": 0.3100000000000001
+    },
+    "event_history": [
+      {
+        "type": "tunnel",
+        "basin_id": 1,
+        "time": 0.01,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 2,
+        "time": 0.3100000000000001,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 3,
+        "time": 0.6100000000000003,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 4,
+        "time": 0.9100000000000006,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 5,
+        "time": 1.2100000000000009,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 6,
+        "time": 1.5100000000000011,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 7,
+        "time": 1.8100000000000014,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 8,
+        "time": 2.109999999999999,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 9,
+        "time": 2.4099999999999926,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 10,
+        "time": 2.709999999999986,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 11,
+        "time": 3.00999999999998,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 12,
+        "time": 3.3099999999999734,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 13,
+        "time": 3.609999999999967,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 14,
+        "time": 3.9099999999999606,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 15,
+        "time": 4.209999999999955,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 16,
+        "time": 4.509999999999948,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 17,
+        "time": 4.809999999999942,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 18,
+        "time": 5.1099999999999355,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 19,
+        "time": 5.409999999999929,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 20,
+        "time": 5.709999999999923,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 21,
+        "time": 6.009999999999916,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 22,
+        "time": 6.30999999999991,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 23,
+        "time": 6.6099999999999035,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 24,
+        "time": 6.909999999999897,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 25,
+        "time": 7.209999999999891,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 26,
+        "time": 7.509999999999884,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 27,
+        "time": 7.809999999999878,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 28,
+        "time": 8.109999999999872,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 29,
+        "time": 8.409999999999865,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 30,
+        "time": 8.709999999999859,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 31,
+        "time": 9.009999999999852,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 32,
+        "time": 9.309999999999846,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 33,
+        "time": 9.60999999999984,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 34,
+        "time": 9.909999999999833,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 35,
+        "time": 10.209999999999827,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 36,
+        "time": 10.50999999999982,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 37,
+        "time": 10.809999999999814,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 38,
+        "time": 11.109999999999808,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 39,
+        "time": 11.409999999999801,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 40,
+        "time": 11.709999999999795,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 41,
+        "time": 12.009999999999788,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 42,
+        "time": 12.309999999999782,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 43,
+        "time": 12.609999999999776,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 44,
+        "time": 12.90999999999977,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 45,
+        "time": 13.209999999999763,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 46,
+        "time": 13.509999999999756,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 47,
+        "time": 13.80999999999975,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 48,
+        "time": 14.109999999999744,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 49,
+        "time": 14.409999999999737,
+        "from_type": "low",
+        "to_type": "high"
+      },
+      {
+        "type": "tunnel",
+        "basin_id": 50,
+        "time": 14.70999999999973,
+        "from_type": "low",
+        "to_type": "high"
+      }
+    ]
+  },
+  "phase_diagram": {
+    "points": [
+      {
+        "a_omega": 1.0,
+        "K_omega": 10.0,
+        "g_coupling": 0.001,
+        "potential_gradient_ratio": 0.1,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.23870262390670555
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 10.0,
+        "g_coupling": 0.005,
+        "potential_gradient_ratio": 0.1,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.24854227405247814
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 10.0,
+        "g_coupling": 0.01,
+        "potential_gradient_ratio": 0.1,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.25728862973760935
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 10.0,
+        "g_coupling": 0.02,
+        "potential_gradient_ratio": 0.1,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.25874635568513116
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 10.0,
+        "g_coupling": 0.05,
+        "potential_gradient_ratio": 0.1,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.25838192419825073
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 10.0,
+        "g_coupling": 0.1,
+        "potential_gradient_ratio": 0.1,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3677113702623907
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 2.0,
+        "g_coupling": 0.001,
+        "potential_gradient_ratio": 0.5,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.2408892128279883
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 2.0,
+        "g_coupling": 0.005,
+        "potential_gradient_ratio": 0.5,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.2904518950437318
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 2.0,
+        "g_coupling": 0.01,
+        "potential_gradient_ratio": 0.5,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3152332361516035
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 2.0,
+        "g_coupling": 0.02,
+        "potential_gradient_ratio": 0.5,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.2587463556851312
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 2.0,
+        "g_coupling": 0.05,
+        "potential_gradient_ratio": 0.5,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.32908163265306123
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 2.0,
+        "g_coupling": 0.1,
+        "potential_gradient_ratio": 0.5,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3560495626822157
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 1.0,
+        "g_coupling": 0.001,
+        "potential_gradient_ratio": 1.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.2747813411078717
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 1.0,
+        "g_coupling": 0.005,
+        "potential_gradient_ratio": 1.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3363702623906706
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 1.0,
+        "g_coupling": 0.01,
+        "potential_gradient_ratio": 1.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3469387755102041
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 1.0,
+        "g_coupling": 0.02,
+        "potential_gradient_ratio": 1.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3432944606413994
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 1.0,
+        "g_coupling": 0.05,
+        "potential_gradient_ratio": 1.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3815597667638484
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 1.0,
+        "g_coupling": 0.1,
+        "potential_gradient_ratio": 1.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.38994169096209913
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.5,
+        "g_coupling": 0.001,
+        "potential_gradient_ratio": 2.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.36115160349854225
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.5,
+        "g_coupling": 0.005,
+        "potential_gradient_ratio": 2.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3779154518950438
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.5,
+        "g_coupling": 0.01,
+        "potential_gradient_ratio": 2.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.38921282798833823
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.5,
+        "g_coupling": 0.02,
+        "potential_gradient_ratio": 2.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.39650145772594747
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.5,
+        "g_coupling": 0.05,
+        "potential_gradient_ratio": 2.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.41800291545189505
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.5,
+        "g_coupling": 0.1,
+        "potential_gradient_ratio": 2.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.3943148688046647
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.2,
+        "g_coupling": 0.001,
+        "potential_gradient_ratio": 5.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.5462827988338192
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.2,
+        "g_coupling": 0.005,
+        "potential_gradient_ratio": 5.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.5481049562682215
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.2,
+        "g_coupling": 0.01,
+        "potential_gradient_ratio": 5.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.5612244897959183
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.2,
+        "g_coupling": 0.02,
+        "potential_gradient_ratio": 5.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.544460641399417
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.2,
+        "g_coupling": 0.05,
+        "potential_gradient_ratio": 5.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.48760932944606417
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.2,
+        "g_coupling": 0.1,
+        "potential_gradient_ratio": 5.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.43768221574344024
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.1,
+        "g_coupling": 0.001,
+        "potential_gradient_ratio": 10.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.7893586005830904
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.1,
+        "g_coupling": 0.005,
+        "potential_gradient_ratio": 10.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.7911807580174928
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.1,
+        "g_coupling": 0.01,
+        "potential_gradient_ratio": 10.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.7864431486880467
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.1,
+        "g_coupling": 0.02,
+        "potential_gradient_ratio": 10.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.7394314868804664
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.1,
+        "g_coupling": 0.05,
+        "potential_gradient_ratio": 10.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.571064139941691
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.1,
+        "g_coupling": 0.1,
+        "potential_gradient_ratio": 10.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.43330903790087466
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.05,
+        "g_coupling": 0.001,
+        "potential_gradient_ratio": 20.0,
+        "regime": "tunneling",
+        "stability_time": 10.0,
+        "collision_type": "tunnel",
+        "basin_fraction": 0.9967201166180759
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.05,
+        "g_coupling": 0.005,
+        "potential_gradient_ratio": 20.0,
+        "regime": "tunneling",
+        "stability_time": 10.0,
+        "collision_type": "tunnel",
+        "basin_fraction": 0.9930758017492711
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.05,
+        "g_coupling": 0.01,
+        "potential_gradient_ratio": 20.0,
+        "regime": "tunneling",
+        "stability_time": 10.0,
+        "collision_type": "tunnel",
+        "basin_fraction": 0.9792274052478134
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.05,
+        "g_coupling": 0.02,
+        "potential_gradient_ratio": 20.0,
+        "regime": "tunneling",
+        "stability_time": 10.0,
+        "collision_type": "tunnel",
+        "basin_fraction": 0.918731778425656
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.05,
+        "g_coupling": 0.05,
+        "potential_gradient_ratio": 20.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.6151603498542274
+      },
+      {
+        "a_omega": 1.0,
+        "K_omega": 0.05,
+        "g_coupling": 0.1,
+        "potential_gradient_ratio": 20.0,
+        "regime": "unstable",
+        "stability_time": 1.0100000000000007,
+        "collision_type": "equilibrium",
+        "basin_fraction": 0.44497084548104954
+      }
+    ],
+    "regime_boundaries": {
+      "unstable_boundary": [],
+      "tunneling_boundary": [],
+      "equilibrium_boundary": []
+    },
+    "optimal_parameters": {
+      "a_omega": 1.0,
+      "K_omega": 0.05,
+      "g_coupling": 0.001,
+      "ratio": 20.0
+    }
+  },
+  "summary": {
+    "scaling_persists": true,
+    "entropy_plateaus": true,
+    "half_entropy_regime": true,
+    "tunneling_observed": true,
+    "optimal_parameters": {
+      "a_omega": 1.0,
+      "K_omega": 0.05,
+      "g_coupling": 0.001,
+      "ratio": 20.0
+    }
+  }
+}

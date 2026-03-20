@@ -29,3 +29,350 @@ QMRT Frequency-Domain Engine initialized
   Initial energy: 367927.5790
   Phase basins: Matter 49.6%, Antimatter 50.4%
   Frequency bands: High (ω>0) 49.9%, Low (ω≤0) 50.1%
+  Grid 32: lifetime=30.0s, density=0.003876, σ_ω=0.9345 (2194.6s)
+  Completed in 2771.9s
+  Stability persists: True
+
+[2/4] ENTROPY DRIFT TEST
+----------------------------------------
+QMRT Frequency-Domain Engine initialized
+  Grid: 20³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 84756.4331
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 50.1%, Low (ω≤0) 49.9%
+  Completed in 250.6s
+  Entropy plateaus: True
+  Half-entropy regime: True
+
+[3/4] BASIN IDENTITY TRACKING
+----------------------------------------
+QMRT Frequency-Domain Engine initialized
+  Grid: 20³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 84756.4331
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 50.1%, Low (ω≤0) 49.9%
+  Completed in 128.7s
+  Tunneling probability: 0.9901
+  Decay rate: 0.0000
+
+[4/4] PHASE DIAGRAM MAPPING
+----------------------------------------
+Testing ratio=0.1, g=0.001...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 132244.5566
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.1, g=0.005...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 132222.7619
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.1, g=0.01...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 132195.5185
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.1, g=0.02...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 132141.0318
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.1, g=0.05...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 131977.5715
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.1, g=0.1...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 131705.1378
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.5, g=0.001...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 47369.4310
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.5, g=0.005...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 47347.6363
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.5, g=0.01...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 47320.3929
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.5, g=0.02...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 47265.9062
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.5, g=0.05...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 47102.4459
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=0.5, g=0.1...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 46830.0122
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=1.0, g=0.001...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 36760.0403
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=1.0, g=0.005...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 36738.2456
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=1.0, g=0.01...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 36711.0022
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=1.0, g=0.02...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 36656.5155
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=1.0, g=0.05...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 36493.0552
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=1.0, g=0.1...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 36220.6215
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=2.0, g=0.001...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 31455.3449
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=2.0, g=0.005...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 31433.5502
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=2.0, g=0.01...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 31406.3069
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=2.0, g=0.02...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 31351.8201
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=2.0, g=0.05...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 31188.3599
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=2.0, g=0.1...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 30915.9261
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=5.0, g=0.001...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 28272.5277
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=5.0, g=0.005...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 28250.7330
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=5.0, g=0.01...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 28223.4897
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=5.0, g=0.02...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 28169.0029
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=5.0, g=0.05...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 28005.5427
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=5.0, g=0.1...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 27733.1089
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=10.0, g=0.001...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 27211.5887
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=10.0, g=0.005...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 27189.7940
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=10.0, g=0.01...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 27162.5506
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=10.0, g=0.02...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 27108.0638
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=10.0, g=0.05...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26944.6036
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=10.0, g=0.1...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26672.1698
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=20.0, g=0.001...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26681.1191
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=20.0, g=0.005...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26659.3244
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=20.0, g=0.01...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26632.0811
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=20.0, g=0.02...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26577.5943
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=20.0, g=0.05...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26414.1341
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+Testing ratio=20.0, g=0.1...
+QMRT Frequency-Domain Engine initialized
+  Grid: 14³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 26141.7003
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 48.8%, Low (ω≤0) 51.2%
+  Completed in 562.3s
+  Optimal ratio (a_ω/K_ω): 20.0
+
+======================================================================
+VALIDATION SUMMARY
+======================================================================
+
+✅ Validation completed in 3713.5s
+Results saved to /app/backend/validation_results.json
+
+SUMMARY:
+{
+  "scaling_persists": true,
+  "entropy_plateaus": true,
+  "half_entropy_regime": true,
+  "tunneling_observed": true,
+  "optimal_parameters": {
+    "a_omega": 1.0,
+    "K_omega": 0.05,
+    "g_coupling": 0.001,
+    "ratio": 20.0
+  }
+}

@@ -30,6 +30,10 @@ from qmrt_validation.scaling_test import (
     run_scaling_at_resolution
 )
 
+from qmrt_validation.entropy_test import (
+    run_entropy_production_test
+)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -89,6 +93,15 @@ class ScalingConvergenceRequest(BaseModel):
     seed: Optional[int] = Field(default=42)
 
 
+class EntropyProductionRequest(BaseModel):
+    """Request for entropy production test (Step 4)"""
+    grid_size: int = Field(default=14, ge=10, le=24)
+    total_time: float = Field(default=20.0, ge=10.0, le=60.0)
+    dt: float = Field(default=0.02, ge=0.01, le=0.05)
+    n_scan_points: int = Field(default=4, ge=3, le=8)
+    seed: Optional[int] = Field(default=42)
+
+
 # =============================================================================
 # Endpoints
 # =============================================================================
@@ -130,7 +143,7 @@ async def groundwork_info():
                 "step": 4,
                 "name": "Entropy Production",
                 "endpoint": "/entropy",
-                "status": "PENDING",
+                "status": "IMPLEMENTED",
                 "depends_on": [1, 2, 3],
                 "description": "Thermodynamics after structure identity known"
             }
@@ -138,7 +151,8 @@ async def groundwork_info():
         "current_results": {
             "step_1_eigenmode": "BARRIER STABILITY confirmed - phase separation physics",
             "step_2_interaction": "100% REFLECTION - elastic scattering dominant",
-            "step_3_scaling": "CONTINUUM LIMIT EXISTS - 75% confidence, multi-frequency Landau system"
+            "step_3_scaling": "CONTINUUM LIMIT EXISTS - 75% confidence, multi-frequency Landau system",
+            "step_4_entropy": "PHASE BOUNDARY at a_ω=0.75, half-entropy regime 0.54-0.69"
         }
     }
 
@@ -383,4 +397,68 @@ async def run_scaling_test(request: ScalingConvergenceRequest):
         
     except Exception as e:
         logger.error(f"Scaling test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+# =============================================================================
+# Step 4: Entropy Production
+# =============================================================================
+
+@router.post("/entropy")
+async def run_entropy_test(request: EntropyProductionRequest):
+    """
+    Step 4: Entropy Production Test (FINAL GROUNDWORK VALIDATION)
+    
+    PREREQUISITE: Steps 1-3 must confirm stable basins, scattering law, and continuum limit.
+    
+    Measures entropy production rate dS/dt across parameter space:
+    1. dS/dt vs coupling strength (g_ωφ)
+    2. dS/dt vs gradient coefficient (K_ω)
+    3. dS/dt vs potential depth (a_ω)
+    
+    Physics:
+        S(t) = -Σ P_k log P_k (frequency distribution entropy)
+        
+    Outcomes:
+    - If plateau robust → ORDERED METASTABLE STATE (half-entropy regime)
+    - If phase transition found → PHASE BOUNDARY IDENTIFIED
+    - Validates QMRT entropy hierarchy
+    
+    This completes the groundwork validation suite.
+    """
+    try:
+        logger.info(f"Starting entropy production test: {request.grid_size}³, {request.n_scan_points} points")
+        
+        result = run_entropy_production_test(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            n_scan_points=request.n_scan_points,
+            seed=request.seed
+        )
+        
+        result_dict = result.to_dict()
+        
+        return {
+            'test_name': 'entropy_production',
+            'validation_step': 4,
+            'result': result_dict,
+            'entropy_summary': {
+                'half_entropy_observed': result.half_entropy_observed,
+                'half_entropy_range': list(result.half_entropy_range) if result.half_entropy_observed else None,
+                'plateau_robust': result.plateau_robust,
+                'phase_boundary_identified': result.phase_boundary_identified
+            },
+            'phase_transitions': {
+                'coupling_g_omega_phi': result.coupling_transition_point,
+                'gradient_K_omega': result.gradient_transition_point,
+                'potential_a_omega': result.potential_transition_point
+            },
+            'physics_interpretation': result_dict['interpretation'],
+            'groundwork_complete': result.phase_boundary_identified or result.half_entropy_observed,
+            'next_step': 'GROUNDWORK VALIDATION COMPLETE - Ready for quark confinement analogies and phase-domain universe models' if (result.phase_boundary_identified or result.half_entropy_observed) else 'Need broader parameter scan or longer simulation time'
+        }
+        
+    except Exception as e:
+        logger.error(f"Entropy test error: {str(e)}\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
