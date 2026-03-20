@@ -27,6 +27,7 @@ from engine_api import router as engine_router
 from mesoscopic_api import router as mesoscopic_router
 from qmrt_canonical_api import router as qmrt_router
 from qmrt_quark_api import router as qmrt_quark_router
+from qmrt_frequency_api import router as qmrt_frequency_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -855,6 +856,7 @@ api_router.include_router(engine_router)
 api_router.include_router(mesoscopic_router)
 api_router.include_router(qmrt_router)
 api_router.include_router(qmrt_quark_router)
+api_router.include_router(qmrt_frequency_router)
 
 # Mount API router
 app.include_router(api_router)
