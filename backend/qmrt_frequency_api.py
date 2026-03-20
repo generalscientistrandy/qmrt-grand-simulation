@@ -46,6 +46,18 @@ from qmrt_basin_diagnosis import (
     run_full_basin_diagnosis
 )
 
+from qmrt_comprehensive_validation import (
+    test_scaling_persistence,
+    test_entropy_drift,
+    track_basin_identities,
+    map_phase_diagram,
+    run_comprehensive_validation,
+    ScalingPersistenceResult,
+    EntropyDriftResult,
+    BasinStatistics,
+    PhaseDiagramResult
+)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -167,6 +179,50 @@ class CompleteScalingRequest(BaseModel):
 
 class BasinDiagnosisRequest(BaseModel):
     """Request for basin decay diagnosis"""
+    seed: Optional[int] = Field(default=42)
+
+
+# =============================================================================
+# Comprehensive Validation Request Models
+# =============================================================================
+
+class ScalingPersistenceRequest(BaseModel):
+    """Request for scaling persistence test"""
+    grid_sizes: List[int] = Field(default=[20, 24, 32], description="Grid sizes to test")
+    simulation_time: float = Field(default=30.0, ge=5.0, le=100.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class EntropyDriftRequest(BaseModel):
+    """Request for long-time entropy drift test"""
+    grid_size: int = Field(default=20, ge=12, le=40)
+    total_time: float = Field(default=60.0, ge=10.0, le=200.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    n_bins: int = Field(default=50, ge=20, le=100)
+    seed: Optional[int] = Field(default=42)
+
+
+class BasinTrackingRequest(BaseModel):
+    """Request for basin identity tracking"""
+    grid_size: int = Field(default=20, ge=12, le=40)
+    total_time: float = Field(default=30.0, ge=10.0, le=100.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    seed: Optional[int] = Field(default=42)
+
+
+class PhaseDiagramRequest(BaseModel):
+    """Request for phase diagram mapping"""
+    grid_size: int = Field(default=14, ge=10, le=24)
+    test_time: float = Field(default=10.0, ge=5.0, le=30.0)
+    dt: float = Field(default=0.01, ge=0.001, le=0.1)
+    n_points: int = Field(default=20, ge=10, le=50)
+    seed: Optional[int] = Field(default=42)
+
+
+class ComprehensiveValidationRequest(BaseModel):
+    """Request for full comprehensive validation suite"""
+    quick_mode: bool = Field(default=True, description="Use smaller grids/times for faster testing")
     seed: Optional[int] = Field(default=42)
 
 
@@ -765,3 +821,249 @@ async def diagnose_basin_decay_endpoint(request: BasinDiagnosisRequest):
     except Exception as e:
         logger.error(f"Basin diagnosis error: {str(e)}\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Diagnosis error: {str(e)}")
+
+
+# =============================================================================
+# Comprehensive Physics Validation Endpoints (NEW)
+# =============================================================================
+
+@router.post("/comprehensive/scaling_persistence")
+async def comprehensive_scaling_persistence(request: ScalingPersistenceRequest):
+    """
+    Test if basin stability persists at larger scales.
+    
+    Measures:
+    - Basin lifetime distribution at different grid sizes
+    - Number density (basins per unit volume) 
+    - Spectral width (σ_ω)
+    
+    If stability persists across scales → real physics
+    If it varies → resolution-dependent artifact
+    """
+    try:
+        logger.info(f"Starting scaling persistence test: grids {request.grid_sizes}")
+        
+        result = test_scaling_persistence(
+            grid_sizes=request.grid_sizes,
+            simulation_time=request.simulation_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Scaling persistence test complete. Stability persists: {result.stability_persists}")
+        
+        # Ensure all numpy types are converted to Python natives
+        result_dict = result.to_dict()
+        stability_persists = bool(result.stability_persists)
+        scaling_exponents = {k: float(v) for k, v in result.scaling_exponents.items()}
+        
+        return {
+            'test_name': 'scaling_persistence',
+            'result': result_dict,
+            'interpretation': {
+                'stability_persists': stability_persists,
+                'scaling_exponents': scaling_exponents,
+                'is_scale_invariant': bool(abs(scaling_exponents['density_exponent']) < 0.5),
+                'note': 'Real physics - scale invariant' if stability_persists else 'May be numerical artifact'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Scaling persistence test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/comprehensive/entropy_drift")
+async def comprehensive_entropy_drift(request: EntropyDriftRequest):
+    """
+    Test long-time entropy evolution.
+    
+    Measures S(t) = -Σ P_k log P_k over the frequency distribution.
+    
+    If entropy plateaus below max → "half-entropy regime" supported
+    This would validate the QMRT entropy hierarchy hypothesis.
+    """
+    try:
+        logger.info(f"Starting entropy drift test: {request.grid_size}³, {request.total_time}s")
+        
+        result = test_entropy_drift(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            n_bins=request.n_bins,
+            seed=request.seed
+        )
+        
+        logger.info(f"Entropy drift test complete. Plateaus: {result.entropy_plateaus}, Half-entropy: {result.half_entropy_regime}")
+        
+        # Convert numpy types to Python natives
+        result_dict = result.to_dict()
+        
+        return {
+            'test_name': 'entropy_drift',
+            'result': result_dict,
+            'interpretation': {
+                'entropy_plateaus': bool(result.entropy_plateaus),
+                'half_entropy_regime': bool(result.half_entropy_regime),
+                'plateau_value': float(result.entropy_plateau),
+                'plateau_time': float(result.plateau_time),
+                'supports_entropy_hierarchy': bool(result.half_entropy_regime),
+                'note': 'Half-entropy regime confirmed - entropy hierarchy valid' if result.half_entropy_regime else 'Full entropy or no plateau'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Entropy drift test error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/comprehensive/basin_tracking")
+async def comprehensive_basin_tracking(request: BasinTrackingRequest):
+    """
+    Track individual basin identities over time.
+    
+    Measures:
+    - Merge probability (two basins become one)
+    - Tunneling probability (basin crosses ω=0)
+    - Spontaneous decay rate
+    - Spectral drift (change in ω over lifetime)
+    
+    Establishes "particle statistics" for frequency domains.
+    """
+    try:
+        logger.info(f"Starting basin identity tracking: {request.grid_size}³, {request.total_time}s")
+        
+        result = track_basin_identities(
+            grid_size=request.grid_size,
+            total_time=request.total_time,
+            dt=request.dt,
+            seed=request.seed
+        )
+        
+        logger.info(f"Basin tracking complete. Basins formed: {result.total_basins_formed}, Tunneling: {result.total_tunneling_events}")
+        
+        # Convert numpy types to Python natives
+        result_dict = result.to_dict()
+        
+        return {
+            'test_name': 'basin_identity_tracking',
+            'result': result_dict,
+            'interpretation': {
+                'total_basins_formed': int(result.total_basins_formed),
+                'tunneling_events': int(result.total_tunneling_events),
+                'merge_events': int(result.total_merges),
+                'decay_events': int(result.total_spontaneous_decays),
+                'tunneling_probability': float(result.tunneling_probability),
+                'merge_probability': float(result.merge_probability),
+                'decay_rate': float(result.decay_rate),
+                'mean_lifetime': float(result.lifetime_distribution['mean']),
+                'supports_antimatter_tunneling': bool(result.total_tunneling_events > 0),
+                'note': f"Tunneling observed: {int(result.total_tunneling_events)} events - supports antimatter separation hypothesis" if result.total_tunneling_events > 0 else "No tunneling observed"
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Basin tracking error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/comprehensive/phase_diagram")
+async def comprehensive_phase_diagram(request: PhaseDiagramRequest):
+    """
+    Map the phase diagram: (a_ω / K_ω) vs (g coupling).
+    
+    Identifies regions of:
+    - Unstable: Basins decay quickly
+    - Reflective: Basins bounce off each other
+    - Tunneling: Basins pass through each other
+    - Equilibrium-locked: Basins frozen in place
+    
+    Creates a "regime chart" for the QMRT theory.
+    """
+    try:
+        logger.info(f"Starting phase diagram mapping: {request.grid_size}³, {request.n_points} points")
+        
+        result = map_phase_diagram(
+            grid_size=request.grid_size,
+            test_time=request.test_time,
+            dt=request.dt,
+            n_points=request.n_points,
+            seed=request.seed
+        )
+        
+        # Count regimes
+        regime_counts = {}
+        for p in result.points:
+            regime_counts[p.regime] = regime_counts.get(p.regime, 0) + 1
+        
+        logger.info(f"Phase diagram complete. Optimal ratio: {result.optimal_parameters['ratio']}")
+        
+        # Convert numpy types to Python natives
+        result_dict = result.to_dict()
+        optimal_params = {k: float(v) for k, v in result.optimal_parameters.items()}
+        
+        return {
+            'test_name': 'phase_diagram_mapping',
+            'result': result_dict,
+            'interpretation': {
+                'total_points_tested': int(len(result.points)),
+                'regime_distribution': {k: int(v) for k, v in regime_counts.items()},
+                'optimal_parameters': optimal_params,
+                'best_regime': 'tunneling' if regime_counts.get('tunneling', 0) > 0 else 'equilibrium',
+                'note': f"Optimal a_ω/K_ω ratio: {optimal_params['ratio']:.1f}"
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Phase diagram error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Test error: {str(e)}")
+
+
+@router.post("/comprehensive/run_all")
+async def comprehensive_run_all(request: ComprehensiveValidationRequest):
+    """
+    Run all comprehensive validation tests.
+    
+    Tests:
+    1. Scaling Persistence - stability at larger grids
+    2. Long-time Entropy Drift - half-entropy regime
+    3. Basin Identity Tracking - particle statistics
+    4. Phase Diagram Mapping - regime boundaries
+    
+    Returns complete physics validation assessment.
+    """
+    try:
+        logger.info(f"Starting comprehensive validation suite. Quick mode: {request.quick_mode}")
+        
+        result = run_comprehensive_validation(
+            quick_mode=request.quick_mode,
+            seed=request.seed
+        )
+        
+        logger.info("Comprehensive validation complete")
+        
+        # Extract and convert summary values
+        summary = result['summary']
+        scaling_persists = bool(summary['scaling_persists'])
+        entropy_plateaus = bool(summary['entropy_plateaus'])
+        half_entropy_regime = bool(summary['half_entropy_regime'])
+        tunneling_observed = bool(summary['tunneling_observed'])
+        optimal_parameters = {k: float(v) for k, v in summary['optimal_parameters'].items()}
+        
+        return {
+            'test_name': 'comprehensive_validation_suite',
+            'result': result,
+            'interpretation': {
+                'scaling_persists': scaling_persists,
+                'entropy_plateaus': entropy_plateaus,
+                'half_entropy_regime': half_entropy_regime,
+                'tunneling_observed': tunneling_observed,
+                'optimal_parameters': optimal_parameters,
+                'physics_validity': 'STRONG' if (scaling_persists and entropy_plateaus) else 'PARTIAL',
+                'note': 'Comprehensive validation of QMRT frequency-domain physics'
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Comprehensive validation error: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Validation error: {str(e)}")

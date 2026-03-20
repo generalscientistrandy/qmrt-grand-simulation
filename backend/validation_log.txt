@@ -1,0 +1,31 @@
+Starting QMRT Comprehensive Validation...
+This may take several minutes...
+======================================================================
+QMRT COMPREHENSIVE PHYSICS VALIDATION
+======================================================================
+
+[1/4] SCALING PERSISTENCE TEST
+----------------------------------------
+Testing grid 20³...
+QMRT Frequency-Domain Engine initialized
+  Grid: 20³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 84756.4331
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 50.1%, Low (ω≤0) 49.9%
+  Grid 20: lifetime=30.0s, density=0.003125, σ_ω=0.9354 (140.9s)
+Testing grid 24³...
+QMRT Frequency-Domain Engine initialized
+  Grid: 24³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 148338.4405
+  Phase basins: Matter 50.0%, Antimatter 50.0%
+  Frequency bands: High (ω>0) 49.9%, Low (ω≤0) 50.1%
+  Grid 24: lifetime=30.0s, density=0.003617, σ_ω=0.9336 (436.4s)
+Testing grid 32³...
+QMRT Frequency-Domain Engine initialized
+  Grid: 32³, dx=1.0
+  Fields: (ρ, σ, τ, φ, ω) with conjugate momenta
+  Initial energy: 367927.5790
+  Phase basins: Matter 49.6%, Antimatter 50.4%
+  Frequency bands: High (ω>0) 49.9%, Low (ω≤0) 50.1%

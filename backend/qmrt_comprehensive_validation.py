@@ -50,14 +50,27 @@ class ScalingPersistenceResult:
     raw_data: List[Dict]
     
     def to_dict(self) -> Dict:
+        # Convert raw_data to ensure all numpy types are Python natives
+        clean_raw_data = []
+        for item in self.raw_data:
+            clean_item = {}
+            for k, v in item.items():
+                if isinstance(v, (np.bool_, np.integer)):
+                    clean_item[k] = int(v) if isinstance(v, np.integer) else bool(v)
+                elif isinstance(v, np.floating):
+                    clean_item[k] = float(v)
+                else:
+                    clean_item[k] = v
+            clean_raw_data.append(clean_item)
+        
         return {
-            'grid_sizes': self.grid_sizes,
+            'grid_sizes': [int(x) for x in self.grid_sizes],
             'basin_lifetimes': [float(x) for x in self.basin_lifetimes],
             'number_densities': [float(x) for x in self.number_densities],
             'spectral_widths': [float(x) for x in self.spectral_widths],
             'stability_persists': bool(self.stability_persists),
             'scaling_exponents': {k: float(v) for k, v in self.scaling_exponents.items()},
-            'raw_data': self.raw_data
+            'raw_data': clean_raw_data
         }
 
 

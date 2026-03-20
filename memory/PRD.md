@@ -24,7 +24,8 @@ Design and build programmable systems for a persistent simulation universe based
 - [x] Mesoscopic Substrate Simulation (energy-conserving)
 - [x] QMRT Canonical Hamiltonian Engine (Yoshida 4th-order)
 - [x] Quark-Level Dual-Basin Attractor Engine
-- [x] **Frequency-Domain Substrate Engine** (NEW - December 2025)
+- [x] **Frequency-Domain Substrate Engine** (December 2025)
+- [x] **Comprehensive Physics Validation Suite** (December 2025 - NEW)
 - [ ] Structure clustering & composite formation (hadrons)
 - [ ] Civilization emergence systems
 - [ ] Hidden lineage and scan-detection
@@ -55,8 +56,11 @@ Design and build programmable systems for a persistent simulation universe based
   mesoscopic_api.py         - Substrate API routes
   qmrt_hamiltonian_engine.py - Canonical Hamiltonian engine
   qmrt_canonical_api.py     - Hamiltonian API routes
-  qmrt_quark_engine.py      - Dual-basin attractor engine (NEW)
-  qmrt_quark_api.py         - Quark engine API routes (NEW)
+  qmrt_quark_engine.py      - Dual-basin attractor engine
+  qmrt_quark_api.py         - Quark engine API routes
+  qmrt_frequency_engine.py  - Frequency-domain engine
+  qmrt_frequency_api.py     - Frequency API routes (includes comprehensive validation)
+  qmrt_comprehensive_validation.py - Physics validation suite (NEW)
 ```
 
 ### Key Technical Decisions
@@ -69,7 +73,19 @@ Design and build programmable systems for a persistent simulation universe based
 
 ## What's Been Implemented
 
-### December 2025 - Frequency-Domain Substrate Engine (LATEST)
+### December 2025 - Comprehensive Physics Validation Suite (LATEST)
+- **Scaling Persistence Test**: Validates basin stability at larger grid sizes (32, 48, 64)
+- **Long-time Entropy Drift Test**: S(t) = -Σ P_k log P_k, tests "half-entropy regime" hypothesis
+- **Basin Identity Tracking**: Measures merge probability, tunneling probability, decay rates
+- **Phase Diagram Mapping**: Maps (a_ω/K_ω) vs g coupling regimes (unstable/reflective/tunneling/equilibrium)
+- **API Endpoints**:
+  - `/api/qmrt_frequency/comprehensive/scaling_persistence` - ✅ TESTED
+  - `/api/qmrt_frequency/comprehensive/entropy_drift` - ✅ TESTED
+  - `/api/qmrt_frequency/comprehensive/basin_tracking` - ✅ TESTED
+  - `/api/qmrt_frequency/comprehensive/phase_diagram` - ✅ Functional
+  - `/api/qmrt_frequency/comprehensive/run_all` - Full suite runner
+
+### December 2025 - Frequency-Domain Substrate Engine
 - **Explicit frequency field (ω)**: Fifth fundamental field - medium state variable enabling spectral universes
 - **Band potential**: V_band(ω) = a_ω(ω² − ω₀²)² creates double-well with basins at ±ω₀
 - **Frequency-phase coupling**: g_ωφ·ω·|∇φ|² - matter structures prefer certain frequency bands
