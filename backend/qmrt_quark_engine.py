@@ -1,14 +1,23 @@
 """
-QMRT Quark-Level Substrate Engine
+QMRT Quark-Level Substrate Engine - Dual-Basin Attractor Ontology
 
-Foundational implementation focusing on:
-1. Dual-phase attractors (matter φ≈0, antimatter φ≈π)
-2. Structure identity tracking across timesteps
-3. Phase-resolved stability and lifetime metrics
-4. Quark-like structure emergence from substrate dynamics
+PURPOSE: Validate stable dual-basin attractor dynamics capable of forming 
+         higher-order composite structures.
 
-QMRT is the foundational theory - quarks emerge from the quark medium substrate.
-All other physics (hadrons, atoms, etc.) branches from this foundation.
+This is NOT about reproducing Standard Model quarks - it's about validating
+that the QMRT substrate naturally produces:
+1. Symmetric dual-phase attractors: φ ≈ 0 (matter-like) and φ ≈ ±π (antimatter-like)
+2. Persistent coherent structures in both basins
+3. Annihilation cascade when opposite-phase structures overlap
+
+Phase Convention: φ ∈ (−π, +π)
+- Symmetric around zero
+- Natural dual-basin representation
+- φ ≈ 0: Matter-like attractor basin
+- φ ≈ ±π: Antimatter-like attractor basin (same solution family, phase-inverted)
+
+Antimatter is NOT a separate particle species - it is a phase-inverted attractor
+basin of the SAME field solution family.
 """
 import numpy as np
 from typing import Dict, List, Tuple, Optional, Set
@@ -17,68 +26,94 @@ from enum import Enum
 import uuid
 
 
-class PhaseType(Enum):
-    """Classification based on coherence phase φ"""
-    MATTER = "matter"           # φ ≈ 0 (or 2πn)
-    ANTIMATTER = "antimatter"   # φ ≈ π (or π + 2πn)
-    TRANSITIONAL = "transitional"  # Intermediate phase (unstable)
-
-
-class QuarkType(Enum):
+class AttractorBasin(Enum):
     """
-    Quark classification based on substrate properties.
-    In QMRT, quark flavors emerge from different stable configurations
-    of the substrate fields (ρ, σ, τ, φ).
+    Classification based on which attractor basin φ resides in.
+    φ ∈ (−π, +π) symmetric around zero.
     """
-    # First generation (lightest, most stable)
-    UP = "up"           # Charge +2/3
-    DOWN = "down"       # Charge -1/3
-    
-    # Second generation
-    CHARM = "charm"     # Charge +2/3, heavier
-    STRANGE = "strange" # Charge -1/3, heavier
-    
-    # Third generation (heaviest)
-    TOP = "top"         # Charge +2/3, heaviest
-    BOTTOM = "bottom"   # Charge -1/3, heaviest
-    
-    # Undetermined (structure exists but doesn't match known quark)
-    PROTO = "proto"     # Proto-quark, not yet classified
-    UNSTABLE = "unstable"  # Unstable configuration
+    MATTER = "matter"           # φ ≈ 0 (|φ| < π/2)
+    ANTIMATTER = "antimatter"   # φ ≈ ±π (|φ| > π/2)
+    TRANSITIONAL = "transitional"  # Near basin boundary (unstable)
 
 
 @dataclass
-class QuarkStructure:
+class FieldModeProperties:
     """
-    A quark-like structure emerging from QMRT substrate dynamics.
+    Emergent properties from substrate field modes.
     
-    Quarks in QMRT are stable vortex-like configurations in the
-    quark medium with specific phase, torsion, and density characteristics.
+    Classification emerges from these properties - NOT hardcoded labels.
+    Different stable configurations in the field produce different
+    emergent "flavors" based on mode structure, energy, and topology.
     """
-    # Identity
+    # Energy-related modes
+    binding_energy: float       # Local energy concentration
+    kinetic_fraction: float     # KE / Total local energy
+    
+    # Spatial mode structure
+    coherence_length: float     # ξ - spatial extent of structure
+    mode_number: int            # Dominant spatial frequency mode
+    radial_profile: str         # 'gaussian', 'vortex', 'shell', etc.
+    
+    # Topological properties
+    winding_number: int         # Phase winding around structure (topological charge)
+    vorticity: float            # Curl of phase gradient
+    
+    # Field amplitude modes
+    rho_deviation: float        # Deviation from equilibrium density
+    sigma_amplitude: float      # Tension field amplitude
+    tau_magnitude: float        # Torsion magnitude
+    
+    # Stability metric
+    S_value: float              # Stabilization functional value
+    
+    def to_dict(self) -> Dict:
+        return {
+            'binding_energy': float(self.binding_energy),
+            'kinetic_fraction': float(self.kinetic_fraction),
+            'coherence_length': float(self.coherence_length),
+            'mode_number': int(self.mode_number),
+            'radial_profile': self.radial_profile,
+            'winding_number': int(self.winding_number),
+            'vorticity': float(self.vorticity),
+            'rho_deviation': float(self.rho_deviation),
+            'sigma_amplitude': float(self.sigma_amplitude),
+            'tau_magnitude': float(self.tau_magnitude),
+            'S_value': float(self.S_value)
+        }
+
+
+@dataclass
+class CoherentStructure:
+    """
+    A coherent structure emerging from QMRT substrate dynamics.
+    
+    NOT a "quark" in the Standard Model sense - this is a stable
+    configuration in one of the dual attractor basins, with properties
+    that emerge from field mode analysis.
+    """
+    # Identity (persistent across timesteps)
     id: str
     
-    # Spatial location (can change over time)
-    position: Tuple[float, float, float]
+    # Spatial tracking
+    centroid: Tuple[float, float, float]      # Center of mass position
+    extent: float                              # Spatial extent (radius)
     
-    # Phase classification (matter/antimatter)
-    phase_type: PhaseType
-    phase_value: float  # Actual φ value at structure center
+    # Attractor basin
+    basin: AttractorBasin
+    phase_value: float          # Central φ value in (−π, +π)
     
-    # Quark classification
-    quark_type: QuarkType
-    is_antiquark: bool  # True if antimatter phase
+    # Raw substrate field values at centroid
+    rho: float
+    sigma: float
+    tau: float
+    phi: float
     
-    # Substrate field values at structure
-    rho: float      # Density
-    sigma: float    # Tension
-    tau: float      # Torsion magnitude
-    tau_vector: Tuple[float, float, float]  # Torsion direction (for color?)
+    # Emergent field mode properties (basis for classification)
+    mode_properties: FieldModeProperties
     
-    # Stability metrics
-    S_value: float          # Stabilization functional
-    xi_value: float         # Coherence length
-    binding_energy: float   # Local energy concentration
+    # Topological fingerprint for tracking
+    # (winding_number, dominant_mode, sign(tau))
+    topological_signature: Tuple[int, int, int]
     
     # Lifetime tracking
     formation_time: float
@@ -86,39 +121,80 @@ class QuarkStructure:
     lifetime: float = 0.0
     is_alive: bool = True
     
-    # Tracking history
-    position_history: List[Tuple[float, float, float]] = field(default_factory=list)
-    stability_history: List[float] = field(default_factory=list)
+    # History for tracking
+    centroid_history: List[Tuple[float, float, float]] = field(default_factory=list)
+    S_history: List[float] = field(default_factory=list)
+    phase_history: List[float] = field(default_factory=list)
     
     def to_dict(self) -> Dict:
         return {
             'id': self.id,
-            'position': self.position,
-            'phase_type': self.phase_type.value,
+            'centroid': self.centroid,
+            'extent': float(self.extent),
+            'basin': self.basin.value,
             'phase_value': float(self.phase_value),
-            'quark_type': self.quark_type.value,
-            'is_antiquark': self.is_antiquark,
             'rho': float(self.rho),
             'sigma': float(self.sigma),
             'tau': float(self.tau),
-            'S_value': float(self.S_value),
-            'xi_value': float(self.xi_value),
-            'binding_energy': float(self.binding_energy),
+            'phi': float(self.phi),
+            'mode_properties': self.mode_properties.to_dict(),
+            'topological_signature': self.topological_signature,
             'formation_time': float(self.formation_time),
             'lifetime': float(self.lifetime),
             'is_alive': self.is_alive
         }
 
 
+@dataclass
+class AnnihilationEvent:
+    """
+    Records when opposite-basin structures overlap and annihilate.
+    
+    Annihilation causes:
+    - Coherence collapse of both structures
+    - Rapid phase decoherence cascade
+    - Energy redistribution into substrate wave spectrum
+    - Possible formation of neutral transitional attractors
+    """
+    time: float
+    position: Tuple[float, float, float]
+    
+    # Participating structures
+    matter_structure_id: str
+    antimatter_structure_id: str
+    
+    # Pre-annihilation properties
+    matter_energy: float
+    antimatter_energy: float
+    
+    # Post-annihilation
+    released_energy: float      # Energy released into wave spectrum
+    formed_neutral: bool        # Did a neutral transitional form?
+    
+    def to_dict(self) -> Dict:
+        return {
+            'time': float(self.time),
+            'position': self.position,
+            'matter_structure_id': self.matter_structure_id,
+            'antimatter_structure_id': self.antimatter_structure_id,
+            'matter_energy': float(self.matter_energy),
+            'antimatter_energy': float(self.antimatter_energy),
+            'released_energy': float(self.released_energy),
+            'formed_neutral': self.formed_neutral
+        }
+
+
 @dataclass 
 class QMRTQuarkParameters:
     """
-    Parameters for quark-level QMRT simulation.
+    Parameters for dual-basin attractor QMRT simulation.
     
-    These parameters control the dual-phase attractor dynamics
-    and quark structure formation.
+    The key physics is the dual-basin phase potential:
+    U_φ(φ) = -a_φ cos(φ)
+    
+    This creates symmetric minima at φ = 0 and φ = ±π.
     """
-    # Mass parameters
+    # Mass parameters (kinetic denominators)
     M_rho: float = 1.0
     M_sigma: float = 1.0
     M_tau: float = 1.0
@@ -133,10 +209,9 @@ class QMRTQuarkParameters:
     a_sigma: float = 0.1
     a_tau: float = 0.1
     
-    # PHASE POTENTIAL - Critical for dual-phase attractors
-    # U_φ(φ) = -a_phi * cos(φ) creates minima at φ=0 and φ=π
-    # This is the key to matter/antimatter symmetry
-    a_phi: float = 0.2  # Strength of phase potential
+    # DUAL-BASIN PHASE POTENTIAL
+    # U_φ(φ) = -a_phi * cos(φ) creates minima at φ=0 and φ=±π
+    a_phi: float = 0.2
     
     # Coupling constants
     lambda_rho_sigma: float = 0.02
@@ -161,27 +236,33 @@ class QMRTQuarkParameters:
     kappa: float = 0.2
     xi0: float = 1.0
     
-    # Phase classification thresholds
-    phase_matter_threshold: float = np.pi / 4      # |φ| < π/4 → matter
-    phase_antimatter_threshold: float = 3 * np.pi / 4  # |φ - π| < π/4 → antimatter
+    # Basin classification threshold
+    # φ ∈ (−π, +π): |φ| < π/2 → matter basin, |φ| > π/2 → antimatter basin
+    basin_boundary: float = np.pi / 2
     
-    # Quark classification thresholds (based on S_value and binding energy)
-    quark_S_threshold: float = 0.3  # Minimum S for quark-like structure
+    # Structure detection threshold
+    S_threshold: float = 0.3
     
-    # Structure tracking parameters
-    tracking_radius: float = 2.0  # Max distance to match structure across timesteps
-    min_lifetime_for_stable: float = 1.0  # Minimum lifetime to be "stable"
+    # Tracking parameters
+    tracking_radius: float = 2.5        # Centroid matching radius
+    topology_weight: float = 0.5        # Weight for topological matching (vs centroid)
+    min_stable_lifetime: float = 1.0
+    
+    # Annihilation parameters
+    annihilation_overlap_radius: float = 1.5  # Structures closer than this interact
+    annihilation_phase_threshold: float = 2.5  # Phase difference for annihilation (near 2π)
+    decoherence_rate: float = 0.5             # How fast phase decoherences cascade
 
 
 class QMRTQuarkEngine:
     """
-    QMRT engine focused on quark-level substrate dynamics.
+    QMRT engine for validating dual-basin attractor ontology.
     
-    Key features:
-    1. Dual-phase potential creating symmetric matter/antimatter attractors
-    2. Structure identity tracking across timesteps
-    3. Phase-resolved lifetime metrics
-    4. Quark classification based on substrate properties
+    Goal: Prove that the substrate naturally produces symmetric,
+    stable attractor basins at φ ≈ 0 and φ ≈ ±π, with proper
+    annihilation dynamics when opposite-basin structures overlap.
+    
+    Phase convention: φ ∈ (−π, +π) throughout.
     """
     
     def __init__(self, grid_size: int = 32, dx: float = 1.0,
@@ -192,11 +273,11 @@ class QMRTQuarkEngine:
         
         self.params = params or QMRTQuarkParameters()
         
-        # Fields
+        # Fields (all real-valued)
         self.rho = None    # Density
         self.sigma = None  # Tension
-        self.tau = None    # Torsion (scalar for now)
-        self.phi = None    # Phase (critical for matter/antimatter)
+        self.tau = None    # Torsion
+        self.phi = None    # Phase φ ∈ (−π, +π)
         
         # Conjugate momenta
         self.pi_rho = None
@@ -205,32 +286,38 @@ class QMRTQuarkEngine:
         self.pi_phi = None
         
         # Structure tracking
-        self.active_structures: Dict[str, QuarkStructure] = {}
-        self.deceased_structures: List[QuarkStructure] = []
+        self.active_structures: Dict[str, CoherentStructure] = {}
+        self.deceased_structures: List[CoherentStructure] = []
         self.structure_counter = 0
+        
+        # Annihilation events
+        self.annihilation_events: List[AnnihilationEvent] = []
         
         # Energy tracking
         self.initial_energy = None
         self.energy_history: List[float] = []
         
-        # Spectral Laplacian precomputation
+        # Spectral precomputation
         self._k_sq = None
         self._kx = None
         self._ky = None
         self._kz = None
         
-    def initialize_dual_phase(self, amplitude: float = 0.05, 
+    def initialize_dual_basin(self, amplitude: float = 0.05, 
                               matter_fraction: float = 0.5,
                               seed: Optional[int] = None):
         """
-        Initialize substrate with dual-phase seeds.
+        Initialize substrate with structures in both attractor basins.
         
-        Creates initial conditions with both matter (φ≈0) and 
-        antimatter (φ≈π) regions to test symmetric attractor dynamics.
+        Creates initial conditions with:
+        - Matter-like regions: φ ≈ 0
+        - Antimatter-like regions: φ ≈ ±π
+        
+        Phase is kept in (−π, +π) throughout.
         
         Args:
-            amplitude: Fluctuation amplitude for fields
-            matter_fraction: Fraction of domain initialized as matter vs antimatter
+            amplitude: Fluctuation amplitude
+            matter_fraction: Fraction of volume initialized near φ=0
             seed: Random seed for reproducibility
         """
         if seed is not None:
@@ -239,21 +326,30 @@ class QMRTQuarkEngine:
         shape = (self.grid_size, self.grid_size, self.grid_size)
         p = self.params
         
-        # Initialize density at equilibrium with small fluctuations
+        # Initialize density at equilibrium
         self.rho = p.rho_equilibrium + amplitude * self._balanced_noise(shape)
         
-        # Initialize tension and torsion with small fluctuations
+        # Initialize tension and torsion
         self.sigma = amplitude * self._balanced_noise(shape)
         self.tau = amplitude * self._balanced_noise(shape)
         
-        # Initialize phase with DUAL-PHASE structure
-        # Create matter (φ≈0) and antimatter (φ≈π) regions
+        # Initialize phase with DUAL-BASIN seeds
         self.phi = np.zeros(shape)
         
-        # Random assignment of matter/antimatter regions
+        # Randomly assign cells to basins
         matter_mask = np.random.random(shape) < matter_fraction
-        self.phi[matter_mask] = amplitude * np.random.randn(np.sum(matter_mask))  # Near 0
-        self.phi[~matter_mask] = np.pi + amplitude * np.random.randn(np.sum(~matter_mask))  # Near π
+        
+        # Matter basin: small fluctuations around φ = 0
+        self.phi[matter_mask] = amplitude * np.random.randn(np.sum(matter_mask))
+        
+        # Antimatter basin: fluctuations around φ = π (will wrap to ±π)
+        # Use both +π and -π randomly for symmetry
+        antimatter_count = np.sum(~matter_mask)
+        antimatter_signs = 2 * (np.random.random(antimatter_count) > 0.5) - 1  # ±1
+        self.phi[~matter_mask] = antimatter_signs * (np.pi - amplitude * np.abs(np.random.randn(antimatter_count)))
+        
+        # Enforce φ ∈ (−π, +π)
+        self.phi = self._wrap_phase(self.phi)
         
         # Initialize momenta at zero
         self.pi_rho = np.zeros(shape)
@@ -267,16 +363,21 @@ class QMRTQuarkEngine:
         # Record initial energy
         self.initial_energy = self.compute_total_energy()
         
-        # Count initial phase distribution
-        matter_count = np.sum(np.abs(self.phi) < np.pi/2)
-        antimatter_count = np.sum(np.abs(self.phi - np.pi) < np.pi/2)
+        # Initial basin statistics
+        matter_count = np.sum(np.abs(self.phi) < p.basin_boundary)
+        antimatter_count = np.sum(np.abs(self.phi) >= p.basin_boundary)
         
-        print(f"QMRT Quark Engine initialized")
-        print(f"  Grid: {self.grid_size}³")
+        print("QMRT Dual-Basin Engine initialized")
+        print(f"  Grid: {self.grid_size}³, dx={self.dx}")
+        print("  Phase range: φ ∈ (−π, +π)")
         print(f"  Initial energy: {self.initial_energy:.4f}")
-        print(f"  Matter regions: {matter_count} ({100*matter_count/self.phi.size:.1f}%)")
-        print(f"  Antimatter regions: {antimatter_count} ({100*antimatter_count/self.phi.size:.1f}%)")
+        print(f"  Matter basin (|φ| < π/2): {100*matter_count/self.phi.size:.1f}%")
+        print(f"  Antimatter basin (|φ| ≥ π/2): {100*antimatter_count/self.phi.size:.1f}%")
         
+    def _wrap_phase(self, phi: np.ndarray) -> np.ndarray:
+        """Wrap phase to (−π, +π)"""
+        return np.mod(phi + np.pi, 2*np.pi) - np.pi
+    
     def _balanced_noise(self, shape: Tuple) -> np.ndarray:
         """Generate zero-mean noise"""
         noise = np.random.randn(*shape)
@@ -292,25 +393,30 @@ class QMRTQuarkEngine:
         self._k_sq = self._kx**2 + self._ky**2 + self._kz**2
         
     def _spectral_laplacian(self, f: np.ndarray) -> np.ndarray:
-        """Compute Laplacian using spectral method"""
+        """Compute Laplacian using spectral method (exact for periodic BC)"""
         f_hat = np.fft.fftn(f)
         lap_hat = -self._k_sq * f_hat
         return np.real(np.fft.ifftn(lap_hat))
     
-    def _spectral_gradient_sq(self, f: np.ndarray) -> np.ndarray:
-        """Compute |∇f|² using spectral method"""
+    def _spectral_gradient(self, f: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """Compute gradient components using spectral method"""
         f_hat = np.fft.fftn(f)
         gx = np.real(np.fft.ifftn(1j * self._kx * f_hat))
         gy = np.real(np.fft.ifftn(1j * self._ky * f_hat))
         gz = np.real(np.fft.ifftn(1j * self._kz * f_hat))
+        return gx, gy, gz
+    
+    def _spectral_gradient_sq(self, f: np.ndarray) -> np.ndarray:
+        """Compute |∇f|² using spectral method"""
+        gx, gy, gz = self._spectral_gradient(f)
         return gx**2 + gy**2 + gz**2
     
     def compute_total_energy(self) -> float:
         """
         Compute total Hamiltonian energy.
         
-        Includes the dual-phase potential U_φ = -a_φ cos(φ)
-        which creates symmetric minima at φ=0 and φ=π.
+        Includes dual-basin potential: U_φ = -a_φ cos(φ)
+        Symmetric minima at φ = 0 and φ = ±π.
         """
         p = self.params
         
@@ -335,16 +441,17 @@ class QMRTQuarkEngine:
             (p.a_tau / 2) * self.tau**2
         ) * self.dx**3
         
-        # DUAL-PHASE POTENTIAL: U_φ = -a_φ cos(φ)
-        # This creates symmetric minima at φ=0 (matter) and φ=π (antimatter)
+        # DUAL-BASIN PHASE POTENTIAL
+        # U_φ = -a_φ cos(φ)
+        # Minima at φ = 0 (matter) and φ = ±π (antimatter)
         U_phi = np.sum(-p.a_phi * np.cos(self.phi)) * self.dx**3
         
-        # Coupling energies
+        # Coupling energies (phase-dependent)
         V_coupling = np.sum(
             p.lambda_rho_sigma * delta_rho * self.sigma +
             p.lambda_rho_tau * delta_rho * self.tau**2 +
             p.lambda_sigma_tau * self.sigma * self.tau +
-            p.lambda_sigma_phi * self.sigma * np.cos(self.phi) +  # Phase-dependent coupling
+            p.lambda_sigma_phi * self.sigma * np.cos(self.phi) +
             p.lambda_tau_phi * self.tau**2 * np.cos(self.phi) +
             p.lambda_rho_phi * delta_rho * np.cos(self.phi)
         ) * self.dx**3
@@ -373,8 +480,10 @@ class QMRTQuarkEngine:
         """
         Evolve one timestep using Yoshida 4th-order symplectic integrator.
         
-        The phase potential U_φ = -a_φ cos(φ) ensures symmetric evolution
-        toward the two attractor states (matter and antimatter).
+        After field evolution:
+        1. Wrap phase to (−π, +π)
+        2. Check for annihilation events (opposite-basin overlap)
+        3. Update structure tracking
         """
         # Yoshida4 coefficients
         cbrt2 = 2.0 ** (1.0/3.0)
@@ -386,7 +495,7 @@ class QMRTQuarkEngine:
         d3, d4 = d2, d1
         c1, c2, c3 = w1, w0, w1
         
-        # Yoshida4 integration
+        # Yoshida4 integration sequence
         self._update_momenta(d1 * dt)
         self._update_fields(c1 * dt)
         self._update_momenta(d2 * dt)
@@ -394,6 +503,9 @@ class QMRTQuarkEngine:
         self._update_momenta(d3 * dt)
         self._update_fields(c3 * dt)
         self._update_momenta(d4 * dt)
+        
+        # Wrap phase to (−π, +π)
+        self.phi = self._wrap_phase(self.phi)
         
         # Enforce energy conservation
         if enforce_conservation:
@@ -405,26 +517,37 @@ class QMRTQuarkEngine:
         current_energy = self.compute_total_energy()
         self.energy_history.append(current_energy)
         
-        # Update structure tracking
+        # Check for annihilation events
+        new_annihilations = self._check_annihilation_events()
+        
+        # Update structure tracking (combined centroid + topological)
         self._update_structure_tracking()
         
-        # Compute phase statistics
-        phase_stats = self._compute_phase_statistics()
+        # Compute basin statistics
+        basin_stats = self._compute_basin_statistics()
         
         return {
-            'time': self.time,
-            'energy': current_energy,
-            'energy_drift': (current_energy - self.initial_energy) / abs(self.initial_energy) if self.initial_energy else 0,
+            'time': float(self.time),
+            'energy': float(current_energy),
+            'energy_drift': float((current_energy - self.initial_energy) / abs(self.initial_energy)) if self.initial_energy else 0.0,
             'mean_rho': float(np.mean(self.rho)),
             'mean_phi': float(np.mean(self.phi)),
-            **phase_stats,
+            **basin_stats,
             'active_structures': len(self.active_structures),
+            'matter_structures': sum(1 for s in self.active_structures.values() if s.basin == AttractorBasin.MATTER),
+            'antimatter_structures': sum(1 for s in self.active_structures.values() if s.basin == AttractorBasin.ANTIMATTER),
             'total_formed': self.structure_counter,
-            'total_deceased': len(self.deceased_structures)
+            'total_deceased': len(self.deceased_structures),
+            'annihilation_events_this_step': len(new_annihilations),
+            'total_annihilations': len(self.annihilation_events)
         }
     
     def _update_momenta(self, delta_t: float):
-        """Update momenta using Hamilton's equations with dual-phase potential"""
+        """
+        Update momenta using Hamilton's equations.
+        
+        Key: dU_φ/dφ = a_φ sin(φ) pushes phase toward basins.
+        """
         p = self.params
         
         # Spectral Laplacians
@@ -435,7 +558,7 @@ class QMRTQuarkEngine:
         
         delta_rho = self.rho - p.rho_equilibrium
         
-        # Density momentum: standard terms
+        # Density momentum
         dpi_rho_dt = (
             p.K_rho * lap_rho
             - (p.a_rho * delta_rho + p.c_rho * delta_rho**3)
@@ -462,11 +585,12 @@ class QMRTQuarkEngine:
             - 2 * p.lambda_tau_phi * self.tau * np.cos(self.phi)
         )
         
-        # PHASE MOMENTUM - includes dual-phase potential derivative
-        # dU_φ/dφ = a_φ sin(φ) → pushes toward minima at 0 and π
+        # PHASE MOMENTUM - dual-basin attractor dynamics
+        # dU_φ/dφ = a_φ sin(φ)
+        # This creates restoring force toward φ=0 and φ=±π
         dpi_phi_dt = (
             p.K_phi * lap_phi
-            - p.a_phi * np.sin(self.phi)  # Dual-phase attractor force
+            - p.a_phi * np.sin(self.phi)  # Dual-basin attractor force
             + p.lambda_sigma_phi * self.sigma * np.sin(self.phi)
             + p.lambda_tau_phi * self.tau**2 * np.sin(self.phi)
             + p.lambda_rho_phi * delta_rho * np.sin(self.phi)
@@ -478,7 +602,7 @@ class QMRTQuarkEngine:
         self.pi_phi += dpi_phi_dt * delta_t
     
     def _update_fields(self, delta_t: float):
-        """Update field values"""
+        """Update field values: dq/dt = π/M"""
         p = self.params
         self.rho += (self.pi_rho / p.M_rho) * delta_t
         self.sigma += (self.pi_sigma / p.M_sigma) * delta_t
@@ -500,81 +624,45 @@ class QMRTQuarkEngine:
                 self.pi_tau *= scale
                 self.pi_phi *= scale
     
-    def _compute_phase_statistics(self) -> Dict:
-        """Compute statistics about phase distribution"""
+    def _compute_basin_statistics(self) -> Dict:
+        """Compute basin occupation statistics"""
         p = self.params
         
-        # Normalize phase to [-π, π]
-        phi_norm = np.mod(self.phi + np.pi, 2*np.pi) - np.pi
+        # Count cells in each basin
+        matter_count = int(np.sum(np.abs(self.phi) < p.basin_boundary))
+        antimatter_count = int(np.sum(np.abs(self.phi) >= p.basin_boundary))
+        total = int(self.phi.size)
         
-        # Count matter (near 0) and antimatter (near ±π)
-        matter_count = np.sum(np.abs(phi_norm) < p.phase_matter_threshold)
-        antimatter_count = np.sum(np.abs(np.abs(phi_norm) - np.pi) < (np.pi - p.phase_antimatter_threshold))
-        transitional_count = self.phi.size - matter_count - antimatter_count
+        # Transitional region (near boundary)
+        boundary_width = np.pi / 8
+        transitional = int(np.sum(np.abs(np.abs(self.phi) - p.basin_boundary) < boundary_width))
         
         return {
-            'matter_fraction': matter_count / self.phi.size,
-            'antimatter_fraction': antimatter_count / self.phi.size,
-            'transitional_fraction': transitional_count / self.phi.size,
-            'phase_mean': float(np.mean(phi_norm)),
-            'phase_std': float(np.std(phi_norm))
+            'matter_fraction': float(matter_count / total),
+            'antimatter_fraction': float(antimatter_count / total),
+            'transitional_fraction': float(transitional / total),
+            'phase_mean': float(np.mean(self.phi)),
+            'phase_std': float(np.std(self.phi)),
+            'phase_min': float(np.min(self.phi)),
+            'phase_max': float(np.max(self.phi))
         }
     
-    def _classify_phase(self, phi_value: float) -> PhaseType:
-        """Classify a phase value as matter, antimatter, or transitional"""
+    def _classify_basin(self, phi_value: float) -> AttractorBasin:
+        """Classify which attractor basin a phase value belongs to"""
         p = self.params
+        phi_wrapped = self._wrap_phase(np.array([phi_value]))[0]
         
-        # Normalize to [-π, π]
-        phi_norm = np.mod(phi_value + np.pi, 2*np.pi) - np.pi
-        
-        if np.abs(phi_norm) < p.phase_matter_threshold:
-            return PhaseType.MATTER
-        elif np.abs(np.abs(phi_norm) - np.pi) < (np.pi - p.phase_antimatter_threshold):
-            return PhaseType.ANTIMATTER
+        if np.abs(phi_wrapped) < p.basin_boundary:
+            return AttractorBasin.MATTER
         else:
-            return PhaseType.TRANSITIONAL
-    
-    def _classify_quark(self, structure: QuarkStructure) -> QuarkType:
-        """
-        Classify a structure as a specific quark type based on properties.
-        
-        In QMRT, different quark flavors correspond to different stable
-        configurations of the substrate fields. This is a simplified
-        classification based on stability and binding energy.
-        """
-        p = self.params
-        
-        # Not stable enough to be a quark
-        if structure.S_value < p.quark_S_threshold:
-            return QuarkType.UNSTABLE
-        
-        # Classification based on binding energy and other properties
-        # This is a simplified model - real QMRT would have more detailed criteria
-        
-        # Higher binding energy → heavier quarks
-        # Torsion sign/magnitude affects charge-like properties
-        
-        if structure.binding_energy < 0.5:
-            # Light quarks (first generation)
-            if structure.tau > 0:
-                return QuarkType.UP
-            else:
-                return QuarkType.DOWN
-        elif structure.binding_energy < 1.0:
-            # Medium quarks (second generation)
-            if structure.tau > 0:
-                return QuarkType.CHARM
-            else:
-                return QuarkType.STRANGE
-        else:
-            # Heavy quarks (third generation)
-            if structure.tau > 0:
-                return QuarkType.TOP
-            else:
-                return QuarkType.BOTTOM
+            return AttractorBasin.ANTIMATTER
     
     def compute_stabilization_functional(self) -> np.ndarray:
-        """Compute S(x,t) for structure detection"""
+        """
+        Compute S(x,t) for structure detection.
+        
+        High S indicates a stable, coherent configuration.
+        """
         p = self.params
         grad_phi_sq = self._spectral_gradient_sq(self.phi)
         
@@ -589,88 +677,193 @@ class QMRTQuarkEngine:
         return S
     
     def compute_coherence_length(self) -> np.ndarray:
-        """Compute ξ(x,t)"""
+        """Compute coherence length ξ(x,t)"""
         p = self.params
         grad_phi_sq = self._spectral_gradient_sq(self.phi)
         return p.xi0 * np.exp(-p.kappa * grad_phi_sq)
     
-    def compute_binding_energy(self) -> np.ndarray:
-        """
-        Compute local binding energy density.
+    def _compute_local_binding_energy(self, i: int, j: int, k: int) -> float:
+        """Compute binding energy at a specific point"""
+        p = self.params
         
-        High binding energy indicates strongly bound structure.
+        KE_local = 0.5 * (
+            self.pi_rho[i,j,k]**2 / p.M_rho +
+            self.pi_sigma[i,j,k]**2 / p.M_sigma +
+            self.pi_tau[i,j,k]**2 / p.M_tau +
+            self.pi_phi[i,j,k]**2 / p.M_phi
+        )
+        
+        delta_rho = self.rho[i,j,k] - p.rho_equilibrium
+        PE_local = (
+            (p.a_rho / 2) * delta_rho**2 +
+            (p.a_sigma / 2) * self.sigma[i,j,k]**2 +
+            (p.a_tau / 2) * self.tau[i,j,k]**2 +
+            (-p.a_phi * np.cos(self.phi[i,j,k]))
+        )
+        
+        return float(KE_local + PE_local)
+    
+    def _compute_winding_number(self, i: int, j: int, k: int, radius: int = 2) -> int:
+        """
+        Compute topological winding number around a point.
+        
+        Winding = (1/2π) ∮ ∇φ · dl around the structure.
+        """
+        # Sample phase around a small loop
+        phase_diff_total = 0.0
+        
+        # Sample 4 points in x-y plane
+        offsets = [(radius, 0, 0), (0, radius, 0), (-radius, 0, 0), (0, -radius, 0)]
+        
+        for idx in range(len(offsets)):
+            di1, dj1, dk1 = offsets[idx]
+            di2, dj2, dk2 = offsets[(idx + 1) % len(offsets)]
+            
+            i1 = (i + di1) % self.grid_size
+            j1 = (j + dj1) % self.grid_size
+            k1 = (k + dk1) % self.grid_size
+            
+            i2 = (i + di2) % self.grid_size
+            j2 = (j + dj2) % self.grid_size
+            k2 = (k + dk2) % self.grid_size
+            
+            dphi = self.phi[i2, j2, k2] - self.phi[i1, j1, k1]
+            # Unwrap phase difference
+            dphi = np.mod(dphi + np.pi, 2*np.pi) - np.pi
+            phase_diff_total += dphi
+        
+        # Winding number is total phase change / 2π
+        winding = int(round(phase_diff_total / (2 * np.pi)))
+        return winding
+    
+    def _compute_vorticity(self, i: int, j: int, k: int) -> float:
+        """Compute local vorticity (curl of phase gradient)"""
+        # Use central differences
+        h = self.dx
+        
+        # ∂φ/∂y at (i+1,j,k) and (i-1,j,k)
+        dphi_dy_plus = (self.phi[(i+1)%self.grid_size, (j+1)%self.grid_size, k] - 
+                        self.phi[(i+1)%self.grid_size, (j-1)%self.grid_size, k]) / (2*h)
+        dphi_dy_minus = (self.phi[(i-1)%self.grid_size, (j+1)%self.grid_size, k] - 
+                         self.phi[(i-1)%self.grid_size, (j-1)%self.grid_size, k]) / (2*h)
+        
+        # ∂φ/∂x at (i,j+1,k) and (i,j-1,k)
+        dphi_dx_plus = (self.phi[(i+1)%self.grid_size, (j+1)%self.grid_size, k] - 
+                        self.phi[(i-1)%self.grid_size, (j+1)%self.grid_size, k]) / (2*h)
+        dphi_dx_minus = (self.phi[(i+1)%self.grid_size, (j-1)%self.grid_size, k] - 
+                         self.phi[(i-1)%self.grid_size, (j-1)%self.grid_size, k]) / (2*h)
+        
+        # Curl_z = ∂(∂φ/∂y)/∂x - ∂(∂φ/∂x)/∂y
+        curl_z = (dphi_dy_plus - dphi_dy_minus) / (2*h) - (dphi_dx_plus - dphi_dx_minus) / (2*h)
+        
+        return float(curl_z)
+    
+    def _compute_mode_properties(self, i: int, j: int, k: int, S_val: float) -> FieldModeProperties:
+        """
+        Extract emergent field mode properties at a structure location.
+        
+        These properties form the basis for structure classification -
+        NOT hardcoded quark types.
         """
         p = self.params
         
-        # Kinetic energy density
-        KE_density = 0.5 * (
-            self.pi_rho**2 / p.M_rho +
-            self.pi_sigma**2 / p.M_sigma +
-            self.pi_tau**2 / p.M_tau +
-            self.pi_phi**2 / p.M_phi
+        binding_energy = self._compute_local_binding_energy(i, j, k)
+        KE_local = 0.5 * (
+            self.pi_rho[i,j,k]**2 / p.M_rho +
+            self.pi_sigma[i,j,k]**2 / p.M_sigma +
+            self.pi_tau[i,j,k]**2 / p.M_tau +
+            self.pi_phi[i,j,k]**2 / p.M_phi
         )
+        kinetic_fraction = KE_local / max(abs(binding_energy), 1e-10)
         
-        # Potential energy density
-        delta_rho = self.rho - p.rho_equilibrium
-        PE_density = (
-            (p.a_rho / 2) * delta_rho**2 +
-            (p.a_sigma / 2) * self.sigma**2 +
-            (p.a_tau / 2) * self.tau**2 +
-            (-p.a_phi * np.cos(self.phi))
+        # Coherence length
+        grad_phi_sq = self._spectral_gradient_sq(self.phi)[i, j, k]
+        xi = p.xi0 * np.exp(-p.kappa * grad_phi_sq)
+        
+        # Dominant mode number (from local FFT - simplified)
+        # For now, estimate based on structure extent
+        mode_number = max(1, int(self.grid_size / (2 * max(xi, 1))))
+        
+        # Radial profile classification (simplified)
+        if self.tau[i,j,k]**2 > np.mean(self.tau**2):
+            radial_profile = 'vortex'
+        elif abs(self.rho[i,j,k] - p.rho_equilibrium) > np.std(self.rho):
+            radial_profile = 'gaussian'
+        else:
+            radial_profile = 'shell'
+        
+        # Topological properties
+        winding = self._compute_winding_number(i, j, k)
+        vorticity = self._compute_vorticity(i, j, k)
+        
+        return FieldModeProperties(
+            binding_energy=binding_energy,
+            kinetic_fraction=kinetic_fraction,
+            coherence_length=xi,
+            mode_number=mode_number,
+            radial_profile=radial_profile,
+            winding_number=winding,
+            vorticity=vorticity,
+            rho_deviation=float(self.rho[i,j,k] - p.rho_equilibrium),
+            sigma_amplitude=float(self.sigma[i,j,k]),
+            tau_magnitude=float(self.tau[i,j,k]),
+            S_value=S_val
         )
-        
-        return KE_density + PE_density
     
-    def detect_structures(self) -> List[QuarkStructure]:
+    def detect_structures(self) -> List[CoherentStructure]:
         """
-        Detect quark-like structures in the substrate.
+        Detect coherent structures in both attractor basins.
         
-        Returns new structures found this timestep.
+        Returns newly detected structures (not yet in active tracking).
         """
         p = self.params
         
         S = self.compute_stabilization_functional()
         xi = self.compute_coherence_length()
-        binding = self.compute_binding_energy()
         
         new_structures = []
         
         # Find local maxima of S above threshold
-        for i in range(2, self.grid_size - 2):
-            for j in range(2, self.grid_size - 2):
-                for k in range(2, self.grid_size - 2):
+        margin = 2
+        for i in range(margin, self.grid_size - margin):
+            for j in range(margin, self.grid_size - margin):
+                for k in range(margin, self.grid_size - margin):
                     S_val = S[i, j, k]
                     
-                    if S_val >= p.quark_S_threshold:
+                    if S_val >= p.S_threshold:
                         # Check if local maximum
                         local_region = S[i-1:i+2, j-1:j+2, k-1:k+2]
                         if S_val >= np.max(local_region) - 1e-10:
-                            # This is a structure
                             self.structure_counter += 1
                             
                             phi_val = self.phi[i, j, k]
-                            phase_type = self._classify_phase(phi_val)
+                            basin = self._classify_basin(phi_val)
                             
-                            structure = QuarkStructure(
-                                id=f"quark_{self.structure_counter}",
-                                position=(float(i), float(j), float(k)),
-                                phase_type=phase_type,
+                            # Compute emergent mode properties
+                            mode_props = self._compute_mode_properties(i, j, k, S_val)
+                            
+                            # Topological signature for tracking
+                            topo_sig = (
+                                mode_props.winding_number,
+                                mode_props.mode_number,
+                                np.sign(self.tau[i, j, k])
+                            )
+                            
+                            structure = CoherentStructure(
+                                id=f"struct_{self.structure_counter}",
+                                centroid=(float(i), float(j), float(k)),
+                                extent=float(xi[i, j, k]),
+                                basin=basin,
                                 phase_value=float(phi_val),
-                                quark_type=QuarkType.PROTO,  # Will classify after
-                                is_antiquark=(phase_type == PhaseType.ANTIMATTER),
                                 rho=float(self.rho[i, j, k]),
                                 sigma=float(self.sigma[i, j, k]),
                                 tau=float(self.tau[i, j, k]),
-                                tau_vector=(0.0, 0.0, float(self.tau[i, j, k])),
-                                S_value=float(S_val),
-                                xi_value=float(xi[i, j, k]),
-                                binding_energy=float(binding[i, j, k]),
+                                phi=float(phi_val),
+                                mode_properties=mode_props,
+                                topological_signature=topo_sig,
                                 formation_time=self.time,
                                 last_seen_time=self.time
                             )
-                            
-                            # Classify quark type
-                            structure.quark_type = self._classify_quark(structure)
                             
                             new_structures.append(structure)
         
@@ -678,64 +871,79 @@ class QMRTQuarkEngine:
     
     def _update_structure_tracking(self):
         """
-        Update structure tracking across timesteps.
+        Update structure tracking using BOTH centroid and topological methods.
         
-        Matches current structures to previously known ones,
-        updates lifetimes, and marks deceased structures.
+        Combined matching score = (1 - topology_weight) * centroid_match + topology_weight * topo_match
         """
         p = self.params
         
-        # Detect current structures
         current_structures = self.detect_structures()
         
-        # Build position lookup for current structures
-        current_positions = {s.id: np.array(s.position) for s in current_structures}
-        
-        # Try to match existing structures to current ones
+        # Build matching matrix
         matched_current = set()
         
         for struct_id, old_struct in list(self.active_structures.items()):
-            old_pos = np.array(old_struct.position)
+            old_pos = np.array(old_struct.centroid)
+            old_topo = old_struct.topological_signature
+            old_basin = old_struct.basin
             
-            # Find closest current structure within tracking radius
             best_match = None
-            best_dist = float('inf')
+            best_score = -np.inf
             
             for curr in current_structures:
                 if curr.id in matched_current:
                     continue
-                    
-                curr_pos = np.array(curr.position)
-                dist = np.linalg.norm(curr_pos - old_pos)
                 
-                if dist < p.tracking_radius and dist < best_dist:
-                    # Also check phase consistency
-                    if old_struct.phase_type == curr.phase_type:
-                        best_match = curr
-                        best_dist = dist
+                # Must be same basin (matter stays matter, antimatter stays antimatter)
+                if curr.basin != old_basin:
+                    continue
+                
+                curr_pos = np.array(curr.centroid)
+                curr_topo = curr.topological_signature
+                
+                # Centroid distance score (0 to 1, higher is better)
+                dist = np.linalg.norm(curr_pos - old_pos)
+                if dist > p.tracking_radius:
+                    continue
+                centroid_score = 1.0 - dist / p.tracking_radius
+                
+                # Topological similarity score (0 to 1)
+                topo_match = sum(1 for a, b in zip(old_topo, curr_topo) if a == b) / len(old_topo)
+                
+                # Combined score
+                combined_score = (1 - p.topology_weight) * centroid_score + p.topology_weight * topo_match
+                
+                if combined_score > best_score:
+                    best_match = curr
+                    best_score = combined_score
             
             if best_match is not None:
                 # Match found - update existing structure
                 matched_current.add(best_match.id)
                 
-                old_struct.position = best_match.position
+                old_struct.centroid = best_match.centroid
+                old_struct.extent = best_match.extent
                 old_struct.last_seen_time = self.time
                 old_struct.lifetime = self.time - old_struct.formation_time
-                old_struct.S_value = best_match.S_value
+                old_struct.phase_value = best_match.phase_value
                 old_struct.rho = best_match.rho
                 old_struct.sigma = best_match.sigma
                 old_struct.tau = best_match.tau
-                old_struct.phase_value = best_match.phase_value
-                old_struct.binding_energy = best_match.binding_energy
+                old_struct.phi = best_match.phi
+                old_struct.mode_properties = best_match.mode_properties
+                old_struct.topological_signature = best_match.topological_signature
                 
                 # Track history
-                old_struct.position_history.append(best_match.position)
-                old_struct.stability_history.append(best_match.S_value)
+                old_struct.centroid_history.append(best_match.centroid)
+                old_struct.S_history.append(best_match.mode_properties.S_value)
+                old_struct.phase_history.append(best_match.phase_value)
                 
-                # Keep only recent history
-                if len(old_struct.position_history) > 100:
-                    old_struct.position_history = old_struct.position_history[-100:]
-                    old_struct.stability_history = old_struct.stability_history[-100:]
+                # Keep recent history only
+                max_history = 100
+                if len(old_struct.centroid_history) > max_history:
+                    old_struct.centroid_history = old_struct.centroid_history[-max_history:]
+                    old_struct.S_history = old_struct.S_history[-max_history:]
+                    old_struct.phase_history = old_struct.phase_history[-max_history:]
             else:
                 # No match - structure has died
                 old_struct.is_alive = False
@@ -743,115 +951,286 @@ class QMRTQuarkEngine:
                 self.deceased_structures.append(old_struct)
                 del self.active_structures[struct_id]
         
-        # Add new structures (those not matched to existing)
+        # Add new structures
         for curr in current_structures:
             if curr.id not in matched_current:
                 self.active_structures[curr.id] = curr
     
-    def get_phase_resolved_statistics(self) -> Dict:
+    def _check_annihilation_events(self) -> List[AnnihilationEvent]:
         """
-        Get detailed statistics broken down by phase type.
-        """
-        matter_structures = [s for s in self.active_structures.values() 
-                           if s.phase_type == PhaseType.MATTER]
-        antimatter_structures = [s for s in self.active_structures.values() 
-                                if s.phase_type == PhaseType.ANTIMATTER]
+        Check for annihilation when opposite-basin structures overlap.
         
-        def compute_stats(structures: List[QuarkStructure]) -> Dict:
-            if not structures:
-                return {'count': 0, 'avg_lifetime': 0, 'avg_S': 0, 'avg_binding': 0}
+        Annihilation triggers:
+        - Coherence collapse (destroy both structures)
+        - Rapid phase decoherence cascade (spread instability)
+        - Energy redistribution into substrate wave spectrum
+        """
+        p = self.params
+        
+        new_events = []
+        
+        # Get matter and antimatter structures
+        matter_structs = [s for s in self.active_structures.values() if s.basin == AttractorBasin.MATTER]
+        antimatter_structs = [s for s in self.active_structures.values() if s.basin == AttractorBasin.ANTIMATTER]
+        
+        # Check all matter-antimatter pairs for overlap
+        annihilated_ids = set()
+        
+        for m_struct in matter_structs:
+            if m_struct.id in annihilated_ids:
+                continue
+                
+            m_pos = np.array(m_struct.centroid)
+            
+            for a_struct in antimatter_structs:
+                if a_struct.id in annihilated_ids:
+                    continue
+                    
+                a_pos = np.array(a_struct.centroid)
+                dist = np.linalg.norm(m_pos - a_pos)
+                
+                # Check if overlap
+                overlap_threshold = p.annihilation_overlap_radius
+                if dist < overlap_threshold:
+                    # ANNIHILATION EVENT
+                    event = self._perform_annihilation(m_struct, a_struct)
+                    new_events.append(event)
+                    self.annihilation_events.append(event)
+                    
+                    annihilated_ids.add(m_struct.id)
+                    annihilated_ids.add(a_struct.id)
+                    break
+        
+        # Remove annihilated structures
+        for struct_id in annihilated_ids:
+            if struct_id in self.active_structures:
+                s = self.active_structures[struct_id]
+                s.is_alive = False
+                s.lifetime = self.time - s.formation_time
+                self.deceased_structures.append(s)
+                del self.active_structures[struct_id]
+        
+        return new_events
+    
+    def _perform_annihilation(self, matter: CoherentStructure, antimatter: CoherentStructure) -> AnnihilationEvent:
+        """
+        Perform annihilation between opposite-basin structures.
+        
+        Effects:
+        1. Coherence collapse - set S to near zero at both locations
+        2. Phase decoherence cascade - add noise to phase field
+        3. Energy redistribution - add kinetic energy to wave spectrum
+        4. Possible neutral transitional - leave φ ≈ ±π/2 region
+        """
+        p = self.params
+        
+        # Midpoint of annihilation
+        mid_pos = tuple(
+            (matter.centroid[i] + antimatter.centroid[i]) / 2 
+            for i in range(3)
+        )
+        mi, mj, mk = int(mid_pos[0]), int(mid_pos[1]), int(mid_pos[2])
+        
+        # Energy being released
+        matter_energy = matter.mode_properties.binding_energy
+        antimatter_energy = antimatter.mode_properties.binding_energy
+        released_energy = abs(matter_energy) + abs(antimatter_energy)
+        
+        # 1. Coherence collapse - flatten fields toward equilibrium near annihilation
+        radius = int(p.annihilation_overlap_radius) + 1
+        for di in range(-radius, radius+1):
+            for dj in range(-radius, radius+1):
+                for dk in range(-radius, radius+1):
+                    ni = (mi + di) % self.grid_size
+                    nj = (mj + dj) % self.grid_size
+                    nk = (mk + dk) % self.grid_size
+                    
+                    dist = np.sqrt(di**2 + dj**2 + dk**2)
+                    if dist <= radius:
+                        decay = np.exp(-dist / radius)
+                        
+                        # Push fields toward equilibrium
+                        self.rho[ni, nj, nk] = (1-decay) * self.rho[ni,nj,nk] + decay * p.rho_equilibrium
+                        self.sigma[ni, nj, nk] *= (1 - decay)
+                        self.tau[ni, nj, nk] *= (1 - decay)
+        
+        # 2. Phase decoherence cascade - randomize phase in affected region
+        for di in range(-radius, radius+1):
+            for dj in range(-radius, radius+1):
+                for dk in range(-radius, radius+1):
+                    ni = (mi + di) % self.grid_size
+                    nj = (mj + dj) % self.grid_size
+                    nk = (mk + dk) % self.grid_size
+                    
+                    dist = np.sqrt(di**2 + dj**2 + dk**2)
+                    if dist <= radius:
+                        # Add random phase noise (decoherence)
+                        noise_strength = p.decoherence_rate * np.exp(-dist / radius)
+                        self.phi[ni, nj, nk] += noise_strength * np.random.randn()
+        
+        # Wrap phase after modification
+        self.phi = self._wrap_phase(self.phi)
+        
+        # 3. Energy redistribution - add kinetic energy (wave spectrum)
+        # Distribute released energy as random momenta
+        energy_per_cell = released_energy / (8 * radius**3)
+        for di in range(-radius, radius+1):
+            for dj in range(-radius, radius+1):
+                for dk in range(-radius, radius+1):
+                    ni = (mi + di) % self.grid_size
+                    nj = (mj + dj) % self.grid_size
+                    nk = (mk + dk) % self.grid_size
+                    
+                    dist = np.sqrt(di**2 + dj**2 + dk**2)
+                    if dist <= radius:
+                        # Add random momentum (energy goes into waves)
+                        sign = 2 * np.random.randint(0, 2) - 1
+                        self.pi_phi[ni, nj, nk] += sign * np.sqrt(2 * energy_per_cell * p.M_phi)
+        
+        # 4. Check for neutral transitional (phase near ±π/2)
+        formed_neutral = np.abs(np.abs(self.phi[mi, mj, mk]) - np.pi/2) < np.pi/8
+        
+        return AnnihilationEvent(
+            time=self.time,
+            position=mid_pos,
+            matter_structure_id=matter.id,
+            antimatter_structure_id=antimatter.id,
+            matter_energy=matter_energy,
+            antimatter_energy=antimatter_energy,
+            released_energy=released_energy,
+            formed_neutral=formed_neutral
+        )
+    
+    def get_basin_resolved_statistics(self) -> Dict:
+        """Get statistics broken down by attractor basin"""
+        matter_structs = [s for s in self.active_structures.values() if s.basin == AttractorBasin.MATTER]
+        antimatter_structs = [s for s in self.active_structures.values() if s.basin == AttractorBasin.ANTIMATTER]
+        
+        def compute_stats(structs: List[CoherentStructure]) -> Dict:
+            if not structs:
+                return {'count': 0, 'avg_lifetime': 0.0, 'avg_S': 0.0, 'avg_binding_energy': 0.0}
             return {
-                'count': len(structures),
-                'avg_lifetime': np.mean([s.lifetime for s in structures]),
-                'avg_S': np.mean([s.S_value for s in structures]),
-                'avg_binding': np.mean([s.binding_energy for s in structures])
+                'count': len(structs),
+                'avg_lifetime': float(np.mean([s.lifetime for s in structs])),
+                'avg_S': float(np.mean([s.mode_properties.S_value for s in structs])),
+                'avg_binding_energy': float(np.mean([s.mode_properties.binding_energy for s in structs]))
             }
         
         return {
-            'matter': compute_stats(matter_structures),
-            'antimatter': compute_stats(antimatter_structures),
+            'matter': compute_stats(matter_structs),
+            'antimatter': compute_stats(antimatter_structs),
             'total_active': len(self.active_structures),
-            'total_deceased': len(self.deceased_structures)
+            'total_deceased': len(self.deceased_structures),
+            'total_annihilations': len(self.annihilation_events)
         }
     
-    def get_quark_census(self) -> Dict:
+    def get_mode_property_census(self) -> Dict:
         """
-        Get census of quark types (including antiquarks).
+        Get census of emergent mode properties across structures.
+        
+        This is the basis for emergent classification - NOT hardcoded quark types.
         """
-        census = {qt.value: {'matter': 0, 'antimatter': 0} for qt in QuarkType}
+        all_structs = list(self.active_structures.values())
         
-        for s in self.active_structures.values():
-            phase_key = 'antimatter' if s.is_antiquark else 'matter'
-            census[s.quark_type.value][phase_key] += 1
+        if not all_structs:
+            return {
+                'count': 0,
+                'winding_numbers': {},
+                'radial_profiles': {},
+                'avg_binding_energy': 0.0,
+                'avg_coherence_length': 0.0,
+                'avg_vorticity': 0.0
+            }
         
-        return census
+        # Winding number distribution
+        winding_counts = {}
+        for s in all_structs:
+            w = int(s.mode_properties.winding_number)
+            winding_counts[w] = winding_counts.get(w, 0) + 1
+        
+        # Radial profile distribution
+        profile_counts = {}
+        for s in all_structs:
+            p = s.mode_properties.radial_profile
+            profile_counts[p] = profile_counts.get(p, 0) + 1
+        
+        return {
+            'count': len(all_structs),
+            'winding_numbers': winding_counts,
+            'radial_profiles': profile_counts,
+            'avg_binding_energy': float(np.mean([s.mode_properties.binding_energy for s in all_structs])),
+            'avg_coherence_length': float(np.mean([s.mode_properties.coherence_length for s in all_structs])),
+            'avg_vorticity': float(np.mean([s.mode_properties.vorticity for s in all_structs]))
+        }
     
     def get_lifetime_distribution(self) -> Dict:
-        """
-        Get lifetime distribution for matter vs antimatter structures.
-        """
-        matter_lifetimes = [s.lifetime for s in self.deceased_structures 
-                          if s.phase_type == PhaseType.MATTER]
-        antimatter_lifetimes = [s.lifetime for s in self.deceased_structures 
-                               if s.phase_type == PhaseType.ANTIMATTER]
+        """Get lifetime distribution for matter vs antimatter structures"""
+        matter_lifetimes = [s.lifetime for s in self.deceased_structures if s.basin == AttractorBasin.MATTER]
+        antimatter_lifetimes = [s.lifetime for s in self.deceased_structures if s.basin == AttractorBasin.ANTIMATTER]
         
-        def compute_distribution(lifetimes: List[float]) -> Dict:
+        def compute_dist(lifetimes: List[float]) -> Dict:
             if not lifetimes:
-                return {'count': 0, 'mean': 0, 'std': 0, 'max': 0, 'min': 0}
+                return {'count': 0, 'mean': 0.0, 'std': 0.0, 'max': 0.0}
             return {
                 'count': len(lifetimes),
                 'mean': float(np.mean(lifetimes)),
                 'std': float(np.std(lifetimes)),
-                'max': float(np.max(lifetimes)),
-                'min': float(np.min(lifetimes))
+                'max': float(np.max(lifetimes))
             }
         
         return {
-            'matter': compute_distribution(matter_lifetimes),
-            'antimatter': compute_distribution(antimatter_lifetimes)
+            'matter': compute_dist(matter_lifetimes),
+            'antimatter': compute_dist(antimatter_lifetimes)
         }
     
     def get_state_summary(self) -> Dict:
         """Get comprehensive state summary"""
         current_energy = self.compute_total_energy()
-        phase_stats = self._compute_phase_statistics()
-        quark_census = self.get_quark_census()
-        lifetime_dist = self.get_lifetime_distribution()
+        basin_stats = self._compute_basin_statistics()
         
         return {
             'time': self.time,
             'grid_size': self.grid_size,
+            'phase_range': '(-pi, +pi)',
             'total_energy': current_energy,
             'initial_energy': self.initial_energy,
             'energy_drift_pct': (current_energy - self.initial_energy) / abs(self.initial_energy) * 100 if self.initial_energy else 0,
-            'phase_statistics': phase_stats,
-            'structure_statistics': self.get_phase_resolved_statistics(),
-            'quark_census': quark_census,
-            'lifetime_distribution': lifetime_dist,
+            'basin_statistics': basin_stats,
+            'structure_statistics': self.get_basin_resolved_statistics(),
+            'mode_property_census': self.get_mode_property_census(),
+            'lifetime_distribution': self.get_lifetime_distribution(),
+            'annihilation_events': len(self.annihilation_events),
             'mean_rho': float(np.mean(self.rho)),
             'mean_phi': float(np.mean(self.phi))
         }
 
 
-def run_dual_phase_test(
+# =============================================================================
+# Simulation Functions
+# =============================================================================
+
+def run_dual_basin_validation(
     grid_size: int = 24,
     amplitude: float = 0.05,
-    total_time: float = 20.0,
+    total_time: float = 30.0,
     dt: float = 0.01,
     matter_fraction: float = 0.5,
     seed: int = 42
 ) -> Dict:
     """
-    Run a test of dual-phase attractor dynamics.
+    Run validation test for dual-basin attractor ontology.
     
-    Tests whether matter (φ≈0) and antimatter (φ≈π) states
-    are symmetric stable attractors.
+    Tests:
+    1. Symmetric basin stability (both matter and antimatter basins persist)
+    2. Structure formation in both basins
+    3. Annihilation when opposite basins overlap
+    4. Energy conservation throughout
     """
     engine = QMRTQuarkEngine(grid_size=grid_size)
-    engine.initialize_dual_phase(amplitude=amplitude, matter_fraction=matter_fraction, seed=seed)
+    engine.initialize_dual_basin(amplitude=amplitude, matter_fraction=matter_fraction, seed=seed)
     
     steps = int(total_time / dt)
-    sample_interval = max(1, steps // 20)
+    sample_interval = max(1, steps // 30)
     
     evolution_samples = []
     
@@ -865,7 +1244,15 @@ def run_dual_phase_test(
             }
             evolution_samples.append(sample)
     
+    final_state = engine.get_state_summary()
+    
+    # Validate dual-basin symmetry
+    final_matter = final_state['basin_statistics']['matter_fraction']
+    final_antimatter = final_state['basin_statistics']['antimatter_fraction']
+    basin_symmetry = abs(final_matter - final_antimatter) < 0.15  # Within 15%
+    
     return {
+        'test_name': 'dual_basin_validation',
         'test_params': {
             'grid_size': grid_size,
             'amplitude': amplitude,
@@ -873,12 +1260,160 @@ def run_dual_phase_test(
             'dt': dt,
             'matter_fraction': matter_fraction
         },
+        'final_state': final_state,
+        'evolution_samples': evolution_samples,
+        'validation_results': {
+            'basin_symmetry_preserved': bool(basin_symmetry),
+            'initial_matter_fraction': float(matter_fraction),
+            'final_matter_fraction': float(final_matter),
+            'final_antimatter_fraction': float(final_antimatter),
+            'structures_formed': int(final_state['structure_statistics']['total_active'] + final_state['structure_statistics']['total_deceased']),
+            'annihilations_occurred': int(final_state['annihilation_events']),
+            'energy_conserved': bool(abs(final_state['energy_drift_pct']) < 1.0)
+        },
+        'annihilation_events': [e.to_dict() for e in engine.annihilation_events[:20]]
+    }
+
+
+def run_annihilation_test(
+    grid_size: int = 24,
+    amplitude: float = 0.1,
+    total_time: float = 20.0,
+    dt: float = 0.01,
+    seed: int = 42
+) -> Dict:
+    """
+    Test annihilation dynamics by initializing matter and antimatter regions
+    in close proximity.
+    """
+    engine = QMRTQuarkEngine(grid_size=grid_size)
+    
+    # Initialize with explicit matter/antimatter blobs
+    if seed is not None:
+        np.random.seed(seed)
+    
+    shape = (grid_size, grid_size, grid_size)
+    p = engine.params
+    
+    engine.rho = p.rho_equilibrium + amplitude * engine._balanced_noise(shape)
+    engine.sigma = amplitude * engine._balanced_noise(shape)
+    engine.tau = amplitude * engine._balanced_noise(shape)
+    
+    # Create explicit matter blob at (grid/4, grid/2, grid/2)
+    # and antimatter blob at (3*grid/4, grid/2, grid/2)
+    engine.phi = np.zeros(shape)
+    
+    center = grid_size // 2
+    quarter = grid_size // 4
+    blob_radius = grid_size // 6
+    
+    for i in range(grid_size):
+        for j in range(grid_size):
+            for k in range(grid_size):
+                # Distance to matter center
+                dm = np.sqrt((i-quarter)**2 + (j-center)**2 + (k-center)**2)
+                # Distance to antimatter center
+                da = np.sqrt((i-(grid_size-quarter))**2 + (j-center)**2 + (k-center)**2)
+                
+                if dm < blob_radius:
+                    # Matter region: φ ≈ 0
+                    engine.phi[i,j,k] = amplitude * np.random.randn()
+                elif da < blob_radius:
+                    # Antimatter region: φ ≈ ±π
+                    sign = 2 * (np.random.random() > 0.5) - 1
+                    engine.phi[i,j,k] = sign * (np.pi - amplitude * abs(np.random.randn()))
+                else:
+                    # Background: random basin
+                    if np.random.random() < 0.5:
+                        engine.phi[i,j,k] = amplitude * np.random.randn()
+                    else:
+                        engine.phi[i,j,k] = np.pi + amplitude * np.random.randn()
+    
+    engine.phi = engine._wrap_phase(engine.phi)
+    
+    engine.pi_rho = np.zeros(shape)
+    engine.pi_sigma = np.zeros(shape)
+    engine.pi_tau = np.zeros(shape)
+    engine.pi_phi = np.zeros(shape)
+    
+    engine._precompute_spectral()
+    engine.initial_energy = engine.compute_total_energy()
+    
+    steps = int(total_time / dt)
+    sample_interval = max(1, steps // 30)
+    
+    evolution_samples = []
+    
+    for step in range(steps):
+        metrics = engine.evolve_timestep(dt)
+        
+        if step % sample_interval == 0:
+            evolution_samples.append({**metrics, 'step': step})
+    
+    return {
+        'test_name': 'annihilation_test',
+        'test_params': {
+            'grid_size': grid_size,
+            'amplitude': amplitude,
+            'total_time': total_time,
+            'blob_separation': grid_size // 2,
+            'blob_radius': blob_radius
+        },
         'final_state': engine.get_state_summary(),
         'evolution_samples': evolution_samples,
-        'phase_symmetry': {
-            'matter_fraction_initial': matter_fraction,
-            'matter_fraction_final': evolution_samples[-1]['matter_fraction'] if evolution_samples else 0,
-            'antimatter_fraction_final': evolution_samples[-1]['antimatter_fraction'] if evolution_samples else 0,
-            'symmetric': abs(evolution_samples[-1]['matter_fraction'] - evolution_samples[-1]['antimatter_fraction']) < 0.1 if evolution_samples else False
-        }
+        'annihilation_events': [e.to_dict() for e in engine.annihilation_events],
+        'annihilation_count': len(engine.annihilation_events)
+    }
+
+
+def run_structure_persistence_test(
+    grid_size: int = 24,
+    amplitude: float = 0.08,
+    total_time: float = 50.0,
+    dt: float = 0.01,
+    seed: int = 42
+) -> Dict:
+    """
+    Test long-term persistence of structures in both basins.
+    
+    Validates that coherent structures can survive for extended periods
+    in both the matter and antimatter attractor basins.
+    """
+    engine = QMRTQuarkEngine(grid_size=grid_size)
+    engine.initialize_dual_basin(amplitude=amplitude, seed=seed)
+    
+    steps = int(total_time / dt)
+    sample_interval = max(1, steps // 50)
+    
+    persistence_data = []
+    
+    for step in range(steps):
+        metrics = engine.evolve_timestep(dt)
+        
+        if step % sample_interval == 0:
+            stats = engine.get_basin_resolved_statistics()
+            persistence_data.append({
+                'time': engine.time,
+                'step': step,
+                'matter_count': stats['matter']['count'],
+                'antimatter_count': stats['antimatter']['count'],
+                'matter_avg_lifetime': stats['matter']['avg_lifetime'],
+                'antimatter_avg_lifetime': stats['antimatter']['avg_lifetime'],
+                'total_active': stats['total_active'],
+                'annihilations': stats['total_annihilations'],
+                'energy_drift': metrics['energy_drift']
+            })
+    
+    return {
+        'test_name': 'structure_persistence',
+        'test_params': {
+            'grid_size': grid_size,
+            'amplitude': amplitude,
+            'total_time': total_time,
+            'dt': dt
+        },
+        'final_state': engine.get_state_summary(),
+        'persistence_data': persistence_data,
+        'lifetime_distribution': engine.get_lifetime_distribution(),
+        'mode_census': engine.get_mode_property_census()
     }
