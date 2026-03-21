@@ -188,6 +188,20 @@ Design and build programmable systems for a persistent simulation universe based
    - **Breathing mode**: ω = 0.4 (period 2.5s) detected ✅
    - Files: `/app/backend/qmrt_confinement/advanced_physics.py`
 
+7. ⭐ **DECISIVE TEST: Dispersion Relation** (MAJOR FINDING)
+   - **MEDIUM-LIMITED RELATIVISTIC-LIKE** dispersion discovered
+   - Velocity saturates at v_max ≈ 0.03-0.04 (effective "speed of light")
+   - Effective mass INCREASES with momentum: m_eff(p=0.5)=22 → m_eff(p=4)=116
+   - High momentum (p=8) causes stopping/reversal → medium resistance
+   - Approximate form: v(p) = c_eff × p / √(m₀²c_eff² + p²)
+   - Files: `/app/backend/qmrt_confinement/dispersion_test.py`
+   
+   Physical interpretation:
+   - EMERGENT RELATIVITY from substrate physics
+   - c_eff emerges from domain wall dynamics, not fundamental spacetime
+   - m₀ emerges from excitation structure
+   - This is a CANDIDATE EMERGENT RELATIVITY THEORY
+
 ### Key Physics Conclusions (Validated)
 1. **Barrier Stability**: Basins are phase-separated domains, not soliton attractors
 2. **Universal Reflection**: Elastic scattering dominates - no tunneling/merge windows
