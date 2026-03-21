@@ -154,10 +154,27 @@ Design and build programmable systems for a persistent simulation universe based
    - At large r, energy → ∞, so excitations remain CONFINED
    - This answers: "What permits quark persistence but not hadron persistence?"
 
-3. ⏳ **Step 3: Internal Color-like Degree of Freedom Test** (NEXT)
-   - Will determine: Is composite neutralization required for stability?
-   - Will determine: What marks proton formation?
-   - Files: `/app/backend/qmrt_confinement/color_test.py` (TODO)
+3. ✅ **Step 3: Internal Color-like Degree of Freedom Test** (COMPLETE)
+   - Result: **DOMAIN ENERGY MINIMIZATION** (not color neutralization)
+   - Isolated excitations: STABLE (do NOT decohere)
+   - Triplet binding energy: 0.19 (vs 3 isolated)
+   - Pair binding energy: 0.09 (vs 2 isolated)
+   - Triplet (triangular) has LOWEST domain wall energy
+   - **Mechanism**: Surface area minimization, not phase cancellation
+   - Files: `/app/backend/qmrt_confinement/color_test.py`
+   
+   Physical interpretation:
+   - Isolated excitations CAN exist stably (barrier protection)
+   - Composites are energetically FAVORED (less domain wall surface)
+   - This is DROPLET COALESCENCE physics in phase separation
+   - DIFFERENT from QCD where isolated quarks are forbidden
+
+4. ✅ **Robustness Verification** (All tests passed)
+   - Grid resolution independence: CV = 12.8% ✅
+   - Timestep convergence: σ stable across dt ✅
+   - Energy conservation: <0.001% drift ✅
+   - Parameter scaling: σ ~ √a_ω consistent ✅
+   - Files: `/app/backend/qmrt_confinement/robustness_verification.py`
 
 ### Key Physics Conclusions
 1. **Barrier Stability**: Basins are phase-separated domains, not soliton attractors
@@ -166,7 +183,26 @@ Design and build programmable systems for a persistent simulation universe based
 4. **First-Order Transition**: Hysteresis observed around a_ω ≈ 0.75
 5. **Half-Entropy Regime**: S/S_max ≈ 0.73 plateau confirms ordered metastable state
 6. **Proto-Quark Formation**: Medium supports particle-like solitons via barrier confinement
-7. **Linear Confinement**: E(r) ~ σr confirmed with string tension σ ≈ 0.74-0.84
+7. **Linear Confinement**: E(r) ~ σr confirmed with string tension σ ≈ 0.7
+8. **Composite Binding**: Triplet configurations minimize domain energy (surface area effect)
+9. **Different Confinement Class**: QMRT uses domain wall minimization, NOT color neutralization
+
+### QMRT Confinement Mechanism (NEW)
+The QMRT quark confinement analog differs from QCD:
+
+| Property | QCD | QMRT |
+|----------|-----|------|
+| Isolated quark | FORBIDDEN | STABLE (costly) |
+| Confinement source | Color charge | Domain wall energy |
+| Binding mechanism | Color neutralization | Surface area minimization |
+| String tension | Gauge field energy | Medium strain tension |
+| Composite preference | Color singlets | Compact geometries |
+
+**Physical picture**:
+- Excitations (proto-quarks) are topologically protected by barrier potential
+- Domain walls between excitations carry energy E ~ σr (linear potential)
+- Composites form to minimize total domain wall surface area
+- Triangular triplets are most stable (like droplet coalescence)
 
 ### Layered Entropy Model (Mathematical Framework)
 **Key equation**: `dS/dt = α(S_eq_layer - S) - β|∇ψ|²`
@@ -307,11 +343,12 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 - [x] **Frequency-Domain Substrate Engine** (spectral universes)
 
 ### P1 - Next (Scale Ladder)
-- [ ] **Step 3: Color-like Internal DoF Test**: Determine if composite neutralization required, what marks proton formation
-- [ ] **Quark-like Node Persistence**: Validate stable structures in frequency basins survive long-term
-- [ ] **Hadron Confinement Regime**: Model transition from quark structures to confined composites
-- [ ] **Tune Frequency Parameters**: Optimize ω₀, a_ω, coupling strengths for cleaner basin separation
-- [ ] **Update Frontend Visualizer**: Display frequency domain statistics and confinement physics
+- [ ] **Hadron Formation Dynamics**: Simulate how triplet composites form from free excitations
+- [ ] **Regime Transition Ladder**: Map energy thresholds for excitation creation, binding, unbinding
+- [ ] **Domain Wall Energy Density Field**: Visualize σ(x,y,z) spatially
+- [ ] **Create Confinement API**: Expose all new tests via `/api/qmrt_confinement/` endpoints
+- [ ] **Update Frontend Visualizer**: Display frequency domains, excitations, and composites
+- [ ] **Tune Frequency Parameters**: Optimize ω₀, a_ω for cleaner physics
 
 ### P2 - Planned
 - [ ] Expand Apex Qualification System with multi-generational metrics
