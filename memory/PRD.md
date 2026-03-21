@@ -180,6 +180,14 @@ Design and build programmable systems for a persistent simulation universe based
    - Topology check: **Winding number CONSERVED** (0% change, CV < 1%)
    - Files: `/app/backend/qmrt_confinement/theory_validation.py`
 
+6. ✅ **Advanced Physics Validation** (For full particle theory)
+   - Scaling: σ varies with grid size (need 48³, 64³ for convergence)
+   - Collisions: Bound states form, scattering occurs
+   - Radiation: Marginal detection (ratio 1.7x, need cleaner test)
+   - **Effective mass**: m_eff ≈ 2121 (linear force-response ✅)
+   - **Breathing mode**: ω = 0.4 (period 2.5s) detected ✅
+   - Files: `/app/backend/qmrt_confinement/advanced_physics.py`
+
 ### Key Physics Conclusions (Validated)
 1. **Barrier Stability**: Basins are phase-separated domains, not soliton attractors
 2. **Universal Reflection**: Elastic scattering dominates - no tunneling/merge windows
@@ -351,12 +359,13 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 - [x] **Frequency-Domain Substrate Engine** (spectral universes)
 
 ### P1 - Next (Scale Ladder)
-- [ ] **Hadron Formation Dynamics**: Simulate how triplet composites form from free excitations
-- [ ] **Regime Transition Ladder**: Map energy thresholds for excitation creation, binding, unbinding
-- [ ] **Domain Wall Energy Density Field**: Visualize σ(x,y,z) spatially
-- [ ] **Create Confinement API**: Expose all new tests via `/api/qmrt_confinement/` endpoints
-- [ ] **Update Frontend Visualizer**: Display frequency domains, excitations, and composites
-- [ ] **Tune Frequency Parameters**: Optimize ω₀, a_ω for cleaner physics
+- [ ] **Large-scale convergence**: Run at 32³, 48³, 64³ to confirm σ convergence
+- [ ] **Clean radiation test**: Oscillating excitation to detect emission
+- [ ] **Rotational modes**: Measure angular momentum spectrum
+- [ ] **Higher breathing harmonics**: Map full internal spectrum
+- [ ] **Multi-excitation phase space**: Comprehensive collision study
+- [ ] **Create Confinement API**: Expose all tests via `/api/qmrt_confinement/`
+- [ ] **Update Frontend Visualizer**: Display excitations, collisions, spectra
 
 ### P2 - Planned
 - [ ] Expand Apex Qualification System with multi-generational metrics
