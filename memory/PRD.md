@@ -155,19 +155,16 @@ Design and build programmable systems for a persistent simulation universe based
    - This answers: "What permits quark persistence but not hadron persistence?"
 
 3. ✅ **Step 3: Internal Color-like Degree of Freedom Test** (COMPLETE)
-   - Result: **DOMAIN ENERGY MINIMIZATION** (not color neutralization)
-   - Isolated excitations: STABLE (do NOT decohere)
-   - Triplet binding energy: 0.19 (vs 3 isolated)
-   - Pair binding energy: 0.09 (vs 2 isolated)
-   - Triplet (triangular) has LOWEST domain wall energy
-   - **Mechanism**: Surface area minimization, not phase cancellation
+   - Result: **GEOMETRY-DEPENDENT BINDING** 
+   - Isolated excitations: LONG-LIVED METASTABLE (do NOT decohere on tested timescales)
+   - Binding exists: composites have lower domain wall energy than isolated
+   - Tight cluster shows strongest binding
    - Files: `/app/backend/qmrt_confinement/color_test.py`
    
    Physical interpretation:
-   - Isolated excitations CAN exist stably (barrier protection)
-   - Composites are energetically FAVORED (less domain wall surface)
-   - This is DROPLET COALESCENCE physics in phase separation
-   - DIFFERENT from QCD where isolated quarks are forbidden
+   - Isolated excitations are LONG-LIVED (not proven infinitely stable)
+   - Composites are energetically FAVORED 
+   - Binding correlates with geometry (separation AND perimeter)
 
 4. ✅ **Robustness Verification** (All tests passed)
    - Grid resolution independence: CV = 12.8% ✅
@@ -176,7 +173,14 @@ Design and build programmable systems for a persistent simulation universe based
    - Parameter scaling: σ ~ √a_ω consistent ✅
    - Files: `/app/backend/qmrt_confinement/robustness_verification.py`
 
-### Key Physics Conclusions
+5. ✅ **Theory Validation** (Systematic tests per scientific rigor)
+   - Metastability lifetime: Grid-independent, perturbation-resistant
+   - Binding energy law: Measured for n=1,2,3,4 excitations
+   - Shape dependence: High correlation with both separation and perimeter
+   - Topology check: **Winding number CONSERVED** (0% change, CV < 1%)
+   - Files: `/app/backend/qmrt_confinement/theory_validation.py`
+
+### Key Physics Conclusions (Validated)
 1. **Barrier Stability**: Basins are phase-separated domains, not soliton attractors
 2. **Universal Reflection**: Elastic scattering dominates - no tunneling/merge windows
 3. **Continuum Limit**: Real physical domain walls (3/4 metrics converge)
@@ -184,25 +188,29 @@ Design and build programmable systems for a persistent simulation universe based
 5. **Half-Entropy Regime**: S/S_max ≈ 0.73 plateau confirms ordered metastable state
 6. **Proto-Quark Formation**: Medium supports particle-like solitons via barrier confinement
 7. **Linear Confinement**: E(r) ~ σr confirmed with string tension σ ≈ 0.7
-8. **Composite Binding**: Triplet configurations minimize domain energy (surface area effect)
-9. **Different Confinement Class**: QMRT uses domain wall minimization, NOT color neutralization
+8. **Winding Number Conservation**: Topological invariant preserved (validates topological protection)
+9. **Geometry-Dependent Binding**: Composites have lower energy; correlates with geometry
 
-### QMRT Confinement Mechanism (NEW)
-The QMRT quark confinement analog differs from QCD:
+### QMRT Confinement Mechanism (Revised per systematic validation)
 
-| Property | QCD | QMRT |
-|----------|-----|------|
-| Isolated quark | FORBIDDEN | STABLE (costly) |
-| Confinement source | Color charge | Domain wall energy |
-| Binding mechanism | Color neutralization | Surface area minimization |
-| String tension | Gauge field energy | Medium strain tension |
-| Composite preference | Color singlets | Compact geometries |
+**Validated claims:**
+- ✅ Domain walls carry energy E ~ σr (linear potential confirmed, R² = 0.999)
+- ✅ Winding number is CONSERVED → topological protection is valid terminology
+- ✅ Excitations are LONG-LIVED (grid-independent, perturbation-resistant)
+- ✅ Composites have lower domain wall energy than isolated excitations
 
-**Physical picture**:
-- Excitations (proto-quarks) are topologically protected by barrier potential
-- Domain walls between excitations carry energy E ~ σr (linear potential)
-- Composites form to minimize total domain wall surface area
-- Triangular triplets are most stable (like droplet coalescence)
+**Claims requiring more evidence:**
+- ⚠️ "Truly stable" → Should say "long-lived metastable" without infinite-time proof
+- ⚠️ "Surface area dominates" → Both separation and perimeter correlate strongly
+- ⚠️ "Triplet stronger than pair" → Need cleaner n=1,2,3,4 binding energy table
+
+| Property | Validated Status |
+|----------|-----------------|
+| Linear potential E~σr | ✅ Confirmed (R²=0.999) |
+| Topological protection | ✅ Winding number conserved |
+| Long-lived excitations | ✅ Grid/perturbation independent |
+| Composite binding | ✅ Lower energy than isolated |
+| Geometry dependence | ✅ Correlates with both sep & perimeter |
 
 ### Layered Entropy Model (Mathematical Framework)
 **Key equation**: `dS/dt = α(S_eq_layer - S) - β|∇ψ|²`
