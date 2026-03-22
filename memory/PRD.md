@@ -237,6 +237,23 @@ Design and build programmable systems for a persistent simulation universe based
 8. **Winding Number Conservation**: Topological invariant preserved (validates topological protection)
 9. **Geometry-Dependent Binding**: Composites have lower energy; correlates with geometry
 10. **VACUUM DISPERSION**: Phonon-like with v_max ≈ 3.5, threshold p ≈ 6-8 (NEW)
+11. **OPTICAL PHONON BRANCH**: ω(k) ≈ constant → zero group velocity for linear waves (NEW)
+12. **SOLITONIC TRANSPORT**: Only nonlinear excitations propagate (threshold momentum required) (NEW)
+
+### CORRECTED PHYSICS CLASSIFICATION (December 2025)
+
+**CRITICAL**: QMRT is NOT "emergent relativity". It IS "condensed matter / phonon-like dynamics".
+
+| Property | Classification |
+|----------|----------------|
+| Substrate type | Nonlinear optical phonon medium |
+| Linear dispersion | Flat (ω ≈ const), v_group ≈ 0 |
+| Nonlinear transport | Solitonic, v → v_max with threshold |
+| Speed limit origin | Collective medium response (NOT spacetime) |
+| Confinement | Domain wall tension (linear potential) |
+| Excitations | Topological defects / collective modes |
+
+**Reference document**: `/app/memory/QMRT_PHYSICS_CLASSIFICATION.md`
 
 ### QMRT Confinement Mechanism (Revised per systematic validation)
 
@@ -377,6 +394,13 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 | `/api/qmrt_frequency/test_spectral_universes` | POST | Test spectral universe formation |
 | `/api/qmrt_frequency/initialize` | POST | Initialize frequency engine |
 | `/api/qmrt_frequency/{id}/evolve` | POST | Evolve frequency engine |
+| `/api/qmrt_confinement/physics_classification` | GET | Corrected physics classification |
+| `/api/qmrt_confinement/theory_summary` | GET | Comprehensive theory summary |
+| `/api/qmrt_confinement/test_confinement` | POST | Test linear confinement E~σr |
+| `/api/qmrt_confinement/test_vacuum_dispersion` | POST | Test vacuum phonon-like dispersion |
+| `/api/qmrt_confinement/analyze_threshold` | POST | Analyze threshold momentum origin |
+| `/api/qmrt_confinement/parameter_sweep` | POST | Sweep a_ω, K_ω parameters |
+| `/api/qmrt_confinement/summary_table` | GET | Quick reference of all validated physics |
 
 ## Test Coverage
 - **Backend tests**: 
@@ -396,15 +420,19 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 - [x] QMRT Canonical Hamiltonian Engine with Yoshida4 integrator
 - [x] Quark-Level Dual-Basin Attractor Engine (validates ontology)
 - [x] **Frequency-Domain Substrate Engine** (spectral universes)
+- [x] **Vacuum Limit Test** - Discovered phonon-like dispersion (December 2025)
+- [x] **Confinement API** - `/api/qmrt_confinement/` endpoints (December 2025)
+- [x] **Physics Classification Document** - `/app/memory/QMRT_PHYSICS_CLASSIFICATION.md`
 
 ### P1 - Next (Scale Ladder)
+- [x] **Create Confinement API**: Expose all tests via `/api/qmrt_confinement/` ✅ DONE
 - [ ] **Large-scale convergence**: Run at 32³, 48³, 64³ to confirm σ convergence
 - [ ] **Clean radiation test**: Oscillating excitation to detect emission
 - [ ] **Rotational modes**: Measure angular momentum spectrum
 - [ ] **Higher breathing harmonics**: Map full internal spectrum
 - [ ] **Multi-excitation phase space**: Comprehensive collision study
-- [ ] **Create Confinement API**: Expose all tests via `/api/qmrt_confinement/`
 - [ ] **Update Frontend Visualizer**: Display excitations, collisions, spectra
+- [ ] **Connect higher-level cosmology/particle layers** using corrected physics
 
 ### P2 - Planned
 - [ ] Expand Apex Qualification System with multi-generational metrics
