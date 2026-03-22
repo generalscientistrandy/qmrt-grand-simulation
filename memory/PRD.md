@@ -439,6 +439,36 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 - [x] **Field Theory Derivation** - `/app/backend/qmrt_confinement/field_theory.py` (December 2025)
 - [x] **Lagrangian Theory** - Formal derivation with Noether, stress tensor, soliton mass `/app/memory/QMRT_LAGRANGIAN_THEORY.md`
 
+### P1 - In Progress (Multi-Branch Theory)
+
+**December 2025 - MAJOR DISCOVERY: Multi-Branch Eigenmode Framework**
+
+Key paradigm shift from "what equation creates particles?" to:
+> "For what coupling strengths does the medium admit non-radiating localized eigenmodes?"
+
+**Findings**:
+- [x] **Normal Mode Spectrum Analysis** - 2-branch system measured (both gapped)
+- [x] **Multi-Branch Framework** - N-field coupled Lagrangian formulated
+- [x] **Non-Radiating Mode Conditions** - Found 60 stable configurations (3+ branches)
+- [x] **QMRT v2 Limitation Identified** - 2 branches insufficient for stable particles
+- [ ] **Implement QMRT v3** - N-branch engine with configurable coupling matrix
+- [ ] **Verify non-radiating modes numerically** - Test localized excitations in 3-branch system
+
+**Key Files**:
+- `/app/backend/qmrt_confinement/normal_mode_analysis.py` - Full eigenvalue computation
+- `/app/backend/qmrt_confinement/multi_branch_eigenmode.py` - N-branch framework
+- `/app/backend/qmrt_confinement/non_radiating_search.py` - Stable mode search
+- `/app/memory/QMRT_MULTIBRANCH_ANALYSIS.md` - Comprehensive documentation
+
+**Physics Discovery**:
+| System | Non-Radiating Modes | Why |
+|--------|---------------------|-----|
+| 2-branch (current) | NO | Both modes can radiate into each other |
+| 3-branch (5:1 mass spread) | YES | Lowest mode below all thresholds |
+
+**Answer to "What is a particle?"**:
+> A particle = non-radiating eigenmode of the multi-branch coupling matrix
+
 ### P1 - Next (Scale Ladder)
 - [x] **Create Confinement API**: Expose all tests via `/api/qmrt_confinement/` ✅ DONE
 - [ ] **Large-scale convergence**: Run at 32³, 48³, 64³ to confirm σ convergence
