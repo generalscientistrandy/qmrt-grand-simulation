@@ -435,6 +435,8 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 - [x] **Vacuum Limit Test** - Discovered phonon-like dispersion (December 2025)
 - [x] **Confinement API** - `/api/qmrt_confinement/` endpoints (December 2025)
 - [x] **Physics Classification Document** - `/app/memory/QMRT_PHYSICS_CLASSIFICATION.md`
+- [x] **Numerical Artifact Verification** - Gap is physical, not numerical (December 2025)
+- [x] **Field Theory Derivation** - `/app/backend/qmrt_confinement/field_theory.py` (December 2025)
 
 ### P1 - Next (Scale Ladder)
 - [x] **Create Confinement API**: Expose all tests via `/api/qmrt_confinement/` ✅ DONE
