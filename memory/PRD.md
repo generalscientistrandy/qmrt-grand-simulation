@@ -437,6 +437,7 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 - [x] **Physics Classification Document** - `/app/memory/QMRT_PHYSICS_CLASSIFICATION.md`
 - [x] **Numerical Artifact Verification** - Gap is physical, not numerical (December 2025)
 - [x] **Field Theory Derivation** - `/app/backend/qmrt_confinement/field_theory.py` (December 2025)
+- [x] **Lagrangian Theory** - Formal derivation with Noether, stress tensor, soliton mass `/app/memory/QMRT_LAGRANGIAN_THEORY.md`
 
 ### P1 - Next (Scale Ladder)
 - [x] **Create Confinement API**: Expose all tests via `/api/qmrt_confinement/` ✅ DONE
