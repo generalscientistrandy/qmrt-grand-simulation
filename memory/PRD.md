@@ -253,6 +253,18 @@ Design and build programmable systems for a persistent simulation universe based
 | Confinement | Domain wall tension (linear potential) |
 | Excitations | Topological defects / collective modes |
 
+**NUMERICAL ARTIFACT VERIFICATION (December 2025):**
+| Test | Result | Verdict |
+|------|--------|---------|
+| Grid independence | CV = 0% | ✓ PHYSICAL |
+| Timestep independence | CV = 0% | ✓ PHYSICAL |
+| Gap → 0 as a_ω → 0 | YES | ✓ MODEL-DEPENDENT |
+| Energy conservation | <10^-9 | ✓ STABLE |
+
+**TWO-BRANCH DISPERSION VERIFIED:**
+1. **Optical branch**: ω ≈ const, v_group ≈ 0, f_gap ~ √a_ω
+2. **Soliton branch**: v → v_max ≈ 2.5-3.0, threshold p ≈ 4-8, v ~ E^0.39
+
 **Reference document**: `/app/memory/QMRT_PHYSICS_CLASSIFICATION.md`
 
 ### QMRT Confinement Mechanism (Revised per systematic validation)
