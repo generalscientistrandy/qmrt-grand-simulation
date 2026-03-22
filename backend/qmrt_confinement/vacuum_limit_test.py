@@ -74,6 +74,10 @@ def initialize_uniform_substrate(
     engine.tau = np.zeros((n, n, n))
     engine.phi = np.zeros((n, n, n))
     
+    # Precompute spectral coefficients (required for evolution)
+    engine._precompute_spectral()
+    engine.initial_energy = engine.compute_total_energy()
+    
     # Let system relax to true equilibrium
     for _ in range(stabilization_steps):
         engine.evolve_timestep(dt)

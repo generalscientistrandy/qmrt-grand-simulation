@@ -204,6 +204,28 @@ Design and build programmable systems for a persistent simulation universe based
    - Momentum dissipates into medium modes (phonon drag)
    - Still physically interesting, but different physics!
 
+8. ✅ **VACUUM LIMIT TEST** (December 2025 - MAJOR MILESTONE)
+   - Tested excitation propagation in UNIFORM substrate (no domain walls)
+   - Files: `/app/backend/qmrt_confinement/vacuum_limit_test.py`, `vacuum_limit_quick.py`
+   
+   **KEY FINDINGS:**
+   - **Threshold momentum**: p_threshold ≈ 6-8
+     - Below threshold: excitation disperses or moves BACKWARD
+     - Above threshold: excitation propagates FORWARD
+   - **Velocity saturation**: v_max ≈ 3.5 (grid units/time)
+     - Fit: v = 3.57 * (1 - exp(-p/20.5)) with R² = 0.96
+     - Converges with grid size (physical, not numerical artifact)
+   - **Dispersion type**: PHONON-LIKE (Medium-Limited)
+     - NOT Galilean (would be v = p/m for all p)
+     - NOT relativistic (would be v = cp/√(m²c²+p²) monotonic)
+     - IS medium-limited with threshold
+   
+   **PHYSICAL INTERPRETATION:**
+   - QMRT vacuum behaves like CONDENSED MATTER, not empty spacetime
+   - v_max is intrinsic WAVE SPEED of substrate (like sound speed in solid)
+   - "Particles" are COLLECTIVE MODES of the medium
+   - Speed limit arises from collective dynamics, not relativistic geometry
+
 ### Key Physics Conclusions (Validated)
 1. **Barrier Stability**: Basins are phase-separated domains, not soliton attractors
 2. **Universal Reflection**: Elastic scattering dominates - no tunneling/merge windows
@@ -214,6 +236,7 @@ Design and build programmable systems for a persistent simulation universe based
 7. **Linear Confinement**: E(r) ~ σr confirmed with string tension σ ≈ 0.7
 8. **Winding Number Conservation**: Topological invariant preserved (validates topological protection)
 9. **Geometry-Dependent Binding**: Composites have lower energy; correlates with geometry
+10. **VACUUM DISPERSION**: Phonon-like with v_max ≈ 3.5, threshold p ≈ 6-8 (NEW)
 
 ### QMRT Confinement Mechanism (Revised per systematic validation)
 
