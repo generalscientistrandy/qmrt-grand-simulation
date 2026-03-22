@@ -163,9 +163,55 @@ The factor ~1.8 may arise from:
    - 3D geometry corrections?
    - Boundary/curvature effects?
 
-3. **What are the propagating solitons?**
-   - NOT kinks (v_max >> c = 0.22)
-   - Likely breathers or oscillons
+3. ~~**What are the propagating solitons?**~~ **RESOLVED**
+   - Crossover-regime excitations (A ~ ω₀)
+   - Intermediate between small and large amplitude limits
+   - Self-trapping dynamics with M_eff ~ E^0.31
+
+---
+
+## 5️⃣ COLLECTIVE COORDINATE ANALYSIS
+
+### Soliton Effective Mass
+
+For a localized excitation with amplitude A and width W:
+
+$$M_{eff} = M \cdot \frac{A^2}{W} \cdot (\text{shape integral})$$
+
+**Small amplitude (A << ω₀):**
+- E ∝ A² (quadratic potential)
+- W = const
+- M_eff ∝ A² ∝ E
+
+**Large amplitude (A >> ω₀):**
+- E ∝ A (quartic potential dominates)
+- W ∝ 1/A
+- M_eff ∝ A ∝ E
+
+### Measured Exponents
+
+| Relation | Measured | Interpretation |
+|----------|----------|----------------|
+| v ~ E^α | α = 0.23 | Sub-free-particle |
+| E ~ p^β | β = 1.86 | Between free (2) and relativistic (1) |
+| v ~ p^γ | γ = 0.38 | Sub-linear |
+| M_eff ~ E^δ | δ = 0.31 | Increasing effective mass |
+
+### Crossover Interpretation
+
+The exponents indicate **crossover regime** where A ~ ω₀:
+- Both quadratic and quartic potential terms contribute
+- Effective E ~ A^1.85 (between 1 and 2)
+- Self-trapping: energy goes into internal modes
+
+### Phenomenological Formula
+
+$$v(E) = v_{max} \cdot \left[1 - \left(\frac{E_0}{E}\right)^\beta\right]^{1/2}$$
+
+Parameters:
+- v_max ≈ 2.5-3.0 (saturation velocity)
+- E₀ = threshold energy
+- β ≈ 0.5-1 (crossover parameter)
 
 ---
 
