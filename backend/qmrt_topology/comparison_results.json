@@ -1,0 +1,62 @@
+{
+  "comparison_date": "December 2025",
+  "scores": {
+    "A": 6,
+    "B": 6,
+    "C": 7
+  },
+  "max_score": 8,
+  "best_match": "C",
+  "criteria": {
+    "Charge quantization": {
+      "real_universe": true,
+      "A": true,
+      "B": true,
+      "C": true
+    },
+    "Spin-\u00bd fermions": {
+      "real_universe": true,
+      "A": false,
+      "B": true,
+      "C": false
+    },
+    "Particle stability": {
+      "real_universe": true,
+      "A": true,
+      "B": false,
+      "C": true
+    },
+    "Antiparticles": {
+      "real_universe": true,
+      "A": true,
+      "B": true,
+      "C": true
+    },
+    "Pair annihilation": {
+      "real_universe": true,
+      "A": true,
+      "B": true,
+      "C": true
+    },
+    "Gauge interactions": {
+      "real_universe": true,
+      "A": false,
+      "B": false,
+      "C": true
+    },
+    "Flux quantization": {
+      "real_universe": true,
+      "A": true,
+      "B": true,
+      "C": true
+    },
+    "Energy conservation": {
+      "real_universe": true,
+      "A": true,
+      "B": true,
+      "C": true
+    }
+  },
+  "recommendation": "Staged A\u2192B\u2192C approach, with B+C integration for full theory",
+  "key_finding": "Option B produces spin-\u00bd (360\u00b0 \u2192 -\u03c8 confirmed)"
+}
