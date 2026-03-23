@@ -439,34 +439,41 @@ Files: `/app/backend/qmrt_validation/layered_entropy.py`
 - [x] **Field Theory Derivation** - `/app/backend/qmrt_confinement/field_theory.py` (December 2025)
 - [x] **Lagrangian Theory** - Formal derivation with Noether, stress tensor, soliton mass `/app/memory/QMRT_LAGRANGIAN_THEORY.md`
 
-### P0 - COMPLETE: Natural Frequency Quantization Discovery
+### P0 - COMPLETE: Classical Nonlinear Field Dynamics
 
-**December 2025 - REVOLUTIONARY FINDING: Emergent Quantization**
+**December 2025 - VERIFIED: Klein-Gordon Nonlinear Eigenmode**
 
 QMRT v3 oscillons exhibit a **natural breathing frequency** that is:
 - Universal (CV = 0.0% across initial conditions)
 - Parameter-independent (plateau across g_rt ∈ [2, 12])
 - Collision-invariant (preserved through mergers)
-- Shows discrete mode bifurcation
+- Dimension-independent (1D, 2D, 3D all give ω/m_tau ≈ 2)
 
 **Key Results**:
 | Finding | Result | Status |
 |---------|--------|--------|
 | Universal ω | 31.5 (CV = 0%) | ✅ CONFIRMED |
-| Resonance plateau | g_rt ∈ [2, 12] | ✅ CONFIRMED |
-| Sharp bifurcation | A_c ≈ 2.925 | ✅ CONFIRMED |
-| Collision inheritance | ratio = 1.00 | ✅ CONFIRMED |
-| Higher harmonics | 2:1 ratio | ✅ DETECTED |
+| ω/m_tau scaling | 1.97 ± 0.03 | ✅ CONFIRMED |
+| Energy exchange | corr = -1.000 | ✅ HARMONIC OSCILLATOR |
+| Dimension test | CV = 1.4% | ✅ MEDIUM-INTRINSIC |
 
-**Theoretical Significance**:
-> "Quantum-like discreteness emerges from classical nonlinear dynamics
->  without requiring fundamental quantum mechanics."
+**Honest Scientific Status**:
+> "We are currently probing microscopic relativistic field dynamics that could form the structural basis of an emergent quantum description."
+
+This is **classical Klein-Gordon nonlinear medium physics** - respectable territory, but NOT yet quantum mechanics.
+
+**NOT YET SHOWN (Required for QM)**:
+- ❌ Planck constant emergence (ℏ)
+- ❌ Discrete energy eigenvalues (E_n = nℏω)
+- ❌ Statistical measurement behavior
+- ❌ Uncertainty relations
+- ❌ Field quantization algebra
+- ❌ Particle creation/annihilation
 
 **Key Files**:
-- `/app/backend/qmrt_confinement/equilibrium_manifold.py` - Phase space mapping
-- `/app/backend/qmrt_confinement/quantization_search.py` - Lifetime/energy tests
-- `/app/backend/qmrt_confinement/frequency_quantization.py` - Deep analysis
-- `/app/memory/QMRT_V3_NATURAL_QUANTIZATION.md` - Full documentation
+- `/app/backend/qmrt_confinement/theoretical_validation.py` - Three-test validation
+- `/app/backend/qmrt_confinement/numerical_independence_v2.py` - m_tau scaling
+- `/app/memory/QMRT_V3_THEORETICAL_VALIDATION.md` - Full documentation
 
 ### P1 - In Progress (Multi-Branch Theory)
 
@@ -490,9 +497,11 @@ Key paradigm shift from "what equation creates particles?" to:
 - `/app/backend/qmrt_confinement/multi_branch_eigenmode.py` - N-branch framework
 - `/app/memory/QMRT_MULTIBRANCH_ANALYSIS.md` - Comprehensive documentation
 
-**Answer to "What is a particle?"**:
-> A particle = oscillating coherence island on the dynamic equilibrium manifold,
-> naturally quantized at the medium resonance frequency ω ≈ 31.5
+**Answer to "What is a particle?" (Current understanding)**:
+> A particle = oscillating coherence island in a classical nonlinear field,
+> with characteristic frequency ω ≈ 2×m_tau determined by the medium.
+
+**Note**: This is classical field theory. True particle status would require showing quantum markers (discrete spectra, uncertainty, creation/annihilation).
 
 ### P1 - Next (Deepen Natural Quantization)
 - [ ] **Derive ω_natural analytically**: Full variational calculation from Lagrangian

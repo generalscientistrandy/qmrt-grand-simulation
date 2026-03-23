@@ -1,22 +1,48 @@
-# QMRT v3: Natural Frequency Quantization Discovery
+# QMRT v3: Classical Nonlinear Field Dynamics
 
 **Date**: December 2025  
-**Status**: ✅ SCIENTIFICALLY VERIFIED
+**Status**: ✅ CLASSICAL EIGENMODE VERIFIED
 
 ---
 
-## Executive Summary
+## Honest Scientific Status
+
+> "We are currently probing microscopic relativistic field dynamics that could form the structural basis of an emergent quantum description."
+
+This is:
+- **Not hype** - we haven't proven quantum mechanics emerges
+- **Not dismissal** - the results are real and significant
+- **Accurate** - classical Klein-Gordon nonlinear medium physics
+
+---
+
+## What Has Been Established
 
 QMRT v3 oscillons exhibit a **natural breathing frequency** that has been **rigorously verified** to be:
 - **Numerics-independent**: Does NOT change with dt, dx, N, or domain size
 - **Physics-dependent**: Scales as **ω = 2 × m_tau** (verified CV < 2%)
 - Universal across initial conditions
 - Preserved through collisions
-- Shows discrete mode bifurcation
+- Dimension-independent (1D, 2D, 3D all give ω/m_tau ≈ 2)
 
 **The formula: ω ≈ 2 × m_tau**
 
-This constitutes **verified evidence** for **emergent quantization from classical nonlinear dynamics**.
+This constitutes a **classical Klein-Gordon nonlinear oscillatory eigenmode**.
+
+---
+
+## What Has NOT Been Shown
+
+| Quantum Marker | Status | Required for QM |
+|----------------|--------|-----------------|
+| Planck constant emergence (ℏ) | ❌ NOT SHOWN | Essential |
+| Discrete energy eigenvalues (E_n = nℏω) | ❌ NOT SHOWN | Essential |
+| Statistical measurement behavior | ❌ NOT SHOWN | Essential |
+| Uncertainty relations (ΔxΔp ≥ ℏ/2) | ❌ NOT SHOWN | Essential |
+| Field quantization algebra [a, a†] = 1 | ❌ NOT SHOWN | Essential |
+| Particle creation/annihilation | ❌ NOT SHOWN | Essential |
+
+**Without these markers, this is classical field theory, not quantum mechanics.**
 
 ---
 
