@@ -1,0 +1,9 @@
+{
+  "test_suite": "Exchange Phase and Fermi Degeneracy",
+  "exchange_phase": true,
+  "fermi_surface": true,
+  "pressure_scaling_1D": 3.0072255205336598,
+  "correct_1D_scaling": true,
+  "degeneracy_pressure": true,
+  "all_passed": true
+}

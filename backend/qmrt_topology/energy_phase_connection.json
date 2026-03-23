@@ -1,0 +1,8 @@
+{
+  "test_suite": "Energy-Phase Connection",
+  "conclusion": "Exchange phase derived from energy penalty",
+  "antisymmetric_lower_energy": true,
+  "mathematical_identity": "Psi_A(r,r) = 0 exactly",
+  "ground_state": "antisymmetric",
+  "exchange_phase": "pi (derived, not postulated)"
+}
