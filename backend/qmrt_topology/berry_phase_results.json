@@ -1,0 +1,7 @@
+{
+  "test_suite": "Berry Phase Level 2",
+  "full_loop_mean_phase_pi": -0.019730810014851465,
+  "exchange_mean_phase_pi": 0.017909759300139393,
+  "antisymmetric_phase_pi": 0.0,
+  "conclusion": "Berry phase tests provide geometric insight but require refined defect model for exact \u03c0"
+}

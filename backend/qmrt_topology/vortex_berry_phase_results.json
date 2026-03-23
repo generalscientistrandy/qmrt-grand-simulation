@@ -1,0 +1,8 @@
+{
+  "test_suite": "Vortex Berry Phase",
+  "single_vortex_phase_pi": -0.01134893549993021,
+  "full_loop_phase_pi": 0.03689594669666274,
+  "half_exchange_phase_pi": 0.022294057484303145,
+  "fermion_like": false,
+  "conclusion": "Level 2 validation: topological exchange phase"
+}
