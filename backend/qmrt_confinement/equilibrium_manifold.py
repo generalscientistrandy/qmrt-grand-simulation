@@ -95,7 +95,8 @@ Phase diagram in coupling-mass space:
     # Results storage
     phase_map = np.zeros((len(g_rt_values), len(m_tau_values)), dtype=object)
     
-    print(f"\n{'g_rt \\ m_tau':<12}", end="")
+    header = 'g_rt \\ m_tau'
+    print(f"\n{header:<12}", end="")
     for m in m_tau_values:
         print(f"{m:>8}", end="")
     print()
