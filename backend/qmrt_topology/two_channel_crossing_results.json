@@ -1,0 +1,10 @@
+{
+  "test": "Two_Channel_Asymmetric_Crossing",
+  "model": "\u03a6_eff = 2\u03c0(a_+ w_+ - a_- w_-)",
+  "fermion_condition": "a_-/a_+ = 1/2",
+  "coupling_sweep": {
+    "0.0": {
+      "a_minus": 0.0,
+      "phase_pi": 2.0,
+      "holonomy": 1.0,
+      "is_fermion": 
