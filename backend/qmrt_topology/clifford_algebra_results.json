@@ -1,0 +1,10 @@
+{
+  "test": "B3_Clifford_Algebra_Emergence",
+  "pauli_satisfies_clifford": true,
+  "medium_frame_orthonormal": true,
+  "medium_alone_gives_clifford": false,
+  "medium_plus_pauli_gives_clifford": true,
+  "verdict": "CLIFFORD_NOT_EMERGENT",
+  "implication": "SU(2) is model input, fermions are contained not explained",
+  "open_direction": "Web/junction topology might force Clifford - unexplored"
+}
