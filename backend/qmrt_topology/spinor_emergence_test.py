@@ -623,6 +623,360 @@ If these differ by factor of -1, SU(2) has emerged!
     return total_phase
 
 
+def diagnostic_spinor_coherence(engine: SpinorEmergenceEngine) -> float:
+    """
+    DIAGNOSTIC 1: Spinor coherence magnitude
+    
+    C(t) = ⟨|U†U - I|⟩
+    
+    This tells us whether the internal frame stabilizes or becomes chaotic.
+    For SU(2): U†U = I always (unitarity), but we track deviation from identity
+    in the QUATERNION sense: how far is (a0, a1, a2, a3) from (1, 0, 0, 0)?
+    """
+    # Deviation from identity: |a0 - 1|² + |a1|² + |a2|² + |a3|²
+    deviation = (engine.U.a0 - 1)**2 + engine.U.a1**2 + engine.U.a2**2 + engine.U.a3**2
+    return float(np.mean(np.sqrt(deviation)))
+
+
+def diagnostic_defect_locking(engine: SpinorEmergenceEngine, center: Tuple[float, float], radius: float = 10.0) -> Dict:
+    """
+    DIAGNOSTIC 2: Defect-attached orientation locking
+    
+    Measure correlation between defect core position and SU(2) orientation.
+    Does U stay bound to defects or diffuse away?
+    
+    We check:
+    - Spinor structure magnitude at defect core vs far away
+    - Gradient of spinor field (should be concentrated near defect)
+    """
+    n = engine.grid_size
+    cx, cy = int(center[0]), int(center[1])
+    
+    # Spinor deviation from identity
+    deviation = np.sqrt((engine.U.a0 - 1)**2 + engine.U.a1**2 + engine.U.a2**2 + engine.U.a3**2)
+    
+    # At defect core (average over small region)
+    core_region = deviation[max(0,cx-3):min(n,cx+4), max(0,cy-3):min(n,cy+4)]
+    core_deviation = np.mean(core_region)
+    
+    # Far from defect (outside radius)
+    X, Y = np.meshgrid(np.arange(n), np.arange(n), indexing='ij')
+    r_from_center = np.sqrt((X - cx)**2 + (Y - cy)**2)
+    far_mask = r_from_center > 2 * radius
+    far_deviation = np.mean(deviation[far_mask]) if np.sum(far_mask) > 0 else 0.0
+    
+    # Gradient magnitude (should be high near defect if locked)
+    grad_a1_x = np.gradient(engine.U.a1, axis=0)
+    grad_a1_y = np.gradient(engine.U.a1, axis=1)
+    grad_mag = np.sqrt(grad_a1_x**2 + grad_a1_y**2)
+    
+    core_grad = np.mean(grad_mag[max(0,cx-5):min(n,cx+6), max(0,cy-5):min(n,cy+6)])
+    
+    # Locking ratio: core_deviation / far_deviation
+    # If > 1: spinor structure concentrated at defect (GOOD)
+    # If ≈ 1: spinor diffused everywhere (BAD)
+    locking_ratio = core_deviation / (far_deviation + 1e-10)
+    
+    return {
+        'core_deviation': float(core_deviation),
+        'far_deviation': float(far_deviation),
+        'locking_ratio': float(locking_ratio),
+        'core_gradient': float(core_grad),
+        'is_locked': bool(locking_ratio > 1.5)
+    }
+
+
+def diagnostic_rotation_holonomy(engine: SpinorEmergenceEngine, center: Tuple[float, float], radius: float = 15.0) -> Dict:
+    """
+    DIAGNOSTIC 3: Rotation holonomy test
+    
+    Numerically rotate around defect and compute accumulated phase.
+    Check if 360° → consistently -1 (not random).
+    
+    This is THE DECISIVE TEST.
+    """
+    n = engine.grid_size
+    n_loops = 5  # Multiple loops to check consistency
+    n_points = 72  # Points per loop
+    
+    loop_phases = []
+    
+    for loop_idx in range(n_loops):
+        # Slightly different radii to check robustness
+        r = radius + loop_idx * 2
+        
+        angles = np.linspace(0, 2*np.pi, n_points + 1)
+        
+        # Track the spinor's quaternion components around the loop
+        a0_values = []
+        a1_values = []
+        a2_values = []
+        a3_values = []
+        
+        for angle in angles:
+            x = int(center[0] + r * np.cos(angle)) % n
+            y = int(center[1] + r * np.sin(angle)) % n
+            
+            a0_values.append(engine.U.a0[x, y])
+            a1_values.append(engine.U.a1[x, y])
+            a2_values.append(engine.U.a2[x, y])
+            a3_values.append(engine.U.a3[x, y])
+        
+        # Compute the SU(2) holonomy:
+        # Product of infinitesimal rotations around the loop
+        # For spinors, this should give -1 for a single-wound vortex
+        
+        # Alternative: measure winding of the rotation angle θ
+        # where U = cos(θ/2) I + i sin(θ/2) n̂·σ
+        theta_values = 2 * np.arccos(np.clip(a0_values, -1, 1))
+        
+        # Phase accumulation from the spinor components
+        # Using a₁ + i a₂ as a complex number tracking in-plane rotation
+        complex_spinor = np.array(a1_values) + 1j * np.array(a2_values)
+        
+        # Unwrap the phase
+        spinor_phase = np.angle(complex_spinor + 1e-10)
+        spinor_phase_unwrapped = np.unwrap(spinor_phase)
+        
+        # Total phase winding
+        total_winding = spinor_phase_unwrapped[-1] - spinor_phase_unwrapped[0]
+        
+        # For SU(2) holonomy around vortex: should be π (giving -1 factor)
+        loop_phases.append(total_winding)
+    
+    loop_phases = np.array(loop_phases)
+    mean_phase = np.mean(loop_phases)
+    std_phase = np.std(loop_phases)
+    
+    # Check if consistently π (or -π, depending on convention)
+    is_fermion_holonomy = (np.abs(np.abs(mean_phase) - np.pi) < 0.5) and (std_phase < 0.3)
+    
+    return {
+        'loop_phases_pi': [float(p / np.pi) for p in loop_phases],
+        'mean_phase_pi': float(mean_phase / np.pi),
+        'std_phase_pi': float(std_phase / np.pi),
+        'is_consistent': bool(std_phase < 0.3),
+        'is_fermion_holonomy': bool(is_fermion_holonomy),
+        'verdict': 'FERMION (-1)' if is_fermion_holonomy else ('BOSON (+1)' if np.abs(mean_phase) < 0.5 else 'UNDETERMINED')
+    }
+
+
+def run_spinor_emergence_with_diagnostics():
+    """
+    THE DECISIVE SIMULATION with full diagnostics.
+    
+    Three key diagnostics monitored:
+    1. Spinor coherence magnitude: C(t) = ⟨|U†U - I|⟩
+    2. Defect-attached orientation locking
+    3. Rotation holonomy test: 360° → -1?
+    """
+    print("#" * 80)
+    print("#  QMRT: SPINOR EMERGENCE - DECISIVE SIMULATION")
+    print("#" * 80)
+    print("""
+THE EXPERIMENT:
+  Start with U = I (no spinor structure)
+  Let ∂_t U = f(τ, ∇σ) evolve
+  
+DIAGNOSTICS:
+  1. Coherence: Does U stabilize or go chaotic?
+  2. Locking: Does spinor stay bound to defect?
+  3. Holonomy: Does 360° loop give -1?
+  
+SUCCESS CRITERIA:
+  - Random initial → organized final
+  - Spinor locked to defect core
+  - 360° → -1 WITHOUT manual rule
+""")
+    
+    # Use refined parameters
+    params = SpinorEmergenceParams(
+        sigma_threshold=0.5,
+        torsion_coupling=2.0,     # Strong enough to drive dynamics
+        strain_coupling=0.5,
+        dt=0.005,                 # Small timestep for stability
+        diffusion=0.05,           # REDUCED: avoid over-damping
+        dx=1.0
+    )
+    
+    engine = SpinorEmergenceEngine(grid_size=80, params=params)  # Higher resolution
+    
+    # Setup vortex medium
+    center = (40, 40)
+    engine.setup_vortex_medium(center, circulation=2.0)
+    
+    # Add small random perturbation to break symmetry
+    np.random.seed(42)
+    engine.U.a1 += 0.01 * np.random.randn(80, 80)
+    engine.U.a2 += 0.01 * np.random.randn(80, 80)
+    engine.U.a3 += 0.01 * np.random.randn(80, 80)
+    engine.U.normalize()
+    
+    print("\n" + "=" * 60)
+    print("INITIAL STATE")
+    print("=" * 60)
+    
+    coherence_0 = diagnostic_spinor_coherence(engine)
+    locking_0 = diagnostic_defect_locking(engine, center)
+    
+    print(f"  Spinor coherence (deviation from I): {coherence_0:.6f}")
+    print(f"  Core/far deviation ratio: {locking_0['locking_ratio']:.4f}")
+    print(f"  Defect locking: {'YES' if locking_0['is_locked'] else 'NO'}")
+    
+    # Time evolution with diagnostics
+    print("\n" + "=" * 60)
+    print("TIME EVOLUTION")
+    print("=" * 60)
+    
+    n_checkpoints = 10
+    steps_per_checkpoint = 200
+    total_steps = n_checkpoints * steps_per_checkpoint
+    
+    coherence_history = [coherence_0]
+    locking_history = [locking_0['locking_ratio']]
+    time_history = [0.0]
+    
+    print(f"\n{'Time':>8} | {'Coherence':>10} | {'Locking':>10} | {'Status':>15}")
+    print("-" * 50)
+    print(f"{0:>8.2f} | {coherence_0:>10.6f} | {locking_0['locking_ratio']:>10.4f} | Initial")
+    
+    for checkpoint in range(n_checkpoints):
+        engine.evolve(n_steps=steps_per_checkpoint)
+        
+        coherence = diagnostic_spinor_coherence(engine)
+        locking = diagnostic_defect_locking(engine, center)
+        
+        coherence_history.append(coherence)
+        locking_history.append(locking['locking_ratio'])
+        time_history.append(engine.time)
+        
+        status = 'STABILIZING' if coherence > coherence_0 and locking['is_locked'] else 'EVOLVING'
+        
+        print(f"{engine.time:>8.2f} | {coherence:>10.6f} | {locking['locking_ratio']:>10.4f} | {status}")
+    
+    # Final diagnostics
+    print("\n" + "=" * 60)
+    print("FINAL STATE ANALYSIS")
+    print("=" * 60)
+    
+    coherence_final = diagnostic_spinor_coherence(engine)
+    locking_final = diagnostic_defect_locking(engine, center)
+    holonomy = diagnostic_rotation_holonomy(engine, center, radius=15.0)
+    
+    print(f"""
+DIAGNOSTIC 1: SPINOR COHERENCE
+  Initial deviation from I: {coherence_0:.6f}
+  Final deviation from I:   {coherence_final:.6f}
+  Change: {'+' if coherence_final > coherence_0 else ''}{coherence_final - coherence_0:.6f}
+  Verdict: {'✅ Spinor structure DEVELOPED' if coherence_final > coherence_0 + 0.01 else '⚠️ Minimal change'}
+
+DIAGNOSTIC 2: DEFECT LOCKING  
+  Core deviation:  {locking_final['core_deviation']:.6f}
+  Far deviation:   {locking_final['far_deviation']:.6f}
+  Locking ratio:   {locking_final['locking_ratio']:.4f}
+  Core gradient:   {locking_final['core_gradient']:.6f}
+  Verdict: {'✅ Spinor LOCKED to defect' if locking_final['is_locked'] else '❌ Spinor diffused away'}
+
+DIAGNOSTIC 3: ROTATION HOLONOMY (THE KEY TEST)
+  Loop phases (units of π): {holonomy['loop_phases_pi']}
+  Mean phase: {holonomy['mean_phase_pi']:.4f}π
+  Std dev:    {holonomy['std_phase_pi']:.4f}π
+  Consistent: {'YES' if holonomy['is_consistent'] else 'NO'}
+  Verdict: {holonomy['verdict']}
+""")
+    
+    # THE DECISIVE VERDICT
+    print("=" * 60)
+    print("EMERGENCE VERDICT")
+    print("=" * 60)
+    
+    spinor_emerged = coherence_final > coherence_0 + 0.01
+    spinor_locked = locking_final['is_locked']
+    fermion_holonomy = holonomy['is_fermion_holonomy']
+    
+    emergence_score = sum([spinor_emerged, spinor_locked, fermion_holonomy])
+    
+    print(f"""
+  Spinor structure emerged:  {'✅' if spinor_emerged else '❌'}
+  Spinor locked to defect:   {'✅' if spinor_locked else '❌'}
+  Fermion holonomy (360°=-1): {'✅' if fermion_holonomy else '❌'}
+  
+  EMERGENCE SCORE: {emergence_score}/3
+""")
+    
+    if emergence_score == 3:
+        print("""
+╔══════════════════════════════════════════════════════════════════╗
+║  🎉 FULL SPINOR EMERGENCE ACHIEVED!                              ║
+╠══════════════════════════════════════════════════════════════════╣
+║  SU(2) structure SPONTANEOUSLY EMERGED from medium dynamics.     ║
+║  - Spinor developed from identity state                          ║
+║  - Locked to defect core (stable quasiparticle)                  ║
+║  - 360° rotation gives -1 WITHOUT manual insertion               ║
+║                                                                  ║
+║  THIS MEANS: QMRT EXPLAINS fermions, not just CONTAINS them.     ║
+╚══════════════════════════════════════════════════════════════════╝
+""")
+    elif emergence_score >= 2:
+        print("""
+╔══════════════════════════════════════════════════════════════════╗
+║  ⚡ PARTIAL EMERGENCE - PROMISING                                ║
+╠══════════════════════════════════════════════════════════════════╣
+║  Some aspects of spinor emergence confirmed.                     ║
+║  Further refinement of dynamics may complete the picture.        ║
+╚══════════════════════════════════════════════════════════════════╝
+""")
+    else:
+        print("""
+╔══════════════════════════════════════════════════════════════════╗
+║  ⚠️ EMERGENCE NOT YET ACHIEVED                                   ║
+╠══════════════════════════════════════════════════════════════════╣
+║  Current dynamics do not produce spontaneous SU(2) structure.    ║
+║  Need to refine the dynamical equation ∂_t U = f(τ, ∇σ).         ║
+╚══════════════════════════════════════════════════════════════════╝
+""")
+    
+    # Save comprehensive results
+    output = {
+        'test_suite': 'Spinor Emergence with Full Diagnostics',
+        'parameters': {
+            'grid_size': 80,
+            'torsion_coupling': params.torsion_coupling,
+            'diffusion': params.diffusion,
+            'total_steps': total_steps,
+            'circulation': 2.0
+        },
+        'diagnostics': {
+            'coherence': {
+                'initial': float(coherence_0),
+                'final': float(coherence_final),
+                'history': [float(c) for c in coherence_history]
+            },
+            'locking': {
+                'initial_ratio': float(locking_0['locking_ratio']),
+                'final_ratio': float(locking_final['locking_ratio']),
+                'is_locked': locking_final['is_locked'],
+                'history': [float(l) for l in locking_history]
+            },
+            'holonomy': holonomy
+        },
+        'emergence_score': emergence_score,
+        'spinor_emerged': bool(spinor_emerged),
+        'spinor_locked': bool(spinor_locked),
+        'fermion_holonomy': bool(fermion_holonomy),
+        'conclusion': 'FULL_EMERGENCE' if emergence_score == 3 else ('PARTIAL' if emergence_score >= 2 else 'NOT_EMERGED'),
+        'time_history': [float(t) for t in time_history]
+    }
+    
+    output_path = '/app/backend/qmrt_topology/spinor_emergence_results.json'
+    with open(output_path, 'w') as f:
+        json.dump(output, f, indent=2)
+    
+    print(f"\nResults saved to: {output_path}")
+    
+    return output
+
+
 def run_spinor_emergence_tests():
     """Run the spinor emergence test suite."""
     print("#" * 80)
@@ -734,4 +1088,5 @@ Possible refinements:
 
 
 if __name__ == "__main__":
-    results = run_spinor_emergence_tests()
+    # Run the DECISIVE simulation with full diagnostics
+    results = run_spinor_emergence_with_diagnostics()
