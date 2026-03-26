@@ -1,0 +1,7 @@
+{
+  "test_suite": "Frame Defects with Internal Orientation",
+  "spinor_rotation_correct": true,
+  "exchange_berry_phase_pi": 1.0,
+  "final_inner_product": 1.5705367210937666e-10,
+  "level_2_complete": true
+}
