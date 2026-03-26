@@ -1,0 +1,90 @@
+{
+  "test": "B2_Torsion_Spin_Connection",
+  "holonomy_results": {
+    "0.5": {
+      "0.25": {
+        "phase_pi": 0.24818850230268863,
+        "is_fermion": false
+      },
+      "0.5": {
+        "phase_pi": 0.49637700460537726,
+        "is_fermion": false
+      },
+      "0.75": {
+        "phase_pi": 0.744565506908066,
+        "is_fermion": false
+      },
+      "1.0": {
+        "phase_pi": 0.9927540092107545,
+        "is_fermion": true
+      },
+      "1.5": {
+        "phase_pi": 1.489131013816132,
+        "is_fermion": false
+      },
+      "2.0": {
+        "phase_pi": 1.985508018421509,
+        "is_fermion": false
+      }
+    },
+    "1.0": {
+      "0.25": {
+        "phase_pi": 0.49637700460537726,
+        "is_fermion": false
+      },
+      "0.5": {
+        "phase_pi": 0.9927540092107545,
+        "is_fermion": true
+      },
+      "0.75": {
+        "phase_pi": 1.489131013816132,
+        "is_fermion": false
+      },
+      "1.0": {
+        "phase_pi": 1.985508018421509,
+        "is_fermion": false
+      },
+      "1.5": {
+        "phase_pi": 2.978262027632264,
+        "is_fermion": true
+      },
+      "2.0": {
+        "phase_pi": 3.971016036843018,
+        "is_fermion": false
+      }
+    },
+    "2.0": {
+      "0.25": {
+        "phase_pi": 0.9927540092107545,
+        "is_fermion": true
+      },
+      "0.5": {
+        "phase_pi": 1.985508018421509,
+        "is_fermion": false
+      },
+      "0.75": {
+        "phase_pi": 2.978262027632264,
+        "is_fermion": true
+      },
+      "1.0": {
+        "phase_pi": 3.971016036843018,
+        "is_fermion": false
+      },
+      "1.5": {
+        "phase_pi": 5.956524055264528,
+        "is_fermion": false
+      },
+      "2.0": {
+        "phase_pi": 7.942032073686036,
+        "is_fermion": false
+      }
+    }
+  },
+  "key_findings": {
+    "fermion_requires_alpha": 0.5,
+    "alpha_origin": "SU(2)/SO(3) double cover",
+    "dynamically_selected": false
+  },
+  "verdict": "MAPPING_WORKS_BUT_ALPHA_NOT_DERIVED",
+  "next_step": "B3_Clifford_algebra OR accept_as_parameter"
+}
