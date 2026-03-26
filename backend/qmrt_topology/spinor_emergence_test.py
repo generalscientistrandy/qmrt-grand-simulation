@@ -761,6 +761,263 @@ def diagnostic_rotation_holonomy(engine: SpinorEmergenceEngine, center: Tuple[fl
     }
 
 
+def run_half_quantum_vortex_test():
+    """
+    TEST MECHANISM (A): HALF-QUANTUM VORTEX
+    
+    Physics:
+      Standard vortex: winding w = 1 → 360° loop gives 2π rotation
+      Half-quantum vortex: winding w = 1/2 → 360° loop gives π rotation
+      
+    This is the most direct route to fermion holonomy:
+      - No change to dynamics
+      - Only change topological charge sector
+      - Real condensed-matter precedent (He-3, spinor BECs)
+      
+    Monitor:
+      1. Does holonomy approach π?
+      2. Does stability decrease?
+      3. Does defect splitting occur?
+      4. Does energy cost diverge?
+    """
+    print("#" * 80)
+    print("#  QMRT: HALF-QUANTUM VORTEX TEST")
+    print("#" * 80)
+    print("""
+MECHANISM (A): TEST HALF-QUANTUM VORTICES
+
+Physics rationale:
+  - Standard vortex (w=1): 360° → 2π rotation → boson
+  - Half-quantum vortex (w=1/2): 360° → π rotation → FERMION
+  
+Condensed-matter precedents:
+  - Superfluid He-3
+  - Spinor BECs  
+  - Topological superconductors
+  
+Key question: Does the medium ALLOW w=1/2 vortices?
+
+Monitoring:
+  1. Holonomy (target: π)
+  2. Stability (does it decay to w=1 or split?)
+  3. Energy cost
+""")
+    
+    # Test multiple circulation values
+    circulations = [0.5, 0.75, 1.0, 1.5, 2.0]
+    
+    results = {}
+    
+    print("\n" + "=" * 70)
+    print("CIRCULATION SCAN")
+    print("=" * 70)
+    print(f"\n{'Circ':>6} | {'Coherence':>10} | {'Locking':>8} | {'Holonomy (π)':>12} | {'Status':>12}")
+    print("-" * 60)
+    
+    for circ in circulations:
+        result = test_single_circulation(circ)
+        results[circ] = result
+        
+        status = 'FERMION!' if result['is_fermion'] else ('BOSON' if result['is_boson'] else 'MIXED')
+        
+        print(f"{circ:>6.2f} | {result['coherence']:>10.4f} | {result['locking']:>8.2f} | "
+              f"{result['holonomy_pi']:>12.4f} | {status:>12}")
+    
+    # Detailed analysis of w=0.5 case
+    print("\n" + "=" * 70)
+    print("DETAILED ANALYSIS: HALF-QUANTUM VORTEX (w = 0.5)")
+    print("=" * 70)
+    
+    hq_result = results[0.5]
+    
+    print(f"""
+HOLONOMY ANALYSIS:
+  Target for fermion: π (1.0 in units of π)
+  Measured holonomy: {hq_result['holonomy_pi']:.4f}π
+  Deviation from π: {abs(hq_result['holonomy_pi'] - 1.0):.4f}π
+  
+STABILITY ANALYSIS:
+  Coherence: {hq_result['coherence']:.4f}
+  Locking ratio: {hq_result['locking']:.4f}
+  Is locked: {'YES' if hq_result['locking'] > 1.5 else 'NO'}
+  
+ENERGY ANALYSIS:
+  (Estimated from field gradients)
+  Gradient energy: {hq_result['gradient_energy']:.4f}
+""")
+    
+    # Check scaling: holonomy should scale linearly with circulation
+    print("\n" + "=" * 70)
+    print("SCALING TEST: HOLONOMY vs CIRCULATION")
+    print("=" * 70)
+    
+    print("\nExpected: Holonomy ∝ Circulation")
+    print("If true: confirms topological origin of holonomy")
+    print()
+    
+    circs = list(results.keys())
+    holonomies = [results[c]['holonomy_pi'] for c in circs]
+    
+    # Linear regression
+    slope, intercept = np.polyfit(circs, holonomies, 1)
+    
+    print(f"Linear fit: Holonomy = {slope:.4f} × Circulation + {intercept:.4f}")
+    print(f"R-value: {np.corrcoef(circs, holonomies)[0,1]:.4f}")
+    
+    # Prediction for w=0.5:
+    predicted_05 = 0.5 * slope + intercept
+    print(f"\nPredicted holonomy at w=0.5: {predicted_05:.4f}π")
+    print(f"Measured holonomy at w=0.5:  {results[0.5]['holonomy_pi']:.4f}π")
+    
+    # THE KEY TEST
+    print("\n" + "=" * 70)
+    print("HALF-QUANTUM VORTEX VERDICT")
+    print("=" * 70)
+    
+    hq_holonomy = results[0.5]['holonomy_pi']
+    is_fermion_holonomy = abs(hq_holonomy - 1.0) < 0.2
+    is_stable = results[0.5]['locking'] > 1.5
+    scales_correctly = abs(slope - 2.0) < 0.3  # Holonomy = 2π × circulation
+    
+    print(f"""
+CRITERIA:
+  1. Holonomy ≈ π at w=0.5:     {'✅' if is_fermion_holonomy else '❌'} ({hq_holonomy:.4f}π)
+  2. Defect remains stable:     {'✅' if is_stable else '❌'} (locking = {results[0.5]['locking']:.2f})
+  3. Linear scaling confirmed:  {'✅' if scales_correctly else '❌'} (slope = {slope:.2f}, expect 2.0)
+""")
+    
+    if is_fermion_holonomy and is_stable:
+        print("""
+╔══════════════════════════════════════════════════════════════════════════╗
+║  🎉 HALF-QUANTUM VORTEX GIVES FERMION HOLONOMY!                          ║
+╠══════════════════════════════════════════════════════════════════════════╣
+║  With w = 1/2 vortex:                                                    ║
+║    - 360° loop gives π holonomy (not 2π)                                 ║
+║    - This means FERMION exchange statistics                              ║
+║    - Defect remains stable (doesn't split or decay)                      ║
+║                                                                          ║
+║  PHYSICS CONCLUSION:                                                     ║
+║    The medium ALLOWS half-quantum vortices.                              ║
+║    These are the fermionic quasiparticles of QMRT.                       ║
+║                                                                          ║
+║  Next question: What selects w=1/2 as the stable defect?                 ║
+╚══════════════════════════════════════════════════════════════════════════╝
+""")
+    elif is_fermion_holonomy and not is_stable:
+        print("""
+╔══════════════════════════════════════════════════════════════════════════╗
+║  ⚠️ HOLONOMY CORRECT BUT STABILITY QUESTIONABLE                          ║
+╠══════════════════════════════════════════════════════════════════════════╣
+║  The w=1/2 vortex gives π holonomy, but may be metastable.               ║
+║  Need to check:                                                          ║
+║    - Does it decay to w=1 over longer times?                             ║
+║    - Does it split into two w=1/4 defects?                               ║
+║    - What stabilization mechanism is needed?                             ║
+╚══════════════════════════════════════════════════════════════════════════╝
+""")
+    else:
+        print("""
+╔══════════════════════════════════════════════════════════════════════════╗
+║  ❌ HALF-QUANTUM VORTEX DOES NOT GIVE π HOLONOMY                         ║
+╠══════════════════════════════════════════════════════════════════════════╣
+║  The current dynamics may not support true w=1/2 topology.               ║
+║  Possible issues:                                                        ║
+║    - Medium order parameter wrong type                                   ║
+║    - Need spinor-valued field for true half-quantum vortex               ║
+║    - Topology may be getting "doubled" somewhere                         ║
+╚══════════════════════════════════════════════════════════════════════════╝
+""")
+    
+    # Save results
+    output = {
+        'test_suite': 'Half-Quantum Vortex Test',
+        'circulation_scan': {str(c): {
+            'coherence': float(results[c]['coherence']),
+            'locking': float(results[c]['locking']),
+            'holonomy_pi': float(results[c]['holonomy_pi']),
+            'is_fermion': bool(results[c]['is_fermion'])
+        } for c in circulations},
+        'linear_fit': {
+            'slope': float(slope),
+            'intercept': float(intercept),
+            'expected_slope': 2.0
+        },
+        'half_quantum_verdict': {
+            'holonomy_is_pi': bool(is_fermion_holonomy),
+            'is_stable': bool(is_stable),
+            'scales_correctly': bool(scales_correctly)
+        },
+        'conclusion': 'FERMION_HOLONOMY' if (is_fermion_holonomy and is_stable) else 'NEEDS_WORK'
+    }
+    
+    output_path = '/app/backend/qmrt_topology/half_quantum_vortex_results.json'
+    with open(output_path, 'w') as f:
+        json.dump(output, f, indent=2)
+    
+    print(f"\nResults saved to: {output_path}")
+    
+    return results
+
+
+def test_single_circulation(circulation: float) -> Dict:
+    """
+    Test spinor emergence for a single circulation value.
+    
+    Returns holonomy, coherence, locking, and stability metrics.
+    """
+    params = SpinorEmergenceParams(
+        sigma_threshold=0.5,
+        torsion_coupling=2.0,
+        strain_coupling=0.5,
+        dt=0.005,
+        diffusion=0.05,
+        dx=1.0
+    )
+    
+    engine = SpinorEmergenceEngine(grid_size=80, params=params)
+    center = (40, 40)
+    
+    # Setup vortex with specified circulation
+    engine.setup_vortex_medium(center, circulation=circulation)
+    
+    # Add small perturbation
+    np.random.seed(42)
+    engine.U.a1 += 0.01 * np.random.randn(80, 80)
+    engine.U.a2 += 0.01 * np.random.randn(80, 80)
+    engine.U.a3 += 0.01 * np.random.randn(80, 80)
+    engine.U.normalize()
+    
+    # Evolve
+    engine.evolve(n_steps=2000)
+    
+    # Measure diagnostics
+    coherence = diagnostic_spinor_coherence(engine)
+    locking = diagnostic_defect_locking(engine, center)
+    holonomy = diagnostic_rotation_holonomy(engine, center, radius=15.0)
+    
+    # Estimate gradient energy
+    grad_a1 = np.gradient(engine.U.a1)
+    grad_a2 = np.gradient(engine.U.a2)
+    grad_a3 = np.gradient(engine.U.a3)
+    gradient_energy = np.mean(grad_a1[0]**2 + grad_a1[1]**2 + 
+                              grad_a2[0]**2 + grad_a2[1]**2 +
+                              grad_a3[0]**2 + grad_a3[1]**2)
+    
+    is_fermion = abs(holonomy['mean_phase_pi'] - 1.0) < 0.2
+    is_boson = holonomy['mean_phase_pi'] < 0.3 or abs(holonomy['mean_phase_pi'] - 2.0) < 0.2
+    
+    return {
+        'circulation': circulation,
+        'coherence': coherence,
+        'locking': locking['locking_ratio'],
+        'holonomy_pi': holonomy['mean_phase_pi'],
+        'holonomy_std': holonomy['std_phase_pi'],
+        'gradient_energy': gradient_energy,
+        'is_fermion': is_fermion,
+        'is_boson': is_boson
+    }
+
+
 def run_spinor_emergence_with_diagnostics():
     """
     THE DECISIVE SIMULATION with full diagnostics.
@@ -1088,5 +1345,5 @@ Possible refinements:
 
 
 if __name__ == "__main__":
-    # Run the DECISIVE simulation with full diagnostics
-    results = run_spinor_emergence_with_diagnostics()
+    # Run the HALF-QUANTUM VORTEX test (Mechanism A)
+    results = run_half_quantum_vortex_test()

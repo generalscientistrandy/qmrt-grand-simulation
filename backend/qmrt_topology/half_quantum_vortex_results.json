@@ -1,0 +1,46 @@
+{
+  "test_suite": "Half-Quantum Vortex Test",
+  "circulation_scan": {
+    "0.5": {
+      "coherence": 0.20973563733967612,
+      "locking": 9.185560804688638,
+      "holonomy_pi": 1.9697516544642084,
+      "is_fermion": false
+    },
+    "0.75": {
+      "coherence": 0.30992131043011206,
+      "locking": 7.799871436046972,
+      "holonomy_pi": 1.9744721960823954,
+      "is_fermion": false
+    },
+    "1.0": {
+      "coherence": 0.40524259144188585,
+      "locking": 6.009860502980445,
+      "holonomy_pi": 1.9769066583273924,
+      "is_fermion": false
+    },
+    "1.5": {
+      "coherence": 0.5814554300349627,
+      "locking": 2.8520230506528397,
+      "holonomy_pi": 1.9795188778688237,
+      "is_fermion": false
+    },
+    "2.0": {
+      "coherence": 0.7436823325154706,
+      "locking": 1.7481225365679558,
+      "holonomy_pi": 1.9810378313213433,
+      "is_fermion": false
+    }
+  },
+  "linear_fit": {
+    "slope": 0.006931249167880396,
+    "intercept": 1.9683665070697691,
+    "expected_slope": 2.0
+  },
+  "half_quantum_verdict": {
+    "holonomy_is_pi": false,
+    "is_stable": true,
+    "scales_correctly": false
+  },
+  "conclusion": "NEEDS_WORK"
+}
