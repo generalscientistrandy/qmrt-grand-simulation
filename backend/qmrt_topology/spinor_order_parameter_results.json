@@ -1,0 +1,47 @@
+{
+  "test": "A2_Spinor_Order_Parameter",
+  "vortex_results": {
+    "0.5": {
+      "berry_phase_pi": -0.35058108708796915,
+      "expected_pi": 0.5,
+      "is_fermion": false
+    },
+    "1.0": {
+      "berry_phase_pi": -0.9740302951750386,
+      "expected_pi": 1.0,
+      "is_fermion": true
+    },
+    "1.5": {
+      "berry_phase_pi": -1.1984448729890236,
+      "expected_pi": 1.5,
+      "is_fermion": false
+    },
+    "2.0": {
+      "berry_phase_pi": -0.9991800602498707,
+      "expected_pi": 2.0,
+      "is_fermion": true
+    },
+    "3.0": {
+      "berry_phase_pi": -0.9728704317302891,
+      "expected_pi": 3.0,
+      "is_fermion": true
+    },
+    "4.0": {
+      "berry_phase_pi": -0.9972936894256653,
+      "expected_pi": 4.0,
+      "is_fermion": true
+    }
+  },
+  "scaling": {
+    "slope": -0.10215687626824892,
+    "expected_slope": 1.0,
+    "r_value": -0.4597893338760926
+  },
+  "verdict": {
+    "slope_correct": false,
+    "w1_is_fermion": true,
+    "linear_scaling": false,
+    "all_pass": false
+  },
+  "conclusion": "NEEDS_WORK"
+}

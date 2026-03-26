@@ -1,0 +1,67 @@
+{
+  "test": "A3_Parallel_Transport",
+  "so3_results": {
+    "0.25": {
+      "holonomy_pi": 0.49637700460537726,
+      "trace_real": 0.022763459925393022
+    },
+    "0.5": {
+      "holonomy_pi": 0.9927540092107545,
+      "trace_real": -1.999481824892225
+    },
+    "0.75": {
+      "holonomy_pi": 1.489131013816132,
+      "trace_real": -0.06827858431787416
+    },
+    "1.0": {
+      "holonomy_pi": 1.985508018421509,
+      "trace_real": 1.99792756807434
+    },
+    "1.5": {
+      "holonomy_pi": 2.978262027632264,
+      "trace_real": -1.995338034923549
+    },
+    "2.0": {
+      "holonomy_pi": 3.971016036843018,
+      "trace_real": 1.9917145672714547
+    }
+  },
+  "su2_results": {
+    "0.25": {
+      "holonomy_pi": 0.24818850230268863,
+      "trace_real": 1.4222388898934633
+    },
+    "0.5": {
+      "holonomy_pi": 0.49637700460537726,
+      "trace_real": 0.022763459925393022
+    },
+    "0.75": {
+      "holonomy_pi": 0.744565506908066,
+      "trace_real": -1.3898638119190425
+    },
+    "1.0": {
+      "holonomy_pi": 0.9927540092107545,
+      "trace_real": -1.999481824892225
+    },
+    "1.5": {
+      "holonomy_pi": 1.489131013816132,
+      "trace_real": -0.06827858431787416
+    },
+    "2.0": {
+      "holonomy_pi": 1.985508018421509,
+      "trace_real": 1.99792756807434
+    }
+  },
+  "scaling": {
+    "so3_slope": 1.9855080184215081,
+    "su2_slope": 0.9927540092107541,
+    "so3_r": 1.0,
+    "su2_r": 1.0
+  },
+  "verdict": {
+    "so3_linear": true,
+    "su2_linear": true,
+    "su2_gives_fermion_at_w1": true
+  },
+  "conclusion": "GEOMETRY_SUPPORTS_SPINORS"
+}
