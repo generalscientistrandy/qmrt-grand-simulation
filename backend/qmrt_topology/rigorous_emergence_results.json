@@ -1,0 +1,30 @@
+{
+  "test": "Rigorous_Dynamical_Emergence",
+  "results": {
+    "symmetric": {
+      "initial": 1.0,
+      "final": 1.0106047749045373,
+      "deviation": 0.5106047749045373
+    },
+    "biased_high": {
+      "initial": 1.5,
+      "final": 1.0174029665353814,
+      "deviation": 0.5174029665353814
+    },
+    "biased_low": {
+      "initial": 0.2,
+      "final": 1.0142536424136541,
+      "deviation": 0.5142536424136541
+    },
+    "summary": {
+      "mean_final": 1.0152898801600452,
+      "std_final": 0.006685810250751517,
+      "target": 0.5,
+      "converged_to_half": false,
+      "conclusion": "NOT_EMERGENT"
+    }
+  },
+  "converged_to_half": 0.0,
+  "fold_angle_for_half": 120.00000000000001,
+  "conclusion": "NOT_EMERGENT"
+}
