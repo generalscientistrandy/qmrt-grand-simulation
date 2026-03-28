@@ -1,0 +1,16 @@
+{
+  "test": "Decisive_Flux_Conservation",
+  "soft_constraint": {
+    "mean_degree_3_fraction": 0.096,
+    "std_degree_3_fraction": 0.04079215610874228,
+    "success": false
+  },
+  "hard_constraint": {
+    "mean_degree_3_fraction": 0.096,
+    "std_degree_3_fraction": 0.04079215610874228,
+    "success": false
+  },
+  "verdict": "FAILURE",
+  "success_threshold": 0.7,
+  "interpretation": "Flux insufficient. Try topological charge or energy penalty."
+}

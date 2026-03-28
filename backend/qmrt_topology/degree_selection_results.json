@@ -1,0 +1,9 @@
+{
+  "test": "Degree_Selection_With_Reconnection",
+  "initial_mean_frac_3": 0.136,
+  "final_mean_frac_3": 0.9876599348759413,
+  "improvement": 0.8516599348759413,
+  "success": true,
+  "verdict": "SUCCESS",
+  "success_threshold": 0.7
+}
