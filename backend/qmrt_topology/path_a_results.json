@@ -1,0 +1,14 @@
+{
+  "test": "Path_A_Network_Evolution",
+  "formation": {
+    "y_junctions_form": true,
+    "mean_3nodes": 3.8
+  },
+  "selection": {
+    "status": "mixed_degrees_observed"
+  },
+  "symmetry": {
+    "tensions_equalize": true
+  },
+  "verdict": "Y_JUNCTIONS_AND_EQUAL_TENSIONS_POSSIBLE"
+}
