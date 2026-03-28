@@ -8,13 +8,15 @@ Conduct a deep, iterative scientific investigation to derive a candidate fundame
 
 ## Refined Theoretical Claim (December 2025)
 
-> **QMRT reproduces fermionic statistics when the medium organizes into three-branch junction networks whose equilibrium enforces 120° branch angles.**
+> **QMRT reproduces fermion-like exchange behavior when the medium organizes into three-branch junction networks whose local equilibrium enforces 120° branch angles. This geometry yields an effective projection factor of 1/2, producing a π phase and holonomy −1.**
 >
-> This geometry yields a projection factor of 1/2 (cos 120° = −1/2), producing a π Berry phase and holonomy −1.
->
-> Fermionic behavior arises as a geometric consequence of network equilibrium, rather than being postulated via spinor structure.
->
-> **The remaining open question is whether such Y-junction networks are dynamically inevitable in the underlying medium.**
+> **What remains open is whether such Y-junction networks arise inevitably from the underlying medium dynamics, and whether their equal-tension condition is generic.**
+
+### Current Strongest Clean Claim
+> QMRT contains a geometric mechanism that reproduces fermion-like phase behavior once Y-junction network equilibrium is present.
+
+### Next Milestone (would upgrade "contains" to "explains")
+> QMRT dynamically generates the Y-junction network equilibrium from generic medium evolution.
 
 ## Two-Layer Structure
 
