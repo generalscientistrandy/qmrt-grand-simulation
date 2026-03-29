@@ -1,0 +1,138 @@
+{
+  "test": "SU3_Dynamics_Invariance",
+  "hamiltonians": [
+    {
+      "name": "Equal Tensions (diagonal)",
+      "mean_error": 4.2356682039709397e-16,
+      "max_error": 9.795847224764316e-16,
+      "min_error": 1.2897689731713065e-16,
+      "classification": "EXACT_INVARIANCE",
+      "commutators": {
+        "commutators": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_commutator": 0.0,
+        "all_commute": true
+      }
+    },
+    {
+      "name": "Unequal Tensions",
+      "mean_error": 0.3436252398560979,
+      "max_error": 0.5348348373250156,
+      "min_error": 0.13614119492100982,
+      "classification": "NOT_INVARIANT",
+      "commutators": {
+        "commutators": [
+          0.28284271247461895,
+          0.28284271247461895,
+          0.0,
+          0.28284271247461895,
+          0.28284271247461895,
+          0.5656854249492379,
+          0.5656854249492379,
+          0.0
+        ],
+        "max_commutator": 0.5656854249492379,
+        "all_commute": false
+      }
+    },
+    {
+      "name": "Color Penalty",
+      "mean_error": 1.0217486527732034,
+      "max_error": 1.4088983942278015,
+      "min_error": 0.5105321238735054,
+      "classification": "NOT_INVARIANT",
+      "commutators": {
+        "commutators": [
+          0.6666666666666666,
+          1.1547005383792515,
+          1.1547005383792515,
+          0.6666666666666666,
+          1.1547005383792515,
+          0.6666666666666666,
+          1.1547005383792515,
+          1.1547005383792515
+        ],
+        "max_commutator": 1.1547005383792515,
+        "all_commute": false
+      }
+    },
+    {
+      "name": "Casimir (Confinement)",
+      "mean_error": 1.3396474682466102e-15,
+      "max_error": 3.3262774492668675e-15,
+      "min_error": 4.1897674819643984e-16,
+      "classification": "EXACT_INVARIANCE",
+      "commutators": {
+        "commutators": [
+          0.0,
+          0.0,
+          0.0,
+          6.280369834735101e-16,
+          6.280369834735101e-16,
+          6.280369834735101e-16,
+          6.280369834735101e-16,
+          0.0
+        ],
+        "max_commutator": 6.280369834735101e-16,
+        "all_commute": true
+      }
+    },
+    {
+      "name": "Nearest-Neighbor",
+      "mean_error": 3.1162067694309354,
+      "max_error": 4.239325586908751,
+      "min_error": 1.5841276550474048,
+      "classification": "NOT_INVARIANT",
+      "commutators": {
+        "commutators": [
+          2.0,
+          3.4641016151377544,
+          3.4641016151377544,
+          2.0,
+          3.4641016151377544,
+          2.0,
+          3.4641016151377544,
+          3.4641016151377553
+        ],
+        "max_commutator": 3.4641016151377553,
+        "all_commute": false
+      }
+    },
+    {
+      "name": "120\u00b0 Angle Coupling",
+      "mean_error": 1.4893207483042774,
+      "max_error": 2.115725291045387,
+      "min_error": 0.38026095558246065,
+      "classification": "NOT_INVARIANT",
+      "commutators": {
+        "commutators": [
+          0.9999999999999996,
+          1.7320508075688767,
+          1.7320508075688767,
+          0.9999999999999996,
+          1.7320508075688765,
+          0.9999999999999996,
+          1.7320508075688765,
+          1.7320508075688767
+        ],
+        "max_commutator": 1.7320508075688767,
+        "all_commute": false
+      }
+    }
+  ],
+  "verdict": "PRE_GAUGE",
+  "key_finding": {
+    "hamiltonian": "120\u00b0 Angle Coupling",
+    "classification": "NOT_INVARIANT",
+    "max_error": 2.115725291045387
+  },
+  "interpretation": "Triplet structure without dynamical gauge symmetry"
+}

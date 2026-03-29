@@ -268,11 +268,11 @@ Layer 1:  Universal Fermion Sector ✅ PROVEN
 Layer 2a: Network Formation ✅ PROVEN
           - Energy penalty → Y-junction dominance
           
-Layer 2b: Quark-Specific Structure ✅ JUSTIFIED
-          - Color-like triplet state space
-          - Confinement analogue
-          - Fractional charge origin
-          - Generation structure (open)
+Layer 2b: Quark-Specific Structure ✅ STRUCTURE COMPATIBLE
+          - Triplet state space embeds in ℂ³
+          - SU(3) transformations mathematically supported
+          - Confinement-like composite stability
+          - Dynamics enforcement of SU(3) → OPEN
 ```
 
 ### Y-Junction Color Structure Test Results
@@ -280,22 +280,62 @@ Layer 2b: Quark-Specific Structure ✅ JUSTIFIED
 | Property | Finding | Status |
 |----------|---------|--------|
 | **Triplet state space** | 3 states (R,G,B) with Z₃ cyclic symmetry | ✅ |
+| **State embedding in ℂ³** | Forms 3D complex Hilbert space | ✅ |
+| **SU(3) compatibility** | State space supports SU(3) transformations | ✅ |
 | **Confinement analogue** | Colored states penalized (ΔE = 2.4) | ✅ |
-| **Fractional charge** | 120° = 1/3 rotation → natural thirds | ✅ |
+| **Fractional charge hint** | 120° = 1/3 rotation → natural thirds | ✅ |
 | **Composite stability** | Neutral pairs/triples bound | ✅ |
+| **Dynamics enforces SU(3)** | NOT YET TESTED | ❓ |
+
+### Defensible Claim (Locked In)
+> "QMRT demonstrates that dynamically selected Y-junction networks produce a natural
+> triplet state structure that embeds in a 3-dimensional complex vector space (ℂ³),
+> supporting SU(3)-compatible transformations.
+>
+> However, whether the system's physical dynamics ENFORCE SU(3) symmetry remains unproven."
+
+### What This Means
+- **We built the space** ✅
+- **We did NOT yet prove the symmetry of the laws** ❓
 
 ### Physical Interpretation
 - **Single Y-junction** = colored quark (unstable in isolation)
 - **Junction pair** = meson (color + anticolor, stable)
 - **Junction triple** = baryon (RGB neutral, stable)
 
-### Sharp Claim (User-Approved Wording)
-> "QMRT presently supports a geometric origin for generic fermionic statistics.
-> Whether quark-specific structure such as color, confinement, fractional charge,
-> and flavor can also emerge from branch-network dynamics remains open."
->
-> The Y-junction framework shows ALL FOUR quark-like features, JUSTIFYING
-> rigorous investigation of quark emergence from QMRT.
+### Classification: PRE-GAUGE LAYER ✅
+
+**Dynamics Invariance Test Results:**
+
+| Hamiltonian | SU(3) Invariant? | Max Error |
+|-------------|------------------|-----------|
+| Equal Tensions (H ∝ I) | ✅ YES (trivial) | ~0 |
+| Casimir Operator | ✅ YES (by construction) | ~0 |
+| Unequal Tensions | ❌ NO | 0.53 |
+| Color Penalty | ❌ NO | 1.41 |
+| Nearest-Neighbor | ❌ NO | 4.24 |
+| **120° Angle Coupling** | ❌ NO | 2.12 |
+
+**Key Finding:**
+The physical 120° coupling derived from Y-junction geometry does NOT commute with SU(3) generators.
+
+**Verdict: PRE-GAUGE LAYER**
+> Y-junction provides triplet structure but dynamics do NOT enforce SU(3).
+> This is a "pre-gauge" substrate that may underlie gauge theories.
+
+**What We Have:**
+- Geometry → Fermions ✅
+- Geometry → Triplicity ✅
+- Geometry → Confinement-like binding ✅
+- Geometry → SU(3) gauge dynamics ❌
+
+**Physical Interpretation:**
+The Y-junction framework produces the *structural precursors* to quark-like behavior:
+1. A triplet internal space (compatible with color)
+2. Confinement-like composite stability
+3. Natural 1/3 fractions from 120° geometry
+
+But full SU(3) gauge symmetry would require additional structure beyond the Y-junction Hamiltonian—perhaps dynamical gauge fields that couple to the junction states.
 
 ---
 
