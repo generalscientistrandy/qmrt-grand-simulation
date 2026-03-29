@@ -1,0 +1,55 @@
+{
+  "test": "Node_Degree_Ecology",
+  "max_degree_tested": 6,
+  "stable_degrees": [
+    1,
+    2
+  ],
+  "metastable_degrees": [
+    3
+  ],
+  "unstable_degrees": [
+    4,
+    5,
+    6
+  ],
+  "verdict": "MULTI_DEGREE_ECOLOGY",
+  "by_degree": {
+    "1": {
+      "classification": "STABLE",
+      "equilibrium_angle": 360.0,
+      "retained_fraction": 1.0,
+      "mean_force_imbalance": 1.002155384619567
+    },
+    "2": {
+      "classification": "STABLE",
+      "equilibrium_angle": 180.0,
+      "retained_fraction": 1.0,
+      "mean_force_imbalance": 0.006620474194512803
+    },
+    "3": {
+      "classification": "METASTABLE",
+      "equilibrium_angle": 119.99999999999999,
+      "retained_fraction": 0.9,
+      "mean_force_imbalance": 0.009458687166304845
+    },
+    "4": {
+      "classification": "UNSTABLE",
+      "equilibrium_angle": 90.0,
+      "retained_fraction": 0.5,
+      "mean_force_imbalance": 0.001704351156677774
+    },
+    "5": {
+      "classification": "COMPOSITE_DECAYING",
+      "equilibrium_angle": 72.0,
+      "retained_fraction": 0.0,
+      "mean_force_imbalance": 0.004904764880830139
+    },
+    "6": {
+      "classification": "UNSTABLE",
+      "equilibrium_angle": 59.99999999999999,
+      "retained_fraction": 0.5,
+      "mean_force_imbalance": 0.0018596793065183373
+    }
+  }
+}

@@ -303,7 +303,41 @@ Layer 2b: Quark-Specific Structure ✅ STRUCTURE COMPATIBLE
 - **Junction pair** = meson (color + anticolor, stable)
 - **Junction triple** = baryon (RGB neutral, stable)
 
-### Classification: PRE-GAUGE LAYER ✅
+### Classification: PRE-GAUGE LAYER with MULTI-DEGREE ECOLOGY ✅
+
+**Node-Degree Ecology Results:**
+
+| Degree | Angle | Stability | Retained | Physical Role |
+|--------|-------|-----------|----------|---------------|
+| 1 | 360° | ✅ STABLE | 10/10 | Endpoint/defect |
+| 2 | 180° | ✅ STABLE | 10/10 | Strand/propagation |
+| **3** | **120°** | ⚠️ **METASTABLE** | **9/10** | **Y-junction/branching** |
+| 4 | 90° | ❌ UNSTABLE | 5/10 | Decays to lower |
+| 5 | 72° | 🔄 COMPOSITE | 0/10 | Always decays |
+| 6 | 60° | ❌ UNSTABLE | 5/10 | Decays to lower |
+
+**Key Insight:**
+Degree-3 (Y-junction) is METASTABLE, not unconditionally stable.
+- It persists in 9/10 trials with 120° equilibrium
+- Higher degrees (4,5,6) tend to decay into lower degrees
+- The truly stable structures are endpoints (1) and strands (2)
+
+**Physical Picture:**
+```
+Medium composition:
+  - Strands (degree-2): ordinary propagation ← STABLE
+  - Y-junctions (degree-3): branching points ← METASTABLE (special!)
+  - Higher nodes: transient states that decay
+```
+
+**Refined Claim:**
+> "The medium primarily consists of strands (degree-2) as the stable propagation
+> mode, with Y-junctions (degree-3) as metastable branching structures.
+> When Y-junctions form with equal tensions, they equilibrate to 120° angles
+> and produce the 1/2 projection factor → fermion statistics.
+>
+> This is a SECTOR result within the full node-degree ecology, not a universal
+> theorem that everything becomes Y-junctions."
 
 **Dynamics Invariance Test Results:**
 
@@ -316,26 +350,16 @@ Layer 2b: Quark-Specific Structure ✅ STRUCTURE COMPATIBLE
 | Nearest-Neighbor | ❌ NO | 4.24 |
 | **120° Angle Coupling** | ❌ NO | 2.12 |
 
-**Key Finding:**
-The physical 120° coupling derived from Y-junction geometry does NOT commute with SU(3) generators.
-
 **Verdict: PRE-GAUGE LAYER**
 > Y-junction provides triplet structure but dynamics do NOT enforce SU(3).
 > This is a "pre-gauge" substrate that may underlie gauge theories.
 
 **What We Have:**
-- Geometry → Fermions ✅
-- Geometry → Triplicity ✅
+- Geometry → Fermions ✅ (in the degree-3 sector)
+- Geometry → Triplicity ✅ (triplet state space)
 - Geometry → Confinement-like binding ✅
 - Geometry → SU(3) gauge dynamics ❌
-
-**Physical Interpretation:**
-The Y-junction framework produces the *structural precursors* to quark-like behavior:
-1. A triplet internal space (compatible with color)
-2. Confinement-like composite stability
-3. Natural 1/3 fractions from 120° geometry
-
-But full SU(3) gauge symmetry would require additional structure beyond the Y-junction Hamiltonian—perhaps dynamical gauge fields that couple to the junction states.
+- Multi-degree ecology with strand + Y-junction structure ✅
 
 ---
 
