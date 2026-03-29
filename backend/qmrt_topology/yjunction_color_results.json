@@ -1,0 +1,45 @@
+{
+  "test": "Y_Junction_Color_Structure",
+  "layer": "Layer 2 - Quark-Specific",
+  "triplet_structure": {
+    "states": {
+      "R": [
+        1.0,
+        -0.5,
+        -0.5
+      ],
+      "G": [
+        -0.5,
+        1.0,
+        -0.5
+      ],
+      "B": [
+        -0.5,
+        -0.5,
+        1.0
+      ]
+    },
+    "is_triplet": true,
+    "cyclic_symmetry": true,
+    "neutral_state_is_zero": true
+  },
+  "confinement_analogue": {
+    "E_neutral": 1.2499999996250002,
+    "E_colored": 3.6499999989050003,
+    "confinement_supported": true,
+    "energy_penalty_for_color": 2.3999999992800003
+  },
+  "fractional_charge": {
+    "thirds_in_angles": true,
+    "angle_fraction": 0.3333333333333333,
+    "winding_per_branch": 2.0943951023931953,
+    "interpretation": "Each branch carries 1/3 of total winding, natural origin for fractional charge"
+  },
+  "composite_stability": {
+    "binding_pair": 1.9,
+    "binding_triple": 2.9,
+    "composites_favored": true
+  },
+  "all_supported": true,
+  "conclusion": "Quark-like structure JUSTIFIED for investigation"
+}

@@ -72,21 +72,40 @@ Energy penalty E = λ(degree - 3)² + Reconnection dynamics
 4. **Y-Junction**: 3-branch networks with 120° angles produce 1/2 factor geometrically!
 5. **Flux Test**: Flux conservation is insufficient (9.6% degree-3)
 6. **🔥 BREAKTHROUGH**: Energy penalty + reconnection → **98.8% degree-3**
+7. **🔥 QUARK STRUCTURE**: Y-junctions show triplet states, confinement, thirds!
+
+## Theoretical Hierarchy
+
+| Layer | Content | Status |
+|-------|---------|--------|
+| **1: Universal Fermion** | spin-1/2, exclusion, exchange phase | ✅ PROVEN |
+| **2a: Network Formation** | Energy penalty → Y-junctions | ✅ PROVEN |
+| **2b: Quark Structure** | Color, confinement, thirds | ✅ JUSTIFIED |
+
+## Quark-Like Structure in Y-Junctions
+
+| Property | Finding | Status |
+|----------|---------|--------|
+| Triplet state space | 3 states (R,G,B), Z₃ symmetry | ✅ |
+| Confinement analogue | Colored states penalized | ✅ |
+| Fractional charge | 120° = 1/3 of full rotation | ✅ |
+| Composite stability | Pairs/triples bound | ✅ |
 
 ## Research Directions (Future Work)
 
 ### Path A: Network Formation ✅ COMPLETED
 - Y-junctions form from random networks with 98.8% dominance
-- Mechanism: Degree-penalty energy + reconnection dynamics
 
 ### Path B: Mathematical Strengthening ✅ COMPLETED
 - 120° is unique stable equilibrium (Hessian analysis)
 
 ### Path C: SU(2) Connection (FUTURE)
-- Map Y-junction geometry to double-cover structure
+- Map Y-junction geometry to spinor algebra
 
-### Path D: 3D Fermi Pressure (FUTURE)
-- Test if emergent fermion gas shows n^(5/3) degeneracy scaling
+### Path D: Full Quark Emergence (FUTURE)
+- Generation structure (why 3 families?)
+- Exact charge values (+2/3, -1/3)
+- SU(3) gauge dynamics
 
 ## Architecture
 ```
