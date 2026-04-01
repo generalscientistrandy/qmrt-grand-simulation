@@ -1,0 +1,60 @@
+{
+  "test": "Hierarchical_Branch_Interaction",
+  "spin_emergence": {
+    "initial_spins": [
+      -0.788287681898749,
+      2.8319215077704234,
+      1.4576609265440963,
+      0.6198895383354297,
+      -2.1612986243157413,
+      -2.1614501754128375
+    ],
+    "final_spins": [
+      -0.10054189846760578,
+      -0.10054189846760578,
+      -0.10054189846760578,
+      -0.10054189846760578,
+      -0.10054189846760578,
+      -0.10054189846760578
+    ],
+    "initial_energy": 33.249329228222855,
+    "final_energy": 108.82518954728266,
+    "anti_aligned": false
+  },
+  "exchange_exclusion": {
+    "E_same_spin": 8.824969025404705,
+    "E_opposite_spin": 3.3088334068846467e-32,
+    "exclusion_works": true
+  },
+  "spin_as_branch": {
+    "coupling_scan": [
+      {
+        "spin_coupling": 0.0,
+        "alignment": 0.8930832932838321,
+        "spin_std": 0.46839585963152885
+      },
+      {
+        "spin_coupling": 0.1,
+        "alignment": 0.7939813087037777,
+        "spin_std": 5.801724340754033e-07
+      },
+      {
+        "spin_coupling": 0.5,
+        "alignment": 0.8065085477866615,
+        "spin_std": 1.1102230246251565e-16
+      },
+      {
+        "spin_coupling": 1.0,
+        "alignment": 0.8143907463922136,
+        "spin_std": 1.1102230246251565e-16
+      },
+      {
+        "spin_coupling": 2.0,
+        "alignment": 0.8181964494207309,
+        "spin_std": 1.1102230246251565e-16
+      }
+    ],
+    "phase_transition": false
+  },
+  "all_levels_work": false
+}
