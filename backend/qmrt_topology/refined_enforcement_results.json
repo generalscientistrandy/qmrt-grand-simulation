@@ -1,0 +1,292 @@
+{
+  "test": "Refined_Dynamic_Enforcement",
+  "verdict": "FURTHER_REFINEMENT_NEEDED",
+  "energy_landscape": {
+    "landscape": [
+      {
+        "n": 3,
+        "E_smoothness": 1.500000000201251,
+        "E_flux": 1.6666666666666665,
+        "E_phase": 3.0,
+        "E_torsion": 0.15421256876702122,
+        "E_barrier": 10.87312731383618,
+        "E_total": 17.19400654947112,
+        "phase_closure_quality": 0.5,
+        "type": ""
+      },
+      {
+        "n": 4,
+        "E_smoothness": 4.0,
+        "E_flux": 1.25,
+        "E_phase": 2.2500000000000004,
+        "E_torsion": 0.17545963379714413,
+        "E_barrier": 4.0,
+        "E_total": 11.675459633797145,
+        "phase_closure_quality": 0.6666666666666665,
+        "type": ""
+      },
+      {
+        "n": 5,
+        "E_smoothness": 6.5450849711600005,
+        "E_flux": 1.0,
+        "E_phase": 0.750000000000001,
+        "E_torsion": 0.19038588736669282,
+        "E_barrier": 0.0,
+        "E_total": 8.485470858526694,
+        "phase_closure_quality": 0.8333333333333333,
+        "type": ""
+      },
+      {
+        "n": 6,
+        "E_smoothness": 8.999999998538902,
+        "E_flux": 0.8333333333333333,
+        "E_phase": 4.499279347985573e-32,
+        "E_torsion": 0.20142049798141545,
+        "E_barrier": 0.0,
+        "E_total": 10.034753829853651,
+        "phase_closure_quality": 1.0,
+        "type": "FERMION"
+      },
+      {
+        "n": 7,
+        "E_smoothness": 11.3644286108992,
+        "E_flux": 0.7142857142857142,
+        "E_phase": 0.7499999999999991,
+        "E_torsion": 0.20990044082177886,
+        "E_barrier": 0.0,
+        "E_total": 13.03861476600669,
+        "phase_closure_quality": 0.8333333333333334,
+        "type": ""
+      },
+      {
+        "n": 8,
+        "E_smoothness": 13.656854246816295,
+        "E_flux": 0.625,
+        "E_phase": 2.2499999999999987,
+        "E_torsion": 0.21661683184832606,
+        "E_barrier": 0.0,
+        "E_total": 16.748471078664622,
+        "phase_closure_quality": 0.6666666666666667,
+        "type": ""
+      },
+      {
+        "n": 9,
+        "E_smoothness": 15.894399984861275,
+        "E_flux": 0.5555555555555556,
+        "E_phase": 3.0,
+        "E_torsion": 0.22206609902451055,
+        "E_barrier": 0.0,
+        "E_total": 19.67202163944134,
+        "phase_closure_quality": 0.5,
+        "type": ""
+      },
+      {
+        "n": 10,
+        "E_smoothness": 18.090169939991842,
+        "E_flux": 0.5,
+        "E_phase": 2.2500000000000018,
+        "E_torsion": 0.22657494033722123,
+        "E_barrier": 0.0,
+        "E_total": 21.066744880329068,
+        "phase_closure_quality": 0.6666666666666665,
+        "type": ""
+      },
+      {
+        "n": 11,
+        "E_smoothness": 20.253788856794767,
+        "E_flux": 0.4545454545454546,
+        "E_phase": 0.7500000000000013,
+        "E_torsion": 0.23036692371369832,
+        "E_barrier": 0.0,
+        "E_total": 21.68870123505392,
+        "phase_closure_quality": 0.8333333333333333,
+        "type": ""
+      },
+      {
+        "n": 12,
+        "E_smoothness": 22.392304840416738,
+        "E_flux": 0.41666666666666663,
+        "E_phase": 1.7997117391942291e-31,
+        "E_torsion": 0.23360010416779542,
+        "E_barrier": 0.0,
+        "E_total": 23.0425716112512,
+        "phase_closure_quality": 1.0,
+        "type": "BOSON"
+      },
+      {
+        "n": 13,
+        "E_smoothness": 24.51092832778144,
+        "E_flux": 0.38461538461538464,
+        "E_phase": 0.7499999999999978,
+        "E_torsion": 0.2363893344365223,
+        "E_barrier": 0.0,
+        "E_total": 25.881933046833343,
+        "phase_closure_quality": 0.8333333333333335,
+        "type": ""
+      },
+      {
+        "n": 14,
+        "E_smoothness": 26.613564144140764,
+        "E_flux": 0.3571428571428571,
+        "E_phase": 2.2499999999999987,
+        "E_torsion": 0.23882005711277948,
+        "E_barrier": 0.0,
+        "E_total": 29.4595270583964,
+        "phase_closure_quality": 0.6666666666666667,
+        "type": ""
+      },
+      {
+        "n": 15,
+        "E_smoothness": 28.70318185729267,
+        "E_flux": 0.3333333333333333,
+        "E_phase": 3.0,
+        "E_torsion": 0.2409571386984706,
+        "E_barrier": 0.0,
+        "E_total": 32.277472329324475,
+        "phase_closure_quality": 0.5000000000000002,
+        "type": ""
+      }
+    ],
+    "global_minimum": 5,
+    "fermion_minimum": 6,
+    "boson_minimum": 12
+  },
+  "invalid_evolution": {
+    "n4": {
+      "initial": 4,
+      "final": 5,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    "n5": {
+      "initial": 5,
+      "final": 5,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    "n7": {
+      "initial": 7,
+      "final": 5,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    "n8": {
+      "initial": 8,
+      "final": 5,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    "n9": {
+      "initial": 9,
+      "final": 5,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    "n10": {
+      "initial": 10,
+      "final": 5,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    "n11": {
+      "initial": 11,
+      "final": 5,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    }
+  },
+  "attractor_distribution": {
+    "size_distribution": {
+      "5": 98,
+      "6": 2
+    },
+    "type_distribution": {
+      "INVALID": 98,
+      "FERMION": 2
+    },
+    "fermion_fraction": 0.02,
+    "boson_fraction": 0.0
+  },
+  "stability": {
+    "n6": {
+      "original_size": 5,
+      "recovery_rate": 0.9666666666666667,
+      "stable": true
+    },
+    "n12": {
+      "original_size": 5,
+      "recovery_rate": 1.0,
+      "stable": true
+    },
+    "n5": {
+      "original_size": 5,
+      "recovery_rate": 0.9333333333333333,
+      "stable": true
+    }
+  },
+  "phase_selection": [
+    {
+      "initial_n": 5,
+      "final_n": 5,
+      "initial_quality": 0.8333333333333333,
+      "final_quality": 0.8333333333333333,
+      "improved": false
+    },
+    {
+      "initial_n": 6,
+      "final_n": 5,
+      "initial_quality": 1.0,
+      "final_quality": 0.8333333333333333,
+      "improved": false
+    },
+    {
+      "initial_n": 7,
+      "final_n": 5,
+      "initial_quality": 0.8333333333333334,
+      "final_quality": 0.8333333333333333,
+      "improved": false
+    },
+    {
+      "initial_n": 8,
+      "final_n": 5,
+      "initial_quality": 0.6666666666666667,
+      "final_quality": 0.8333333333333333,
+      "improved": true
+    },
+    {
+      "initial_n": 11,
+      "final_n": 5,
+      "initial_quality": 0.8333333333333333,
+      "final_quality": 0.8333333333333333,
+      "improved": false
+    },
+    {
+      "initial_n": 12,
+      "final_n": 5,
+      "initial_quality": 1.0,
+      "final_quality": 0.8333333333333333,
+      "improved": false
+    },
+    {
+      "initial_n": 13,
+      "final_n": 5,
+      "initial_quality": 0.8333333333333335,
+      "final_quality": 0.8333333333333333,
+      "improved": false
+    }
+  ],
+  "conclusions": {
+    "fermion_fraction": 0.02,
+    "boson_fraction": 0.0,
+    "n6_stable": true,
+    "n12_stable": true,
+    "global_minimum": 5
+  }
+}

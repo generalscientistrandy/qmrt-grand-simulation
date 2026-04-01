@@ -1,0 +1,234 @@
+{
+  "test": "Phase_Quantization_Selection",
+  "verdict": "FERMION_SELECTION_COMPLETE",
+  "energy_landscape": [
+    {
+      "E_smooth": 0.30000000000000004,
+      "E_flux": 1.0,
+      "E_phase": 50.0,
+      "E_total": 51.3,
+      "n": 3,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 0.4,
+      "E_flux": 0.75,
+      "E_phase": 50.0,
+      "E_total": 51.15,
+      "n": 4,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 0.5,
+      "E_flux": 0.6,
+      "E_phase": 50.0,
+      "E_total": 51.1,
+      "n": 5,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 0.6000000000000001,
+      "E_flux": 0.5,
+      "E_phase": 0.0,
+      "E_total": 1.1,
+      "n": 6,
+      "phase_closed": true,
+      "status": "FERMION"
+    },
+    {
+      "E_smooth": 0.7000000000000001,
+      "E_flux": 0.42857142857142855,
+      "E_phase": 50.0,
+      "E_total": 51.128571428571426,
+      "n": 7,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 0.8,
+      "E_flux": 0.375,
+      "E_phase": 50.0,
+      "E_total": 51.175,
+      "n": 8,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 0.9,
+      "E_flux": 0.3333333333333333,
+      "E_phase": 50.0,
+      "E_total": 51.233333333333334,
+      "n": 9,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.0,
+      "E_flux": 0.3,
+      "E_phase": 50.0,
+      "E_total": 51.3,
+      "n": 10,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.1,
+      "E_flux": 0.2727272727272727,
+      "E_phase": 50.0,
+      "E_total": 51.372727272727275,
+      "n": 11,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.2000000000000002,
+      "E_flux": 0.25,
+      "E_phase": 0.0,
+      "E_total": 1.4500000000000002,
+      "n": 12,
+      "phase_closed": true,
+      "status": "BOSON"
+    },
+    {
+      "E_smooth": 1.3,
+      "E_flux": 0.23076923076923078,
+      "E_phase": 50.0,
+      "E_total": 51.53076923076923,
+      "n": 13,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.4000000000000001,
+      "E_flux": 0.21428571428571427,
+      "E_phase": 50.0,
+      "E_total": 51.614285714285714,
+      "n": 14,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.5,
+      "E_flux": 0.2,
+      "E_phase": 50.0,
+      "E_total": 51.7,
+      "n": 15,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.6,
+      "E_flux": 0.1875,
+      "E_phase": 50.0,
+      "E_total": 51.7875,
+      "n": 16,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.7000000000000002,
+      "E_flux": 0.17647058823529413,
+      "E_phase": 50.0,
+      "E_total": 51.87647058823529,
+      "n": 17,
+      "phase_closed": false,
+      "status": ""
+    },
+    {
+      "E_smooth": 1.8,
+      "E_flux": 0.16666666666666666,
+      "E_phase": 0.0,
+      "E_total": 1.9666666666666668,
+      "n": 18,
+      "phase_closed": true,
+      "status": "FERMION"
+    },
+    {
+      "E_smooth": 1.9000000000000001,
+      "E_flux": 0.15789473684210525,
+      "E_phase": 50.0,
+      "E_total": 52.05789473684211,
+      "n": 19,
+      "phase_closed": false,
+      "status": ""
+    }
+  ],
+  "decay_dynamics": {
+    "n5": {
+      "initial_n": 5,
+      "final_lifetime": 0.7082203534678018,
+      "phase_closed": true,
+      "survived": "True"
+    },
+    "n6": {
+      "initial_n": 6,
+      "final_lifetime": 0.9048374180359623,
+      "phase_closed": true,
+      "survived": "True"
+    },
+    "n7": {
+      "initial_n": 7,
+      "final_lifetime": 0.7082203534678018,
+      "phase_closed": true,
+      "survived": "True"
+    },
+    "n11": {
+      "initial_n": 11,
+      "final_lifetime": 0.7082203534678018,
+      "phase_closed": true,
+      "survived": "True"
+    },
+    "n12": {
+      "initial_n": 12,
+      "final_lifetime": 0.9048374180359623,
+      "phase_closed": true,
+      "survived": "True"
+    },
+    "n13": {
+      "initial_n": 13,
+      "final_lifetime": 0.7082203534678018,
+      "phase_closed": true,
+      "survived": "True"
+    }
+  },
+  "selection_outcomes": {
+    "final_distribution": {
+      "6": 9,
+      "10": 6,
+      "15": 5,
+      "9": 6,
+      "8": 6,
+      "4": 5,
+      "12": 8,
+      "14": 5
+    },
+    "closed_fraction": 0.34,
+    "fermion_fraction": 0.18,
+    "boson_fraction": 0.16
+  },
+  "survival_statistics": {
+    "size_weights": {
+      "10": 5.200339448531046e-06,
+      "12": 24.175265730365588,
+      "18": 22.043900386601084,
+      "16": 6.423948730538351e-06,
+      "4": 6.118046410036525e-06,
+      "6": 16.95938657433558,
+      "9": 3.670827846021915e-06,
+      "14": 3.9767301665237416e-06,
+      "8": 4.282632487025568e-06,
+      "15": 1.8354139230109575e-06
+    },
+    "fermion_fraction": 0.6173498101498305,
+    "boson_fraction": 0.3826496911378384
+  },
+  "conclusions": {
+    "fermion_survival_fraction": 0.6173498101498305,
+    "boson_survival_fraction": 0.3826496911378384,
+    "selection_by_decay_works": "True",
+    "smallest_stable_fermion": 6
+  }
+}

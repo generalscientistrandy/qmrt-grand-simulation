@@ -1,0 +1,119 @@
+{
+  "test": "Dynamic_Enforcement",
+  "verdict": "FERMION_STABLE_NOT_SELECTED",
+  "undersized_evolution": {
+    "initial_size": 5,
+    "final_size": 3,
+    "final_energy": {
+      "E_smoothness": 1.9999988380978286,
+      "E_phase_mismatch": 2.0,
+      "E_torsion": 0.0,
+      "E_size": 0.30000000000000004,
+      "E_total": 4.299998838097829
+    },
+    "is_fermion": "False",
+    "is_boson": "False",
+    "size_trajectory": [
+      3,
+      4,
+      5
+    ],
+    "evolved_to_valid": "False"
+  },
+  "oversized_evolution": {
+    "initial_size": 7,
+    "final_size": 3,
+    "final_energy": {
+      "E_smoothness": 1.9999893495966463,
+      "E_phase_mismatch": 2.0,
+      "E_torsion": 0.0,
+      "E_size": 0.30000000000000004,
+      "E_total": 4.299989349596646
+    },
+    "is_fermion": "False",
+    "is_boson": "False",
+    "size_trajectory": [
+      3,
+      4,
+      6,
+      7
+    ],
+    "evolved_to_valid": "False"
+  },
+  "distorted_evolution": {
+    "initial_size": 6,
+    "final_size": 3,
+    "initial_smoothness": 8.80240191321187,
+    "final_smoothness": 1.814150839611421,
+    "angle_std": 46.8191189088927,
+    "regularized": "False",
+    "is_fermion": "False"
+  },
+  "mixed_evolution": [
+    {
+      "initial": 4,
+      "final": 3,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    {
+      "initial": 5,
+      "final": 3,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    {
+      "initial": 7,
+      "final": 3,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    },
+    {
+      "initial": 8,
+      "final": 3,
+      "is_fermion": "False",
+      "is_boson": "False",
+      "valid": "False"
+    }
+  ],
+  "attractor_distribution": {
+    "size_distribution": {
+      "3": 48,
+      "4": 2
+    },
+    "fermion_fraction": 0.0,
+    "boson_fraction": 0.0,
+    "most_common": [
+      [
+        3,
+        48
+      ],
+      [
+        4,
+        2
+      ]
+    ]
+  },
+  "stability_tests": {
+    "n6_fermion": {
+      "original_size": 3,
+      "recovery_rate": 0.95,
+      "stable": true
+    },
+    "n12_boson": {
+      "original_size": 3,
+      "recovery_rate": 0.95,
+      "stable": true
+    }
+  },
+  "conclusions": {
+    "invalid_states_evolve": "False",
+    "fermion_fraction": 0.0,
+    "n6_stable": true,
+    "n12_stable": true,
+    "smallest_fermion_is_attractor": false
+  }
+}
