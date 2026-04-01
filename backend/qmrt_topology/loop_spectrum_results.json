@@ -1,0 +1,52 @@
+{
+  "test": "Loop_Spectrum",
+  "verdict": "MIXED_SPECTRUM",
+  "networks": {
+    "hexagonal": {
+      "n_junctions": 16,
+      "n_loops": 9368,
+      "dominant_length": 12,
+      "six_loop_fraction": 0.012809564474807857,
+      "loop_distribution": {
+        "7": 248,
+        "8": 496,
+        "9": 972,
+        "12": 3086,
+        "10": 1724,
+        "11": 2580,
+        "5": 64,
+        "6": 120,
+        "3": 36,
+        "4": 42
+      }
+    },
+    "random": {
+      "n_junctions": 30,
+      "n_loops": 72,
+      "dominant_length": 3,
+      "six_loop_fraction": 0.0,
+      "loop_distribution": {
+        "4": 18,
+        "3": 20,
+        "11": 8,
+        "12": 16,
+        "10": 8,
+        "5": 2
+      }
+    },
+    "dense_hexagonal": {
+      "n_junctions": 36,
+      "n_loops": 5054,
+      "dominant_length": 8,
+      "six_loop_fraction": 0.09576573011476058,
+      "loop_distribution": {
+        "7": 1176,
+        "8": 2940,
+        "5": 224,
+        "6": 484,
+        "3": 100,
+        "4": 130
+      }
+    }
+  }
+}

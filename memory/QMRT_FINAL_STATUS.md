@@ -303,7 +303,35 @@ Layer 2b: Quark-Specific Structure ✅ STRUCTURE COMPATIBLE
 - **Junction pair** = meson (color + anticolor, stable)
 - **Junction triple** = baryon (RGB neutral, stable)
 
-## Loop Transport Test: CORRECTED UNDERSTANDING
+## Loop Spectrum Analysis
+
+**Loop Distribution in Networks:**
+
+| Network | Total Loops | 6-loops | 6-loop Fraction | Notes |
+|---------|-------------|---------|-----------------|-------|
+| Hexagonal | 9,368 | 120 | 1.3% | 6-loops give -1 ✅ |
+| Dense Hex | 5,054 | 484 | 9.6% | More 6-loops |
+| Random | 72 | 0 | 0% | No fermion loops |
+
+**Critical Confirmation:**
+```
+6 transits × (-30°/transit) = -180° → holonomy = -1 → FERMION ✅
+```
+
+**The Finding:**
+- 6-transit loops EXIST in hexagonal-like networks
+- They DO produce -1 holonomy (fermion sign flip)
+- But they don't numerically dominate the loop spectrum
+- Physical selection depends on LIFETIME (τ_loop vs τ_collapse), not just count
+
+**Interpretation:**
+The mechanism for fermion emergence is:
+1. Y-junction networks can form hexagonal cells
+2. Hexagonal cells have 6 vertices → 6-transit loops
+3. 6-transit loops → -180° phase → -1 holonomy
+4. If such loops persist (τ_loop > τ_collapse), fermion behavior emerges
+
+This is a **conditional mechanism**, not a universal one.
 
 **The Actual Phase Structure (Z₁₂, not Z₄):**
 
