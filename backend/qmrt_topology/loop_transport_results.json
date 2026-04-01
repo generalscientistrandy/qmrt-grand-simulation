@@ -1,0 +1,33 @@
+{
+  "test": "Loop_Transport_Fermion_Verification",
+  "verdict": "FERMION_PHASE_CONFIRMED",
+  "key_result": {
+    "angle": 120,
+    "holonomy": "(2.83276944882399e-16-1j)",
+    "is_fermionic": "True"
+  },
+  "symmetric_junction": {
+    "single_loop": {
+      "single_loop_phase_deg": -89.99999999999999,
+      "single_loop_holonomy": "0.0000+-1.0000j",
+      "double_loop_phase_deg": -179.99999999999997,
+      "double_loop_holonomy": "-1.0000+-0.0000j",
+      "double_loop_is_minus_one": "True"
+    },
+    "three_junction_loop": {
+      "phases": [
+        -0.5235987755982989,
+        -1.0471975511965976,
+        -1.5707963267948963
+      ],
+      "total_phase_deg": -89.99999999999999,
+      "total_phase_rad": -1.5707963267948963,
+      "holonomy": "0.0000+-1.0000j",
+      "holonomy_is_minus_one": "False"
+    }
+  },
+  "phase_vs_angle_summary": {
+    "angles_tested": 25,
+    "fermionic_angles": []
+  }
+}

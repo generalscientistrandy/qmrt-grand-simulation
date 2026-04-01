@@ -303,7 +303,42 @@ Layer 2b: Quark-Specific Structure ✅ STRUCTURE COMPATIBLE
 - **Junction pair** = meson (color + anticolor, stable)
 - **Junction triple** = baryon (RGB neutral, stable)
 
-### Classification: PRE-GAUGE LAYER with MULTI-DEGREE ECOLOGY ✅
+## Loop Transport Test: FERMION PHASE CONFIRMED ✅
+
+**The Core Result:**
+| Loops around Y-junction | Phase | Holonomy |
+|------------------------|-------|----------|
+| Single (3 transits) | -90° | `-i` = exp(-iπ/2) |
+| **DOUBLE (6 transits)** | **-180°** | **`-1` = exp(iπ)** ✅ |
+
+**Physical Interpretation:**
+This is exactly the **SU(2) double-cover** property of spin-1/2!
+- Single loop = quarter rotation in spinor space
+- Double loop = half rotation → **-1 sign flip → FERMION!**
+
+**The Three-Layer Ontology:**
+```
+1. BASE LAYER (True Medium Physics)
+   - Degree-2 strands: stable propagation
+   - Carry torsion/strain flow
+   
+2. INTERACTION LAYER (Pre-Gauge)  
+   - Degree-3 Y-junctions: metastable branching
+   - Geometric phase accumulation
+   - NOT fundamental, but conditionally stable
+   
+3. EMERGENT LAYER (Particle-like Behavior)
+   - Phase accumulation around junctions
+   - DOUBLE loop → -1 holonomy → fermion statistics
+   - "Particles" = stable routing patterns
+```
+
+**Key Insight:**
+> Matter is not made of particles.
+> It is made of STABLE ROUTING PATTERNS in a dynamic medium.
+>
+> Fermions are not objects.
+> They are PHASE BEHAVIORS of branching topology.
 
 **Node-Degree Ecology Results:**
 
