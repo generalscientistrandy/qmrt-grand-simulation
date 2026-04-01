@@ -303,35 +303,52 @@ Layer 2b: Quark-Specific Structure ✅ STRUCTURE COMPATIBLE
 - **Junction pair** = meson (color + anticolor, stable)
 - **Junction triple** = baryon (RGB neutral, stable)
 
-## Loop Spectrum Analysis
+## Loop Energy & Lifetime Test: CRITICAL RESULT
 
-**Loop Distribution in Networks:**
+**Energy vs Loop Size:**
+| n | E/vertex | Rank |
+|---|----------|------|
+| 3 | 2.17 | 9/9 |
+| 6 | 1.11 | **6/9** (not optimal) |
+| 12 | 0.55 | **1/9** (lowest) |
 
-| Network | Total Loops | 6-loops | 6-loop Fraction | Notes |
-|---------|-------------|---------|-----------------|-------|
-| Hexagonal | 9,368 | 120 | 1.3% | 6-loops give -1 ✅ |
-| Dense Hex | 5,054 | 484 | 9.6% | More 6-loops |
-| Random | 72 | 0 | 0% | No fermion loops |
+**Lifetime: All loops survive equally** (no differentiation)
 
-**Critical Confirmation:**
-```
-6 transits × (-30°/transit) = -180° → holonomy = -1 → FERMION ✅
-```
+**VERDICT: Hexagon (n=6) is NOT energetically favored.**
 
-**The Finding:**
-- 6-transit loops EXIST in hexagonal-like networks
-- They DO produce -1 holonomy (fermion sign flip)
-- But they don't numerically dominate the loop spectrum
-- Physical selection depends on LIFETIME (τ_loop vs τ_collapse), not just count
+The fermion mechanism (6 transits → -1) EXISTS but is NOT physically selected by simple energy minimization. Larger loops (n=12) are energetically preferred.
 
-**Interpretation:**
-The mechanism for fermion emergence is:
-1. Y-junction networks can form hexagonal cells
-2. Hexagonal cells have 6 vertices → 6-transit loops
-3. 6-transit loops → -180° phase → -1 holonomy
-4. If such loops persist (τ_loop > τ_collapse), fermion behavior emerges
+## Precise Theoretical Claim (Final, Honest)
 
-This is a **conditional mechanism**, not a universal one.
+> "QMRT exhibits a discrete Z₁₂ geometric phase structure arising from
+> Y-junction transport, with each transit contributing Δφ = −π/6.
+>
+> Closed loops of six transits produce a −1 holonomy, yielding
+> fermion-like sign behavior.
+>
+> **However, this behavior is not intrinsic; it emerges only in network
+> regimes that dynamically support stable 6-transit loops.**
+>
+> This indicates that particle statistics arise from topology and
+> medium dynamics rather than fundamental point properties."
+
+## What This Means
+
+**Found:**
+- ✅ Z₁₂ discrete holonomy (-30° per transit)
+- ✅ 6 transits → -1 (fermion mechanism)
+- ✅ Path dependence (true holonomy)
+- ✅ Hexagonal networks contain 6-loops
+
+**NOT Found:**
+- ❌ 6-loops are NOT energetically optimal (n=12 is)
+- ❌ No intrinsic selection of fermion-producing loops
+- ❌ NOT continuous SU(2)
+
+**The Real Insight:**
+> "Spin is not fundamental. It is SELECTED topology under dynamics."
+> But the selection mechanism hasn't been identified yet.
+> Additional physical constraints are needed to favor 6-loops.
 
 **The Actual Phase Structure (Z₁₂, not Z₄):**
 

@@ -1,0 +1,229 @@
+{
+  "test": "Loop_Energy_Lifetime",
+  "verdict": "HEXAGON_NOT_FAVORED",
+  "hexagon_energy_rank": 6,
+  "hexagon_lifetime_rank": 4,
+  "best_energy_n": 12,
+  "best_lifetime_n": 3,
+  "energy_results": [
+    {
+      "n": 3,
+      "E_total": 6.5120996761610295,
+      "E_edge": 5.196152422706632,
+      "E_angle": 1.1111158483823624e-21,
+      "E_curv": 1.3159472534543972,
+      "E_per_vertex": 2.1706998920536766,
+      "E_per_length": 1.2532541670070816,
+      "perimeter": 5.196152422706632,
+      "mean_angle_deg": 60.000000001102656,
+      "ideal_angle_deg": 59.99999999999999
+    },
+    {
+      "n": 4,
+      "E_total": 6.6438146896013155,
+      "E_edge": 5.65685424949238,
+      "E_angle": 4.930380657631324e-32,
+      "E_curv": 0.9869604401089358,
+      "E_per_vertex": 1.6609536724003289,
+      "E_per_length": 1.174471604990972,
+      "perimeter": 5.65685424949238,
+      "mean_angle_deg": 90.0,
+      "ideal_angle_deg": 90.0
+    },
+    {
+      "n": 5,
+      "E_total": 6.667420875041426,
+      "E_edge": 5.877852522924732,
+      "E_angle": 2.7639123029991024e-21,
+      "E_curv": 0.789568352116694,
+      "E_per_vertex": 1.333484175008285,
+      "E_per_length": 1.1343293913954509,
+      "perimeter": 5.877852522924732,
+      "mean_angle_deg": 107.9999999986529,
+      "ideal_angle_deg": 108.0
+    },
+    {
+      "n": 6,
+      "E_total": 6.657973626811843,
+      "E_edge": 6.0,
+      "E_angle": 1.9999828874916677e-20,
+      "E_curv": 0.6579736268118425,
+      "E_per_vertex": 1.109662271135307,
+      "E_per_length": 1.109662271135307,
+      "perimeter": 6.0,
+      "mean_angle_deg": 119.99999999669204,
+      "ideal_angle_deg": 119.99999999999999
+    },
+    {
+      "n": 7,
+      "E_total": 6.638349742126858,
+      "E_edge": 6.074372347645813,
+      "E_angle": 7.85082599251577e-20,
+      "E_curv": 0.563977394481045,
+      "E_per_vertex": 0.9483356774466939,
+      "E_per_length": 1.092845377629776,
+      "perimeter": 6.074372347645813,
+      "mean_angle_deg": 128.57142856536078,
+      "ideal_angle_deg": 128.57142857142858
+    },
+    {
+      "n": 8,
+      "E_total": 6.616415138110424,
+      "E_edge": 6.122934917841436,
+      "E_angle": 2.3313690524979147e-19,
+      "E_curv": 0.4934802202689892,
+      "E_per_vertex": 0.827051892263803,
+      "E_per_length": 1.0805953724628121,
+      "perimeter": 6.122934917841436,
+      "mean_angle_deg": 134.999999990219,
+      "ideal_angle_deg": 135.0
+    },
+    {
+      "n": 9,
+      "E_total": 6.595011664674958,
+      "E_edge": 6.156362579862037,
+      "E_angle": 5.838323610715384e-19,
+      "E_curv": 0.4386490848129214,
+      "E_per_vertex": 0.7327790738527731,
+      "E_per_length": 1.071251340239085,
+      "perimeter": 6.156362579862037,
+      "mean_angle_deg": 139.99999998540696,
+      "ideal_angle_deg": 140.0
+    },
+    {
+      "n": 10,
+      "E_total": 6.575124063995341,
+      "E_edge": 6.180339887498949,
+      "E_angle": 1.2984586138210352e-18,
+      "E_curv": 0.39478417649639264,
+      "E_per_vertex": 0.6575124063995341,
+      "E_per_length": 1.06387742157918,
+      "perimeter": 6.180339887498949,
+      "mean_angle_deg": 143.999999979354,
+      "ideal_angle_deg": 144.0
+    },
+    {
+      "n": 12,
+      "E_total": 6.540643896642446,
+      "E_edge": 6.211657082460498,
+      "E_angle": 5.014152947527791e-18,
+      "E_curv": 0.3289868141819481,
+      "E_per_vertex": 0.5450536580535371,
+      "E_per_length": 1.0529628100544843,
+      "perimeter": 6.211657082460498,
+      "mean_angle_deg": 149.99999996296344,
+      "ideal_angle_deg": 150.0
+    }
+  ],
+  "lifetime_results": [
+    {
+      "n": 3,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 4,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 5,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 6,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 7,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 8,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 9,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 10,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    },
+    {
+      "n": 12,
+      "mean_lifetime": 200.0,
+      "std_lifetime": 0.0,
+      "min_lifetime": 200,
+      "max_lifetime": 200,
+      "survival_rate": 1.0
+    }
+  ],
+  "perturbation_results": [
+    {
+      "perturbation": 0.05,
+      "final_energy": 6.911444481756182,
+      "delta_E": 0.2534708549443394,
+      "stable": true,
+      "steps_survived": 200
+    },
+    {
+      "perturbation": 0.1,
+      "final_energy": 6.651326319941916,
+      "delta_E": -0.006647306869926872,
+      "stable": true,
+      "steps_survived": 200
+    },
+    {
+      "perturbation": 0.2,
+      "final_energy": 7.574879900122172,
+      "delta_E": 0.916906273310329,
+      "stable": false,
+      "steps_survived": 200
+    },
+    {
+      "perturbation": 0.3,
+      "final_energy": 7.869924129062901,
+      "delta_E": 1.2119505022510584,
+      "stable": false,
+      "steps_survived": 200
+    },
+    {
+      "perturbation": 0.5,
+      "final_energy": 10.67525975646433,
+      "delta_E": 4.017286129652487,
+      "stable": false,
+      "steps_survived": 200
+    }
+  ]
+}
