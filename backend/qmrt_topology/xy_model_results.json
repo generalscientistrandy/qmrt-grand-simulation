@@ -1,0 +1,27 @@
+{
+  "energy_conserved": "True",
+  "winding_rate": 0.9166666666666666,
+  "geometric": [
+    {
+      "n": 6,
+      "expected_W": -0.5,
+      "final_W": 0.0,
+      "W_std": 0.7159996896337006,
+      "stable": "False"
+    },
+    {
+      "n": 12,
+      "expected_W": -1.0,
+      "final_W": 1.0,
+      "W_std": 1.035905401086412,
+      "stable": "False"
+    }
+  ],
+  "emergence_distribution": {
+    "0": 20,
+    "1": 21,
+    "-2": 2,
+    "-1": 4,
+    "2": 3
+  }
+}

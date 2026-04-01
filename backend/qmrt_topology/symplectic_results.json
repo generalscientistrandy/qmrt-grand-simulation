@@ -1,0 +1,321 @@
+{
+  "test": "Symplectic_Dynamics",
+  "verdict": "NEEDS_REFINEMENT",
+  "energy_conservation": {
+    "E_initial": 12.002595505995421,
+    "E_final": 2060.3605413256523,
+    "drift": 170.6595831540337,
+    "conserved": false
+  },
+  "winding_preservation": [
+    {
+      "n": 4,
+      "init_W": 0,
+      "final_W": 0,
+      "preserved": true
+    },
+    {
+      "n": 4,
+      "init_W": 1,
+      "final_W": 0,
+      "preserved": false
+    },
+    {
+      "n": 4,
+      "init_W": 0,
+      "final_W": 0,
+      "preserved": true
+    },
+    {
+      "n": 6,
+      "init_W": 0,
+      "final_W": 0,
+      "preserved": true
+    },
+    {
+      "n": 6,
+      "init_W": 1,
+      "final_W": 0,
+      "preserved": false
+    },
+    {
+      "n": 6,
+      "init_W": 2,
+      "final_W": 0,
+      "preserved": false
+    },
+    {
+      "n": 8,
+      "init_W": 0,
+      "final_W": 0,
+      "preserved": true
+    },
+    {
+      "n": 8,
+      "init_W": 1,
+      "final_W": 0,
+      "preserved": false
+    },
+    {
+      "n": 8,
+      "init_W": 2,
+      "final_W": 0,
+      "preserved": false
+    },
+    {
+      "n": 10,
+      "init_W": 0,
+      "final_W": 0,
+      "preserved": true
+    },
+    {
+      "n": 10,
+      "init_W": 1,
+      "final_W": 1,
+      "preserved": true
+    },
+    {
+      "n": 10,
+      "init_W": 2,
+      "final_W": 0,
+      "preserved": false
+    },
+    {
+      "n": 12,
+      "init_W": 0,
+      "final_W": 0,
+      "preserved": true
+    },
+    {
+      "n": 12,
+      "init_W": 1,
+      "final_W": -1,
+      "preserved": false
+    },
+    {
+      "n": 12,
+      "init_W": 2,
+      "final_W": 1,
+      "preserved": false
+    }
+  ],
+  "stability_vs_size": [
+    {
+      "n": 3,
+      "E_mean": 47.731211535017984,
+      "E_std": 27.72028471858671,
+      "stability": 0.5806363899720893,
+      "stable": "False"
+    },
+    {
+      "n": 4,
+      "E_mean": 147.7755565176658,
+      "E_std": 112.88779555559363,
+      "stability": 0.7638621676949832,
+      "stable": "False"
+    },
+    {
+      "n": 5,
+      "E_mean": 374.1333858083206,
+      "E_std": 314.83443825858257,
+      "stability": 0.8414807001823549,
+      "stable": "False"
+    },
+    {
+      "n": 6,
+      "E_mean": 632.8197305301895,
+      "E_std": 393.99263559334986,
+      "stability": 0.622588694218364,
+      "stable": "False"
+    },
+    {
+      "n": 7,
+      "E_mean": 768.7693953851104,
+      "E_std": 342.252324912298,
+      "stability": 0.4451892532068331,
+      "stable": "False"
+    },
+    {
+      "n": 8,
+      "E_mean": 1710.624238164333,
+      "E_std": 975.8626080734778,
+      "stability": 0.5704683013480822,
+      "stable": "False"
+    },
+    {
+      "n": 9,
+      "E_mean": 1690.2219765979453,
+      "E_std": 644.0204023529993,
+      "stability": 0.3810248600604911,
+      "stable": "False"
+    },
+    {
+      "n": 10,
+      "E_mean": 2471.8664262336197,
+      "E_std": 1157.3723577944215,
+      "stability": 0.46821610720965584,
+      "stable": "False"
+    },
+    {
+      "n": 11,
+      "E_mean": 3302.300806237294,
+      "E_std": 1632.2823845571859,
+      "stability": 0.49428490542870324,
+      "stable": "False"
+    },
+    {
+      "n": 12,
+      "E_mean": 3276.279999025493,
+      "E_std": 1320.9390345075697,
+      "stability": 0.4031813529634045,
+      "stable": "False"
+    },
+    {
+      "n": 13,
+      "E_mean": 4112.779152756219,
+      "E_std": 1798.8666699371454,
+      "stability": 0.437383635076848,
+      "stable": "False"
+    },
+    {
+      "n": 14,
+      "E_mean": 5331.371071578491,
+      "E_std": 2642.372890636316,
+      "stability": 0.4956263405598156,
+      "stable": "False"
+    },
+    {
+      "n": 15,
+      "E_mean": 6316.0960753220925,
+      "E_std": 3437.851172382554,
+      "stability": 0.5442991506768258,
+      "stable": "False"
+    }
+  ],
+  "nonlinearity_effect": [
+    {
+      "V_strength": 0,
+      "V_order": 1,
+      "order_param": 0.542247868908664,
+      "E_final": 552.8102573412777
+    },
+    {
+      "V_strength": 0.1,
+      "V_order": 1,
+      "order_param": 0.4900301552136964,
+      "E_final": 391.1662121529472
+    },
+    {
+      "V_strength": 0.1,
+      "V_order": 2,
+      "order_param": 0.4946266457235009,
+      "E_final": 517.323704229916
+    },
+    {
+      "V_strength": 0.1,
+      "V_order": 6,
+      "order_param": 0.4200926523689695,
+      "E_final": 384.57329647810377
+    },
+    {
+      "V_strength": 0.5,
+      "V_order": 1,
+      "order_param": 0.32310839086151827,
+      "E_final": 163.93687560179853
+    },
+    {
+      "V_strength": 0.5,
+      "V_order": 2,
+      "order_param": 0.3983572353111082,
+      "E_final": 519.2075707242493
+    },
+    {
+      "V_strength": 0.5,
+      "V_order": 6,
+      "order_param": 0.45664619395179945,
+      "E_final": 184.20952566077173
+    },
+    {
+      "V_strength": 1.0,
+      "V_order": 1,
+      "order_param": 0.491697200366287,
+      "E_final": 1067.2758506949247
+    },
+    {
+      "V_strength": 1.0,
+      "V_order": 2,
+      "order_param": 0.503849185110726,
+      "E_final": 334.77335197588235
+    },
+    {
+      "V_strength": 1.0,
+      "V_order": 6,
+      "order_param": 0.474951360121691,
+      "E_final": 422.1490478294818
+    },
+    {
+      "V_strength": 2.0,
+      "V_order": 1,
+      "order_param": 0.39620273208922424,
+      "E_final": 236.3743657727704
+    },
+    {
+      "V_strength": 2.0,
+      "V_order": 2,
+      "order_param": 0.5920022457188211,
+      "E_final": 96.13186865360483
+    },
+    {
+      "V_strength": 2.0,
+      "V_order": 6,
+      "order_param": 0.45904989039885463,
+      "E_final": 629.8843018852488
+    }
+  ],
+  "geometric_winding": [
+    {
+      "n": 3,
+      "expected_W": -0.25,
+      "actual_W": 0.0,
+      "match": "False"
+    },
+    {
+      "n": 6,
+      "expected_W": -0.5,
+      "actual_W": 0.0,
+      "match": "False"
+    },
+    {
+      "n": 9,
+      "expected_W": -0.75,
+      "actual_W": -1.0000000000000002,
+      "match": "False"
+    },
+    {
+      "n": 12,
+      "expected_W": -1.0,
+      "actual_W": -1.0,
+      "match": "True"
+    },
+    {
+      "n": 15,
+      "expected_W": -1.25,
+      "actual_W": 7.067899292141149e-17,
+      "match": "False"
+    },
+    {
+      "n": 18,
+      "expected_W": -1.5,
+      "actual_W": -7.067899292141149e-17,
+      "match": "False"
+    }
+  ],
+  "conclusions": {
+    "energy_conserved": false,
+    "winding_rate": 0.4666666666666667,
+    "stable_sizes": [],
+    "geometric_matches": [
+      12
+    ]
+  }
+}
