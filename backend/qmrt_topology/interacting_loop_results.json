@@ -1,0 +1,15 @@
+{
+  "test": "Interacting_Loop_Model",
+  "isolated_vs_interacting": {
+    "isolated_best": 3,
+    "interacting_best": 12,
+    "six_rank": 6
+  },
+  "phase_closure": {
+    "fermion_sizes": [
+      6,
+      18
+    ],
+    "smallest_fermion": 6
+  }
+}
