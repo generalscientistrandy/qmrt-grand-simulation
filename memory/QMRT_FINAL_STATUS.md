@@ -303,42 +303,44 @@ Layer 2b: Quark-Specific Structure ✅ STRUCTURE COMPATIBLE
 - **Junction pair** = meson (color + anticolor, stable)
 - **Junction triple** = baryon (RGB neutral, stable)
 
-## Loop Transport Test: FERMION PHASE CONFIRMED ✅
+## Loop Transport Test: CORRECTED UNDERSTANDING
 
-**The Core Result:**
-| Loops around Y-junction | Phase | Holonomy |
-|------------------------|-------|----------|
-| Single (3 transits) | -90° | `-i` = exp(-iπ/2) |
-| **DOUBLE (6 transits)** | **-180°** | **`-1` = exp(iπ)** ✅ |
+**The Actual Phase Structure (Z₁₂, not Z₄):**
 
-**Physical Interpretation:**
-This is exactly the **SU(2) double-cover** property of spin-1/2!
-- Single loop = quarter rotation in spinor space
-- Double loop = half rotation → **-1 sign flip → FERMION!**
+| Transits | Phase | Holonomy | Interpretation |
+|----------|-------|----------|----------------|
+| 1 | -30° | exp(-iπ/6) | 1/12 rotation |
+| 3 | -90° | -i | Quarter rotation |
+| **6** | **-180°** | **-1** | **Fermion sign flip!** |
+| 12 | -360° | +1 | Full return |
 
-**The Three-Layer Ontology:**
-```
-1. BASE LAYER (True Medium Physics)
-   - Degree-2 strands: stable propagation
-   - Carry torsion/strain flow
-   
-2. INTERACTION LAYER (Pre-Gauge)  
-   - Degree-3 Y-junctions: metastable branching
-   - Geometric phase accumulation
-   - NOT fundamental, but conditionally stable
-   
-3. EMERGENT LAYER (Particle-like Behavior)
-   - Phase accumulation around junctions
-   - DOUBLE loop → -1 holonomy → fermion statistics
-   - "Particles" = stable routing patterns
-```
+**Corrected Findings:**
+1. Each junction transit contributes Δφ = -30° = -π/6
+2. Phase accumulates **linearly** with junction count
+3. **6 transits produce -1 holonomy** (fermion behavior!)
+4. Path dependence confirmed → TRUE HOLONOMY (gauge-like)
 
-**Key Insight:**
-> Matter is not made of particles.
-> It is made of STABLE ROUTING PATTERNS in a dynamic medium.
+**This is a Z₁₂ discrete holonomy structure:**
+- NOT yet continuous SU(2)
+- BUT produces -1 at 6 transits
+- A pre-spinor mechanism that CAN generate fermion statistics
+
+**Corrected Theoretical Claim:**
+> "A discrete Z₁₂ geometric phase structure emerges from Y-junction transport.
+> Each transit contributes Δφ = -π/6 (one-twelfth of full rotation).
 >
-> Fermions are not objects.
-> They are PHASE BEHAVIORS of branching topology.
+> SIX transits produce -1 holonomy, indicating a path to fermion statistics.
+> This is a PRE-SPINOR topology: the mechanism that could generate
+> fermions, though NOT yet continuous SU(2) gauge symmetry."
+
+**Layer Structure:**
+```
+Layer 1 — Geometry:    Y-junction, 120° branches
+Layer 2 — Transport:   Discrete branch transitions, -30° per transit
+Layer 3 — Phase:       Z₁₂ structure: {e^(-inπ/6), n=0..11}
+Layer 4 — Emergence:   6 transits → -1 → fermion sign flip
+Layer 5 — (NOT YET):   Continuous SU(2) rotation
+```
 
 **Node-Degree Ecology Results:**
 
