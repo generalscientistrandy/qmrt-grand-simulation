@@ -1,0 +1,391 @@
+{
+  "test": "Rule_Independence",
+  "verdict": "PARTIAL_EMERGENCE",
+  "emergence_score": 2,
+  "emergence_from_random": {
+    "locked_count": 10,
+    "locked_ns": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "details": [
+      {
+        "n": 3,
+        "initial_phase_deg": 360.0,
+        "final_phase_deg": 360.0,
+        "initial_effective_n": 12.0,
+        "final_effective_n": 12.0,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": -0.8660253496095361,
+        "final_energy": 86.97757885780396
+      },
+      {
+        "n": 4,
+        "initial_phase_deg": -360.0,
+        "final_phase_deg": 0.0,
+        "initial_effective_n": 12.0,
+        "final_effective_n": 0.0,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.8659891147369542,
+        "final_energy": 26.000779797253422
+      },
+      {
+        "n": 5,
+        "initial_phase_deg": 0.0,
+        "final_phase_deg": 0.0,
+        "initial_effective_n": 0.0,
+        "final_effective_n": 0.0,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.8660095062418648,
+        "final_energy": 23.29102218616066
+      },
+      {
+        "n": 6,
+        "initial_phase_deg": 0.0,
+        "final_phase_deg": 0.0,
+        "initial_effective_n": 0.0,
+        "final_effective_n": 0.0,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.8647139070424066,
+        "final_energy": 21.690514119716056
+      },
+      {
+        "n": 7,
+        "initial_phase_deg": -360.0,
+        "final_phase_deg": 2.2263882770244617e-14,
+        "initial_effective_n": 12.0,
+        "final_effective_n": 7.421294256748206e-16,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.26108027428784336,
+        "final_energy": 78.10233894646552
+      },
+      {
+        "n": 8,
+        "initial_phase_deg": 0.0,
+        "final_phase_deg": 0.0,
+        "initial_effective_n": 0.0,
+        "final_effective_n": 0.0,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.8611353994730129,
+        "final_energy": 20.07143348563548
+      },
+      {
+        "n": 9,
+        "initial_phase_deg": 360.0000000000001,
+        "final_phase_deg": 360.0,
+        "initial_effective_n": 12.000000000000004,
+        "final_effective_n": 12.0,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.3335744171084097,
+        "final_energy": 46.00442875368619
+      },
+      {
+        "n": 10,
+        "initial_phase_deg": 0.0,
+        "final_phase_deg": -2.5444437451708134e-14,
+        "initial_effective_n": 0.0,
+        "final_effective_n": 8.481479150569379e-16,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.18634182047999018,
+        "final_energy": 92.41481244002479
+      },
+      {
+        "n": 11,
+        "initial_phase_deg": -360.0,
+        "final_phase_deg": -2.5444437451708134e-14,
+        "initial_effective_n": 12.0,
+        "final_effective_n": 8.481479150569379e-16,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.47168335733535416,
+        "final_energy": 77.40643120583215
+      },
+      {
+        "n": 12,
+        "initial_phase_deg": -1.2722218725854067e-14,
+        "final_phase_deg": 0.0,
+        "initial_effective_n": 4.2407395752846894e-16,
+        "final_effective_n": 0.0,
+        "phase_locked": true,
+        "locked_to": 0.0,
+        "final_coherence": 0.3725490128548719,
+        "final_energy": 102.01470701836435
+      }
+    ]
+  },
+  "coherence_analysis": {
+    "details": [
+      {
+        "n": 3,
+        "coherence": 0.8654498424751125,
+        "energy": 31.472554018344937
+      },
+      {
+        "n": 4,
+        "coherence": 0.663678393654596,
+        "energy": 39.013239851990036
+      },
+      {
+        "n": 5,
+        "coherence": 0.6665733969157999,
+        "energy": 35.52466004892733
+      },
+      {
+        "n": 6,
+        "coherence": 0.6651040167695833,
+        "energy": 36.16848347765619
+      },
+      {
+        "n": 7,
+        "coherence": 0.5043720791920471,
+        "energy": 50.45665036451673
+      },
+      {
+        "n": 8,
+        "coherence": 0.6208441959534888,
+        "energy": 40.59142758268044
+      },
+      {
+        "n": 9,
+        "coherence": 0.5395492854259514,
+        "energy": 53.1667356241273
+      },
+      {
+        "n": 10,
+        "coherence": 0.4471786197930155,
+        "energy": 67.39664201104192
+      },
+      {
+        "n": 11,
+        "coherence": 0.48051768977305065,
+        "energy": 73.37496519840215
+      },
+      {
+        "n": 12,
+        "coherence": 0.3359416606997087,
+        "energy": 80.60135389299577
+      },
+      {
+        "n": 13,
+        "coherence": 0.5333155478708707,
+        "energy": 74.70865081158598
+      },
+      {
+        "n": 14,
+        "coherence": 0.4944826467329988,
+        "energy": 80.55832877177507
+      },
+      {
+        "n": 15,
+        "coherence": 0.6644345753058859,
+        "energy": 60.35316163378786
+      },
+      {
+        "n": 16,
+        "coherence": 0.6126454960037643,
+        "energy": 79.13711533137473
+      },
+      {
+        "n": 17,
+        "coherence": 0.4185761170559628,
+        "energy": 98.46707842155358
+      },
+      {
+        "n": 18,
+        "coherence": 0.6220652328441842,
+        "energy": 64.95615861758881
+      }
+    ],
+    "coherence_peaks": [
+      5,
+      8,
+      11,
+      13,
+      15
+    ]
+  },
+  "phase_distribution": {
+    "phase_distribution": [
+      [
+        -360,
+        11
+      ],
+      [
+        -330,
+        0
+      ],
+      [
+        -300,
+        0
+      ],
+      [
+        -270,
+        0
+      ],
+      [
+        -240,
+        0
+      ],
+      [
+        -210,
+        0
+      ],
+      [
+        -180,
+        0
+      ],
+      [
+        -150,
+        0
+      ],
+      [
+        -120,
+        0
+      ],
+      [
+        -90,
+        0
+      ],
+      [
+        -60,
+        0
+      ],
+      [
+        -30,
+        18
+      ],
+      [
+        0,
+        57
+      ],
+      [
+        30,
+        0
+      ],
+      [
+        60,
+        0
+      ],
+      [
+        90,
+        0
+      ],
+      [
+        120,
+        0
+      ],
+      [
+        150,
+        0
+      ],
+      [
+        180,
+        0
+      ],
+      [
+        210,
+        0
+      ],
+      [
+        240,
+        0
+      ],
+      [
+        270,
+        0
+      ],
+      [
+        300,
+        0
+      ],
+      [
+        330,
+        10
+      ]
+    ],
+    "clustering_fraction": 1.0
+  },
+  "sensitivity_analysis": [
+    {
+      "name": "baseline",
+      "coherence": -0.00043231402265138846,
+      "locked": false,
+      "final_phase_deg": -1.2722218725854067e-14
+    },
+    {
+      "name": "high_transport",
+      "coherence": 3.304842324897139e-05,
+      "locked": false,
+      "final_phase_deg": 0.0
+    },
+    {
+      "name": "low_transport",
+      "coherence": 0.05281057552096078,
+      "locked": false,
+      "final_phase_deg": -1.90833280887811e-14
+    },
+    {
+      "name": "high_gradient_penalty",
+      "coherence": -0.00043231402265138846,
+      "locked": false,
+      "final_phase_deg": -1.2722218725854067e-14
+    },
+    {
+      "name": "low_gradient_penalty",
+      "coherence": -0.00043231402265138846,
+      "locked": false,
+      "final_phase_deg": -1.2722218725854067e-14
+    },
+    {
+      "name": "high_noise",
+      "coherence": -0.00037716304010250906,
+      "locked": false,
+      "final_phase_deg": 2.5444437451708134e-14
+    },
+    {
+      "name": "no_noise",
+      "coherence": -0.00044607547778304407,
+      "locked": false,
+      "final_phase_deg": 3.81666561775622e-14
+    }
+  ],
+  "conclusions": {
+    "locked_ns": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coherence_peaks": [
+      5,
+      8,
+      11,
+      13,
+      15
+    ],
+    "clustering_fraction": 1.0,
+    "sensitivity_robust": 0
+  }
+}

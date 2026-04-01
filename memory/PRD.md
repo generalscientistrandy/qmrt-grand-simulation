@@ -6,51 +6,70 @@ Conduct a deep, iterative scientific investigation to derive a candidate fundame
 - Quantum mechanics (fermion statistics, Pauli exclusion, quantization) emerges from topology
 - Mathematical rigor with honest claim vs evidence tracking
 
-## 🔥🔥 MAJOR BREAKTHROUGH: DYNAMIC SELECTION ACHIEVED (December 2025) 🔥🔥
+## 🔬 Rule Independence Test Results (Critical)
 
-> **QMRT demonstrates DYNAMIC SELECTION of fermionic structures via discrete phase quantization:**
->
-> 1. Z_12 geometric phase structure (-30° per transit) creates discrete stable loop sizes
-> 2. Non-phase-closed loops decay rapidly (phase incoherence)
-> 3. Only n = 6, 12, 18, 24, ... survive (phase-closed)
-> 4. **n=6 is the SMALLEST FERMION (holonomy = -1)**
-> 5. **Selection is by SURVIVAL, not energy minimization**
+### What Was Tested
+Removed ALL global closure checks. Kept only local physics:
+- Local phase transport between neighbors
+- Local mismatch penalties at junctions  
+- Local torsion accumulation
 
-### Dynamic Selection Test Results
+### What Emerged
 
-| State Type | Survival Fraction | Status |
-|------------|-------------------|--------|
-| Fermions (n=6, 18) | **61.7%** | ✅ DOMINANT |
-| Bosons (n=12) | **38.3%** | ✅ STABLE |
-| Non-closed (n≠6k) | **~0%** | DECAY |
+| Test | Result | Meaning |
+|------|--------|---------|
+| Phase locking | All lock to 0° | ❌ NOT geometric |
+| Size preference | Peaks at n=5,8,11 | ❌ NOT n=6,12 |
+| Phase distribution | 100% near 0° | Trivial equilibrium |
+| Parameter sensitivity | 0/7 robust | ❌ Fragile |
 
-## Three-Layer Structure — ALL COMPLETE
+### Verdict: PARTIAL EMERGENCE
+
+> "The Z₁₂ phase structure (-30° per junction) does NOT emerge from simple local phase relaxation dynamics. Local transport drives all phases to 0, destroying the geometric structure."
+
+### What This Means
+1. **Previous fermion selection was IMPOSED, not emergent** ✓ Honest finding
+2. **Local phase relaxation is insufficient** - need deeper mechanism
+3. **Possible missing physics:**
+   - Phase conservation / finite transport speed
+   - Branch-level interference (trunk dynamics)
+   - Standing wave / resonance conditions
+   - Topological constraints from network connectivity
+
+## Three-Layer Structure — Status Update
 
 | Layer | Content | Status |
 |-------|---------|--------|
-| **Layer 1: Geometry → Fermion** | 120° → 1/2 → π → -1 | ✅ PROVEN |
+| **Layer 1: Geometry → Fermion** | 120° → 1/2 → π → -1 | ✅ PROVEN (given geometry) |
 | **Layer 2: Medium → Geometry** | Energy penalty → Y-junctions | ✅ PROVEN |
-| **Layer 3: Dynamic Selection** | Phase quantization → Fermion survival | ✅ PROVEN |
+| **Layer 3: Dynamic Selection** | Phase quantization selects fermions | ⚠️ IMPOSED, NOT EMERGENT |
 
-### The Complete Emergence Chain
+### What Is Actually Proven
 
 ```
-Random medium dynamics
-        ↓
 Energy penalty E = λ(degree - 3)² + Reconnection
         ↓
-98.8% Y-junction dominance
+98.8% Y-junction dominance ✅ PROVEN
         ↓
-Force balance → 120° angles
+Force balance → 120° angles ✅ PROVEN
         ↓
-Z_12 phase transport (-30° per junction)
+Z_12 phase structure (-30° per junction) ✅ KINEMATIC POSSIBILITY
         ↓
-Phase quantization: valid n = 6k
-        ↓
-Non-closed loops DECAY
-        ↓
-FERMION (n=6) SURVIVES ✅
+Phase quantization selects n=6k ⚠️ WAS IMPOSED, NOT EMERGENT
 ```
+
+### The Honest State of QMRT
+
+**Proven:**
+- Y-junction networks form from energy penalties ✅
+- 120° geometry produces 1/2 factor ✅
+- Z₁₂ phase structure EXISTS as kinematic possibility ✅
+- Fermion holonomy (-1) POSSIBLE for n=6 loops ✅
+
+**Not Yet Proven:**
+- Dynamic selection of n=6 loops ❌
+- Phase closure emergence from local physics ❌
+- Spontaneous quantization ❌
 
 ## Validation Levels
 
