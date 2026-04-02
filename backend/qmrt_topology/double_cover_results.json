@@ -1,0 +1,41 @@
+{
+  "test": "Double_Cover_Derivation",
+  "z6_vs_z12": {
+    "exterior_angle": 60,
+    "z6_phase": 60.0,
+    "z12_phase": 30.0,
+    "ratio": 2
+  },
+  "sign_structure": {
+    "model_A_total": 360,
+    "model_B_total": 180.0,
+    "model_C_total": 900,
+    "model_C_mod360": 180,
+    "sign_gives_fermion": "True"
+  },
+  "branch_transition": {
+    "turn_angle_deg": 59.999999999999986,
+    "total_turn": 359.9999999999999,
+    "for_fermion_need": 180,
+    "ratio_needed": 0.5000000000000001
+  },
+  "branch_angle": {
+    "branch_sep": 120,
+    "path_turn": 60,
+    "ratio": 0.5,
+    "phase_per_junction": 30.0,
+    "total_phase": 180.0
+  },
+  "n6_special": {
+    "formula": "phase = (360/n)\u00b2 / 120",
+    "fermion_condition": "1080/n = 180 + 360k",
+    "unique_solution": 6
+  },
+  "final_derivation": {
+    "formula": "phase = path_turn\u00b2 / branch_angle",
+    "for_hexagon": "phase = 60\u00b2/120 = 30\u00b0 per junction",
+    "total_phase": "6 \u00d7 30\u00b0 = 180\u00b0",
+    "holonomy": "-1 (fermion)",
+    "ratio_origin": "60\u00b0/120\u00b0 = exterior_angle / branch_angle = 1/2"
+  }
+}
