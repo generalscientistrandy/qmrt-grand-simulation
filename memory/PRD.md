@@ -6,11 +6,25 @@ Conduct a deep, iterative scientific investigation to derive a candidate fundame
 - Quantum mechanics (fermion statistics, Pauli exclusion, quantization) emerges from topology
 - Mathematical rigor with honest claim vs evidence tracking
 
-## 🔥🔥🔥 DERIVATION COMPLETE: SPIN-1/2 FROM FIRST PRINCIPLES 🔥🔥🔥
+## 🔥🔥🔥 SPINOR PHASE MECHANISM DERIVED 🔥🔥🔥
 
-### December 2025 — Major Theoretical Breakthrough
+### December 2025 — Major Theoretical Progress
 
-**The complete derivation chain has been established:**
+**The Correct Claim:**
+
+> "We derive a geometric mechanism that produces **spinor phase behavior** and selects the **first non-trivial realization of spin-1/2 structure** in a discrete Y-junction medium."
+
+**What This IS:**
+- ✅ Origin of half-angle phase from spinor overlap geometry
+- ✅ Geometric selection mechanism via commensurability + frustration  
+- ✅ Identification of hexagon as first non-trivial spin-1/2 loop
+
+**What This IS NOT (yet):**
+- ❌ Full derivation of fermions (requires exchange statistics)
+- ❌ Field/operator structure
+- ❌ Mapping to actual fermionic degrees of freedom
+
+### The Derivation Chain (Established)
 
 ```
 Y-junction geometry (120°) 
@@ -41,12 +55,14 @@ Y-junction geometry (120°)
 
 ### The Honest Final Claim
 
-> "QMRT derives spin-1/2 behavior from Y-junction network geometry through:
+> "QMRT derives a geometric mechanism for spin-1/2 phase behavior through:
 > 1. **Spinor overlap** giving phase = -Δα/2 (the 1/2 emerges from geometry)
 > 2. **Commensurability** with 120° branch basis filtering for n = 3, 6, 12, ...
-> 3. **Non-trivial frustration** excluding n=3, making n=6 the first true fermion
+> 3. **Non-trivial frustration** excluding n=3, making n=6 the first true spin-1/2 loop
 >
-> The spin value s = 1/2 emerges as 60°/120°, a geometric ratio — NOT a representation theory input."
+> The spin value s = 1/2 emerges as 60°/120°, a geometric ratio — NOT a representation theory input.
+>
+> **To complete the fermion derivation**, exchange statistics (antisymmetry under particle swap) must still be demonstrated."
 
 ---
 
