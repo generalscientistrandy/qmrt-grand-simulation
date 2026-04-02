@@ -1,0 +1,811 @@
+{
+  "polygon_analysis": {
+    "3": {
+      "n": 3,
+      "turn_per_junction_deg": 119.99999999999999,
+      "total_spinor_phase_deg": -180.0,
+      "holonomy_real": -1.0,
+      "holonomy_imag": -1.2246467991473532e-16,
+      "is_fermion": "True",
+      "total_mismatch_in_deg": 0.0,
+      "total_mismatch_out_deg": 0.0,
+      "avg_mismatch_deg": 0.0,
+      "clean_transitions": 3,
+      "clean_fraction": 1.0,
+      "junction_data": [
+        {
+          "junction": 0,
+          "incoming_deg": 0.0,
+          "outgoing_deg": 119.99999999999999,
+          "turn_deg": 119.99999999999999,
+          "in_branch": "0",
+          "out_branch": "1",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -59.99999999999999,
+          "is_clean": "True"
+        },
+        {
+          "junction": 1,
+          "incoming_deg": 119.99999999999999,
+          "outgoing_deg": 239.99999999999997,
+          "turn_deg": 119.99999999999999,
+          "in_branch": "1",
+          "out_branch": "2",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -59.99999999999999,
+          "is_clean": "True"
+        },
+        {
+          "junction": 2,
+          "incoming_deg": 239.99999999999997,
+          "outgoing_deg": 0.0,
+          "turn_deg": 119.99999999999999,
+          "in_branch": "2",
+          "out_branch": "0",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 120.00000000000001,
+          "spinor_phase_deg": -59.99999999999999,
+          "is_clean": "True"
+        }
+      ]
+    },
+    "4": {
+      "n": 4,
+      "turn_per_junction_deg": 90.0,
+      "total_spinor_phase_deg": -180.0,
+      "holonomy_real": -1.0,
+      "holonomy_imag": -1.2246467991473532e-16,
+      "is_fermion": "True",
+      "total_mismatch_in_deg": 119.99999999999999,
+      "total_mismatch_out_deg": 119.99999999999999,
+      "avg_mismatch_deg": 29.999999999999996,
+      "clean_transitions": 0,
+      "clean_fraction": 0.0,
+      "junction_data": [
+        {
+          "junction": 0,
+          "incoming_deg": 0.0,
+          "outgoing_deg": 90.0,
+          "turn_deg": 90.0,
+          "in_branch": "0",
+          "out_branch": "1",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 29.999999999999993,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -45.0,
+          "is_clean": "False"
+        },
+        {
+          "junction": 1,
+          "incoming_deg": 90.0,
+          "outgoing_deg": 180.0,
+          "turn_deg": 90.0,
+          "in_branch": "1",
+          "out_branch": "2",
+          "mismatch_in_deg": 29.999999999999993,
+          "mismatch_out_deg": 59.999999999999986,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -45.0,
+          "is_clean": "False"
+        },
+        {
+          "junction": 2,
+          "incoming_deg": 180.0,
+          "outgoing_deg": 270.0,
+          "turn_deg": 90.0,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 59.999999999999986,
+          "mismatch_out_deg": 30.000000000000018,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -45.0,
+          "is_clean": "False"
+        },
+        {
+          "junction": 3,
+          "incoming_deg": 270.0,
+          "outgoing_deg": 0.0,
+          "turn_deg": 90.0,
+          "in_branch": "2",
+          "out_branch": "0",
+          "mismatch_in_deg": 30.000000000000018,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 120.00000000000001,
+          "spinor_phase_deg": -45.0,
+          "is_clean": "False"
+        }
+      ]
+    },
+    "5": {
+      "n": 5,
+      "turn_per_junction_deg": 72.0,
+      "total_spinor_phase_deg": -180.0,
+      "holonomy_real": -1.0,
+      "holonomy_imag": -1.2246467991473532e-16,
+      "is_fermion": "True",
+      "total_mismatch_in_deg": 144.0,
+      "total_mismatch_out_deg": 144.0,
+      "avg_mismatch_deg": 28.8,
+      "clean_transitions": 0,
+      "clean_fraction": 0.0,
+      "junction_data": [
+        {
+          "junction": 0,
+          "incoming_deg": 0.0,
+          "outgoing_deg": 72.0,
+          "turn_deg": 72.0,
+          "in_branch": "0",
+          "out_branch": "1",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 47.99999999999999,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -36.0,
+          "is_clean": "False"
+        },
+        {
+          "junction": 1,
+          "incoming_deg": 72.0,
+          "outgoing_deg": 144.0,
+          "turn_deg": 72.0,
+          "in_branch": "1",
+          "out_branch": "1",
+          "mismatch_in_deg": 47.99999999999999,
+          "mismatch_out_deg": 24.000000000000007,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -36.0,
+          "is_clean": "False"
+        },
+        {
+          "junction": 2,
+          "incoming_deg": 144.0,
+          "outgoing_deg": 216.0,
+          "turn_deg": 72.0,
+          "in_branch": "1",
+          "out_branch": "2",
+          "mismatch_in_deg": 24.000000000000007,
+          "mismatch_out_deg": 23.999999999999982,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -36.0,
+          "is_clean": "False"
+        },
+        {
+          "junction": 3,
+          "incoming_deg": 216.0,
+          "outgoing_deg": 288.0,
+          "turn_deg": 72.0,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 23.999999999999982,
+          "mismatch_out_deg": 48.000000000000014,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -36.0,
+          "is_clean": "False"
+        },
+        {
+          "junction": 4,
+          "incoming_deg": 288.0,
+          "outgoing_deg": 0.0,
+          "turn_deg": 72.0,
+          "in_branch": "2",
+          "out_branch": "0",
+          "mismatch_in_deg": 48.000000000000014,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 120.00000000000001,
+          "spinor_phase_deg": -36.0,
+          "is_clean": "False"
+        }
+      ]
+    },
+    "6": {
+      "n": 6,
+      "turn_per_junction_deg": 59.99999999999999,
+      "total_spinor_phase_deg": -179.99999999999997,
+      "holonomy_real": -1.0,
+      "holonomy_imag": -5.66553889764798e-16,
+      "is_fermion": "True",
+      "total_mismatch_in_deg": 179.99999999999994,
+      "total_mismatch_out_deg": 180.0,
+      "avg_mismatch_deg": 29.999999999999996,
+      "clean_transitions": 0,
+      "clean_fraction": 0.0,
+      "junction_data": [
+        {
+          "junction": 0,
+          "incoming_deg": 0.0,
+          "outgoing_deg": 59.99999999999999,
+          "turn_deg": 59.99999999999999,
+          "in_branch": "0",
+          "out_branch": "0",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 59.99999999999999,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -29.999999999999996,
+          "is_clean": "False"
+        },
+        {
+          "junction": 1,
+          "incoming_deg": 59.99999999999999,
+          "outgoing_deg": 119.99999999999999,
+          "turn_deg": 59.99999999999999,
+          "in_branch": "0",
+          "out_branch": "1",
+          "mismatch_in_deg": 59.99999999999999,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -29.999999999999996,
+          "is_clean": "False"
+        },
+        {
+          "junction": 2,
+          "incoming_deg": 119.99999999999999,
+          "outgoing_deg": 180.0,
+          "turn_deg": 59.99999999999999,
+          "in_branch": "1",
+          "out_branch": "2",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 59.999999999999986,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -29.999999999999996,
+          "is_clean": "False"
+        },
+        {
+          "junction": 3,
+          "incoming_deg": 180.0,
+          "outgoing_deg": 239.99999999999997,
+          "turn_deg": 59.99999999999999,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 59.999999999999986,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -29.999999999999996,
+          "is_clean": "False"
+        },
+        {
+          "junction": 4,
+          "incoming_deg": 239.99999999999997,
+          "outgoing_deg": 299.99999999999994,
+          "turn_deg": 59.99999999999999,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 59.999999999999986,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -29.999999999999996,
+          "is_clean": "False"
+        },
+        {
+          "junction": 5,
+          "incoming_deg": 299.99999999999994,
+          "outgoing_deg": 359.99999999999994,
+          "turn_deg": 59.99999999999999,
+          "in_branch": "2",
+          "out_branch": "0",
+          "mismatch_in_deg": 59.999999999999986,
+          "mismatch_out_deg": 5.088887490341627e-14,
+          "branch_delta_deg": 120.00000000000001,
+          "spinor_phase_deg": -29.999999999999996,
+          "is_clean": "False"
+        }
+      ]
+    },
+    "8": {
+      "n": 8,
+      "turn_per_junction_deg": 45.0,
+      "total_spinor_phase_deg": -180.0,
+      "holonomy_real": -1.0,
+      "holonomy_imag": -1.2246467991473532e-16,
+      "is_fermion": "True",
+      "total_mismatch_in_deg": 239.99999999999997,
+      "total_mismatch_out_deg": 239.99999999999997,
+      "avg_mismatch_deg": 29.999999999999996,
+      "clean_transitions": 0,
+      "clean_fraction": 0.0,
+      "junction_data": [
+        {
+          "junction": 0,
+          "incoming_deg": 0.0,
+          "outgoing_deg": 45.0,
+          "turn_deg": 45.0,
+          "in_branch": "0",
+          "out_branch": "0",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 45.0,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        },
+        {
+          "junction": 1,
+          "incoming_deg": 45.0,
+          "outgoing_deg": 90.0,
+          "turn_deg": 45.0,
+          "in_branch": "0",
+          "out_branch": "1",
+          "mismatch_in_deg": 45.0,
+          "mismatch_out_deg": 29.999999999999993,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        },
+        {
+          "junction": 2,
+          "incoming_deg": 90.0,
+          "outgoing_deg": 135.0,
+          "turn_deg": 45.0,
+          "in_branch": "1",
+          "out_branch": "1",
+          "mismatch_in_deg": 29.999999999999993,
+          "mismatch_out_deg": 15.000000000000009,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        },
+        {
+          "junction": 3,
+          "incoming_deg": 135.0,
+          "outgoing_deg": 180.0,
+          "turn_deg": 45.0,
+          "in_branch": "1",
+          "out_branch": "2",
+          "mismatch_in_deg": 15.000000000000009,
+          "mismatch_out_deg": 59.999999999999986,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        },
+        {
+          "junction": 4,
+          "incoming_deg": 180.0,
+          "outgoing_deg": 225.0,
+          "turn_deg": 45.0,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 59.999999999999986,
+          "mismatch_out_deg": 14.999999999999982,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        },
+        {
+          "junction": 5,
+          "incoming_deg": 225.0,
+          "outgoing_deg": 270.0,
+          "turn_deg": 45.0,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 14.999999999999982,
+          "mismatch_out_deg": 30.000000000000018,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        },
+        {
+          "junction": 6,
+          "incoming_deg": 270.0,
+          "outgoing_deg": 315.0,
+          "turn_deg": 45.0,
+          "in_branch": "2",
+          "out_branch": "0",
+          "mismatch_in_deg": 30.000000000000018,
+          "mismatch_out_deg": 45.0,
+          "branch_delta_deg": 120.00000000000001,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        },
+        {
+          "junction": 7,
+          "incoming_deg": 315.0,
+          "outgoing_deg": 0.0,
+          "turn_deg": 45.0,
+          "in_branch": "0",
+          "out_branch": "0",
+          "mismatch_in_deg": 45.0,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -22.5,
+          "is_clean": "False"
+        }
+      ]
+    },
+    "12": {
+      "n": 12,
+      "turn_per_junction_deg": 29.999999999999996,
+      "total_spinor_phase_deg": -180.00000000000003,
+      "holonomy_real": -1.0,
+      "holonomy_imag": 3.216245299353273e-16,
+      "is_fermion": "True",
+      "total_mismatch_in_deg": 359.99999999999994,
+      "total_mismatch_out_deg": 360.0,
+      "avg_mismatch_deg": 29.999999999999996,
+      "clean_transitions": 0,
+      "clean_fraction": 0.0,
+      "junction_data": [
+        {
+          "junction": 0,
+          "incoming_deg": 0.0,
+          "outgoing_deg": 29.999999999999996,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "0",
+          "out_branch": "0",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 29.999999999999996,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 1,
+          "incoming_deg": 29.999999999999996,
+          "outgoing_deg": 59.99999999999999,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "0",
+          "out_branch": "0",
+          "mismatch_in_deg": 29.999999999999996,
+          "mismatch_out_deg": 59.99999999999999,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 2,
+          "incoming_deg": 59.99999999999999,
+          "outgoing_deg": 90.0,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "0",
+          "out_branch": "1",
+          "mismatch_in_deg": 59.99999999999999,
+          "mismatch_out_deg": 29.999999999999993,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 3,
+          "incoming_deg": 90.0,
+          "outgoing_deg": 119.99999999999999,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "1",
+          "out_branch": "1",
+          "mismatch_in_deg": 29.999999999999993,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 4,
+          "incoming_deg": 119.99999999999999,
+          "outgoing_deg": 149.99999999999997,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "1",
+          "out_branch": "1",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 29.999999999999993,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 5,
+          "incoming_deg": 149.99999999999997,
+          "outgoing_deg": 179.99999999999997,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "1",
+          "out_branch": "1",
+          "mismatch_in_deg": 29.999999999999993,
+          "mismatch_out_deg": 59.999999999999986,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 6,
+          "incoming_deg": 179.99999999999997,
+          "outgoing_deg": 209.99999999999997,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "1",
+          "out_branch": "2",
+          "mismatch_in_deg": 59.999999999999986,
+          "mismatch_out_deg": 30.000000000000018,
+          "branch_delta_deg": 119.99999999999999,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 7,
+          "incoming_deg": 209.99999999999997,
+          "outgoing_deg": 239.99999999999997,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 30.000000000000018,
+          "mismatch_out_deg": 0.0,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 8,
+          "incoming_deg": 239.99999999999997,
+          "outgoing_deg": 270.0,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "2",
+          "out_branch": "2",
+          "mismatch_in_deg": 0.0,
+          "mismatch_out_deg": 30.000000000000018,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 9,
+          "incoming_deg": 270.0,
+          "outgoing_deg": 300.0,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "2",
+          "out_branch": "0",
+          "mismatch_in_deg": 30.000000000000018,
+          "mismatch_out_deg": 59.999999999999986,
+          "branch_delta_deg": 120.00000000000001,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 10,
+          "incoming_deg": 300.0,
+          "outgoing_deg": 330.00000000000006,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "0",
+          "out_branch": "0",
+          "mismatch_in_deg": 59.999999999999986,
+          "mismatch_out_deg": 29.999999999999964,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        },
+        {
+          "junction": 11,
+          "incoming_deg": 330.00000000000006,
+          "outgoing_deg": 5.088887490341627e-14,
+          "turn_deg": 29.999999999999996,
+          "in_branch": "0",
+          "out_branch": "0",
+          "mismatch_in_deg": 29.999999999999964,
+          "mismatch_out_deg": 5.088887490341627e-14,
+          "branch_delta_deg": 0.0,
+          "spinor_phase_deg": -14.999999999999998,
+          "is_clean": "False"
+        }
+      ]
+    }
+  },
+  "closure": {
+    "3": {
+      "n": 3,
+      "start_branch": "0",
+      "end_branch": "0",
+      "closes_in_branch_space": "True",
+      "branch_sequence": [
+        "0",
+        "1",
+        "2",
+        "0"
+      ],
+      "unique_branches_visited": 3
+    },
+    "4": {
+      "n": 4,
+      "start_branch": "0",
+      "end_branch": "0",
+      "closes_in_branch_space": "True",
+      "branch_sequence": [
+        "0",
+        "1",
+        "2",
+        "2",
+        "0"
+      ],
+      "unique_branches_visited": 3
+    },
+    "5": {
+      "n": 5,
+      "start_branch": "0",
+      "end_branch": "0",
+      "closes_in_branch_space": "True",
+      "branch_sequence": [
+        "0",
+        "1",
+        "1",
+        "2",
+        "2",
+        "0"
+      ],
+      "unique_branches_visited": 3
+    },
+    "6": {
+      "n": 6,
+      "start_branch": "0",
+      "end_branch": "0",
+      "closes_in_branch_space": "True",
+      "branch_sequence": [
+        "0",
+        "0",
+        "1",
+        "2",
+        "2",
+        "2",
+        "0"
+      ],
+      "unique_branches_visited": 3
+    },
+    "8": {
+      "n": 8,
+      "start_branch": "0",
+      "end_branch": "0",
+      "closes_in_branch_space": "True",
+      "branch_sequence": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "2",
+        "2",
+        "2",
+        "0",
+        "0"
+      ],
+      "unique_branches_visited": 3
+    },
+    "12": {
+      "n": 12,
+      "start_branch": "0",
+      "end_branch": "0",
+      "closes_in_branch_space": "True",
+      "branch_sequence": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "1",
+        "1",
+        "2",
+        "2",
+        "2",
+        "0",
+        "0",
+        "0"
+      ],
+      "unique_branches_visited": 3
+    }
+  },
+  "commensurability": {
+    "3": {
+      "n": 3,
+      "turn": 120.0,
+      "ratio": 1.0,
+      "fraction": "1/1",
+      "is_commensurate": true
+    },
+    "4": {
+      "n": 4,
+      "turn": 90.0,
+      "ratio": 0.75,
+      "fraction": "3/4",
+      "is_commensurate": false
+    },
+    "5": {
+      "n": 5,
+      "turn": 72.0,
+      "ratio": 0.6,
+      "fraction": "3/5",
+      "is_commensurate": false
+    },
+    "6": {
+      "n": 6,
+      "turn": 60.0,
+      "ratio": 0.5,
+      "fraction": "1/2",
+      "is_commensurate": true
+    },
+    "8": {
+      "n": 8,
+      "turn": 45.0,
+      "ratio": 0.375,
+      "fraction": "3/8",
+      "is_commensurate": false
+    },
+    "10": {
+      "n": 10,
+      "turn": 36.0,
+      "ratio": 0.3,
+      "fraction": "3/10",
+      "is_commensurate": false
+    },
+    "12": {
+      "n": 12,
+      "turn": 30.0,
+      "ratio": 0.25,
+      "fraction": "1/4",
+      "is_commensurate": false
+    }
+  },
+  "resonance": {
+    "results": {
+      "3": {
+        "n": 3,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": true,
+        "is_resonant": true
+      },
+      "4": {
+        "n": 4,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": false,
+        "is_resonant": false
+      },
+      "5": {
+        "n": 5,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": false,
+        "is_resonant": false
+      },
+      "6": {
+        "n": 6,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": true,
+        "is_resonant": true
+      },
+      "8": {
+        "n": 8,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": false,
+        "is_resonant": false
+      },
+      "10": {
+        "n": 10,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": false,
+        "is_resonant": false
+      },
+      "12": {
+        "n": 12,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": false,
+        "is_resonant": false
+      },
+      "18": {
+        "n": 18,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": false,
+        "is_resonant": false
+      },
+      "24": {
+        "n": 24,
+        "spinor_phase": -180.0,
+        "is_fermion": "True",
+        "is_commensurate": false,
+        "is_resonant": false
+      }
+    },
+    "resonant": [
+      3,
+      6
+    ]
+  },
+  "branch_cycles": {}
+}
