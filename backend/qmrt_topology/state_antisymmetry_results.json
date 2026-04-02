@@ -1,0 +1,28 @@
+{
+  "antiperiodicity": {
+    "antiperiodicity_satisfied": "True"
+  },
+  "exchange_as_path": {
+    "theta_initial": 45.0,
+    "psi_initial": "(0.9238795325112867+0.3826834323650898j)",
+    "psi_after_exchange": "(-0.9238795325112868-0.38268343236508967j)",
+    "exchange_gives_minus_psi": "True"
+  },
+  "double_exchange": {
+    "single_exchange_minus": "True",
+    "double_exchange_plus": "True"
+  },
+  "exchange_operator": {
+    "P_is_minus_one": "True",
+    "P_squared_is_one": "True"
+  },
+  "two_defect_state": {
+    "note": "Antisymmetry is in path-dependent phase, not direct coordinate swap"
+  },
+  "final_verification": {
+    "antiperiodicity": true,
+    "exchange_minus_one": "True",
+    "double_exchange_plus_one": "True",
+    "fermionic_statistics_confirmed": "True"
+  }
+}
