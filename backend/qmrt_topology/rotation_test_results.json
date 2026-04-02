@@ -1,0 +1,20 @@
+{
+  "test": "Rotation_Spinor_Test",
+  "verdict": "LATTICE_TOPOLOGY_ONLY",
+  "test_2pi": {
+    "psi_ratio": "(0.9999999999066993+2.499982632298309e-11j)",
+    "is_spinor": "False"
+  },
+  "test_4pi": {
+    "psi_ratio": "(0.9999999999067006+2.49997745303739e-11j)",
+    "returns_to_identity": "True"
+  },
+  "sign_dependence": {
+    "Alternating": {
+      "is_spinor": "False"
+    },
+    "Uniform": {
+      "is_spinor": "False"
+    }
+  }
+}
