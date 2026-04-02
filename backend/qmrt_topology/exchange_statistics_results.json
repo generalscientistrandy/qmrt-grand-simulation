@@ -1,0 +1,37 @@
+{
+  "full_loop": {
+    "continuous": {
+      "phase_deg": -177.46478873239434,
+      "holonomy": "(-0.9990212265199736-0.04423334672537929j)",
+      "is_minus_one": "True"
+    },
+    "discrete": {
+      "phase_deg": -180.0,
+      "holonomy": "(-1-1.2246467991473532e-16j)",
+      "is_minus_one": "True"
+    }
+  },
+  "exchange_simple": {
+    "phase_A": 87.42857142857146,
+    "phase_B": 87.42857142857146,
+    "total_phase": 174.85714285714292,
+    "holonomy": "(-0.9959742939952391+0.08963930890343273j)"
+  },
+  "exchange_proper": {
+    "relative_winding_deg": 360.0,
+    "exchange_phase_deg": -180.0,
+    "holonomy": "(-1-1.2246467991473532e-16j)",
+    "is_fermionic": "True"
+  },
+  "double_exchange": {
+    "winding_deg": 720.0,
+    "phase_deg": -360.0,
+    "holonomy": "(1+2.4492935982947064e-16j)",
+    "is_plus_one": "True"
+  },
+  "discrete_exchange": {
+    "path_length": 22,
+    "phase_deg": 59.99999999999999,
+    "topology_preserved": true
+  }
+}
