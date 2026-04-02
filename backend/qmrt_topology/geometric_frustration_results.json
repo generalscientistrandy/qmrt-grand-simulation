@@ -1,0 +1,28 @@
+{
+  "test": "Geometric_Frustration",
+  "single_junction": {
+    "junction_id": 0,
+    "incoming_deg": 0.0,
+    "outgoing_deg": 59.99999999999999,
+    "continuous_turn_deg": 59.99999999999999,
+    "discrete_turn_deg": 0.0,
+    "mismatch_deg": 59.99999999999999,
+    "phase_v1_direct_deg": 59.99999999999999,
+    "phase_v2_curvature_deg": 29.999999999999996,
+    "phase_v3_turn_ratio_deg": 29.999999999999996
+  },
+  "hexagon_loop": {
+    "total_v2": -2.1316282072803006e-14,
+    "holonomy_v2": "(1-3.720393064542541e-16j)",
+    "is_fermion": "False"
+  },
+  "formula": "phase = turn\u00b2 / basis_step",
+  "derivation": "Curvature density from discrete transport",
+  "hexagon_result": {
+    "turn": 60,
+    "basis": 120,
+    "phase_per_junction": 30,
+    "total": 180,
+    "holonomy": -1
+  }
+}
