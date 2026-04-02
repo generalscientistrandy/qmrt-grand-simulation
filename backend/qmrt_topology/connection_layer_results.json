@@ -1,0 +1,179 @@
+{
+  "test": "Connection_Layer",
+  "static_holonomy": {
+    "frame_alignment": {
+      "connection": "frame_alignment",
+      "individual_phases_deg": [
+        59.99999999999999,
+        59.99999999999999,
+        60.00000000000001,
+        59.999999999999986,
+        60.000000000000036,
+        59.999999999999986
+      ],
+      "total_phase_deg": 360.0,
+      "holonomy_real": 1.0,
+      "holonomy_imag": -2.4492935982947064e-16,
+      "is_fermion": "False",
+      "is_boson": "True"
+    },
+    "tangent_transport": {
+      "connection": "tangent_transport",
+      "individual_phases_deg": [
+        -59.99999999999999,
+        -60.00000000000001,
+        -59.999999999999986,
+        -59.999999999999986,
+        -60.000000000000036,
+        -59.99999999999993
+      ],
+      "total_phase_deg": -359.99999999999994,
+      "holonomy_real": 1.0,
+      "holonomy_imag": 1.133107779529596e-15,
+      "is_fermion": "False",
+      "is_boson": "True"
+    }
+  },
+  "rotation_test": {
+    "rotation_results": [
+      {
+        "rotation_deg": 0.0,
+        "frame_phase_deg": 360.0,
+        "tangent_phase_deg": -359.99999999999994,
+        "frame_holonomy": "(1-2.4492935982947064e-16j)",
+        "tangent_holonomy": "(1+1.133107779529596e-15j)"
+      },
+      {
+        "rotation_deg": 29.999999999999996,
+        "frame_phase_deg": 360.00000000000006,
+        "tangent_phase_deg": -359.9999999999999,
+        "frame_holonomy": "(1+6.432490598706546e-16j)",
+        "tangent_holonomy": "(1+2.021286199229721e-15j)"
+      },
+      {
+        "rotation_deg": 59.99999999999999,
+        "frame_phase_deg": 360.0,
+        "tangent_phase_deg": -359.99999999999994,
+        "frame_holonomy": "(1-2.4492935982947064e-16j)",
+        "tangent_holonomy": "(1+1.133107779529596e-15j)"
+      },
+      {
+        "rotation_deg": 90.0,
+        "frame_phase_deg": 360.0,
+        "tangent_phase_deg": -359.9999999999999,
+        "frame_holonomy": "(1-2.4492935982947064e-16j)",
+        "tangent_holonomy": "(1+2.021286199229721e-15j)"
+      },
+      {
+        "rotation_deg": 180.0,
+        "frame_phase_deg": 360.0,
+        "tangent_phase_deg": -359.9999999999998,
+        "frame_holonomy": "(1-2.4492935982947064e-16j)",
+        "tangent_holonomy": "(1+3.797643038629971e-15j)"
+      },
+      {
+        "rotation_deg": 360.0,
+        "frame_phase_deg": 360.0,
+        "tangent_phase_deg": -360.0,
+        "frame_holonomy": "(1-2.4492935982947064e-16j)",
+        "tangent_holonomy": "(1+2.4492935982947064e-16j)"
+      }
+    ],
+    "frame_connection_couples_to_rotation": false,
+    "tangent_connection_couples_to_rotation": false
+  },
+  "external_frame": {
+    "external_frame_results": [
+      {
+        "rotation_deg": 0.0,
+        "total_frame_deg": 900.0,
+        "phase_mod_deg": 180.0,
+        "holonomy": "(-1+6.123233995736766e-16j)"
+      },
+      {
+        "rotation_deg": 29.999999999999996,
+        "total_frame_deg": 1080.0,
+        "phase_mod_deg": 0.0,
+        "holonomy": "(1-7.347880794884119e-16j)"
+      },
+      {
+        "rotation_deg": 59.99999999999999,
+        "total_frame_deg": 1259.9999999999998,
+        "phase_mod_deg": 179.9999999999998,
+        "holonomy": "(-1+4.4099664382036485e-15j)"
+      },
+      {
+        "rotation_deg": 90.0,
+        "total_frame_deg": 1440.0,
+        "phase_mod_deg": 0.0,
+        "holonomy": "(1-9.797174393178826e-16j)"
+      },
+      {
+        "rotation_deg": 180.0,
+        "total_frame_deg": 1979.9999999999998,
+        "phase_mod_deg": 179.9999999999998,
+        "holonomy": "(-1+4.899825157862589e-15j)"
+      },
+      {
+        "rotation_deg": 360.0,
+        "total_frame_deg": 3060.0,
+        "phase_mod_deg": 179.9999999999998,
+        "holonomy": "(-1+5.6346132373510016e-15j)"
+      }
+    ],
+    "phase_scales_as": "6 \u00d7 rotation (not 1/2 \u00d7 rotation)"
+  },
+  "spinor_hypothesis": {
+    "spinor_connection_results": [
+      {
+        "rotation_deg": 0.0,
+        "naive_deg": 0.0,
+        "spin_half_target_deg": 0.0,
+        "one_twelfth_rule_deg": 0.0,
+        "one_twelfth_matches_spin_half": "True"
+      },
+      {
+        "rotation_deg": 90.0,
+        "naive_deg": 540.0,
+        "spin_half_target_deg": 45.0,
+        "one_twelfth_rule_deg": 45.0,
+        "one_twelfth_matches_spin_half": "True"
+      },
+      {
+        "rotation_deg": 180.0,
+        "naive_deg": 1080.0,
+        "spin_half_target_deg": 90.0,
+        "one_twelfth_rule_deg": 90.0,
+        "one_twelfth_matches_spin_half": "True"
+      },
+      {
+        "rotation_deg": 360.0,
+        "naive_deg": 2160.0,
+        "spin_half_target_deg": 180.0,
+        "one_twelfth_rule_deg": 180.0,
+        "one_twelfth_matches_spin_half": "True"
+      }
+    ],
+    "one_twelfth_rule_works": true
+  },
+  "geometric_origin": {
+    "z12_structure": {
+      "discrete_order": 12,
+      "phase_per_junction_deg": 30.0,
+      "junctions_in_hex": 6,
+      "total_phase_deg": 180.0,
+      "holonomy": -1
+    },
+    "spin_emergence": {
+      "effective_spin": 0.5,
+      "equals_one_half": "True",
+      "mechanism": "Z\u2081\u2082 discrete structure \u2192 6/12 = 1/2"
+    }
+  },
+  "synthesis": {
+    "z12_contains_spin_coupling": true,
+    "spin_emerges_as": "6/12 = 1/2",
+    "not_assumed": true,
+    "mechanism": "Discrete holonomy structure implies rotation-phase coupling"
+  }
+}
