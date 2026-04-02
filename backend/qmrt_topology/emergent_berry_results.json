@@ -1,0 +1,53 @@
+{
+  "test": "Emergent_Berry_Phase",
+  "turning_geometry": {
+    "total_turning_deg": 360.0
+  },
+  "transport_models": [
+    {
+      "model": "A_direct",
+      "total_turning_deg": 360.0,
+      "total_phase_deg": 360.0,
+      "holonomy_real": 1.0,
+      "holonomy_imag": -2.4492935982947064e-16,
+      "is_fermion": "False",
+      "is_boson": "True"
+    },
+    {
+      "model": "B_half",
+      "total_turning_deg": 360.0,
+      "total_phase_deg": 180.0,
+      "holonomy_real": -1.0,
+      "holonomy_imag": 1.2246467991473532e-16,
+      "is_fermion": "True",
+      "is_boson": "False"
+    }
+  ],
+  "why_half_analysis": {
+    "branch_separation": 120,
+    "projection": -0.4999999999999998,
+    "solid_angle_argument": "Berry phase = \u03a9/2 for spin-1/2"
+  },
+  "solid_angle_derivation": {
+    "solid_angle": 6.283185307179586,
+    "spin": 0.5,
+    "berry_phase": 3.141592653589793,
+    "holonomy": "(-1+1.2246467991473532e-16j)",
+    "is_fermion": "True"
+  },
+  "spin_value_analysis": {
+    "z3_compatible_spins": [
+      0,
+      3,
+      6
+    ],
+    "sign_product": "-1",
+    "mechanism": "Sign structure, not Berry phase spin-1/2"
+  },
+  "conclusion": {
+    "mechanism_1": "Berry phase spin-1/2 (requires inserting 1/2)",
+    "mechanism_2": "Z\u2082 sign structure (naturally gives -1)",
+    "loop_holonomy_source": "Sign structure (proven)",
+    "rotation_behavior_source": "Berry phase (requires assumption)"
+  }
+}
