@@ -1,0 +1,335 @@
+{
+  "test": "Branch_Double_Cover",
+  "verdict": "FERMION_VIA_BRANCHES",
+  "sign_structure": [
+    {
+      "n": 3,
+      "sign_holonomy": -1,
+      "is_fermion": true
+    },
+    {
+      "n": 4,
+      "sign_holonomy": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 5,
+      "sign_holonomy": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 6,
+      "sign_holonomy": -1,
+      "is_fermion": true
+    },
+    {
+      "n": 7,
+      "sign_holonomy": -1,
+      "is_fermion": true
+    },
+    {
+      "n": 8,
+      "sign_holonomy": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 9,
+      "sign_holonomy": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 10,
+      "sign_holonomy": -1,
+      "is_fermion": true
+    },
+    {
+      "n": 11,
+      "sign_holonomy": -1,
+      "is_fermion": true
+    },
+    {
+      "n": 12,
+      "sign_holonomy": 1,
+      "is_fermion": false
+    }
+  ],
+  "effective_winding": [
+    {
+      "n": 3,
+      "single_loop_phase": -90.0,
+      "single_loop_sign": -1,
+      "double_loop_phase": -180.0,
+      "double_loop_sign": 1,
+      "W_single": -0.25,
+      "W_double": -0.5,
+      "W_effective": 0.25,
+      "is_fermion": true,
+      "half_integer_winding": false
+    },
+    {
+      "n": 4,
+      "single_loop_phase": -119.99999999999999,
+      "single_loop_sign": 1,
+      "double_loop_phase": -239.99999999999997,
+      "double_loop_sign": 1,
+      "W_single": -0.3333333333333333,
+      "W_double": -0.6666666666666666,
+      "W_effective": -0.3333333333333333,
+      "is_fermion": false,
+      "half_integer_winding": true
+    },
+    {
+      "n": 5,
+      "single_loop_phase": -149.99999999999997,
+      "single_loop_sign": 1,
+      "double_loop_phase": -299.99999999999994,
+      "double_loop_sign": 1,
+      "W_single": -0.41666666666666663,
+      "W_double": -0.8333333333333333,
+      "W_effective": -0.41666666666666663,
+      "is_fermion": false,
+      "half_integer_winding": true
+    },
+    {
+      "n": 6,
+      "single_loop_phase": -179.99999999999997,
+      "single_loop_sign": -1,
+      "double_loop_phase": -359.99999999999994,
+      "double_loop_sign": 1,
+      "W_single": -0.49999999999999994,
+      "W_double": -0.9999999999999999,
+      "W_effective": 7.067899292141149e-17,
+      "is_fermion": true,
+      "half_integer_winding": false
+    },
+    {
+      "n": 7,
+      "single_loop_phase": -209.99999999999997,
+      "single_loop_sign": -1,
+      "double_loop_phase": -419.99999999999994,
+      "double_loop_sign": 1,
+      "W_single": -0.5833333333333333,
+      "W_double": -1.1666666666666665,
+      "W_effective": -0.08333333333333325,
+      "is_fermion": true,
+      "half_integer_winding": false
+    },
+    {
+      "n": 8,
+      "single_loop_phase": -239.99999999999997,
+      "single_loop_sign": 1,
+      "double_loop_phase": -479.99999999999994,
+      "double_loop_sign": 1,
+      "W_single": -0.6666666666666666,
+      "W_double": -1.3333333333333333,
+      "W_effective": -0.6666666666666666,
+      "is_fermion": false,
+      "half_integer_winding": true
+    },
+    {
+      "n": 9,
+      "single_loop_phase": -270.0,
+      "single_loop_sign": 1,
+      "double_loop_phase": -540.0,
+      "double_loop_sign": 1,
+      "W_single": -0.75,
+      "W_double": -1.5,
+      "W_effective": -0.75,
+      "is_fermion": false,
+      "half_integer_winding": false
+    },
+    {
+      "n": 10,
+      "single_loop_phase": -300.0,
+      "single_loop_sign": -1,
+      "double_loop_phase": -600.0,
+      "double_loop_sign": 1,
+      "W_single": -0.8333333333333334,
+      "W_double": -1.6666666666666667,
+      "W_effective": -0.33333333333333337,
+      "is_fermion": true,
+      "half_integer_winding": true
+    },
+    {
+      "n": 11,
+      "single_loop_phase": -330.00000000000006,
+      "single_loop_sign": -1,
+      "double_loop_phase": -660.0000000000001,
+      "double_loop_sign": 1,
+      "W_single": -0.9166666666666667,
+      "W_double": -1.8333333333333335,
+      "W_effective": -0.41666666666666674,
+      "is_fermion": true,
+      "half_integer_winding": true
+    },
+    {
+      "n": 12,
+      "single_loop_phase": -360.00000000000006,
+      "single_loop_sign": 1,
+      "double_loop_phase": -720.0000000000001,
+      "double_loop_sign": 1,
+      "W_single": -1.0000000000000002,
+      "W_double": -2.0000000000000004,
+      "W_effective": -1.0000000000000002,
+      "is_fermion": false,
+      "half_integer_winding": false
+    }
+  ],
+  "double_loop": [
+    {
+      "n": 3,
+      "single_sign": -1,
+      "double_sign": 1,
+      "is_fermion": true
+    },
+    {
+      "n": 4,
+      "single_sign": 1,
+      "double_sign": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 5,
+      "single_sign": 1,
+      "double_sign": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 6,
+      "single_sign": -1,
+      "double_sign": 1,
+      "is_fermion": true
+    },
+    {
+      "n": 7,
+      "single_sign": -1,
+      "double_sign": 1,
+      "is_fermion": true
+    },
+    {
+      "n": 8,
+      "single_sign": 1,
+      "double_sign": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 9,
+      "single_sign": 1,
+      "double_sign": 1,
+      "is_fermion": false
+    },
+    {
+      "n": 10,
+      "single_sign": -1,
+      "double_sign": 1,
+      "is_fermion": true
+    },
+    {
+      "n": 11,
+      "single_sign": -1,
+      "double_sign": 1,
+      "is_fermion": true
+    },
+    {
+      "n": 12,
+      "single_sign": 1,
+      "double_sign": 1,
+      "is_fermion": false
+    }
+  ],
+  "combined_holonomy": [
+    {
+      "n": 3,
+      "phase_deg": -90.0,
+      "sign": -1,
+      "full_holonomy_real": -6.123233995736766e-17,
+      "full_holonomy_imag": 1.0,
+      "type": "-0.00+1.00j"
+    },
+    {
+      "n": 4,
+      "phase_deg": -119.99999999999999,
+      "sign": 1,
+      "full_holonomy_real": -0.4999999999999998,
+      "full_holonomy_imag": -0.8660254037844387,
+      "type": "-0.50-0.87j"
+    },
+    {
+      "n": 5,
+      "phase_deg": -149.99999999999997,
+      "sign": 1,
+      "full_holonomy_real": -0.8660254037844385,
+      "full_holonomy_imag": -0.5000000000000003,
+      "type": "-0.87-0.50j"
+    },
+    {
+      "n": 6,
+      "phase_deg": -179.99999999999997,
+      "sign": -1,
+      "full_holonomy_real": 1.0,
+      "full_holonomy_imag": 5.66553889764798e-16,
+      "type": "BOSON"
+    },
+    {
+      "n": 7,
+      "phase_deg": -209.99999999999997,
+      "sign": -1,
+      "full_holonomy_real": 0.866025403784439,
+      "full_holonomy_imag": -0.4999999999999994,
+      "type": "0.87-0.50j"
+    },
+    {
+      "n": 8,
+      "phase_deg": -239.99999999999997,
+      "sign": 1,
+      "full_holonomy_real": -0.5000000000000004,
+      "full_holonomy_imag": 0.8660254037844384,
+      "type": "-0.50+0.87j"
+    },
+    {
+      "n": 9,
+      "phase_deg": -270.0,
+      "sign": 1,
+      "full_holonomy_real": -1.8369701987210297e-16,
+      "full_holonomy_imag": 1.0,
+      "type": "-0.00+1.00j"
+    },
+    {
+      "n": 10,
+      "phase_deg": -300.0,
+      "sign": -1,
+      "full_holonomy_real": -0.5000000000000001,
+      "full_holonomy_imag": -0.8660254037844386,
+      "type": "-0.50-0.87j"
+    },
+    {
+      "n": 11,
+      "phase_deg": -330.00000000000006,
+      "sign": -1,
+      "full_holonomy_real": -0.8660254037844388,
+      "full_holonomy_imag": -0.49999999999999967,
+      "type": "-0.87-0.50j"
+    },
+    {
+      "n": 12,
+      "phase_deg": -360.00000000000006,
+      "sign": 1,
+      "full_holonomy_real": 1.0,
+      "full_holonomy_imag": -6.432490598706546e-16,
+      "type": "BOSON"
+    }
+  ],
+  "geometric_fermions": {
+    "fermion_ns": [
+      6,
+      18
+    ]
+  },
+  "conclusions": {
+    "fermion_loop_sizes": [
+      6,
+      18
+    ],
+    "n6_is_fermion": true
+  }
+}
