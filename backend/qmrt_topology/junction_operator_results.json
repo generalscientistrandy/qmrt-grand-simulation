@@ -1,0 +1,90 @@
+{
+  "hexagon": {
+    "V1: Direct": {
+      "phase_single": 59.99999999999999,
+      "phase_total": -4.770832022195274e-14,
+      "holonomy": "(1.0000000000000002-8.326672684688674e-16j)",
+      "type": "BOSON"
+    },
+    "V3: Complex basis": {
+      "phase_single": -59.99999999999999,
+      "phase_total": 4.770832022195274e-14,
+      "holonomy": "(1.0000000000000002+8.326672684688674e-16j)",
+      "type": "BOSON"
+    },
+    "V5: Gauge connection": {
+      "phase_single": 29.999999999999996,
+      "phase_total": 179.99999999999997,
+      "holonomy": "(-1.0000000000000002+6.106226635438361e-16j)",
+      "type": "FERMION"
+    }
+  },
+  "decomposition": {
+    "decompositions": {
+      "0": [
+        1.0,
+        -0.4999999999999998,
+        -0.5000000000000004
+      ],
+      "30": [
+        0.8660254037844387,
+        1.1102230246251565e-16,
+        -0.8660254037844388
+      ],
+      "60": [
+        0.5000000000000001,
+        0.5,
+        -1.0
+      ],
+      "90": [
+        6.123233995736766e-17,
+        0.8660254037844387,
+        -0.8660254037844384
+      ],
+      "120": [
+        -0.4999999999999998,
+        0.9999999999999999,
+        -0.49999999999999967
+      ]
+    }
+  },
+  "superposition": {
+    "in_coeffs": [
+      1.0,
+      -0.4999999999999998,
+      -0.5000000000000004
+    ],
+    "out_coeffs": [
+      0.5000000000000001,
+      0.5,
+      -1.0
+    ],
+    "transport_amplitude": "(1.1250000000000016-1.9485571585149868j)",
+    "transport_phase_deg": -59.99999999999997
+  },
+  "complex": {
+    "coeffs_in": [
+      1.0,
+      0.0
+    ],
+    "coeffs_out": [
+      1.0,
+      1.0
+    ],
+    "normalized_overlap": 0.5
+  },
+  "geometric": {
+    "turn": 59.99999999999999,
+    "area_approx_deg": 25.980762113533157,
+    "expected_phase": 30,
+    "conclusion": "Non-geodesic path creates geometric phase"
+  },
+  "final": {
+    "derivation": "phase = (turn/basis) \u00d7 turn = turn\u00b2/basis",
+    "mechanism": "Re-expression in discrete basis accumulates phase",
+    "phase_per_junction": 30.0,
+    "total_phase": 180.0,
+    "holonomy": "(-1+1.2246467991473532e-16j)",
+    "is_fermion": "True"
+  }
+}
