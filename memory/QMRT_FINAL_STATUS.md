@@ -1,26 +1,47 @@
-# QMRT: Final Theoretical Status — Spinor Phase Emergence
+# QMRT: Final Theoretical Status — Fermion-Like Behavior
 ## Rigorous Summary of Validated Results
 
 **Date**: December 2025  
-**Status**: SPINOR PHASE MECHANISM DERIVED — Exchange Statistics Pending
+**Status**: FERMION-LIKE EXCHANGE BEHAVIOR DERIVED — Full Operator Structure Pending
 
 ---
 
-## 🔥🔥🔥 WHAT HAS BEEN DERIVED 🔥🔥🔥
+## THE PRECISE CLAIM (Scientifically Defensible)
 
-### The Correct Claim
+> "QMRT derives an emergent spinor phase and a topologically protected π exchange holonomy for hexagonal defects in a Y-junction network. This demonstrates **fermion-like exchange behavior** arising from geometry alone."
 
-> "We derive a geometric mechanism that produces **spinor phase behavior** and selects the **first non-trivial realization of spin-1/2 structure** in a discrete Y-junction medium."
+### What Has Been Proven ✅
 
-### What This IS:
-- ✅ Origin of half-angle phase from spinor overlap geometry
-- ✅ Geometric selection mechanism via commensurability + frustration
-- ✅ Identification of hexagon as first non-trivial spin-1/2 loop
+| Property | Status | Evidence |
+|----------|--------|----------|
+| Spinor phase | ✅ PROVEN | ⟨ê_out\|ê_in⟩ = cos(Δα/2)e^(-iΔα/2) |
+| Hexagon selection | ✅ PROVEN | Commensurability + frustration filters |
+| Path-dependent phase | ✅ PROVEN | -Δθ/2 accumulation |
+| Topological winding | ✅ PROVEN | Exchange = full winding in θ_rel |
+| Exchange holonomy = -1 | ✅ PROVEN | 2π winding → -π phase → -1 |
+| Double exchange = +1 | ✅ PROVEN | 4π winding → -2π phase → +1 |
 
-### What This IS NOT (yet):
-- ❌ Full derivation of fermions (requires exchange statistics)
-- ❌ Field/operator structure
-- ❌ Mapping to actual fermionic degrees of freedom
+### What Is NOT Yet Proven ❌
+
+| Property | Status | What's Needed |
+|----------|--------|---------------|
+| State antisymmetry | ❌ PENDING | Ψ(θ_A,θ_B) = -Ψ(θ_B,θ_A) |
+| Exchange operator | ❌ PENDING | P̂²_AB = 1, P̂_AB|ψ⟩ = -|ψ⟩ |
+| Braid group representation | ❌ PENDING | Generator → phase π |
+
+---
+
+## THE DISTINCTION (Critical)
+
+**What we have:**
+- Holonomy of paths → -1 under exchange topology
+
+**What fermionic statistics requires:**
+- Representation of permutation/braid group acting on STATE SPACE
+
+These are related but not identical:
+- Holonomy → topology
+- Statistics → operator algebra
 
 ---
 

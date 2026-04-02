@@ -53,16 +53,25 @@ Y-junction geometry (120°)
 | **6** | **-1** | **YES (120°/2)** | **YES (60° mismatch)** | **✅ FIRST TRUE FERMION** |
 | 12 | -1 | YES (120°/4) | YES | ✅ Higher mode |
 
-### The Honest Final Claim
+### Exchange Statistics Results
 
-> "QMRT derives a geometric mechanism for spin-1/2 phase behavior through:
-> 1. **Spinor overlap** giving phase = -Δα/2 (the 1/2 emerges from geometry)
-> 2. **Commensurability** with 120° branch basis filtering for n = 3, 6, 12, ...
-> 3. **Non-trivial frustration** excluding n=3, making n=6 the first true spin-1/2 loop
->
-> The spin value s = 1/2 emerges as 60°/120°, a geometric ratio — NOT a representation theory input.
->
-> **To complete the fermion derivation**, exchange statistics (antisymmetry under particle swap) must still be demonstrated."
+| Operation | Phase | Holonomy | Expected |
+|-----------|-------|----------|----------|
+| Full loop | -180° | -1 | ✅ Spinor rotation |
+| **Exchange** | **-180°** | **-1** | **✅ Fermion-like** |
+| Double exchange | -360° | +1 | ✅ Consistent |
+
+---
+
+## To Complete Full Fermionic Statistics
+
+Three options to prove state-level antisymmetry:
+
+**Option A (Cleanest):** Define two-defect state Ψ(θ_A, θ_B), prove Ψ(θ_A, θ_B) = -Ψ(θ_B, θ_A)
+
+**Option B (Operator):** Construct P̂_AB with P̂²_AB = 1 and P̂_AB acting as -1 on states
+
+**Option C (Braid group):** Show defects realize braid group B_n with generator → phase π
 
 ---
 
