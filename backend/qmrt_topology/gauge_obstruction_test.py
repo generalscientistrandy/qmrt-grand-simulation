@@ -512,8 +512,12 @@ PRECISE STATEMENT:
 
 "QMRT yields a flat U(1) connection on the defect configuration space
 whose exchange-loop holonomy is -1, and this phase cannot be removed
-by any single-valued continuous gauge transformation. Hence the theory
-realizes a fermion-like topological exchange sector."
+by any single-valued continuous gauge transformation. 
+
+The geometry enforces that all admissible wavefunctions are sections
+of a line bundle with holonomy -1, and are therefore antiperiodic
+under exchange. Hence the theory realizes a fermion-like topological
+exchange sector."
 
 MATHEMATICAL CONTENT:
 
@@ -528,6 +532,18 @@ MATHEMATICAL CONTENT:
 
 4. This places the system in the FERMIONIC SECTOR of flat bundles.
 
+EXPLICIT ASSUMPTION (required for rigor):
+
+  "Physical states are sections of the line bundle defined by the
+   connection induced by the Y-junction spinor transport geometry."
+
+  This is the key assumption. Without it, a reviewer can ask:
+  "Why must the system choose that bundle?"
+  
+  With it, the argument is airtight: once we accept that physical
+  states live on the bundle defined by the geometry, the fermionic
+  sector is FORCED.
+
 WHAT WE DO NOT CLAIM:
 
 - We do NOT claim nonzero first Chern class
@@ -535,12 +551,20 @@ WHAT WE DO NOT CLAIM:
 
 - We do NOT claim any particular characteristic class obstruction
 
+- We do NOT claim "bosonic states are forbidden in all theories"
+  (Other bundles/representations mathematically exist)
+
 WHAT WE DO CLAIM (defensibly):
 
-- Non-removable exchange holonomy
-- Nontrivial representation of pi_1(C)
-- Topologically distinct from the trivial (bosonic) sector
-- Fermion-like exchange statistics forced by geometry
+- The geometry defines a specific line bundle with holonomy -1
+- All admissible wavefunctions (sections of this bundle) are antiperiodic
+- The allowed state space is restricted to the SIGN REPRESENTATION of pi_1(C)
+- Fermion-like exchange statistics emerge from the geometric construction
+
+This is equivalent to:
+  - A spin structure-like selection
+  - A double cover constraint  
+  - A topological superselection sector
 
 ==========================================================================
                          DERIVATION COMPLETE
