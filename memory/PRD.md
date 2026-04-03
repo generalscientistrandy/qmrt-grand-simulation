@@ -6,19 +6,26 @@
 
 The mathematical derivation of fermionic exchange statistics from Y-junction geometry is now **complete, unique, and rigid**.
 
-### The Strengthened Claim (Tightened Per Reviewer Feedback)
+### The Strengthened Claim (Final Publication-Grade)
 
-> "QMRT yields a geometry-induced flat U(1) transport structure on the defect configuration space. For the exchange loop of hexagonal defects in the Y-junction medium, this transport has nontrivial holonomy -1, which is gauge-invariant and not removable by any single-valued gauge transformation **within the admissible transport class**.
+> "QMRT yields a geometry-induced flat U(1) transport structure on the defect configuration space. The Y-junction transport rule **canonically selects** a distinguished flat connection within the admissible class.
+>
+> For the exchange loop γ_ex (which is **contractible in labeled space but non-contractible in the unlabeled quotient**), this transport has nontrivial holonomy -1. This holonomy is gauge-invariant and not removable by any single-valued gauge transformation within the admissible transport class.
 >
 > **Assuming** physical states are sections of the associated line bundle, the allowed exchange sector is the sign sector, giving fermion-like exchange behavior as a geometrically selected topological sector."
+
+### Definition: Admissible Transport Class
+
+> The set of flat U(1) connections induced by the Y-junction transport rule, modulo single-valued gauge equivalence.
 
 ### Why This Claim Is Defensible
 
 | Aspect | Handling |
 |--------|----------|
 | Configuration space | Explicitly defined: 2D planar, unordered, coincidence removed |
-| π₁ claim | Only use [γ_ex] ∈ π₁(C) is nontrivial (no overclaim "π₁ = Z") |
-| Rigidity | "Within admissible transport class" (not all connections) |
+| Exchange loop γ_ex | Contractible upstairs, non-contractible downstairs |
+| Uniqueness | **Softened**: "canonically selects" (not "uniquely determines") |
+| Admissible class | **Explicitly defined** |
 | Assumption | Visible: "Assuming states are sections..." |
 | Conclusion | "Fermion-like exchange" (not full fermionic QFT)
 
@@ -191,12 +198,30 @@ Therefore: Hol(γ) = e^(iπ) = -1  is GAUGE-INVARIANT
 
 This is a real conceptual advancement: statistics is *derived*, not assumed.
 
-### The Four Strengthening Properties (Qualified)
+### Theorem (Clean Logical Form)
 
-1. **Uniqueness**: Holonomy determined by geometry (120° + spinor overlap + 2π winding) — within admissible class
-2. **Gauge-invariance**: Not removable by single-valued gauge transformation
-3. **Configuration space**: Explicitly defined (2D, unordered, coincidence removed)
-4. **Assumption visible**: Physical states are sections of associated bundle
+Let C be the defect configuration space (2D, unordered, coincidence removed), and let A be the flat U(1) connection canonically determined by the Y-junction transport rule.
+
+**THEN:**
+
+1. The exchange loop γ_ex has holonomy: **Hol_A(γ_ex) = -1**
+
+2. This holonomy is **invariant** under all single-valued gauge transformations within the admissible transport class.
+
+3. Therefore, **no admissible gauge transformation trivializes** the exchange phase.
+
+4. **Assuming** physical states are sections of the associated line bundle, the allowed state space lies in the **sign representation sector**.
+
+**COROLLARY:** Hexagonal defects exhibit fermion-like exchange statistics. More precisely: a fermionic sector is **selected** by geometry.
+
+### The Four Final Fixes Applied
+
+| Fix | Before | After |
+|-----|--------|-------|
+| 1. Uniqueness | "uniquely determines" | "canonically selects" |
+| 2. Exchange loop | Implicit | "contractible upstairs, non-contractible downstairs" |
+| 3. Admissible class | Undefined | Explicit definition provided |
+| 4. Theorem form | Compressed | Clean 4-point logical structure |
 
 ### Future Extensions (Now Enabled)
 - **Anyons**: Connect to 2D braid groups (generalize beyond Z)
