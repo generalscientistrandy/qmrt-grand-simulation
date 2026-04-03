@@ -1,0 +1,65 @@
+{
+  "experiments": [
+    {
+      "test": "static_lattice",
+      "grid_size": "4x4",
+      "nodes": 16,
+      "edges": 21,
+      "total_loops": 18,
+      "fermionic_loops": 18,
+      "fermionic_pct": 100.0
+    },
+    {
+      "test": "static_lattice",
+      "grid_size": "5x5",
+      "nodes": 25,
+      "edges": 36,
+      "total_loops": 96,
+      "fermionic_loops": 96,
+      "fermionic_pct": 100.0
+    },
+    {
+      "test": "static_lattice",
+      "grid_size": "6x6",
+      "nodes": 36,
+      "edges": 55,
+      "total_loops": 277,
+      "fermionic_loops": 277,
+      "fermionic_pct": 100.0
+    },
+    {
+      "test": "static_lattice",
+      "grid_size": "8x8",
+      "nodes": 64,
+      "edges": 105,
+      "total_loops": 867,
+      "fermionic_loops": 867,
+      "fermionic_pct": 100.0
+    }
+  ],
+  "summary": {
+    "avg_fermionic_pct": 100.0,
+    "conclusion": "VALIDATED"
+  },
+  "size_distribution": {
+    "total": {
+      "12": 353,
+      "10": 164,
+      "8": 66,
+      "6": 27,
+      "4": 20
+    },
+    "fermionic": {
+      "12": 353,
+      "10": 164,
+      "8": 66,
+      "6": 27,
+      "4": 20
+    }
+  },
+  "holonomy_distribution": {
+    "near_minus_1": 100,
+    "near_plus_1": 0,
+    "sample_size": 100
+  }
+}
