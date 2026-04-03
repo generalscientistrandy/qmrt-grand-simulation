@@ -1,0 +1,48 @@
+{
+  "uniqueness": {
+    "y_junction_angle_deg": 120,
+    "phase_per_turn_deg": -60.0,
+    "exchange_winding_deg": 360,
+    "exchange_phase_deg": -180.0,
+    "holonomy": -1,
+    "is_uniquely_determined": true,
+    "determining_factors": [
+      "Y-junction geometry (120\u00b0)",
+      "Spinor overlap formula",
+      "Exchange topology (2*pi winding)"
+    ]
+  },
+  "rigidity": {
+    "moduli_space_dimension": 0,
+    "connection_is_unique": true,
+    "deformation_exists": false,
+    "fermionic_sector_isolated": true,
+    "reason": "Connection is uniquely determined by geometry"
+  },
+  "config_space": {
+    "configuration_space": "C_2 = (R^2 x R^2 \\ diagonal) / S_2",
+    "fundamental_group": "pi_1(C_2) = Z",
+    "generator": "exchange loop",
+    "qmrt_representation": "rho(exchange) = -1",
+    "connection_to_laidlaw_dewitt": true,
+    "qmrt_contribution": "Geometry SELECTS the representation"
+  },
+  "path_integral": {
+    "action_modification": "S -> S + integral A",
+    "exchange_geometric_phase": "pi",
+    "amplitude_factor": "-1",
+    "level": "quantum amplitudes (most fundamental)",
+    "derived_from": "spinor transport on Y-junction network"
+  },
+  "final_theorem": {
+    "theorem_name": "Fermionic Statistics from Y-Junction Geometry",
+    "key_results": [
+      "Holonomy = -1",
+      "Uniquely determined by geometry",
+      "Cannot be deformed to trivial",
+      "Forces antiperiodic wavefunctions",
+      "Appears at amplitude level"
+    ],
+    "claim": "Fermionic exchange statistics is a topologically enforced property"
+  }
+}
