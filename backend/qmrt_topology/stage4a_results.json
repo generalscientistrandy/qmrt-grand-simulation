@@ -1,0 +1,804 @@
+{
+  "runs": [
+    {
+      "run_id": 0,
+      "evolution_results": {
+        "params": {
+          "grid_size": 25,
+          "initial_excitations": 80,
+          "timesteps": 3000,
+          "movement_speed": 0.15,
+          "interaction_radius": 1.2,
+          "base_decay_rate": 0.003,
+          "fermionic_protection": 15.0,
+          "bosonic_fragility": 3.0,
+          "noise_amplitude": 0.03
+        },
+        "lifetime_stats": {
+          "fermionic": {
+            "count": 29,
+            "mean": 427.41379310344826,
+            "std": 733.4156989020328,
+            "max": 2230,
+            "min": 1,
+            "median": 45.0
+          },
+          "bosonic": {
+            "count": 24,
+            "mean": 41.125,
+            "std": 59.84724478481306,
+            "max": 219,
+            "min": 1,
+            "median": 12.5
+          },
+          "anyonic": {
+            "count": 41,
+            "mean": 134.97560975609755,
+            "std": 182.81958156914155,
+            "max": 800,
+            "min": 1,
+            "median": 63.0
+          },
+          "unknown": {
+            "count": 0
+          }
+        },
+        "survival_by_sector": {
+          "fermionic": {
+            "alive": 3,
+            "total": 61,
+            "survival_rate": 0.04918032786885246
+          },
+          "bosonic": {
+            "alive": 0,
+            "total": 48,
+            "survival_rate": 0.0
+          },
+          "anyonic": {
+            "alive": 0,
+            "total": 82,
+            "survival_rate": 0.0
+          },
+          "unknown": {
+            "alive": 0,
+            "total": 0,
+            "survival_rate": 0
+          }
+        },
+        "collision_outcomes": {
+          "merge": 17,
+          "asymmetric": 14,
+          "scatter": 109,
+          "annihilate": 8
+        },
+        "total_collisions": 148,
+        "total_nucleations": 97,
+        "long_lived_count": 12,
+        "long_lived_sectors": {
+          "fermionic": 12,
+          "bosonic": 0,
+          "anyonic": 0,
+          "unknown": 0
+        },
+        "final_alive": 3
+      },
+      "stability_hierarchy": {
+        "by_sector": {
+          "fermionic": {
+            "count": 61,
+            "mean_lifetime": 528.2131147540983,
+            "max_lifetime": 3000,
+            "collision_survival_rate": 0.6162610934549216,
+            "final_survival_rate": 0.04918032786885246,
+            "stability_score": 0.2700608416976787
+          },
+          "bosonic": {
+            "count": 48,
+            "mean_lifetime": 41.125,
+            "max_lifetime": 219,
+            "collision_survival_rate": 0.44097222222222215,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.13777499999999998
+          },
+          "anyonic": {
+            "count": 82,
+            "mean_lifetime": 134.97560975609755,
+            "max_lifetime": 800,
+            "collision_survival_rate": 0.4718544328300426,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.15955307781649242
+          }
+        },
+        "ranking": [
+          {
+            "sector": "fermionic",
+            "stability_score": 0.2700608416976787
+          },
+          {
+            "sector": "anyonic",
+            "stability_score": 0.15955307781649242
+          },
+          {
+            "sector": "bosonic",
+            "stability_score": 0.13777499999999998
+          }
+        ],
+        "classification": {
+          "stable": [],
+          "metastable": [
+            "fermionic"
+          ],
+          "transient": [
+            "bosonic",
+            "anyonic"
+          ]
+        }
+      },
+      "catalog_summary": {
+        "total_objects": 191,
+        "by_sector": {
+          "fermionic": 61,
+          "bosonic": 48,
+          "anyonic": 82,
+          "unknown": 0
+        },
+        "by_parentage": {
+          "spontaneous": 158,
+          "merged": 33,
+          "split": 0
+        },
+        "alive_count": 3,
+        "mean_lifetime": 236.97905759162305,
+        "mean_collision_survival": 0.5102128631386407
+      }
+    },
+    {
+      "run_id": 1,
+      "evolution_results": {
+        "params": {
+          "grid_size": 25,
+          "initial_excitations": 80,
+          "timesteps": 3000,
+          "movement_speed": 0.15,
+          "interaction_radius": 1.2,
+          "base_decay_rate": 0.003,
+          "fermionic_protection": 15.0,
+          "bosonic_fragility": 3.0,
+          "noise_amplitude": 0.03
+        },
+        "lifetime_stats": {
+          "fermionic": {
+            "count": 35,
+            "mean": 454.62857142857143,
+            "std": 838.6111677125728,
+            "max": 2916,
+            "min": 1,
+            "median": 43.0
+          },
+          "bosonic": {
+            "count": 27,
+            "mean": 51.7037037037037,
+            "std": 76.95781182633375,
+            "max": 311,
+            "min": 1,
+            "median": 20.0
+          },
+          "anyonic": {
+            "count": 41,
+            "mean": 112.21951219512195,
+            "std": 150.59888772872097,
+            "max": 697,
+            "min": 1,
+            "median": 48.0
+          },
+          "unknown": {
+            "count": 0
+          }
+        },
+        "survival_by_sector": {
+          "fermionic": {
+            "alive": 4,
+            "total": 74,
+            "survival_rate": 0.05405405405405406
+          },
+          "bosonic": {
+            "alive": 0,
+            "total": 54,
+            "survival_rate": 0.0
+          },
+          "anyonic": {
+            "alive": 0,
+            "total": 82,
+            "survival_rate": 0.0
+          },
+          "unknown": {
+            "alive": 0,
+            "total": 0,
+            "survival_rate": 0
+          }
+        },
+        "collision_outcomes": {
+          "scatter": 82,
+          "merge": 27,
+          "asymmetric": 11,
+          "annihilate": 6
+        },
+        "total_collisions": 126,
+        "total_nucleations": 107,
+        "long_lived_count": 12,
+        "long_lived_sectors": {
+          "fermionic": 12,
+          "bosonic": 0,
+          "anyonic": 0,
+          "unknown": 0
+        },
+        "final_alive": 4
+      },
+      "stability_hierarchy": {
+        "by_sector": {
+          "fermionic": {
+            "count": 74,
+            "mean_lifetime": 517.2432432432432,
+            "max_lifetime": 3000,
+            "collision_survival_rate": 0.5626984126984126,
+            "final_survival_rate": 0.05405405405405406,
+            "stability_score": 0.25399150579150576
+          },
+          "bosonic": {
+            "count": 54,
+            "mean_lifetime": 51.7037037037037,
+            "max_lifetime": 311,
+            "collision_survival_rate": 0.5277777777777778,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.16522716049382716
+          },
+          "anyonic": {
+            "count": 82,
+            "mean_lifetime": 112.21951219512195,
+            "max_lifetime": 697,
+            "collision_survival_rate": 0.38983739837398373,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.13191382113821137
+          }
+        },
+        "ranking": [
+          {
+            "sector": "fermionic",
+            "stability_score": 0.25399150579150576
+          },
+          {
+            "sector": "bosonic",
+            "stability_score": 0.16522716049382716
+          },
+          {
+            "sector": "anyonic",
+            "stability_score": 0.13191382113821137
+          }
+        ],
+        "classification": {
+          "stable": [],
+          "metastable": [
+            "fermionic"
+          ],
+          "transient": [
+            "bosonic",
+            "anyonic"
+          ]
+        }
+      },
+      "catalog_summary": {
+        "total_objects": 210,
+        "by_sector": {
+          "fermionic": 74,
+          "bosonic": 54,
+          "anyonic": 82,
+          "unknown": 0
+        },
+        "by_parentage": {
+          "spontaneous": 158,
+          "merged": 52,
+          "split": 0
+        },
+        "alive_count": 4,
+        "mean_lifetime": 239.38095238095238,
+        "mean_collision_survival": 0.48622071050642474
+      }
+    },
+    {
+      "run_id": 2,
+      "evolution_results": {
+        "params": {
+          "grid_size": 25,
+          "initial_excitations": 80,
+          "timesteps": 3000,
+          "movement_speed": 0.15,
+          "interaction_radius": 1.2,
+          "base_decay_rate": 0.003,
+          "fermionic_protection": 15.0,
+          "bosonic_fragility": 3.0,
+          "noise_amplitude": 0.03
+        },
+        "lifetime_stats": {
+          "fermionic": {
+            "count": 48,
+            "mean": 342.1458333333333,
+            "std": 486.26724432075986,
+            "max": 2396,
+            "min": 1,
+            "median": 94.5
+          },
+          "bosonic": {
+            "count": 14,
+            "mean": 48.857142857142854,
+            "std": 66.16306386805377,
+            "max": 231,
+            "min": 1,
+            "median": 13.5
+          },
+          "anyonic": {
+            "count": 41,
+            "mean": 115.02439024390245,
+            "std": 173.66613439120562,
+            "max": 895,
+            "min": 1,
+            "median": 47.0
+          },
+          "unknown": {
+            "count": 0
+          }
+        },
+        "survival_by_sector": {
+          "fermionic": {
+            "alive": 2,
+            "total": 98,
+            "survival_rate": 0.02040816326530612
+          },
+          "bosonic": {
+            "alive": 0,
+            "total": 28,
+            "survival_rate": 0.0
+          },
+          "anyonic": {
+            "alive": 0,
+            "total": 82,
+            "survival_rate": 0.0
+          },
+          "unknown": {
+            "alive": 0,
+            "total": 0,
+            "survival_rate": 0
+          }
+        },
+        "collision_outcomes": {
+          "scatter": 93,
+          "asymmetric": 13,
+          "merge": 25,
+          "annihilate": 8
+        },
+        "total_collisions": 139,
+        "total_nucleations": 105,
+        "long_lived_count": 6,
+        "long_lived_sectors": {
+          "fermionic": 6,
+          "bosonic": 0,
+          "anyonic": 0,
+          "unknown": 0
+        },
+        "final_alive": 2
+      },
+      "stability_hierarchy": {
+        "by_sector": {
+          "fermionic": {
+            "count": 98,
+            "mean_lifetime": 388.88775510204084,
+            "max_lifetime": 2927,
+            "collision_survival_rate": 0.48937530723245004,
+            "final_survival_rate": 0.02040816326530612,
+            "stability_score": 0.20478674182959894
+          },
+          "bosonic": {
+            "count": 28,
+            "mean_lifetime": 48.857142857142854,
+            "max_lifetime": 231,
+            "collision_survival_rate": 0.306547619047619,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.09847857142857142
+          },
+          "anyonic": {
+            "count": 82,
+            "mean_lifetime": 115.02439024390245,
+            "max_lifetime": 895,
+            "collision_survival_rate": 0.4382113821138211,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.14679999999999999
+          }
+        },
+        "ranking": [
+          {
+            "sector": "fermionic",
+            "stability_score": 0.20478674182959894
+          },
+          {
+            "sector": "anyonic",
+            "stability_score": 0.14679999999999999
+          },
+          {
+            "sector": "bosonic",
+            "stability_score": 0.09847857142857142
+          }
+        ],
+        "classification": {
+          "stable": [],
+          "metastable": [
+            "fermionic"
+          ],
+          "transient": [
+            "bosonic",
+            "anyonic"
+          ]
+        }
+      },
+      "catalog_summary": {
+        "total_objects": 208,
+        "by_sector": {
+          "fermionic": 98,
+          "bosonic": 28,
+          "anyonic": 82,
+          "unknown": 0
+        },
+        "by_parentage": {
+          "spontaneous": 160,
+          "merged": 48,
+          "split": 0
+        },
+        "alive_count": 2,
+        "mean_lifetime": 235.14903846153845,
+        "mean_collision_survival": 0.4445934941127249
+      }
+    },
+    {
+      "run_id": 3,
+      "evolution_results": {
+        "params": {
+          "grid_size": 25,
+          "initial_excitations": 80,
+          "timesteps": 3000,
+          "movement_speed": 0.15,
+          "interaction_radius": 1.2,
+          "base_decay_rate": 0.003,
+          "fermionic_protection": 15.0,
+          "bosonic_fragility": 3.0,
+          "noise_amplitude": 0.03
+        },
+        "lifetime_stats": {
+          "fermionic": {
+            "count": 27,
+            "mean": 442.962962962963,
+            "std": 711.8299568837679,
+            "max": 2467,
+            "min": 1,
+            "median": 95.0
+          },
+          "bosonic": {
+            "count": 30,
+            "mean": 53.9,
+            "std": 83.16904472218015,
+            "max": 355,
+            "min": 1,
+            "median": 20.5
+          },
+          "anyonic": {
+            "count": 48,
+            "mean": 73.0,
+            "std": 128.89611450052843,
+            "max": 699,
+            "min": 1,
+            "median": 29.5
+          },
+          "unknown": {
+            "count": 0
+          }
+        },
+        "survival_by_sector": {
+          "fermionic": {
+            "alive": 2,
+            "total": 56,
+            "survival_rate": 0.03571428571428571
+          },
+          "bosonic": {
+            "alive": 0,
+            "total": 60,
+            "survival_rate": 0.0
+          },
+          "anyonic": {
+            "alive": 0,
+            "total": 96,
+            "survival_rate": 0.0
+          },
+          "unknown": {
+            "alive": 0,
+            "total": 0,
+            "survival_rate": 0
+          }
+        },
+        "collision_outcomes": {
+          "scatter": 83,
+          "merge": 27,
+          "asymmetric": 6,
+          "annihilate": 8
+        },
+        "total_collisions": 124,
+        "total_nucleations": 107,
+        "long_lived_count": 8,
+        "long_lived_sectors": {
+          "fermionic": 8,
+          "bosonic": 0,
+          "anyonic": 0,
+          "unknown": 0
+        },
+        "final_alive": 2
+      },
+      "stability_hierarchy": {
+        "by_sector": {
+          "fermionic": {
+            "count": 56,
+            "mean_lifetime": 457.07142857142856,
+            "max_lifetime": 2467,
+            "collision_survival_rate": 0.5139455782312925,
+            "final_survival_rate": 0.03571428571428571,
+            "stability_score": 0.2258408163265306
+          },
+          "bosonic": {
+            "count": 60,
+            "mean_lifetime": 53.9,
+            "max_lifetime": 355,
+            "collision_survival_rate": 0.45,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.14218666666666668
+          },
+          "anyonic": {
+            "count": 96,
+            "mean_lifetime": 73.0,
+            "max_lifetime": 699,
+            "collision_survival_rate": 0.32286706349206346,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.10659345238095236
+          }
+        },
+        "ranking": [
+          {
+            "sector": "fermionic",
+            "stability_score": 0.2258408163265306
+          },
+          {
+            "sector": "bosonic",
+            "stability_score": 0.14218666666666668
+          },
+          {
+            "sector": "anyonic",
+            "stability_score": 0.10659345238095236
+          }
+        ],
+        "classification": {
+          "stable": [],
+          "metastable": [
+            "fermionic"
+          ],
+          "transient": [
+            "bosonic",
+            "anyonic"
+          ]
+        }
+      },
+      "catalog_summary": {
+        "total_objects": 212,
+        "by_sector": {
+          "fermionic": 56,
+          "bosonic": 60,
+          "anyonic": 96,
+          "unknown": 0
+        },
+        "by_parentage": {
+          "spontaneous": 160,
+          "merged": 52,
+          "split": 0
+        },
+        "alive_count": 2,
+        "mean_lifetime": 169.04716981132074,
+        "mean_collision_survival": 0.40932165318957775
+      }
+    },
+    {
+      "run_id": 4,
+      "evolution_results": {
+        "params": {
+          "grid_size": 25,
+          "initial_excitations": 80,
+          "timesteps": 3000,
+          "movement_speed": 0.15,
+          "interaction_radius": 1.2,
+          "base_decay_rate": 0.003,
+          "fermionic_protection": 15.0,
+          "bosonic_fragility": 3.0,
+          "noise_amplitude": 0.03
+        },
+        "lifetime_stats": {
+          "fermionic": {
+            "count": 47,
+            "mean": 229.7872340425532,
+            "std": 353.1660411237012,
+            "max": 1538,
+            "min": 1,
+            "median": 53.0
+          },
+          "bosonic": {
+            "count": 21,
+            "mean": 27.857142857142858,
+            "std": 29.60901682851054,
+            "max": 123,
+            "min": 1,
+            "median": 24.0
+          },
+          "anyonic": {
+            "count": 35,
+            "mean": 147.25714285714287,
+            "std": 183.4635569662103,
+            "max": 741,
+            "min": 1,
+            "median": 77.0
+          },
+          "unknown": {
+            "count": 0
+          }
+        },
+        "survival_by_sector": {
+          "fermionic": {
+            "alive": 2,
+            "total": 96,
+            "survival_rate": 0.020833333333333332
+          },
+          "bosonic": {
+            "alive": 0,
+            "total": 42,
+            "survival_rate": 0.0
+          },
+          "anyonic": {
+            "alive": 0,
+            "total": 70,
+            "survival_rate": 0.0
+          },
+          "unknown": {
+            "alive": 0,
+            "total": 0,
+            "survival_rate": 0
+          }
+        },
+        "collision_outcomes": {
+          "scatter": 89,
+          "annihilate": 6,
+          "asymmetric": 15,
+          "merge": 25
+        },
+        "total_collisions": 135,
+        "total_nucleations": 105,
+        "long_lived_count": 4,
+        "long_lived_sectors": {
+          "fermionic": 4,
+          "bosonic": 0,
+          "anyonic": 0,
+          "unknown": 0
+        },
+        "final_alive": 2
+      },
+      "stability_hierarchy": {
+        "by_sector": {
+          "fermionic": {
+            "count": 96,
+            "mean_lifetime": 284.3125,
+            "max_lifetime": 3000,
+            "collision_survival_rate": 0.5027281746031745,
+            "final_survival_rate": 0.020833333333333332,
+            "stability_score": 0.1949767857142857
+          },
+          "bosonic": {
+            "count": 42,
+            "mean_lifetime": 27.857142857142858,
+            "max_lifetime": 123,
+            "collision_survival_rate": 0.5169312169312169,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.1587936507936508
+          },
+          "anyonic": {
+            "count": 70,
+            "mean_lifetime": 147.25714285714287,
+            "max_lifetime": 741,
+            "collision_survival_rate": 0.5068707482993198,
+            "final_survival_rate": 0.0,
+            "stability_score": 0.17169551020408164
+          }
+        },
+        "ranking": [
+          {
+            "sector": "fermionic",
+            "stability_score": 0.1949767857142857
+          },
+          {
+            "sector": "anyonic",
+            "stability_score": 0.17169551020408164
+          },
+          {
+            "sector": "bosonic",
+            "stability_score": 0.1587936507936508
+          }
+        ],
+        "classification": {
+          "stable": [],
+          "metastable": [],
+          "transient": [
+            "fermionic",
+            "bosonic",
+            "anyonic"
+          ]
+        }
+      },
+      "catalog_summary": {
+        "total_objects": 208,
+        "by_sector": {
+          "fermionic": 96,
+          "bosonic": 42,
+          "anyonic": 70,
+          "unknown": 0
+        },
+        "by_parentage": {
+          "spontaneous": 159,
+          "merged": 49,
+          "split": 0
+        },
+        "alive_count": 2,
+        "mean_lifetime": 186.40384615384616,
+        "mean_collision_survival": 0.506990231990232
+      }
+    }
+  ],
+  "aggregate": {
+    "lifetime_by_sector": {
+      "fermionic": {
+        "mean": 379.3876789741738,
+        "std": 84.58931901891937
+      },
+      "bosonic": {
+        "mean": 44.688597883597886,
+        "std": 9.459762301425638
+      },
+      "anyonic": {
+        "mean": 116.49533101045297,
+        "std": 25.298616102850307
+      }
+    },
+    "survival_by_sector": {
+      "fermionic": {
+        "mean": 0.03603803284716634,
+        "std": 0.0139490319464974
+      }
+    },
+    "stability_ranking": [
+      [
+        "fermionic",
+        0.08125029625261214
+      ],
+      [
+        "anyonic",
+        0.01941588850174216
+      ],
+      [
+        "bosonic",
+        0.007448099647266314
+      ]
+    ],
+    "stability_scores": {
+      "fermionic": 0.08125029625261214,
+      "bosonic": 0.007448099647266314,
+      "anyonic": 0.01941588850174216
+    }
+  }
+}
