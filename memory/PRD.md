@@ -8,15 +8,30 @@ The mathematical derivation of fermionic exchange statistics from Y-junction geo
 
 ### The Strengthened Claim (Final Publication-Grade)
 
-> "QMRT yields a geometry-induced flat U(1) transport structure on the defect configuration space. The Y-junction transport rule **canonically selects** a distinguished flat connection within the admissible class.
+> "QMRT yields a geometry-induced flat U(1) transport structure on the defect configuration space C = C̃/S₂. The Y-junction transport rule **canonically selects** a distinguished flat connection A within the admissible class **A_Y**.
 >
-> For the exchange loop γ_ex (which is **contractible in labeled space but non-contractible in the unlabeled quotient**), this transport has nontrivial holonomy -1. This holonomy is gauge-invariant and not removable by any single-valued gauge transformation within the admissible transport class.
+> *(Canonical = independent of local trivialization and coordinate choice, depending only on the transport rule and topology of C.)*
 >
-> **Assuming** physical states are sections of the associated line bundle, the allowed exchange sector is the sign sector, giving fermion-like exchange behavior as a geometrically selected topological sector."
+> For the exchange loop γ_ex — which is **contractible in C̃ but represents a nontrivial element of π₁(C)** — this transport has holonomy Hol_A(γ_ex) = -1.
+>
+> **Within A_Y**, the holonomy class is fixed to the sign representation. This is gauge-invariant and not removable by any single-valued gauge transformation within A_Y.
+>
+> **Assuming** physical states are sections of L_A *(the only physical assumption)*, the allowed exchange sector is the sign sector, giving fermion-like exchange behavior as a geometrically selected topological sector."
+
+### Notation Summary
+
+| Symbol | Meaning |
+|--------|---------|
+| C̃ | Labeled configuration space (M × M \ Δ) |
+| C | Physical configuration space (C̃ / S₂) |
+| **A_Y** | Admissible transport class: {A ∈ Ω¹(C; U(1)) \| A flat, induced by Y-junction} / gauge |
+| A | Canonically selected connection (A ∈ A_Y) |
+| L_A | Associated complex line bundle |
+| γ_ex | Exchange loop (trivial in C̃, nontrivial in π₁(C)) |
 
 ### Definition: Admissible Transport Class
 
-> The set of flat U(1) connections induced by the Y-junction transport rule, modulo single-valued gauge equivalence.
+> **A_Y** := { A ∈ Ω¹(C; U(1)) | A flat, induced by Y-junction transport } / gauge
 
 ### Why This Claim Is Defensible
 
