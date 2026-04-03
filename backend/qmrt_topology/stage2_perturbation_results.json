@@ -1,0 +1,259 @@
+{
+  "experiments": [
+    {
+      "type": "phase_offset",
+      "epsilon": 0.0,
+      "fermionic": 277,
+      "bosonic": 0,
+      "anyonic": 0,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 0.1,
+      "fermionic": 0,
+      "bosonic": 0,
+      "anyonic": 277,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 0.2,
+      "fermionic": 0,
+      "bosonic": 0,
+      "anyonic": 277,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 0.3,
+      "fermionic": 0,
+      "bosonic": 164,
+      "anyonic": 113,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 0.5,
+      "fermionic": 0,
+      "bosonic": 27,
+      "anyonic": 250,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 0.7,
+      "fermionic": 0,
+      "bosonic": 0,
+      "anyonic": 277,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 1.0,
+      "fermionic": 27,
+      "bosonic": 0,
+      "anyonic": 250,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 0.7853981633974483,
+      "fermionic": 66,
+      "bosonic": 20,
+      "anyonic": 191,
+      "total": 277
+    },
+    {
+      "type": "phase_offset",
+      "epsilon": 1.5707963267948966,
+      "fermionic": 86,
+      "bosonic": 191,
+      "anyonic": 0,
+      "total": 277
+    },
+    {
+      "type": "angle_noise",
+      "noise": 0.0,
+      "fermionic_pct": 100.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "angle_noise",
+      "noise": 0.05,
+      "fermionic_pct": 95.88447653429603,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 4.115523465703971
+    },
+    {
+      "type": "angle_noise",
+      "noise": 0.1,
+      "fermionic_pct": 71.1913357400722,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 28.8086642599278
+    },
+    {
+      "type": "angle_noise",
+      "noise": 0.2,
+      "fermionic_pct": 40.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 60.0
+    },
+    {
+      "type": "angle_noise",
+      "noise": 0.3,
+      "fermionic_pct": 25.92057761732852,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 74.07942238267148
+    },
+    {
+      "type": "angle_noise",
+      "noise": 0.5,
+      "fermionic_pct": 16.462093862815884,
+      "bosonic_pct": 3.8267148014440435,
+      "anyonic_pct": 79.71119133574007
+    },
+    {
+      "type": "junction_variation",
+      "variation": 0.0,
+      "fermionic_pct": 100.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "junction_variation",
+      "variation": 0.1,
+      "fermionic_pct": 89.53068592057761,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 10.469314079422382
+    },
+    {
+      "type": "junction_variation",
+      "variation": 0.2,
+      "fermionic_pct": 54.87364620938628,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 45.12635379061372
+    },
+    {
+      "type": "junction_variation",
+      "variation": 0.3,
+      "fermionic_pct": 41.87725631768953,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 58.12274368231047
+    },
+    {
+      "type": "junction_variation",
+      "variation": 0.5,
+      "fermionic_pct": 24.548736462093864,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 75.45126353790614
+    },
+    {
+      "type": "junction_variation",
+      "variation": 0.7,
+      "fermionic_pct": 13.71841155234657,
+      "bosonic_pct": 2.527075812274368,
+      "anyonic_pct": 83.75451263537906
+    },
+    {
+      "type": "junction_variation",
+      "variation": 1.0,
+      "fermionic_pct": 7.2202166064981945,
+      "bosonic_pct": 5.054151624548736,
+      "anyonic_pct": 87.72563176895306
+    },
+    {
+      "type": "position_noise",
+      "noise": 0.0,
+      "fermionic_pct": 100.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "position_noise",
+      "noise": 0.05,
+      "fermionic_pct": 100.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "position_noise",
+      "noise": 0.1,
+      "fermionic_pct": 100.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "position_noise",
+      "noise": 0.15,
+      "fermionic_pct": 100.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "position_noise",
+      "noise": 0.2,
+      "fermionic_pct": 99.21259842519684,
+      "bosonic_pct": 0.7874015748031497,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "position_noise",
+      "noise": 0.3,
+      "fermionic_pct": 96.38009049773756,
+      "bosonic_pct": 3.6199095022624435,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "asymmetry",
+      "asymmetry": 0.0,
+      "fermionic_pct": 100.0,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 0.0
+    },
+    {
+      "type": "asymmetry",
+      "asymmetry": 0.1,
+      "fermionic_pct": 16.967509025270758,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 83.03249097472924
+    },
+    {
+      "type": "asymmetry",
+      "asymmetry": 0.2,
+      "fermionic_pct": 4.693140794223827,
+      "bosonic_pct": 0.0,
+      "anyonic_pct": 95.30685920577618
+    },
+    {
+      "type": "asymmetry",
+      "asymmetry": 0.3,
+      "fermionic_pct": 4.693140794223827,
+      "bosonic_pct": 1.8050541516245486,
+      "anyonic_pct": 93.50180505415162
+    },
+    {
+      "type": "asymmetry",
+      "asymmetry": 0.5,
+      "fermionic_pct": 4.693140794223827,
+      "bosonic_pct": 38.628158844765345,
+      "anyonic_pct": 56.67870036101083
+    },
+    {
+      "type": "asymmetry",
+      "asymmetry": 0.5235987755982988,
+      "fermionic_pct": 4.693140794223827,
+      "bosonic_pct": 38.628158844765345,
+      "anyonic_pct": 56.67870036101083
+    },
+    {
+      "type": "asymmetry",
+      "asymmetry": 0.7853981633974483,
+      "fermionic_pct": 28.15884476534296,
+      "bosonic_pct": 19.133574007220215,
+      "anyonic_pct": 52.707581227436826
+    }
+  ],
+  "summary": {}
+}
