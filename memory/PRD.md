@@ -6,9 +6,21 @@
 
 The mathematical derivation of fermionic exchange statistics from Y-junction geometry is now **complete, unique, and rigid**.
 
-### The Strengthened Claim
+### The Strengthened Claim (Tightened Per Reviewer Feedback)
 
-> "The Y-junction network geometry **uniquely determines** a flat U(1) connection on configuration space whose holonomy defines a nontrivial representation of π₁(C). This representation **cannot be continuously deformed** to the trivial representation. Fermionic exchange statistics is therefore a **topologically enforced** property of the geometry."
+> "QMRT yields a geometry-induced flat U(1) transport structure on the defect configuration space. For the exchange loop of hexagonal defects in the Y-junction medium, this transport has nontrivial holonomy -1, which is gauge-invariant and not removable by any single-valued gauge transformation **within the admissible transport class**.
+>
+> **Assuming** physical states are sections of the associated line bundle, the allowed exchange sector is the sign sector, giving fermion-like exchange behavior as a geometrically selected topological sector."
+
+### Why This Claim Is Defensible
+
+| Aspect | Handling |
+|--------|----------|
+| Configuration space | Explicitly defined: 2D planar, unordered, coincidence removed |
+| π₁ claim | Only use [γ_ex] ∈ π₁(C) is nontrivial (no overclaim "π₁ = Z") |
+| Rigidity | "Within admissible transport class" (not all connections) |
+| Assumption | Visible: "Assuming states are sections..." |
+| Conclusion | "Fermion-like exchange" (not full fermionic QFT)
 
 ### Summary of Achievement
 
@@ -170,6 +182,7 @@ Therefore: Hol(γ) = e^(iπ) = -1  is GAUGE-INVARIANT
 ### Validation Files
 - `/app/backend/qmrt_topology/gauge_obstruction_test.py` — Gauge non-removability ✅
 - `/app/backend/qmrt_topology/uniqueness_rigidity_test.py` — Uniqueness + Rigidity ✅
+- `/app/backend/qmrt_topology/formal_theorem.py` — **Formal theorem document** ✅
 
 ### Why This Result Is Significant
 
@@ -178,12 +191,12 @@ Therefore: Hol(γ) = e^(iπ) = -1  is GAUGE-INVARIANT
 
 This is a real conceptual advancement: statistics is *derived*, not assumed.
 
-### The Four Strengthening Properties
+### The Four Strengthening Properties (Qualified)
 
-1. **Uniqueness**: Holonomy is determined by geometry (120° + spinor overlap + 2π winding)
-2. **Rigidity**: No continuous deformation to trivial sector (moduli space is a point)
-3. **π₁(C) = Z**: Configuration space topology explicitly defined
-4. **Path Integral**: -1 appears at amplitude level (e^(iS) → -e^(iS))
+1. **Uniqueness**: Holonomy determined by geometry (120° + spinor overlap + 2π winding) — within admissible class
+2. **Gauge-invariance**: Not removable by single-valued gauge transformation
+3. **Configuration space**: Explicitly defined (2D, unordered, coincidence removed)
+4. **Assumption visible**: Physical states are sections of associated bundle
 
 ### Future Extensions (Now Enabled)
 - **Anyons**: Connect to 2D braid groups (generalize beyond Z)

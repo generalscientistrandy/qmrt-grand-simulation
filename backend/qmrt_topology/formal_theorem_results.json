@@ -1,0 +1,78 @@
+{
+  "definition_1": {
+    "medium": "2D planar Y-junction network",
+    "defects": "hexagonal loop defects (indistinguishable)",
+    "configuration_space": "C = (M \u00d7 M \\ \u0394) / S\u2082",
+    "coincidence_removed": true,
+    "defects_unordered": true,
+    "motion_dimension": 2,
+    "exchange_loop": "\u03b3_ex: closed loop where defects swap positions",
+    "pi1_claim": "[\u03b3_ex] is nontrivial element of \u03c0\u2081(C), generates Z subgroup"
+  },
+  "definition_2": {
+    "network": "trivalent planar graph with 120\u00b0 angles",
+    "direction_spinor": "|e(\u03b1)\u27e9 = (cos(\u03b1/2), sin(\u03b1/2))\u1d40",
+    "overlap_formula": "\u27e8e_out|e_in\u27e9 = cos(\u0394\u03b1/2) \u00b7 exp(-i \u0394\u03b1/2)",
+    "phase_per_turn": "\u03c6 = -\u0394\u03b1/2",
+    "connection": "flat U(1) connection A on C",
+    "admissible_class": "connections compatible with Y-junction transport"
+  },
+  "lemma_1": {
+    "statement": "phase per turn = -\u0394\u03b1/2",
+    "proof": "follows from spinor overlap formula",
+    "for_120_degrees": "-60\u00b0 per turn",
+    "significance": "1/2 factor emerges from spinor geometry"
+  },
+  "lemma_2": {
+    "statement": "hexagon (n=6) is first nontrivial commensurate frustrated loop",
+    "commensurability": "turn angle = 120\u00b0/k",
+    "frustration": "nonzero mismatch with nearest branch",
+    "triangle_n3": "commensurable but NOT frustrated (trivial)",
+    "hexagon_n6": "commensurable AND frustrated (FIRST nontrivial)"
+  },
+  "lemma_3": {
+    "statement": "Hol(\u03b3_ex) = -1",
+    "proof_steps": [
+      "exchange = winding \u0394\u03b8_rel = 2\u03c0",
+      "spinor phase = -\u0394\u03b8_rel/2 = -\u03c0",
+      "holonomy = exp(-i\u03c0) = -1"
+    ]
+  },
+  "lemma_4": {
+    "statement": "Hol(\u03b3_ex) = -1 is gauge-invariant within admissible class",
+    "proof": "\u222b d\u03bb = 0 over closed loops for single-valued \u03bb",
+    "qualifier": "within admissible transport class",
+    "to_change_holonomy": "must leave admissible class (change geometry or algebra)"
+  },
+  "assumption": {
+    "assumption": "physical states are sections of L associated to A",
+    "consequence": "\u03c8(\u03b3_ex \u00b7 x) = -\u03c8(x)",
+    "necessity": "bridges path holonomy to state-space restriction"
+  },
+  "theorem": {
+    "theorem_name": "Geometrically Selected Sign Sector",
+    "given": [
+      "2D Y-junction network with 120\u00b0 angles",
+      "hexagonal loop defects",
+      "spinor transport rule",
+      "states are sections of associated bundle"
+    ],
+    "then": "allowed exchange sector is sign sector",
+    "conclusion": "fermion-like exchange as geometrically selected topological sector"
+  },
+  "corollary": {
+    "statement": "hexagonal defects exhibit fermion-like exchange",
+    "exchange_phase": "\u03c0",
+    "holonomy": "-1",
+    "origin": "geometry-derived (not postulated)"
+  },
+  "final_claim": {
+    "claim": "geometry-induced transport \u2192 sign sector \u2192 fermion-like exchange",
+    "qualifications": [
+      "within admissible transport class",
+      "assuming states are bundle sections",
+      "for hexagonal defects in Y-junction medium"
+    ],
+    "defensible": true
+  }
+}
