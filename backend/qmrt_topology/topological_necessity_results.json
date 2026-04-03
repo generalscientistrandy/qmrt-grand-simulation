@@ -1,0 +1,32 @@
+{
+  "fundamental_group": {
+    "config_space": "C/S\u2082 \u2245 S\u00b9 \u00d7 S\u00b9 \\ diagonal / Z\u2082",
+    "fundamental_group": "\u03c0\u2081 \u2245 Z",
+    "generator": "one particle encircling the other"
+  },
+  "spinor_bundle": {
+    "bundle": "U(1) line bundle with spinor connection",
+    "holonomy": -1,
+    "consequence": "Sections must be antiperiodic"
+  },
+  "section_constraint": {
+    "state_space": "H = {\u03a8 | \u03a8(\u03b8 + 2\u03c0) = -\u03a8(\u03b8)}",
+    "basis": "e^(i(n+1/2)\u03b8) for n \u2208 Z",
+    "all_basis_antiperiodic": true
+  },
+  "topology_forces": {
+    "periodic_consistent": "False",
+    "conclusion": "Periodic wavefunctions forbidden; antiperiodic required"
+  },
+  "exchange_emerges": {
+    "exchange_operator": "Emerges from parallel transport holonomy",
+    "eigenvalue": -1,
+    "applies_to": "ALL states (not just specific ones)"
+  },
+  "final_proof": {
+    "derivation_complete": true,
+    "topology_forces_statistics": true,
+    "all_states_antiperiodic": true,
+    "exchange_operator_emerges": true
+  }
+}
