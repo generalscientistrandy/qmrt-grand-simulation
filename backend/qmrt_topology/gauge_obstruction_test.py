@@ -544,6 +544,15 @@ EXPLICIT ASSUMPTION (required for rigor):
   states live on the bundle defined by the geometry, the fermionic
   sector is FORCED.
 
+UNIQUENESS (optional strengthening):
+
+  "Given the Y-junction geometry and induced connection, the resulting
+   holonomy representation is fixed and cannot be continuously deformed
+   to the trivial representation."
+
+  This emphasizes: the system LOCKS into the fermionic sector.
+  It's not a choice — it's geometrically determined.
+
 WHAT WE DO NOT CLAIM:
 
 - We do NOT claim nonzero first Chern class

@@ -100,6 +100,12 @@ Y-junction geometry (120°)
 Without this assumption, a reviewer can ask: "Why must the system choose that bundle?"  
 With it, the argument is airtight.
 
+**Uniqueness Statement (Optional Strengthening):**
+
+> "Given the Y-junction geometry and induced connection, the resulting holonomy representation is fixed and cannot be continuously deformed to the trivial representation."
+
+This emphasizes: the system **locks into** the fermionic sector — it's geometrically determined, not a choice.
+
 **Mathematical Content:**
 
 1. Exchange holonomy: `Hol(γ) = exp(i ∮_γ A) = -1`
