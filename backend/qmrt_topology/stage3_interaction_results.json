@@ -1,0 +1,393 @@
+{
+  "experiments": [
+    {
+      "type": "interaction_sim",
+      "run": 0,
+      "total_created": 30,
+      "alive_at_end": 0,
+      "total_interactions": 139,
+      "lifetime_stats": {
+        "fermionic": {
+          "count": 11,
+          "total_created": 21,
+          "mean_lifetime": 1.0,
+          "std_lifetime": 0.0,
+          "max_lifetime": 1,
+          "min_lifetime": 1,
+          "survival_rate": 0.5238095238095238
+        },
+        "bosonic": {
+          "count": 17,
+          "total_created": 28,
+          "mean_lifetime": 1.6470588235294117,
+          "std_lifetime": 1.8768301333580961,
+          "max_lifetime": 9,
+          "min_lifetime": 1,
+          "survival_rate": 0.6071428571428571
+        },
+        "anyonic": {
+          "count": 11,
+          "total_created": 21,
+          "mean_lifetime": 10.636363636363637,
+          "std_lifetime": 29.214793037627445,
+          "max_lifetime": 103,
+          "min_lifetime": 1,
+          "survival_rate": 0.5238095238095238
+        },
+        "unknown": {
+          "count": 0,
+          "total_created": 0,
+          "mean_lifetime": 0,
+          "note": "No deaths recorded (all still alive or none created)"
+        }
+      },
+      "conservation_stats": {
+        "total_interactions": 139,
+        "conserved_count": 139,
+        "conservation_rate": 1.0,
+        "by_interaction_type": {
+          "scatter": {
+            "total": 115,
+            "conserved": 115
+          },
+          "annihilate": {
+            "total": 7,
+            "conserved": 7
+          },
+          "merge": {
+            "total": 12,
+            "conserved": 12
+          },
+          "split": {
+            "total": 5,
+            "conserved": 5
+          }
+        },
+        "average_deviation": 0.10060471424157799
+      },
+      "interaction_breakdown": {
+        "scatter": 115,
+        "annihilate": 7,
+        "merge": 12,
+        "split": 5
+      }
+    },
+    {
+      "type": "interaction_sim",
+      "run": 1,
+      "total_created": 30,
+      "alive_at_end": 0,
+      "total_interactions": 163,
+      "lifetime_stats": {
+        "fermionic": {
+          "count": 10,
+          "total_created": 22,
+          "mean_lifetime": 1.1,
+          "std_lifetime": 0.3,
+          "max_lifetime": 2,
+          "min_lifetime": 1,
+          "survival_rate": 0.45454545454545453
+        },
+        "bosonic": {
+          "count": 11,
+          "total_created": 24,
+          "mean_lifetime": 3.4545454545454546,
+          "std_lifetime": 7.139692333117041,
+          "max_lifetime": 26,
+          "min_lifetime": 1,
+          "survival_rate": 0.4583333333333333
+        },
+        "anyonic": {
+          "count": 13,
+          "total_created": 23,
+          "mean_lifetime": 4.153846153846154,
+          "std_lifetime": 7.315380571057687,
+          "max_lifetime": 29,
+          "min_lifetime": 1,
+          "survival_rate": 0.5652173913043478
+        },
+        "unknown": {
+          "count": 0,
+          "total_created": 0,
+          "mean_lifetime": 0,
+          "note": "No deaths recorded (all still alive or none created)"
+        }
+      },
+      "conservation_stats": {
+        "total_interactions": 163,
+        "conserved_count": 163,
+        "conservation_rate": 1.0,
+        "by_interaction_type": {
+          "annihilate": {
+            "total": 7,
+            "conserved": 7
+          },
+          "scatter": {
+            "total": 132,
+            "conserved": 132
+          },
+          "merge": {
+            "total": 11,
+            "conserved": 11
+          },
+          "split": {
+            "total": 13,
+            "conserved": 13
+          }
+        },
+        "average_deviation": 0.08583864137054435
+      },
+      "interaction_breakdown": {
+        "annihilate": 7,
+        "scatter": 132,
+        "merge": 11,
+        "split": 13
+      }
+    },
+    {
+      "type": "interaction_sim",
+      "run": 2,
+      "total_created": 32,
+      "alive_at_end": 0,
+      "total_interactions": 211,
+      "lifetime_stats": {
+        "fermionic": {
+          "count": 9,
+          "total_created": 19,
+          "mean_lifetime": 1.4444444444444444,
+          "std_lifetime": 0.9558139185602919,
+          "max_lifetime": 4,
+          "min_lifetime": 1,
+          "survival_rate": 0.47368421052631576
+        },
+        "bosonic": {
+          "count": 11,
+          "total_created": 23,
+          "mean_lifetime": 1.2727272727272727,
+          "std_lifetime": 0.4453617714151233,
+          "max_lifetime": 2,
+          "min_lifetime": 1,
+          "survival_rate": 0.4782608695652174
+        },
+        "anyonic": {
+          "count": 15,
+          "total_created": 29,
+          "mean_lifetime": 3.6,
+          "std_lifetime": 4.5431266766402185,
+          "max_lifetime": 17,
+          "min_lifetime": 1,
+          "survival_rate": 0.5172413793103449
+        },
+        "unknown": {
+          "count": 0,
+          "total_created": 0,
+          "mean_lifetime": 0,
+          "note": "No deaths recorded (all still alive or none created)"
+        }
+      },
+      "conservation_stats": {
+        "total_interactions": 211,
+        "conserved_count": 211,
+        "conservation_rate": 1.0,
+        "by_interaction_type": {
+          "scatter": {
+            "total": 181,
+            "conserved": 181
+          },
+          "annihilate": {
+            "total": 7,
+            "conserved": 7
+          },
+          "split": {
+            "total": 10,
+            "conserved": 10
+          },
+          "merge": {
+            "total": 13,
+            "conserved": 13
+          }
+        },
+        "average_deviation": 0.06635071090047394
+      },
+      "interaction_breakdown": {
+        "scatter": 181,
+        "annihilate": 7,
+        "split": 10,
+        "merge": 13
+      }
+    },
+    {
+      "type": "interaction_sim",
+      "run": 3,
+      "total_created": 30,
+      "alive_at_end": 1,
+      "total_interactions": 140,
+      "lifetime_stats": {
+        "fermionic": {
+          "count": 8,
+          "total_created": 19,
+          "mean_lifetime": 1.125,
+          "std_lifetime": 0.33071891388307384,
+          "max_lifetime": 2,
+          "min_lifetime": 1,
+          "survival_rate": 0.42105263157894735
+        },
+        "bosonic": {
+          "count": 11,
+          "total_created": 28,
+          "mean_lifetime": 1.6363636363636365,
+          "std_lifetime": 1.7200807207658637,
+          "max_lifetime": 7,
+          "min_lifetime": 1,
+          "survival_rate": 0.39285714285714285
+        },
+        "anyonic": {
+          "count": 8,
+          "total_created": 19,
+          "mean_lifetime": 1.625,
+          "std_lifetime": 0.8569568250501305,
+          "max_lifetime": 3,
+          "min_lifetime": 1,
+          "survival_rate": 0.42105263157894735
+        },
+        "unknown": {
+          "count": 0,
+          "total_created": 0,
+          "mean_lifetime": 0,
+          "note": "No deaths recorded (all still alive or none created)"
+        }
+      },
+      "conservation_stats": {
+        "total_interactions": 140,
+        "conserved_count": 140,
+        "conservation_rate": 1.0,
+        "by_interaction_type": {
+          "scatter": {
+            "total": 116,
+            "conserved": 116
+          },
+          "merge": {
+            "total": 12,
+            "conserved": 12
+          },
+          "annihilate": {
+            "total": 5,
+            "conserved": 5
+          },
+          "split": {
+            "total": 7,
+            "conserved": 7
+          }
+        },
+        "average_deviation": 0.07136024324964653
+      },
+      "interaction_breakdown": {
+        "scatter": 116,
+        "merge": 12,
+        "annihilate": 5,
+        "split": 7
+      }
+    },
+    {
+      "type": "interaction_sim",
+      "run": 4,
+      "total_created": 30,
+      "alive_at_end": 1,
+      "total_interactions": 213,
+      "lifetime_stats": {
+        "fermionic": {
+          "count": 7,
+          "total_created": 18,
+          "mean_lifetime": 1.2857142857142858,
+          "std_lifetime": 0.6998542122237652,
+          "max_lifetime": 3,
+          "min_lifetime": 1,
+          "survival_rate": 0.3888888888888889
+        },
+        "bosonic": {
+          "count": 9,
+          "total_created": 24,
+          "mean_lifetime": 1.2222222222222223,
+          "std_lifetime": 0.628539361054709,
+          "max_lifetime": 3,
+          "min_lifetime": 1,
+          "survival_rate": 0.375
+        },
+        "anyonic": {
+          "count": 12,
+          "total_created": 23,
+          "mean_lifetime": 8.75,
+          "std_lifetime": 25.103535607559348,
+          "max_lifetime": 92,
+          "min_lifetime": 1,
+          "survival_rate": 0.5217391304347826
+        },
+        "unknown": {
+          "count": 0,
+          "total_created": 0,
+          "mean_lifetime": 0,
+          "note": "No deaths recorded (all still alive or none created)"
+        }
+      },
+      "conservation_stats": {
+        "total_interactions": 213,
+        "conserved_count": 213,
+        "conservation_rate": 1.0,
+        "by_interaction_type": {
+          "scatter": {
+            "total": 184,
+            "conserved": 184
+          },
+          "merge": {
+            "total": 11,
+            "conserved": 11
+          },
+          "split": {
+            "total": 12,
+            "conserved": 12
+          },
+          "annihilate": {
+            "total": 6,
+            "conserved": 6
+          }
+        },
+        "average_deviation": 0.05632924778438825
+      },
+      "interaction_breakdown": {
+        "scatter": 184,
+        "merge": 11,
+        "split": 12,
+        "annihilate": 6
+      }
+    }
+  ],
+  "summary": {},
+  "lifetime_comparison": {
+    "fermionic": {
+      "mean": 1.2203282828282829,
+      "std": 0.2176874675122262,
+      "n_samples": 10
+    },
+    "bosonic": {
+      "mean": 2.765149125040766,
+      "std": 3.1411730261829476,
+      "n_samples": 10
+    },
+    "anyonic": {
+      "mean": 5.185563831593243,
+      "std": 2.996648666664491,
+      "n_samples": 10
+    }
+  },
+  "conservation_rate": {
+    "mean": 1.0,
+    "std": 0.0
+  },
+  "braiding_test": {
+    "fermion_fermion": {
+      "expected_deg": 180,
+      "measured_deg": 180.0,
+      "match_rate": 1.0
+    }
+  }
+}
