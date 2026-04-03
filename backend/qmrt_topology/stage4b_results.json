@@ -1,0 +1,679 @@
+{
+  "runs": [
+    {
+      "collision_matrix": {
+        "B+F": {
+          "scatter": 0.35294117647058826,
+          "annihilate": 0.058823529411764705,
+          "merge": 0.29411764705882354,
+          "asymmetric": 0.29411764705882354,
+          "total": 17
+        },
+        "F+F": {
+          "scatter": 0.68,
+          "merge": 0.08,
+          "asymmetric": 0.16,
+          "annihilate": 0.08,
+          "total": 25
+        },
+        "A+A": {
+          "merge": 0.3333333333333333,
+          "asymmetric": 0.3333333333333333,
+          "scatter": 0.26666666666666666,
+          "annihilate": 0.06666666666666667,
+          "total": 15
+        },
+        "A+F": {
+          "scatter": 0.5777777777777777,
+          "merge": 0.2222222222222222,
+          "annihilate": 0.13333333333333333,
+          "asymmetric": 0.06666666666666667,
+          "total": 45
+        },
+        "A+B": {
+          "scatter": 0.5789473684210527,
+          "annihilate": 0.10526315789473684,
+          "merge": 0.21052631578947367,
+          "asymmetric": 0.10526315789473684,
+          "total": 19
+        },
+        "B+B": {
+          "asymmetric": 1.0,
+          "total": 3
+        }
+      },
+      "composite_stats": {
+        "composite_count": 26,
+        "composite_mean_lifetime": 72.3076923076923,
+        "non_composite_mean_lifetime": 38.3875,
+        "composite_alive": 0,
+        "lifetime_ratio": 1.883625980011522
+      },
+      "size_stability": {
+        "correlation": 0.19363982566550905,
+        "interpretation": "No clear correlation",
+        "binned_stats": {
+          "size_4-7": {
+            "count": 42,
+            "mean_lifetime": 46.76190476190476,
+            "std": 112.60821451974213
+          },
+          "size_8-11": {
+            "count": 40,
+            "mean_lifetime": 27.9,
+            "std": 53.89517603645061
+          },
+          "size_12-15": {
+            "count": 8,
+            "mean_lifetime": 36.875,
+            "std": 40.45193907589598
+          },
+          "size_16-19": {
+            "count": 8,
+            "mean_lifetime": 93.25,
+            "std": 113.34874282496476
+          },
+          "size_20-23": {
+            "count": 4,
+            "mean_lifetime": 71.25,
+            "std": 68.75454530429244
+          },
+          "size_24-27": {
+            "count": 2,
+            "mean_lifetime": 103.0,
+            "std": 48.0
+          },
+          "size_28-31": {
+            "count": 1,
+            "mean_lifetime": 333.0,
+            "std": 0.0
+          },
+          "size_32-35": {
+            "count": 1,
+            "mean_lifetime": 6.0,
+            "std": 0.0
+          }
+        }
+      },
+      "survival_analysis": {
+        "F": {
+          "isolated_mean": 0,
+          "exposed_mean": 81.23529411764706,
+          "robustness_ratio": 0
+        },
+        "B": {
+          "isolated_mean": 13.5,
+          "exposed_mean": 6.142857142857143,
+          "robustness_ratio": 0.45502645502645506
+        },
+        "A": {
+          "isolated_mean": 66.75,
+          "exposed_mean": 39.24444444444445,
+          "robustness_ratio": 0.5879317519766958
+        }
+      },
+      "lifetime_by_sector": {
+        "A": {
+          "mean": 41.48979591836735,
+          "count": 49
+        },
+        "F": {
+          "mean": 81.23529411764706,
+          "count": 34
+        },
+        "B": {
+          "mean": 6.782608695652174,
+          "count": 23
+        }
+      },
+      "final_alive": 0
+    },
+    {
+      "collision_matrix": {
+        "A+B": {
+          "scatter": 0.6,
+          "asymmetric": 0.15,
+          "merge": 0.2,
+          "annihilate": 0.05,
+          "total": 20
+        },
+        "B+F": {
+          "merge": 0.14285714285714285,
+          "scatter": 0.6785714285714286,
+          "asymmetric": 0.10714285714285714,
+          "annihilate": 0.07142857142857142,
+          "total": 28
+        },
+        "A+F": {
+          "scatter": 0.4772727272727273,
+          "asymmetric": 0.1590909090909091,
+          "merge": 0.2727272727272727,
+          "annihilate": 0.09090909090909091,
+          "total": 44
+        },
+        "A+A": {
+          "scatter": 0.72,
+          "asymmetric": 0.12,
+          "annihilate": 0.08,
+          "merge": 0.08,
+          "total": 25
+        },
+        "F+F": {
+          "merge": 0.07692307692307693,
+          "scatter": 0.8461538461538461,
+          "asymmetric": 0.07692307692307693,
+          "total": 39
+        },
+        "B+B": {
+          "scatter": 0.25,
+          "asymmetric": 0.5,
+          "annihilate": 0.25,
+          "total": 4
+        }
+      },
+      "composite_stats": {
+        "composite_count": 25,
+        "composite_mean_lifetime": 98.08333333333333,
+        "non_composite_mean_lifetime": 75.75,
+        "composite_alive": 1,
+        "lifetime_ratio": 1.2948294829482947
+      },
+      "size_stability": {
+        "correlation": 0.10687959514832825,
+        "interpretation": "No clear correlation",
+        "binned_stats": {
+          "size_4-7": {
+            "count": 38,
+            "mean_lifetime": 32.76315789473684,
+            "std": 49.07804429816823
+          },
+          "size_8-11": {
+            "count": 45,
+            "mean_lifetime": 119.93333333333334,
+            "std": 348.91472374269966
+          },
+          "size_12-15": {
+            "count": 8,
+            "mean_lifetime": 10.25,
+            "std": 10.021851126413722
+          },
+          "size_16-19": {
+            "count": 5,
+            "mean_lifetime": 56.4,
+            "std": 52.009999038646406
+          },
+          "size_20-23": {
+            "count": 3,
+            "mean_lifetime": 97.33333333333333,
+            "std": 58.37998134825175
+          },
+          "size_24-27": {
+            "count": 2,
+            "mean_lifetime": 245.0,
+            "std": 233.0
+          },
+          "size_28-31": {
+            "count": 1,
+            "mean_lifetime": 14.0,
+            "std": 0.0
+          },
+          "size_32-35": {
+            "count": 1,
+            "mean_lifetime": 244.0,
+            "std": 0.0
+          },
+          "size_40-43": {
+            "count": 1,
+            "mean_lifetime": 368.0,
+            "std": 0.0
+          }
+        }
+      },
+      "survival_analysis": {
+        "F": {
+          "isolated_mean": 0,
+          "exposed_mean": 114.3125,
+          "robustness_ratio": 0
+        },
+        "B": {
+          "isolated_mean": 0,
+          "exposed_mean": 68.65217391304348,
+          "robustness_ratio": 0
+        },
+        "A": {
+          "isolated_mean": 298.0,
+          "exposed_mean": 49.630434782608695,
+          "robustness_ratio": 0.16654508316311642
+        }
+      },
+      "lifetime_by_sector": {
+        "B": {
+          "mean": 68.65217391304348,
+          "count": 23
+        },
+        "F": {
+          "mean": 114.3125,
+          "count": 32
+        },
+        "A": {
+          "mean": 64.83673469387755,
+          "count": 49
+        }
+      },
+      "final_alive": 1
+    },
+    {
+      "collision_matrix": {
+        "F+F": {
+          "merge": 0.16129032258064516,
+          "scatter": 0.7741935483870968,
+          "asymmetric": 0.06451612903225806,
+          "total": 62
+        },
+        "A+A": {
+          "scatter": 0.6,
+          "merge": 0.3,
+          "asymmetric": 0.1,
+          "total": 20
+        },
+        "A+F": {
+          "scatter": 0.46511627906976744,
+          "asymmetric": 0.27906976744186046,
+          "merge": 0.18604651162790697,
+          "annihilate": 0.06976744186046512,
+          "total": 43
+        },
+        "A+B": {
+          "scatter": 0.5625,
+          "merge": 0.1875,
+          "asymmetric": 0.1875,
+          "annihilate": 0.0625,
+          "total": 16
+        },
+        "B+B": {
+          "scatter": 0.8,
+          "merge": 0.2,
+          "total": 5
+        },
+        "B+F": {
+          "scatter": 0.6538461538461539,
+          "annihilate": 0.11538461538461539,
+          "asymmetric": 0.11538461538461539,
+          "merge": 0.11538461538461539,
+          "total": 26
+        }
+      },
+      "composite_stats": {
+        "composite_count": 31,
+        "composite_mean_lifetime": 118.0,
+        "non_composite_mean_lifetime": 86.13924050632912,
+        "composite_alive": 2,
+        "lifetime_ratio": 1.3698750918442322
+      },
+      "size_stability": {
+        "correlation": 0.06299924273734324,
+        "interpretation": "No clear correlation",
+        "binned_stats": {
+          "size_4-7": {
+            "count": 38,
+            "mean_lifetime": 117.86842105263158,
+            "std": 333.1697189636973
+          },
+          "size_8-11": {
+            "count": 45,
+            "mean_lifetime": 59.666666666666664,
+            "std": 198.46880527344004
+          },
+          "size_12-15": {
+            "count": 10,
+            "mean_lifetime": 38.5,
+            "std": 41.536128851880264
+          },
+          "size_16-19": {
+            "count": 7,
+            "mean_lifetime": 215.71428571428572,
+            "std": 409.56203586818174
+          },
+          "size_20-23": {
+            "count": 1,
+            "mean_lifetime": 21.0,
+            "std": 0.0
+          },
+          "size_24-27": {
+            "count": 5,
+            "mean_lifetime": 226.8,
+            "std": 430.15085725824144
+          },
+          "size_28-31": {
+            "count": 2,
+            "mean_lifetime": 6.5,
+            "std": 1.5
+          }
+        }
+      },
+      "survival_analysis": {
+        "F": {
+          "isolated_mean": 0,
+          "exposed_mean": 198.93023255813952,
+          "robustness_ratio": 0
+        },
+        "B": {
+          "isolated_mean": 3.0,
+          "exposed_mean": 22.05,
+          "robustness_ratio": 7.3500000000000005
+        },
+        "A": {
+          "isolated_mean": 25.0,
+          "exposed_mean": 28.071428571428573,
+          "robustness_ratio": 1.122857142857143
+        }
+      },
+      "lifetime_by_sector": {
+        "F": {
+          "mean": 198.93023255813952,
+          "count": 43
+        },
+        "A": {
+          "mean": 27.931818181818183,
+          "count": 44
+        },
+        "B": {
+          "mean": 21.142857142857142,
+          "count": 21
+        }
+      },
+      "final_alive": 3
+    },
+    {
+      "collision_matrix": {
+        "A+F": {
+          "scatter": 0.6338028169014085,
+          "asymmetric": 0.14084507042253522,
+          "merge": 0.15492957746478872,
+          "annihilate": 0.07042253521126761,
+          "total": 71
+        },
+        "A+B": {
+          "scatter": 0.7037037037037037,
+          "merge": 0.18518518518518517,
+          "asymmetric": 0.07407407407407407,
+          "annihilate": 0.037037037037037035,
+          "total": 27
+        },
+        "B+F": {
+          "scatter": 0.6470588235294118,
+          "merge": 0.29411764705882354,
+          "asymmetric": 0.058823529411764705,
+          "total": 17
+        },
+        "B+B": {
+          "merge": 0.3333333333333333,
+          "asymmetric": 0.3333333333333333,
+          "scatter": 0.16666666666666666,
+          "annihilate": 0.16666666666666666,
+          "total": 6
+        },
+        "F+F": {
+          "asymmetric": 0.1794871794871795,
+          "scatter": 0.6923076923076923,
+          "merge": 0.10256410256410256,
+          "annihilate": 0.02564102564102564,
+          "total": 39
+        },
+        "A+A": {
+          "annihilate": 0.08333333333333333,
+          "scatter": 0.75,
+          "merge": 0.08333333333333333,
+          "asymmetric": 0.08333333333333333,
+          "total": 12
+        }
+      },
+      "composite_stats": {
+        "composite_count": 28,
+        "composite_mean_lifetime": 122.89285714285714,
+        "non_composite_mean_lifetime": 91.025,
+        "composite_alive": 0,
+        "lifetime_ratio": 1.3501000510063952
+      },
+      "size_stability": {
+        "correlation": 0.07102151274920977,
+        "interpretation": "No clear correlation",
+        "binned_stats": {
+          "size_4-7": {
+            "count": 37,
+            "mean_lifetime": 101.78378378378379,
+            "std": 327.92584322671684
+          },
+          "size_8-11": {
+            "count": 45,
+            "mean_lifetime": 80.11111111111111,
+            "std": 243.50406998398495
+          },
+          "size_12-15": {
+            "count": 8,
+            "mean_lifetime": 55.25,
+            "std": 52.518449139326265
+          },
+          "size_16-19": {
+            "count": 11,
+            "mean_lifetime": 123.0,
+            "std": 177.89629256702037
+          },
+          "size_20-23": {
+            "count": 3,
+            "mean_lifetime": 46.0,
+            "std": 36.68787265568828
+          },
+          "size_24-27": {
+            "count": 3,
+            "mean_lifetime": 380.3333333333333,
+            "std": 316.09316488796287
+          },
+          "size_28-31": {
+            "count": 1,
+            "mean_lifetime": 278.0,
+            "std": 0.0
+          }
+        }
+      },
+      "survival_analysis": {
+        "F": {
+          "isolated_mean": 0,
+          "exposed_mean": 199.1578947368421,
+          "robustness_ratio": 0
+        },
+        "B": {
+          "isolated_mean": 0,
+          "exposed_mean": 20.791666666666668,
+          "robustness_ratio": 0
+        },
+        "A": {
+          "isolated_mean": 278.0,
+          "exposed_mean": 52.84444444444444,
+          "robustness_ratio": 0.19008792965627497
+        }
+      },
+      "lifetime_by_sector": {
+        "F": {
+          "mean": 199.1578947368421,
+          "count": 38
+        },
+        "B": {
+          "mean": 20.791666666666668,
+          "count": 24
+        },
+        "A": {
+          "mean": 57.73913043478261,
+          "count": 46
+        }
+      },
+      "final_alive": 0
+    },
+    {
+      "collision_matrix": {
+        "A+B": {
+          "asymmetric": 0.10526315789473684,
+          "annihilate": 0.15789473684210525,
+          "scatter": 0.631578947368421,
+          "merge": 0.10526315789473684,
+          "total": 19
+        },
+        "A+A": {
+          "scatter": 0.3333333333333333,
+          "annihilate": 0.5,
+          "merge": 0.16666666666666666,
+          "total": 6
+        },
+        "F+F": {
+          "merge": 0.16129032258064516,
+          "scatter": 0.7258064516129032,
+          "asymmetric": 0.08064516129032258,
+          "annihilate": 0.03225806451612903,
+          "total": 62
+        },
+        "B+B": {
+          "asymmetric": 0.42857142857142855,
+          "scatter": 0.2857142857142857,
+          "merge": 0.14285714285714285,
+          "annihilate": 0.14285714285714285,
+          "total": 7
+        },
+        "B+F": {
+          "scatter": 0.4666666666666667,
+          "annihilate": 0.2,
+          "merge": 0.2,
+          "asymmetric": 0.13333333333333333,
+          "total": 15
+        },
+        "A+F": {
+          "scatter": 0.6,
+          "merge": 0.075,
+          "annihilate": 0.1,
+          "asymmetric": 0.225,
+          "total": 40
+        }
+      },
+      "composite_stats": {
+        "composite_count": 20,
+        "composite_mean_lifetime": 257.15,
+        "non_composite_mean_lifetime": 66.2125,
+        "composite_alive": 0,
+        "lifetime_ratio": 3.883707759108929
+      },
+      "size_stability": {
+        "correlation": 0.20994766264968853,
+        "interpretation": "Larger = more stable",
+        "binned_stats": {
+          "size_4-7": {
+            "count": 33,
+            "mean_lifetime": 61.93939393939394,
+            "std": 172.62535004575824
+          },
+          "size_8-11": {
+            "count": 47,
+            "mean_lifetime": 69.2127659574468,
+            "std": 269.46273860518227
+          },
+          "size_12-15": {
+            "count": 8,
+            "mean_lifetime": 399.875,
+            "std": 624.6133679125031
+          },
+          "size_16-19": {
+            "count": 5,
+            "mean_lifetime": 63.2,
+            "std": 102.1614408668946
+          },
+          "size_20-23": {
+            "count": 2,
+            "mean_lifetime": 53.0,
+            "std": 23.0
+          },
+          "size_24-27": {
+            "count": 3,
+            "mean_lifetime": 144.0,
+            "std": 99.20685460188726
+          },
+          "size_36-39": {
+            "count": 1,
+            "mean_lifetime": 907.0,
+            "std": 0.0
+          },
+          "size_48-51": {
+            "count": 1,
+            "mean_lifetime": 183.0,
+            "std": 0.0
+          }
+        }
+      },
+      "survival_analysis": {
+        "F": {
+          "isolated_mean": 183.0,
+          "exposed_mean": 200.0909090909091,
+          "robustness_ratio": 1.0933929458519622
+        },
+        "B": {
+          "isolated_mean": 0,
+          "exposed_mean": 9.130434782608695,
+          "robustness_ratio": 0
+        },
+        "A": {
+          "isolated_mean": 25.0,
+          "exposed_mean": 39.29032258064516,
+          "robustness_ratio": 1.5716129032258064
+        }
+      },
+      "lifetime_by_sector": {
+        "B": {
+          "mean": 9.130434782608695,
+          "count": 23
+        },
+        "F": {
+          "mean": 199.7111111111111,
+          "count": 45
+        },
+        "A": {
+          "mean": 38.84375,
+          "count": 32
+        }
+      },
+      "final_alive": 0
+    }
+  ],
+  "aggregate": {
+    "collision_matrix": {
+      "A+A": {
+        "scatter": 0.534,
+        "merge": 0.19266666666666668,
+        "annihilate": 0.1825
+      },
+      "A+B": {
+        "scatter": 0.6153460038986355,
+        "merge": 0.17769493177387913,
+        "annihilate": 0.08253898635477583
+      },
+      "A+F": {
+        "scatter": 0.5507939202043362,
+        "merge": 0.18218511680843813,
+        "annihilate": 0.09288648026283139
+      },
+      "B+B": {
+        "scatter": 0.3755952380952381,
+        "merge": 0.2253968253968254,
+        "annihilate": 0.1865079365079365
+      },
+      "B+F": {
+        "scatter": 0.5598168498168499,
+        "merge": 0.20929541047188108,
+        "annihilate": 0.11140917905623787
+      },
+      "F+F": {
+        "scatter": 0.7436923076923077,
+        "merge": 0.11641356492969394,
+        "annihilate": 0.045966363385718224
+      }
+    },
+    "composite_lifetime_ratio": 1.9564276729838745,
+    "size_correlation": 0.12889756779001577
+  }
+}
