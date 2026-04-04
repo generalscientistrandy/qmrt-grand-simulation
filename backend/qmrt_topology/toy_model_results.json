@@ -1,0 +1,176 @@
+{
+  "model_params": {
+    "lambda": 1.0,
+    "v": 1.0,
+    "xi": 1.0
+  },
+  "energy_results": [
+    {
+      "n": 1,
+      "E_gradient": 0.7854457121377365,
+      "E_potential": 0.7834677280096118,
+      "E_core_approx": 2.177586090303602,
+      "E_total": 1.5689134401473483,
+      "xi": 1.0
+    },
+    {
+      "n": 2,
+      "E_gradient": 3.1413377091637202,
+      "E_potential": 3.1105447799936483,
+      "E_core_approx": 8.710344361214409,
+      "E_total": 6.251882489157369,
+      "xi": 1.0
+    },
+    {
+      "n": 3,
+      "E_gradient": 7.065219861338846,
+      "E_potential": 6.91321839848383,
+      "E_core_approx": 19.598274812732416,
+      "E_total": 13.978438259822676,
+      "xi": 1.0
+    },
+    {
+      "n": 4,
+      "E_gradient": 12.547869459781749,
+      "E_potential": 12.08353961858362,
+      "E_core_approx": 34.841377444857635,
+      "E_total": 24.63140907836537,
+      "xi": 1.0
+    }
+  ],
+  "holonomy_results": [
+    {
+      "n": 1,
+      "R": 5.0,
+      "f_R": 0.9805706296963136,
+      "holonomy_integral": 6.161106973159712,
+      "quantized_value": 6.283185307179586,
+      "alpha": -0.5,
+      "phase": -3.080553486579856,
+      "H_real": -0.9981376883667029,
+      "H_imag": -0.06100127098655089,
+      "sector": "Fermionic"
+    },
+    {
+      "n": 1,
+      "R": 10.0,
+      "f_R": 0.9950361151088353,
+      "holonomy_integral": 6.251996298564889,
+      "quantized_value": 6.283185307179586,
+      "alpha": -0.5,
+      "phase": -3.1259981492824447,
+      "H_real": -0.999878408181879,
+      "H_imag": -0.01559387224751442,
+      "sector": "Fermionic"
+    },
+    {
+      "n": 1,
+      "R": 20.0,
+      "f_R": 0.9987512761190307,
+      "holonomy_integral": 6.275339343637955,
+      "quantized_value": 6.283185307179586,
+      "alpha": -0.5,
+      "phase": -3.1376696718189776,
+      "H_real": -0.9999923051168815,
+      "H_imag": -0.003922971708515075,
+      "sector": "Fermionic"
+    },
+    {
+      "n": 2,
+      "R": 5.0,
+      "f_R": 0.9284425795517717,
+      "holonomy_integral": 11.667153548799211,
+      "quantized_value": 12.566370614359172,
+      "alpha": -1.0,
+      "phase": -11.667153548799211,
+      "H_real": 0.6222230713041647,
+      "H_imag": 0.7828399897404401,
+      "sector": "Anyonic"
+    },
+    {
+      "n": 2,
+      "R": 10.0,
+      "f_R": 0.9805765600323352,
+      "holonomy_integral": 12.322288469119739,
+      "quantized_value": 12.566370614359172,
+      "alpha": -1.0,
+      "phase": -12.322288469119739,
+      "H_real": 0.9703595477691516,
+      "H_imag": 0.24166577757979663,
+      "sector": "Anyonic"
+    },
+    {
+      "n": 2,
+      "R": 20.0,
+      "f_R": 0.9950329864572904,
+      "holonomy_integral": 12.503953281334942,
+      "quantized_value": 12.566370614359172,
+      "alpha": -1.0,
+      "phase": -12.503953281334942,
+      "H_real": 0.9980526706127649,
+      "H_imag": 0.06237681205967252,
+      "sector": "Bosonic"
+    }
+  ],
+  "single_valuedness": [
+    {
+      "n": 0.5,
+      "Phi_ratio": "-1.0000+0.0000i",
+      "single_valued": "False",
+      "conclusion": "Multi-valued (forbidden)"
+    },
+    {
+      "n": 1.0,
+      "Phi_ratio": "1.0000-0.0000i",
+      "single_valued": "True",
+      "conclusion": "Valid configuration"
+    },
+    {
+      "n": 1.5,
+      "Phi_ratio": "-1.0000+0.0000i",
+      "single_valued": "False",
+      "conclusion": "Multi-valued (forbidden)"
+    },
+    {
+      "n": 2.0,
+      "Phi_ratio": "1.0000-0.0000i",
+      "single_valued": "True",
+      "conclusion": "Valid configuration"
+    },
+    {
+      "n": 2.5,
+      "Phi_ratio": "-1.0000+0.0000i",
+      "single_valued": "False",
+      "conclusion": "Multi-valued (forbidden)"
+    },
+    {
+      "n": 3.0,
+      "Phi_ratio": "1.0000-0.0000i",
+      "single_valued": "True",
+      "conclusion": "Valid configuration"
+    }
+  ],
+  "statistics": [
+    {
+      "W": 0,
+      "H_real": 1.0,
+      "sector": "Bosonic"
+    },
+    {
+      "W": 1,
+      "H_real": -1.0,
+      "sector": "Fermionic"
+    },
+    {
+      "W": 2,
+      "H_real": 1.0,
+      "sector": "Bosonic"
+    },
+    {
+      "W": 3,
+      "H_real": -1.0,
+      "sector": "Fermionic"
+    }
+  ],
+  "plot_path": "/app/backend/qmrt_topology/vortex_profiles.png"
+}
