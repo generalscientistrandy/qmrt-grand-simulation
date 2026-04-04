@@ -5,9 +5,9 @@
 
 ## Abstract
 
-We demonstrate that a topologically structured medium with defect-driven inhomogeneities produces a spatially varying propagation speed, from which an effective causal geometry and geodesic behavior emerge. The model exhibits quantized phase contributions φ = -πW arising from defect winding numbers W, with holonomy H = (-1)^W yielding Z₂ (fermionic/bosonic) statistics. Numerical simulations validate topological quantization, deformation invariance, robustness to decoherence, and distinguishability from electromagnetic Aharonov-Bohm phases. The framework maps directly to known condensed-matter topological defects, particularly half-integer disclinations in nematic liquid crystals, providing a pathway to experimental validation. We derive an effective metric ds² = -c_eff(x)²dt² + dx² from propagation dynamics, where c_eff is an empirically extracted function of medium density and defect content. This establishes a medium → propagation → geometry pipeline consistent with analog gravity approaches.
+We demonstrate that a topologically structured medium with defect-driven inhomogeneities produces a spatially varying propagation speed. Numerical simulations show that this induces path curvature and defines an effective causal geometry, with signal trajectories following geodesics of a derived metric. The framework reproduces quantized phase behavior (φ = -πW with holonomy H = (-1)^W), remains robust under noise (100% detection at σ = 0.3 rad), and is consistent with known condensed-matter topological defects—particularly half-integer disclinations in nematic liquid crystals, providing a pathway to experimental validation. This is not a refraction model: topology controls structure, quantization exists, defects carry conserved winding, pair cancellation is exact to machine precision, and ordered arrays produce 69× stronger signals than random configurations.
 
-**Keywords**: topological phase, torsion defects, emergent geometry, effective metric, liquid crystal disclinations
+**Keywords**: topological phase, torsion defects, emergent geometry, effective metric, liquid crystal disclinations, analog gravity
 
 ---
 

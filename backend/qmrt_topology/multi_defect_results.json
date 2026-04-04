@@ -1,0 +1,20 @@
+{
+  "random_config": {
+    "n_defects": 20,
+    "net_winding": 0,
+    "final_spread": 3.4164525415990155,
+    "n_rays_survived": 25
+  },
+  "structured_config": {
+    "pattern": "channel",
+    "final_spread": 0.8497261214736919,
+    "n_rays_survived": 15
+  },
+  "comparison": {
+    "emergent_channel": {
+      "detected": false,
+      "channel_center": -7.199634747471946,
+      "channel_fraction": 0.26
+    }
+  }
+}
