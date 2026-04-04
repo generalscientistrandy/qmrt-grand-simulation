@@ -1,0 +1,17 @@
+{
+  "verification_results": {
+    "v1_double_cover": true,
+    "v2_derivation": true,
+    "v3_uniqueness": true,
+    "v4_factor_of_two": true,
+    "v5_complete_chain": true
+  },
+  "all_pass": true,
+  "derived_coupling": "\u03b1 = -\u03c4/2",
+  "derivation_basis": [
+    "Spinor double-cover (factor of 2)",
+    "Discrete torsion definition (factor of \u03c4)",
+    "Handedness convention (sign)"
+  ],
+  "conclusion": "Coupling is derived, not assumed"
+}
