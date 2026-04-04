@@ -1,7 +1,26 @@
-## Current Status: ARXIV-READY ✅
+## Current Status: SUBMISSION-READY ✅
 
 **Date: December 2025**
 **Paper Title:** "Topological Quantization of Torsion and Emergent Spinorial Structure from Holonomy Constraints"
+
+---
+
+## 🔥🔥🔥 FINAL REVIEWER ATTACKS ADDRESSED 🔥🔥🔥
+
+### Attack 1: "Where do defects come from?"
+> **"Effective torsion defects correspond to localized topological dislocations in the phase field, analogous to screw dislocations in condensed matter systems."**
+
+### Attack 2: "Why hasn't this been seen?" (THE BIG ONE)
+**Four reasons:**
+1. Standard AB experiments use **defect-free samples**
+2. Random defect orientations cause **statistical cancellation**
+3. Defect-induced decoherence **masks phase effects**
+4. **Topological encirclement (W ≠ 0) required** but not achieved
+
+### Attack 3: Sign and Convention
+- **τ = ±1** (chirality/handedness)
+- **Dimensionless**, integer-valued
+- **+1 = right-handed**, **-1 = left-handed**
 
 ---
 
