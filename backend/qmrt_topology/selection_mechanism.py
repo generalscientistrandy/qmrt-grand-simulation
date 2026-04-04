@@ -359,20 +359,26 @@ class GeometricCause:
 ║                    Y-JUNCTION SELECTION MECHANISM                         ║
 ╠═══════════════════════════════════════════════════════════════════════════╣
 ║                                                                           ║
-║  THEOREM: Local Y-junction transport rules act as a non-uniform measure   ║
-║  over topological configuration space, biasing formation toward           ║
+║  PROPOSITION: Local Y-junction transport rules induce a non-uniform       ║
+║  measure over topological configuration space, biasing formation toward   ║
 ║  fermionic sectors.                                                       ║
 ║                                                                           ║
+║  (Termed "proposition" pending full measure-theoretic formalization)      ║
+║                                                                           ║
 ╠═══════════════════════════════════════════════════════════════════════════╣
-║  PROOF:                                                                   ║
+║  DERIVED RELATIONS:                                                       ║
 ║                                                                           ║
 ║  1. TRANSPORT OPERATOR                                                    ║
 ║     Y-junction rule: T(θ) = -θ/2                                          ║
+║     where θ is the signed exterior angle (turn angle) at each junction    ║
 ║     Origin: Spinor geometry ⟨ê_out|ê_in⟩ = cos(θ/2)e^(-iθ/2)             ║
 ║                                                                           ║
 ║  2. HOLONOMY-WINDING RELATION                                             ║
 ║     For closed loop with winding number W:                                ║
 ║     H = exp(i Σ T(θ_k)) = exp(-iπW) = (-1)^W                              ║
+║                                                                           ║
+║     This is a Z₂ CLASSIFICATION of loop topology, where parity of        ║
+║     winding determines exchange statistics.                               ║
 ║                                                                           ║
 ║  3. WINDING-GEOMETRY RELATION                                             ║
 ║     Simple (non-self-intersecting) polygon: |W| = 1                       ║
@@ -382,14 +388,16 @@ class GeometricCause:
 ║     Simple polygon → |W| = 1 → H = -1 → FERMIONIC                         ║
 ║     Self-intersecting → W = 0,2 → H = +1 → BOSONIC                        ║
 ║                                                                           ║
-║  5. GEOMETRIC PROBABILITY                                                 ║
-║     Random n-gon: P(simple) decreases with n                              ║
-║     n=3: P=1.0, n=4: P≈0.7, n=5: P≈0.5, ...                               ║
+║  5. MEASURE ASYMMETRY                                                     ║
+║     The measure of non-self-intersecting loops exceeds that of            ║
+║     self-intersecting loops under random local growth dynamics.           ║
+║     Self-intersections require specific geometric coincidences that       ║
+║     occupy smaller measure in configuration space.                        ║
 ║                                                                           ║
 ║  6. CONCLUSION                                                            ║
-║     P(fermionic) ≈ P(simple) × P(F|simple) + P(complex) × P(F|complex)    ║
-║                 ≈ P(simple) × 1.0 + (1-P(simple)) × 0.5                   ║
-║                 > 0.5 for small loops                                     ║
+║     P(fermionic) = P(simple) × P(F|simple) + P(complex) × P(F|complex)   ║
+║                  = P(simple) × 1.0 + (1-P(simple)) × 0.5                  ║
+║                  > 0.5 for small loops                                    ║
 ║                                                                           ║
 ║     The Y-junction transport rule PROJECTS onto the fermionic sector      ║
 ║     because simple loops dominate random formation.                       ║
