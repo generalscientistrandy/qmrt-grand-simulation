@@ -1,10 +1,40 @@
-## Current Status: PUBLICATION-READY (Reviewer-Safe Framing) ✅
+## Current Status: PUBLICATION PACKAGE COMPLETE ✅
 
 **Date: April 2026**
-**Paper Title:** "Topological Phase Quantization from Defect Winding: A Numerical Study"
+**Paper Title:** "Topological Phase Quantization and Emergent Causal Geometry from Defect-Structured Media"
 
 **Simulation Tests:** 17/17 PASSED (including multi-defect interference)
 **Scientific Position:** Corrected and locked (see SCIENTIFIC_POSITION.md)
+
+---
+
+## 📦 PUBLICATION DELIVERABLES (April 2026)
+
+### Completed Outputs
+| File | Format | Purpose |
+|------|--------|---------|
+| `paper/QMRT_paper.tex` | LaTeX | arXiv submission source |
+| `paper/QMRT_paper.pdf` | PDF (11 pages) | LaTeX-compiled paper |
+| `paper/QMRT_paper_markdown.pdf` | PDF | Quick-preview version |
+| `qmrt_publication_package.zip` | ZIP (15.1 MB) | Complete research artifact |
+
+### Package Contents
+```
+publication_package/
+├── paper/           # LaTeX + PDFs + 9 figures + README
+├── simulations/     # 6 Python test scripts
+├── results/         # 5 JSON validation files
+└── theory/          # Markdown documentation
+```
+
+### How to Access
+1. **Download ZIP**: `/app/backend/qmrt_topology/qmrt_publication_package.zip`
+2. **GitHub**: Use "Save to GitHub" in chat input
+3. **Direct files**: Browse `/app/backend/qmrt_topology/paper/`
+
+### Recommended arXiv Categories
+- **Primary**: `cond-mat.soft` (Soft Condensed Matter)
+- **Secondary**: `physics.class-ph` or `gr-qc`
 
 ---
 

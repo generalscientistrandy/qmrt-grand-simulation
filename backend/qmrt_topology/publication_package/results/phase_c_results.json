@@ -1,0 +1,257 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-04T20:16:01.419075",
+    "phase": "C",
+    "title": "Physical Reality Bridge"
+  },
+  "pass_status": {
+    "c1": true,
+    "c2": true,
+    "c3": true
+  },
+  "all_passed": true,
+  "figure_paths": {
+    "c1": "/app/backend/qmrt_topology/test_c1_worldline.png",
+    "c2": "/app/backend/qmrt_topology/test_c2_cosmology.png",
+    "c3": "/app/backend/qmrt_topology/test_c3_condensed_matter.png",
+    "pub_fig1": "/app/backend/qmrt_topology/fig1_quantization.png",
+    "pub_fig2": "/app/backend/qmrt_topology/fig2_robustness.png",
+    "pub_fig3": "/app/backend/qmrt_topology/fig3_structure_vs_random.png"
+  },
+  "publication_figures": [
+    "/app/backend/qmrt_topology/fig1_quantization.png",
+    "/app/backend/qmrt_topology/fig2_robustness.png",
+    "/app/backend/qmrt_topology/fig3_structure_vs_random.png"
+  ],
+  "scientific_framing": "We propose a topological phase contribution arising from torsion-like defects. Numerical simulations demonstrate quantization, deformation invariance, robustness to decoherence, and clear distinguishability from electromagnetic gauge phases.",
+  "detailed_results": {
+    "c1": {
+      "linking_numbers": [
+        {
+          "config": "Small loop at origin",
+          "W": 1
+        },
+        {
+          "config": "Loop enclosing origin",
+          "W": 1
+        },
+        {
+          "config": "Loop enclosing origin+RH",
+          "W": 2
+        },
+        {
+          "config": "Large loop (all)",
+          "W": 1
+        }
+      ],
+      "holonomies": [
+        {
+          "config": "Small loop at origin",
+          "H_real": -1.0,
+          "H_imag": -1.2246467991473532e-16,
+          "sector": "Fermionic"
+        },
+        {
+          "config": "Loop enclosing origin",
+          "H_real": -1.0,
+          "H_imag": -1.2246467991473532e-16,
+          "sector": "Fermionic"
+        },
+        {
+          "config": "Loop enclosing origin+RH",
+          "H_real": 1.0,
+          "H_imag": 2.4492935982947064e-16,
+          "sector": "Bosonic"
+        },
+        {
+          "config": "Large loop (all)",
+          "H_real": -1.0,
+          "H_imag": -1.2246467991473532e-16,
+          "sector": "Fermionic"
+        }
+      ],
+      "spinor_transport": [
+        {
+          "W": 0,
+          "final": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "sign_change": false
+        },
+        {
+          "W": 1,
+          "final": {
+            "real": -1.0,
+            "imag": -1.2246467991473532e-16
+          },
+          "sign_change": true
+        },
+        {
+          "W": 2,
+          "final": {
+            "real": 1.0,
+            "imag": 2.4492935982947064e-16
+          },
+          "sign_change": false
+        },
+        {
+          "W": 3,
+          "final": {
+            "real": -1.0,
+            "imag": -3.6739403974420594e-16
+          },
+          "sign_change": true
+        }
+      ]
+    },
+    "c2": {
+      "scale_analysis": [
+        {
+          "R": 1.0,
+          "W_mean": -0.04,
+          "W_std": 0.7059745037889116,
+          "W_var": 0.49839999999999995,
+          "expected_var": 0.3141592653589793
+        },
+        {
+          "R": 1.544452104946379,
+          "W_mean": 0.07,
+          "W_std": 0.7778817390837761,
+          "W_var": 0.6050999999999999,
+          "expected_var": 0.7493742444103736
+        },
+        {
+          "R": 2.385332304473301,
+          "W_mean": 0.1,
+          "W_std": 1.2688577540449522,
+          "W_var": 1.61,
+          "expected_var": 1.7875065933323342
+        },
+        {
+          "R": 3.6840314986403864,
+          "W_mean": -0.17,
+          "W_std": 2.240781113808308,
+          "W_var": 5.021100000000001,
+          "expected_var": 4.263797221534637
+        },
+        {
+          "R": 5.689810202763908,
+          "W_mean": 0.85,
+          "W_std": 3.2905166767545793,
+          "W_var": 10.8275,
+          "expected_var": 10.170573252250074
+        },
+        {
+          "R": 8.7876393444041,
+          "W_mean": 1.97,
+          "W_std": 4.510997672355861,
+          "W_var": 20.3491,
+          "expected_var": 24.260196933604178
+        },
+        {
+          "R": 13.572088082974531,
+          "W_mean": 3.56,
+          "W_std": 6.216622877415036,
+          "W_var": 38.6464,
+          "expected_var": 57.86863145861017
+        },
+        {
+          "R": 20.96144000826768,
+          "W_mean": 7.79,
+          "W_std": 9.070055126624093,
+          "W_var": 82.26589999999999,
+          "expected_var": 138.03591603388273
+        },
+        {
+          "R": 32.37394014347626,
+          "W_mean": 22.16,
+          "W_std": 9.805834997591996,
+          "W_var": 96.15440000000002,
+          "expected_var": 329.26152969318457
+        },
+        {
+          "R": 49.99999999999999,
+          "W_mean": 36.0,
+          "W_std": 0.0,
+          "W_var": 0.0,
+          "expected_var": 785.3981633974481
+        }
+      ],
+      "correlation": {
+        "power_law_slope": 0.75554276271805,
+        "r_squared": 0.6062802739550649,
+        "is_scale_invariant": false
+      },
+      "spectrum": [
+        5067.726922554244,
+        8960.853156483608,
+        10312.181833501516,
+        7430.588977663981,
+        17430.400498019164,
+        9655.880186056298,
+        19481.98703780558,
+        25074.444129045496,
+        26870.0554568129
+      ]
+    },
+    "c3": {
+      "analogs": [
+        {
+          "system": "Screw Dislocation",
+          "QMRT_element": "Torsion defect worldline",
+          "CM_element": "Screw dislocation line",
+          "QMRT_charge": "\u03c4 = \u00b11 (chirality)",
+          "CM_charge": "Burgers vector b",
+          "QMRT_phase": "\u03c6 = -\u03c0W",
+          "CM_phase": "Phase shift from dislocation strain field",
+          "mapping_quality": "EXACT"
+        },
+        {
+          "system": "Superfluid Vortex",
+          "QMRT_element": "Torsion defect",
+          "CM_element": "Quantized vortex",
+          "QMRT_charge": "\u03c4 = \u00b11",
+          "CM_charge": "Vorticity \u03ba = \u00b1(h/m)",
+          "QMRT_phase": "\u03c6 = -\u03c0W",
+          "CM_phase": "\u03c6 = 2\u03c0n (winding of order parameter)",
+          "mapping_quality": "STRONG (factor of 2 difference)"
+        },
+        {
+          "system": "Liquid Crystal",
+          "QMRT_element": "Torsion defect",
+          "CM_element": "Disclination (half-integer)",
+          "QMRT_charge": "\u03c4 = \u00b11",
+          "CM_charge": "s = \u00b11/2 (topological charge)",
+          "QMRT_phase": "\u03c6 = -\u03c0W",
+          "CM_phase": "Director rotation: \u03c0 per defect",
+          "mapping_quality": "EXACT (half-integer \u2192 \u03c0 phase)"
+        }
+      ],
+      "phase_comparison": [],
+      "experimental_proposals": [
+        {
+          "name": "Electron interferometry around dislocations",
+          "system": "Metal crystal with controlled dislocations",
+          "measurement": "Electron holography fringe shift",
+          "prediction": "\u03c0 shift per screw dislocation enclosed",
+          "feasibility": "HIGH (existing technology)"
+        },
+        {
+          "name": "Neutron interferometry in superfluid He-3",
+          "system": "Superfluid He-3 with vortices",
+          "measurement": "Neutron phase shift",
+          "prediction": "Discrete phase jumps at vortex crossing",
+          "feasibility": "MEDIUM (specialized facility)"
+        },
+        {
+          "name": "Optical polarimetry in liquid crystals",
+          "system": "Nematic liquid crystal with disclinations",
+          "measurement": "Polarization rotation around defects",
+          "prediction": "\u03c0 rotation per half-integer defect",
+          "feasibility": "HIGH (standard optics lab)"
+        }
+      ]
+    }
+  }
+}
