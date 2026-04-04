@@ -1,0 +1,267 @@
+{
+  "attacks": {
+    "1_measure": {
+      "by_n": {
+        "3": {
+          "p_simple": 1.0,
+          "p_fermionic": 1.0,
+          "p_bosonic": 0.0,
+          "predicted_f": 1.0,
+          "prediction_error": 0.0,
+          "prediction_holds": true,
+          "winding_distribution": {
+            "1": 5006,
+            "-1": 4994
+          }
+        },
+        "4": {
+          "p_simple": 0.5443,
+          "p_fermionic": 0.5443,
+          "p_bosonic": 0.4557,
+          "predicted_f": 0.77215,
+          "prediction_error": 0.2950851518487341,
+          "prediction_holds": false,
+          "winding_distribution": {
+            "-1": 2742,
+            "1": 2701,
+            "0": 4557
+          }
+        },
+        "5": {
+          "p_simple": 0.2721,
+          "p_fermionic": 0.513,
+          "p_bosonic": 0.487,
+          "predicted_f": 0.63605,
+          "prediction_error": 0.19345963367659774,
+          "prediction_holds": false,
+          "winding_distribution": {
+            "1": 2600,
+            "0": 4062,
+            "-1": 2530,
+            "-2": 385,
+            "2": 423
+          }
+        },
+        "6": {
+          "p_simple": 0.1348,
+          "p_fermionic": 0.4746,
+          "p_bosonic": 0.5254,
+          "predicted_f": 0.5674,
+          "prediction_error": 0.16355304899541767,
+          "prediction_holds": false,
+          "winding_distribution": {
+            "-2": 712,
+            "-1": 2363,
+            "1": 2383,
+            "0": 3878,
+            "2": 664
+          }
+        },
+        "7": {
+          "p_simple": 0.0553,
+          "p_fermionic": 0.4902,
+          "p_bosonic": 0.5098,
+          "predicted_f": 0.52765,
+          "prediction_error": 0.07097507817682162,
+          "prediction_holds": true,
+          "winding_distribution": {
+            "0": 3406,
+            "1": 2434,
+            "-1": 2428,
+            "-2": 864,
+            "-3": 23,
+            "2": 828,
+            "3": 17
+          }
+        },
+        "8": {
+          "p_simple": 0.0205,
+          "p_fermionic": 0.4913,
+          "p_bosonic": 0.5087,
+          "predicted_f": 0.51025,
+          "prediction_error": 0.037138657520823064,
+          "prediction_holds": true,
+          "winding_distribution": {
+            "0": 3240,
+            "1": 2381,
+            "-1": 2358,
+            "-2": 907,
+            "2": 940,
+            "-3": 79,
+            "3": 95
+          }
+        }
+      },
+      "attack_passed": false,
+      "average_error": 0.12670192836973235
+    },
+    "2_transport": {
+      "variants": {
+        "T = -\u03b8/2 (standard)": {
+          "p_fermionic": 0.51,
+          "shows_dominance": false
+        },
+        "T = -\u03b8/3": {
+          "p_fermionic": 0.0,
+          "shows_dominance": false
+        },
+        "T = -\u03b8/4": {
+          "p_fermionic": 0.0842,
+          "shows_dominance": false
+        },
+        "T = -\u03b8 (full)": {
+          "p_fermionic": 0.0,
+          "shows_dominance": false
+        },
+        "T = +\u03b8/2 (flipped)": {
+          "p_fermionic": 0.523,
+          "shows_dominance": false
+        },
+        "T = -\u03b8/2 + noise": {
+          "p_fermionic": 0.4344,
+          "shows_dominance": false
+        }
+      },
+      "attack_passed": false,
+      "sign_flip_works": false,
+      "fractional_breaks_selection": false
+    },
+    "3_geometry": {
+      "distortions": {
+        "None (baseline)": {
+          "p_fermionic": 0.5142,
+          "simple_to_F_accuracy": 1.0,
+          "simple_count": 1384
+        },
+        "Position noise \u03c3=0.05": {
+          "p_fermionic": 0.5162,
+          "simple_to_F_accuracy": 1.0,
+          "simple_count": 1414
+        },
+        "Position noise \u03c3=0.2": {
+          "p_fermionic": 0.5356,
+          "simple_to_F_accuracy": 1.0,
+          "simple_count": 1563
+        },
+        "X-stretch 2x": {
+          "p_fermionic": 0.5222,
+          "simple_to_F_accuracy": 1.0,
+          "simple_count": 1402
+        },
+        "Y-stretch 3x": {
+          "p_fermionic": 0.5288,
+          "simple_to_F_accuracy": 1.0,
+          "simple_count": 1444
+        },
+        "Rotation 45\u00b0": {
+          "p_fermionic": 0.5228,
+          "simple_to_F_accuracy": 1.0,
+          "simple_count": 1444
+        },
+        "Shear": {
+          "p_fermionic": 0.527,
+          "simple_to_F_accuracy": 1.0,
+          "simple_count": 1503
+        }
+      },
+      "attack_passed": true
+    },
+    "4_formation": {
+      "generators": {
+        "Uniform random": {
+          "p_fermionic": 0.473,
+          "p_simple": 0.1316,
+          "predicted_f": 0.5658000000000001,
+          "prediction_error": 0.1640155531990104
+        },
+        "Clustered (\u03c3=0.1)": {
+          "p_fermionic": 0.478,
+          "p_simple": 0.164,
+          "predicted_f": 0.582,
+          "prediction_error": 0.17869415807560135
+        },
+        "Clustered (\u03c3=0.05)": {
+          "p_fermionic": 0.4698,
+          "p_simple": 0.1568,
+          "predicted_f": 0.5784,
+          "prediction_error": 0.18775933609958512
+        },
+        "Ring (spread)": {
+          "p_fermionic": 0.994,
+          "p_simple": 0.994,
+          "predicted_f": 0.997,
+          "prediction_error": 0.003009027081243734
+        },
+        "Large box": {
+          "p_fermionic": 0.465,
+          "p_simple": 0.1322,
+          "predicted_f": 0.5661,
+          "prediction_error": 0.1785903550609433
+        }
+      },
+      "attack_passed": true
+    },
+    "5_scaling": {
+      "scales": {
+        "3": {
+          "p_fermionic": 1.0,
+          "p_simple": 1.0,
+          "predicted_f": 1.0,
+          "converges_to_50": null
+        },
+        "4": {
+          "p_fermionic": 0.531,
+          "p_simple": 0.531,
+          "predicted_f": 0.7655000000000001,
+          "converges_to_50": null
+        },
+        "5": {
+          "p_fermionic": 0.5233333333333333,
+          "p_simple": 0.2793333333333333,
+          "predicted_f": 0.6396666666666666,
+          "converges_to_50": null
+        },
+        "6": {
+          "p_fermionic": 0.4816666666666667,
+          "p_simple": 0.138,
+          "predicted_f": 0.569,
+          "converges_to_50": null
+        },
+        "8": {
+          "p_fermionic": 0.48633333333333334,
+          "p_simple": 0.021666666666666667,
+          "predicted_f": 0.5108333333333333,
+          "converges_to_50": null
+        },
+        "10": {
+          "p_fermionic": 0.5006666666666667,
+          "p_simple": 0.002,
+          "predicted_f": 0.501,
+          "converges_to_50": true
+        },
+        "12": {
+          "p_fermionic": 0.5056666666666667,
+          "p_simple": 0.0006666666666666666,
+          "predicted_f": 0.5003333333333333,
+          "converges_to_50": true
+        },
+        "15": {
+          "p_fermionic": 0.5023333333333333,
+          "p_simple": 0.0,
+          "predicted_f": 0.5,
+          "converges_to_50": true
+        },
+        "20": {
+          "p_fermionic": 0.5156666666666667,
+          "p_simple": 0.0,
+          "predicted_f": 0.5,
+          "converges_to_50": true
+        }
+      },
+      "attack_passed": true,
+      "small_n_dominant": true,
+      "large_n_neutral": true
+    }
+  },
+  "overall": "CASE_B_PARTIAL"
+}
