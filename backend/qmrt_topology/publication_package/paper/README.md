@@ -89,9 +89,9 @@ Even W → bosonic, Odd W → fermionic.
 ## Citation (Draft)
 
 ```bibtex
-@article{qmrt2026,
+@article{wallace2026qmrt,
   title={Topological Phase Quantization and Emergent Causal Geometry from Defect-Structured Media},
-  author={[Author]},
+  author={Wallace Jr., Randy},
   journal={arXiv preprint},
   year={2026}
 }
