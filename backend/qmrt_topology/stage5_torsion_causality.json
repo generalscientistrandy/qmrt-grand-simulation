@@ -1,0 +1,95 @@
+{
+  "critical_experiment": {
+    "Case A: \u03c4 = 1 (full torsion)": {
+      "torsion_strength": 1.0,
+      "p_fermionic": 0.5142,
+      "p_bosonic": 0.4858,
+      "p_anyonic": 0.0,
+      "z2_present": true
+    },
+    "Case B: \u03c4 = 0 (no torsion)": {
+      "torsion_strength": 0.0,
+      "p_fermionic": 0.0,
+      "p_bosonic": 1.0,
+      "p_anyonic": 0.0,
+      "z2_present": true
+    },
+    "Case C: \u03c4 = 0.5 (half torsion)": {
+      "torsion_strength": 0.5,
+      "p_fermionic": 0.0822,
+      "p_bosonic": 0.3944,
+      "p_anyonic": 0.5234,
+      "z2_present": false
+    },
+    "Case D: \u03c4 = 2 (double torsion)": {
+      "torsion_strength": 2.0,
+      "p_fermionic": 0.0,
+      "p_bosonic": 1.0,
+      "p_anyonic": 0.0,
+      "z2_present": true
+    },
+    "verdict": "TORSION_CAUSES_NONTRIVIAL_Z2"
+  },
+  "torsion_sweep": {
+    "0.0": {
+      "p_f": 0.0,
+      "p_b": 1.0,
+      "p_a": 0.0,
+      "z2": true
+    },
+    "0.25": {
+      "p_f": 0.0,
+      "p_b": 0.4093333333333333,
+      "p_a": 0.5906666666666667,
+      "z2": false
+    },
+    "0.5": {
+      "p_f": 0.07733333333333334,
+      "p_b": 0.408,
+      "p_a": 0.5146666666666667,
+      "z2": false
+    },
+    "0.75": {
+      "p_f": 0.0,
+      "p_b": 0.4073333333333333,
+      "p_a": 0.5926666666666667,
+      "z2": false
+    },
+    "1.0": {
+      "p_f": 0.512,
+      "p_b": 0.488,
+      "p_a": 0.0,
+      "z2": true
+    },
+    "1.25": {
+      "p_f": 0.0,
+      "p_b": 0.3923333333333333,
+      "p_a": 0.6076666666666667,
+      "z2": false
+    },
+    "1.5": {
+      "p_f": 0.082,
+      "p_b": 0.38566666666666666,
+      "p_a": 0.5323333333333333,
+      "z2": false
+    },
+    "1.75": {
+      "p_f": 0.0,
+      "p_b": 0.407,
+      "p_a": 0.593,
+      "z2": false
+    },
+    "2.0": {
+      "p_f": 0.0,
+      "p_b": 1.0,
+      "p_a": 0.0,
+      "z2": true
+    }
+  },
+  "derivation": {
+    "y_junction_symmetry": "3-fold (120\u00b0)",
+    "closure_constraint": "\u03b1 \u2208 (1/2)\u2124",
+    "z2_constraint": "\u03b1 = \u00b11/2",
+    "torsion_quantization": "\u03c4 = \u00b11"
+  }
+}
