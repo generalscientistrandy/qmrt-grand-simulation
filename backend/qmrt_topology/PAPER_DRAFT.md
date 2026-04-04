@@ -5,7 +5,7 @@
 
 ## Abstract
 
-We demonstrate that a topologically structured medium with defect-driven inhomogeneities produces a spatially varying propagation speed. Numerical simulations show that this induces path curvature and defines an effective causal geometry, with signal trajectories following geodesics of a derived metric. The framework reproduces quantized phase behavior (φ = -πW with holonomy H = (-1)^W), remains robust under noise (100% detection at σ = 0.3 rad), and is consistent with known condensed-matter topological defects—particularly half-integer disclinations in nematic liquid crystals, providing a pathway to experimental validation. This is not a refraction model: topology controls structure, quantization exists, defects carry conserved winding, pair cancellation is exact to machine precision, and ordered arrays produce 69× stronger signals than random configurations.
+We demonstrate that a topologically structured medium with defect-driven inhomogeneities produces a spatially structured propagation speed field. Numerical simulations show that this induces path curvature and defines an effective causal geometry, with signal trajectories following geodesics of a derived metric. The framework reproduces quantized phase behavior (φ = -πW with holonomy H = (-1)^W), remains robust under noise (100% detection at σ = 0.3 rad), and is consistent with known condensed-matter topological defects—particularly half-integer disclinations in nematic liquid crystals, providing a pathway to experimental validation. This behavior differs from standard refraction in that transport is governed by topological constraints and defect winding, rather than purely local index gradients.
 
 **Keywords**: topological phase, torsion defects, emergent geometry, effective metric, liquid crystal disclinations, analog gravity
 
@@ -202,6 +202,13 @@ The central insight is:
 
 > Causal structure emerges from spatial variation in propagation speed induced by medium inhomogeneities.
 
+This behavior differs from standard refraction in that transport is governed by topological constraints and defect winding, rather than purely local index gradients. The key distinctions are:
+
+1. **Quantization**: Phase shifts are discrete (π steps), not continuous
+2. **Topology**: Only enclosed winding matters, not defect positions
+3. **Exact cancellation**: Opposite-chirality pairs cancel to machine precision
+4. **Structure vs random**: Ordered arrays produce 69× stronger signals
+
 This is consistent with analog gravity programs and emergent spacetime approaches, but we make no claim that this IS spacetime—only that it exhibits geometry-like behavior.
 
 ### 6.4 Relation to Known Physics
@@ -221,10 +228,11 @@ We have presented a topological phase model in which:
 
 1. Defect winding numbers generate quantized phase contributions φ = -πW
 2. The framework maps exactly to condensed-matter topological defects
-3. Medium inhomogeneities produce spatially varying propagation speed
+3. Medium inhomogeneities produce a spatially structured propagation speed field
 4. An effective metric and geodesic behavior emerge from propagation dynamics
+5. Multi-defect interference produces emergent transport channels
 
-The model is:
+This behavior differs fundamentally from standard refraction: transport is governed by topological constraints and defect winding, not purely local index gradients. The model is:
 - **Numerically validated** (16/16 tests passed)
 - **Physically grounded** (LC correspondence)
 - **Experimentally accessible** (polarimetry proposal)
@@ -237,12 +245,13 @@ Future work should address Lagrangian formulation, multi-defect interference, an
 
 1. **fig1_quantization.png** — φ vs W showing discrete π steps
 2. **fig2_robustness.png** — SNR and detection curves
-3. **fig3_structure_vs_random.png** — Ordered vs random signal
+3. **fig3_structure_vs_random.png** — Ordered vs random signal (69× ratio)
 4. **lc_qmrt_equivalence.png** — LC director field mapping
 5. **fig_experimental_setup.png** — Proposed LC experiment
 6. **test_p31_speed_mapping.png** — c_eff vs ρ and |τ|
 7. **test_p32_curvature.png** — Ray bending around defects
 8. **test_p33_geodesic.png** — Wavefront and geodesic paths
+9. **test_multi_defect_interference.png** — Emergent transport channels
 
 ---
 
