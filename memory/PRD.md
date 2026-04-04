@@ -1,10 +1,11 @@
-## Current Status: SUBMISSION-READY ✅ + PHASE A TESTS COMPLETE ✅
+## Current Status: SUBMISSION-READY ✅ + PHASE A & B TESTS COMPLETE ✅
 
 **Date: April 2026**
 **Paper Title:** "Topological Quantization of Torsion and Emergent Spinorial Structure from Holonomy Constraints"
 
 **Files Created:** 160+ Python scripts, markdown documents, verification results
 **Phase A Experimental Simulations:** COMPLETE (5/5 tests passed)
+**Phase B Robustness Tests:** COMPLETE (5/5 tests passed)
 
 ---
 
@@ -24,32 +25,31 @@
 | Test 4 | No-encirclement control | ✅ PASS | W=0 → φ=0; W≠0 → φ≠0 |
 | Test 5 | Random vs ordered arrays | ✅ PASS | Signal ratio: 39.7x |
 
-### Generated Figures (Publication-Ready)
+---
 
-1. `test1_single_defect_fringe.png` - Fringe shift overlay showing half-period π shift
-2. `test2_w_scaling.png` - Phase vs W linear scaling + holonomy quantization
-3. `test3_chirality_reversal.png` - Mirror symmetry under τ → -τ
-4. `test4_no_encirclement.png` - Topological control (encirclement required)
-5. `test5_random_vs_ordered.png` - Statistical cancellation in random samples
+## 🔬 PHASE B ROBUSTNESS TESTS: ALL PASSED
 
-### Key Numerical Results
+**Generated: April 4, 2026**
+**Script:** `/app/backend/qmrt_topology/phase_b_tests.py`
+**Results:** `/app/backend/qmrt_topology/phase_b_results.json`
 
-```
-Single Defect Test:
-  φ(W=0)  = -0.008 rad (≈ 0)
-  φ(W=+1) = -3.133 rad (≈ -π)
-  φ(W=-1) = +3.125 rad (≈ +π)
-  Error: < 0.02 rad
+### Test Results Summary
 
-Scaling Test (W = -4 to +4):
-  All odd W → Fermionic (H ≈ -1)
-  All even W → Bosonic (H ≈ +1)
-  
-Random vs Ordered:
-  Ordered signal: |φ| = 31.43 rad (10 defects × π)
-  Random signal:  |<φ>| = 0.79 rad
-  Signal ratio: 39.7x → explains "why not seen"
-```
+| Test | Description | Status | Key Finding |
+|------|-------------|--------|-------------|
+| Test B1 | Decoherence Robustness | ✅ PASS | 100% detection at σ=0.3 rad |
+| Test B2 | EM Background Separation | ✅ PASS | AB (continuous) vs QMRT (discrete) |
+| Test B3 | Pair Cancellation | ✅ PASS | Exact to machine precision (0.00) |
+| Test B4 | Loop Deformation Invariance | ✅ PASS | Mean dist to |π| = 0.014 rad |
+| Test B5 | Disorder / Realistic Medium | ✅ PASS | Signal ratio: 69.4x |
+
+### Phase B Key Conclusions
+
+1. **Signal survives realistic noise** (σ < 0.36 rad @ 95% detection)
+2. **QMRT distinguishable from AB** (discrete vs continuous scaling)
+3. **Pair cancellation is EXACT** (not approximate — topologically enforced)
+4. **Phase is topologically invariant** (independent of loop shape)
+5. **Random disorder explains null results** (cancellation in natural materials)
 
 ---
 
