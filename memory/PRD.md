@@ -1,10 +1,40 @@
-## Current Status: PAPER-READY WITH PREDICTIONS ✅
+## Current Status: ARXIV-READY ✅
 
 **Date: December 2025**
-**Latest Update: Distinguishing Predictions Added — Falsifiable Claims**
+**Paper Title:** "Topological Quantization of Torsion and Emergent Spinorial Structure from Holonomy Constraints"
 
-### Paper Title (Final)
-> **"Topological Quantization of Torsion and Emergent Spinorial Structure from Holonomy Constraints"**
+---
+
+## 🔥🔥🔥 THE MAIN RESULT 🔥🔥🔥
+
+### Observable Prediction (Tightened)
+$$\boxed{\Delta\phi = -\pi\tau W}$$
+
+- τ = torsion charge (integer for Z₂)
+- W = winding number
+- **Magnitude: ~π per defect (large, measurable)**
+
+### Magnitude Estimate
+| Quantity | Value |
+|----------|-------|
+| Defect density (metals) | 10⁶ - 10¹² cm⁻² |
+| Enclosed defects (typical) | ~1 |
+| **Phase shift per defect** | **~π rad ≈ 3.14 rad** |
+| **Fringe shift** | **1/2 period** |
+
+### Why Not Already Seen?
+1. Standard AB experiments avoid defects
+2. Defect scattering masks phase effects
+3. Random defect orientations cause averaging
+4. **QMRT test: Use ordered defect arrays**
+
+### Theory Connections
+| QMRT | Known Physics |
+|------|---------------|
+| T^a | Einstein-Cartan torsion |
+| Defect worldlines | Screw dislocations in crystals |
+| ∮ω = 2πn | Flux quantization (superconductors) |
+| Δφ = -πτW | Berry/AB phase analog |
 
 ---
 
