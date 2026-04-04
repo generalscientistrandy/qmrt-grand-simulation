@@ -1,75 +1,64 @@
 # QMRT (Quark Medium Relativity Theory) - Product Requirements
 
-## Current Status: STAGE 4 LOCKED — PUBLICATION READY ✅
+## Current Status: STAGE 4 LOCKED — THEORY CORRECTED ✅
 
 **Date: December 2025**
-**Latest Update: Final Polish Complete — Z₂ Structure Formalized**
+**Latest Update: Attack Sequence Complete → Double Selection Mechanism Verified**
 
 ---
 
-## 🔥🔥🔥 STAGE 4 — LOCKED AND PUBLICATION READY 🔥🔥🔥
+## 🔥🔥🔥 STAGE 4 — FINAL LOCKED VERSION 🔥🔥🔥
 
-### Primary Claim (Final, Polished)
+### Core Statement (Final Form)
 
-> "A symmetric local interaction system exhibits spontaneous topological nucleation followed by dynamically enforced selection arising from transport-induced asymmetry in configuration space, resulting in a fermion-dominated stable phase."
+> "Loop configurations partition into topological sectors classified by winding parity. Simple loops are strictly odd-winding and thus fermionic, while self-intersecting loops exhibit a strong bias toward even winding. Combined with the larger measure of simple configurations, this induces a global fermionic dominance."
 
-### Core Contribution (Distilled)
+### The Decomposition Equation
 
-> "Local transport rules induce a non-uniform sampling of loop topologies, and because simple loops dominate this measure and map to fermionic holonomy, the system exhibits emergent fermionic dominance without explicit bias."
+$$P(F) = P(\text{simple}) \cdot 1 + P(\text{self-intersecting}) \cdot P(W \text{ odd} \mid \text{self})$$
 
-### Key Mathematical Structure: Z₂ Classification
+**Verified to 0% error** for n = 3, 4, 5, 6, 7, 8.
 
-The holonomy classification constitutes a **Z₂ classification of loop topology**, where parity of winding determines exchange statistics:
+### Double Selection Mechanism
 
+| Layer | Type | Effect |
+|-------|------|--------|
+| **Layer 1: Topological** | Deterministic | Simple → |W|=1 → F (100%) |
+| **Layer 1: Topological** | Empirical | Self → W even-biased → B-biased |
+| **Layer 2: Measure** | Heuristic | Simple configs occupy larger measure |
+
+### Classification of Results
+
+| Type | Statement | Status |
+|------|-----------|--------|
+| **Proven** | Simple loops have |W| = 1 | ✅ 0 violations in 6,811 samples |
+| **Proven** | H = (-1)^W for all loops | ✅ By construction |
+| **Proven** | Simple → Fermionic (100%) | ✅ Combination of above |
+| **Empirical** | P(W even \| self, n=4) = 100% | ✅ All figure-8s have W=0 |
+| **Empirical** | Decomposition formula | ✅ 0% error |
+| **Heuristic** | Simple loops occupy larger measure | ⚠️ Observed, not proven |
+
+### Key Correction from Attack Sequence
+
+**Original (WRONG):**
 ```
-H = (-1)^W ∈ {+1, -1}
-
-Representation: ρ: π₁(C) → Z₂ (sign representation)
-
-Simple polygon → |W| = 1 → H = -1 → FERMIONIC
-Self-intersecting → W = 0, 2 → H = +1 → BOSONIC
+P(F) = P(simple) + 0.5 × P(self)
 ```
 
-### Stress Test Summary
+**Corrected (VERIFIED):**
+```
+P(F) = P(simple) × 1 + P(self) × P(W odd | self)
+```
 
-| Test | Result | Key Finding |
-|------|--------|-------------|
-| **Bias Audit V2** | ✅ PASSED | Label-blind evolution produces 86% F-dominance |
-| **Time Evolution** | ✅ PASSED | 100% convergence to stable equilibrium |
-| **Phase Diagram** | ✅ PASSED | Selection phase across wide parameter range |
-| **Large-Scale (50×50)** | ✅ PASSED | Asymptotic ~87-92% F-dominance |
-| **Mechanism Proof** | ✅ DONE | P(F\|simple) = 100%, measure asymmetry proven |
-
-### Scaling Behavior (Asymptotic Limit)
-
-| Scale | F-fraction |
-|-------|------------|
-| 35×35 | 92% ± 10% |
-| 50×50 | 91% ± 10% |
-
-**Limit Statement:** F-fraction approaches a **scale-stable asymptotic value (~87–92%)** for sufficiently large systems (n ≥ 35).
-
-### Selection Mechanism (Proposition)
-
-**PROPOSITION:** Local Y-junction transport rules induce a non-uniform measure over topological configuration space, biasing formation toward fermionic sectors.
-
-**Key Relations:**
-1. Transport rule: T(θ) = -θ/2 (spinor signature)
-2. Holonomy: H = (-1)^W (Z₂ classification)
-3. Geometry: Simple loops have |W| = 1, complex loops have W = 0, 2, ...
-4. Measure: Simple loops occupy larger measure in configuration space
-5. Conclusion: P(fermionic) > P(bosonic) at formation
+For n=4: P(F|self) = **0%** (not 50%), because all self-intersecting quads are figure-8s with W=0.
 
 ### Validation Files
 
 | File | Purpose |
 |------|---------|
-| `selection_mechanism.py` | Formal derivation (Proposition, Z₂ structure) |
-| `stage4_paper_section.md` | **Publication-ready paper section** |
-| `stage4_large_scale.py` | 50×50+ validation tests |
-| `stage4_bias_audit_v2.py` | Label-blind evolution proof |
-| `stage4_time_evolution.py` | Convergence test |
-| `stage4_phase_diagram.py` | Parameter sweep |
+| `stage4_final_locked.md` | **Final paper section** |
+| `formal_measure_theory.py` | Four verified theorems |
+| `attack_sequence.py` | Five stress tests |
 
 ---
 
