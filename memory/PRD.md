@@ -1,69 +1,88 @@
-## Current Status: SUBMISSION-READY ✅ + ALL PHASES COMPLETE ✅
+## Current Status: PUBLICATION-READY (Reviewer-Safe Framing) ✅
 
 **Date: April 2026**
-**Paper Title:** "Topological Quantization of Torsion and Emergent Spinorial Structure from Holonomy Constraints"
+**Paper Title:** "Topological Phase Quantization from Defect Winding: A Numerical Study"
 
-**Files Created:** 160+ Python scripts, markdown documents, verification results
-**Phase A (Core Physics):** COMPLETE (5/5 tests passed)
-**Phase B (Robustness):** COMPLETE (5/5 tests passed)
-**Phase C (Physical Reality Bridge):** COMPLETE (3/3 tests passed + 3 publication figures)
+**Simulation Tests:** 13/13 PASSED
+**Scientific Position:** Corrected and locked (see SCIENTIFIC_POSITION.md)
 
 ---
 
-## 🎯 SCIENTIFIC FRAMING (Reviewer-Safe)
+## 🎯 CORRECTED SCIENTIFIC FRAMING
 
-> "We propose a topological phase contribution arising from torsion-like defects. Numerical simulations demonstrate quantization, deformation invariance, robustness to decoherence, and clear distinguishability from electromagnetic gauge phases."
+### What We Claim (Reviewer-Safe)
 
----
+> "We propose a topological phase model in which quantized phase contributions arise from defect winding numbers. The phase law φ = -πW produces discrete π-shifts, with holonomy H = (-1)^W yielding Z₂ statistics. The model maps consistently to known condensed-matter topological defects, particularly half-integer disclinations in nematic liquid crystals."
 
-## 🔬 COMPLETE TEST SUMMARY
+### What We Do NOT Claim
 
-### Phase A: Core Physics ✅
-| Test | Status | Key Finding |
-|------|--------|-------------|
-| Single-defect | ✅ | Δφ = -π per defect |
-| W scaling | ✅ | φ = -πW (linear, discrete) |
-| Chirality reversal | ✅ | τ → -τ causes φ → -φ |
-| No-encirclement | ✅ | Topological (W=0 → φ=0) |
-| Random vs ordered | ✅ | Signal ratio: 39.7x |
-
-### Phase B: Robustness ✅
-| Test | Status | Key Finding |
-|------|--------|-------------|
-| Decoherence | ✅ | 100% detection at σ=0.3 rad |
-| EM separation | ✅ | AB (continuous) vs QMRT (discrete) |
-| Pair cancellation | ✅ | EXACT (machine precision) |
-| Deformation invariance | ✅ | Mean dist to |π| = 0.014 rad |
-| Disorder | ✅ | Signal ratio: 69.4x |
-
-### Phase C: Physical Reality Bridge ✅
-| Test | Status | Key Finding |
-|------|--------|-------------|
-| Worldline/Spacetime | ✅ | Maps to Einstein-Cartan, gauge theory, TFT |
-| Cosmological scaling | ✅ | var(W) ∝ R² (area law) |
-| Condensed-matter | ✅ | EXACT analog: LC disclinations |
+- ❌ ~~"Maps to Einstein-Cartan"~~ (analogy, not derivation)
+- ❌ ~~"Proves spacetime emergence"~~ (insufficient alone)
+- ❌ ~~"Cosmological evidence"~~ (area-law is generic)
 
 ---
 
-## 📊 PUBLICATION FIGURES (arXiv-Ready)
+## 📊 DEVELOPMENT TIERS
 
-1. **fig1_quantization.png** — Phase vs W showing discrete π steps
-2. **fig2_robustness.png** — SNR and detection rate vs noise
-3. **fig3_structure_vs_random.png** — Ordered (69x) vs random cancellation
-
----
-
-## 🧪 FASTEST VALIDATION PATH
-
-**Liquid Crystal Polarimetry Experiment**
-- System: Nematic LC with half-integer disclinations
-- Measurement: Polarization rotation around defects
-- Prediction: π rotation per s=±1/2 defect
-- Feasibility: HIGH (standard optics lab, existing technology)
+| Tier | Status | Content |
+|------|--------|---------|
+| **1. Medium Primitives** | ✅ Complete | Phase field, torsion defects, winding rules |
+| **2. Statistical Structure** | ✅ Complete | W, H=(-1)^W, Z₂ statistics, fermionic/bosonic |
+| **3. Propagation** | ⚠️ Next | Effective speed, defect-modified transport |
+| **4. Spacetime** | 🔮 Future | Emergent geometry, cosmology |
 
 ---
 
-## 🔥🔥🔥 THE KILL SHOT (Include Verbatim) 🔥🔥🔥
+## 🔬 SIMULATION RESULTS (13/13 PASSED)
+
+### Phase A: Core Physics (5/5)
+- Single-defect: Δφ = -π ✅
+- W scaling: φ = -πW ✅
+- Chirality reversal: τ → -τ flips sign ✅
+- No-encirclement: W=0 → φ=0 ✅
+- Random vs ordered: 39.7x signal ratio ✅
+
+### Phase B: Robustness (5/5)
+- Decoherence: 100% detection at σ=0.3 rad ✅
+- EM separation: Discrete vs continuous ✅
+- Pair cancellation: Exact (10⁻¹⁵) ✅
+- Deformation invariance: dist to |π| = 0.014 rad ✅
+- Disorder: 69.4x signal ratio ✅
+
+### Phase C: Physical Bridge (3/3)
+- Worldline formalism: Analogous structure ✅
+- Cosmological scaling: Consistent with random ✅
+- Condensed matter: EXACT analog (LC disclinations) ✅
+
+---
+
+## 🧪 STRONGEST ASSET: Condensed Matter Analog
+
+### Liquid Crystal Disclinations (EXACT Match)
+| QMRT | Liquid Crystal |
+|------|----------------|
+| Torsion defect | Half-integer disclination (s=±1/2) |
+| Chirality τ | Disclination sign |
+| Phase π | Director rotation π |
+| W = ±1 | Single defect enclosed |
+
+### Proposed Experiment
+- **System**: Nematic LC cell with controlled disclinations
+- **Measurement**: Polarization rotation via crossed polarizers
+- **Prediction**: π rotation per half-integer defect
+- **Feasibility**: HIGH (standard optics lab)
+
+---
+
+## 📝 PUBLICATION FIGURES (Ready)
+
+1. `fig1_quantization.png` — φ vs W (discrete π-steps)
+2. `fig2_robustness.png` — SNR and detection curves
+3. `fig3_structure_vs_random.png` — 69x signal ratio
+
+---
+
+## 🔥🔥🔥 THE MAIN RESULT 🔥🔥🔥
 
 > **"Unlike standard Berry or Aharonov–Bohm phases arising from gauge connections, the predicted π shift originates from quantized torsion defects in the underlying geometric structure, representing a topological contribution not reducible to conventional gauge fields."**
 

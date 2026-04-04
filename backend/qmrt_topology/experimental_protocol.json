@@ -1,0 +1,67 @@
+{
+  "title": "Polarization Rotation Around Nematic Disclinations",
+  "objective": "Measure \u03c0 polarization rotation per half-integer defect",
+  "materials": [
+    "Nematic liquid crystal (e.g., 5CB, MBBA)",
+    "Glass substrates with alignment layers",
+    "Polarizer and analyzer (crossed)",
+    "Laser source (HeNe, 633 nm)",
+    "CCD camera or photodetector",
+    "Temperature controller",
+    "Microscope with rotatable stage"
+  ],
+  "sample_preparation": [
+    "1. Clean glass substrates thoroughly",
+    "2. Apply alignment layer (rubbed polyimide)",
+    "3. Assemble cell with spacers (5-20 \u03bcm gap)",
+    "4. Fill with LC in isotropic phase",
+    "5. Cool slowly to create controlled defects",
+    "6. Alternative: Use patterned electrodes to generate defects"
+  ],
+  "defect_generation": {
+    "method_1": "Thermal quench from isotropic phase (random defects)",
+    "method_2": "Patterned surface anchoring (controlled positions)",
+    "method_3": "Electric field manipulation (dynamic control)",
+    "note": "Half-integer defects (s=\u00b11/2) are stable in 2D nematics"
+  },
+  "measurement_procedure": [
+    "1. Place sample between crossed polarizers",
+    "2. Identify disclination cores under microscope",
+    "3. Position small probe beam to encircle single defect",
+    "4. Measure transmitted intensity vs analyzer angle",
+    "5. Extract polarization rotation from intensity modulation",
+    "6. Repeat for multiple defects and configurations"
+  ],
+  "predicted_results": {
+    "s=+1/2": "Polarization rotates +\u03c0 (90\u00b0) around defect",
+    "s=-1/2": "Polarization rotates -\u03c0 (-90\u00b0) around defect",
+    "pair": "Net rotation depends on total enclosed charge",
+    "null_test": "No rotation if loop excludes all defects"
+  },
+  "key_measurements": [
+    "Single +1/2 defect \u2192 +\u03c0 rotation",
+    "Single -1/2 defect \u2192 -\u03c0 rotation",
+    "Defect pair (+1/2, -1/2) \u2192 0 rotation (cancellation)",
+    "Multiple defects \u2192 rotation = 2\u03c0 \u00d7 (total s)",
+    "Loop deformation \u2192 rotation unchanged (topology!)"
+  ],
+  "controls": [
+    "Measure same defect with different loop sizes",
+    "Measure identical defects at different positions",
+    "Verify cancellation for opposite-charge pairs",
+    "Check temperature dependence (should be weak)"
+  ],
+  "expected_precision": {
+    "angular_resolution": "< 1\u00b0",
+    "position_accuracy": "< 1 \u03bcm",
+    "reproducibility": "> 95% between trials"
+  },
+  "connection_to_qmrt": {
+    "lc_s=+1/2": "QMRT \u03c4 = +1",
+    "lc_rotation_\u03c0": "QMRT phase -\u03c0",
+    "topological_invariance": "Both depend only on enclosed winding",
+    "cancellation": "Both exhibit exact pair cancellation"
+  },
+  "feasibility": "HIGH \u2014 Standard optics lab equipment",
+  "timeline": "1-3 months for complete validation"
+}
