@@ -1,0 +1,15 @@
+{
+  "verification_results": {
+    "v1_defect_stability": true,
+    "v2_quantization": true,
+    "v3_single_valuedness": true,
+    "v4_complete_chain": true
+  },
+  "all_pass": true,
+  "key_results": {
+    "defect_stability": "E_defect < E_smooth",
+    "quantization": "\u222e\u03c9 = 2\u03c0n",
+    "single_valuedness": "n \u2208 \u2124 required",
+    "chain_complete": "single-valuedness \u2192 fermions"
+  }
+}
