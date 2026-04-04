@@ -1,0 +1,14 @@
+{
+  "verification_results": {
+    "v1_loop_integral": true,
+    "v2_multiple_sources": true,
+    "v3_winding_number": true,
+    "v4_spinor_phase": true,
+    "v5_torsion_domega": true
+  },
+  "all_pass": true,
+  "connection_formula": "\u03c9_\u03bc = \u03a3 \u03c4_v G_\u03bc(x - x_v)",
+  "green_function": "G_\u03bc = \u03b5_\u03bc\u03bd x^\u03bd / (2\u03c0|x|\u00b2)",
+  "torsion_relation": "d\u03c9 = 2\u03c0 \u03c1_\u03c4",
+  "conclusion": "Connection derived from discrete torsion"
+}

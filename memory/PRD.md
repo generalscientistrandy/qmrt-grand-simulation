@@ -1,9 +1,37 @@
-# QMRT (Quark Medium Relativity Theory) - Product Requirements
-
-## Current Status: STAGE 5 GEOMETRIC DERIVATION COMPLETE ✅
+## Current Status: STAGE 5 COMPLETE — TORSION-HOLONOMY THEOREM ✅
 
 **Date: December 2025**
-**Latest Update: Torsion Geometry Derivation — Spinors from Medium Properties**
+**Latest Update: Formal Theorem + Connection Formalization Complete**
+
+---
+
+## 🔥🔥🔥 QMRT TORSION-HOLONOMY THEOREM 🔥🔥🔥
+
+### The Theorem (Paper Anchor)
+
+**IF:**
+1. Torsion is discrete (angular defect at nodes): τ = Δ/(2π)
+2. Loop torsion is quantized: ∮ω = 2πτW
+3. Transport obeys spinorial double-cover
+
+**THEN:**
+1. Holonomy group reduces to Z₂
+2. Spinorial phase emerges: ψ → e^(iπτW)ψ
+3. Coupling constant is uniquely fixed: **α = -τ/2**
+
+### The Core Identity
+
+$$\boxed{\oint \omega = 2\pi\tau W \quad \Rightarrow \quad \psi \to e^{i\pi\tau W}\psi}$$
+
+This bridges: discrete torsion ↔ continuum connection ↔ spinor phase
+
+### What This IS and IS NOT
+
+| Claim | Status |
+|-------|--------|
+| Conditional: IF hypotheses THEN conclusions | ✅ PROVEN |
+| "Torsion creates fermions universally" | ❌ Only under stated hypotheses |
+| Coupling α = -τ/2 is uniquely fixed | ✅ DERIVED |
 
 ---
 
