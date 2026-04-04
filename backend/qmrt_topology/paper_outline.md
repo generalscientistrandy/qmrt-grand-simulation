@@ -213,7 +213,41 @@ $$\oint d\chi = 2\pi n \implies \oint \omega = 2\pi n$$
 
 ---
 
-## 8. Comparison with Known Physics
+## 8. Distinguishing Predictions
+
+### 8.1 Modified Aharonov-Bohm Phase
+
+**Standard:** φ_AB = eΦ/ℏ
+
+**QMRT:** φ_QMRT = eΦ/ℏ - πW (extra π per torsion defect)
+
+**Test:** Electron interferometry in torsioned medium (e.g., screw dislocations)
+
+**Falsifiable:** No extra shift → QMRT ruled out
+
+### 8.2 Logarithmic Interaction Potential
+
+**Standard:** V(r) ~ 1/r (Coulomb)
+
+**QMRT:** V(r) ~ log(r) (confined)
+
+**Test:** Defect dynamics in topological materials
+
+**Falsifiable:** 1/r potential observed → QMRT ruled out in that regime
+
+### 8.3 Cosmological Correction
+
+**Standard:** ρ = ρ₀/a³
+
+**QMRT:** ρ = ρ₀/a³ × (1 + ε log a)
+
+**Test:** Precision cosmology (CMB, BAO, SN)
+
+**Falsifiable:** Pure 1/a³ scaling to high precision → constrains QMRT parameters
+
+---
+
+## 9. Comparison with Known Physics
 
 | QMRT | Known Analog |
 |------|--------------|

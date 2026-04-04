@@ -1,7 +1,10 @@
-## Current Status: PAPER-READY — COMPLETE THEORETICAL FRAMEWORK ✅
+## Current Status: PAPER-READY WITH PREDICTIONS ✅
 
 **Date: December 2025**
-**Latest Update: Toy Model Added + Paper Outline Complete**
+**Latest Update: Distinguishing Predictions Added — Falsifiable Claims**
+
+### Paper Title (Final)
+> **"Topological Quantization of Torsion and Emergent Spinorial Structure from Holonomy Constraints"**
 
 ---
 
