@@ -1,0 +1,90 @@
+{
+  "q1_hidden_assumptions": {
+    "dist_uniform": {
+      "p_f": 0.5134,
+      "p_simple": 0.2758
+    },
+    "dist_gaussian": {
+      "p_f": 0.5348,
+      "p_simple": 0.325
+    },
+    "dist_clustered": {
+      "p_f": 0.5242,
+      "p_simple": 0.3094
+    },
+    "dist_edge_biased": {
+      "p_f": 0.5096,
+      "p_simple": 0.2638
+    },
+    "degenerate_winding_stable": 1.0,
+    "distribution_robust": true
+  },
+  "q2_parameter_sensitivity": {
+    "alpha_-1.0": {
+      "p_f": 0.0,
+      "p_anyonic": 0.0
+    },
+    "alpha_-0.75": {
+      "p_f": 0.0824,
+      "p_anyonic": 0.5246
+    },
+    "alpha_-0.5": {
+      "p_f": 0.5302,
+      "p_anyonic": 0.0
+    },
+    "alpha_-0.25": {
+      "p_f": 0.0794,
+      "p_anyonic": 0.509
+    },
+    "alpha_-0.1": {
+      "p_f": 0.0,
+      "p_anyonic": 0.6026
+    },
+    "alpha_0.0": {
+      "p_f": 0.0,
+      "p_anyonic": 0.0
+    },
+    "alpha_0.1": {
+      "p_f": 0.0,
+      "p_anyonic": 0.588
+    },
+    "alpha_0.5": {
+      "p_f": 0.5024,
+      "p_anyonic": 0.0
+    },
+    "thresh_0.1": 0.5218,
+    "thresh_0.2": 0.5134,
+    "thresh_0.3": 0.5196,
+    "thresh_0.4": 0.5144,
+    "thresh_0.5": 0.5114,
+    "alpha_half_special": false
+  },
+  "q3_distortion": {
+    "noise_0.0": 0.5116,
+    "noise_0.01": 0.5208,
+    "noise_0.05": 0.5202,
+    "noise_0.1": 0.5138,
+    "noise_0.2": 0.5218,
+    "grid_10": 0.5054,
+    "grid_20": 0.5218,
+    "grid_50": 0.5148,
+    "grid_100": 0.5148,
+    "hol_noise_0.0": 0.5204,
+    "hol_noise_0.05": 0.5136,
+    "hol_noise_0.1": 0.521,
+    "hol_noise_0.2": 0.4408,
+    "robust_to_distortion": true
+  },
+  "q4_failure": {
+    "forced_self_intersecting": {
+      "p_f": 0.4818,
+      "p_simple": 0.1654
+    },
+    "forced_simple": {
+      "p_f": 1.0,
+      "p_simple": 1.0
+    },
+    "large_n_neutral": true,
+    "all_failure_conditions_correct": false
+  }
+}
