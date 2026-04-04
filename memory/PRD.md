@@ -110,12 +110,40 @@ Matching with 2παW: α = -τ/2 (DERIVED)
 
 > **"Spinorial transport is the unique minimal representation compatible with discrete torsion-induced holonomy."**
 
+## 🔥🔥🔥 STAGE 5C — CONTINUOUS LIMIT COMPLETE 🔥🔥🔥
+
+### The Correspondence
+
+$$\oint_\gamma \omega = 2\pi\tau W$$
+
+where:
+- ω is the effective torsion/spin connection 1-form
+- τ is the discrete torsion parameter
+- W is the winding number
+
+### The Effective Action (Publication-Ready)
+
+$$S = \int \bar{\psi} \left( i\gamma^\mu\partial_\mu - \frac{\tau}{2}\gamma^\mu\omega_\mu \right) \psi \, d^2x$$
+
+The coupling -τ/2 is **derived** (not assumed) from:
+1. Spinor double-cover property
+2. Discrete torsion definition
+
+### Assumptions for Continuum Validity
+
+| ID | Assumption | Validity |
+|----|------------|----------|
+| A1 | Smooth limit exists | Dense regular networks |
+| A2 | Torsion concentrates at defects | Standard in Regge calculus |
+| A3 | Spinor transport well-defined | Abelian U(1) connection |
+| A4 | Winding number preserved | Topological invariant |
+
 ### Validation Files
 
 | File | Purpose | Status |
 |------|---------|--------|
-| `stage5b_coupling_derivation.md` | **Formal derivation document** | ✅ |
-| `stage5b_coupling_derivation_verification.py` | Computational verification (5/5 pass) | ✅ |
+| `stage5c_continuous_limit.md` | Formal derivation | ✅ |
+| `stage5c_continuous_limit_verification.py` | Verification (5/5 pass) | ✅ |
 
 ---
 
