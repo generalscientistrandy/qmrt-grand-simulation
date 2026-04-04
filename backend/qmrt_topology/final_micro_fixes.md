@@ -119,6 +119,12 @@ $$\boxed{\Delta\phi = -\pi\tau W, \quad \tau = \pm 1, \quad W \in \mathbb{Z}}$$
 
 $$\phi_{\text{total}} = \underbrace{\frac{e\Phi}{\hbar}}_{\text{Aharonov-Bohm}} + \underbrace{(-\pi\tau W)}_{\text{QMRT Torsion}}$$
 
+**"The first term represents the conventional Aharonov–Bohm phase from electromagnetic gauge fields, while the second term represents a quantized geometric phase arising from torsion defects characterized by chirality τ and winding number W."**
+
+**"The winding number W counts the number of enclosed topological defects under closed-loop transport."**
+
+**"For τW = ±1, the predicted phase shift Δφ = ∓π corresponds to a half-period fringe displacement, providing a directly measurable interferometric signature."**
+
 where:
 - **eΦ/ℏ**: Standard gauge phase from magnetic flux
 - **-πτW**: Geometric phase from torsion defects
