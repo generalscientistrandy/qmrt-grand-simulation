@@ -1,0 +1,67 @@
+{
+  "scales": {
+    "25": {
+      "timesteps": 2000,
+      "runs": 3,
+      "mean_f_fraction": 0.5,
+      "std_f_fraction": 0.408248290463863,
+      "mean_nodes": 187.0,
+      "mean_edges": 69.0,
+      "individual_runs": [
+        0.0,
+        0.5,
+        1.0
+      ]
+    },
+    "35": {
+      "timesteps": 2500,
+      "runs": 3,
+      "mean_f_fraction": 0.8690476190476191,
+      "std_f_fraction": 0.10240863413145984,
+      "mean_nodes": 367.0,
+      "mean_edges": 134.33333333333334,
+      "individual_runs": [
+        0.75,
+        0.8571428571428571,
+        1.0
+      ]
+    },
+    "50": {
+      "timesteps": 3000,
+      "runs": 3,
+      "mean_f_fraction": 0.8984126984126984,
+      "std_f_fraction": 0.02529742452461782,
+      "mean_nodes": 750.0,
+      "mean_edges": 267.0,
+      "individual_runs": [
+        0.8666666666666667,
+        0.9285714285714286,
+        0.9
+      ]
+    },
+    "65": {
+      "timesteps": 3500,
+      "runs": 2,
+      "mean_f_fraction": 0.9047619047619048,
+      "std_f_fraction": 0.09523809523809523,
+      "mean_nodes": 1267.0,
+      "mean_edges": 452.5,
+      "individual_runs": [
+        1.0,
+        0.8095238095238095
+      ]
+    }
+  },
+  "summary": {
+    "all_f_fractions": [
+      0.5,
+      0.8690476190476191,
+      0.8984126984126984,
+      0.9047619047619048
+    ],
+    "mean_overall": 0.7930555555555555,
+    "spread": 0.40476190476190477,
+    "scale_invariant": false,
+    "elapsed_seconds": 13.580735921859741
+  }
+}

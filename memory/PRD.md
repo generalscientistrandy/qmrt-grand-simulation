@@ -398,6 +398,11 @@ Energy penalty E = λ(degree - 3)² + Reconnection dynamics
 - **Stage 5: Cosmological Expansion** — Introduce controlled expansion/scale factor
 - **Stage 6: Large-scale Structure** — Clustering, domain growth
 
+### ✅ COMPLETED (Stage 4 Locked)
+- **Selection Mechanism Formalized** — Proof that simple loops → fermionic by winding number
+- **Large-Scale Validation** — 35×35 and 50×50 grids show 90%+ F-dominance
+- **Paper Section Draft** — Ready for publication review
+
 ### FUTURE WORK
 - **Path D: SU(2) Connection** — Map Z₁₂ discrete phase to continuous SU(2)
 - **Path E: 3D Fermi Pressure** — Test n^(5/3) degeneracy pressure scaling

@@ -1,0 +1,53 @@
+{
+  "mechanism": {
+    "transport_rule": "T(\u03b8) = -\u03b8/2",
+    "holonomy_formula": "H = (-1)^W",
+    "key_relation": "simple polygon \u2192 |W|=1 \u2192 H=-1 \u2192 fermionic",
+    "cause": "Random formation favors simple loops"
+  },
+  "empirical": {
+    "correlations": {
+      "3": {
+        "p_simple": 1.0,
+        "p_fermionic": 1.0,
+        "p_F_given_simple": 1.0,
+        "p_B_given_complex": 0.0
+      },
+      "4": {
+        "p_simple": 0.5406,
+        "p_fermionic": 0.5406,
+        "p_F_given_simple": 1.0,
+        "p_B_given_complex": 1.0
+      },
+      "5": {
+        "p_simple": 0.281,
+        "p_fermionic": 0.5156,
+        "p_F_given_simple": 1.0,
+        "p_B_given_complex": 0.6737134909596662
+      },
+      "6": {
+        "p_simple": 0.1424,
+        "p_fermionic": 0.4764,
+        "p_F_given_simple": 1.0,
+        "p_B_given_complex": 0.6105410447761194
+      },
+      "7": {
+        "p_simple": 0.055,
+        "p_fermionic": 0.4974,
+        "p_F_given_simple": 1.0,
+        "p_B_given_complex": 0.5318518518518518
+      },
+      "8": {
+        "p_simple": 0.026,
+        "p_fermionic": 0.4914,
+        "p_F_given_simple": 1.0,
+        "p_B_given_complex": 0.52217659137577
+      }
+    }
+  },
+  "predictions": {
+    "triangles_100pct_fermionic": true,
+    "f_fraction_decreases_with_n": true,
+    "simple_implies_fermionic": true
+  }
+}
