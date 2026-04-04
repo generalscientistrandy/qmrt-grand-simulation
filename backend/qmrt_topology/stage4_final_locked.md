@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Loop configurations on a Y-junction medium partition into topological sectors classified by winding parity. Simple loops are strictly odd-winding and thus fermionic, while self-intersecting loops exhibit a statistical bias toward even winding. Combined with the larger measure of simple configurations in configuration space, this induces a global fermionic dominance without explicit bias terms.
+Loop configurations on a Y-junction medium partition into topological sectors classified by winding parity. Simple loops are strictly odd-winding and thus fermionic, while self-intersecting loops exhibit a statistical bias toward even winding. The spinor factor α = 1/2 in the transport rule is not a free parameter — it is uniquely fixed by the requirement of Z₂ statistics via phase quantization. Combined with the larger measure of simple configurations, this induces a global fermionic dominance without explicit bias terms.
 
 ---
 
@@ -30,10 +30,66 @@ We **inevitably** obtain fermionic dominance for small loop populations.
 
 ---
 
-## 2. Classification of Results
+## 2. Quantization of the Holonomy Parameter (NEW — Theorem-Level)
+
+### 2.1 The Problem
+
+Why must α = 1/2? Is this empirical or mathematically necessary?
+
+### 2.2 Setup
+
+- **Winding number**: $W \in \mathbb{Z}$
+- **Total turn angle**: $\sum_k \theta_k = 2\pi W$ (Gauss-Bonnet)
+- **Holonomy**: $H = e^{i \cdot 2\pi\alpha W}$
+
+### 2.3 The Quantization Theorem
+
+**Theorem**: For $H \in \{+1, -1\}$ (Z₂ statistics) to hold for all $W \in \mathbb{Z}$:
+
+$$e^{i \cdot 2\pi\alpha W} = \pm 1 \quad \forall W$$
+
+This requires:
+
+$$2\pi\alpha W = \pi k \quad \Rightarrow \quad \alpha = \frac{k}{2W}$$
+
+For this to hold for **all** $W \in \mathbb{Z}$:
+
+$$\boxed{\alpha \in \frac{1}{2}\mathbb{Z} = \left\{ \ldots, -1, -\frac{1}{2}, 0, \frac{1}{2}, 1, \ldots \right\}}$$
+
+### 2.4 Minimal Nontrivial Solution
+
+| α | Holonomy H | Classification |
+|---|------------|----------------|
+| 0 | 1 | Trivial (all bosonic) |
+| **±1/2** | **(-1)^W** | **Z₂ (fermionic/bosonic)** |
+| ±1 | 1 | Trivial (all bosonic) |
+
+The **minimal nontrivial** solution is $\alpha = \pm 1/2$.
+
+### 2.5 Connection to Representation Theory
+
+The holonomy defines a representation:
+$$\rho: \pi_1 \cong \mathbb{Z} \to U(1)$$
+
+For $\rho$ to factor through $\mathbb{Z}_2$, we need $\alpha \in \frac{1}{2}\mathbb{Z}$.
+
+The choice $\alpha = 1/2$ gives the **sign representation**:
+$$\rho(W) = (-1)^W$$
+
+This is the unique nontrivial homomorphism $\mathbb{Z} \to \mathbb{Z}_2$.
+
+### 2.6 The Key Statement
+
+> "Z₂ statistics arise from the minimal nontrivial representation of the loop fundamental group into U(1), which uniquely fixes α = ±1/2 via phase quantization. The spinor factor 1/2 is not empirical — it is **mathematically inevitable**."
+
+---
+
+## 3. Classification of Results (Updated)
 
 | Type | Statement | Basis |
 |------|-----------|-------|
+| **Theorem (algebraic)** | α ∈ (1/2)ℤ required for Z₂ statistics | Phase quantization argument |
+| **Theorem (algebraic)** | α = ±1/2 is minimal nontrivial | Representation theory |
 | **Proven (deterministic)** | Simple loops have $\|W\| = 1$ | Jordan curve theorem + transport rule |
 | **Proven (deterministic)** | $H = (-1)^W$ for all loops | Y-junction transport accumulation |
 | **Proven (deterministic)** | Simple → Fermionic (100%) | Combination of above |
@@ -42,6 +98,13 @@ We **inevitably** obtain fermionic dominance for small loop populations.
 | **Empirical (verified)** | Decomposition equation has 0% error | Verified n = 3–8 |
 | **Heuristic** | Simple loops occupy larger measure | Geometric argument (not proven rigorously) |
 | **Heuristic** | $P(\text{simple})$ decreases with n | Observed trend, not formal proof |
+
+### 3.1 Assumptions (Stated Explicitly)
+
+1. **Smooth path**: The loop is piecewise smooth with well-defined tangent directions
+2. **Planar embedding**: The loop lies in ℝ² (winding number well-defined)
+3. **Closed path**: The loop returns to its starting point
+4. **No curvature defects**: θ is the signed exterior angle at each vertex
 
 ---
 

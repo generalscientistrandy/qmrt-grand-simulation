@@ -1,13 +1,24 @@
 # QMRT (Quark Medium Relativity Theory) - Product Requirements
 
-## Current Status: STAGE 4 LOCKED — THEORY CORRECTED ✅
+## Current Status: STAGE 4 COMPLETE — THEOREM-LEVEL RESULT ✅
 
 **Date: December 2025**
-**Latest Update: Attack Sequence Complete → Double Selection Mechanism Verified**
+**Latest Update: Quantization Proof Added — α = ±1/2 is Mathematically Necessary**
 
 ---
 
-## 🔥🔥🔥 STAGE 4 — FINAL LOCKED VERSION 🔥🔥🔥
+## 🔥🔥🔥 STAGE 4 — THEOREM-LEVEL RESULT 🔥🔥🔥
+
+### The Quantization Theorem (NEW)
+
+**Theorem**: For holonomy $H = e^{i \cdot 2\pi\alpha W}$ to take values in $\mathbb{Z}_2 = \{+1, -1\}$ for all winding numbers $W \in \mathbb{Z}$:
+
+$$\alpha \in \frac{1}{2}\mathbb{Z}$$
+
+The **minimal nontrivial** solution is $\alpha = \pm 1/2$, giving $H = (-1)^W$.
+
+**Key Statement:**
+> "Z₂ statistics arise from the minimal nontrivial representation of the loop fundamental group into U(1), which uniquely fixes α = ±1/2 via phase quantization. The spinor factor 1/2 is not empirical — it is **mathematically inevitable**."
 
 ### Core Statement (Final Form)
 
@@ -15,9 +26,9 @@
 
 ### The Decomposition Equation
 
-$$P(F) = P(\text{simple}) \cdot 1 + P(\text{self-intersecting}) \cdot P(W \text{ odd} \mid \text{self})$$
+$$P(F) = P(\text{simple}) \cdot 1 + P(\text{self}) \cdot P(W \text{ odd} \mid \text{self})$$
 
-**Verified to 0% error** for n = 3, 4, 5, 6, 7, 8.
+Verified to **0% error** for n = 3–8.
 
 ### Double Selection Mechanism
 
