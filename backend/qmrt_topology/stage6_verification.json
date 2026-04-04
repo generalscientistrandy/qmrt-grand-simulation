@@ -1,0 +1,15 @@
+{
+  "verification_results": {
+    "v1_conservation": true,
+    "v2_annihilation": true,
+    "v3_scaling": true,
+    "v4_3d_holonomy": true
+  },
+  "all_pass": true,
+  "key_results": {
+    "conservation": "\u2202_\u03bc J^\u03bc = 0",
+    "annihilation": "\u03c4_+ + \u03c4_- \u2192 0",
+    "scaling": "\u03c1 ~ 1/a\u00b3 (matter-like)",
+    "3d_reduction": "3D holonomy \u2192 2D QMRT"
+  }
+}
