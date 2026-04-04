@@ -46,13 +46,23 @@ Why must α = 1/2? Is this empirical or mathematically necessary?
 
 **Theorem**: For $H \in \{+1, -1\}$ (Z₂ statistics) to hold for all $W \in \mathbb{Z}$:
 
-$$e^{i \cdot 2\pi\alpha W} = \pm 1 \quad \forall W$$
+$$e^{i \cdot 2\pi\alpha W} \in \{+1, -1\} \quad \forall W \in \mathbb{Z}$$
 
-This requires:
+We require:
 
-$$2\pi\alpha W = \pi k \quad \Rightarrow \quad \alpha = \frac{k}{2W}$$
+$$2\pi\alpha W = \pi k(W) \quad \text{for some integer-valued function } k: \mathbb{Z} \to \mathbb{Z}$$
 
-For this to hold for **all** $W \in \mathbb{Z}$:
+So:
+
+$$\alpha = \frac{k(W)}{2W}$$
+
+**Critical step**: For α to be a **fixed constant** (independent of W), we need $k(W)/W$ to be constant.
+
+This is only possible if $k(W) = mW$ for some fixed integer $m$, giving:
+
+$$\alpha = \frac{mW}{2W} = \frac{m}{2}$$
+
+Therefore:
 
 $$\boxed{\alpha \in \frac{1}{2}\mathbb{Z} = \left\{ \ldots, -1, -\frac{1}{2}, 0, \frac{1}{2}, 1, \ldots \right\}}$$
 

@@ -56,18 +56,29 @@ From $2\pi\alpha W = \pi k$:
 
 $$\alpha = \frac{k}{2W}$$
 
-**But this must hold for ALL $W \in \mathbb{Z}$.**
+**But k could depend on W!** Let's write $k = k(W)$:
 
-### 3.4 The Key Step
+$$\alpha = \frac{k(W)}{2W}$$
 
-For $\alpha = \frac{k}{2W}$ to be **independent of W** (i.e., a single fixed value that works for all winding numbers), we need:
+### 3.4 The Key Step (Critical Closure)
+
+For α to be a **fixed constant** (independent of W), we need:
+
+$$\frac{k(W)}{2W} = \text{constant} \quad \forall W \in \mathbb{Z}$$
+
+This requires $k(W)$ to be proportional to $W$:
+
+$$k(W) = mW \quad \text{for some fixed integer } m$$
+
+Substituting:
+
+$$\alpha = \frac{mW}{2W} = \frac{m}{2}$$
+
+Therefore:
 
 $$\alpha \in \frac{1}{2}\mathbb{Z} = \left\{ \ldots, -1, -\frac{1}{2}, 0, \frac{1}{2}, 1, \ldots \right\}$$
 
-**Proof**: If $\alpha = \frac{m}{2}$ for some integer $m$, then:
-$$2\pi\alpha W = 2\pi \cdot \frac{m}{2} \cdot W = \pi m W$$
-
-Since $mW \in \mathbb{Z}$, we have $e^{i\pi m W} = (\pm 1)^{mW} \in \{+1, -1\}$. ∎
+**This closes the gap**: k cannot arbitrarily depend on W; for α to be W-independent, k must be linear in W.
 
 ### 3.5 Finding the Minimal Nontrivial Solution
 
