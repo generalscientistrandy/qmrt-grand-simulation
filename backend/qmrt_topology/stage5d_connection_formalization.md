@@ -65,9 +65,23 @@ In 2D, the connection is a 1-form ω with:
 - Holonomy around a loop = ∮_γ ω
 - Curvature (torsion) = dω
 
+**Form degree specification (important for publication):**
+
+| Symbol | Form Degree | Type |
+|--------|-------------|------|
+| ω | 1-form | Connection: ω = ω_x dx + ω_y dy |
+| d | operator | Exterior derivative: d: Ω^k → Ω^{k+1} |
+| dω | 2-form | Curvature: dω = (∂_x ω_y - ∂_y ω_x) dx ∧ dy |
+| ρ_τ | 0-form (scalar) | Torsion density |
+| vol₂ | 2-form | Volume form: dx ∧ dy |
+
 The relation between curvature and sources:
 
-$$d\omega = 2\pi \rho_\tau$$
+$$d\omega = 2\pi \rho_\tau \cdot \text{vol}_2$$
+
+In components (curl form):
+
+$$\partial_x \omega_y - \partial_y \omega_x = 2\pi \rho_\tau$$
 
 ### 3.2 Solving for ω
 

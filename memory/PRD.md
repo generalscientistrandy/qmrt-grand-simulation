@@ -52,27 +52,39 @@ Then:
 
 > **"Spinorial phase behavior is not a representation choice — it is a geometric consequence of discrete torsion in the medium."**
 
-### The Causal Chain (Verified)
+### The Causal Chain (Verified) — NOW WITH CONNECTION FORMALIZATION
 
 ```
-DISCRETE TORSION (τ = 1)
-         │
-         │  Definition: τ = (Σθᵢ - 2π) / 2π
+1. DISCRETE SOURCE
+   ρ_τ = Σ τ_v δ(x - x_v)
          ↓
-TRANSPORT COEFFICIENT (α = -τ/2 = -1/2)
-         │
-         │  Derived from torsion coupling
+2. CONNECTION CONSTRUCTION (NEW)
+   ω_μ = Σ τ_v G_μ(x - x_v)
+   dω = 2πρ_τ · vol₂
          ↓
-CLOSURE CONSTRAINT (Z₂ requires α ∈ (1/2)Z)
-         │
-         │  Mathematical necessity
+3. HOLONOMY
+   ∮ω = 2πτW
          ↓
-HOLONOMY (H = (-1)^W)
-         │
-         │  Spinorial behavior
+4. SPINORIAL TRANSPORT
+   ψ → e^{iπτW}ψ
          ↓
-FERMIONIC / BOSONIC SECTORS
+5. COUPLING LOCK
+   α = -τ/2 (DERIVED)
+         ↓
+6. ACTION
+   S = ∫ψ̄(iγ^μ∂_μ - (τ/2)γ^μω_μ)ψ d²x
 ```
+
+### Differential Form Degrees (Precision Fix)
+
+| Symbol | Form Degree | Type |
+|--------|-------------|------|
+| ω | 1-form | Connection |
+| dω | 2-form | Curvature/Torsion |
+| ρ_τ | 0-form (scalar) | Torsion density |
+| vol₂ = dx∧dy | 2-form | Volume form |
+
+**Correct equation:** dω = 2πρ_τ · vol₂
 
 ### What This Achieves
 
