@@ -1,0 +1,16 @@
+{
+  "base_config": {
+    "grid_size": 12,
+    "timesteps": 2000,
+    "node_density": 0.4,
+    "edge_probability": 0.25,
+    "noise_amplitude": 0.05,
+    "decay_base_rate": 0.01
+  },
+  "runs_per_point": 6,
+  "sweeps": {
+    "noise": {
+      "0.01": {
+        "mean_f_fraction": 0.611111111111111,
+        "std": 0.34729999129083966,
+        "dominance": 

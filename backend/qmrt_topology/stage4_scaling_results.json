@@ -1,0 +1,222 @@
+{
+  "config": {
+    "node_density": 0.4,
+    "edge_probability": 0.25,
+    "noise_amplitude": 0.05,
+    "decay_base_rate": 0.01
+  },
+  "scales": {
+    "10": {
+      "timesteps": 1000,
+      "mean_f_fraction": 0.5272727272727272,
+      "std_f_fraction": 0.4505276979405043,
+      "mean_survival_rate": 0.038105225176465286,
+      "mean_nodes": 40.0,
+      "verdict": "baseline",
+      "runs": [
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.05555555555555555,
+          "total_alive": 1,
+          "total_nucleated": 18
+        },
+        {
+          "f_fraction": 0.0,
+          "survival_rate": 0.0,
+          "total_alive": 0,
+          "total_nucleated": 0
+        },
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.07692307692307693,
+          "total_alive": 1,
+          "total_nucleated": 13
+        },
+        {
+          "f_fraction": 0.0,
+          "survival_rate": 0.0,
+          "total_alive": 0,
+          "total_nucleated": 0
+        },
+        {
+          "f_fraction": 0.6363636363636364,
+          "survival_rate": 0.05804749340369393,
+          "total_alive": 22,
+          "total_nucleated": 379
+        }
+      ]
+    },
+    "12": {
+      "timesteps": 1500,
+      "mean_f_fraction": 0.7777777777777778,
+      "std_f_fraction": 0.3912625969257557,
+      "mean_survival_rate": 0.04357202062995027,
+      "mean_nodes": 57.0,
+      "verdict": "\u2717 drift",
+      "runs": [
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.0625,
+          "total_alive": 1,
+          "total_nucleated": 16
+        },
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.056179775280898875,
+          "total_alive": 5,
+          "total_nucleated": 89
+        },
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.05,
+          "total_alive": 1,
+          "total_nucleated": 20
+        },
+        {
+          "f_fraction": 0.0,
+          "survival_rate": 0.0,
+          "total_alive": 0,
+          "total_nucleated": 0
+        },
+        {
+          "f_fraction": 0.8888888888888888,
+          "survival_rate": 0.04918032786885246,
+          "total_alive": 9,
+          "total_nucleated": 183
+        }
+      ]
+    },
+    "15": {
+      "timesteps": 2000,
+      "mean_f_fraction": 0.6317460317460318,
+      "std_f_fraction": 0.3358784168557858,
+      "mean_survival_rate": 0.02916530312533378,
+      "mean_nodes": 90.0,
+      "verdict": "\u2713 invariant",
+      "runs": [
+        {
+          "f_fraction": 0.6666666666666666,
+          "survival_rate": 0.03643724696356275,
+          "total_alive": 9,
+          "total_nucleated": 247
+        },
+        {
+          "f_fraction": 0.0,
+          "survival_rate": 0.0,
+          "total_alive": 0,
+          "total_nucleated": 0
+        },
+        {
+          "f_fraction": 0.7777777777777778,
+          "survival_rate": 0.04017857142857143,
+          "total_alive": 9,
+          "total_nucleated": 224
+        },
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.03355704697986577,
+          "total_alive": 5,
+          "total_nucleated": 149
+        },
+        {
+          "f_fraction": 0.7142857142857143,
+          "survival_rate": 0.035653650254668934,
+          "total_alive": 21,
+          "total_nucleated": 589
+        }
+      ]
+    },
+    "18": {
+      "timesteps": 2500,
+      "mean_f_fraction": 0.8118181818181818,
+      "std_f_fraction": 0.12141044381670218,
+      "mean_survival_rate": 0.031539236535916886,
+      "mean_nodes": 129.0,
+      "verdict": "\u2717 drift",
+      "runs": [
+        {
+          "f_fraction": 0.7,
+          "survival_rate": 0.031055900621118012,
+          "total_alive": 10,
+          "total_nucleated": 322
+        },
+        {
+          "f_fraction": 0.75,
+          "survival_rate": 0.031007751937984496,
+          "total_alive": 4,
+          "total_nucleated": 129
+        },
+        {
+          "f_fraction": 0.7,
+          "survival_rate": 0.03125,
+          "total_alive": 10,
+          "total_nucleated": 320
+        },
+        {
+          "f_fraction": 0.9090909090909091,
+          "survival_rate": 0.03313253012048193,
+          "total_alive": 11,
+          "total_nucleated": 332
+        },
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.03125,
+          "total_alive": 2,
+          "total_nucleated": 64
+        }
+      ]
+    },
+    "20": {
+      "timesteps": 3000,
+      "mean_f_fraction": 0.7834325396825397,
+      "std_f_fraction": 0.14727636128585062,
+      "mean_survival_rate": 0.026516714479870685,
+      "mean_nodes": 160.0,
+      "verdict": "\u2717 drift",
+      "runs": [
+        {
+          "f_fraction": 0.7857142857142857,
+          "survival_rate": 0.026565464895635674,
+          "total_alive": 14,
+          "total_nucleated": 527
+        },
+        {
+          "f_fraction": 0.5555555555555556,
+          "survival_rate": 0.024193548387096774,
+          "total_alive": 9,
+          "total_nucleated": 372
+        },
+        {
+          "f_fraction": 0.8571428571428571,
+          "survival_rate": 0.03056768558951965,
+          "total_alive": 7,
+          "total_nucleated": 229
+        },
+        {
+          "f_fraction": 1.0,
+          "survival_rate": 0.026119402985074626,
+          "total_alive": 7,
+          "total_nucleated": 268
+        },
+        {
+          "f_fraction": 0.71875,
+          "survival_rate": 0.02513747054202671,
+          "total_alive": 32,
+          "total_nucleated": 1273
+        }
+      ]
+    }
+  },
+  "summary": {
+    "f_fraction_spread": 0.28454545454545455,
+    "scale_invariant": false,
+    "all_f_fractions": [
+      0.5272727272727272,
+      0.7777777777777778,
+      0.6317460317460318,
+      0.8118181818181818,
+      0.7834325396825397
+    ],
+    "elapsed_seconds": 30.398916006088257
+  }
+}

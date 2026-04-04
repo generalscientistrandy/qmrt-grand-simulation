@@ -1,0 +1,100 @@
+{
+  "config": {
+    "grid_size": 15,
+    "timesteps": 2000,
+    "node_density": 0.4,
+    "edge_probability": 0.25,
+    "noise_amplitude": 0.05,
+    "interaction_strength": 1.0,
+    "braiding_sensitivity": 1.0,
+    "decay_base_rate": 0.005,
+    "runs_per_test": 10,
+    "stability_threshold": 50
+  },
+  "tests": {
+    "A_symmetry": {
+      "label_blind": true,
+      "notes": [
+        "LabelBlindSimulation.step() has NO sector classification",
+        "compute_stability() uses only holonomy magnitude and phase coherence",
+        "Classification happens ONLY in classify_posthoc()"
+      ],
+      "test_run": {
+        "classified": {
+          "F": 57,
+          "B": 0,
+          "A": 0,
+          "U": 0
+        },
+        "alive": {
+          "F": 4,
+          "B": 0,
+          "A": 0,
+          "total": 4
+        },
+        "f_fraction": 1.0,
+        "total_nucleated": 57,
+        "transport_sign": 1.0,
+        "topology_enabled": true,
+        "initial_condition": "uniform_random"
+      },
+      "verified": true
+    },
+    "B_label_blind": {
+      "f_fractions": [
+        0.8,
+        1.0,
+        0.8333333333333334,
+        0.7272727272727273,
+        0.6521739130434783,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        0.8333333333333334
+      ],
+      "mean_f_fraction": 0.8346113306982872,
+      "std_f_fraction": 0.16351898613873084,
+      "dominance_count": 9,
+      "dominance_rate": 0.9,
+      "total_nucleated": [
+        141,
+        14,
+        91,
+        180,
+        340,
+        13,
+        30,
+        114,
+        11,
+        197
+      ]
+    },
+    "C_rule_inversion": {
+      "normal_f_fractions": [
+        0.8,
+        1.0,
+        0.8333333333333334,
+        0.7272727272727273,
+        0.6521739130434783,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        0.8333333333333334
+      ],
+      "inverted_f_fractions": [
+        0.8,
+        1.0,
+        0.8333333333333334,
+        0.7272727272727273,
+        0.6521739130434783,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        0.8333333333333334
+      ],
+      "mean_normal": 0.8346113306982872,
+      "mean_inverted": 0.8346113306982872,
+      "dominance_flipped": 
