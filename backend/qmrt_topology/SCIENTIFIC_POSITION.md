@@ -277,8 +277,39 @@ The coupled field-defect simulation exhibits:
 | Finite propagation speed | ✅ **YES** (c = 2.0 verified) |
 | Wave interference | ✅ **YES** (959:1 ratio) |
 | Energy conservation | ✅ **YES** (with expected damping) |
-| **Waveguide behavior** | ✅ **YES** (15.3x preference) |
+| **Waveguide behavior** | ✅ **YES** (15.3x preference for straight channels) |
+| Geodesic/curved path | 🔶 **PARTIAL** (straight channels only) |
 | Lorentz-like causality | 🔶 Precursor (finite c + guided propagation) |
+
+---
+
+## Geodesic Test Results (April 2026)
+
+### What Was Tested
+- **Test 1**: Barrier in straight path → wave goes through (doesn't minimize optical path)
+- **Test 2**: Curved channel → wave prefers straight line over curve
+- **Test 3**: Straight channel → **15x waveguide preference confirmed**
+
+### Key Finding
+The system exhibits **waveguide behavior for aligned channels** but does not automatically follow curved paths. This is physically correct:
+
+1. **Wave equation** doesn't implement ray-optics refraction
+2. **Fermat's principle** applies to geometric optics limit, not full waves
+3. **Waveguide trapping** works by mode confinement, not path optimization
+
+### The Accurate Statement
+> "The system exhibits structure-dependent wave propagation with 15x amplitude preference for aligned channels. Waves propagate at variable speed c_eff(x,y) determined by medium structure. This demonstrates that spatial structure directly modifies transport properties, though full geodesic (minimum-optical-path) behavior requires additional ray-optics implementation."
+
+### What This Means for QMRT
+The current system has:
+- ✅ **Variable propagation speed** — c_eff depends on structure
+- ✅ **Waveguide confinement** — waves concentrate in channel regions
+- ✅ **Memory-transport coupling** — past structure affects present propagation
+- 🔶 **Not full metric** — rays don't follow geodesics automatically
+
+To achieve full effective metric behavior, would need:
+- Eikonal approximation (ray tracing)
+- Or much stronger refractive index gradients
 
 ---
 
