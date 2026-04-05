@@ -1,0 +1,73 @@
+{
+  "verdict": "LENSING DEMONSTRATED",
+  "lensing_demonstrated": true,
+  "toward_lens_count": 8,
+  "total_cases": 8,
+  "symmetric_bending": true,
+  "alpha_correlation": -0.0813506834719456,
+  "b_correlation": 0.20503585255687767,
+  "impact_parameter_results": {
+    "-0.2": {
+      "deflection_angle": 108.43494881890098,
+      "vertical_deflection": 8.0,
+      "bent_toward_lens": true
+    },
+    "-0.15": {
+      "deflection_angle": 118.3007557613478,
+      "vertical_deflection": 20.5,
+      "bent_toward_lens": true
+    },
+    "-0.1": {
+      "deflection_angle": 105.2551186997955,
+      "vertical_deflection": 14.0,
+      "bent_toward_lens": true
+    },
+    "-0.05": {
+      "deflection_angle": 120.96375652693389,
+      "vertical_deflection": 7.5,
+      "bent_toward_lens": true
+    },
+    "0.05": {
+      "deflection_angle": 30.96375654635029,
+      "vertical_deflection": -7.5,
+      "bent_toward_lens": true
+    },
+    "0.1": {
+      "deflection_angle": 105.2551186997955,
+      "vertical_deflection": -14.0,
+      "bent_toward_lens": true
+    },
+    "0.15": {
+      "deflection_angle": 28.30075578207373,
+      "vertical_deflection": -20.5,
+      "bent_toward_lens": true
+    },
+    "0.2": {
+      "deflection_angle": 108.43494881890098,
+      "vertical_deflection": -8.0,
+      "bent_toward_lens": true
+    }
+  },
+  "alpha_results": {
+    "0.0": {
+      "deflection_angle": 90.0,
+      "vertical_deflection": 25.0
+    },
+    "0.2": {
+      "deflection_angle": 101.30993247150366,
+      "vertical_deflection": 16.0
+    },
+    "0.4": {
+      "deflection_angle": 79.99202020063943,
+      "vertical_deflection": -14.0
+    },
+    "0.6": {
+      "deflection_angle": 97.12501634738058,
+      "vertical_deflection": 0.0
+    },
+    "0.8": {
+      "deflection_angle": 90.0,
+      "vertical_deflection": -14.0
+    }
+  }
+}

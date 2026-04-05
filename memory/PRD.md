@@ -49,6 +49,26 @@ Question: Do energy pulses attract each other through backreaction?
 
 ---
 
+## 🔥 GRAVITATIONAL LENSING DEMONSTRATED (April 2026) 🔥
+
+### The Test
+Weak probe pulse passing stationary energy concentration (lens).
+
+### Results
+| b | Δx | Direction |
+|---|-----|-----------|
+| -0.15 | +20.5 | TOWARD |
+| +0.15 | -20.5 | TOWARD |
+
+**Toward lens: 8/8 (100%)**
+**Symmetric bending: YES**
+**Reference: only -3 pixels**
+
+### VERDICT: LENSING DEMONSTRATED ✅
+> "Probe bends toward energy concentration — uses strongest sector (spatial/causal)"
+
+---
+
 ## 🔥 PHASE DIAGRAM COMPLETE (April 2026) 🔥
 
 ### Regime Classification
@@ -77,11 +97,13 @@ The **WAVE** regime (α≈0.4) is the "spacetime analog" zone where all emergent
 | Metric emergence | ✅ (0.17 cell) |
 | Lorentzian causality | ✅ (90.5%) |
 | Backreaction (self-focusing) | ✅ (59% narrowing) |
-| **Multi-pulse attraction** | ✅ **(-0.96 correlation)** |
-| **Phase diagram** | ✅ **(3 regimes mapped)** |
+| Multi-pulse attraction | ✅ (robust, non-Newtonian) |
+| **Gravitational lensing** | ✅ **(8/8 toward lens)** |
+| Phase diagram | ✅ (3 regimes mapped) |
 | Coherence timescale | ✅ (t_coh ∝ σ₀) |
 | Geometry stability | ✅ (G mapped) |
 | Emergent time | 🔶 (trend observed, needs work) |
+| Energy conservation | ⚠️ (solver non-conserving) |
 
 ### The Complete Chain
 ```

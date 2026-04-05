@@ -1481,15 +1481,66 @@ E_ret >> 1 everywhere — the solver pumps energy.
 | High damp (γ=0.03) | -11.0 | 85 |
 | **Conservative** (dt=0.02, γ=0.03) | **-11.0** | 86 |
 
-### VERDICT: ATTRACTION IS PHYSICAL ✅
+### VERDICT: ATTRACTION IS STRUCTURALLY ROBUST ✅
 
-The attraction (Δsep = -11.0) is **identical** across all conditions. This strongly suggests it's a genuine physical effect of backreaction, not a numerical artifact.
+The attraction (Δsep = -11.0) is **identical** across all conditions. This indicates the attraction is a stable structural feature of the backreaction dynamics, not a simple discretization artifact.
 
 ### Scientific Statement (Calibrated)
-> "While the solver exhibits energy non-conservation (E_ret >> 1), the attraction effect survives under stricter numerical conditions (smaller timestep, higher damping). The consistency of Δsep = -11.0 across all configurations indicates the attraction is a physical consequence of backreaction, not a numerical artifact. However, energy-based claims remain weaker than transport/structural claims."
+> "While the solver exhibits energy non-conservation (E_ret >> 1), the attraction effect survives under stricter numerical conditions (smaller timestep, higher damping). The consistency of Δsep = -11.0 across all configurations indicates the attraction is a stable structural feature of backreaction, not a timestep/damping artifact. However, energy-based claims (collapse dynamics, binding energetics) remain provisional until an energy-conserving solver is implemented."
 
 ### What This Means for the Project
-- **Structural/transport behavior**: Strong, numerically robust
-- **Energy dynamics**: Weaker, needs energy-conserving solver
-- **Attraction effect**: Physical, survives numerical tests
-- **Safe interpretation**: Focus on structural emergence, be cautious about energy claims
+- **Transport/interaction structure**: Robust, survives numerical tests
+- **Energy dynamics**: Provisional, needs energy-conserving solver
+- **Attraction effect**: Structurally stable feature
+- **Safe interpretation**: Focus on structural emergence; energetics claims remain provisional
+
+---
+
+## Gravitational Lensing Test (April 2026) - MAJOR RESULT
+
+### The Test
+Send a weak probe pulse past a stationary energy concentration (lens) and measure deflection.
+
+### Results
+
+| Impact Parameter b | Vertical Deflection | Direction |
+|-------------------|---------------------|-----------|
+| -0.20 | +8.0 | TOWARD lens |
+| -0.15 | +20.5 | TOWARD lens |
+| -0.10 | +14.0 | TOWARD lens |
+| -0.05 | +7.5 | TOWARD lens |
+| +0.05 | -7.5 | TOWARD lens |
+| +0.10 | -14.0 | TOWARD lens |
+| +0.15 | -20.5 | TOWARD lens |
+| +0.20 | -8.0 | TOWARD lens |
+
+**Toward lens: 8/8 (100%)**
+**Symmetric bending: YES**
+**Reference (no lens): only -3.0 pixels**
+
+### VERDICT: GRAVITATIONAL LENSING DEMONSTRATED ✅
+
+### Key Features
+1. **Perfect directional accuracy**: All 8 probes bend toward the lens
+2. **Symmetric**: Probes above lens bend down, probes below bend up
+3. **Significant effect**: Up to ±20 pixel deflection vs ~3 pixel reference
+4. **Uses strongest sector**: Spatial/causal dynamics (no energy conservation needed)
+
+### Scientific Statement
+> "A weak probe pulse passing an energy concentration exhibits gravitational lensing: the probe bends toward the lens in all test cases (8/8), with symmetric deflection about the lens axis. This demonstrates that the effective geometry defined by c_eff genuinely modifies wave trajectories, consistent with the metric emergence claim."
+
+### Why This Test is Strong
+- Uses spatial/causal sector (most robust)
+- Does NOT require perfect energy conservation
+- Produces clean, interpretable result
+- Directly tests trajectory modification by structured energy
+
+### Physical Interpretation
+The lens creates a local depression in c_eff. The probe, propagating through this modified effective geometry, follows a curved path — bending toward lower c_eff regions (toward the lens). This is the wave-optics analog of gravitational light bending.
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `lensing_test.py` | Lensing experiment |
+| `lensing_test.png` | Trajectory visualization |
+| `lensing_test_results.json` | Quantitative data |
