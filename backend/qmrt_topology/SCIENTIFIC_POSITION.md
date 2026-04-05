@@ -1764,3 +1764,124 @@ Send a weak probe pulse past a stationary energy concentration (lens) and measur
 | `lensing_test.py` | Lensing experiment |
 | `lensing_test.png` | Trajectory visualization |
 | `lensing_test_results.json` | Quantitative data |
+
+---
+
+## Medium-State Emergent Time Test (April 2026) - HONEST ASSESSMENT
+
+### The Question
+Does the dynamical medium field τ provide a better basis for emergent time than transport-based clocks?
+
+### Clocks Tested
+
+| Clock | Formula | Physical Meaning |
+|-------|---------|------------------|
+| **Raw** | t = n×Δt | Simulation time |
+| **Transport** | τ_transport = ∫ c(τ) dt | Signal propagation speed |
+| **Medium** | τ_medium = ∫ (1/τ) dt | Based on medium state directly |
+| **Mixed** | τ_mixed = ∫ c(τ)/τ dt | Combines transport + medium |
+| **Hybrid** | τ_hybrid = ∫ √(c/τ) dt | Geometric mean |
+
+### Decision Criteria Applied
+1. **NOT algebraic restatement**: Clock must show non-circular behavior (not just f(τ))
+2. **Nontrivial improvement**: >20% better than transport
+3. **Causally independent**: Separated clocks should evolve independently
+4. **Regime scaling**: Clock behavior should differ across weak/medium/strong regimes
+
+### Results (v2 Comprehensive Test)
+
+| Criterion | Test Result | Verdict |
+|-----------|-------------|---------|
+| Not algebraic restatement | Correlation = -0.983 (nearly perfect) | **FAIL** |
+| Nontrivial improvement | Medium: -36.5% (worse than transport) | **FAIL** |
+| Causally independent | Pre-causal correlation = 1.000 | **FAIL** |
+| Regime scaling | Identical ratios across all regimes | **FAIL** |
+
+**Score: 1/4**
+
+### Critical Findings
+
+1. **Medium clock is algebraically circular**
+   - τ_medium = ∫ (1/τ) dt has correlation -0.983 with instantaneous τ
+   - This is essentially an algebraic restatement, not an emergent clock
+
+2. **Medium clock performs WORSE than transport**
+   - CV (medium) = 0.2101
+   - CV (transport) = 0.1540
+   - Improvement = -36.5% (worse, not better)
+
+3. **Global coupling breaks independence**
+   - The ρ_max normalization in τ_eq(ρ) = τ_0/(1 + β·ρ/ρ_max) couples ALL regions
+   - Pre-causal correlation = 1.000 means clocks that should be independent are perfectly correlated
+
+4. **No regime sensitivity**
+   - Clock ratios (center/edge) are identical at 1.660 for weak, medium, and strong amplitudes
+   - The clock doesn't "feel" different energy concentrations
+
+### Honest Scientific Statement
+
+> "The medium-state clock τ_medium = ∫ (1/τ) dt fails all four decision criteria for emergent time. It is algebraically circular (corr = -0.983 with τ), performs worse than transport clocks (-36.5%), shows perfect pre-causal correlation (1.000) indicating global rather than local behavior, and exhibits no regime scaling. The dynamical medium architecture fixes spatial/causal structure but does NOT provide a better temporal variable. Time emergence remains OPEN."
+
+### What This Means for QMRT
+
+| Sector | Status |
+|--------|--------|
+| **Spatial geometry** | STRONG (metric, geodesics, lensing) |
+| **Causal structure** | STRONG (light cones, 90.5% containment) |
+| **Backreaction** | STRONG (attraction, self-focusing) |
+| **Emergent time** | **OPEN** (no improvement from τ-based clocks) |
+
+### Why This Outcome is Physically Sensible
+
+The τ field was designed to carry **spatial** geometry through relaxation:
+```
+∂τ/∂t = -λ(τ - τ_eq(ρ)) + D∇²τ
+```
+
+This introduces memory and prevents instantaneous coupling — excellent for spatial structure. But it does NOT automatically create a non-circular temporal observable.
+
+### Path Forward for Emergent Time
+
+The failure points toward what IS needed:
+
+1. **Local oscillators**: Clocks based on cycle counts of local oscillations, not field integrals
+2. **Decay processes**: Half-life of metastable states that depend on τ history
+3. **Non-integral clocks**: Observables that are not simple integrals of τ or c_eff
+4. **Break global normalization**: Remove ρ_max coupling to enable local independence
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `medium_time.py` | Basic medium clock test |
+| `medium_time_v2.py` | Comprehensive four-criteria test |
+| `medium_time_v2.png` | Visualization |
+| `medium_time_v2_results.json` | Quantitative results |
+
+---
+
+## REVISED FINAL STATUS (Post Medium-Time Test)
+
+### Summary Table
+
+| Property | Status | Evidence |
+|----------|--------|----------|
+| Wave → ray emergence | PASS | Eikonal limit |
+| Metric emergence | PASS | 0.17 cell error |
+| Lorentzian causality | PASS | 90.5% in cone |
+| Backreaction | PASS | 59% cone narrowing |
+| Multi-pulse attraction | PASS | -0.96 correlation |
+| Lensing analog | PASS | 8/8 symmetric deflection |
+| Coherence timescale | PASS | t_coh proportional to σ₀ |
+| **Medium-state emergent time** | **FAIL** | **Score 1/4, algebraically circular** |
+
+### Defensible Claim (Updated)
+
+> "We demonstrate a self-consistent effective spacetime analog where spatial geometry emerges from propagation dynamics in a dynamical medium. The metric, geodesics, light cones, backreaction, and lensing analog are all robustly demonstrated. Emergent time remains open: the medium-state clock τ_medium is algebraically circular and does not improve over transport-based clocks. Future work should explore oscillator-based or decay-based clocks that are not simple field integrals."
+
+### The Architecture Achievement
+
+The dynamical medium field τ successfully provides:
+- Physical carrier of geometry (not slaved algebraically)
+- Memory and relaxation (prevents instantaneous runaway)
+- Preserved spatial/causal phenomena
+- Does NOT provide better temporal observables (still circular)

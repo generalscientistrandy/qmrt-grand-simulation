@@ -1,0 +1,16 @@
+{
+  "verdict": "WEAK: Medium architecture fixed spatial/causal structure; time remains open",
+  "verdict_short": "WEAK_NO_CLEAR_IMPROVEMENT",
+  "score": 1,
+  "criteria": {
+    "not_algebraic": false,
+    "nontrivial": true,
+    "independent": false,
+    "scales": false
+  },
+  "algebraic_correlation": -0.9831801216378514,
+  "improvement_medium_pct": -36.453827597059636,
+  "improvement_hybrid_pct": 100.0,
+  "pre_causal_correlation": 1.0,
+  "shows_scaling": false
+}

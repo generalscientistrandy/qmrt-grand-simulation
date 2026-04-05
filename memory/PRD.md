@@ -1,55 +1,73 @@
-## Current Status: GRAVITATIONAL INTERACTION DEMONSTRATED ✅
+## Current Status: DYNAMICAL MEDIUM COMPLETE, EMERGENT TIME OPEN
 
 **Date: April 2026**
 **Paper Title:** "Topological Phase Quantization and Emergent Causal Geometry from Defect-Structured Media"
 
-**Simulation Tests:** Complete physics model with multi-pulse gravitational attraction
-**Scientific Position:** Updated (see SCIENTIFIC_POSITION.md, 1300+ lines)
+**Simulation Tests:** Complete physics model with dynamical medium architecture
+**Scientific Position:** Updated (see SCIENTIFIC_POSITION.md)
 
 ---
 
-## 🔥 LATEST: MULTI-PULSE GRAVITATIONAL INTERACTION (April 2026) 🔥
+## LATEST: MEDIUM-STATE EMERGENT TIME TEST (April 2026)
+
+### The Question
+Does the dynamical medium field tau provide a better basis for emergent time than transport-based clocks?
+
+### Results (Comprehensive v2 Test)
+
+| Criterion | Test Result | Verdict |
+|-----------|-------------|---------|
+| Not algebraic restatement | Correlation = -0.983 | FAIL |
+| Nontrivial improvement | -36.5% (worse than transport) | FAIL |
+| Causally independent | Pre-causal corr = 1.000 | FAIL |
+| Regime scaling | Identical across all regimes | FAIL |
+
+**Score: 1/4**
+
+### Verdict: EMERGENT TIME REMAINS OPEN
+> "The medium-state clock is algebraically circular and does NOT improve over transport clocks. The dynamical medium fixes spatial/causal structure but does not provide a better temporal variable."
+
+### Sector Status Summary
+
+| Sector | Status |
+|--------|--------|
+| Spatial geometry | STRONG (metric, geodesics, lensing) |
+| Causal structure | STRONG (light cones, 90.5% containment) |
+| Backreaction | STRONG (attraction, self-focusing) |
+| **Emergent time** | **OPEN** (algebraically circular) |
+
+---
+
+## DYNAMICAL MEDIUM ARCHITECTURE (April 2026)
+
+Wave equation: d2phi/dt2 = c(tau)^2 grad2(phi) - gamma dphi/dt
+Medium equation: dtau/dt = -lambda(tau - tau_eq(rho)) + D grad2(tau)
+
+Key Achievement: tau stores geometry with memory/inertia - prevents instantaneous runaway coupling.
+
+---
+
+## MULTI-PULSE GRAVITATIONAL INTERACTION (April 2026)
 
 ### The Test
 Question: Do energy pulses attract each other through backreaction?
 
 ### Results
-| α (coupling) | Initial Sep | Final Sep | Δ Separation |
+| alpha (coupling) | Initial Sep | Final Sep | Delta Separation |
 |--------------|-------------|-----------|--------------|
 | 0.0 | 48 px | 119 px | +71 px (spreading) |
-| **0.4** | 48 px | **24 px** | **-24 px (ATTRACTION)** |
-| **0.6** | 48 px | **16 px** | **-32 px (STRONGER)** |
+| 0.4 | 48 px | 24 px | -24 px (ATTRACTION) |
+| 0.6 | 48 px | 16 px | -32 px (STRONGER) |
 
 **Correlation: -0.962** (almost perfect!)
 **Max attraction: 95 pixels inward**
 
-### Verdict: BACKREACTION-INDUCED PULSE ATTRACTION DEMONSTRATED ✅
+### Verdict: BACKREACTION-INDUCED PULSE ATTRACTION DEMONSTRATED
 > "Two energy pulses exhibit attractive interaction through backreaction in the effective spacetime analog."
 
 ---
 
-## 🔶 EMERGENT TIME STATUS: IN PROGRESS
-
-### Previous Result (Circular)
-- τ = ∫c_eff dt was found to be circular (dilation ratio = c_eff ratio exactly)
-
-### New Independent Clock Test
-| Disorder | S (disagreement) |
-|----------|------------------|
-| 0.0 | 0.0005 |
-| 1.0 | 0.0017 |
-
-**Correlation (disorder vs S): 0.79**
-**Relative variation: 175%**
-
-### Verdict: WEAK EMERGENT TIME TREND
-- Clocks show synchronization tendency with coherence
-- Trend is in right direction but needs strengthening
-- Emergent time demoted from "demonstrated" to "in progress"
-
----
-
-## 🔥 GRAVITATIONAL LENSING DEMONSTRATED (April 2026) 🔥
+## GRAVITATIONAL LENSING DEMONSTRATED (April 2026)
 
 ### The Test
 Weak probe pulse passing stationary energy concentration (lens).
