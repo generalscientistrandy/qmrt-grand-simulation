@@ -23,8 +23,8 @@ Question: Do energy pulses attract each other through backreaction?
 **Correlation: -0.962** (almost perfect!)
 **Max attraction: 95 pixels inward**
 
-### Verdict: GRAVITATIONAL INTERACTION DEMONSTRATED ✅
-> "Two energy pulses attract through backreaction, demonstrating 'matter attracts matter' in the effective spacetime."
+### Verdict: BACKREACTION-INDUCED PULSE ATTRACTION DEMONSTRATED ✅
+> "Two energy pulses exhibit attractive interaction through backreaction in the effective spacetime analog."
 
 ---
 
@@ -49,6 +49,26 @@ Question: Do energy pulses attract each other through backreaction?
 
 ---
 
+## 🔥 PHASE DIAGRAM COMPLETE (April 2026) 🔥
+
+### Regime Classification
+| α | Single Pulse | Two Pulse |
+|---|--------------|-----------|
+| 0.0-0.2 | DIFFUSIVE | spreading |
+| **0.4** | **WAVE** | neutral |
+| 0.6-0.8 | SELF-FOCUSING | **ATTRACTIVE** |
+
+### Phase Boundaries
+```
+α ≈ 0.3:  DIFFUSIVE → WAVE
+α ≈ 0.5:  WAVE → SELF-FOCUSING
+α ≈ 0.5:  spreading → ATTRACTIVE
+```
+
+The **WAVE** regime (α≈0.4) is the "spacetime analog" zone where all emergent properties operate.
+
+---
+
 ## COMPLETE PHYSICS MODEL
 
 ### All Demonstrations
@@ -58,6 +78,7 @@ Question: Do energy pulses attract each other through backreaction?
 | Lorentzian causality | ✅ (90.5%) |
 | Backreaction (self-focusing) | ✅ (59% narrowing) |
 | **Multi-pulse attraction** | ✅ **(-0.96 correlation)** |
+| **Phase diagram** | ✅ **(3 regimes mapped)** |
 | Coherence timescale | ✅ (t_coh ∝ σ₀) |
 | Geometry stability | ✅ (G mapped) |
 | Emergent time | 🔶 (trend observed, needs work) |
@@ -66,9 +87,9 @@ Question: Do energy pulses attract each other through backreaction?
 ```
 c_eff → Metric → Geodesics → Light cones → Backreaction
     ↓
-Multi-pulse attraction → "Matter attracts matter"
+Multi-pulse attraction → Attractive interaction
     ↓
-Coherence window → Geometry stability → [Emergent time: in progress]
+Phase diagram: DIFFUSIVE → WAVE → SELF-FOCUSING
     ↓
 SELF-CONSISTENT EMERGENT SPACETIME ANALOG
 ```

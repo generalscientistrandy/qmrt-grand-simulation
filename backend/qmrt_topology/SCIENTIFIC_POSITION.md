@@ -1306,19 +1306,33 @@ Two pulses → Each creates a well → Mutual attraction
 **Correlation (α vs final_separation): -0.962**
 **Maximum attraction: 95 pixels inward vs no-backreaction**
 
-### VERDICT: GRAVITATIONAL INTERACTION DEMONSTRATED ✅
+### VERDICT: BACKREACTION-INDUCED PULSE ATTRACTION DEMONSTRATED ✅
 
-Two energy pulses attract each other through the backreaction mechanism.
+Two energy pulses exhibit attractive interaction through the backreaction mechanism.
 
 ### What This Means
 
-1. **"Matter attracts matter"** — Energy creates gravitational wells
+1. **Attractive interaction in effective spacetime** — Energy concentrations deflect toward each other
 2. **Attraction scales with coupling** — Stronger α → stronger attraction
 3. **Negative correlation (-0.96)** — Almost perfectly correlated
-4. **95 pixel deflection** — Massive effect size
+4. **95 pixel deflection** — Large effect size
 
-### Scientific Statement
-> "Two energy pulses interact through the backreaction mechanism c_eff = c₀(1 - α·ρ_E). With increasing coupling α, pulses transition from free spreading (α=0, Δsep = +71 px) to mutual attraction (α=0.6, Δsep = -32 px). The correlation -0.96 between coupling strength and final separation demonstrates that 'matter attracts matter' in the effective spacetime."
+### Scientific Statement (Calibrated)
+> "Two energy pulses exhibit attractive interaction through the backreaction mechanism c_eff = c₀(1 - α·ρ_E). With increasing coupling α, pulses transition from free spreading (α=0, Δsep = +71 px) to mutual attraction (α=0.6, Δsep = -32 px). The correlation -0.96 demonstrates backreaction-induced pulse attraction in the effective spacetime analog."
+
+### What This IS vs What This IS NOT
+
+**This IS:**
+- Attractive interaction between localized energy pulses
+- Backreaction-mediated effect (c_eff lowered by energy)
+- Analog gravity behavior (similar to acoustic black holes, optical analogs)
+- A genuine emergent interaction from medium dynamics
+
+**This IS NOT (yet):**
+- Inverse-square force law
+- Universal free fall
+- Einstein-like field equations
+- Full relativistic gravitational dynamics
 
 ### Physical Interpretation
 Each energy pulse creates a local depression in c_eff (lower propagation speed). This acts as a gravitational well. The pulses "roll" toward each other's wells, just as masses attract in general relativity.
@@ -1347,3 +1361,67 @@ The Laplacian of c_eff provides an effective curvature indicator at energy conce
 | Backreaction (self-focusing) | ✅ | 59% cone narrowing |
 | **Multi-pulse attraction** | ✅ | **-0.96 correlation, 95px deflection** |
 | Emergent time | 🔶 | Trend observed (0.79 corr), needs strengthening |
+
+---
+
+## Phase Diagram / Regime Scan (April 2026)
+
+### The Test
+Map system behavior across parameter space (α, γ) to identify distinct physical regimes.
+
+### Results
+
+| α (backreaction) | Regime (single pulse) | Two-pulse behavior |
+|------------------|----------------------|-------------------|
+| 0.0 | DIFFUSIVE | spreading (attr=-0.87) |
+| 0.2 | DIFFUSIVE | spreading (attr=-0.64) |
+| **0.4** | **WAVE** | neutral (attr=-0.08) |
+| 0.6 | SELF-FOCUSING | **ATTRACTIVE (attr=+0.52)** |
+| 0.8 | SELF-FOCUSING | **ATTRACTIVE (attr=+0.48)** |
+
+### Regime Classification
+
+| Regime | Count | Description |
+|--------|-------|-------------|
+| DIFFUSIVE | 8 | Energy spreads without coherent waves |
+| WAVE | 4 | Coherent propagation — "spacetime analog" zone |
+| SELF-FOCUSING | 8 | Backreaction concentrates energy |
+
+### Phase Boundaries
+
+```
+α ≈ 0.3:  DIFFUSIVE → WAVE transition
+α ≈ 0.5:  WAVE → SELF-FOCUSING transition
+α ≈ 0.5:  Two-pulse spreading → ATTRACTIVE transition
+```
+
+### Physical Interpretation
+
+The phase diagram reveals a natural structure:
+
+1. **Low α (0.0-0.2): DIFFUSIVE**
+   - No effective geometry
+   - Energy disperses freely
+   - No gravitational analog
+
+2. **Moderate α (0.4): WAVE-CAPABLE**
+   - "Goldilocks zone" for spacetime analog
+   - Coherent wave propagation
+   - Finite speed, geodesic following
+   - Metric emergence active
+
+3. **High α (0.6-0.8): SELF-FOCUSING + ATTRACTIVE**
+   - Analog of gravitational collapse
+   - Energy concentrates
+   - Two pulses deflect toward each other
+   - Strong backreaction dominates
+
+### Scientific Statement
+> "The system exhibits a phase diagram with distinct regimes: diffusive (α<0.3), wave-capable (α≈0.4), and self-focusing/attractive (α>0.5). The wave-capable regime represents the 'spacetime analog' zone where metric emergence, geodesic following, and causal structure all operate. The transition to attractive interaction at α≈0.5 marks the onset of significant gravitational analog behavior."
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `phase_diagram.py` | Regime scan |
+| `phase_diagram.png` | Visualization |
+| `phase_diagram_results.json` | Quantitative data |

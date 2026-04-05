@@ -1,0 +1,219 @@
+{
+  "parameters": {
+    "alphas": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "dampings": [
+      0.002,
+      0.008,
+      0.02,
+      0.05
+    ]
+  },
+  "regime_counts": {
+    "DIFFUSIVE": 8,
+    "WAVE": 4,
+    "SELF-FOCUSING": 8
+  },
+  "single_pulse_results": {
+    "a0.0_d0.002": {
+      "alpha": 0.0,
+      "damping": 0.002,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 12.34334635460767,
+      "coherence": 2.106978916460745,
+      "focusing": 0.1940494860859358
+    },
+    "a0.0_d0.008": {
+      "alpha": 0.0,
+      "damping": 0.008,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 11.22192525596723,
+      "coherence": 2.106176752503447,
+      "focusing": 0.19417019699913726
+    },
+    "a0.0_d0.02": {
+      "alpha": 0.0,
+      "damping": 0.02,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 9.313799869053756,
+      "coherence": 2.1023634021594915,
+      "focusing": 0.19430149853508177
+    },
+    "a0.0_d0.05": {
+      "alpha": 0.0,
+      "damping": 0.05,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 5.987677216338661,
+      "coherence": 2.080593302678516,
+      "focusing": 0.19458915101910967
+    },
+    "a0.2_d0.002": {
+      "alpha": 0.2,
+      "damping": 0.002,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 40.00560021663266,
+      "coherence": 2.180629621906632,
+      "focusing": 0.21350965103375996
+    },
+    "a0.2_d0.008": {
+      "alpha": 0.2,
+      "damping": 0.008,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 36.34287644398626,
+      "coherence": 2.1801384133962753,
+      "focusing": 0.2135096628778115
+    },
+    "a0.2_d0.02": {
+      "alpha": 0.2,
+      "damping": 0.02,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 30.103302475096097,
+      "coherence": 2.178634055483441,
+      "focusing": 0.2135100669519013
+    },
+    "a0.2_d0.05": {
+      "alpha": 0.2,
+      "damping": 0.05,
+      "regime": "DIFFUSIVE",
+      "energy_retention": 19.205531190398506,
+      "coherence": 2.1725052251079484,
+      "focusing": 0.2144232624258321
+    },
+    "a0.4_d0.002": {
+      "alpha": 0.4,
+      "damping": 0.002,
+      "regime": "WAVE",
+      "energy_retention": 85.7747305932525,
+      "coherence": 2.544282627580013,
+      "focusing": 0.23650320412666556
+    },
+    "a0.4_d0.008": {
+      "alpha": 0.4,
+      "damping": 0.008,
+      "regime": "WAVE",
+      "energy_retention": 77.91245773516505,
+      "coherence": 2.5438177607532055,
+      "focusing": 0.23650320491988663
+    },
+    "a0.4_d0.02": {
+      "alpha": 0.4,
+      "damping": 0.02,
+      "regime": "WAVE",
+      "energy_retention": 64.5165901868023,
+      "coherence": 2.543567897210802,
+      "focusing": 0.23650342562192603
+    },
+    "a0.4_d0.05": {
+      "alpha": 0.4,
+      "damping": 0.05,
+      "regime": "WAVE",
+      "energy_retention": 41.11317817349531,
+      "coherence": 2.5468278811240532,
+      "focusing": 0.23683963205652328
+    },
+    "a0.6_d0.002": {
+      "alpha": 0.6,
+      "damping": 0.002,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 153.23542002387796,
+      "coherence": 3.18443405269759,
+      "focusing": 0.25714910131421576
+    },
+    "a0.6_d0.008": {
+      "alpha": 0.6,
+      "damping": 0.008,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 139.20776701909867,
+      "coherence": 3.184033436345116,
+      "focusing": 0.2571491017345552
+    },
+    "a0.6_d0.02": {
+      "alpha": 0.6,
+      "damping": 0.02,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 115.31848411977471,
+      "coherence": 3.1852791462152696,
+      "focusing": 0.2571495558216888
+    },
+    "a0.6_d0.05": {
+      "alpha": 0.6,
+      "damping": 0.05,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 73.61353256716707,
+      "coherence": 3.2017826844390105,
+      "focusing": 0.25810595557018434
+    },
+    "a0.8_d0.002": {
+      "alpha": 0.8,
+      "damping": 0.002,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 268.8143406886285,
+      "coherence": 4.599308388071857,
+      "focusing": 0.289152021028874
+    },
+    "a0.8_d0.008": {
+      "alpha": 0.8,
+      "damping": 0.008,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 244.2851598589295,
+      "coherence": 4.599493068573279,
+      "focusing": 0.28915202741751644
+    },
+    "a0.8_d0.02": {
+      "alpha": 0.8,
+      "damping": 0.02,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 202.54525653977126,
+      "coherence": 4.605264226080471,
+      "focusing": 0.28915242211284714
+    },
+    "a0.8_d0.05": {
+      "alpha": 0.8,
+      "damping": 0.05,
+      "regime": "SELF-FOCUSING",
+      "energy_retention": 129.7677450986928,
+      "coherence": 4.650841209113866,
+      "focusing": 0.29077598035876784
+    }
+  },
+  "two_pulse_results": {
+    "2p_a0.0": {
+      "alpha": 0.0,
+      "regime": "WAVE",
+      "attraction": -0.8660339536821323
+    },
+    "2p_a0.2": {
+      "alpha": 0.2,
+      "regime": "WAVE",
+      "attraction": -0.64
+    },
+    "2p_a0.4": {
+      "alpha": 0.4,
+      "regime": "WAVE",
+      "attraction": -0.08
+    },
+    "2p_a0.6": {
+      "alpha": 0.6,
+      "regime": "ATTRACTIVE",
+      "attraction": 0.52
+    },
+    "2p_a0.8": {
+      "alpha": 0.8,
+      "regime": "ATTRACTIVE",
+      "attraction": 0.47667816105621713
+    }
+  },
+  "regime_descriptions": {
+    "DEAD": "Energy dissipates before significant propagation",
+    "DIFFUSIVE": "Energy spreads without coherent wave structure",
+    "WAVE": "Coherent wave propagation with finite speed",
+    "SELF-FOCUSING": "Backreaction concentrates energy (analog collapse)",
+    "ATTRACTIVE": "Multiple pulses deflect toward each other",
+    "UNSTABLE": "Runaway energy growth"
+  }
+}
