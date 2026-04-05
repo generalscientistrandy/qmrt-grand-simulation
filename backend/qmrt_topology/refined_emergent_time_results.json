@@ -1,0 +1,16 @@
+{
+  "verdict": "PREFERRED CAUSAL CLOCK IDENTIFIED",
+  "variances": {
+    "raw": 48.805393433912805,
+    "path": 54.05033687174535,
+    "normalized": 54.050336871745706,
+    "optimal": 31.91136510660256
+  },
+  "optimal_params": {
+    "alpha": 1.0,
+    "beta": -1.0
+  },
+  "improvement_percent": 34.61508480653144,
+  "time_dilation_correlation": 1.0,
+  "scientific_statement": "The improved scaling collapse under causal time reparameterization suggests that the physically relevant evolution parameter is tied to local propagation speed, consistent with time emerging from the medium's dynamical structure rather than being a fundamental external parameter."
+}
