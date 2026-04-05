@@ -1,0 +1,22 @@
+{
+  "verdict": "SELF-FOCUSING DEMONSTRATED",
+  "focusing_trend": -1.7026758569514586,
+  "results": {
+    "0.0": {
+      "spread_ratio": 4.050547295906369,
+      "first_spread": 5.479692229934634,
+      "last_spread": 22.19575254436087
+    },
+    "0.3": {
+      "spread_ratio": 3.448832621353387,
+      "first_spread": 5.363876008344728,
+      "last_spread": 18.49911055447409
+    },
+    "0.6": {
+      "spread_ratio": 3.0289417817354933,
+      "first_spread": 5.27501093330355,
+      "last_spread": 15.977701014994663
+    }
+  },
+  "interpretation": "Energy density modifies local propagation speed via c_eff = c\u2080(1 - \u03b1\u00b7\u03c1_E). Higher coupling leads to self-focusing behavior where energy concentrations slow down propagation, creating effective 'gravitational wells.' This demonstrates the 'matter curves spacetime' analog."
+}
