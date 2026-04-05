@@ -1,0 +1,19 @@
+{
+  "original": {
+    "energy_ratio": 120.0465211824724,
+    "metric_error": 4.823984616664233,
+    "cone_confinement": 99.9856657065597,
+    "lensing_deflection": -14.0,
+    "attraction_delta": -16.398529491264554,
+    "phase": "WAVE"
+  },
+  "tanh": {
+    "energy_ratio": 167.17979430236903,
+    "metric_error": 4.357451426515652,
+    "cone_confinement": 99.9939894152983,
+    "lensing_deflection": -4.0,
+    "attraction_delta": -12.0,
+    "phase": "WAVE"
+  },
+  "verdict": "PRESERVED"
+}

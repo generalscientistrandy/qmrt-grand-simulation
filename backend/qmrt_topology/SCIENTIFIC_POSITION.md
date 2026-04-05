@@ -1596,12 +1596,29 @@ c_eff = c₀ × (1 - 0.5 × tanh(α × ρ/ρ_max))
 
 Properties:
 - **Bounded**: c_eff ∈ [0.5c₀, c₀]
-- **Energy**: ~3-4x better than original
-- **Lensing**: Preserved (Δx = -4 to -14 pixels)
-- **Attraction**: Preserved (Δsep = -12 to -14 pixels)
+- **Energy**: ~3-4x better than original at same α
+- **Lensing**: Preserved at α≥2.0
+- **Attraction**: Preserved at α≥2.0
 
-### Scientific Statement
-> "The tanh-saturating backreaction law c_eff = c₀(1 - 0.5·tanh(αρ/ρ_max)) provides a bounded, monotone coupling that preserves the structural phenomena (lensing, attraction) while reducing energy growth by a factor of 3-4 compared to the linear coupling. This represents a more physically motivated closure for the effective spacetime analog."
+### The Tradeoff (Important)
+
+At same α, tanh has better energy but breaks physics:
+
+| α | Law | Energy | Lensing | Attraction |
+|---|-----|--------|---------|------------|
+| 0.5 | Original | 120 | ✅ | ✅ |
+| 0.5 | Tanh | **49** | ❌ | ❌ |
+| 2.0 | Tanh | 167 | ✅ | ✅ |
+
+**Key insight**: Tanh needs higher α to achieve same physics effects. The energy "improvement" comes from weaker backreaction, not better numerics.
+
+### Scientific Interpretation
+> "The tanh saturation prevents unbounded c_eff collapse but requires higher coupling strength α to achieve the same effective backreaction. At matched physics (both lensing and attraction working), the original coupling at α=0.5 has slightly better energy behavior (E_ratio=120) than tanh at α=2.0 (E_ratio=167). The tanh law's value is its boundedness and saturation properties, not its energy behavior."
+
+### Recommendation
+- **For bounded, physically motivated closure**: Use tanh at α≈2.0
+- **For best energy behavior with working physics**: Original at α=0.5 remains competitive
+- **Key property of tanh**: It prevents c_eff from going negative or becoming unstable
 
 ### Key Files
 | File | Purpose |
