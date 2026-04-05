@@ -1,0 +1,16 @@
+{
+  "no_damping": {
+    "old_ratio": 0.9999036793727459,
+    "symplectic_ratio": 0.9999488546814028,
+    "improvement_factor": 1.8832698977925282
+  },
+  "with_damping": {
+    "old_ratio": 0.8541308070833769,
+    "symplectic_ratio": 0.8544528831574508
+  },
+  "with_backreaction": {
+    "old_ratio": 2.359719720995487,
+    "symplectic_ratio": 2.355538315222971
+  },
+  "lensing_survives": true
+}

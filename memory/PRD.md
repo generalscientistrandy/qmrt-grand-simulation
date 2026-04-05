@@ -64,7 +64,7 @@ Weak probe pulse passing stationary energy concentration (lens).
 **Symmetric bending: YES**
 **Reference: only -3 pixels**
 
-### VERDICT: LENSING DEMONSTRATED ✅
+### VERDICT: LENSING ANALOG DEMONSTRATED ✅
 > "Probe bends toward energy concentration — uses strongest sector (spatial/causal)"
 
 ---
@@ -98,12 +98,12 @@ The **WAVE** regime (α≈0.4) is the "spacetime analog" zone where all emergent
 | Lorentzian causality | ✅ (90.5%) |
 | Backreaction (self-focusing) | ✅ (59% narrowing) |
 | Multi-pulse attraction | ✅ (robust, non-Newtonian) |
-| **Gravitational lensing** | ✅ **(8/8 toward lens)** |
+| **Lensing analog** | ✅ **(8/8 toward lens)** |
 | Phase diagram | ✅ (3 regimes mapped) |
 | Coherence timescale | ✅ (t_coh ∝ σ₀) |
 | Geometry stability | ✅ (G mapped) |
 | Emergent time | 🔶 (trend observed, needs work) |
-| Energy conservation | ⚠️ (solver non-conserving) |
+| Energy conservation | ⚠️ (backreaction pumps energy by design) |
 
 ### The Complete Chain
 ```

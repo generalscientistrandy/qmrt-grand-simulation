@@ -1496,7 +1496,58 @@ The attraction (Δsep = -11.0) is **identical** across all conditions. This indi
 
 ---
 
-## Gravitational Lensing Test (April 2026) - MAJOR RESULT
+## Energy-Conserving Solver Investigation (April 2026)
+
+### The Issue
+Previous audit showed E_ret >> 1. Is this a solver bug or a physics feature?
+
+### Results: Symplectic vs Old Solver
+
+| Condition | Old Solver | Symplectic |
+|-----------|------------|------------|
+| No damping (α=0) | 0.9999 | 0.9999 |
+| With damping (α=0) | 0.8541 | 0.8545 |
+| **With backreaction (α=0.5)** | **2.36** | **2.36** |
+
+### KEY INSIGHT: Energy Growth is PHYSICS, Not Numerics
+
+Both solvers show:
+- **α=0**: Energy conserved perfectly (0.9999)
+- **α>0**: Energy grows (~2.4x)
+
+This means the energy growth is **caused by the backreaction mechanism itself**, not by numerical instability.
+
+### Why Backreaction Pumps Energy
+
+When c_eff = c₀(1 - α·ρ_E), energy density affects wave speed:
+- High energy → lower c_eff → slower propagation → energy concentration
+- This creates a positive feedback loop
+- Energy can be "pumped" by the nonlinear coupling
+
+### Implications
+
+1. **The old solver is fine** for the current physics (no numerical instability)
+2. **Energy non-conservation is a feature** of the backreaction model, not a bug
+3. **Structural results remain robust** (lensing survives: Δx = ±20.5)
+4. **Energy claims remain provisional** until a dissipative equilibrium is designed
+
+### Scientific Framing
+> "The backreaction mechanism c_eff = c₀(1 - α·ρ_E) introduces energy non-conservation by design: the coupling between wave propagation and energy density creates a positive feedback that can amplify energy. This is analogous to gain media in optics or instability-driven growth in plasma physics. For a fully conservative analog spacetime, a dissipative equilibrium or energy-sink mechanism would be needed."
+
+### Lensing With Symplectic Solver
+| b | Δx | Direction |
+|---|-----|-----------|
+| -0.15 | +20.5 | TOWARD |
+| +0.15 | -20.5 | TOWARD |
+
+**SURVIVES** — Same deflection as old solver
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `symplectic_solver.py` | Solver comparison |
+| `symplectic_solver.png` | Visualization |
+| `symplectic_solver_results.json` | Quantitative data |
 
 ### The Test
 Send a weak probe pulse past a stationary energy concentration (lens) and measure deflection.
@@ -1518,7 +1569,7 @@ Send a weak probe pulse past a stationary energy concentration (lens) and measur
 **Symmetric bending: YES**
 **Reference (no lens): only -3.0 pixels**
 
-### VERDICT: GRAVITATIONAL LENSING DEMONSTRATED ✅
+### VERDICT: LENSING ANALOG DEMONSTRATED ✅
 
 ### Key Features
 1. **Perfect directional accuracy**: All 8 probes bend toward the lens
@@ -1526,17 +1577,21 @@ Send a weak probe pulse past a stationary energy concentration (lens) and measur
 3. **Significant effect**: Up to ±20 pixel deflection vs ~3 pixel reference
 4. **Uses strongest sector**: Spatial/causal dynamics (no energy conservation needed)
 
-### Scientific Statement
-> "A weak probe pulse passing an energy concentration exhibits gravitational lensing: the probe bends toward the lens in all test cases (8/8), with symmetric deflection about the lens axis. This demonstrates that the effective geometry defined by c_eff genuinely modifies wave trajectories, consistent with the metric emergence claim."
+### Scientific Statement (Calibrated)
+> "A weak probe pulse passing an energy concentration exhibits lensing-like deflection: the probe bends toward the lens in all test cases (8/8), with symmetric deflection about the lens axis. This demonstrates effective lensing in the spacetime analog, consistent with trajectory response to structured medium curvature."
 
-### Why This Test is Strong
-- Uses spatial/causal sector (most robust)
-- Does NOT require perfect energy conservation
-- Produces clean, interpretable result
-- Directly tests trajectory modification by structured energy
+### What This IS vs What This IS NOT
 
-### Physical Interpretation
-The lens creates a local depression in c_eff. The probe, propagating through this modified effective geometry, follows a curved path — bending toward lower c_eff regions (toward the lens). This is the wave-optics analog of gravitational light bending.
+**This IS:**
+- Symmetric lensing-like deflection toward energy concentration
+- Trajectory response to structured c_eff curvature
+- Analog of gravitational light bending
+- Strong signal-to-baseline ratio (~20 pixels vs ~3 pixels)
+
+**This IS NOT (yet):**
+- Full GR-derived lensing
+- Inverse-square force law
+- Energy-conserving dynamics
 
 ### Key Files
 | File | Purpose |
