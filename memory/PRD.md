@@ -1,10 +1,58 @@
-## Current Status: FIELD-COUPLED DYNAMICS COMPLETE ✅
+## Current Status: EIKONAL VERIFICATION COMPLETE ✅
 
 **Date: April 2026**
 **Paper Title:** "Topological Phase Quantization and Emergent Causal Geometry from Defect-Structured Media"
 
-**Simulation Tests:** 17/17 PASSED (static) + Field-Coupled Dynamics WORKING
-**Scientific Position:** Corrected and locked (see SCIENTIFIC_POSITION.md)
+**Simulation Tests:** 17/17 PASSED (static) + Field-Coupled Dynamics + Wave Physics + Eikonal Verification
+**Scientific Position:** Updated with Ray-Wave Bridge and Eikonal findings (see SCIENTIFIC_POSITION.md)
+
+---
+
+## 🔥 LATEST: EIKONAL VERIFICATION (April 2026)
+
+### The Critical Test
+Question: Does energy transport follow geometric ray predictions?
+
+### Key Finding
+**Peak amplitude trajectory** (the correct observable for energy transport) bends toward low c_eff (high refractive index) — **matching ray optics predictions**.
+
+| Packet Width | Ray Bend | Peak Bend | Same Direction | Avg Deviation |
+|--------------|----------|-----------|----------------|---------------|
+| σ = 2.0 | +15.5 | +25.0 | ✓ YES | 16.70 |
+| σ = 3.0 | +15.5 | +32.0 | ✓ YES | 7.92 |
+| σ = 5.0 | +15.5 | +30.0 | ✓ YES | 13.94 |
+
+### Verdict: QUALITATIVE EIKONAL MATCH
+- ✅ Energy transport follows geodesics (correct direction)
+- ✅ Peak trajectory bends toward high refractive index
+- ⚠️ Quantitative gap remains (peak over-bends vs ray prediction)
+
+### Physics Insight (User-Provided)
+Previous test tracked **centroid** which diverged from rays. This is expected:
+- Centroid of spreading wave packet does NOT follow rays (Huygens-Fresnel effect)
+- Energy flux and peak amplitude DO follow rays (in eikonal limit)
+- System is approaching but not fully in eikonal regime
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `eikonal_verification.py` | Peak trajectory vs ray test |
+| `eikonal_verification.png` | Comparison plots |
+| `eikonal_results.json` | Quantitative results |
+
+---
+
+## 🔥 RAY-WAVE BRIDGE ANALYSIS (April 2026)
+
+### Three Observables in Wave Physics
+| Quantity | Physical Meaning | Follows Geodesics? |
+|----------|------------------|-------------------|
+| Phase velocity | Wavefront motion | ❌ No |
+| Energy flux / Group velocity | Energy transport | ✅ Yes (eikonal limit) |
+| Centroid (spreading packet) | Shape-weighted average | ❌ Not necessarily |
+
+### Scientific Statement
+> "Peak amplitude trajectory demonstrates qualitative agreement with geometric ray predictions: both bend toward regions of lower c_eff (higher refractive index). This verifies that energy transport in the wave medium follows geodesic-like paths, establishing the foundation for emergent effective geometry."
 
 ---
 

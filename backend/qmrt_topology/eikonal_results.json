@@ -1,0 +1,25 @@
+{
+  "verdict": "QUALITATIVE EIKONAL MATCH",
+  "best_packet_width": 3.0,
+  "best_deviation": 7.916666666666667,
+  "results_by_width": {
+    "2.0": {
+      "ray_bend": 15.542940924899241,
+      "peak_bend": 25.0,
+      "same_direction": true,
+      "avg_deviation": 16.70073003322901
+    },
+    "3.0": {
+      "ray_bend": 15.542940924899241,
+      "peak_bend": 32.0,
+      "same_direction": true,
+      "avg_deviation": 7.916666666666667
+    },
+    "5.0": {
+      "ray_bend": 15.542940924899241,
+      "peak_bend": 30.0,
+      "same_direction": true,
+      "avg_deviation": 13.937474707602604
+    }
+  }
+}
