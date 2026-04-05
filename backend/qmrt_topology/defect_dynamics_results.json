@@ -1,0 +1,13 @@
+{
+  "final_defects": 57,
+  "final_clusters": 14,
+  "stable_clusters": 2,
+  "total_creations": 500,
+  "total_annihilations": 492,
+  "charge_balance": -1,
+  "params": {
+    "grid_size": 30,
+    "initial_pairs": 20,
+    "n_steps": 1000
+  }
+}
