@@ -1,0 +1,27 @@
+{
+  "finding": "Geometry emerges in a finite coherence window",
+  "regimes": {
+    "A_coherent": "t < 0.5\u00b7t_coherence",
+    "B_transition": "0.5\u00b7t_coherence < t < 1.5\u00b7t_coherence",
+    "C_dispersive": "t > 1.5\u00b7t_coherence"
+  },
+  "results": {
+    "2.5": {
+      "t_coherence": 3.4,
+      "t_dispersion": 4.0
+    },
+    "3.5": {
+      "t_coherence": 4.6000000000000005,
+      "t_dispersion": 5.4
+    },
+    "5.0": {
+      "t_coherence": 6.2,
+      "t_dispersion": 6.6000000000000005
+    },
+    "7.0": {
+      "t_coherence": 7.6000000000000005,
+      "t_dispersion": 7.4
+    }
+  },
+  "scientific_statement": "A self-consistent effective spacetime analog emerges in the coherent propagation regime, where wave packets follow geodesics defined by the medium. This geometric behavior persists over a finite coherence timescale, beyond which dispersive dynamics dominate and the ray approximation breaks down."
+}
