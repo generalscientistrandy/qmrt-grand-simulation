@@ -135,25 +135,27 @@ class WaveFieldSystem:
     
     def evolve_field_wave(self, dt: float):
         """
-        Evolve field using damped wave equation:
+        Evolve field using damped wave equation with VARIABLE SPEED:
         
-        ∂²φ/∂t² = c²∇²φ - γ∂φ/∂t
+        ∂²φ/∂t² = c_eff(x)²∇²φ - γ∂φ/∂t
         
-        Discretized as:
-        φ_new = φ + v*dt
-        v_new = v + (c²∇²φ - γv)*dt
+        Where c_eff DECREASES in high-energy regions (channel guiding)
+        This creates waveguide behavior: waves slow down and concentrate in channels
         """
         p = self.params
+        
+        # VARIABLE WAVE SPEED: LOWER in channels (high energy)
+        # This traps/guides waves in channel regions
+        c_local = p.wave_speed / (1 + 0.4 * self.energy_field / (1 + self.energy_field))
         
         # Compute Laplacian
         laplacian = self.compute_laplacian(self.field)
         
-        # Wave equation acceleration
-        # ∂²φ/∂t² = c²∇²φ - γ∂φ/∂t
-        acceleration = (p.wave_speed**2 * laplacian - 
+        # Wave equation with local c
+        acceleration = (c_local**2 * laplacian - 
                        p.wave_damping * self.field_velocity)
         
-        # Update velocity (first-order Euler, could use Verlet for better accuracy)
+        # Update velocity
         self.field_velocity += acceleration * dt
         
         # Update field
@@ -162,10 +164,10 @@ class WaveFieldSystem:
         # Cap field
         np.clip(self.field, -p.field_cap, p.field_cap, out=self.field)
         
-        # Also evolve energy field (still diffusive for simplicity)
+        # Evolve energy field (slow diffusion to maintain structure)
         energy_laplacian = self.compute_laplacian(self.energy_field)
-        self.energy_field += 0.1 * energy_laplacian * dt
-        self.energy_field *= (1 - 0.003 * dt)  # Slow decay
+        self.energy_field += 0.02 * energy_laplacian * dt  # Slower diffusion
+        self.energy_field *= (1 - 0.001 * dt)  # Very slow decay
         np.clip(self.energy_field, 0, p.field_cap, out=self.energy_field)
     
     # =========================================================================
