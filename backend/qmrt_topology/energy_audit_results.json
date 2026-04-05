@@ -1,0 +1,16 @@
+{
+  "damping_correlation": -0.9786459568530228,
+  "timestep_correlation": -0.9999591528888545,
+  "attraction_survives": true,
+  "two_pulse_results": {
+    "baseline": {
+      "delta_sep": -11.0,
+      "energy_ratio": 118.15136483972182
+    },
+    "conservative": {
+      "delta_sep": -11.0,
+      "energy_ratio": 86.27461797434778
+    }
+  },
+  "verdict": "physical"
+}

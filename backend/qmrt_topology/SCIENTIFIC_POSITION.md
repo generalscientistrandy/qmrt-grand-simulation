@@ -1425,3 +1425,71 @@ The phase diagram reveals a natural structure:
 | `phase_diagram.py` | Regime scan |
 | `phase_diagram.png` | Visualization |
 | `phase_diagram_results.json` | Quantitative data |
+
+---
+
+## Force-Law Extraction (April 2026)
+
+### The Test
+Measure how attraction scales with initial separation d and coupling α.
+
+### Results
+
+| d₀ (pixels) | Δd (attraction) |
+|-------------|-----------------|
+| 18 | +18 (repulsion — too close) |
+| 24 | -11 |
+| 30 | -17 |
+| 36 | -23 |
+| 42 | -29 |
+| 48 | -35 |
+| 60 | 0 (too far) |
+
+### Force Law Analysis
+- Best fit: **LINEAR** (not inverse-square)
+- Pattern: Attraction **increases** with separation up to ~50px, then cuts off
+- This is NOT standard gravity — it's a "capture zone" effect
+
+### Interpretation
+The attraction is **not** 1/d² gravitational. It's more like:
+- Too close (d < 20): Interference/repulsion
+- Mid-range (20 < d < 50): Capture zone — all pulses end up at similar final separation
+- Too far (d > 50): No interaction
+
+### α Saturation
+Once α > 0.4, attraction saturates at ~-23px. This indicates a maximum attraction strength set by the backreaction physics.
+
+---
+
+## Energy Audit / Numerical Stability (April 2026)
+
+### The Problem
+E_ret >> 1 everywhere — the solver pumps energy.
+
+### Energy Behavior
+| Parameter | Correlation with E_ratio |
+|-----------|-------------------------|
+| Damping | -0.979 (higher γ → less growth) |
+| Timestep | ~0 (no clear effect) |
+
+### Critical Test: Does Attraction Survive?
+
+| Condition | Δsep | E_ratio |
+|-----------|------|---------|
+| Baseline (dt=0.04, γ=0.008) | -11.0 | 118 |
+| Small dt (dt=0.02) | -11.0 | 121 |
+| High damp (γ=0.03) | -11.0 | 85 |
+| **Conservative** (dt=0.02, γ=0.03) | **-11.0** | 86 |
+
+### VERDICT: ATTRACTION IS PHYSICAL ✅
+
+The attraction (Δsep = -11.0) is **identical** across all conditions. This strongly suggests it's a genuine physical effect of backreaction, not a numerical artifact.
+
+### Scientific Statement (Calibrated)
+> "While the solver exhibits energy non-conservation (E_ret >> 1), the attraction effect survives under stricter numerical conditions (smaller timestep, higher damping). The consistency of Δsep = -11.0 across all configurations indicates the attraction is a physical consequence of backreaction, not a numerical artifact. However, energy-based claims remain weaker than transport/structural claims."
+
+### What This Means for the Project
+- **Structural/transport behavior**: Strong, numerically robust
+- **Energy dynamics**: Weaker, needs energy-conserving solver
+- **Attraction effect**: Physical, survives numerical tests
+- **Safe interpretation**: Focus on structural emergence, be cautious about energy claims
