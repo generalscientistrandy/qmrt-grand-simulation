@@ -270,8 +270,44 @@ The coupled field-defect simulation exhibits:
 ### Summary Status
 | Property | Demonstrated? |
 |----------|--------------|
-| Diffusive propagation | ✅ Yes |
-| Wave propagation | ❌ Not yet |
+| Diffusive propagation | ✅ Yes (original system) |
+| Wave propagation | ✅ **YES** (wave_field_dynamics.py) |
 | Channel memory | ✅ YES (0.973) |
 | Self-organization | ✅ Partial |
-| Lorentz-like causality | ❌ Not yet |
+| Finite propagation speed | ✅ **YES** (c = 2.0 verified) |
+| Lorentz-like causality | 🔶 Precursor (finite c exists) |
+
+---
+
+## Wave Equation Upgrade (April 2026)
+
+### The Critical Transition
+**Before (parabolic/heat equation):**
+```
+∂φ/∂t = D∇²φ + sources
+```
+- Instant spreading (no causality)
+- r ~ √t growth
+
+**After (hyperbolic/wave equation):**
+```
+∂²φ/∂t² = c²∇²φ - γ∂φ/∂t + sources
+```
+- Finite propagation speed c
+- r ~ t growth (wavefronts)
+- Causality structure emerges
+
+### Verified Results
+| Test | Expected | Measured |
+|------|----------|----------|
+| Wavefront velocity | c = 2.0 | **2.00** |
+| Propagation type | Linear (r~t) | **Linear** |
+| Wavefront shape | Circular | **Circular** |
+
+### What This Means for QMRT
+The medium now supports:
+1. **Finite-speed signals** — information has a maximum propagation velocity
+2. **Wavefronts** — disturbances propagate as coherent waves
+3. **Causality precursor** — events cannot influence beyond their "light cone"
+
+This is the foundation for emergent Lorentz-like structure.
