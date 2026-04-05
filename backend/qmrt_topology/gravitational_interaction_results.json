@@ -1,0 +1,20 @@
+{
+  "verdict": "PARTIAL ATTRACTION OBSERVED",
+  "results": {
+    "0.0": {
+      "trend": -0.9398292184399494,
+      "separation_change": -26.586128331693864,
+      "behavior": "ATTRACTION (separation decreasing)"
+    },
+    "0.4": {
+      "trend": -0.8721867185329261,
+      "separation_change": -49.0,
+      "behavior": "ATTRACTION (separation decreasing)"
+    },
+    "0.7": {
+      "trend": -0.6288413448180046,
+      "separation_change": -49.0,
+      "behavior": "ATTRACTION (separation decreasing)"
+    }
+  }
+}
