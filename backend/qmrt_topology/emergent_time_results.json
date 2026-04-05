@@ -1,0 +1,10 @@
+{
+  "verdict": "EMERGENT TIME IMPROVES SCALING",
+  "best_clock": "causal",
+  "variances": {
+    "raw": 48.805393433912805,
+    "causal": 43.89476789667296,
+    "coherence": 48.270765500463945
+  },
+  "interpretation": "Since time is treated as emergent in QMRT, the simulation's coordinate timestep may not coincide with the physically relevant effective time variable. The apparent degradation of time-based scaling may therefore reflect a mismatch between solver time and emergent causal time, rather than a failure of the underlying propagation geometry."
+}
