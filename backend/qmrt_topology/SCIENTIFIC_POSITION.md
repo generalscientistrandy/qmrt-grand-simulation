@@ -1138,3 +1138,76 @@ SELF-CONSISTENT EMERGENT SPACETIME WITH PREFERRED CAUSAL CLOCK
 
 ### Final Statement
 > "We demonstrate a self-consistent effective spacetime analog where geometry and time emerge from propagation dynamics. The optimal causal clock τ_em = ∫ c_eff · G^(-1) dt reduces scaling variance by 34.6%, and the system exhibits a perfect time dilation analog (correlation = 1.0). This supports the interpretation that spacetime is a coherence phase of the underlying medium, with both spatial geometry and temporal flow determined by local propagation characteristics."
+
+
+---
+
+## Stress Test Results (April 2026) - CRITICAL HONESTY CHECK
+
+### Three Stress Tests Performed
+| Test | Result | Verdict |
+|------|--------|---------|
+| Independent Dilation | τ_A/τ_B = 2.0 | ✅ PASS |
+| Curvature-G Coupling | Corr = 0.001 | ❌ FAIL |
+| Non-Circular | Diff = 0% | ❌ FAIL |
+
+### Critical Finding
+**The "time dilation" result is CIRCULAR.**
+
+- Dilation ratio = 2.0000
+- c_eff ratio = 2.0000
+- Difference = 0%
+
+This means: **τ ~ ∫ c_eff dt is just measuring c_eff, not emergent time.**
+
+### Honest Assessment
+The 34.6% improvement from the combined clock τ_em = ∫ c_eff · G^(-1) dt comes from:
+- The G^(-1) weighting (geometry stability)
+- NOT from genuine emergent time physics
+
+### What IS Real vs What IS Circular
+
+**REAL (Robust):**
+- ✅ Metric emergence (geodesics work)
+- ✅ Light cone containment (90.5%)
+- ✅ Backreaction (self-focusing)
+- ✅ Coherence timescale (t_coh ∝ σ₀)
+- ✅ G improves scaling (34.6%)
+
+**CIRCULAR (By Construction):**
+- ❌ "Time dilation" from τ = ∫ c_eff dt
+- ❌ Perfect correlation = 1.0 (because dilation IS c_eff)
+
+### Revised Scientific Statement (Honest)
+> "We identify an optimal time parameterization τ_em = ∫ c_eff · G^(-1) dt that improves scaling collapse by 34.6%. However, stress testing reveals that the time dilation effect (τ/t ∝ c_eff) is circular by construction, not emergent. The combined clock improvement comes from coherence weighting, not fundamental time emergence. The spatial geometry results (metric, geodesics, causality) remain robust."
+
+### What This Means for QMRT
+- **Spatial geometry**: Solidly demonstrated
+- **Temporal emergence**: Needs non-circular formulation
+- **Next step**: Find observables that differ from simple c_eff integration
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `stress_tests.py` | Three-test validation |
+| `stress_tests.png` | Visualization |
+| `stress_tests_results.json` | Raw data |
+
+---
+
+## REVISED FINAL STATUS
+
+### What IS Demonstrated (Robust)
+1. ✅ Wave → ray emergence
+2. ✅ Metric emergence (0.17 cell error)
+3. ✅ Lorentzian causality (90.5%)
+4. ✅ Backreaction (59% narrowing)
+5. ✅ Coherence timescale (t_coh ∝ σ₀)
+6. ✅ G-weighted clock improves scaling (34.6%)
+
+### What IS NOT Demonstrated (Circular)
+1. ❌ Genuine emergent time (τ ≠ emergent)
+2. ❌ Time dilation analog (circular by construction)
+
+### Honest Final Statement
+> "We demonstrate a self-consistent effective spacetime analog where spatial geometry emerges from propagation dynamics. The metric, geodesics, and light cones are genuine emergent structures. Temporal parameterization can be improved using coherence weighting (G^(-1)), but the underlying 'time dilation' effect is circular — dilation ratio equals c_eff ratio exactly. Future work requires finding temporal observables that differ from simple c_eff integration."
