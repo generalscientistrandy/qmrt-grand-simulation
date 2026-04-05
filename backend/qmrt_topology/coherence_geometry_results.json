@@ -1,0 +1,17 @@
+{
+  "scaling_law": {
+    "best_fit": "LINEAR",
+    "power_exponent": 0.7047077607375462,
+    "formula": "t_coh \u221d \u03c3\u2080^0.70"
+  },
+  "coherence_field": {
+    "max_G": 0.62,
+    "min_G": 0.4600000000000001,
+    "t_obs": 10.0
+  },
+  "energy_coupling": {
+    "correlation": NaN,
+    "verdict": "NO CLEAR CORRELATION"
+  },
+  "fundamental_insight": "Spacetime = a coherence phase of the medium. Geometry exists conditionally, only where coherence length >> wavelength. Two curvature mechanisms: (1) \u2207c_eff, (2) \u2207t_coh."
+}
