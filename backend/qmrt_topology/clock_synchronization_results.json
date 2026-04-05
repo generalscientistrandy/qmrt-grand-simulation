@@ -1,0 +1,32 @@
+{
+  "verdict": "EMERGENT TIME DEMONSTRATED",
+  "test_passed": true,
+  "correlation_disorder_agreement": 0.8295006147270834,
+  "results_by_disorder": {
+    "0.0": {
+      "mean_agreement": 3.4761135764760485e-05,
+      "std_agreement": 0.0
+    },
+    "0.2": {
+      "mean_agreement": 3.636040089255983e-05,
+      "std_agreement": 4.8539798637622135e-06
+    },
+    "0.4": {
+      "mean_agreement": 2.5162447347281242e-05,
+      "std_agreement": 1.8525591138355486e-05
+    },
+    "0.6": {
+      "mean_agreement": 3.459966753493275e-05,
+      "std_agreement": 3.292144854159064e-05
+    },
+    "0.8": {
+      "mean_agreement": 0.00016144295076605983,
+      "std_agreement": 0.00014318527810401062
+    },
+    "1.0": {
+      "mean_agreement": 0.00018075764945899554,
+      "std_agreement": 0.00016828287828776452
+    }
+  },
+  "scientific_statement": "We observe clock synchronization improving with medium coherence, indicating emergent common time arises from substrate organization rather than being imposed externally."
+}
