@@ -1,0 +1,35 @@
+{
+  "best_law": "original",
+  "best_law_name": "c\u2080(1 - \u03b1\u03c1)",
+  "results": {
+    "original": {
+      "energy_ratio": 114.36049779637182,
+      "lensing_toward": true,
+      "lensing_deflection": -14.0,
+      "attraction": true,
+      "delta_sep": -16.398529491264554
+    },
+    "sqrt": {
+      "energy_ratio": 38.68976197558769,
+      "lensing_toward": false,
+      "lensing_deflection": 17.0,
+      "attraction": false,
+      "delta_sep": 24.0
+    },
+    "linear_denom": {
+      "energy_ratio": 74.8631960566658,
+      "lensing_toward": false,
+      "lensing_deflection": 12.0,
+      "attraction": false,
+      "delta_sep": 10.0
+    },
+    "exponential": {
+      "energy_ratio": 89.431299726551,
+      "lensing_toward": true,
+      "lensing_deflection": -14.0,
+      "attraction": true,
+      "delta_sep": -16.0
+    }
+  },
+  "recommendation": "The c\u2080(1 - \u03b1\u03c1) coupling is recommended: it preserves structural phenomena (lensing, attraction) while providing some energy behavior (E_ratio = 114.36)."
+}

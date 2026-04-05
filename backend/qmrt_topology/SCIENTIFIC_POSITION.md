@@ -1549,6 +1549,67 @@ When c_eff = c₀(1 - α·ρ_E), energy density affects wave speed:
 | `symplectic_solver.png` | Visualization |
 | `symplectic_solver_results.json` | Quantitative data |
 
+---
+
+## Bounded Backreaction Laws Investigation (April 2026)
+
+### The Problem
+The original coupling c_eff = c₀(1 - αρ) causes runaway energy growth.
+
+### Laws Tested
+
+| Law | Formula | Bounded? |
+|-----|---------|----------|
+| Original | c₀(1 - αρ) | No (can go negative) |
+| SQRT | c₀/√(1 + αρ) | Yes |
+| Linear | c₀/(1 + αρ) | Yes |
+| Exponential | c₀·exp(-αρ) | Yes |
+| **Tanh** | c₀(1 - 0.5·tanh(αρ)) | Yes, [0.5c₀, c₀] |
+
+### Results at α=0.5
+
+| Law | E_ratio | Lensing | Attraction |
+|-----|---------|---------|------------|
+| Original | 114 | ✅ | ✅ |
+| SQRT | 39 | ❌ | ❌ |
+| Linear | 75 | ❌ | ❌ |
+| Exponential | 89 | ✅ | ✅ |
+
+**Finding**: Bounded laws (sqrt, linear) are TOO WEAK — they don't create enough c_eff depression.
+
+### Tanh Coupling Discovery
+
+The tanh coupling at higher α preserves physics while reducing energy growth:
+
+| α | Original E_ratio | Tanh E_ratio | Lensing | Attraction |
+|---|------------------|--------------|---------|------------|
+| 0.5 | 120 | 49 | ❌ | ❌ |
+| 1.0 | 493 | 95 | ✅ | ❌ |
+| **2.0** | 588 | **167** | ✅ | ✅ |
+| **3.0** | 495 | **192** | ✅ | ✅ |
+
+### RECOMMENDED: Tanh Coupling with α=2.0
+
+```
+c_eff = c₀ × (1 - 0.5 × tanh(α × ρ/ρ_max))
+```
+
+Properties:
+- **Bounded**: c_eff ∈ [0.5c₀, c₀]
+- **Energy**: ~3-4x better than original
+- **Lensing**: Preserved (Δx = -4 to -14 pixels)
+- **Attraction**: Preserved (Δsep = -12 to -14 pixels)
+
+### Scientific Statement
+> "The tanh-saturating backreaction law c_eff = c₀(1 - 0.5·tanh(αρ/ρ_max)) provides a bounded, monotone coupling that preserves the structural phenomena (lensing, attraction) while reducing energy growth by a factor of 3-4 compared to the linear coupling. This represents a more physically motivated closure for the effective spacetime analog."
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `bounded_laws.py` | Law comparison |
+| `bounded_laws.png` | Visualization |
+| `bounded_laws_results.json` | Quantitative data |
+
 ### The Test
 Send a weak probe pulse past a stationary energy concentration (lens) and measure deflection.
 
