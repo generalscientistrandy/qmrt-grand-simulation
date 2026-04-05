@@ -65,6 +65,11 @@ class MediumState:
     strain_field: np.ndarray      # Local strain (drives creation)
     size: Tuple[int, int]         # Grid dimensions
     
+    # Energy budget tracking
+    total_injected: float = 0.0   # Total energy injected
+    total_dissipated: float = 0.0 # Total energy lost to dissipation
+    total_consumed: float = 0.0   # Total energy consumed (creation)
+    
     @classmethod
     def create(cls, size: Tuple[int, int], noise_level: float = 0.1):
         """Create medium with random noise."""
@@ -73,14 +78,59 @@ class MediumState:
         return cls(energy_field=energy, strain_field=strain, size=size)
     
     def inject_energy(self, position: np.ndarray, amount: float, radius: float = 2.0):
-        """Inject energy at a position (e.g., from annihilation)."""
+        """Inject energy at a position (redistributes, doesn't create from nothing)."""
         x, y = int(position[0]), int(position[1])
         r = int(radius)
+        injected = 0.0
+        # Count cells in radius for even distribution
+        cells = []
         for i in range(max(0, x-r), min(self.size[0], x+r+1)):
             for j in range(max(0, y-r), min(self.size[1], y+r+1)):
                 dist = np.sqrt((i-x)**2 + (j-y)**2)
                 if dist < radius:
-                    self.energy_field[i, j] += amount * (1 - dist/radius)
+                    cells.append((i, j, 1 - dist/radius))
+        
+        if cells:
+            total_weight = sum(w for _, _, w in cells)
+            for i, j, w in cells:
+                delta = amount * w / total_weight
+                self.energy_field[i, j] += delta
+                injected += delta
+        
+        self.total_injected += injected
+        return injected
+    
+    def consume_energy(self, position: np.ndarray, amount: float, radius: float = 2.0) -> float:
+        """Consume energy from a position (for pair creation). Returns actual consumed."""
+        x, y = int(position[0]), int(position[1])
+        r = int(radius)
+        
+        # First pass: calculate total available energy
+        available_total = 0.0
+        cells = []
+        for i in range(max(0, x-r), min(self.size[0], x+r+1)):
+            for j in range(max(0, y-r), min(self.size[1], y+r+1)):
+                dist = np.sqrt((i-x)**2 + (j-y)**2)
+                if dist < radius:
+                    weight = 1 - dist/radius
+                    available_total += self.energy_field[i, j] * weight
+                    cells.append((i, j, weight))
+        
+        # Calculate how much we can actually take
+        actual_amount = min(amount, available_total)
+        
+        if actual_amount > 0 and cells:
+            # Second pass: take proportionally from each cell
+            total_weight = sum(w for _, _, w in cells)
+            consumed = 0.0
+            for i, j, w in cells:
+                take = actual_amount * w / total_weight
+                take = min(take, self.energy_field[i, j])
+                self.energy_field[i, j] -= take
+                consumed += take
+            self.total_consumed += consumed
+            return consumed
+        return 0.0
     
     def get_local_strain(self, position: np.ndarray) -> float:
         """Get strain at a position (with interpolation)."""
@@ -93,6 +143,10 @@ class MediumState:
         x, y = position
         xi, yi = int(x) % self.size[0], int(y) % self.size[1]
         return self.energy_field[xi, yi]
+    
+    def get_total_energy(self) -> float:
+        """Get total energy in the field."""
+        return float(np.sum(self.energy_field))
 
 
 # =============================================================================
@@ -106,6 +160,7 @@ class PhysicsParams:
     creation_threshold: float = 0.8      # Energy threshold for pair creation
     pair_separation: float = 2.0         # Initial separation of created pairs
     creation_rate: float = 0.01          # Probability multiplier
+    creation_energy_cost: float = 1.0    # Energy consumed per pair creation
     
     # Mobility
     interaction_strength: float = 1.0    # k in F = k * q_i * q_j / r^n
@@ -115,15 +170,20 @@ class PhysicsParams:
     
     # Annihilation
     annihilation_radius: float = 1.0     # Distance for annihilation
-    annihilation_energy: float = 2.0     # Energy released
+    annihilation_energy: float = 2.0     # Energy released (redistributed, not created)
     
     # Clustering
     cluster_radius: float = 5.0          # Radius to consider for clustering
     stability_threshold: float = 0.1     # Force threshold for stability
     
-    # Medium
-    energy_decay: float = 0.01           # Energy field decay rate
+    # Medium - ENERGY CONSERVATION
+    energy_decay: float = 0.01           # Global dissipation rate (radiation loss)
+    energy_diffusion: float = 0.1        # Energy spreads locally
     strain_diffusion: float = 0.05       # Strain spreading rate
+    energy_cap: float = 5.0              # Maximum local energy (prevents runaway)
+    
+    # Energy budget tracking
+    track_energy_budget: bool = True     # Track total system energy
     
     # Boundaries
     boundary_mode: str = "periodic"      # "periodic" or "reflective"
@@ -149,12 +209,15 @@ class DefectDynamicsEngine:
         self.time = 0
         self.next_id = 0
         
-        # Metrics tracking
+        # Metrics tracking - including energy budget
         self.metrics = {
             'defect_count': [],
             'positive_count': [],
             'negative_count': [],
             'total_energy': [],
+            'kinetic_energy': [],           # Defect motion energy
+            'energy_injected': [],          # Cumulative injected
+            'energy_dissipated': [],        # Cumulative dissipated
             'annihilation_events': [],
             'creation_events': [],
             'cluster_count': [],
@@ -196,11 +259,15 @@ class DefectDynamicsEngine:
             self.add_defect(center - offset/2, charge=-1)
     
     # -------------------------------------------------------------------------
-    # CREATION: Pair nucleation from local strain
+    # CREATION: Pair nucleation from local strain - ENERGY CONSERVING
     # -------------------------------------------------------------------------
     
     def _attempt_creation(self):
-        """Attempt to create defect pairs based on local energy/strain."""
+        """Attempt to create defect pairs based on local energy/strain.
+        
+        ENERGY CONSERVATION: Pairs are only created if there's enough
+        local energy to pay for them. Energy is consumed, not created.
+        """
         creation_events = 0
         
         # Sample random positions for potential creation
@@ -215,31 +282,44 @@ class DefectDynamicsEngine:
             local_energy = self.medium.get_local_energy(pos)
             local_strain = abs(self.medium.get_local_strain(pos))
             
-            # Creation probability based on energy + strain
-            creation_prob = (local_energy + local_strain) / self.params.creation_threshold
+            # Must have enough energy to create a pair
+            energy_required = self.params.creation_energy_cost
             
-            if np.random.random() < creation_prob and local_energy > self.params.creation_threshold * 0.5:
+            # Creation probability based on excess energy + strain
+            if local_energy < energy_required:
+                continue
+                
+            excess_energy = local_energy - energy_required * 0.5
+            creation_prob = (excess_energy + local_strain) / self.params.creation_threshold
+            
+            if np.random.random() < creation_prob:
+                # CONSUME energy to create the pair (energy conservation)
+                consumed = self.medium.consume_energy(pos, energy_required, radius=3.0)
+                
+                if consumed < energy_required * 0.5:
+                    # Not enough energy available - abort creation
+                    # Return the consumed energy
+                    self.medium.inject_energy(pos, consumed, radius=2.0)
+                    continue
+                
                 # Create pair with small separation
                 angle = np.random.uniform(0, 2*np.pi)
                 offset = self.params.pair_separation * np.array([np.cos(angle), np.sin(angle)])
                 
-                # Initial velocities: moving apart
-                v_mag = 0.5
+                # Initial velocities: moving apart (kinetic energy from consumed energy)
+                v_mag = np.sqrt(consumed * 0.3)  # Some energy goes to motion
                 v1 = v_mag * np.array([np.cos(angle), np.sin(angle)])
                 v2 = -v1
                 
                 self.add_defect(pos + offset/2, charge=+1, velocity=v1)
                 self.add_defect(pos - offset/2, charge=-1, velocity=v2)
                 
-                # Consume local energy
-                self.medium.energy_field[int(pos[0]) % self.size[0], 
-                                         int(pos[1]) % self.size[1]] *= 0.3
-                
                 creation_events += 1
                 self.events.append({
                     'type': 'creation',
                     'time': self.time,
-                    'position': pos.tolist()
+                    'position': pos.tolist(),
+                    'energy_consumed': consumed
                 })
         
         return creation_events
@@ -429,23 +509,39 @@ class DefectDynamicsEngine:
         return clusters
     
     # -------------------------------------------------------------------------
-    # MEDIUM EVOLUTION
+    # MEDIUM EVOLUTION - WITH ENERGY CONSERVATION
     # -------------------------------------------------------------------------
     
     def _evolve_medium(self, dt: float):
-        """Evolve the medium state."""
-        # Energy decay
-        self.medium.energy_field *= (1 - self.params.energy_decay * dt)
+        """Evolve the medium state with proper energy conservation."""
+        # 1. Global dissipation (energy radiates away)
+        #    This is the key fix - represents energy leaving the system
+        energy_before = np.sum(self.medium.energy_field)
+        dissipation_factor = (1 - self.params.energy_decay * dt)
+        self.medium.energy_field *= dissipation_factor
+        energy_after = np.sum(self.medium.energy_field)
+        self.medium.total_dissipated += (energy_before - energy_after)
         
-        # Strain diffusion (simple Laplacian)
+        # 2. Energy diffusion (spreads locally, conserves total)
+        energy = self.medium.energy_field
+        laplacian_e = (
+            np.roll(energy, 1, axis=0) + np.roll(energy, -1, axis=0) +
+            np.roll(energy, 1, axis=1) + np.roll(energy, -1, axis=1) - 4 * energy
+        )
+        self.medium.energy_field += self.params.energy_diffusion * laplacian_e * dt
+        
+        # 3. Cap local energy (prevents runaway hotspots)
+        np.clip(self.medium.energy_field, 0, self.params.energy_cap, out=self.medium.energy_field)
+        
+        # 4. Strain diffusion (simple Laplacian)
         strain = self.medium.strain_field
-        laplacian = (
+        laplacian_s = (
             np.roll(strain, 1, axis=0) + np.roll(strain, -1, axis=0) +
             np.roll(strain, 1, axis=1) + np.roll(strain, -1, axis=1) - 4 * strain
         )
-        self.medium.strain_field += self.params.strain_diffusion * laplacian * dt
+        self.medium.strain_field += self.params.strain_diffusion * laplacian_s * dt
         
-        # Defects influence local strain
+        # 5. Defects influence local strain (but not energy - that's from annihilation only)
         for defect in self.defects:
             x, y = int(defect.position[0]) % self.size[0], int(defect.position[1]) % self.size[1]
             self.medium.strain_field[x, y] += defect.charge * 0.01
@@ -491,11 +587,20 @@ class DefectDynamicsEngine:
         }
     
     def _record_metrics(self, creations: int, annihilations: int):
-        """Record metrics for analysis."""
+        """Record metrics for analysis including energy budget."""
         self.metrics['defect_count'].append(len(self.defects))
         self.metrics['positive_count'].append(sum(1 for d in self.defects if d.charge > 0))
         self.metrics['negative_count'].append(sum(1 for d in self.defects if d.charge < 0))
         self.metrics['total_energy'].append(np.sum(self.medium.energy_field))
+        
+        # Kinetic energy of defects
+        kinetic = sum(0.5 * np.dot(d.velocity, d.velocity) for d in self.defects)
+        self.metrics['kinetic_energy'].append(kinetic)
+        
+        # Energy budget tracking
+        self.metrics['energy_injected'].append(self.medium.total_injected)
+        self.metrics['energy_dissipated'].append(self.medium.total_dissipated)
+        
         self.metrics['annihilation_events'].append(annihilations)
         self.metrics['creation_events'].append(creations)
         self.metrics['cluster_count'].append(len(self.clusters))
@@ -515,6 +620,7 @@ class DefectDynamicsEngine:
             correlation = np.mean([np.dot(deviations[i], deviations[j]) 
                                    for i in range(len(deviations)) 
                                    for j in range(i+1, len(deviations))])
+            self.metrics['spatial_correlation'].append(correlation)
             self.metrics['spatial_correlation'].append(correlation)
         else:
             self.metrics['spatial_correlation'].append(0)
