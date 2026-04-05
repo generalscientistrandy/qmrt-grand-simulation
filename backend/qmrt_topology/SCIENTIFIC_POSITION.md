@@ -1616,16 +1616,42 @@ At same α, tanh has better energy but breaks physics:
 > "The tanh saturation prevents unbounded c_eff collapse but requires higher coupling strength α to achieve the same effective backreaction. At matched physics (both lensing and attraction working), the original coupling at α=0.5 has slightly better energy behavior (E_ratio=120) than tanh at α=2.0 (E_ratio=167). The tanh law's value is its boundedness and saturation properties, not its energy behavior."
 
 ### Recommendation
-- **For bounded, physically motivated closure**: Use tanh at α≈2.0
-- **For best energy behavior with working physics**: Original at α=0.5 remains competitive
-- **Key property of tanh**: It prevents c_eff from going negative or becoming unstable
+- **Original at α=0.5**: Keep as primary operational baseline (best physics performance)
+- **Tanh at α=2.0**: Keep as bounded comparison / robustness control
+- Energy non-conservation is intrinsic to backreaction, not fixable by closure choice alone
+
+### Key Scientific Insight
+> "Bounded saturating closures improve formal behavior at fixed coupling but do not eliminate energetic growth once tuned to reproduce the same structural phenomena. This suggests that the source of non-conservation lies in the backreaction mechanism itself rather than in the specific closure choice."
+
+### What This Means for the Project
+
+**Strong sector** (robust across closure choices):
+- Metric emergence
+- Causal cones
+- Lensing analog
+- Attractive interaction
+- Regime structure
+
+**Open sector** (requires principled dynamical formulation):
+- True energetic consistency
+- Emergent time
+- First-principles backreaction law
+
+### The Real Next Step: Option C
+
+The closure-law exploration shows that the path forward is NOT "find a nicer c_eff(ρ)" but rather:
+1. Define what quantity SHOULD be conserved
+2. Derive a Hamiltonian or Lyapunov-like functional that generates the dynamics
+3. Decide: is the medium meant to be conservative, dissipative, or active/driven?
+
+This is Option C: a principled dynamical formulation where energy behavior is controlled by construction, not by tuning.
 
 ### Key Files
 | File | Purpose |
 |------|---------|
 | `bounded_laws.py` | Law comparison |
-| `bounded_laws.png` | Visualization |
-| `bounded_laws_results.json` | Quantitative data |
+| `tanh_revalidation.py` | Full revalidation |
+| `bounded_laws.png`, `tanh_revalidation.png` | Visualizations |
 
 ### The Test
 Send a weak probe pulse past a stationary energy concentration (lens) and measure deflection.
