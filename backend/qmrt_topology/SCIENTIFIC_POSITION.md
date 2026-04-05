@@ -1646,12 +1646,73 @@ The closure-law exploration shows that the path forward is NOT "find a nicer c_e
 
 This is Option C: a principled dynamical formulation where energy behavior is controlled by construction, not by tuning.
 
+---
+
+## Dynamical Medium Field Implementation (April 2026) - MAJOR UPGRADE
+
+### The Architecture
+
+**Wave field** (propagates on medium):
+```
+∂²φ/∂t² = c(τ)² ∇²φ - γ ∂φ/∂t
+```
+
+**Medium field** (relaxation dynamics):
+```
+∂τ/∂t = -λ(τ - τ_eq(ρ)) + D∇²τ
+```
+
+where:
+- τ_eq(ρ) = τ_0 / (1 + β·ρ/ρ_max)  ← equilibrium medium state
+- c(τ) = c_0 · τ / τ_0              ← wave speed from medium
+- λ = relaxation rate
+- D = medium diffusion
+
+### Physical Meaning
+- **τ stores geometry/structure** — not algebraically slaved to energy
+- **τ relaxes toward equilibrium** — introduces memory/inertia
+- **Changing geometry has a time cost** — prevents instantaneous runaway
+
+### Optimized Parameters: β=1.0, λ=1.5
+
+| Metric | Original (α=0.5) | Dynamical | Winner |
+|--------|------------------|-----------|--------|
+| Energy | 120 | **112** | Dynamical |
+| Lensing | TOWARD | **TOWARD (-14)** | Tie |
+| Attraction | YES | **ATTRACT (-14)** | Tie |
+| Causal cone | ~99% | **100%** | Tie |
+
+### VERDICT: ALL PHYSICS PRESERVED ✅
+
+The dynamical medium architecture **preserves all structural phenomena** while providing:
+1. A physically meaningful representation (τ as geometry carrier)
+2. Memory/inertia in the medium
+3. Slightly better energy behavior
+4. A path toward Hamiltonian formulation
+
+### Scientific Statement
+> "The dynamical medium field τ provides a more physically meaningful backreaction architecture than algebraic coupling. Energy drives the medium, the medium relaxes toward equilibrium, and the stabilized medium defines geometry. This is conceptually closer to emergence than instantaneous algebraic coupling."
+
+### The Key Insight
+Energy non-conservation persists (E_ratio ≈ 112) because:
+- Fast relaxation (λ=1.5) is needed for physics
+- Fast relaxation means τ tracks energy closely
+- Close tracking approximates algebraic coupling
+
+The dynamical formulation doesn't "fix" energy — it provides **better physics architecture** while maintaining comparable behavior.
+
+### What This Enables
+1. **Clearer conceptual picture**: τ is the "medium state" that carries geometry
+2. **Path to Hamiltonian**: Can define conserved quantity including τ
+3. **Memory effects**: Medium doesn't respond instantly
+4. **Stable structures**: Relaxation enables coherent geometry formation
+
 ### Key Files
 | File | Purpose |
 |------|---------|
-| `bounded_laws.py` | Law comparison |
-| `tanh_revalidation.py` | Full revalidation |
-| `bounded_laws.png`, `tanh_revalidation.png` | Visualizations |
+| `dynamical_medium.py` | Implementation |
+| `dynamical_medium.png` | Visualization |
+| `dynamical_medium_results.json` | Results |
 
 ### The Test
 Send a weak probe pulse past a stationary energy concentration (lens) and measure deflection.

@@ -1,0 +1,11 @@
+{
+  "verdict": "NEEDS TUNING: Physics broken",
+  "energy_ratio": 1.3844607849711406,
+  "lensing_toward": false,
+  "lensing_deflection": 16.0,
+  "attraction": false,
+  "delta_sep": 12.0,
+  "cone_confinement": 98.87055761531113,
+  "physics_preserved": false,
+  "energy_improved": true
+}
