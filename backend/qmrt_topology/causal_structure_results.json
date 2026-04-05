@@ -1,0 +1,13 @@
+{
+  "verdict": "CAUSAL STRUCTURE DEMONSTRATED",
+  "uniform_test": {
+    "expected_c": 2.0,
+    "measured_c": 2.271254561906874,
+    "pass": true
+  },
+  "causality_test": {
+    "avg_energy_inside_cone": 90.48227170787409,
+    "pass": true
+  },
+  "interpretation": "Disturbances propagate with energy concentrated within their local light cones defined by ds\u00b2 = -c_eff\u00b2(x,y)dt\u00b2 + dx\u00b2 + dy\u00b2. This demonstrates that the effective metric has Lorentzian causal structure."
+}
