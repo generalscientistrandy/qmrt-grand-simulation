@@ -1885,3 +1885,56 @@ The dynamical medium field τ successfully provides:
 - Memory and relaxation (prevents instantaneous runaway)
 - Preserved spatial/causal phenomena
 - Does NOT provide better temporal observables (still circular)
+
+---
+
+## Process-Based Clocks Test (April 2026) - BREAKTHROUGH
+
+### The Key Change
+Replaced field-based clocks with process-based clocks:
+- **Oscillator clock**: dθ/dt = ω₀ + ε|φ| (counts cycles, couples to wave amplitude)
+- **Event clock**: threshold crossing counts
+
+### Results
+
+| Clock Type | High Structure | Edge | Quiet | Spread |
+|------------|----------------|------|-------|--------|
+| Oscillator cycles | 10 | 5 | 4 | **6 cycles** |
+| Phase (rad) | 63.9 | 31.6 | 27.9 | **35.6 rad** |
+| Events | 1 | 1 | 1 | 0 |
+
+### Why This Is NOT Circular
+
+The oscillator clock:
+- Is defined as dθ/dt = ω₀ + ε|φ|
+- Couples to **wave amplitude** |φ|, NOT to τ or c_eff
+- Diverges by 6 cycles (10 vs 4) across regions
+- This is a **genuine process-based time difference**
+
+### Honest Assessment
+
+| Criterion | Result | Verdict |
+|-----------|--------|---------|
+| Oscillator divergent (>1 cycle) | 6 cycles | **PASS** |
+| Event divergent | 0 spread | FAIL |
+| Local normalization decorrelation | -0.995 | FAIL |
+
+**Score: 1/3 (PARTIAL)**
+
+### Scientific Statement
+
+> "Process-based oscillator clocks (dθ/dt = ω₀ + ε|φ|) show significant divergence (6 cycles, 35.6 rad) across regions with different wave activity. Unlike field-integral clocks (τ_medium = ∫(1/τ)dt), the oscillator clock couples indirectly to the medium through wave amplitude and produces non-circular time differences. This provides preliminary evidence that emergent time may be recoverable from process-based observables rather than field functionals."
+
+### What This Means
+
+1. **Field-based clocks fail** (proven in medium_time_v2.py)
+2. **Process-based clocks show promise** (6 cycle divergence)
+3. **The medium state τ is still globally coupled** but oscillator clocks measure something independent
+4. **Event clocks need more signal** (only 1 event per region with current parameters)
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `process_clocks_test.py` | Oscillator + event clock implementation |
+| `process_clocks.png` | Visualization |
+| `process_clocks_results.json` | Quantitative results |

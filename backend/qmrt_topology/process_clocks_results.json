@@ -1,0 +1,42 @@
+{
+  "oscillator": {
+    "high_structure": {
+      "final_phase": 63.88622854835865,
+      "final_cycles": 10
+    },
+    "edge": {
+      "final_phase": 31.575663152153307,
+      "final_cycles": 5
+    },
+    "quiet": {
+      "final_phase": 27.92648935754786,
+      "final_cycles": 4
+    }
+  },
+  "oscillator_divergent": true,
+  "events": {
+    "high_structure": {
+      "count": 1,
+      "mean_interval": null,
+      "std_interval": null
+    },
+    "edge": {
+      "count": 1,
+      "mean_interval": null,
+      "std_interval": null
+    },
+    "quiet": {
+      "count": 1,
+      "mean_interval": null,
+      "std_interval": null
+    }
+  },
+  "events_divergent": false,
+  "tau_correlation_hs_edge": -0.9454688497013068,
+  "tau_correlation_hs_quiet": -0.994746665842502,
+  "local_norm_success": false,
+  "phase_diff_growth": 35.56648385603623,
+  "verdict": "PARTIAL: Some clock independence observed",
+  "verdict_short": "PARTIAL",
+  "score": 1
+}
