@@ -1,0 +1,29 @@
+{
+  "verdict": "GRAVITATIONAL INTERACTION DEMONSTRATED",
+  "test_passed": true,
+  "correlation_alpha_separation": -0.9617985092461743,
+  "max_attraction_pixels": 95.0,
+  "results_by_alpha": {
+    "0.0": {
+      "initial_separation": 48.0,
+      "final_separation": 119.0,
+      "delta_separation": 71.0
+    },
+    "0.2": {
+      "initial_separation": 48.0,
+      "final_separation": 90.0,
+      "delta_separation": 42.0
+    },
+    "0.4": {
+      "initial_separation": 48.0,
+      "final_separation": 24.0,
+      "delta_separation": -24.0
+    },
+    "0.6": {
+      "initial_separation": 48.0,
+      "final_separation": 16.278820596099706,
+      "delta_separation": -31.721179403900294
+    }
+  },
+  "scientific_statement": "Two energy pulses interact through the backreaction mechanism, demonstrating gravitational attraction in the effective spacetime."
+}

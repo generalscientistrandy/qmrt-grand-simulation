@@ -1,0 +1,39 @@
+{
+  "verdict": "WEAK EMERGENT TIME TREND",
+  "test_passed": true,
+  "correlation": 0.7898628998262862,
+  "S_range": 0.0013120192194111878,
+  "relative_variation_pct": 175.42948189195116,
+  "results_by_disorder": {
+    "0.0": {
+      "mean_S": 0.0004879876773764527,
+      "std_S": 0.0
+    },
+    "0.2": {
+      "mean_S": 0.00043592339404293756,
+      "std_S": 7.859929012994585e-05
+    },
+    "0.4": {
+      "mean_S": 0.0004990118310615678,
+      "std_S": 0.0002034359300074343
+    },
+    "0.6": {
+      "mean_S": 0.0003727102604273182,
+      "std_S": 0.0002475662865607778
+    },
+    "0.8": {
+      "mean_S": 0.0010069756193241007,
+      "std_S": 0.0007753089274346418
+    },
+    "1.0": {
+      "mean_S": 0.001684729479838506,
+      "std_S": 0.001328857354396944
+    }
+  },
+  "clock_independence": {
+    "transport": "depends on c_eff",
+    "substrate": "depends on constant \u03c9_0 + weak \u03b7 coupling",
+    "decay": "depends on G = 1/|\u2207c_eff|"
+  },
+  "scientific_statement": "With genuinely independent clocks (transport from c_eff, substrate from constant \u03c9_0, decay from geometry stability G), correlation 0.790 between disorder and clock disagreement indicates emergent time behavior. S varied by 175.4% across regimes."
+}
