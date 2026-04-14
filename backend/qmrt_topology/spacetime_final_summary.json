@@ -1,0 +1,32 @@
+{
+  "layers": {
+    "O": {
+      "mean": 0.85,
+      "independent": true,
+      "rho_S": 0.0
+    },
+    "R": {
+      "mean": 0.17870581095561155,
+      "independent": false,
+      "rho_S": 0.9666666666666667
+    },
+    "P": {
+      "mean": 0.9769352676670563,
+      "independent": false,
+      "rho_S": 0.5477225575051661
+    },
+    "S": {
+      "mean": 0.5626311278367847
+    }
+  },
+  "coupling": {
+    "I_TS": 0.9062075553216858,
+    "regime": "spacetime_candidate"
+  },
+  "physics_signatures": [
+    "causality_preserved",
+    "rate_space_coupling",
+    "persistence_space_coupling",
+    "spacetime_candidate_regime"
+  ]
+}

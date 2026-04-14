@@ -1,0 +1,407 @@
+{
+  "results": [
+    {
+      "alpha": 0.3,
+      "lambda": 0.5,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.3,
+      "lambda": 1.0,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.3,
+      "lambda": 2.0,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.5,
+      "lambda": 0.5,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.5,
+      "lambda": 1.0,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.5,
+      "lambda": 2.0,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.7,
+      "lambda": 0.5,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.7,
+      "lambda": 1.0,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.7,
+      "lambda": 2.0,
+      "O": 0.85,
+      "causal_ordering": {
+        "order_consistency": 1.0,
+        "monotonicity": 1.0,
+        "n_arrivals": 0,
+        "injection_times": [
+          0,
+          12,
+          24,
+          36
+        ],
+        "arrival_times": [
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "bidirectional": {
+        "all_arrived": false,
+        "isotropy": 0.5,
+        "directions": {
+          "left_to_right": {
+            "arrived": false,
+            "time": 200
+          },
+          "right_to_left": {
+            "arrived": false,
+            "time": 200
+          },
+          "top_to_bottom": {
+            "arrived": false,
+            "time": 200
+          },
+          "diagonal": {
+            "arrived": false,
+            "time": 200
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "O_mean": 0.85,
+    "O_std": 0.0,
+    "O_range": 0.0,
+    "rho_O_alpha": 0,
+    "rho_O_lambda": 0
+  }
+}
