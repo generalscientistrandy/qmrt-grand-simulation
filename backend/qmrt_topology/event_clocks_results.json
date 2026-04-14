@@ -1,0 +1,70 @@
+{
+  "configs": [
+    {
+      "final_counts": {
+        "high_activity": 1,
+        "edge": 1,
+        "quiet": 1
+      },
+      "count_spread": 0,
+      "events_exist_locally": false,
+      "variance_t_sim": 88.8047045979252,
+      "variance_tau_event": 88.8047045979252,
+      "improvement_pct": 0.0,
+      "improves_collapse": false,
+      "config": "Independent (\u03ba=0)",
+      "kappa_event": 0.0
+    },
+    {
+      "final_counts": {
+        "high_activity": 1,
+        "edge": 35,
+        "quiet": 1
+      },
+      "count_spread": 34,
+      "events_exist_locally": true,
+      "variance_t_sim": 88.8047045979252,
+      "variance_tau_event": 88.8047045979252,
+      "improvement_pct": 0.0,
+      "improves_collapse": false,
+      "config": "Weak coupling (\u03ba=0.2)",
+      "kappa_event": 0.2
+    },
+    {
+      "final_counts": {
+        "high_activity": 1,
+        "edge": 15,
+        "quiet": 1
+      },
+      "count_spread": 14,
+      "events_exist_locally": true,
+      "variance_t_sim": 88.8047045979252,
+      "variance_tau_event": 88.8047045979252,
+      "improvement_pct": 0.0,
+      "improves_collapse": false,
+      "config": "Medium coupling (\u03ba=0.5)",
+      "kappa_event": 0.5
+    },
+    {
+      "final_counts": {
+        "high_activity": 1,
+        "edge": 9,
+        "quiet": 1
+      },
+      "count_spread": 8,
+      "events_exist_locally": true,
+      "variance_t_sim": 88.8047045979252,
+      "variance_tau_event": 88.8047045979252,
+      "improvement_pct": 0.0,
+      "improves_collapse": false,
+      "config": "Strong coupling (\u03ba=1.0)",
+      "kappa_event": 1.0
+    }
+  ],
+  "q1_events_exist": false,
+  "q2_improves_collapse": false,
+  "q3_coupling_helps": false,
+  "q3_coupling_hurts": false,
+  "verdict": "EVENT CLOCKS NOT DIFFERENTIATED",
+  "verdict_short": "NOT_DIFFERENTIATED"
+}
