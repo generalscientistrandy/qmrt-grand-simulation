@@ -1938,3 +1938,54 @@ The oscillator clock:
 | `process_clocks_test.py` | Oscillator + event clock implementation |
 | `process_clocks.png` | Visualization |
 | `process_clocks_results.json` | Quantitative results |
+
+---
+
+## Oscillator Clock Collapse Test (April 2026) - NEGATIVE RESULT
+
+### The Question
+Does τ_osc parameterize local dynamics BETTER than t_sim?
+
+### Test Design
+- Three probes: high_activity, transitional, quiet
+- Observable: φ envelope (local wave amplitude)
+- Collapse metric: variance of observable across regions when interpolated onto common time grid
+
+### Results
+
+| Metric | t_sim | τ_osc | Improvement |
+|--------|-------|-------|-------------|
+| φ envelope variance | 4.29 | 4.10 | 4.3% |
+| φ envelope RMSE | 3.46 | 3.33 | 3.8% |
+| Energy variance | 306.3 | 374.7 | **-22.3%** |
+
+### Verdict: FAIL
+
+τ_osc does NOT improve collapse. The oscillator clocks diverge (8.6 vs 6.4 cycles), but that divergence doesn't help align the physics across regions.
+
+### Interpretation
+
+This is an important negative result:
+
+1. **The oscillator is a local clock** — it diverges in different regions
+2. **But it is NOT a universal emergent time** — reparameterizing by τ_osc doesn't make observables collapse better
+3. **Energy actually gets WORSE** under τ_osc (-22.3%)
+
+### What This Means
+
+The oscillator clock measures local process time, but it doesn't provide a better global parameterization. This suggests:
+
+- Emergent time (if it exists) may require **synchronization mechanisms** not yet present
+- Or the system doesn't yet support universal temporal emergence
+- Or we need different observables to test collapse against
+
+### Scientific Statement
+
+> "Process-based oscillator clocks (dθ/dt = ω₀ + ε|φ|) diverge across regions with different activity (2.15 cycle spread), demonstrating local process time. However, reparameterizing observables by oscillator time does not improve collapse quality compared to simulation time. The oscillator is a valid local clock but not yet a universal emergent time variable."
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `collapse_test.py` | Collapse quality test |
+| `collapse_test.png` | Visualization |
+| `collapse_test_results.json` | Quantitative results |

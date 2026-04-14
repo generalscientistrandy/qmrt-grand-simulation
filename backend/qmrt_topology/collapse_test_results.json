@@ -1,0 +1,39 @@
+{
+  "phi_envelope": {
+    "t_sim": {
+      "variance": 4.290208371579915,
+      "rmse": 3.460389146376596,
+      "correlation": 0.17639098502961795
+    },
+    "tau_osc": {
+      "variance": 4.104705147297662,
+      "rmse": 3.3302593133892375,
+      "correlation": 0.1665671946399954
+    },
+    "variance_improvement_pct": 4.323874465191522,
+    "rmse_improvement_pct": 3.7605548822050396
+  },
+  "energy": {
+    "t_sim": {
+      "variance": 306.3456123227983,
+      "rmse": 28.950031055441013,
+      "correlation": 0.007859006595653232
+    },
+    "tau_osc": {
+      "variance": 374.7488011213692,
+      "rmse": 31.229361214051988,
+      "correlation": -0.07602725133315014
+    },
+    "variance_improvement_pct": -22.32876399956205
+  },
+  "final_tau_osc": {
+    "high_activity": 8.596611275661596,
+    "transitional": 7.4277502524203625,
+    "quiet": 6.4449622840408445
+  },
+  "tau_osc_spread": 2.1516489916207515,
+  "verdict": "\u03c4_osc DOES NOT IMPROVE COLLAPSE - NOT YET A UNIVERSAL TIME",
+  "verdict_short": "FAIL",
+  "phi_pass": false,
+  "energy_pass": false
+}
