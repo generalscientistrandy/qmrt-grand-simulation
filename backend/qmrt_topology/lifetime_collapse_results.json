@@ -1,0 +1,27 @@
+{
+  "mean_lifetimes": {
+    "high_structure": 9.13,
+    "transitional": 7.29,
+    "quiet": 6.98
+  },
+  "phi_collapse_t_sim": {
+    "variance": 42.00417994622158,
+    "rmse": 9.810887567314326
+  },
+  "phi_collapse_tau_decay": {
+    "variance": 50.180831295991766,
+    "rmse": 10.515496958063514
+  },
+  "phi_improvement_pct": -19.46628016601881,
+  "energy_collapse_t_sim": {
+    "variance": 24827.290044532678,
+    "rmse": 228.6093800525742
+  },
+  "energy_collapse_tau_decay": {
+    "variance": 26717.88643057626,
+    "rmse": 233.53627138884534
+  },
+  "energy_improvement_pct": -7.614992947890904,
+  "verdict": "LIFETIME REPARAMETERIZATION DOES NOT HELP",
+  "verdict_short": "NO_IMPROVEMENT"
+}
