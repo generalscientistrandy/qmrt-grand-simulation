@@ -1,0 +1,95 @@
+{
+  "scenario_1_expected_physics": {
+    "n_runs": 50,
+    "temporal": {
+      "O_mean": 0.6997054714533099,
+      "R_mean": 0.7041504668975537,
+      "P_mean": 0.7139901076661573,
+      "S_time_mean": 0.6589323408460284,
+      "S_time_std": 0.058896936433907345
+    },
+    "spatial": {
+      "S_space_mean": 0.6783695617569044,
+      "S_space_std": 0.11439191141481206
+    },
+    "coupling": {
+      "rho_OS": 0.4896038415366146,
+      "rho_RS": 0.9315726290516206,
+      "rho_PS": 0.6887394957983193,
+      "I_TS": 0.8473618247298919,
+      "coupling_balance": 0.8192732730393029,
+      "regime": "spacetime_candidate"
+    },
+    "rho_TS_direct": 0.7899639855942377,
+    "interpretation": {
+      "ordering_behavior": "WEAKLY COUPLED",
+      "rate_behavior": "STRONGLY COUPLED (time dilation signature)",
+      "persistence_behavior": "COUPLED (geometry affects stability)",
+      "overall": "SPACETIME REGIME: T and S are mutually predictive",
+      "physics_signature": [
+        "time_dilation",
+        "geometry_stability_link"
+      ]
+    }
+  },
+  "scenario_2_time_only": {
+    "n_runs": 50,
+    "temporal": {
+      "O_mean": 0.6894058078818546,
+      "R_mean": 0.7677371592230889,
+      "P_mean": 0.8485339038281707,
+      "S_time_mean": 0.7003850838024603,
+      "S_time_std": 0.08499916672967867
+    },
+    "spatial": {
+      "S_space_mean": 0.7068886096435016,
+      "S_space_std": 0.11300491554884272
+    },
+    "coupling": {
+      "rho_OS": 0.5024270687219097,
+      "rho_RS": 0.6397872698426891,
+      "rho_PS": 0.49822324665607026,
+      "I_TS": 0.6268306249288024,
+      "coupling_balance": 0.9342345331815112,
+      "regime": "weak_coupling"
+    },
+    "rho_TS_direct": 0.5707563025210084,
+    "interpretation": {
+      "ordering_behavior": "WEAKLY COUPLED",
+      "rate_behavior": "MODERATELY COUPLED",
+      "persistence_behavior": "PARTIALLY COUPLED",
+      "overall": "WEAK COUPLING: Time exists, partial space correlation",
+      "physics_signature": []
+    }
+  },
+  "scenario_3_qmrt_like": {
+    "n_runs": 50,
+    "temporal": {
+      "O_mean": 0.7139114225633549,
+      "R_mean": 0.6878656792944726,
+      "P_mean": 0.7497456345670321,
+      "S_time_mean": 0.6818601460227623,
+      "S_time_std": 0.05009710252233156
+    },
+    "spatial": {
+      "S_space_mean": 0.8476844903731633,
+      "S_space_std": 0.05176547026793222
+    },
+    "coupling": {
+      "rho_OS": 0.423577430972389,
+      "rho_RS": 0.49229291716686674,
+      "rho_PS": 0.48648259303721486,
+      "I_TS": 0.47680672268907565,
+      "coupling_balance": 0.9688861636283843,
+      "regime": "weak_coupling"
+    },
+    "rho_TS_direct": 0.5363745498199279,
+    "interpretation": {
+      "ordering_behavior": "WEAKLY COUPLED",
+      "rate_behavior": "WEAKLY COUPLED",
+      "persistence_behavior": "PARTIALLY COUPLED",
+      "overall": "WEAK COUPLING: Time exists, partial space correlation",
+      "physics_signature": []
+    }
+  }
+}

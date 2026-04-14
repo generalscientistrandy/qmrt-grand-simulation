@@ -1,0 +1,734 @@
+{
+  "results": [
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.4493690496812437,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.0022230756309796003,
+        "tau_variation": 0.02846654852553659,
+        "c_eff_mean": 1.979820377526201
+      },
+      "temporal": {
+        "O": 0.4097085192771238,
+        "R": 0.4,
+        "P": 0.6824280954211213,
+        "S_time": 0.4322672148327924
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          88,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          35,
+          300,
+          36
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.5,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.45424186069533795,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.0037732017407239374,
+        "tau_variation": 0.028614836982110762,
+        "c_eff_mean": 1.9797818738993944
+      },
+      "temporal": {
+        "O": 0.4097085192771238,
+        "R": 0.4,
+        "P": 0.777112756289972,
+        "S_time": 0.4360959925610069
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          88,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          35,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.46579900530382345,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.002935939963697458,
+        "tau_variation": 0.03799412360848739,
+        "c_eff_mean": 1.9716360392435703
+      },
+      "temporal": {
+        "O": 0.41022996177127213,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43417606291263816
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          89,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 1.0,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.4665683447595539,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.0031935401073792257,
+        "tau_variation": 0.037991816291610796,
+        "c_eff_mean": 1.9716537646111942
+      },
+      "temporal": {
+        "O": 0.41022996177127213,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43417606291263816
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          89,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.4734503828177581,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.003247358832587753,
+        "tau_variation": 0.04247220421332985,
+        "c_eff_mean": 1.9672865500169565
+      },
+      "temporal": {
+        "O": 0.41022996177127213,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43417606291263816
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          89,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.47353361286373935,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.003288565385095595,
+        "tau_variation": 0.042445277805635034,
+        "c_eff_mean": 1.9673194650003125
+      },
+      "temporal": {
+        "O": 0.41022996177127213,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43417606291263816
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          89,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.47441135824708325,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.0033379563343837884,
+        "tau_variation": 0.04293165949595456,
+        "c_eff_mean": 1.969321053103572
+      },
+      "temporal": {
+        "O": 0.41074450676784824,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43437073193540815
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          90,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.5,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.47911996672066426,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.004853901996422942,
+        "tau_variation": 0.04303884048759695,
+        "c_eff_mean": 1.9693098191098715
+      },
+      "temporal": {
+        "O": 0.41074450676784824,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43437073193540815
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          90,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.4990632231875552,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.00440219832739688,
+        "tau_variation": 0.057237752136909695,
+        "c_eff_mean": 1.9572001797837804
+      },
+      "temporal": {
+        "O": 0.41125217536679387,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43456274428334435
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          91,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.5000390595189551,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.004664311609510771,
+        "tau_variation": 0.05736408312694851,
+        "c_eff_mean": 1.957097939651168
+      },
+      "temporal": {
+        "O": 0.41125217536679387,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43456274428334435
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          91,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.5097656069748089,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.004837549606997234,
+        "tau_variation": 0.06350197210254482,
+        "c_eff_mean": 1.951279199397433
+      },
+      "temporal": {
+        "O": 0.41125217536679387,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43456274428334435
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          91,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.5096057640805152,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.004868414756736057,
+        "tau_variation": 0.063333679873538,
+        "c_eff_mean": 1.9514126029101715
+      },
+      "temporal": {
+        "O": 0.41125217536679387,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43456274428334435
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          91,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.4955470225943364,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.004271172231800783,
+        "tau_variation": 0.05515567059928935,
+        "c_eff_mean": 1.9602621576077819
+      },
+      "temporal": {
+        "O": 0.41125217536679387,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43456274428334435
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          91,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.5,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.5000416701838808,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.005778510972013798,
+        "tau_variation": 0.05513742484522627,
+        "c_eff_mean": 1.9605277736375613
+      },
+      "temporal": {
+        "O": 0.41125217536679387,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.43456274428334435
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          91,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.5268439060932427,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.005617192425326626,
+        "tau_variation": 0.07332821921150856,
+        "c_eff_mean": 1.9450577029152145
+      },
+      "temporal": {
+        "O": 0.4117529897951985,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.4347521103915211
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          92,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 1.0,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.5278403216424272,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.005871423179723758,
+        "tau_variation": 0.07348403473550393,
+        "c_eff_mean": 1.944903933203693
+      },
+      "temporal": {
+        "O": 0.4117529897951985,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.4347521103915211
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          92,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "spatial": {
+        "S_space": 0.5390872819624255,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.0061164529815436125,
+        "tau_variation": 0.08049194867852971,
+        "c_eff_mean": 1.938459777895805
+      },
+      "temporal": {
+        "O": 0.4117529897951985,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.4347521103915211
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          92,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "spatial": {
+        "S_space": 0.5399292009966044,
+        "causal_containment": 1.0,
+        "gradient_strength": 0.0061871959143430825,
+        "tau_variation": 0.08091174216905003,
+        "c_eff_mean": 1.9380604984126786
+      },
+      "temporal": {
+        "O": 0.4117529897951985,
+        "R": 0.4,
+        "P": 1.0,
+        "S_time": 0.4347521103915211
+      },
+      "raw": {
+        "arrivals": [
+          200,
+          92,
+          0,
+          0
+        ],
+        "cycles": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "lifetimes": [
+          300,
+          300,
+          300
+        ]
+      }
+    }
+  ],
+  "coupling": {
+    "rho_OS": 0.985071250072666,
+    "rho_RS": 0.5,
+    "rho_PS": 0.773059340636375,
+    "I_TS": 0.6110388469849012,
+    "coupling_balance": 0.8014484195483442,
+    "regime": "coupling_forming"
+  },
+  "analysis": {
+    "n_runs": 18,
+    "temporal": {
+      "O_mean": 0.41090838391981055,
+      "R_mean": 0.4000000000000001,
+      "P_mean": 0.9699744917617275,
+      "S_time_mean": 0.43445521278785104,
+      "S_time_std": 0.0006760767888224635
+    },
+    "spatial": {
+      "S_space_mean": 0.49356981324021976,
+      "S_space_std": 0.02740916506200842
+    },
+    "coupling": {
+      "rho_OS": 0.985071250072666,
+      "rho_RS": 0.5,
+      "rho_PS": 0.773059340636375,
+      "I_TS": 0.6110388469849012,
+      "coupling_balance": 0.8014484195483442,
+      "regime": "coupling_forming"
+    },
+    "rho_TS_direct": 0.8407459923004006,
+    "interpretation": {
+      "ordering_behavior": "STRONGLY COUPLED (unexpected)",
+      "rate_behavior": "WEAKLY COUPLED",
+      "persistence_behavior": "COUPLED (geometry affects stability)",
+      "overall": "APPROACHING SPACETIME: Coupling forming but not complete",
+      "physics_signature": [
+        "geometry_stability_link"
+      ]
+    }
+  },
+  "summary": {
+    "O_mean": 0.41090838391981055,
+    "R_mean": 0.4000000000000001,
+    "P_mean": 0.9699744917617275,
+    "S_mean": 0.49356981324021976
+  }
+}
