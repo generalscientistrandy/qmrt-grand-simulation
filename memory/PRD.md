@@ -8,13 +8,50 @@
 
 ---
 
-## LATEST: TEMPORAL WEB FRAMEWORK (April 2026)
+## LATEST: LAYERED TIME STRUCTURE (April 2026)
 
-### Paradigm Shift
-Time is no longer a single scalar variable but a **Temporal Web** composed of multiple process-based clocks:
+### Paradigm Shift — Time is NOT a Scalar
+Time is not a single number but a **three-layer structure**:
+
+| Layer | Clock Type | What It Measures | Role |
+|-------|------------|------------------|------|
+| **ORDERING** | Event | before/after, causality | skeleton/timeline |
+| **RATE** | Oscillator | how fast things evolve | flow |
+| **PERSISTENCE** | Decay | how long things last | duration/stability |
+
+**Key Insight**: Event clocks "failed" as scalar time but SUCCEED as ordering structure. They don't produce a good number—they produce a valid **timeline**.
+
+### Layered Temporal Web v2 Results
+
+| Layer | Score | Status |
+|-------|-------|--------|
+| O (Ordering) | 0.72 | ✅ PRESENT |
+| R (Rate) | 0.80 | ✅ PRESENT |
+| P (Persistence) | 0.89 | ✅ STRONG |
+| Layer Balance | 0.93 | ✅ BALANCED |
+| Cross-Layer Consistency | 0.83 | ✅ HIGH |
+| **S_time** | **0.67** | ✅ **TIME CAN EMERGE** |
+
+### The Real Structure of Time
+```
+TIME = ORDERING + RATE + PERSISTENCE
+       (event)   (osc)   (decay)
+         ↓         ↓        ↓
+      skeleton   flow    duration
+```
+
+### Scientific Statement
+> "Time is not a scalar quantity but a structured system combining ordering, rate, and persistence. A timeline (event structure) is NECESSARY for time, but without rate and persistence, it cannot become a measurable temporal dimension. All three layers are present and mutually consistent in the QMRT dynamical medium."
+
+---
+
+## PREVIOUS: TEMPORAL WEB FRAMEWORK v1 (April 2026)
+
+### Original Paradigm (Superseded)
+Time as a **Temporal Web** composed of multiple process-based clocks:
 - **Oscillator clock**: Phase cycles driven by wave amplitude
 - **Decay clock**: Metastable excitation lifetimes
-- **Event clock**: Threshold crossing counts (transport diagnostic)
+- **Event clock**: Threshold crossing counts (was labeled "transport diagnostic")
 
 ### Key Result: 2-Clock vs 3-Clock Comparison
 

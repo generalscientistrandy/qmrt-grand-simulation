@@ -1,0 +1,29 @@
+{
+  "ordering": {
+    "causal_consistency": 0.75,
+    "sequence_validity": 0.5,
+    "timeline_coherence": 0.908248290463863
+  },
+  "rate": {
+    "phase_coherence": 0.5072677505214521,
+    "frequency_stability": 0.977991595857694,
+    "cycle_regularity": 0.946604902726832
+  },
+  "persistence": {
+    "lifetime_consistency": 0.8855872317791844,
+    "decay_predictability": 0.8907639765619628,
+    "stability_uniformity": 0.8857719137307036
+  },
+  "layer_scores": {
+    "O": 0.722474487139159,
+    "R": 0.8038222420507507,
+    "P": 0.8871956597994737
+  },
+  "cross_layer_consistency": {
+    "OR": 0.75,
+    "OP": 0.75,
+    "RP": 1.0
+  },
+  "S_time": 0.6696622533927911,
+  "layer_balance": 0.9327511679251779
+}
