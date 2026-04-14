@@ -1,0 +1,78 @@
+{
+  "configs": [
+    {
+      "kuramoto": 0.5847848708506854,
+      "freq_variance": 0.0034482413581369557,
+      "variance_t_sim": 2.443746882853732,
+      "variance_tau_osc": 2.1691555711050454,
+      "improvement_pct": 11.236487447833682,
+      "config": "No coupling",
+      "kappa_phase": 0.0,
+      "kappa_freq": 0.0
+    },
+    {
+      "kuramoto": 0.9992502619927148,
+      "freq_variance": 0.0008782399997185233,
+      "variance_t_sim": 2.443746882853732,
+      "variance_tau_osc": 2.192481075431634,
+      "improvement_pct": 10.28198988958616,
+      "config": "Phase only (\u03ba_p=0.5)",
+      "kappa_phase": 0.5,
+      "kappa_freq": 0.0
+    },
+    {
+      "kuramoto": 0.9997146214119388,
+      "freq_variance": 0.00026146414874823426,
+      "variance_t_sim": 2.443746882853732,
+      "variance_tau_osc": 2.221667553490145,
+      "improvement_pct": 9.087656783187366,
+      "config": "Phase only (\u03ba_p=0.8)",
+      "kappa_phase": 0.8,
+      "kappa_freq": 0.0
+    },
+    {
+      "kuramoto": 0.22928773142872935,
+      "freq_variance": 0.0015253305137327019,
+      "variance_t_sim": 2.443746882853732,
+      "variance_tau_osc": 2.2345323769249985,
+      "improvement_pct": 8.561218324068783,
+      "config": "Freq only (\u03ba_f=0.5)",
+      "kappa_phase": 0.0,
+      "kappa_freq": 0.5
+    },
+    {
+      "kuramoto": 0.2526441265042466,
+      "freq_variance": 0.0010575926582927656,
+      "variance_t_sim": 2.443746882853732,
+      "variance_tau_osc": 2.250543083387165,
+      "improvement_pct": 7.906047914461147,
+      "config": "Freq only (\u03ba_f=0.8)",
+      "kappa_phase": 0.0,
+      "kappa_freq": 0.8
+    },
+    {
+      "kuramoto": 0.9992735244490404,
+      "freq_variance": 0.0009477323002403536,
+      "variance_t_sim": 2.443746882853732,
+      "variance_tau_osc": 2.207643244849255,
+      "improvement_pct": 9.661542267780296,
+      "config": "Phase+Freq (0.5,0.5)",
+      "kappa_phase": 0.5,
+      "kappa_freq": 0.5
+    },
+    {
+      "kuramoto": 0.9997088025918371,
+      "freq_variance": 0.0003110001362627209,
+      "variance_t_sim": 2.443746882853732,
+      "variance_tau_osc": 2.232298158227455,
+      "improvement_pct": 8.652644269743428,
+      "config": "Phase+Freq (0.8,0.8)",
+      "kappa_phase": 0.8,
+      "kappa_freq": 0.8
+    }
+  ],
+  "phase_only_best": 11.236487447833682,
+  "freq_best": 9.661542267780296,
+  "verdict": "FREQUENCY COUPLING NOT SUFFICIENT",
+  "verdict_short": "NOT_SUFFICIENT"
+}

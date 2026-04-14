@@ -1,0 +1,114 @@
+{
+  "test_records": [
+    {
+      "params": {
+        "alpha": 0.5,
+        "kappa": 0.1
+      },
+      "branch_scores": {
+        "space": 0.2,
+        "clock": 0.1,
+        "interact": 0.15,
+        "coherence": 0.1
+      },
+      "fusion": {
+        "mean": 0.1375,
+        "std": 0.041457809879442496,
+        "score": 0.13179955114157668,
+        "min_branch": 0.1,
+        "regime": "pre_emergence",
+        "collapse_improvement": 2.0
+      },
+      "regime": "pre_emergence"
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "kappa": 0.5
+      },
+      "branch_scores": {
+        "space": 0.8,
+        "clock": 0.2,
+        "interact": 0.7,
+        "coherence": 0.5
+      },
+      "fusion": {
+        "mean": 0.55,
+        "std": 0.229128784747792,
+        "score": 0.42397916838871447,
+        "min_branch": 0.2,
+        "regime": "partial_emergence",
+        "collapse_improvement": 5.0
+      },
+      "regime": "partial_emergence"
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "kappa": 0.8
+      },
+      "branch_scores": {
+        "space": 0.7,
+        "clock": 0.65,
+        "interact": 0.6,
+        "coherence": 0.7
+      },
+      "fusion": {
+        "mean": 0.6625000000000001,
+        "std": 0.04145780987944248,
+        "score": 0.6350342009548694,
+        "min_branch": 0.6,
+        "regime": "spacetime_candidate",
+        "collapse_improvement": 8.0
+      },
+      "regime": "spacetime_candidate"
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "kappa": 0.8
+      },
+      "branch_scores": {
+        "space": 0.85,
+        "clock": 0.8,
+        "interact": 0.75,
+        "coherence": 0.82
+      },
+      "fusion": {
+        "mean": 0.8049999999999999,
+        "std": 0.03640054944640258,
+        "score": 0.7756975576956459,
+        "min_branch": 0.75,
+        "regime": "spacetime_candidate",
+        "collapse_improvement": 15.0
+      },
+      "regime": "spacetime_candidate"
+    }
+  ],
+  "correlation_matrix": [
+    [
+      0.9999999999999998,
+      0.6552850411356802,
+      0.9998178340453051,
+      0.9047876452242156
+    ],
+    [
+      0.6552850411356801,
+      1.0,
+      0.653258560408317,
+      0.9116566595230933
+    ],
+    [
+      0.9998178340453052,
+      0.653258560408317,
+      1.0,
+      0.9024731748508102
+    ],
+    [
+      0.9047876452242156,
+      0.9116566595230932,
+      0.9024731748508104,
+      1.0
+    ]
+  ]
+}
