@@ -1,0 +1,40 @@
+{
+  "graph_metrics": {
+    "regimes": [
+      "weak",
+      "medium",
+      "strong"
+    ],
+    "n_events": [
+      24,
+      21,
+      17
+    ],
+    "edge_density": [
+      0.03985507246375368,
+      0.023809523809512474,
+      0.014705882352930365
+    ],
+    "O_cons": [
+      0.04044117647057337,
+      0.024271844660182392,
+      0.015037593984951102
+    ],
+    "O_dyn": [
+      0.27062946042386765,
+      0.2622832029408932,
+      0.2575753293006896
+    ]
+  },
+  "correlations": {
+    "rho_O_cons_S": -1.0,
+    "rho_edge_density_S": -1.0,
+    "rho_R_S": 0.9666666666666667,
+    "rho_P_S": 0.5477225575051661
+  },
+  "interpretation": {
+    "O_behavior": "constrained by geometry (inverse correlation)",
+    "R_behavior": "strongly coupled (positive)",
+    "P_behavior": "moderately coupled (positive)"
+  }
+}

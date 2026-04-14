@@ -1,0 +1,77 @@
+{
+  "regimes": {
+    "weak": {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 0.3
+      },
+      "n_events": 24,
+      "graph": {
+        "n_events": 24,
+        "edge_density": 0.03985507246375368,
+        "reachability_fraction": 0.04044117647057337,
+        "longest_chain": 2,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 13
+      },
+      "ordering": {
+        "O_cons": 0.04044117647057337,
+        "O_acyc": 1.0,
+        "O_diff": 0.03826664566266262,
+        "O_dyn": 0.27062946042386765,
+        "delta_O": 0.0
+      }
+    },
+    "medium": {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0
+      },
+      "n_events": 21,
+      "graph": {
+        "n_events": 21,
+        "edge_density": 0.023809523809512474,
+        "reachability_fraction": 0.024271844660182392,
+        "longest_chain": 2,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 16
+      },
+      "ordering": {
+        "O_cons": 0.024271844660182392,
+        "O_acyc": 1.0,
+        "O_diff": 0.02324263038547673,
+        "O_dyn": 0.2622832029408932,
+        "delta_O": 0.027777777777772954
+      }
+    },
+    "strong": {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 2.5
+      },
+      "n_events": 17,
+      "graph": {
+        "n_events": 17,
+        "edge_density": 0.014705882352930365,
+        "reachability_fraction": 0.015037593984951102,
+        "longest_chain": 2,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 15
+      },
+      "ordering": {
+        "O_cons": 0.015037593984951102,
+        "O_acyc": 1.0,
+        "O_diff": 0.014489619377152136,
+        "O_dyn": 0.2575753293006896,
+        "delta_O": 0.019097222222218907
+      }
+    }
+  },
+  "distances": {
+    "weak_vs_medium": 0.027777777777772954,
+    "weak_vs_strong": 0.019097222222218907,
+    "medium_vs_strong": 0.011337868480723053
+  },
+  "max_distance": 0.027777777777772954,
+  "O_dyn_range": 0.013054131123178048
+}
