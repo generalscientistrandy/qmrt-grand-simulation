@@ -1989,3 +1989,71 @@ The oscillator clock measures local process time, but it doesn't provide a bette
 | `collapse_test.py` | Collapse quality test |
 | `collapse_test.png` | Visualization |
 | `collapse_test_results.json` | Quantitative results |
+
+---
+
+## Synchronization Phase Diagram (April 2026) - MAJOR FINDING
+
+### The Question
+Under what conditions do local process clocks become mutually consistent enough to support a spacetime-like regime?
+
+### Test Design
+- Added Kuramoto-style coupling: dθᵢ/dt = ω₀ + ε|φ| + κ Σⱼ sin(θⱼ - θᵢ)
+- Swept κ (coupling: 0 → 0.8) and σ (disorder: 0 → 2.0)
+- 42 parameter points total
+
+### Results
+
+| Regime | Count | Percentage |
+|--------|-------|------------|
+| ratio_locked | 36 | 85.7% |
+| partial | 6 | 14.3% |
+| **spacetime_candidate** | **0** | **0%** |
+
+### Critical Finding: SYNCHRONIZATION IS NOT SUFFICIENT
+
+At high coupling (κ = 0.8):
+- Kuramoto order K → 1.0 (perfect phase-locking)
+- Collapse improvement: only 6-7% (need >10%)
+
+**Clocks can synchronize perfectly but observables still don't collapse better under clock time.**
+
+### What This Means
+
+| Property | Achieved? | Evidence |
+|----------|-----------|----------|
+| Phase-locking | YES | K = 1.0 at high κ |
+| Rate synchronization | YES | Low S at high κ |
+| Observable collapse | **NO** | Improvement < 10% everywhere |
+
+### Interpretation
+
+This is a deep result about the structure of emergent time:
+
+1. **Synchronization ≠ Spacetime**: Clocks agreeing on phase doesn't automatically mean observables parameterize better
+2. **The missing ingredient**: Something beyond phase-locking is needed for spacetime emergence
+3. **Possible requirements**:
+   - Frequency-locking (not just phase-locking)
+   - Deeper coupling to medium geometry
+   - Coherent observable structure
+
+### Scientific Statement
+
+> "Kuramoto-coupled oscillator clocks achieve perfect phase-locking (K → 1.0) at high coupling strength, yet this synchronization does NOT improve the collapse of independent observables when reparameterized by oscillator time. This demonstrates that clock synchronization is necessary but not sufficient for spacetime-like emergence. The system achieves Layer 1 (local clocks) and partial Layer 1.5 (synchronized clocks) but does not reach Layer 2 (spacetime-like unified parameterization)."
+
+### Updated Layer Model
+
+| Layer | Description | Status |
+|-------|-------------|--------|
+| 0 | Substrate evolution | Present |
+| 1 | Spatial structure | **Demonstrated** |
+| 1 | Local clocks | **Demonstrated** |
+| 1.5 | Synchronized clocks | **Achieved** (K → 1.0) |
+| 2 | Spacetime (collapse) | **NOT reached** |
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `sync_phase_diagram.py` | Phase diagram implementation |
+| `sync_phase_diagram.png` | Heat maps and regime classification |
+| `sync_phase_diagram_results.json` | Full results |
