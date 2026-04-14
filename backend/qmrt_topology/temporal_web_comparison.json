@@ -1,0 +1,83 @@
+{
+  "three_clock": {
+    "clocks": [
+      "osc",
+      "decay",
+      "event"
+    ],
+    "usefulness": {
+      "osc": 0.46674000000000004,
+      "decay": 0.5453,
+      "event": 0.27440000000000003
+    },
+    "M_T": [
+      [
+        1.0,
+        0.75,
+        0.5
+      ],
+      [
+        0.75,
+        1.0,
+        0.5
+      ],
+      [
+        0.5,
+        0.5,
+        1.0
+      ]
+    ],
+    "mu_U": 0.4288133333333333,
+    "sigma_U": 0.11379960906005882,
+    "mu_M": 0.5833333333333334,
+    "S_time_web": 0.22167515045681796,
+    "interaction": {
+      "J_TS": 0.43407819328813935,
+      "A_TS": 0.5,
+      "I_TS": 0.21703909664406967
+    },
+    "regime": "space_dominant_partial_time"
+  },
+  "two_clock": {
+    "clocks": [
+      "osc",
+      "decay"
+    ],
+    "usefulness": {
+      "osc": 0.46674000000000004,
+      "decay": 0.5453
+    },
+    "M_T": [
+      [
+        1.0,
+        0.75
+      ],
+      [
+        0.75,
+        1.0
+      ]
+    ],
+    "mu_U": 0.50602,
+    "sigma_U": 0.03927999999999998,
+    "mu_M": 0.75,
+    "S_time_web": 0.36460765080000007,
+    "interaction": {
+      "J_TS": 0.5567014488754274,
+      "A_TS": 0.5,
+      "I_TS": 0.2783507244377137
+    },
+    "regime": "both_branches_present"
+  },
+  "comparison": {
+    "S_time_web_improvement": 0.1429325003431821,
+    "S_time_web_improvement_pct": 64.47835945916057,
+    "I_TS_improvement": 0.06131162779364402,
+    "I_TS_improvement_pct": 28.249116745169278,
+    "two_clock_meets_threshold": true
+  },
+  "S_space": 0.85,
+  "thresholds": {
+    "S_time_web": 0.3,
+    "I_TS": 0.5
+  }
+}

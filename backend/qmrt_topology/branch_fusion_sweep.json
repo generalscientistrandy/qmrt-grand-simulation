@@ -1,0 +1,5439 @@
+{
+  "parameters": {
+    "alphas": [
+      0.2,
+      0.4,
+      0.5,
+      0.6,
+      0.8
+    ],
+    "lambdas": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5
+    ],
+    "disorders": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ]
+  },
+  "analysis": {
+    "total_runs": 125,
+    "two_clock": {
+      "meets_S_threshold": 125,
+      "meets_I_threshold": 0,
+      "spacetime_candidates": 0,
+      "best_S_time_web": 0.39556908720000006,
+      "best_I_TS": 0.2799426173574649,
+      "best_params_S": {
+        "alpha": 0.8,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "best_params_I": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.0
+      }
+    },
+    "three_clock": {
+      "meets_S_threshold": 0,
+      "meets_I_threshold": 0,
+      "spacetime_candidates": 0,
+      "best_S_time_web": 0.2340139120208859,
+      "best_I_TS": 0.21758789642666876,
+      "best_params_S": {
+        "alpha": 0.8,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "best_params_I": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.0
+      }
+    }
+  },
+  "results": [
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4764600000000001,
+          "decay": 0.551
+        },
+        "mu_U": 0.51373,
+        "sigma_U": 0.03726999999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.37093746217500007,
+        "I_TS": 0.21385699642067332,
+        "J_TS": 0.42771399284134665,
+        "regime": "time_web_forming",
+        "fusion_score": 0.28153745966838944,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4764600000000001,
+          "decay": 0.551,
+          "event": 0.27734000000000003
+        },
+        "mu_U": 0.4349333333333334,
+        "sigma_U": 0.11551564665543029,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2244035080474434,
+        "I_TS": 0.16633664429663203,
+        "J_TS": 0.33267328859326406,
+        "regime": "pre_emergence",
+        "fusion_score": 0.24910156363735983,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4931808682779547,
+        "S_coherence": 0.314881512051013,
+        "S_interact": 0.12151531370959961
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 0.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.45738160000000005,
+          "decay": 0.5392127999999999
+        },
+        "mu_U": 0.4982972,
+        "sigma_U": 0.04091559999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.35843180331276,
+        "I_TS": 0.2038169555616306,
+        "J_TS": 0.4076339111232612,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2679334984607546,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.45738160000000005,
+          "decay": 0.5392127999999999,
+          "event": 0.26752600000000004
+        },
+        "mu_U": 0.42137346666666664,
+        "sigma_U": 0.1138006109332556,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2178288634252128,
+        "I_TS": 0.1588893375277615,
+        "J_TS": 0.317778675055523,
+        "regime": "pre_emergence",
+        "fusion_score": 0.23715308435571317,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4635900161812774,
+        "S_coherence": 0.2896909910869319,
+        "S_interact": 0.11543954802411963
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 0.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.43868720000000005,
+          "decay": 0.5275312
+        },
+        "mu_U": 0.4831092,
+        "sigma_U": 0.04442199999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.3462363923382,
+        "I_TS": 0.1938209901239069,
+        "J_TS": 0.3876419802478138,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2540316592814696,
+        "fusion_regime": "pre_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.43868720000000005,
+          "decay": 0.5275312,
+          "event": 0.257856
+        },
+        "mu_U": 0.4080248,
+        "sigma_U": 0.11220907703651549,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21130708304066154,
+        "I_TS": 0.1514158986077769,
+        "J_TS": 0.3028317972155538,
+        "regime": "pre_emergence",
+        "fusion_score": 0.22484777910360584,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.43399916408460015,
+        "S_coherence": 0.26450047012285094,
+        "S_interact": 0.10936378233863965
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 0.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.42037680000000005,
+          "decay": 0.5159552
+        },
+        "mu_U": 0.46816599999999997,
+        "sigma_U": 0.04778919999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.3343445410446,
+        "I_TS": 0.1838557256833626,
+        "J_TS": 0.3677114513667252,
+        "regime": "time_web_forming",
+        "fusion_score": 0.23983020471196026,
+        "fusion_regime": "pre_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.42037680000000005,
+          "decay": 0.5159552,
+          "event": 0.24832999999999997
+        },
+        "mu_U": 0.3948873333333333,
+        "sigma_U": 0.11073420610324325,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2048432154862566,
+        "I_TS": 0.14390995361420922,
+        "J_TS": 0.28781990722841844,
+        "regime": "pre_emergence",
+        "fusion_score": 0.21218430157314375,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4044083119879229,
+        "S_coherence": 0.23930994915876988,
+        "S_interact": 0.10328801665315968
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 0.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.40245040000000004,
+          "decay": 0.5044848
+        },
+        "mu_U": 0.45346759999999997,
+        "sigma_U": 0.05101719999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.32274971456796,
+        "I_TS": 0.17390531058235922,
+        "J_TS": 0.34781062116471845,
+        "regime": "time_web_forming",
+        "fusion_score": 0.22532886690426523,
+        "fusion_regime": "pre_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.40245040000000004,
+          "decay": 0.5044848,
+          "event": 0.23894799999999997
+        },
+        "mu_U": 0.3819610666666666,
+        "sigma_U": 0.10936881829812778,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.1984420877655072,
+        "I_TS": 0.13636308084648777,
+        "J_TS": 0.27272616169297553,
+        "regime": "pre_emergence",
+        "fusion_score": 0.19916073943809434,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.3748174598912456,
+        "S_coherence": 0.21411942819468882,
+        "S_interact": 0.0972122509676797
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.47376000000000007,
+          "decay": 0.5491
+        },
+        "mu_U": 0.51143,
+        "sigma_U": 0.03766999999999998,
+        "mu_M": 0.75,
+        "S_time_web": 0.369123323925,
+        "I_TS": 0.22683869016361607,
+        "J_TS": 0.45367738032723215,
+        "regime": "time_web_forming",
+        "fusion_score": 0.31380482877315014,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.47376000000000007,
+          "decay": 0.5491,
+          "event": 0.27734000000000003
+        },
+        "mu_U": 0.43340000000000006,
+        "sigma_U": 0.1145573265516731,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2238546652256279,
+        "I_TS": 0.17665033351922246,
+        "J_TS": 0.3533006670384449,
+        "regime": "pre_emergence",
+        "fusion_score": 0.27871117865504075,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5576000000000001,
+        "S_coherence": 0.4095,
+        "S_interact": 0.13999999999999999
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.45472960000000007,
+          "decay": 0.5373247999999999
+        },
+        "mu_U": 0.4960272,
+        "sigma_U": 0.041297599999999934,
+        "mu_M": 0.75,
+        "S_time_web": 0.35665685032896005,
+        "I_TS": 0.21618253176356692,
+        "J_TS": 0.43236506352713383,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2990432874819121,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.45472960000000007,
+          "decay": 0.5373247999999999,
+          "event": 0.26752600000000004
+        },
+        "mu_U": 0.41986013333333333,
+        "sigma_U": 0.11287089350100649,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21727425121415317,
+        "I_TS": 0.16873277328989106,
+        "J_TS": 0.3374655465797821,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2658169901524368,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.524144,
+        "S_coherence": 0.37673999999999996,
+        "S_interact": 0.13299999999999998
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.43608320000000006,
+          "decay": 0.5256552
+        },
+        "mu_U": 0.4808692,
+        "sigma_U": 0.044785999999999965,
+        "mu_M": 0.75,
+        "S_time_web": 0.34449974400660005,
+        "I_TS": 0.20557352114700386,
+        "J_TS": 0.4111470422940077,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2838152556060355,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.43608320000000006,
+          "decay": 0.5256552,
+          "event": 0.257856
+        },
+        "mu_U": 0.4065314666666667,
+        "sigma_U": 0.11130762653539165,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2107474915000282,
+        "I_TS": 0.16078810987536193,
+        "J_TS": 0.32157621975072387,
+        "regime": "pre_emergence",
+        "fusion_score": 0.25239817576610024,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.49068800000000007,
+        "S_coherence": 0.34397999999999995,
+        "S_interact": 0.126
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.41782080000000005,
+          "decay": 0.5140912
+        },
+        "mu_U": 0.46595600000000004,
+        "sigma_U": 0.04813519999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.33264533606160007,
+        "I_TS": 0.19499749504680666,
+        "J_TS": 0.3899949900936133,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2681133859689837,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.41782080000000005,
+          "decay": 0.5140912,
+          "event": 0.24832999999999997
+        },
+        "mu_U": 0.393414,
+        "sigma_U": 0.1098605867180158,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2042794291632025,
+        "I_TS": 0.1528095971750052,
+        "J_TS": 0.3056191943500104,
+        "regime": "pre_emergence",
+        "fusion_score": 0.23845227143707762,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.45723200000000014,
+        "S_coherence": 0.31122,
+        "S_interact": 0.11899999999999998
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.39994240000000003,
+          "decay": 0.5026327999999999
+        },
+        "mu_U": 0.45128759999999996,
+        "sigma_U": 0.051345199999999924,
+        "mu_M": 0.75,
+        "S_time_web": 0.32108711094036,
+        "I_TS": 0.18443766665588,
+        "J_TS": 0.36887533331176,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2519306222623462,
+        "fusion_regime": "pre_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.39994240000000003,
+          "decay": 0.5026327999999999,
+          "event": 0.23894799999999997
+        },
+        "mu_U": 0.3805077333333333,
+        "sigma_U": 0.108522495791098,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.1978748825924421,
+        "I_TS": 0.1447883163842086,
+        "J_TS": 0.2895766327684172,
+        "regime": "pre_emergence",
+        "fusion_score": 0.22397565632826014,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4237760000000001,
+        "S_coherence": 0.27846,
+        "S_interact": 0.11199999999999999
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4710600000000001,
+          "decay": 0.5472
+        },
+        "mu_U": 0.5091300000000001,
+        "sigma_U": 0.038069999999999965,
+        "mu_M": 0.75,
+        "S_time_web": 0.3673105656750001,
+        "I_TS": 0.23899487396882435,
+        "J_TS": 0.4779897479376487,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3417938635267754,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4710600000000001,
+          "decay": 0.5472,
+          "event": 0.27734000000000003
+        },
+        "mu_U": 0.4318666666666668,
+        "sigma_U": 0.113602209289941,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22330330120854638,
+        "I_TS": 0.1863457307858208,
+        "J_TS": 0.3726914615716416,
+        "regime": "space_only",
+        "fusion_score": 0.3045742008633582,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6220191317220455,
+        "S_coherence": 0.504118487948987,
+        "S_interact": 0.15848468629040038
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4520776000000001,
+          "decay": 0.5354367999999999
+        },
+        "mu_U": 0.4937572,
+        "sigma_U": 0.04167959999999993,
+        "mu_M": 0.75,
+        "S_time_web": 0.35488319805516,
+        "I_TS": 0.22776055979580426,
+        "J_TS": 0.4555211195916085,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3264751202159805,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4520776000000001,
+          "decay": 0.5354367999999999,
+          "event": 0.26752600000000004
+        },
+        "mu_U": 0.41834679999999996,
+        "sigma_U": 0.11194455276501841,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2167171735011053,
+        "I_TS": 0.17798461619265624,
+        "J_TS": 0.3559692323853125,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2912452477408123,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5846979838187227,
+        "S_coherence": 0.46378900891306796,
+        "S_interact": 0.15056045197588036
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.43347920000000006,
+          "decay": 0.5237792
+        },
+        "mu_U": 0.47862920000000003,
+        "sigma_U": 0.04514999999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.342764318715,
+        "I_TS": 0.2165763423385126,
+        "J_TS": 0.4331526846770252,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3104870217315907,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.43347920000000006,
+          "decay": 0.5237792,
+          "event": 0.257856
+        },
+        "mu_U": 0.40503813333333333,
+        "sigma_U": 0.11040971509009322,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21018549325163646,
+        "I_TS": 0.1695956000692518,
+        "J_TS": 0.3391912001385036,
+        "regime": "pre_emergence",
+        "fusion_score": 0.27718681704347836,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5473768359154,
+        "S_coherence": 0.423459529877149,
+        "S_interact": 0.14263621766136034
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.41526480000000004,
+          "decay": 0.5122272
+        },
+        "mu_U": 0.463746,
+        "sigma_U": 0.048481199999999974,
+        "mu_M": 0.75,
+        "S_time_web": 0.33094727806859997,
+        "I_TS": 0.20542732389521848,
+        "J_TS": 0.41085464779043696,
+        "regime": "time_web_forming",
+        "fusion_score": 0.293817553178397,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.41526480000000004,
+          "decay": 0.5122272,
+          "event": 0.24832999999999997
+        },
+        "mu_U": 0.39194066666666666,
+        "sigma_U": 0.10899065537550559,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2037132979807066,
+        "I_TS": 0.1611715905167212,
+        "J_TS": 0.3223431810334424,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2623957484646647,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5100556880120773,
+        "S_coherence": 0.3831300508412301,
+        "S_interact": 0.1347119833468403
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 1.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.3974344,
+          "decay": 0.5007807999999999
+        },
+        "mu_U": 0.44910759999999994,
+        "sigma_U": 0.05167319999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.31942557987275993,
+        "I_TS": 0.1942958469706194,
+        "J_TS": 0.3885916939412388,
+        "regime": "time_web_forming",
+        "fusion_score": 0.27645294683532234,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.3974344,
+          "decay": 0.5007807999999999,
+          "event": 0.23894799999999997
+        },
+        "mu_U": 0.37905439999999996,
+        "sigma_U": 0.10767999532243673,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.1973053973222797,
+        "I_TS": 0.15270320581451705,
+        "J_TS": 0.3054064116290341,
+        "regime": "pre_emergence",
+        "fusion_score": 0.24686727962747226,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4727345401087546,
+        "S_coherence": 0.3428005718053111,
+        "S_interact": 0.12678774903232032
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4683600000000001,
+          "decay": 0.5453
+        },
+        "mu_U": 0.5068300000000001,
+        "sigma_U": 0.03846999999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.3654991874250001,
+        "I_TS": 0.246275260634323,
+        "J_TS": 0.492550521268646,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3575625029677679,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4683600000000001,
+          "decay": 0.5453,
+          "event": 0.27734000000000003
+        },
+        "mu_U": 0.43033333333333346,
+        "sigma_U": 0.11265037633709392,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2227494041400468,
+        "I_TS": 0.19225863516551414,
+        "J_TS": 0.3845172703310283,
+        "regime": "space_only",
+        "fusion_score": 0.31934254885505725,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6637662253402337,
+        "S_coherence": 0.5654364034319429,
+        "S_interact": 0.1704637662382306
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4494256000000001,
+          "decay": 0.5335487999999999
+        },
+        "mu_U": 0.4914872,
+        "sigma_U": 0.04206159999999992,
+        "mu_M": 0.75,
+        "S_time_web": 0.35311084649136004,
+        "I_TS": 0.23469132412603627,
+        "J_TS": 0.46938264825207254,
+        "regime": "both_branches_present",
+        "fusion_score": 0.34218117237916384,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4494256000000001,
+          "decay": 0.5335487999999999,
+          "event": 0.26752600000000004
+        },
+        "mu_U": 0.41683346666666665,
+        "sigma_U": 0.11102167324858489,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21615761867660632,
+        "I_TS": 0.1836228737316339,
+        "J_TS": 0.3672457474632678,
+        "regime": "space_only",
+        "fusion_score": 0.30599637464704843,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6239402518198196,
+        "S_coherence": 0.5202014911573875,
+        "S_interact": 0.16194057792631905
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.43087520000000007,
+          "decay": 0.5219032
+        },
+        "mu_U": 0.47638920000000007,
+        "sigma_U": 0.04551399999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.3410301164634001,
+        "I_TS": 0.2231594499211165,
+        "J_TS": 0.446318899842233,
+        "regime": "time_web_forming",
+        "fusion_score": 0.325980985794848,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.43087520000000007,
+          "decay": 0.5219032,
+          "event": 0.257856
+        },
+        "mu_U": 0.4035448,
+        "sigma_U": 0.10951542975027159,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20962107705263236,
+        "I_TS": 0.17495904102027884,
+        "J_TS": 0.3499180820405577,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2917682568191297,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5841142782994057,
+        "S_coherence": 0.474966578882832,
+        "S_interact": 0.15341738961440754
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.41270880000000004,
+          "decay": 0.5103631999999999
+        },
+        "mu_U": 0.46153599999999995,
+        "sigma_U": 0.04882719999999993,
+        "mu_M": 0.75,
+        "S_time_web": 0.32925036706559996,
+        "I_TS": 0.21166431214188905,
+        "J_TS": 0.4233286242837781,
+        "regime": "time_web_forming",
+        "fusion_score": 0.30894805732497854,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.41270880000000004,
+          "decay": 0.5103631999999999,
+          "event": 0.24832999999999997
+        },
+        "mu_U": 0.3904673333333333,
+        "sigma_U": 0.10812450109379566,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20314481117189107,
+        "I_TS": 0.1662598454959863,
+        "J_TS": 0.3325196909919726,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2766547291582751,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5442883047789916,
+        "S_coherence": 0.4297316666082766,
+        "S_interact": 0.144894201302496
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.3949264,
+          "decay": 0.4989287999999999
+        },
+        "mu_U": 0.4469276,
+        "sigma_U": 0.05200119999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.31776512136516,
+        "I_TS": 0.20018774557682933,
+        "J_TS": 0.40037549115365867,
+        "regime": "time_web_forming",
+        "fusion_score": 0.29106557302665376,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.3949264,
+          "decay": 0.4989287999999999,
+          "event": 0.23894799999999997
+        },
+        "mu_U": 0.37760106666666665,
+        "sigma_U": 0.10684140730850664,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.1967336217599706,
+        "I_TS": 0.15751563531121124,
+        "J_TS": 0.3150312706224225,
+        "regime": "pre_emergence",
+        "fusion_score": 0.26065051403730066,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5044623312585775,
+        "S_coherence": 0.38449675433372116,
+        "S_interact": 0.1363710129905845
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4656600000000001,
+          "decay": 0.5434
+        },
+        "mu_U": 0.50453,
+        "sigma_U": 0.03886999999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.3636891891750001,
+        "I_TS": 0.24934040242532243,
+        "J_TS": 0.49868080485064487,
+        "regime": "both_branches_present",
+        "fusion_score": 0.36428341915827567,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4656600000000001,
+          "decay": 0.5434,
+          "event": 0.27734000000000003
+        },
+        "mu_U": 0.4288,
+        "sigma_U": 0.11170191165180059,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.222192961832163,
+        "I_TS": 0.19489137036258697,
+        "J_TS": 0.38978274072517394,
+        "regime": "space_only",
+        "fusion_score": 0.3258079955713794,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6837776665580945,
+        "S_coherence": 0.5948291049337864,
+        "S_interact": 0.17620593014579466
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.44677360000000005,
+          "decay": 0.5316607999999999
+        },
+        "mu_U": 0.4892172,
+        "sigma_U": 0.04244359999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.35133979563756,
+        "I_TS": 0.2376047175942881,
+        "J_TS": 0.4752094351885762,
+        "regime": "both_branches_present",
+        "fusion_score": 0.34895847452284706,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.44677360000000005,
+          "decay": 0.5316607999999999,
+          "event": 0.26752600000000004
+        },
+        "mu_U": 0.41532013333333334,
+        "sigma_U": 0.1101023419877262,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2155955748208959,
+        "I_TS": 0.1861278275319184,
+        "J_TS": 0.3722556550638368,
+        "regime": "space_only",
+        "fusion_score": 0.3125263326366449,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6427510065646087,
+        "S_coherence": 0.5472427765390834,
+        "S_interact": 0.16739563363850493
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4282712000000001,
+          "decay": 0.5200272
+        },
+        "mu_U": 0.47414920000000005,
+        "sigma_U": 0.045877999999999974,
+        "mu_M": 0.75,
+        "S_time_web": 0.33929713725180005,
+        "I_TS": 0.2259221924724816,
+        "J_TS": 0.4518443849449632,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3327378926522247,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4282712000000001,
+          "decay": 0.5200272,
+          "event": 0.257856
+        },
+        "mu_U": 0.40205146666666663,
+        "sigma_U": 0.10862486007482616,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20905423137498746,
+        "I_TS": 0.17733655909882395,
+        "J_TS": 0.3546731181976479,
+        "regime": "space_only",
+        "fusion_score": 0.2982842989108913,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6017243465711232,
+        "S_coherence": 0.49965644814438054,
+        "S_interact": 0.1585853371312152
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.41015280000000004,
+          "decay": 0.5084991999999999
+        },
+        "mu_U": 0.459326,
+        "sigma_U": 0.049173199999999945,
+        "mu_M": 0.75,
+        "S_time_web": 0.3275546030526001,
+        "I_TS": 0.21427733673877486,
+        "J_TS": 0.4285546734775497,
+        "regime": "time_web_forming",
+        "fusion_score": 0.31560723964745013,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.41015280000000004,
+          "decay": 0.5084991999999999,
+          "event": 0.24832999999999997
+        },
+        "mu_U": 0.388994,
+        "sigma_U": 0.10726221537347932,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2025739577125885,
+        "I_TS": 0.16851019958026617,
+        "J_TS": 0.33702039916053234,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2830783164517381,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5606976865776375,
+        "S_coherence": 0.45207011974967765,
+        "S_interact": 0.14977504062392547
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.2,
+        "lambda": 2.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.3924184,
+          "decay": 0.49707679999999993
+        },
+        "mu_U": 0.44474759999999997,
+        "sigma_U": 0.052329199999999965,
+        "mu_M": 0.75,
+        "S_time_web": 0.31610573541756,
+        "I_TS": 0.20265179004488318,
+        "J_TS": 0.40530358008976636,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2975487064329692,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.3924184,
+          "decay": 0.49707679999999993,
+          "event": 0.23894799999999997
+        },
+        "mu_U": 0.37614773333333335,
+        "sigma_U": 0.10600682460009617,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.19615954548291673,
+        "I_TS": 0.15963899302440798,
+        "J_TS": 0.31927798604881596,
+        "regime": "pre_emergence",
+        "fusion_score": 0.26690291724214504,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5196710265841518,
+        "S_coherence": 0.4044837913549747,
+        "S_interact": 0.14096474411663573
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48888000000000004,
+          "decay": 0.5586000000000001
+        },
+        "mu_U": 0.5237400000000001,
+        "sigma_U": 0.03486000000000003,
+        "mu_M": 0.75,
+        "S_time_web": 0.3791118177000001,
+        "I_TS": 0.23635396249081878,
+        "J_TS": 0.47270792498163755,
+        "regime": "time_web_forming",
+        "fusion_score": 0.33948948841433063,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48888000000000004,
+          "decay": 0.5586000000000001,
+          "event": 0.28028000000000003
+        },
+        "mu_U": 0.44258666666666674,
+        "sigma_U": 0.11824497208009407,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22764759419712616,
+        "I_TS": 0.18315161768941238,
+        "J_TS": 0.36630323537882475,
+        "regime": "pre_emergence",
+        "fusion_score": 0.299912715606272,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5894112816004824,
+        "S_coherence": 0.3425634032203328,
+        "S_interact": 0.24303062741919923
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 0.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4695808,
+          "decay": 0.5467647999999999
+        },
+        "mu_U": 0.5081728,
+        "sigma_U": 0.03859199999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.36642104647679996,
+        "I_TS": 0.2252855613952677,
+        "J_TS": 0.4505711227905354,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3231680379249701,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4695808,
+          "decay": 0.5467647999999999,
+          "event": 0.27043600000000007
+        },
+        "mu_U": 0.4289272,
+        "sigma_U": 0.11641574298487292,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22107943743992098,
+        "I_TS": 0.17499165100338276,
+        "J_TS": 0.34998330200676553,
+        "regime": "pre_emergence",
+        "fusion_score": 0.28594525591670744,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5540466047044534,
+        "S_coherence": 0.3151583309627061,
+        "S_interact": 0.23087909604823925
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 0.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4506656,
+          "decay": 0.5350351999999999
+        },
+        "mu_U": 0.49285039999999997,
+        "sigma_U": 0.04218479999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.35404470333455995,
+        "I_TS": 0.21426419979544606,
+        "J_TS": 0.4285283995908921,
+        "regime": "time_web_forming",
+        "fusion_score": 0.306457098476696,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4506656,
+          "decay": 0.5350351999999999,
+          "event": 0.260736
+        },
+        "mu_U": 0.4154789333333333,
+        "sigma_U": 0.11471294293000339,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21456057126306133,
+        "I_TS": 0.16679979821210927,
+        "J_TS": 0.33359959642421855,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2715061606531378,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5186819278084245,
+        "S_coherence": 0.28775325870507956,
+        "S_interact": 0.2187275646772793
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 0.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4321344000000001,
+          "decay": 0.5234112
+        },
+        "mu_U": 0.4777728,
+        "sigma_U": 0.04563839999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.34197601038336006,
+        "I_TS": 0.20327500167044302,
+        "J_TS": 0.40655000334088603,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2893491431814272,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4321344000000001,
+          "decay": 0.5234112,
+          "event": 0.25117999999999996
+        },
+        "mu_U": 0.40224186666666667,
+        "sigma_U": 0.11313009981189309,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2080961190829176,
+        "I_TS": 0.15856894730738916,
+        "J_TS": 0.3171378946147783,
+        "regime": "pre_emergence",
+        "fusion_score": 0.25659277050623086,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4833172509123956,
+        "S_coherence": 0.26034818644745295,
+        "S_interact": 0.20657603330631935
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 0.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4139872,
+          "decay": 0.5118927999999999
+        },
+        "mu_U": 0.46293999999999996,
+        "sigma_U": 0.04895279999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.330208343076,
+        "I_TS": 0.19230033622082782,
+        "J_TS": 0.38460067244165563,
+        "regime": "time_web_forming",
+        "fusion_score": 0.27183835177487625,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4139872,
+          "decay": 0.5118927999999999,
+          "event": 0.24176799999999998
+        },
+        "mu_U": 0.38921599999999995,
+        "sigma_U": 0.11166038138283424,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20169099591649092,
+        "I_TS": 0.15028972085335426,
+        "J_TS": 0.30057944170670853,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2412013990710627,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4479525740163666,
+        "S_coherence": 0.23294311418982627,
+        "S_interact": 0.1944245019353594
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48618,
+          "decay": 0.5567000000000001
+        },
+        "mu_U": 0.52144,
+        "sigma_U": 0.03526000000000004,
+        "mu_M": 0.75,
+        "S_time_web": 0.37729051919999995,
+        "I_TS": 0.2507121865779962,
+        "J_TS": 0.5014243731559924,
+        "regime": "both_branches_present",
+        "fusion_score": 0.379435880745131,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48618,
+          "decay": 0.5567000000000001,
+          "event": 0.28028000000000003
+        },
+        "mu_U": 0.44105333333333335,
+        "sigma_U": 0.11727266272333986,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2271090701426917,
+        "I_TS": 0.19451573480254092,
+        "J_TS": 0.38903146960508184,
+        "regime": "space_only",
+        "fusion_score": 0.3354579737868112,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6664,
+        "S_coherence": 0.44549999999999995,
+        "S_interact": 0.27999999999999997
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.46692880000000003,
+          "decay": 0.5448767999999999
+        },
+        "mu_U": 0.5059028,
+        "sigma_U": 0.03897399999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.36463930820460005,
+        "I_TS": 0.2389643785631515,
+        "J_TS": 0.477928757126303,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3618184236190936,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.46692880000000003,
+          "decay": 0.5448767999999999,
+          "event": 0.27043600000000007
+        },
+        "mu_U": 0.4274138666666667,
+        "sigma_U": 0.11547152792907672,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.220534845081012,
+        "I_TS": 0.185840358585176,
+        "J_TS": 0.371680717170352,
+        "regime": "space_only",
+        "fusion_score": 0.3204976061264918,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.626416,
+        "S_coherence": 0.40985999999999995,
+        "S_interact": 0.26599999999999996
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4480616,
+          "decay": 0.5331591999999999
+        },
+        "mu_U": 0.4906104,
+        "sigma_U": 0.04254879999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.35230163715936,
+        "I_TS": 0.22726688808680304,
+        "J_TS": 0.4545337761736061,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3436046023578848,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4480616,
+          "decay": 0.5331591999999999,
+          "event": 0.260736
+        },
+        "mu_U": 0.4139856,
+        "sigma_U": 0.11379654448930626,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21401069039680626,
+        "I_TS": 0.17713181334163258,
+        "J_TS": 0.35426362668326516,
+        "regime": "pre_emergence",
+        "fusion_score": 0.30485512911989304,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.586432,
+        "S_coherence": 0.37421999999999994,
+        "S_interact": 0.252
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.42957839999999997,
+          "decay": 0.5215472
+        },
+        "mu_U": 0.47556279999999995,
+        "sigma_U": 0.04598440000000001,
+        "mu_M": 0.75,
+        "S_time_web": 0.34027074748475994,
+        "I_TS": 0.21560395950767702,
+        "J_TS": 0.43120791901535405,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3247775885037185,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.42957839999999997,
+          "decay": 0.5215472,
+          "event": 0.25117999999999996
+        },
+        "mu_U": 0.4007685333333333,
+        "sigma_U": 0.11224114522453679,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20754172493952452,
+        "I_TS": 0.16838257073532975,
+        "J_TS": 0.3367651414706595,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2885263903314184,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.546448,
+        "S_coherence": 0.33858,
+        "S_interact": 0.23799999999999996
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4114792,
+          "decay": 0.5100408
+        },
+        "mu_U": 0.46075999999999995,
+        "sigma_U": 0.049280799999999986,
+        "mu_M": 0.75,
+        "S_time_web": 0.32854003394399994,
+        "I_TS": 0.20395691931840287,
+        "J_TS": 0.40791383863680575,
+        "regime": "time_web_forming",
+        "fusion_score": 0.30531935284197076,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4114792,
+          "decay": 0.5100408,
+          "event": 0.24176799999999998
+        },
+        "mu_U": 0.38776266666666664,
+        "sigma_U": 0.11079840332776561,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20113285635909867,
+        "I_TS": 0.15958269875134848,
+        "J_TS": 0.31916539750269696,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2715054602896621,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.506464,
+        "S_coherence": 0.30293999999999993,
+        "S_interact": 0.22399999999999998
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48348,
+          "decay": 0.5548000000000001
+        },
+        "mu_U": 0.51914,
+        "sigma_U": 0.035660000000000025,
+        "mu_M": 0.75,
+        "S_time_web": 0.3754706007,
+        "I_TS": 0.2641593310158994,
+        "J_TS": 0.5283186620317988,
+        "regime": "both_branches_present",
+        "fusion_score": 0.41360506552003456,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48348,
+          "decay": 0.5548000000000001,
+          "event": 0.28028000000000003
+        },
+        "mu_U": 0.4395200000000001,
+        "sigma_U": 0.11630324959633187,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22656806418016182,
+        "I_TS": 0.2051999895596672,
+        "J_TS": 0.4103999791193344,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.36619546645372075,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7433887183995176,
+        "S_coherence": 0.5484365967796672,
+        "S_interact": 0.31696937258080077
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4642768,
+          "decay": 0.5429887999999999
+        },
+        "mu_U": 0.5036328,
+        "sigma_U": 0.039355999999999974,
+        "mu_M": 0.75,
+        "S_time_web": 0.36285887064239997,
+        "I_TS": 0.25177394591098234,
+        "J_TS": 0.5035478918219647,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3954596889759874,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4642768,
+          "decay": 0.5429887999999999,
+          "event": 0.27043600000000007
+        },
+        "mu_U": 0.4259005333333334,
+        "sigma_U": 0.11453037611455841,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21998782462024416,
+        "I_TS": 0.1960384394624334,
+        "J_TS": 0.3920768789248668,
+        "regime": "space_only",
+        "fusion_score": 0.35088880774300196,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6987853952955465,
+        "S_coherence": 0.5045616690372937,
+        "S_interact": 0.3011209039517607
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4454576,
+          "decay": 0.5312832
+        },
+        "mu_U": 0.4883704,
+        "sigma_U": 0.04291279999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.35055979402416,
+        "I_TS": 0.23944202454966884,
+        "J_TS": 0.4788840490993377,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3764709279211768,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4454576,
+          "decay": 0.5312832,
+          "event": 0.260736
+        },
+        "mu_U": 0.41249226666666666,
+        "sigma_U": 0.11288336682403162,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21345843797626662,
+        "I_TS": 0.18684263651672964,
+        "J_TS": 0.3736852730334593,
+        "regime": "space_only",
+        "fusion_score": 0.3346426158554536,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6541820721915755,
+        "S_coherence": 0.4606867412949204,
+        "S_interact": 0.2852724353227207
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4270224000000001,
+          "decay": 0.5196831999999999
+        },
+        "mu_U": 0.4733528,
+        "sigma_U": 0.04633039999999991,
+        "mu_M": 0.75,
+        "S_time_web": 0.33856663157616007,
+        "I_TS": 0.2271469919231815,
+        "J_TS": 0.454293983846363,
+        "regime": "both_branches_present",
+        "fusion_score": 0.35661587755130575,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4270224000000001,
+          "decay": 0.5196831999999999,
+          "event": 0.25117999999999996
+        },
+        "mu_U": 0.3992952,
+        "sigma_U": 0.11135555761445706,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20698501853821394,
+        "I_TS": 0.17760466539508404,
+        "J_TS": 0.3552093307901681,
+        "regime": "space_only",
+        "fusion_score": 0.31745162356909673,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6095787490876045,
+        "S_coherence": 0.41681181355254704,
+        "S_interact": 0.2694239666936806
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 1.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4089712,
+          "decay": 0.5081887999999999
+        },
+        "mu_U": 0.45857999999999993,
+        "sigma_U": 0.04960879999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.326872797372,
+        "I_TS": 0.21486920320145206,
+        "J_TS": 0.4297384064029041,
+        "regime": "time_web_forming",
+        "fusion_score": 0.33586687836586193,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4089712,
+          "decay": 0.5081887999999999,
+          "event": 0.24176799999999998
+        },
+        "mu_U": 0.38630933333333334,
+        "sigma_U": 0.10993992547075675,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20057246651050525,
+        "I_TS": 0.16831407747672264,
+        "J_TS": 0.3366281549534453,
+        "regime": "pre_emergence",
+        "fusion_score": 0.2993081728362439,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5649754259836334,
+        "S_coherence": 0.37293688581017365,
+        "S_interact": 0.25357549806464064
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48078000000000004,
+          "decay": 0.5529000000000001
+        },
+        "mu_U": 0.5168400000000001,
+        "sigma_U": 0.03606000000000001,
+        "mu_M": 0.75,
+        "S_time_web": 0.3736520622,
+        "I_TS": 0.27221834097696646,
+        "J_TS": 0.5444366819539329,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4326135745523562,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48078000000000004,
+          "decay": 0.5529000000000001,
+          "event": 0.28028000000000003
+        },
+        "mu_U": 0.43798666666666675,
+        "sigma_U": 0.11533680572807432,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22602456542274382,
+        "I_TS": 0.21171981828581166,
+        "J_TS": 0.4234396365716233,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.38355923447356727,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7932815863822305,
+        "S_coherence": 0.6151450982391466,
+        "S_interact": 0.3409275324764612
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4616248,
+          "decay": 0.5411007999999999
+        },
+        "mu_U": 0.5013628,
+        "sigma_U": 0.03973799999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.36107973379020003,
+        "I_TS": 0.2594473115054719,
+        "J_TS": 0.5188946230109438,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4145025763514341,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4616248,
+          "decay": 0.5411007999999999,
+          "event": 0.27043600000000007
+        },
+        "mu_U": 0.4243872,
+        "sigma_U": 0.11359236368136719,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21943836532093172,
+        "I_TS": 0.20225715666053537,
+        "J_TS": 0.40451431332107074,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.3683639421752227,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7456846911992966,
+        "S_coherence": 0.5659334903800148,
+        "S_interact": 0.3238811558526381
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.44285359999999996,
+          "decay": 0.5294072
+        },
+        "mu_U": 0.48613039999999996,
+        "sigma_U": 0.043276800000000004,
+        "mu_M": 0.75,
+        "S_time_web": 0.34881917392895995,
+        "I_TS": 0.24673184246075536,
+        "J_TS": 0.4934636849215107,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3953651176575241,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.44285359999999996,
+          "decay": 0.5294072,
+          "event": 0.260736
+        },
+        "mu_U": 0.4109989333333333,
+        "sigma_U": 0.11197348873340011,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2129038035263381,
+        "I_TS": 0.192759919956926,
+        "J_TS": 0.385519839913852,
+        "regime": "space_only",
+        "fusion_score": 0.35203742612953975,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6980877960163628,
+        "S_coherence": 0.5167218825208831,
+        "S_interact": 0.3068347792288151
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4244664,
+          "decay": 0.5178191999999999
+        },
+        "mu_U": 0.4711428,
+        "sigma_U": 0.04667639999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.33686366265756,
+        "I_TS": 0.23405487998553062,
+        "J_TS": 0.46810975997106125,
+        "regime": "both_branches_present",
+        "fusion_score": 0.37517644026114166,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4244664,
+          "decay": 0.5178191999999999,
+          "event": 0.25117999999999996
+        },
+        "mu_U": 0.39782186666666663,
+        "sigma_U": 0.11047341795374224,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20642598976956955,
+        "I_TS": 0.18321996891758244,
+        "J_TS": 0.3664399378351649,
+        "regime": "space_only",
+        "fusion_score": 0.33457382257969764,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.650490900833429,
+        "S_coherence": 0.46751027466175143,
+        "S_interact": 0.289788402604992
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4064632,
+          "decay": 0.5063367999999999
+        },
+        "mu_U": 0.4564,
+        "sigma_U": 0.04993679999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.32520663336,
+        "I_TS": 0.22139621149114225,
+        "J_TS": 0.4427924229822845,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3539054667057167,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4064632,
+          "decay": 0.5063367999999999,
+          "event": 0.24176799999999998
+        },
+        "mu_U": 0.3848559999999999,
+        "sigma_U": 0.10908503044946175,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20000981672078277,
+        "I_TS": 0.17362655296081164,
+        "J_TS": 0.3472531059216233,
+        "regime": "space_only",
+        "fusion_score": 0.3159645533331714,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6028940056504951,
+        "S_coherence": 0.4182986668026197,
+        "S_interact": 0.272742025981169
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.47808,
+          "decay": 0.551
+        },
+        "mu_U": 0.51454,
+        "sigma_U": 0.03646000000000002,
+        "mu_M": 0.75,
+        "S_time_web": 0.3718349037,
+        "I_TS": 0.27561868030524,
+        "J_TS": 0.55123736061048,
+        "regime": "both_branches_present",
+        "fusion_score": 0.44063203949322666,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.47808,
+          "decay": 0.551,
+          "event": 0.28028000000000003
+        },
+        "mu_U": 0.43645333333333336,
+        "sigma_U": 0.1143734063884122,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22547856267441338,
+        "I_TS": 0.21462791209687937,
+        "J_TS": 0.42925582419375874,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.39110118125595095,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.8171976990572347,
+        "S_coherence": 0.6471217734993939,
+        "S_interact": 0.35241186029158933
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4589728,
+          "decay": 0.5392127999999999
+        },
+        "mu_U": 0.4990928,
+        "sigma_U": 0.04011999999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.359301897648,
+        "I_TS": 0.26268014912786664,
+        "J_TS": 0.5253602982557333,
+        "regime": "both_branches_present",
+        "fusion_score": 0.42264815364862407,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4589728,
+          "decay": 0.5392127999999999,
+          "event": 0.27043600000000007
+        },
+        "mu_U": 0.4228738666666667,
+        "sigma_U": 0.11265756904713006,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21888645615342325,
+        "I_TS": 0.20502505811727476,
+        "J_TS": 0.4100501162345495,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.37605210413920964,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7681658371138006,
+        "S_coherence": 0.5953520316194424,
+        "S_interact": 0.33479126727700986
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.44024959999999996,
+          "decay": 0.5275312
+        },
+        "mu_U": 0.48389039999999994,
+        "sigma_U": 0.04364080000000001,
+        "mu_M": 0.75,
+        "S_time_web": 0.34707977687375996,
+        "I_TS": 0.24979834849557697,
+        "J_TS": 0.49959669699115394,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4035432635288696,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.44024959999999996,
+          "decay": 0.5275312,
+          "event": 0.260736
+        },
+        "mu_U": 0.40950559999999997,
+        "sigma_U": 0.11106699130932944,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21234677629881232,
+        "I_TS": 0.19538793549908443,
+        "J_TS": 0.39077587099816885,
+        "regime": "space_only",
+        "fusion_score": 0.35977319476933795,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7191339751703666,
+        "S_coherence": 0.5435822897394909,
+        "S_interact": 0.3171706742624304
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4219104,
+          "decay": 0.5159552
+        },
+        "mu_U": 0.4689328,
+        "sigma_U": 0.047022399999999964,
+        "mu_M": 0.75,
+        "S_time_web": 0.33516184072896005,
+        "I_TS": 0.23695603903757376,
+        "J_TS": 0.4739120780751475,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3832922360152602,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4219104,
+          "decay": 0.5159552,
+          "event": 0.25117999999999996
+        },
+        "mu_U": 0.39634853333333336,
+        "sigma_U": 0.10959480950109919,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20586462827386554,
+        "I_TS": 0.1857083213301131,
+        "J_TS": 0.3714166426602262,
+        "regime": "space_only",
+        "fusion_score": 0.34225833580825193,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6701021132269325,
+        "S_coherence": 0.4918125478595394,
+        "S_interact": 0.29955008124785093
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.4,
+        "lambda": 2.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4039552,
+          "decay": 0.5044848
+        },
+        "mu_U": 0.45421999999999996,
+        "sigma_U": 0.05026479999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.323541541908,
+        "I_TS": 0.2241327880595854,
+        "J_TS": 0.4482655761191708,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3618631442759172,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4039552,
+          "decay": 0.5044848,
+          "event": 0.24176799999999998
+        },
+        "mu_U": 0.3834026666666666,
+        "sigma_U": 0.10823380316202305,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.19944489711467528,
+        "I_TS": 0.17597534796685504,
+        "J_TS": 0.3519506959337101,
+        "regime": "space_only",
+        "fusion_score": 0.3234985637493645,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6210702512834984,
+        "S_coherence": 0.44004280597958784,
+        "S_interact": 0.28192948823327146
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.49509000000000003,
+          "decay": 0.5624
+        },
+        "mu_U": 0.528745,
+        "sigma_U": 0.03365499999999999,
+        "mu_M": 0.75,
+        "S_time_web": 0.38321256526875,
+        "I_TS": 0.24004134912746658,
+        "J_TS": 0.48008269825493316,
+        "regime": "both_branches_present",
+        "fusion_score": 0.3616994667707317,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.49509000000000003,
+          "decay": 0.5624,
+          "event": 0.28175
+        },
+        "mu_U": 0.44641333333333333,
+        "sigma_U": 0.11963324240732126,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22925435097413707,
+        "I_TS": 0.18566283684338364,
+        "J_TS": 0.3713256736867673,
+        "regime": "space_only",
+        "fusion_score": 0.3183311312871735,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6014400832657983,
+        "S_coherence": 0.3460236396164978,
+        "S_interact": 0.303788284273999
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4756804,
+          "decay": 0.5505407999999999
+        },
+        "mu_U": 0.5131106,
+        "sigma_U": 0.03743019999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.37042857571490995,
+        "I_TS": 0.22881387513472937,
+        "J_TS": 0.45762775026945873,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3441083339042716,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4756804,
+          "decay": 0.5505407999999999,
+          "event": 0.271891
+        },
+        "mu_U": 0.4327040666666666,
+        "sigma_U": 0.11774733310523662,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22269001812917774,
+        "I_TS": 0.17741097828439922,
+        "J_TS": 0.35482195656879845,
+        "regime": "pre_emergence",
+        "fusion_score": 0.30349263227273954,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5653536782698504,
+        "S_coherence": 0.31834174844717794,
+        "S_interact": 0.28859887006029905
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4566548,
+          "decay": 0.5387872
+        },
+        "mu_U": 0.497721,
+        "sigma_U": 0.0410662,
+        "mu_M": 0.75,
+        "S_time_web": 0.35796111740235004,
+        "I_TS": 0.2176333525367959,
+        "J_TS": 0.4352667050735918,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3261227871105789,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4566548,
+          "decay": 0.5387872,
+          "event": 0.262176
+        },
+        "mu_U": 0.419206,
+        "sigma_U": 0.11598921920431514,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21617319696830428,
+        "I_TS": 0.1691252483474279,
+        "J_TS": 0.3382504966948558,
+        "regime": "pre_emergence",
+        "fusion_score": 0.28816498882839087,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5292672732739025,
+        "S_coherence": 0.29065985727785815,
+        "S_interact": 0.2734094558465991
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4380132,
+          "decay": 0.5271391999999999
+        },
+        "mu_U": 0.48257619999999996,
+        "sigma_U": 0.044562999999999964,
+        "mu_M": 0.75,
+        "S_time_web": 0.34580336759955,
+        "I_TS": 0.20648462720393182,
+        "J_TS": 0.41296925440786364,
+        "regime": "time_web_forming",
+        "fusion_score": 0.30773299898427203,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4380132,
+          "decay": 0.5271391999999999,
+          "event": 0.252605
+        },
+        "mu_U": 0.40591913333333335,
+        "sigma_U": 0.11435260842036886,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20970904595020987,
+        "I_TS": 0.16079839035844387,
+        "J_TS": 0.32159678071688774,
+        "regime": "pre_emergence",
+        "fusion_score": 0.272344806164629,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.49318086827795465,
+        "S_coherence": 0.2629779661085383,
+        "S_interact": 0.25822004163289913
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.41975559999999995,
+          "decay": 0.5155968
+        },
+        "mu_U": 0.4676762,
+        "sigma_U": 0.04792060000000001,
+        "mu_M": 0.75,
+        "S_time_web": 0.33394865691771,
+        "I_TS": 0.19534973899236957,
+        "J_TS": 0.39069947798473914,
+        "regime": "time_web_forming",
+        "fusion_score": 0.2889317770281225,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.41975559999999995,
+          "decay": 0.5155968,
+          "event": 0.24317800000000003
+        },
+        "mu_U": 0.3928434666666667,
+        "sigma_U": 0.11283084046120642,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20330252142256747,
+        "I_TS": 0.15242084578029932,
+        "J_TS": 0.30484169156059865,
+        "regime": "pre_emergence",
+        "fusion_score": 0.25602750646266503,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.45709446328200676,
+        "S_coherence": 0.23529607493921847,
+        "S_interact": 0.24303062741919923
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.49239000000000005,
+          "decay": 0.5605
+        },
+        "mu_U": 0.526445,
+        "sigma_U": 0.034054999999999974,
+        "mu_M": 0.75,
+        "S_time_web": 0.38138768664375006,
+        "I_TS": 0.2546289589371906,
+        "J_TS": 0.5092579178743812,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4052714011600902,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.49239000000000005,
+          "decay": 0.5605,
+          "event": 0.28175
+        },
+        "mu_U": 0.44488,
+        "sigma_U": 0.11865437398876902,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22872094122492798,
+        "I_TS": 0.19718661214250263,
+        "J_TS": 0.39437322428500526,
+        "regime": "space_only",
+        "fusion_score": 0.35641081362710314,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.68,
+        "S_coherence": 0.44999999999999996,
+        "S_interact": 0.35
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4730284,
+          "decay": 0.5486527999999999
+        },
+        "mu_U": 0.5108406,
+        "sigma_U": 0.03781219999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.36864344479851,
+        "I_TS": 0.2427122215274746,
+        "J_TS": 0.4854244430549492,
+        "regime": "both_branches_present",
+        "fusion_score": 0.38623193068777856,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4730284,
+          "decay": 0.5486527999999999,
+          "event": 0.271891
+        },
+        "mu_U": 0.4311907333333333,
+        "sigma_U": 0.11679630772957773,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22215039452246144,
+        "I_TS": 0.1884134630133668,
+        "J_TS": 0.3768269260267336,
+        "regime": "space_only",
+        "fusion_score": 0.3404794117529597,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6392,
+        "S_coherence": 0.4139999999999999,
+        "S_interact": 0.33249999999999996
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.45405080000000003,
+          "decay": 0.5369112
+        },
+        "mu_U": 0.49548100000000006,
+        "sigma_U": 0.0414302,
+        "mu_M": 0.75,
+        "S_time_web": 0.35621484230535005,
+        "I_TS": 0.23084570693188203,
+        "J_TS": 0.46169141386376406,
+        "regime": "time_web_forming",
+        "fusion_score": 0.36658404963618074,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.45405080000000003,
+          "decay": 0.5369112,
+          "event": 0.262176
+        },
+        "mu_U": 0.4177126666666667,
+        "sigma_U": 0.11506578547472553,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21562813450145596,
+        "I_TS": 0.17960503590216453,
+        "J_TS": 0.35921007180432907,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3238419130286803,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5984,
+        "S_coherence": 0.37799999999999995,
+        "S_interact": 0.315
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4354572,
+          "decay": 0.5252751999999999
+        },
+        "mu_U": 0.48036619999999997,
+        "sigma_U": 0.04490899999999998,
+        "mu_M": 0.75,
+        "S_time_web": 0.34409507574314996,
+        "I_TS": 0.21901336388128262,
+        "J_TS": 0.43802672776256524,
+        "regime": "time_web_forming",
+        "fusion_score": 0.34630505546939216,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4354572,
+          "decay": 0.5252751999999999,
+          "event": 0.252605
+        },
+        "mu_U": 0.40444579999999997,
+        "sigma_U": 0.11345642244045359,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20915931543554414,
+        "I_TS": 0.17075364878009155,
+        "J_TS": 0.3415072975601831,
+        "regime": "pre_emergence",
+        "fusion_score": 0.30649306821084893,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5576000000000001,
+        "S_coherence": 0.34199999999999997,
+        "S_interact": 0.2975
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4172476,
+          "decay": 0.5137447999999999
+        },
+        "mu_U": 0.4654961999999999,
+        "sigma_U": 0.04824859999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.3322774950335099,
+        "I_TS": 0.20719616878294222,
+        "J_TS": 0.41439233756588445,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3253707007253677,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4172476,
+          "decay": 0.5137447999999999,
+          "event": 0.24317800000000003
+        },
+        "mu_U": 0.39139013333333333,
+        "sigma_U": 0.1119614658483692,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2027488868339344,
+        "I_TS": 0.16184917725754533,
+        "J_TS": 0.32369835451509066,
+        "regime": "pre_emergence",
+        "fusion_score": 0.28842554041463675,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5168,
+        "S_coherence": 0.30599999999999994,
+        "S_interact": 0.27999999999999997
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48969,
+          "decay": 0.5586000000000001
+        },
+        "mu_U": 0.5241450000000001,
+        "sigma_U": 0.03445500000000004,
+        "mu_M": 0.75,
+        "S_time_web": 0.3795641880187501,
+        "I_TS": 0.26829190206694087,
+        "J_TS": 0.5365838041338817,
+        "regime": "both_branches_present",
+        "fusion_score": 0.44243174528665413,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48969,
+          "decay": 0.5586000000000001,
+          "event": 0.28175
+        },
+        "mu_U": 0.4433466666666667,
+        "sigma_U": 0.11767825920232206,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22818506824760576,
+        "I_TS": 0.20802166135398734,
+        "J_TS": 0.41604332270797467,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.38939655317952276,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7585599167342016,
+        "S_coherence": 0.5539763603835022,
+        "S_interact": 0.39621171572600095
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.47037640000000003,
+          "decay": 0.5467647999999999
+        },
+        "mu_U": 0.5085706,
+        "sigma_U": 0.038194199999999956,
+        "mu_M": 0.75,
+        "S_time_web": 0.36685961459211,
+        "I_TS": 0.25572832204130436,
+        "J_TS": 0.5114566440826087,
+        "regime": "both_branches_present",
+        "fusion_score": 0.42277235614486675,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.47037640000000003,
+          "decay": 0.5467647999999999,
+          "event": 0.271891
+        },
+        "mu_U": 0.42967739999999993,
+        "sigma_U": 0.11584819933102108,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2216083607014463,
+        "I_TS": 0.1987567775340092,
+        "J_TS": 0.3975135550680184,
+        "regime": "space_only",
+        "fusion_score": 0.3730491423264401,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7130463217301495,
+        "S_coherence": 0.509658251552822,
+        "S_interact": 0.3764011299397009
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4514468,
+          "decay": 0.5350351999999999
+        },
+        "mu_U": 0.49324099999999993,
+        "sigma_U": 0.041794199999999976,
+        "mu_M": 0.75,
+        "S_time_web": 0.35446979024834996,
+        "I_TS": 0.24321810460290003,
+        "J_TS": 0.48643620920580005,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4022533124381803,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4514468,
+          "decay": 0.5350351999999999,
+          "event": 0.262176
+        },
+        "mu_U": 0.4162193333333333,
+        "sigma_U": 0.11414542350870759,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21508071740020135,
+        "I_TS": 0.1894554154361664,
+        "J_TS": 0.3789108308723328,
+        "regime": "space_only",
+        "fusion_score": 0.35572994909167377,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6675327267260974,
+        "S_coherence": 0.4653401427221418,
+        "S_interact": 0.35659054415340086
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4329012,
+          "decay": 0.5234112
+        },
+        "mu_U": 0.4781562,
+        "sigma_U": 0.04525499999999999,
+        "mu_M": 0.75,
+        "S_time_web": 0.34238793087674996,
+        "I_TS": 0.23074436259422662,
+        "J_TS": 0.46148872518845324,
+        "regime": "both_branches_present",
+        "fusion_score": 0.38084417898514683,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4329012,
+          "decay": 0.5234112,
+          "event": 0.252605
+        },
+        "mu_U": 0.4029724666666667,
+        "sigma_U": 0.1125634526206244,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20860728846277674,
+        "I_TS": 0.18010949755669928,
+        "J_TS": 0.36021899511339855,
+        "regime": "space_only",
+        "fusion_score": 0.33743230008139574,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6220191317220454,
+        "S_coherence": 0.42102203389146164,
+        "S_interact": 0.3367799583671008
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4147396,
+          "decay": 0.5118927999999999
+        },
+        "mu_U": 0.46331619999999996,
+        "sigma_U": 0.04857659999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.33060740570930996,
+        "I_TS": 0.21828708154136667,
+        "J_TS": 0.43657416308273334,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3585077872544604,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4147396,
+          "decay": 0.5118927999999999,
+          "event": 0.24317800000000003
+        },
+        "mu_U": 0.38993680000000003,
+        "sigma_U": 0.11109543975231383,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20219301650822752,
+        "I_TS": 0.1707083723069154,
+        "J_TS": 0.3414167446138308,
+        "regime": "pre_emergence",
+        "fusion_score": 0.31814667991063966,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5765055367179932,
+        "S_coherence": 0.37670392506078143,
+        "S_interact": 0.31696937258080077
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48699000000000003,
+          "decay": 0.5567000000000001
+        },
+        "mu_U": 0.5218450000000001,
+        "sigma_U": 0.034855000000000025,
+        "mu_M": 0.75,
+        "S_time_web": 0.37774206939375005,
+        "I_TS": 0.2764829348776638,
+        "J_TS": 0.5529658697553276,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4630823130568967,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48699000000000003,
+          "decay": 0.5567000000000001,
+          "event": 0.28175
+        },
+        "mu_U": 0.4418133333333334,
+        "sigma_U": 0.11670496714174407,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22764672162393135,
+        "I_TS": 0.21463540066947837,
+        "J_TS": 0.42927080133895673,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.4080728167298858,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.80947100651248,
+        "S_coherence": 0.6213586850900471,
+        "S_interact": 0.42615941559557646
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.46772440000000004,
+          "decay": 0.5448767999999999
+        },
+        "mu_U": 0.5063006,
+        "sigma_U": 0.03857619999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.36507708509571,
+        "I_TS": 0.2635280614068655,
+        "J_TS": 0.527056122813731,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4434166758112073,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.46772440000000004,
+          "decay": 0.5448767999999999,
+          "event": 0.271891
+        },
+        "mu_U": 0.4281640666666666,
+        "sigma_U": 0.1149030801168049,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22106390635660897,
+        "I_TS": 0.2050659244091647,
+        "J_TS": 0.4101318488183294,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.39180649921565003,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7609027461217313,
+        "S_coherence": 0.5716499902828432,
+        "S_interact": 0.4048514448157976
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4488428,
+          "decay": 0.5331591999999999
+        },
+        "mu_U": 0.49100099999999997,
+        "sigma_U": 0.04215819999999998,
+        "mu_M": 0.75,
+        "S_time_web": 0.35272596123134997,
+        "I_TS": 0.25062864271552254,
+        "J_TS": 0.5012572854310451,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4227052736244611,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4488428,
+          "decay": 0.5331591999999999,
+          "event": 0.262176
+        },
+        "mu_U": 0.414726,
+        "sigma_U": 0.11322820821167603,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2145309355707026,
+        "I_TS": 0.19545957616802953,
+        "J_TS": 0.39091915233605906,
+        "regime": "space_only",
+        "fusion_score": 0.3743704194291591,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7123344857309825,
+        "S_coherence": 0.5219412954756395,
+        "S_interact": 0.38354347403601885
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4303452,
+          "decay": 0.5215472
+        },
+        "mu_U": 0.4759462,
+        "sigma_U": 0.045601,
+        "mu_M": 0.75,
+        "S_time_web": 0.34068193300035,
+        "I_TS": 0.2377673025824076,
+        "J_TS": 0.4755346051648152,
+        "regime": "both_branches_present",
+        "fusion_score": 0.40091575738914864,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4303452,
+          "decay": 0.5215472,
+          "event": 0.252605
+        },
+        "mu_U": 0.4014991333333333,
+        "sigma_U": 0.11167377611242886,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20805295525474393,
+        "I_TS": 0.18580804932801076,
+        "J_TS": 0.3716160986560215,
+        "regime": "space_only",
+        "fusion_score": 0.35575712507358986,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6637662253402337,
+        "S_coherence": 0.4722326006684358,
+        "S_interact": 0.36223550325624
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4122316,
+          "decay": 0.5100408
+        },
+        "mu_U": 0.4611362,
+        "sigma_U": 0.04890459999999999,
+        "mu_M": 0.75,
+        "S_time_web": 0.32893838894511,
+        "I_TS": 0.2249234466839739,
+        "J_TS": 0.4498468933679478,
+        "regime": "both_branches_present",
+        "fusion_score": 0.37800698805835126,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4122316,
+          "decay": 0.5100408,
+          "event": 0.24317800000000003
+        },
+        "mu_U": 0.3884834666666667,
+        "sigma_U": 0.11023284109427439,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20163490107707754,
+        "I_TS": 0.17610038387622046,
+        "J_TS": 0.3522007677524409,
+        "regime": "space_only",
+        "fusion_score": 0.3359559194865763,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6151979649494849,
+        "S_coherence": 0.422523905861232,
+        "S_interact": 0.3409275324764612
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48429000000000005,
+          "decay": 0.5548000000000001
+        },
+        "mu_U": 0.519545,
+        "sigma_U": 0.03525500000000001,
+        "mu_M": 0.75,
+        "S_time_web": 0.37592133076875006,
+        "I_TS": 0.2799426173574649,
+        "J_TS": 0.5598852347149298,
+        "regime": "both_branches_present",
+        "fusion_score": 0.47178787385457316,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48429000000000005,
+          "decay": 0.5548000000000001,
+          "event": 0.28175
+        },
+        "mu_U": 0.44028,
+        "sigma_U": 0.1157345690218211,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2271058906381257,
+        "I_TS": 0.21758789642666876,
+        "J_TS": 0.4351757928533375,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.41619936548369524,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.8338752031196273,
+        "S_coherence": 0.6536583570700949,
+        "S_interact": 0.4405148253644866
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4650724,
+          "decay": 0.5429887999999999
+        },
+        "mu_U": 0.5040306,
+        "sigma_U": 0.03895819999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.36329585630931,
+        "I_TS": 0.26681772880287496,
+        "J_TS": 0.5336354576057499,
+        "regime": "both_branches_present",
+        "fusion_score": 0.45223598108345064,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4650724,
+          "decay": 0.5429887999999999,
+          "event": 0.271891
+        },
+        "mu_U": 0.4266507333333333,
+        "sigma_U": 0.11396102445805269,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22051702089485087,
+        "I_TS": 0.20787655895664808,
+        "J_TS": 0.41575311791329617,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.4000689518501318,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7838426909324496,
+        "S_coherence": 0.6013656885044872,
+        "S_interact": 0.41848908409626223
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4462388,
+          "decay": 0.5312832
+        },
+        "mu_U": 0.488761,
+        "sigma_U": 0.04252219999999998,
+        "mu_M": 0.75,
+        "S_time_web": 0.35098335525435004,
+        "I_TS": 0.25374946239145507,
+        "J_TS": 0.5074989247829101,
+        "regime": "both_branches_present",
+        "fusion_score": 0.43154195001818746,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4462388,
+          "decay": 0.5312832,
+          "event": 0.262176
+        },
+        "mu_U": 0.41323266666666664,
+        "sigma_U": 0.11231421667557889,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21397877865305634,
+        "I_TS": 0.1981286235069874,
+        "J_TS": 0.3962572470139748,
+        "regime": "space_only",
+        "fusion_score": 0.3826669199661394,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.733810178745272,
+        "S_coherence": 0.5490730199388797,
+        "S_interact": 0.39646334282803797
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4277892,
+          "decay": 0.5196831999999999
+        },
+        "mu_U": 0.47373619999999994,
+        "sigma_U": 0.04594699999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.33897708211395,
+        "I_TS": 0.24072025165352637,
+        "J_TS": 0.48144050330705274,
+        "regime": "both_branches_present",
+        "fusion_score": 0.409673195344064,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4277892,
+          "decay": 0.5196831999999999,
+          "event": 0.252605
+        },
+        "mu_U": 0.40002579999999993,
+        "sigma_U": 0.11078747225650856,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20749630578869052,
+        "I_TS": 0.18833569748697113,
+        "J_TS": 0.37667139497394225,
+        "regime": "space_only",
+        "fusion_score": 0.3639854822598208,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6837776665580944,
+        "S_coherence": 0.49678035137327214,
+        "S_interact": 0.3744376015598136
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.40972359999999997,
+          "decay": 0.5081887999999999
+        },
+        "mu_U": 0.4589561999999999,
+        "sigma_U": 0.04923259999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.32727044474091,
+        "I_TS": 0.22770927655860146,
+        "J_TS": 0.4554185531172029,
+        "regime": "both_branches_present",
+        "fusion_score": 0.38658779565437174,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.40972359999999997,
+          "decay": 0.5081887999999999,
+          "event": 0.24317800000000003
+        },
+        "mu_U": 0.3870301333333333,
+        "sigma_U": 0.10937375096787258,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2010745309492913,
+        "I_TS": 0.17848670094471905,
+        "J_TS": 0.3569734018894381,
+        "regime": "space_only",
+        "fusion_score": 0.34401344239452974,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6337451543709167,
+        "S_coherence": 0.4444876828076645,
+        "S_interact": 0.35241186029158933
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.5013000000000001,
+          "decay": 0.5661999999999999
+        },
+        "mu_U": 0.53375,
+        "sigma_U": 0.03244999999999992,
+        "mu_M": 0.75,
+        "S_time_web": 0.38732235937500004,
+        "I_TS": 0.23889964850944287,
+        "J_TS": 0.47779929701888574,
+        "regime": "time_web_forming",
+        "fusion_score": 0.37948174624808506,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.5013000000000001,
+          "decay": 0.5661999999999999,
+          "event": 0.28322
+        },
+        "mu_U": 0.45024,
+        "sigma_U": 0.12103653112456032,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.23085096546544545,
+        "I_TS": 0.18443573637835,
+        "J_TS": 0.3688714727567,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3321573520151929,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5894112816004824,
+        "S_coherence": 0.3425634032203328,
+        "S_interact": 0.3645459411287988
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 0.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48178000000000004,
+          "decay": 0.5543167999999999
+        },
+        "mu_U": 0.5180484,
+        "sigma_U": 0.03626839999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.37444471005707997,
+        "I_TS": 0.22773878691203914,
+        "J_TS": 0.4554775738240783,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3606097839432526,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48178000000000004,
+          "decay": 0.5543167999999999,
+          "event": 0.27334600000000003
+        },
+        "mu_U": 0.4364809333333333,
+        "sigma_U": 0.11909422514354849,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22429083529303917,
+        "I_TS": 0.1762580322711806,
+        "J_TS": 0.3525160645423612,
+        "regime": "pre_emergence",
+        "fusion_score": 0.31650904968401256,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5540466047044534,
+        "S_coherence": 0.3151583309627061,
+        "S_interact": 0.34631864407235885
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 0.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.462644,
+          "decay": 0.5425392
+        },
+        "mu_U": 0.5025916,
+        "sigma_U": 0.0399476,
+        "mu_M": 0.75,
+        "S_time_web": 0.36188570384988,
+        "I_TS": 0.21662385286433966,
+        "J_TS": 0.4332477057286793,
+        "regime": "time_web_forming",
+        "fusion_score": 0.34136867892198425,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.462644,
+          "decay": 0.5425392,
+          "event": 0.26361599999999996
+        },
+        "mu_U": 0.4229330666666667,
+        "sigma_U": 0.1172810201871651,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21777644299664967,
+        "I_TS": 0.1680451615524557,
+        "J_TS": 0.3360903231049114,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3003827410108513,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5186819278084245,
+        "S_coherence": 0.28775325870507956,
+        "S_interact": 0.3280913470159189
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 0.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.443892,
+          "decay": 0.5308671999999999
+        },
+        "mu_U": 0.4873795999999999,
+        "sigma_U": 0.04348759999999993,
+        "mu_M": 0.75,
+        "S_time_web": 0.34963847318027996,
+        "I_TS": 0.2055397198053823,
+        "J_TS": 0.4110794396107646,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3217484823380702,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.443892,
+          "decay": 0.5308671999999999,
+          "event": 0.25403
+        },
+        "mu_U": 0.4095963999999999,
+        "sigma_U": 0.11559080113480769,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21131298065620563,
+        "I_TS": 0.15978986896300837,
+        "J_TS": 0.31957973792601674,
+        "regime": "pre_emergence",
+        "fusion_score": 0.28377434623942016,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4833172509123956,
+        "S_coherence": 0.26034818644745295,
+        "S_interact": 0.30986404995947897
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 0.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.425524,
+          "decay": 0.5193007999999999
+        },
+        "mu_U": 0.47241239999999995,
+        "sigma_U": 0.04688839999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.33769630381787996,
+        "I_TS": 0.1944684605090452,
+        "J_TS": 0.3889369210180904,
+        "regime": "time_web_forming",
+        "fusion_score": 0.30174454139631396,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.425524,
+          "decay": 0.5193007999999999,
+          "event": 0.24458799999999997
+        },
+        "mu_U": 0.39647093333333333,
+        "sigma_U": 0.11401707805708561,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20490544432172564,
+        "I_TS": 0.15148260726390694,
+        "J_TS": 0.3029652145278139,
+        "regime": "pre_emergence",
+        "fusion_score": 0.266678626669981,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4479525740163666,
+        "S_coherence": 0.23294311418982627,
+        "S_interact": 0.29163675290303903
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.49860000000000004,
+          "decay": 0.5642999999999999
+        },
+        "mu_U": 0.53145,
+        "sigma_U": 0.032849999999999935,
+        "mu_M": 0.75,
+        "S_time_web": 0.385493900625,
+        "I_TS": 0.2534231320225622,
+        "J_TS": 0.5068462640451245,
+        "regime": "both_branches_present",
+        "fusion_score": 0.42658479468178034,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.49860000000000004,
+          "decay": 0.5642999999999999,
+          "event": 0.28322
+        },
+        "mu_U": 0.44870666666666664,
+        "sigma_U": 0.12005137826040238,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2303226408575764,
+        "I_TS": 0.1958870898422666,
+        "J_TS": 0.3917741796845332,
+        "regime": "space_only",
+        "fusion_score": 0.3724293965994573,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6664,
+        "S_coherence": 0.44549999999999995,
+        "S_interact": 0.42
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.47912800000000005,
+          "decay": 0.5524287999999999
+        },
+        "mu_U": 0.5157784,
+        "sigma_U": 0.036650399999999944,
+        "mu_M": 0.75,
+        "S_time_web": 0.37265618649648,
+        "I_TS": 0.24157700517659944,
+        "J_TS": 0.4831540103531989,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4060554969408467,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.47912800000000005,
+          "decay": 0.5524287999999999,
+          "event": 0.27334600000000003
+        },
+        "mu_U": 0.4349676,
+        "sigma_U": 0.11813666664808176,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22375615362104895,
+        "I_TS": 0.18719270467000243,
+        "J_TS": 0.37438540934000486,
+        "regime": "space_only",
+        "fusion_score": 0.35553576097132483,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.626416,
+        "S_coherence": 0.40985999999999995,
+        "S_interact": 0.39899999999999997
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.46004,
+          "decay": 0.5406632
+        },
+        "mu_U": 0.5003516,
+        "sigma_U": 0.0403116,
+        "mu_M": 0.75,
+        "S_time_web": 0.36013621983107996,
+        "I_TS": 0.22978000547696698,
+        "J_TS": 0.45956001095393395,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3849391711540031,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.46004,
+          "decay": 0.5406632,
+          "event": 0.26361599999999996
+        },
+        "mu_U": 0.42143973333333334,
+        "sigma_U": 0.11635082923931209,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21723617468326986,
+        "I_TS": 0.17846165161727276,
+        "J_TS": 0.3569233032345455,
+        "regime": "pre_emergence",
+        "fusion_score": 0.33795081201003524,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.586432,
+        "S_coherence": 0.37421999999999994,
+        "S_interact": 0.378
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.441336,
+          "decay": 0.5290031999999999
+        },
+        "mu_U": 0.4851696,
+        "sigma_U": 0.043833599999999945,
+        "mu_M": 0.75,
+        "S_time_web": 0.34792715236608,
+        "I_TS": 0.2180161098153871,
+        "J_TS": 0.4360322196307742,
+        "regime": "time_web_forming",
+        "fusion_score": 0.36320622129373514,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.441336,
+          "decay": 0.5290031999999999,
+          "event": 0.25403
+        },
+        "mu_U": 0.40812306666666665,
+        "sigma_U": 0.11468766101899927,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21076789226661324,
+        "I_TS": 0.16968624958530543,
+        "J_TS": 0.33937249917061085,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3196681096728441,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.546448,
+        "S_coherence": 0.33858,
+        "S_interact": 0.357
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.423016,
+          "decay": 0.5174487999999999
+        },
+        "mu_U": 0.4702324,
+        "sigma_U": 0.047216399999999964,
+        "mu_M": 0.75,
+        "S_time_web": 0.33602228918148,
+        "I_TS": 0.2062663282433715,
+        "J_TS": 0.412532656486743,
+        "regime": "time_web_forming",
+        "fusion_score": 0.340826909654584,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.423016,
+          "decay": 0.5174487999999999,
+          "event": 0.24458799999999997
+        },
+        "mu_U": 0.3950176,
+        "sigma_U": 0.11314058171460847,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2043562960532867,
+        "I_TS": 0.16085638557757959,
+        "J_TS": 0.32171277115515917,
+        "regime": "pre_emergence",
+        "fusion_score": 0.30067895973366593,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.506464,
+        "S_coherence": 0.30293999999999993,
+        "S_interact": 0.336
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.49590000000000006,
+          "decay": 0.5623999999999999
+        },
+        "mu_U": 0.52915,
+        "sigma_U": 0.03324999999999992,
+        "mu_M": 0.75,
+        "S_time_web": 0.38366682187500006,
+        "I_TS": 0.26702695884782507,
+        "J_TS": 0.5340539176956501,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4665885495781065,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.49590000000000006,
+          "decay": 0.5623999999999999,
+          "event": 0.28322
+        },
+        "mu_U": 0.44717333333333337,
+        "sigma_U": 0.11906884320519039,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22979187106232254,
+        "I_TS": 0.2066547147584874,
+        "J_TS": 0.4133094295169748,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.4074795716079743,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7433887183995176,
+        "S_coherence": 0.5484365967796672,
+        "S_interact": 0.4754540588712011
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.476476,
+          "decay": 0.5505407999999999
+        },
+        "mu_U": 0.5135084,
+        "sigma_U": 0.037032399999999965,
+        "mu_M": 0.75,
+        "S_time_web": 0.37086896364587996,
+        "I_TS": 0.25453772577170947,
+        "J_TS": 0.5090754515434189,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4452881942135217,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.476476,
+          "decay": 0.5505407999999999,
+          "event": 0.27334600000000003
+        },
+        "mu_U": 0.4334542666666667,
+        "sigma_U": 0.11718188551994238,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2232190790736683,
+        "I_TS": 0.1974729300486532,
+        "J_TS": 0.3949458600973064,
+        "regime": "space_only",
+        "fusion_score": 0.39002244043877404,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6987853952955465,
+        "S_coherence": 0.5045616690372937,
+        "S_interact": 0.451681355927641
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.457436,
+          "decay": 0.5387872
+        },
+        "mu_U": 0.4981116,
+        "sigma_U": 0.040675600000000006,
+        "mu_M": 0.75,
+        "S_time_web": 0.35838795885228,
+        "I_TS": 0.24210069060748962,
+        "J_TS": 0.48420138121497924,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4231571221850253,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.457436,
+          "decay": 0.5387872,
+          "event": 0.26361599999999996
+        },
+        "mu_U": 0.4199464,
+        "sigma_U": 0.11542356751975166,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2166935682012053,
+        "I_TS": 0.1882531855483799,
+        "J_TS": 0.3765063710967598,
+        "regime": "space_only",
+        "fusion_score": 0.3716124584373993,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6541820721915755,
+        "S_coherence": 0.4606867412949204,
+        "S_interact": 0.42790865298408104
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.43878,
+          "decay": 0.5271391999999998
+        },
+        "mu_U": 0.48295959999999993,
+        "sigma_U": 0.0441795999999999,
+        "mu_M": 0.75,
+        "S_time_web": 0.34621697854188,
+        "I_TS": 0.22969899471506683,
+        "J_TS": 0.45939798943013366,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4001542786046034,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.43878,
+          "decay": 0.5271391999999998,
+          "event": 0.25403
+        },
+        "mu_U": 0.40664973333333326,
+        "sigma_U": 0.11378759249353833,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21022052286036313,
+        "I_TS": 0.17898740413627037,
+        "J_TS": 0.35797480827254075,
+        "regime": "space_only",
+        "fusion_score": 0.3522413764844,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6095787490876045,
+        "S_coherence": 0.41681181355254704,
+        "S_interact": 0.40413595004052094
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 1.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.420508,
+          "decay": 0.5155968
+        },
+        "mu_U": 0.4680524,
+        "sigma_U": 0.04754439999999999,
+        "mu_M": 0.75,
+        "S_time_web": 0.33434934710507996,
+        "I_TS": 0.21731265771236283,
+        "J_TS": 0.43462531542472566,
+        "regime": "time_web_forming",
+        "fusion_score": 0.37622980748955925,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.420508,
+          "decay": 0.5155968,
+          "event": 0.24458799999999997
+        },
+        "mu_U": 0.3935642666666666,
+        "sigma_U": 0.11226728818260266,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2038049263380814,
+        "I_TS": 0.16966494561003206,
+        "J_TS": 0.33932989122006413,
+        "regime": "pre_emergence",
+        "fusion_score": 0.33189776793677783,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5649754259836334,
+        "S_coherence": 0.37293688581017365,
+        "S_interact": 0.3803632470969609
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4932,
+          "decay": 0.5605
+        },
+        "mu_U": 0.52685,
+        "sigma_U": 0.033649999999999985,
+        "mu_M": 0.75,
+        "S_time_web": 0.38184112312500007,
+        "I_TS": 0.27518517942404375,
+        "J_TS": 0.5503703588480875,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4888085395069663,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4932,
+          "decay": 0.5605,
+          "event": 0.28322
+        },
+        "mu_U": 0.44564000000000004,
+        "sigma_U": 0.11808899130175794,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22925864611783273,
+        "I_TS": 0.21322913877106286,
+        "J_TS": 0.42645827754212573,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.4274415755802308,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7932815863822305,
+        "S_coherence": 0.6151450982391466,
+        "S_interact": 0.5113912987146917
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.473824,
+          "decay": 0.5486527999999999
+        },
+        "mu_U": 0.5112384,
+        "sigma_U": 0.03741439999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.36908304150528004,
+        "I_TS": 0.2623068688729681,
+        "J_TS": 0.5246137377459362,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4674075669298395,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.473824,
+          "decay": 0.5486527999999999,
+          "event": 0.27334600000000003
+        },
+        "mu_U": 0.43194093333333333,
+        "sigma_U": 0.11622995020393359,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22267960176055968,
+        "I_TS": 0.2037454110374055,
+        "J_TS": 0.407490822074811,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.4099706242441701,
+        "fusion_regime": "branch_synchronized"
+      },
+      "spatial": {
+        "S_space": 0.7456846911992966,
+        "S_coherence": 0.5659334903800148,
+        "S_interact": 0.4858217337789571
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.454832,
+          "decay": 0.5369112
+        },
+        "mu_U": 0.4958716,
+        "sigma_U": 0.04103960000000001,
+        "mu_M": 0.75,
+        "S_time_web": 0.35664092091348004,
+        "I_TS": 0.2494828022378182,
+        "J_TS": 0.4989656044756364,
+        "regime": "both_branches_present",
+        "fusion_score": 0.444996770670089,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.454832,
+          "decay": 0.5369112,
+          "event": 0.26361599999999996
+        },
+        "mu_U": 0.41845306666666665,
+        "sigma_U": 0.11449930619473447,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2161486138339934,
+        "I_TS": 0.19422326678552468,
+        "J_TS": 0.38844653357104936,
+        "regime": "space_only",
+        "fusion_score": 0.39135177896147555,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6980877960163628,
+        "S_coherence": 0.5167218825208831,
+        "S_interact": 0.4602521688432225
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.436224,
+          "decay": 0.5252751999999998
+        },
+        "mu_U": 0.4807495999999999,
+        "sigma_U": 0.044525599999999915,
+        "mu_M": 0.75,
+        "S_time_web": 0.34450795170767995,
+        "I_TS": 0.2366956314819774,
+        "J_TS": 0.4733912629639548,
+        "regime": "both_branches_present",
+        "fusion_score": 0.42153303504034106,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.436224,
+          "decay": 0.5252751999999998,
+          "event": 0.25403
+        },
+        "mu_U": 0.40517639999999994,
+        "sigma_U": 0.11289066902710186,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20967086299250426,
+        "I_TS": 0.18465439918027715,
+        "J_TS": 0.3693087983605543,
+        "regime": "space_only",
+        "fusion_score": 0.3715758105086587,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.650490900833429,
+        "S_coherence": 0.46751027466175143,
+        "S_interact": 0.4346826039074879
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.418,
+          "decay": 0.5137447999999999
+        },
+        "mu_U": 0.46587239999999996,
+        "sigma_U": 0.047872399999999954,
+        "mu_M": 0.75,
+        "S_time_web": 0.33267747758868005,
+        "I_TS": 0.2239247959992049,
+        "J_TS": 0.4478495919984098,
+        "regime": "both_branches_present",
+        "fusion_score": 0.39696124134659155,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.418,
+          "decay": 0.5137447999999999,
+          "event": 0.24458799999999997
+        },
+        "mu_U": 0.3921109333333333,
+        "sigma_U": 0.11139727278592693,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20325132609276575,
+        "I_TS": 0.175027859312341,
+        "J_TS": 0.350055718624682,
+        "regime": "space_only",
+        "fusion_score": 0.3506298248654282,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6028940056504951,
+        "S_coherence": 0.4182986668026197,
+        "S_interact": 0.4091130389717534
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.49050000000000005,
+          "decay": 0.5586
+        },
+        "mu_U": 0.5245500000000001,
+        "sigma_U": 0.03404999999999997,
+        "mu_M": 0.75,
+        "S_time_web": 0.3800168043750001,
+        "I_TS": 0.2786345537340682,
+        "J_TS": 0.5572691074681364,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4981812037871403,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.49050000000000005,
+          "decay": 0.5586,
+          "event": 0.28322
+        },
+        "mu_U": 0.4441066666666667,
+        "sigma_U": 0.11711188989831713,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22872295577652,
+        "I_TS": 0.21616652908240777,
+        "J_TS": 0.43233305816481554,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.43616688107654256,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.8171976990572347,
+        "S_coherence": 0.6471217734993939,
+        "S_interact": 0.5286177904373839
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.47117200000000004,
+          "decay": 0.5467647999999999
+        },
+        "mu_U": 0.5089684,
+        "sigma_U": 0.03779639999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.36729842007468,
+        "I_TS": 0.26558713180764376,
+        "J_TS": 0.5311742636152875,
+        "regime": "both_branches_present",
+        "fusion_score": 0.47685006064416574,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.47117200000000004,
+          "decay": 0.5467647999999999,
+          "event": 0.27334600000000003
+        },
+        "mu_U": 0.4304276,
+        "sigma_U": 0.11528093119818209,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2221377115175175,
+        "I_TS": 0.20654212713293973,
+        "J_TS": 0.41308425426587947,
+        "regime": "space_dominant_partial_time",
+        "fusion_score": 0.41878652310665904,
+        "fusion_regime": "branch_synchronized"
+      },
+      "spatial": {
+        "S_space": 0.7681658371138006,
+        "S_coherence": 0.5953520316194424,
+        "S_interact": 0.5021869009155147
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.452228,
+          "decay": 0.5350351999999999
+        },
+        "mu_U": 0.49363159999999995,
+        "sigma_U": 0.04140359999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.35489510601467994,
+        "I_TS": 0.25259509514084266,
+        "J_TS": 0.5051901902816853,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4544160410242974,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.452228,
+          "decay": 0.5350351999999999,
+          "event": 0.26361599999999996
+        },
+        "mu_U": 0.4169597333333333,
+        "sigma_U": 0.11357811851295223,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21560130160664145,
+        "I_TS": 0.19687954507533864,
+        "J_TS": 0.3937590901506773,
+        "regime": "space_only",
+        "fusion_score": 0.40015792220373964,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.7191339751703666,
+        "S_coherence": 0.5435822897394909,
+        "S_interact": 0.4757560113936455
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.433668,
+          "decay": 0.5234111999999999
+        },
+        "mu_U": 0.47853959999999995,
+        "sigma_U": 0.04487159999999993,
+        "mu_M": 0.75,
+        "S_time_web": 0.34280007186348,
+        "I_TS": 0.2396409045687225,
+        "J_TS": 0.479281809137445,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4308360709346,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.433668,
+          "decay": 0.5234111999999999,
+          "event": 0.25403
+        },
+        "mu_U": 0.4037030666666666,
+        "sigma_U": 0.1119969661809739,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20911890297785932,
+        "I_TS": 0.18717038948586484,
+        "J_TS": 0.3743407789717297,
+        "regime": "space_only",
+        "fusion_score": 0.3802714316608864,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6701021132269325,
+        "S_coherence": 0.4918125478595394,
+        "S_interact": 0.4493251218717763
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.6,
+        "lambda": 2.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.415492,
+          "decay": 0.5118927999999999
+        },
+        "mu_U": 0.46369239999999995,
+        "sigma_U": 0.04820039999999998,
+        "mu_M": 0.75,
+        "S_time_web": 0.33100668063227995,
+        "I_TS": 0.22670377275026038,
+        "J_TS": 0.45340754550052076,
+        "regime": "both_branches_present",
+        "fusion_score": 0.40605433360098553,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.415492,
+          "decay": 0.5118927999999999,
+          "event": 0.24458799999999997
+        },
+        "mu_U": 0.39065759999999994,
+        "sigma_U": 0.11053061293379313,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20269548601444068,
+        "I_TS": 0.17740359102412462,
+        "J_TS": 0.35480718204824924,
+        "regime": "space_only",
+        "fusion_score": 0.35911354378821986,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6210702512834984,
+        "S_coherence": 0.44004280597958784,
+        "S_interact": 0.42289423234990714
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 0.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.5137200000000001,
+          "decay": 0.5738
+        },
+        "mu_U": 0.54376,
+        "sigma_U": 0.030039999999999956,
+        "mu_M": 0.75,
+        "S_time_web": 0.39556908720000006,
+        "I_TS": 0.2208433301512715,
+        "J_TS": 0.441686660302543,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3915669037837829,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.5137200000000001,
+          "decay": 0.5738,
+          "event": 0.28616
+        },
+        "mu_U": 0.4578933333333333,
+        "sigma_U": 0.12388611687980035,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2340139120208859,
+        "I_TS": 0.16986110820283537,
+        "J_TS": 0.33972221640567074,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3394951112196503,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.49318086827795465,
+        "S_coherence": 0.31488151205101295,
+        "S_interact": 0.48606125483839846
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 0.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.49397919999999995,
+          "decay": 0.5618688
+        },
+        "mu_U": 0.527924,
+        "sigma_U": 0.0339448,
+        "mu_M": 0.75,
+        "S_time_web": 0.38250279405359994,
+        "I_TS": 0.21054956452382667,
+        "J_TS": 0.42109912904765334,
+        "regime": "time_web_forming",
+        "fusion_score": 0.37091230670602665,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.49397919999999995,
+          "decay": 0.5618688,
+          "event": 0.27625600000000006
+        },
+        "mu_U": 0.44403466666666663,
+        "sigma_U": 0.12183187921167792,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22746330179506247,
+        "I_TS": 0.16236510998350276,
+        "J_TS": 0.3247302199670055,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3229780593831402,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4635900161812774,
+        "S_coherence": 0.2896909910869319,
+        "S_interact": 0.4617581920964785
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 0.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.47462239999999994,
+          "decay": 0.5500432
+        },
+        "mu_U": 0.5123327999999999,
+        "sigma_U": 0.037710400000000005,
+        "mu_M": 0.75,
+        "S_time_web": 0.36975939388415996,
+        "I_TS": 0.20029682215287004,
+        "J_TS": 0.40059364430574007,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3500711540876097,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.47462239999999994,
+          "decay": 0.5500432,
+          "event": 0.26649599999999996
+        },
+        "mu_U": 0.4303871999999999,
+        "sigma_U": 0.11990918326311237,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22095489637730958,
+        "I_TS": 0.15483397586459488,
+        "J_TS": 0.30966795172918976,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3060754739708354,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4339991640846001,
+        "S_coherence": 0.2645004701228509,
+        "S_interact": 0.4374551293545586
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 0.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.45564960000000004,
+          "decay": 0.5383231999999999
+        },
+        "mu_U": 0.49698639999999994,
+        "sigma_U": 0.041336799999999924,
+        "mu_M": 0.75,
+        "S_time_web": 0.35733192943535996,
+        "I_TS": 0.1900710409309776,
+        "J_TS": 0.3801420818619552,
+        "regime": "time_web_forming",
+        "fusion_score": 0.32905326890218095,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.45564960000000004,
+          "decay": 0.5383231999999999,
+          "event": 0.25687999999999994
+        },
+        "mu_U": 0.4169509333333333,
+        "sigma_U": 0.11811225961740333,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21449395126118634,
+        "I_TS": 0.14726093911926896,
+        "J_TS": 0.2945218782385379,
+        "regime": "pre_emergence",
+        "fusion_score": 0.28878605061339363,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4044083119879228,
+        "S_coherence": 0.23930994915876985,
+        "S_interact": 0.4131520666126387
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 0.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4370608,
+          "decay": 0.5267088
+        },
+        "mu_U": 0.4818848,
+        "sigma_U": 0.044823999999999975,
+        "mu_M": 0.75,
+        "S_time_web": 0.34521359679360003,
+        "I_TS": 0.1798555555648044,
+        "J_TS": 0.3597111111296088,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3078770650041292,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4370608,
+          "decay": 0.5267088,
+          "event": 0.247408
+        },
+        "mu_U": 0.4037258666666667,
+        "sigma_U": 0.11643495338718333,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20808553745007768,
+        "I_TS": 0.13963711235479517,
+        "J_TS": 0.27927422470959035,
+        "regime": "pre_emergence",
+        "fusion_score": 0.27110918031280173,
+        "fusion_regime": "pre_emergence"
+      },
+      "spatial": {
+        "S_space": 0.37481745989124554,
+        "S_coherence": 0.2141194281946888,
+        "S_interact": 0.3888490038707188
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.5110200000000001,
+          "decay": 0.5719
+        },
+        "mu_U": 0.54146,
+        "sigma_U": 0.03043999999999991,
+        "mu_M": 0.75,
+        "S_time_web": 0.39373346820000005,
+        "I_TS": 0.23427856382324014,
+        "J_TS": 0.4685571276464803,
+        "regime": "time_web_forming",
+        "fusion_score": 0.44237100183362565,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.5110200000000001,
+          "decay": 0.5719,
+          "event": 0.28616
+        },
+        "mu_U": 0.45636000000000004,
+        "sigma_U": 0.12288917391970158,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2334956730108363,
+        "I_TS": 0.1804142367378766,
+        "J_TS": 0.3608284734757532,
+        "regime": "pre_emergence",
+        "fusion_score": 0.38117719261189326,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5576,
+        "S_coherence": 0.4094999999999999,
+        "S_interact": 0.5599999999999999
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4913272000000001,
+          "decay": 0.5599808
+        },
+        "mu_U": 0.5256540000000001,
+        "sigma_U": 0.034326799999999935,
+        "mu_M": 0.75,
+        "S_time_web": 0.38070748520460007,
+        "I_TS": 0.223352604711183,
+        "J_TS": 0.446705209422366,
+        "regime": "time_web_forming",
+        "fusion_score": 0.41951139938797466,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4913272000000001,
+          "decay": 0.5599808,
+          "event": 0.27625600000000006
+        },
+        "mu_U": 0.4425213333333334,
+        "sigma_U": 0.12086204256526893,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22693842564631028,
+        "I_TS": 0.17244449409299767,
+        "J_TS": 0.34488898818599534,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3631142190968363,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5241439999999999,
+        "S_coherence": 0.3767399999999999,
+        "S_interact": 0.5319999999999999
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.47201840000000006,
+          "decay": 0.5481672
+        },
+        "mu_U": 0.5100928,
+        "sigma_U": 0.03807439999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.36800349202176,
+        "I_TS": 0.21247052589310675,
+        "J_TS": 0.4249410517862135,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3962293525078009,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.47201840000000006,
+          "decay": 0.5481672,
+          "event": 0.26649599999999996
+        },
+        "mu_U": 0.4288938666666667,
+        "sigma_U": 0.11896627045448174,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22042414504164345,
+        "I_TS": 0.16443804523451525,
+        "J_TS": 0.3288760904690305,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3444822823026417,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.490688,
+        "S_coherence": 0.3439799999999999,
+        "S_interact": 0.504
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.45309360000000004,
+          "decay": 0.5364591999999999
+        },
+        "mu_U": 0.4947764,
+        "sigma_U": 0.04168279999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.35561455070556003,
+        "I_TS": 0.2016174299559717,
+        "J_TS": 0.4032348599119434,
+        "regime": "time_web_forming",
+        "fusion_score": 0.3725175251041308,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.45309360000000004,
+          "decay": 0.5364591999999999,
+          "event": 0.25687999999999994
+        },
+        "mu_U": 0.4154776,
+        "sigma_U": 0.11719600351593337,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21395808334227162,
+        "I_TS": 0.15638772519187172,
+        "J_TS": 0.31277545038374344,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3252773631917837,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.457232,
+        "S_coherence": 0.31121999999999994,
+        "S_interact": 0.4759999999999999
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4345528,
+          "decay": 0.5248567999999999
+        },
+        "mu_U": 0.47970479999999993,
+        "sigma_U": 0.04515199999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.34353387665279994,
+        "I_TS": 0.19077566151924158,
+        "J_TS": 0.38155132303848316,
+        "regime": "time_web_forming",
+        "fusion_score": 0.34838528434082855,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4345528,
+          "decay": 0.5248567999999999,
+          "event": 0.247408
+        },
+        "mu_U": 0.4022725333333333,
+        "sigma_U": 0.11554500095176,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2075453059671054,
+        "I_TS": 0.148284118823895,
+        "J_TS": 0.29656823764779,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3054954458375011,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.423776,
+        "S_coherence": 0.27845999999999993,
+        "S_interact": 0.44799999999999995
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.5083200000000001,
+          "decay": 0.57
+        },
+        "mu_U": 0.5391600000000001,
+        "sigma_U": 0.030839999999999923,
+        "mu_M": 0.75,
+        "S_time_web": 0.3918992292000001,
+        "I_TS": 0.2468647495439167,
+        "J_TS": 0.4937294990878334,
+        "regime": "both_branches_present",
+        "fusion_score": 0.48503711652732334,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.5083200000000001,
+          "decay": 0.57,
+          "event": 0.28616
+        },
+        "mu_U": 0.4548266666666667,
+        "sigma_U": 0.12189459636186593,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2329750230025869,
+        "I_TS": 0.19033846269277307,
+        "J_TS": 0.38067692538554615,
+        "regime": "space_only",
+        "fusion_score": 0.41786806115915676,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6220191317220454,
+        "S_coherence": 0.504118487948987,
+        "S_interact": 0.6339387451616015
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4886752000000001,
+          "decay": 0.5580927999999999
+        },
+        "mu_U": 0.5233840000000001,
+        "sigma_U": 0.03470879999999993,
+        "mu_M": 0.75,
+        "S_time_web": 0.3789134770656001,
+        "I_TS": 0.23534546207755852,
+        "J_TS": 0.47069092415511704,
+        "regime": "time_web_forming",
+        "fusion_score": 0.4610576685974335,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4886752000000001,
+          "decay": 0.5580927999999999,
+          "event": 0.27625600000000006
+        },
+        "mu_U": 0.44100800000000007,
+        "sigma_U": 0.11989472305718876,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.22641118965149734,
+        "I_TS": 0.18192180057873006,
+        "J_TS": 0.3638436011574601,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3988861618569102,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5846979838187226,
+        "S_coherence": 0.46378900891306796,
+        "S_interact": 0.6022418079035214
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.46941440000000006,
+          "decay": 0.5462912
+        },
+        "mu_U": 0.5078528,
+        "sigma_U": 0.038438399999999956,
+        "mu_M": 0.75,
+        "S_time_web": 0.36624881319936,
+        "I_TS": 0.22387279676572813,
+        "J_TS": 0.44774559353145627,
+        "regime": "time_web_forming",
+        "fusion_score": 0.43641534385245956,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.46941440000000006,
+          "decay": 0.5462912,
+          "event": 0.26649599999999996
+        },
+        "mu_U": 0.42740053333333333,
+        "sigma_U": 0.11802602037961331,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2198910870775942,
+        "I_TS": 0.17346706278897098,
+        "J_TS": 0.34693412557794195,
+        "regime": "pre_emergence",
+        "fusion_score": 0.379110357807903,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5473768359154,
+        "S_coherence": 0.423459529877149,
+        "S_interact": 0.5705448706454413
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.45053760000000004,
+          "decay": 0.5345951999999998
+        },
+        "mu_U": 0.49256639999999996,
+        "sigma_U": 0.042028799999999894,
+        "mu_M": 0.75,
+        "S_time_web": 0.3538983189657601,
+        "I_TS": 0.21243107739123196,
+        "J_TS": 0.4248621547824639,
+        "regime": "time_web_forming",
+        "fusion_score": 0.4110738509802563,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.45053760000000004,
+          "decay": 0.5345951999999998,
+          "event": 0.25687999999999994
+        },
+        "mu_U": 0.4140042666666666,
+        "sigma_U": 0.11628254787683696,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21341996416229134,
+        "I_TS": 0.16496671380638456,
+        "J_TS": 0.3299334276127691,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3585343526667495,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5100556880120772,
+        "S_coherence": 0.3831300508412301,
+        "S_interact": 0.5388479333873613
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 1.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4320448,
+          "decay": 0.5230047999999999
+        },
+        "mu_U": 0.47752479999999997,
+        "sigma_U": 0.045479999999999965,
+        "mu_M": 0.75,
+        "S_time_web": 0.341855229072,
+        "I_TS": 0.2010017254273734,
+        "J_TS": 0.4020034508547468,
+        "regime": "time_web_forming",
+        "fusion_score": 0.385006546079661,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4320448,
+          "decay": 0.5230047999999999,
+          "event": 0.247408
+        },
+        "mu_U": 0.4008192,
+        "sigma_U": 0.1146579772310675,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20700288075403142,
+        "I_TS": 0.15641084651842754,
+        "J_TS": 0.3128216930368551,
+        "regime": "pre_emergence",
+        "fusion_score": 0.33715105927892985,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.4727345401087545,
+        "S_coherence": 0.3428005718053111,
+        "S_interact": 0.5071509961292813
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.0,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.5056200000000001,
+          "decay": 0.5680999999999999
+        },
+        "mu_U": 0.53686,
+        "sigma_U": 0.031239999999999934,
+        "mu_M": 0.75,
+        "S_time_web": 0.39006637020000007,
+        "I_TS": 0.25441741399706713,
+        "J_TS": 0.5088348279941343,
+        "regime": "both_branches_present",
+        "fusion_score": 0.5086942316434239,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.5056200000000001,
+          "decay": 0.5680999999999999,
+          "event": 0.28616
+        },
+        "mu_U": 0.4532933333333333,
+        "sigma_U": 0.12090244258170393,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.23245195290760964,
+        "I_TS": 0.19640121903545416,
+        "J_TS": 0.3928024380709083,
+        "regime": "space_only",
+        "fusion_score": 0.43904591773281065,
+        "fusion_regime": "branch_synchronized"
+      },
+      "spatial": {
+        "S_space": 0.6637662253402336,
+        "S_coherence": 0.5654364034319428,
+        "S_interact": 0.6818550649529224
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.0,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48602320000000004,
+          "decay": 0.5562047999999999
+        },
+        "mu_U": 0.521114,
+        "sigma_U": 0.03509079999999995,
+        "mu_M": 0.75,
+        "S_time_web": 0.3771207696366,
+        "I_TS": 0.242539083434786,
+        "J_TS": 0.485078166869572,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4843845209412752,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48602320000000004,
+          "decay": 0.5562047999999999,
+          "event": 0.27625600000000006
+        },
+        "mu_U": 0.43949466666666664,
+        "sigma_U": 0.11892998210704571,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2258815847305838,
+        "I_TS": 0.1877076269483078,
+        "J_TS": 0.3754152538966156,
+        "regime": "space_only",
+        "fusion_score": 0.41978623036646323,
+        "fusion_regime": "branch_synchronized"
+      },
+      "spatial": {
+        "S_space": 0.6239402518198195,
+        "S_coherence": 0.5202014911573873,
+        "S_interact": 0.6477623117052762
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.0,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.46681040000000007,
+          "decay": 0.5444152
+        },
+        "mu_U": 0.5056128,
+        "sigma_U": 0.03880239999999996,
+        "mu_M": 0.75,
+        "S_time_web": 0.36449535741696,
+        "I_TS": 0.23070920150759672,
+        "J_TS": 0.46141840301519343,
+        "regime": "time_web_forming",
+        "fusion_score": 0.45925533313417644,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.46681040000000007,
+          "decay": 0.5444152,
+          "event": 0.26649599999999996
+        },
+        "mu_U": 0.4259072,
+        "sigma_U": 0.11708849718578965,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21935571350664562,
+        "I_TS": 0.17897542029967792,
+        "J_TS": 0.35795084059935584,
+        "regime": "pre_emergence",
+        "fusion_score": 0.39956504115575514,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5841142782994055,
+        "S_coherence": 0.47496657888283195,
+        "S_interact": 0.6136695584576302
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.0,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.44798160000000004,
+          "decay": 0.5327311999999998
+        },
+        "mu_U": 0.4903563999999999,
+        "sigma_U": 0.04237479999999991,
+        "mu_M": 0.75,
+        "S_time_web": 0.35218323421595993,
+        "I_TS": 0.2189116348683798,
+        "J_TS": 0.4378232697367596,
+        "regime": "time_web_forming",
+        "fusion_score": 0.43326031229519374,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.44798160000000004,
+          "decay": 0.5327311999999998,
+          "event": 0.25687999999999994
+        },
+        "mu_U": 0.4125309333333333,
+        "sigma_U": 0.11537195921798134,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2128795849347091,
+        "I_TS": 0.17019684809520427,
+        "J_TS": 0.34039369619040855,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3783748380026468,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5442883047789916,
+        "S_coherence": 0.42973166660827655,
+        "S_interact": 0.579576805209984
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.0,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4295368,
+          "decay": 0.5211528
+        },
+        "mu_U": 0.4753448,
+        "sigma_U": 0.04580799999999999,
+        "mu_M": 0.75,
+        "S_time_web": 0.34017765405120004,
+        "I_TS": 0.20712726305628038,
+        "J_TS": 0.41425452611256075,
+        "regime": "time_web_forming",
+        "fusion_score": 0.4063552011060033,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4295368,
+          "decay": 0.5211528,
+          "event": 0.247408
+        },
+        "mu_U": 0.3993658666666667,
+        "sigma_U": 0.11377395072515013,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.20645825330154877,
+        "I_TS": 0.16136171461043136,
+        "J_TS": 0.3227234292208627,
+        "regime": "pre_emergence",
+        "fusion_score": 0.35620686387036415,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5044623312585775,
+        "S_coherence": 0.38449675433372105,
+        "S_interact": 0.545484051962338
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.50292,
+          "decay": 0.5661999999999999
+        },
+        "mu_U": 0.5345599999999999,
+        "sigma_U": 0.031639999999999946,
+        "mu_M": 0.75,
+        "S_time_web": 0.3882348912,
+        "I_TS": 0.25761713257330715,
+        "J_TS": 0.5152342651466143,
+        "regime": "both_branches_present",
+        "fusion_score": 0.5186968141656295,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.50292,
+          "decay": 0.5661999999999999,
+          "event": 0.28616
+        },
+        "mu_U": 0.45175999999999994,
+        "sigma_U": 0.11991277274196714,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.23192645337521853,
+        "I_TS": 0.19911436983678601,
+        "J_TS": 0.39822873967357203,
+        "regime": "space_only",
+        "fusion_score": 0.44839563467658206,
+        "fusion_regime": "branch_synchronized"
+      },
+      "spatial": {
+        "S_space": 0.6837776665580944,
+        "S_coherence": 0.5948291049337863,
+        "S_interact": 0.7048237205831787
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.5,
+        "disorder": 0.2
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.48337120000000006,
+          "decay": 0.5543167999999999
+        },
+        "mu_U": 0.518844,
+        "sigma_U": 0.03547279999999994,
+        "mu_M": 0.75,
+        "S_time_web": 0.37532936291759994,
+        "I_TS": 0.24558263670735186,
+        "J_TS": 0.49116527341470373,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4943421005281005,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.48337120000000006,
+          "decay": 0.5543167999999999,
+          "event": 0.27625600000000006
+        },
+        "mu_U": 0.43798133333333333,
+        "sigma_U": 0.11796788297717115,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2253496015496141,
+        "I_TS": 0.19029167298186483,
+        "J_TS": 0.38058334596372967,
+        "regime": "space_only",
+        "fusion_score": 0.4290907474517149,
+        "fusion_regime": "branch_synchronized"
+      },
+      "spatial": {
+        "S_space": 0.6427510065646087,
+        "S_coherence": 0.5472427765390834,
+        "S_interact": 0.6695825345540197
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.5,
+        "disorder": 0.4
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4642064,
+          "decay": 0.5425392
+        },
+        "mu_U": 0.5033728,
+        "sigma_U": 0.03916639999999999,
+        "mu_M": 0.75,
+        "S_time_web": 0.36274312467455994,
+        "I_TS": 0.23359760790083392,
+        "J_TS": 0.46719521580166784,
+        "regime": "both_branches_present",
+        "fusion_score": 0.4690892321809314,
+        "fusion_regime": "branch_synchronized"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4642064,
+          "decay": 0.5425392,
+          "event": 0.26649599999999996
+        },
+        "mu_U": 0.42441386666666664,
+        "sigma_U": 0.11615376690224999,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.21881801510787402,
+        "I_TS": 0.181430515045551,
+        "J_TS": 0.362861030091102,
+        "regime": "space_only",
+        "fusion_score": 0.40873827287705294,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.6017243465711231,
+        "S_coherence": 0.4996564481443804,
+        "S_interact": 0.6343413485248608
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.44542560000000003,
+          "decay": 0.5308671999999999
+        },
+        "mu_U": 0.4881464,
+        "sigma_U": 0.04272079999999992,
+        "mu_M": 0.75,
+        "S_time_web": 0.35046929645616004,
+        "I_TS": 0.2216457329498253,
+        "J_TS": 0.4432914658996506,
+        "regime": "time_web_forming",
+        "fusion_score": 0.44288956900126086,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.44542560000000003,
+          "decay": 0.5308671999999999,
+          "event": 0.25687999999999994
+        },
+        "mu_U": 0.41105759999999997,
+        "sigma_U": 0.11446430596175676,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2123369366449885,
+        "I_TS": 0.1725230630610205,
+        "J_TS": 0.345046126122041,
+        "regime": "pre_emergence",
+        "fusion_score": 0.3873301988597773,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5606976865776374,
+        "S_coherence": 0.4520701197496776,
+        "S_interact": 0.5991001624957019
+      }
+    },
+    {
+      "params": {
+        "alpha": 0.8,
+        "lambda": 2.5,
+        "disorder": 0.8
+      },
+      "two_clock": {
+        "usefulness": {
+          "osc": 0.4270288,
+          "decay": 0.5193007999999999
+        },
+        "mu_U": 0.47316479999999994,
+        "sigma_U": 0.046135999999999955,
+        "mu_M": 0.75,
+        "S_time_web": 0.33850115159039995,
+        "I_TS": 0.2097076780585899,
+        "J_TS": 0.4194153561171798,
+        "regime": "time_web_forming",
+        "fusion_score": 0.4156936343882272,
+        "fusion_regime": "partial_emergence"
+      },
+      "three_clock": {
+        "usefulness": {
+          "osc": 0.4270288,
+          "decay": 0.5193007999999999,
+          "event": 0.247408
+        },
+        "mu_U": 0.3979125333333333,
+        "sigma_U": 0.11289299184452894,
+        "mu_M": 0.5833333333333334,
+        "S_time_web": 0.2059114148891902,
+        "I_TS": 0.16355900797637277,
+        "J_TS": 0.32711801595274553,
+        "regime": "pre_emergence",
+        "fusion_score": 0.36485708163496666,
+        "fusion_regime": "partial_emergence"
+      },
+      "spatial": {
+        "S_space": 0.5196710265841518,
+        "S_coherence": 0.40448379135497464,
+        "S_interact": 0.5638589764665429
+      }
+    }
+  ]
+}
