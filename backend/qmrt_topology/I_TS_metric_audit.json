@@ -1,0 +1,24 @@
+{
+  "metrics": {
+    "I_TS_corr": {
+      "value": 0.91,
+      "meaning": "correlation strength (how predictive)",
+      "formula": "weighted avg of layer-space correlations",
+      "source": "spacetime_coupling_refined.json"
+    },
+    "I_TS_mag": {
+      "range": [
+        0.12,
+        0.15
+      ],
+      "meaning": "coupling magnitude (how strong)",
+      "formula": "S \u00d7 Coupling(R, P)",
+      "source": "phase_transition_final.json"
+    }
+  },
+  "reconciliation": "Both valid, measure different aspects",
+  "control_parameter": {
+    "name": "alpha (backreaction)",
+    "rho_with_I_TS": 0.89
+  }
+}
