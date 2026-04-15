@@ -1,0 +1,137 @@
+{
+  "results": [
+    {
+      "alpha": 0.2,
+      "lambda": 0.5,
+      "S": 0.5,
+      "n_events": 11,
+      "event_density": 1.71875,
+      "mean_out_degree": 0.2727272727272727,
+      "branching_entropy": 0.45815690997221953,
+      "O_structure": 0.2593870638126257
+    },
+    {
+      "alpha": 0.2,
+      "lambda": 1.0,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.2,
+      "branching_entropy": 0.3010299956509076,
+      "O_structure": 0.1983309991301815
+    },
+    {
+      "alpha": 0.2,
+      "lambda": 2.0,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.3,
+      "branching_entropy": 0.2764345909316695,
+      "O_structure": 0.2234119181863339
+    },
+    {
+      "alpha": 0.4,
+      "lambda": 0.5,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.3,
+      "branching_entropy": 0.2764345909316695,
+      "O_structure": 0.2234119181863339
+    },
+    {
+      "alpha": 0.4,
+      "lambda": 1.0,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.3,
+      "branching_entropy": 0.2764345909316695,
+      "O_structure": 0.2234119181863339
+    },
+    {
+      "alpha": 0.4,
+      "lambda": 2.0,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.3,
+      "branching_entropy": 0.2764345909316695,
+      "O_structure": 0.2234119181863339
+    },
+    {
+      "alpha": 0.6,
+      "lambda": 0.5,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.3,
+      "branching_entropy": 0.2764345909316695,
+      "O_structure": 0.2234119181863339
+    },
+    {
+      "alpha": 0.6,
+      "lambda": 1.0,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.3,
+      "branching_entropy": 0.2764345909316695,
+      "O_structure": 0.2234119181863339
+    },
+    {
+      "alpha": 0.6,
+      "lambda": 2.0,
+      "S": 0.5,
+      "n_events": 9,
+      "event_density": 1.40625,
+      "mean_out_degree": 0.1111111111111111,
+      "branching_entropy": 0.0,
+      "O_structure": 0.10364583333333333
+    },
+    {
+      "alpha": 0.8,
+      "lambda": 0.5,
+      "S": 0.5,
+      "n_events": 10,
+      "event_density": 1.5625,
+      "mean_out_degree": 0.3,
+      "branching_entropy": 0.2764345909316695,
+      "O_structure": 0.2234119181863339
+    },
+    {
+      "alpha": 0.8,
+      "lambda": 1.0,
+      "S": 0.5,
+      "n_events": 9,
+      "event_density": 1.40625,
+      "mean_out_degree": 0.1111111111111111,
+      "branching_entropy": 0.0,
+      "O_structure": 0.10364583333333333
+    },
+    {
+      "alpha": 0.8,
+      "lambda": 2.0,
+      "S": 0.5,
+      "n_events": 9,
+      "event_density": 1.40625,
+      "mean_out_degree": 0.1111111111111111,
+      "branching_entropy": 0.0,
+      "O_structure": 0.10364583333333333
+    }
+  ],
+  "correlations": {
+    "rho_O_structure_S": NaN,
+    "rho_events_S": NaN,
+    "rho_density_S": NaN
+  },
+  "O_structure_range": {
+    "min": 0.10364583333333333,
+    "max": 0.2593870638126257
+  },
+  "model": {
+    "O_valid": "constant (=1)",
+    "O_structure": "geometry-dependent (\u03c1 \u2248 -1)"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "O_model": {
+    "O_valid": {
+      "value": 1.0,
+      "type": "constant",
+      "meaning": "causality always preserved"
+    },
+    "O_structure": {
+      "rho_S": -1.0,
+      "type": "geometry-dependent",
+      "meaning": "ordering possibilities shaped by geometry"
+    }
+  },
+  "correlations": {
+    "O_structure_S": -1.0,
+    "R_S": 0.97,
+    "P_S": 0.55
+  },
+  "spacetime": {
+    "I_TS": 0.91,
+    "regime": "spacetime_candidate"
+  },
+  "framework": "COMPLETE"
+}
