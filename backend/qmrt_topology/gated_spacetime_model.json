@@ -1,0 +1,17 @@
+{
+  "model": "gated_spacetime",
+  "O_threshold": 0.8,
+  "interpretation": {
+    "O_role": "structural gate (enables/disables spacetime)",
+    "R_role": "primary coupling (time dilation analog)",
+    "P_role": "secondary coupling (stability modulation)"
+  },
+  "formula": "SPACETIME = O_valid \u00d7 Coupling(R,P,S)",
+  "current_status": {
+    "O_acyc": 1.0,
+    "O_valid": true,
+    "rho_RS": 0.97,
+    "rho_PS": 0.55,
+    "I_TS": 0.8
+  }
+}
