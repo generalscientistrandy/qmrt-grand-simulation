@@ -1,0 +1,48 @@
+{
+  "results": [
+    {
+      "label": "weak",
+      "alpha": 0.2,
+      "lambda": 0.5,
+      "S": 0.3,
+      "R": 0.13980308013011528,
+      "O_valid": 1.0,
+      "O_structure": 0.2,
+      "P": 0.78,
+      "n_events": 6
+    },
+    {
+      "label": "medium",
+      "alpha": 0.5,
+      "lambda": 1.0,
+      "S": 0.3,
+      "R": 0.1759850680967584,
+      "O_valid": 1.0,
+      "O_structure": 0.2,
+      "P": 0.825,
+      "n_events": 6
+    },
+    {
+      "label": "strong",
+      "alpha": 0.8,
+      "lambda": 2.0,
+      "S": 0.3,
+      "R": 0.22912398454244515,
+      "O_valid": 1.0,
+      "O_structure": 0.2,
+      "P": 0.87,
+      "n_events": 6
+    }
+  ],
+  "correlations": {
+    "rho_R_S": null,
+    "rho_O_S": null,
+    "rho_alpha_R": 1.0
+  },
+  "validations": {
+    "O_valid = 1 (causality)": true,
+    "O_structure inverse with S": false,
+    "R increases with \u03b1": true,
+    "Spacetime coupling exists": true
+  },
+  "n_validated": 
