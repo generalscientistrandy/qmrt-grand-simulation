@@ -1,0 +1,1823 @@
+{
+  "results": [
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 0.3,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.12042654240967891,
+      "P": 0.85,
+      "S": 0.5150006839330813,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 0.3,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.12038734774955473,
+      "P": 0.85,
+      "S": 0.5148766537461826,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 0.3,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.12034917437307631,
+      "P": 0.85,
+      "S": 0.5150125683448705,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 0.8,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.12839710297214818,
+      "P": 0.85,
+      "S": 0.5225516155054728,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 0.8,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.12838016340860375,
+      "P": 0.85,
+      "S": 0.5224848508797779,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 0.8,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.12836304677554397,
+      "P": 0.85,
+      "S": 0.5226017660530954,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.13223637221549187,
+      "P": 0.85,
+      "S": 0.5258411814219055,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1322162160438819,
+      "P": 0.85,
+      "S": 0.5258330962871395,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1321960983260915,
+      "P": 0.85,
+      "S": 0.5257987684863898,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.13368413738201124,
+      "P": 0.85,
+      "S": 0.5274383365755374,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 2.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.13366480404157163,
+      "P": 0.85,
+      "S": 0.5274233571706277,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.1,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.13364563869687923,
+      "P": 0.85,
+      "S": 0.5274102279493811,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.3,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.14331621817392537,
+      "P": 0.85,
+      "S": 0.5379495406156823,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.3,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.14330207931251449,
+      "P": 0.85,
+      "S": 0.5380449346779085,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.3,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.14328126016300255,
+      "P": 0.85,
+      "S": 0.5384468898480933,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.8,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.15656456096604515,
+      "P": 0.85,
+      "S": 0.5569808372819232,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.8,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.15673538620438304,
+      "P": 0.85,
+      "S": 0.5570452933675998,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 0.8,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.15690074186807887,
+      "P": 0.85,
+      "S": 0.5572483295368865,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1666843722876068,
+      "P": 0.85,
+      "S": 0.5694920771404385,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.16685086893185036,
+      "P": 0.85,
+      "S": 0.5694769230613519,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1670113797260322,
+      "P": 0.85,
+      "S": 0.5693768768077965,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.17616592370601034,
+      "P": 0.85,
+      "S": 0.579610327449108,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 2.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.17615802070758255,
+      "P": 0.85,
+      "S": 0.579536242034256,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.3,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1761481402256977,
+      "P": 0.85,
+      "S": 0.5794609915951009,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.3,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.15796459999508808,
+      "P": 0.85,
+      "S": 0.5558382895876645,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.3,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.15797468219449443,
+      "P": 0.85,
+      "S": 0.5560194417252744,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.3,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.15798308924093193,
+      "P": 0.85,
+      "S": 0.5556094890771015,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.8,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1722412719829273,
+      "P": 0.85,
+      "S": 0.5857403330887235,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.8,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.17248556426401676,
+      "P": 0.85,
+      "S": 0.5858117827233746,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 0.8,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.17272403849481088,
+      "P": 0.85,
+      "S": 0.5856311286182919,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1860910739974001,
+      "P": 0.85,
+      "S": 0.6111117215867877,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.18631293714499295,
+      "P": 0.85,
+      "S": 0.6110015869968711,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1865273118787381,
+      "P": 0.85,
+      "S": 0.6109608301597491,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.206617499654225,
+      "P": 0.85,
+      "S": 0.6278067751291712,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.20660420464550538,
+      "P": 0.85,
+      "S": 0.6277523443477615,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.5,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.2065890679185435,
+      "P": 0.85,
+      "S": 0.6276989500600322,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.3,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.16944957983749612,
+      "P": 0.85,
+      "S": 0.5708124964578045,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.3,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1694424885630935,
+      "P": 0.85,
+      "S": 0.570673039641575,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.3,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.16943589493200284,
+      "P": 0.85,
+      "S": 0.5704689776954306,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.8,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.18439679052002822,
+      "P": 0.85,
+      "S": 0.6120270787800428,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.8,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.18467302021217158,
+      "P": 0.85,
+      "S": 0.6120431461457922,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 0.8,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.18494442150820833,
+      "P": 0.85,
+      "S": 0.6118548571261739,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.20275742130435054,
+      "P": 0.85,
+      "S": 0.6504130808386859,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.20297540824887086,
+      "P": 0.85,
+      "S": 0.6502279054078752,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.2031860499542803,
+      "P": 0.85,
+      "S": 0.6500672480281068,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.2333270856110577,
+      "P": 0.85,
+      "S": 0.6580028012925994,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 2.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.23322945600366807,
+      "P": 0.85,
+      "S": 0.6579379388666209,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.7,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.23313120269634247,
+      "P": 0.85,
+      "S": 0.6578734192576803,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 0.3,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1791323270782178,
+      "P": 0.85,
+      "S": 0.5838141604876791,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 0.3,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.17909662777290258,
+      "P": 0.85,
+      "S": 0.5836088462380673,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 0.3,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1790642184343964,
+      "P": 0.85,
+      "S": 0.5840734518206233,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 0.8,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.1949043139934254,
+      "P": 0.85,
+      "S": 0.6365670758092524,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 0.8,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.19518593322714345,
+      "P": 0.85,
+      "S": 0.6365721929224517,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 0.8,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.19546419187677405,
+      "P": 0.85,
+      "S": 0.6365288601492268,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 1.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.21842674125982242,
+      "P": 0.85,
+      "S": 0.6775431670461016,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 1.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.21859725541992475,
+      "P": 0.85,
+      "S": 0.6774281981666749,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 1.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.2187617161814213,
+      "P": 0.85,
+      "S": 0.6772652004185815,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 2.5,
+        "disorder": 0.0
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.2574641307314794,
+      "P": 0.85,
+      "S": 0.6824900384621833,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 2.5,
+        "disorder": 0.3
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.2572929848093743,
+      "P": 0.85,
+      "S": 0.6824160684997662,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    },
+    {
+      "params": {
+        "alpha": 0.9,
+        "lambda": 2.5,
+        "disorder": 0.6
+      },
+      "n_events": 6,
+      "graph": {
+        "n_events": 6,
+        "edge_density": 0.0,
+        "reachability_fraction": 0.0,
+        "longest_chain": 1,
+        "acyclicity_score": 1.0,
+        "n_connected_components": 6
+      },
+      "O_capacity": {
+        "richness": 0.0,
+        "branching_entropy": 0.0,
+        "path_diversity": 0.06,
+        "reachability_density": 0.0,
+        "O_capacity": 0.018,
+        "richness_score": 0.0
+      },
+      "R": 0.2571151485307386,
+      "P": 0.85,
+      "S": 0.6823397540255061,
+      "G_O": 0.07070399999999999,
+      "Coupling": 0.802,
+      "I_TS": 0.056704608
+    }
+  ],
+  "summary": {
+    "n_points": 60,
+    "O_capacity_range": [
+      0.018,
+      0.018
+    ],
+    "I_TS_range": [
+      0.056704608,
+      0.056704608
+    ],
+    "optimal_O": 0.018,
+    "optimal_I_TS": 0.056704608,
+    "tercile_means": {
+      "low": 0.056704608000000004,
+      "mid": 0.056704608000000004,
+      "high": 0.056704608000000004
+    },
+    "band_pass_confirmed": false
+  }
+}
