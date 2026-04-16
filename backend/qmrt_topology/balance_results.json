@@ -1,0 +1,10 @@
+{
+  "verdict": "BALANCED",
+  "stable": true,
+  "bounded": true,
+  "balance_energy": 609.8847689308672,
+  "energy_cv": 0.004465428570811621,
+  "stability_slope": 0.10736455292548587,
+  "system_type": "driven-dissipative",
+  "balance_mechanism": "production-dissipation equilibrium"
+}
