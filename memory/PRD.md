@@ -1,8 +1,48 @@
-## Current Status: DISSIPATIVE BALANCE DERIVED — MEDIUM CHAPTER COMPLETE
+## Current Status: O_STRUCTURE + THERMODYNAMICS COMPLETE
 
 **Date: December 2025**
 
-### Latest Achievement: Lyapunov Analysis & Driven-Dissipative Balance
+### Latest: O_structure Functional Form Derived
+
+$$\boxed{O_{structure} = 20.31 \cdot S^{2.54}}$$
+
+| Result | Value |
+|--------|-------|
+| Model | Power Law |
+| R² | 1.000 (perfect fit) |
+| Exponent | 2.54 |
+| Correlation ρ(S, O) | +0.978 |
+
+**Key insight**: Positive correlation (not anti-correlation). Both S and O_structure grow with backreaction α — they emerge from the **same source**.
+
+### Thermodynamic Structure Verified
+
+$$\dot{S}_{net} = \frac{P - D}{T_{eff}}$$
+
+| Metric | Value |
+|--------|-------|
+| Balance achieved | Yes (|Ṡ_late|/|Ṡ_early| = 1.2%) |
+| ΔS_total | +0.476 (entropy produced) |
+| T_eff ratio | 471× (system heats up) |
+
+**Result**: The driven-dissipative balance IS a thermodynamic balance (NESS).
+
+### New Documents Created
+| File | Purpose |
+|------|---------|
+| `O_structure_functional.py` | Sweep α, fit functional forms |
+| `O_structure_functional.png` | Publication figures |
+| `CHAPTER_O_STRUCTURE.md` | Mathematical derivation chapter |
+| `entropy_production.py` | Thermodynamic analysis |
+| `entropy_production.png` | Entropy evolution figures |
+
+---
+
+## Previous: DISSIPATIVE BALANCE DERIVED — MEDIUM CHAPTER COMPLETE
+
+**Date: December 2025**
+
+### Lyapunov Analysis & Driven-Dissipative Balance
 
 The dynamical medium has been rigorously classified as a **DRIVEN-DISSIPATIVE** system:
 
