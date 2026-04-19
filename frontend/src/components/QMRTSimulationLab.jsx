@@ -61,6 +61,8 @@ const FieldHeatmapWithOverlays = ({
   slicePosition = 0, // Position of the slice center (e.g., z value for XY slice)
   sliceThickness = 3, // How far from center to include structures
   showAllZ = false, // Debug mode to show all structures regardless of slice
+  // Lineage event visuals
+  lineageEvents = { merges: [], splits: [] },
   onStructureClick = () => {}
 }) => {
   const [hoveredStructure, setHoveredStructure] = useState(null);
@@ -516,6 +518,104 @@ const FieldHeatmapWithOverlays = ({
               </g>
             );
           })}
+          
+          {/* Lineage Event Visuals - Merge connections (cyan) */}
+          {lineageEvents.merges?.map((merge, idx) => {
+            if (!merge.childPosition || merge.parents.length < 2) return null;
+            
+            const childPixel = toPixel(merge.childPosition);
+            if (!childPixel.inSlice) return null;
+            
+            const fadeOpacity = 0.7 * (1 - merge.fadeProgress);
+            
+            return (
+              <g key={`merge-${idx}`} style={{ pointerEvents: 'none' }}>
+                {merge.parents.map((parent, pIdx) => {
+                  if (!parent.position) return null;
+                  const parentPixel = toPixel(parent.position);
+                  if (!parentPixel.inSlice) return null;
+                  
+                  return (
+                    <line
+                      key={`merge-line-${idx}-${pIdx}`}
+                      x1={parentPixel.x}
+                      y1={parentPixel.y}
+                      x2={childPixel.x}
+                      y2={childPixel.y}
+                      stroke="rgba(34, 211, 238, 0.8)"
+                      strokeWidth="2"
+                      strokeDasharray="4,2"
+                      opacity={fadeOpacity}
+                    >
+                      <animate attributeName="stroke-dashoffset" from="6" to="0" dur="0.3s" repeatCount="indefinite" />
+                    </line>
+                  );
+                })}
+                {/* Merge glow at child position */}
+                <circle
+                  cx={childPixel.x}
+                  cy={childPixel.y}
+                  r={8}
+                  fill="none"
+                  stroke="rgba(34, 211, 238, 0.6)"
+                  strokeWidth="2"
+                  opacity={fadeOpacity}
+                >
+                  <animate attributeName="r" from="4" to="12" dur="0.4s" repeatCount="1" />
+                  <animate attributeName="opacity" from={fadeOpacity} to="0" dur="0.4s" repeatCount="1" />
+                </circle>
+              </g>
+            );
+          })}
+          
+          {/* Lineage Event Visuals - Split branches (orange) */}
+          {lineageEvents.splits?.map((split, idx) => {
+            if (!split.parentPosition || split.children.length < 2) return null;
+            
+            const parentPixel = toPixel(split.parentPosition);
+            if (!parentPixel.inSlice) return null;
+            
+            const fadeOpacity = 0.7 * (1 - split.fadeProgress);
+            
+            return (
+              <g key={`split-${idx}`} style={{ pointerEvents: 'none' }}>
+                {split.children.map((child, cIdx) => {
+                  if (!child.position) return null;
+                  const childPixel = toPixel(child.position);
+                  if (!childPixel.inSlice) return null;
+                  
+                  return (
+                    <line
+                      key={`split-line-${idx}-${cIdx}`}
+                      x1={parentPixel.x}
+                      y1={parentPixel.y}
+                      x2={childPixel.x}
+                      y2={childPixel.y}
+                      stroke="rgba(251, 146, 60, 0.8)"
+                      strokeWidth="2"
+                      strokeDasharray="4,2"
+                      opacity={fadeOpacity}
+                    >
+                      <animate attributeName="stroke-dashoffset" from="0" to="6" dur="0.3s" repeatCount="indefinite" />
+                    </line>
+                  );
+                })}
+                {/* Split burst at parent position */}
+                <circle
+                  cx={parentPixel.x}
+                  cy={parentPixel.y}
+                  r={6}
+                  fill="none"
+                  stroke="rgba(251, 146, 60, 0.6)"
+                  strokeWidth="2"
+                  opacity={fadeOpacity}
+                >
+                  <animate attributeName="r" from="3" to="10" dur="0.4s" repeatCount="1" />
+                  <animate attributeName="opacity" from={fadeOpacity} to="0" dur="0.4s" repeatCount="1" />
+                </circle>
+              </g>
+            );
+          })}
         </svg>
         
         {/* Hover tooltip */}
@@ -773,6 +873,7 @@ export const QMRTSimulationLab = () => {
   
   // Animation state
   const [animationSpeed, setAnimationSpeed] = useState(100); // ms per frame
+  const [showLineageEvents, setShowLineageEvents] = useState(true); // Show merge/split visual emphasis
   const [eventFilter, setEventFilter] = useState({
     showBirths: true,
     showDeaths: true,
@@ -1033,6 +1134,77 @@ export const QMRTSimulationLab = () => {
     }
     return null;
   }, [result]);
+  
+  // Find active lineage events (merges/splits) near current time for visual emphasis
+  const activeLineageEvents = useMemo(() => {
+    if (!result?.tracked_structures || !showLineageEvents) return { merges: [], splits: [] };
+    
+    const merges = [];  // { child, parents: [{id, position}], eventTime }
+    const splits = [];  // { parent, children: [{id, position}], eventTime }
+    const fadeWindow = 0.3; // Show event for 0.3 time units
+    
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      for (const tracked of (result.tracked_structures[structType] || [])) {
+        // Check for merge events (structure has 2+ parents)
+        if (tracked.parent_ids?.length >= 2 && tracked.match_confidence !== 'low') {
+          const eventTime = tracked.birth_time;
+          const timeDiff = currentTime - eventTime;
+          
+          // Show merge during and shortly after it happens
+          if (timeDiff >= -0.1 && timeDiff <= fadeWindow) {
+            const parentPositions = tracked.parent_ids.map(pid => {
+              const parent = findTrackedById(pid);
+              return parent ? { 
+                id: pid, 
+                position: parent.current_position || parent.trajectory?.[parent.trajectory.length - 1]?.slice(0, -1)
+              } : null;
+            }).filter(Boolean);
+            
+            if (parentPositions.length >= 2) {
+              merges.push({
+                child: tracked,
+                childPosition: tracked.current_position || tracked.trajectory?.[0]?.slice(0, -1),
+                parents: parentPositions,
+                eventTime,
+                fadeProgress: Math.min(1, Math.max(0, timeDiff / fadeWindow))
+              });
+            }
+          }
+        }
+        
+        // Check for split events (structure has 2+ children)
+        if (tracked.child_ids?.length >= 2 && tracked.match_confidence !== 'low') {
+          // Find event time from first child's birth
+          const firstChild = findTrackedById(tracked.child_ids[0]);
+          const eventTime = firstChild?.birth_time || tracked.last_seen_time;
+          const timeDiff = currentTime - eventTime;
+          
+          // Show split during and shortly after it happens
+          if (timeDiff >= -0.1 && timeDiff <= fadeWindow) {
+            const childPositions = tracked.child_ids.map(cid => {
+              const child = findTrackedById(cid);
+              return child ? {
+                id: cid,
+                position: child.current_position || child.trajectory?.[0]?.slice(0, -1)
+              } : null;
+            }).filter(Boolean);
+            
+            if (childPositions.length >= 2) {
+              splits.push({
+                parent: tracked,
+                parentPosition: tracked.current_position || tracked.trajectory?.[tracked.trajectory.length - 1]?.slice(0, -1),
+                children: childPositions,
+                eventTime,
+                fadeProgress: Math.min(1, Math.max(0, timeDiff / fadeWindow))
+              });
+            }
+          }
+        }
+      }
+    }
+    
+    return { merges, splits };
+  }, [result, currentTime, showLineageEvents, findTrackedById]);
   
   // Navigate to a related structure (parent or child) and optionally jump to its birth time
   const navigateToStructure = useCallback((structId, jumpToTime = true) => {
@@ -1960,6 +2132,19 @@ export const QMRTSimulationLab = () => {
                           <span className="text-xs font-mono">Trajectories</span>
                         </label>
                       </div>
+                      <div className="border-l border-border/50 pl-4">
+                        <label className="flex items-center gap-2 cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            checked={showLineageEvents} 
+                            onChange={(e) => setShowLineageEvents(e.target.checked)}
+                            className="w-4 h-4 accent-cyan-400"
+                            data-testid="toggle-lineage-events"
+                          />
+                          <Sparkles className="w-4 h-4 text-cyan-400" />
+                          <span className="text-xs font-mono">Lineage Events</span>
+                        </label>
+                      </div>
                     </div>
                     
                     {/* 3D Slice Controls - only show for 3D mode */}
@@ -2024,6 +2209,7 @@ export const QMRTSimulationLab = () => {
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
                             trackedStructures={result?.tracked_structures}
+                            lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -2042,6 +2228,7 @@ export const QMRTSimulationLab = () => {
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
                             trackedStructures={result?.tracked_structures}
+                            lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -2060,6 +2247,7 @@ export const QMRTSimulationLab = () => {
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
                             trackedStructures={result?.tracked_structures}
+                            lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
                         </>
@@ -2085,6 +2273,7 @@ export const QMRTSimulationLab = () => {
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
                             showAllZ={showAllZ}
+                            lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -2107,6 +2296,7 @@ export const QMRTSimulationLab = () => {
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
                             showAllZ={showAllZ}
+                            lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -2129,6 +2319,7 @@ export const QMRTSimulationLab = () => {
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
                             showAllZ={showAllZ}
+                            lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -2151,6 +2342,7 @@ export const QMRTSimulationLab = () => {
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
                             showAllZ={showAllZ}
+                            lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
                         </>
