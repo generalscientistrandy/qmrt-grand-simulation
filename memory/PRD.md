@@ -1,4 +1,35 @@
-## Current Status: UNIFIED VALIDATION COMPLETE — 7/9 CHECKS PASSED
+## Current Status: FRONTEND REDESIGNED — QMRT SIMULATION LAB LIVE
+
+**Date: December 2025**
+
+### New Frontend: QMRT Simulation Lab
+
+The frontend has been redesigned from a game-focused dashboard to a pure **scientific simulation interface**:
+
+**Features:**
+- 2D and 3D simulation modes
+- Parameter controls (α, λ, γ, grid size, steps)
+- Real-time metrics: S, O, R, P, I_TS
+- Energy evolution charts
+- Cross-branch correlation display
+- Radar validation summary
+- Playback controls for time evolution
+- Field heatmaps (2D) and central slices (3D)
+
+**Validated Results (Live):**
+
+| Mode | Balance | S | I_TS | Isotropic | ρ(O,S) |
+|------|---------|---|------|-----------|--------|
+| 2D | YES (E_cv=1.7%) | 0.104 | 0.87 | YES | -0.997 |
+| 3D | YES (E_cv=0.8%) | 0.090 | 0.87 | YES | -0.997 |
+
+**API Endpoints:**
+- `POST /api/qmrt-sim/run` — Run 2D or 3D simulation with config
+- `GET /api/qmrt-sim/info` — Theory information
+
+---
+
+## Previous: UNIFIED VALIDATION COMPLETE — 7/9 CHECKS PASSED
 
 **Date: December 2025**
 

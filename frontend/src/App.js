@@ -2,7 +2,7 @@ import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import { Layout } from "@/components/Layout";
-import { Dashboard } from "@/components/Dashboard";
+import { QMRTSimulationLab } from "@/components/QMRTSimulationLab";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<QMRTSimulationLab />} />
           </Routes>
         </Layout>
       </BrowserRouter>
