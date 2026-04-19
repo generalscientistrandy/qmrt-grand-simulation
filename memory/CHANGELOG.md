@@ -2,7 +2,18 @@
 
 ## December 2025
 
-### Legacy Visualizer Deprecated (Latest)
+### Event Density Graph + Age/Status Filters (Latest)
+- **Added**: Event Density Graph in TEMPORAL tab showing births/deaths/merges/splits per timestep
+- **Added**: Toggleable ρ overlay (amber dashed line) - correlates events with energy density
+- **Added**: Toggleable S overlay (green solid line) - correlates events with spatial structure
+- **Added**: Dual Y-axis: events count (left), normalized field values 0-1 (right)
+- **Added**: Age/Status Filters: All, Newborn, Long-lived, Merge/Split
+- **Added**: Adjustable age threshold for Long-lived filter (default 2.0 time units)
+- **Added**: filteredTrackedStructures useMemo for efficient filtering
+- **Data-testids**: toggle-rho-overlay, toggle-s-overlay, filter-all, filter-newborn, filter-longlived, filter-merge-candidates, age-threshold-input
+- **Tested**: 8/8 features verified (frontend 100%)
+
+### Legacy Visualizer Deprecated
 - **Deleted**: `MesoscopicVisualizer.js` (669 lines) - fully replaced by QMRTSimulationLab
 - **Deleted**: `Dashboard.js` (208 lines) - dead code, not routed
 - **Validated**: Merge/split detection, 3D positions, burst rates, low-confidence filtering

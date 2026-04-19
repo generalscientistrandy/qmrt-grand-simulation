@@ -1,31 +1,33 @@
-## Current Status: LEGACY VISUALIZER DEPRECATED
+## Current Status: EVENT DENSITY GRAPH + AGE FILTERS COMPLETE
 
 **Date: December 2025**
 
-### Latest Achievement: MesoscopicVisualizer.js Deprecated
+### Latest Achievement: Event Density Graph and Age/Status Filters
 
-Validation pass completed successfully, legacy components removed:
+Added two quality-of-life upgrades for short-path validation tests:
 
-**Validation Results:**
-- ✓ Merge cases: Parents → child relationships verified (high confidence)
-- ✓ Split cases: Parent → children branching verified (medium confidence)
-- ✓ 3D positions: All structures have z coordinates
-- ✓ Burst rate: Max 6 events at once (reasonable)
-- ✓ Low-confidence filtering: 0 low-confidence structures
-- ✓ UI components: Toggle, counters, heatmaps all functional
+**Event Density Graph (TEMPORAL tab):**
+- Shows births (cyan), deaths (red), merges (yellow), splits (orange) per timestep
+- Toggleable ρ overlay (amber dashed) - correlates events with energy density
+- Toggleable S overlay (green solid) - correlates events with spatial structure
+- Dual Y-axis: events count (left), normalized field values 0-1 (right)
+- Immediately shows if "busy periods" correlate with field coupling
 
-**Deprecated Files:**
-- `/app/frontend/src/components/MesoscopicVisualizer.js` (669 lines) - DELETED
-- `/app/frontend/src/components/Dashboard.js` (208 lines) - DELETED
+**Age/Status Filters (left panel):**
+- All: Show all structures
+- Newborn: Age < 0.5 time units
+- Long-lived: Age ≥ threshold (adjustable, default 2.0)
+- Merge/Split: Structures with 2+ parents or children
+- Filters apply to FIELDS tab structure overlays
 
-**Remaining Components:**
-- `QMRTSimulationLab.jsx` - Primary unified simulation lab
-- `Layout.js`, `WorldCard.js`, `WorldDetailModal.js`, etc. - Supporting components
+**Ready for Short-Path Validation Tests:**
+1. Do birth locations correlate with high ρ or high gradient regions?
+2. Do long-lived nodes align with higher S or stronger coupling?
+3. Do merges occur preferentially in high-gradient or high-density regions?
 
-**Why Deprecated:**
-- QMRTSimulationLab fully replaces MesoscopicVisualizer functionality
-- Dashboard.js was not routed/used anywhere
-- No breaking changes to the application
+---
+
+## Previous Status: LEGACY VISUALIZER DEPRECATED
 
 ---
 
