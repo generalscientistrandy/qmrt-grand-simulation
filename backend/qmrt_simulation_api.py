@@ -9,13 +9,14 @@ Clean API for running 2D and 3D QMRT simulations with full metrics:
 - Temporal layers (R, P)
 - Spacetime coupling (I_TS)
 - Causal geometry
+- Emergent structures (vortices, clusters, nodes)
 """
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from typing import List, Dict, Optional, Literal
 import numpy as np
-from scipy.ndimage import gaussian_filter
+from scipy.ndimage import gaussian_filter, label
 from scipy.stats import pearsonr
 import time
 
@@ -50,6 +51,12 @@ class TimePoint(BaseModel):
     I_TS: float
     isotropy_cv: float
     confinement: float
+    # Emergent structures
+    vortex_count: int = 0
+    cluster_count: int = 0
+    node_count: int = 0
+    mean_density: float = 1.0
+    density_variance: float = 0.0
 
 
 class SimulationResult(BaseModel):
@@ -76,6 +83,14 @@ class SimulationResult(BaseModel):
     rho_RS: float
     rho_PS: float
     rho_OS: float
+    
+    # Emergent structures summary
+    total_vortices: int = 0
+    total_clusters: int = 0
+    total_nodes: int = 0
+    stable_nodes: int = 0
+    proto_nodes: int = 0
+    transient_nodes: int = 0
     
     # Field snapshots (for visualization)
     field_snapshots: List[Dict]
