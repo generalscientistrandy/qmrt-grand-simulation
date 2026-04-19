@@ -1,4 +1,43 @@
-## Current Status: PARAMETER BOUNDARY MAP COMPLETE
+## Current Status: MESOSCOPIC STRUCTURES INTEGRATED INTO QMRT LAB
+
+**Date: December 2025**
+
+### Key Achievement: Unified Old + New Data in Single API/UI
+
+The user requested merging legacy mesoscopic structure detection into the new QMRT Simulation Lab. This has been completed:
+
+**API Response Structure (Clean Top-Level Keys):**
+```json
+{
+  "metrics": { "S": ..., "O": ..., "R": ..., "P": ..., "I_TS": ... },
+  "structures": {
+    "torsion_vortices": [...],
+    "strain_nodes": [...],
+    "coherence_clusters": [...],
+    "particle_nodes": [...]
+  }
+}
+```
+
+**Frontend UI Layers:**
+- **Emergent Metrics**: S, O, R, P, I_TS (Overview tab)
+- **Mesoscopic Structures**: Vortices, Strain Nodes, Clusters, Particles (New Structures tab)
+
+**Structure Detection Ported:**
+- `detect_torsion_vortices()` — 2D/3D vorticity detection
+- `detect_strain_energy_nodes()` — 2D/3D strain energy localization  
+- `detect_coherence_clusters()` — 2D/3D phase coherence clustering
+- `identify_particle_nodes()` — Co-located structure identification
+
+**Testing:** 100% pass (19/19 backend pytest, all frontend UI verified)
+
+**Files Modified:**
+- `/app/backend/qmrt_simulation_api.py` — Added structure detection methods + API response
+- `/app/frontend/src/components/QMRTSimulationLab.jsx` — Added Structures tab + UI components
+
+---
+
+## Previous Status: PARAMETER BOUNDARY MAP COMPLETE
 
 **Date: December 2025**
 

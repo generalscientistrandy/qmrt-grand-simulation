@@ -1,0 +1,41 @@
+# QMRT Simulation Lab - Changelog
+
+## December 2025
+
+### Mesoscopic Structures Integration
+- **Added**: Ported legacy mesoscopic structure detection into `qmrt_simulation_api.py`
+  - `detect_torsion_vortices()` — 2D/3D vorticity-based vortex detection
+  - `detect_strain_energy_nodes()` — 2D/3D strain energy localization
+  - `detect_coherence_clusters()` — 2D/3D phase coherence clustering
+  - `identify_particle_nodes()` — Co-located structure identification
+- **Added**: New API response structure with clean `structures` top-level key
+- **Added**: Structure counts in TimePoint measurements (`vortex_count`, `cluster_count`, etc.)
+- **Added**: New "Structures" tab in frontend UI
+- **Added**: Structure Count Evolution chart
+- **Added**: Detailed structure lists with item badges
+- **Updated**: Overview tab now shows structure count summary row
+- **Tested**: 19/19 backend pytest tests passed, all frontend UI verified
+
+### Parameter Boundary Map
+- **Added**: `parameter_boundary_map.py` — 19-point α sweep in 2D and 3D
+- **Added**: `BOUNDARY_MAP_RESULTS.md` — Results interpretation
+- **Discovery**: System is in STRONG coupling regime across entire α range (0.05-0.95)
+
+### Frontend Redesign
+- **Added**: `QMRTSimulationLab.jsx` — New pure physics simulation interface
+- **Removed**: Game elements (ecology, predators, death-worlds)
+- **Added**: Real-time metrics display (S, O, R, P, I_TS)
+- **Added**: Field heatmaps (2D) and central slices (3D)
+- **Added**: Playback controls for time evolution
+
+### Unified Validation
+- **Added**: `unified_validation.py` — 3D integrated validation run
+- **Result**: 7/9 checks passed when all components measured together
+
+### 3D Simulation
+- **Added**: `simulation_3d.py` — Full 3+1D simulation
+- **Result**: 4/4 tests passed (spherical light cones, causal confinement, lensing, energy balance)
+
+### Universal Critical Exponent
+- **Added**: `universality_test.py` — 19-test comprehensive suite
+- **Discovery**: Universal exponent α = 2.00 ± 0.04 (dimension-independent)
