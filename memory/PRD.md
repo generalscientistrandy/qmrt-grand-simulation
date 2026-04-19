@@ -1,4 +1,30 @@
-## Current Status: MESOSCOPIC STRUCTURES INTEGRATED INTO QMRT LAB
+## Current Status: STRUCTURE OVERLAYS COMPLETE
+
+**Date: December 2025**
+
+### Latest Achievement: Structure Position Overlays on Field Heatmaps
+
+Added interactive structure overlays to the Fields tab with:
+
+**Overlay Types:**
+- **Strain Nodes** (orange diamonds) - sized by stability
+- **Coherence Clusters** (green dashed circles) - shows radius
+- **Particle Nodes** (colored by type: purple=stable, yellow=proto, gray=transient)
+- **Torsion Vortices** (cyan circles with chirality arrows)
+
+**Interaction:**
+- **Toggle controls** - 4 independent checkboxes to show/hide each structure type
+- **Hover tooltips** - Shows type-specific details (E, σ, Φ, n, ω, χ)
+- **Click inspector** - Opens detailed panel with Position, Energy, Gradient, Stability, etc.
+
+**Testing:** 100% pass (7/7 frontend features verified)
+
+**Files Modified:**
+- `/app/frontend/src/components/QMRTSimulationLab.jsx` — Added `FieldHeatmapWithOverlays` component, toggles, inspector panel
+
+---
+
+## Previous Status: MESOSCOPIC STRUCTURES INTEGRATED INTO QMRT LAB
 
 **Date: December 2025**
 

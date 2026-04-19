@@ -2,6 +2,15 @@
 
 ## December 2025
 
+### Structure Position Overlays (Latest)
+- **Added**: `FieldHeatmapWithOverlays` component with interactive SVG overlays
+- **Added**: Toggle controls for strain nodes, clusters, particle nodes, vortices
+- **Added**: Hover tooltips showing type-specific details (E, σ, Φ, n, ω, χ)
+- **Added**: Click inspector panel with full structure properties
+- **Added**: Close button on inspector panel (data-testid='inspector-close-btn')
+- **Visual**: Orange diamonds (strain), green circles (clusters), colored circles (particles), cyan spirals (vortices)
+- **Tested**: 7/7 frontend features verified
+
 ### Mesoscopic Structures Integration
 - **Added**: Ported legacy mesoscopic structure detection into `qmrt_simulation_api.py`
   - `detect_torsion_vortices()` — 2D/3D vorticity-based vortex detection
