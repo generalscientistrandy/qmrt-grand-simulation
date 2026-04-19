@@ -306,7 +306,7 @@ class StructureTracker:
         tracked['_raw'] = struct
     
     def process_frame(self, structures: Dict, t: float):
-        """Process a single frame of structure data."""
+        """Process a single frame of structure data with merge/split detection."""
         
         # Store timeline snapshot
         timeline_snap = TimelineSnapshot(
@@ -334,32 +334,167 @@ class StructureTracker:
             matched_active_ids = set()
             matched_current_indices = set()
             
-            # Try to match current structures to active ones
-            matches = []
+            # Build full match matrix: for each current struct, find ALL nearby active structs
+            # This helps detect merges (multiple active → one current)
+            match_matrix = {}  # curr_idx -> [(active_id, confidence, score, distance)]
+            reverse_match = {}  # active_id -> [(curr_idx, confidence, score, distance)]
+            
             for curr_idx, curr_struct in enumerate(current_structs):
                 curr_pos = self._get_position(curr_struct, struct_class)
-                
-                best_match = None
-                best_score = -1
+                match_matrix[curr_idx] = []
                 
                 for active_id, active_struct in active.items():
-                    if active_id in matched_active_ids:
-                        continue
-                    
                     active_pos = active_struct['current_position']
                     distance = self._compute_distance(curr_pos, active_pos)
                     
                     if distance <= self.match_threshold:
                         similarity = self._compute_similarity(curr_struct, active_struct['_raw'], struct_class)
                         score = similarity * (1 - distance / self.match_threshold)
+                        confidence = self._match_confidence(distance, similarity)
                         
-                        if score > best_score:
-                            best_score = score
-                            confidence = self._match_confidence(distance, similarity)
-                            best_match = (active_id, confidence, score)
+                        match_matrix[curr_idx].append((active_id, confidence, score, distance))
+                        
+                        if active_id not in reverse_match:
+                            reverse_match[active_id] = []
+                        reverse_match[active_id].append((curr_idx, confidence, score, distance))
+            
+            # Sort each list by score
+            for curr_idx in match_matrix:
+                match_matrix[curr_idx].sort(key=lambda x: x[2], reverse=True)
+            for active_id in reverse_match:
+                reverse_match[active_id].sort(key=lambda x: x[2], reverse=True)
+            
+            # ============================================
+            # MERGE DETECTION (Conservative)
+            # Multiple active structures → one current structure
+            # Criteria: 
+            #   - Current struct has 2+ high-confidence matches to different active structs
+            #   - All parents are within close proximity to each other
+            # ============================================
+            merge_events = []  # [(curr_idx, [parent_ids], combined_position)]
+            
+            for curr_idx, matches in match_matrix.items():
+                # Need at least 2 high-quality matches
+                high_quality_matches = [m for m in matches if m[1] in ('high', 'medium') and m[2] > 0.3]
                 
-                if best_match:
-                    matches.append((curr_idx, best_match[0], best_match[1], best_match[2]))
+                if len(high_quality_matches) >= 2:
+                    # Check if parent structures are close to each other (were converging)
+                    parent_ids = [m[0] for m in high_quality_matches[:3]]  # Max 3 parents
+                    parent_positions = [active[pid]['current_position'] for pid in parent_ids if pid in active]
+                    
+                    if len(parent_positions) >= 2:
+                        # Calculate max pairwise distance between parents
+                        max_parent_dist = 0
+                        for i in range(len(parent_positions)):
+                            for j in range(i + 1, len(parent_positions)):
+                                d = self._compute_distance(parent_positions[i], parent_positions[j])
+                                max_parent_dist = max(max_parent_dist, d)
+                        
+                        # Conservative: parents must be within 2x match threshold
+                        if max_parent_dist < self.match_threshold * 2:
+                            merge_events.append((curr_idx, parent_ids))
+            
+            # ============================================
+            # SPLIT DETECTION (Conservative)  
+            # One active structure → multiple current structures
+            # Criteria:
+            #   - Active struct has 2+ high-confidence matches to different current structs
+            #   - Children are spreading apart from parent location
+            # ============================================
+            split_events = []  # [(active_id, [child_curr_indices])]
+            
+            for active_id, matches in reverse_match.items():
+                # Need at least 2 high-quality matches
+                high_quality_matches = [m for m in matches if m[1] in ('high', 'medium') and m[2] > 0.3]
+                
+                if len(high_quality_matches) >= 2:
+                    child_indices = [m[0] for m in high_quality_matches[:3]]  # Max 3 children
+                    
+                    # Check that children aren't already matched to other active structures more strongly
+                    # (i.e., this active struct is the best match for all children)
+                    valid_children = []
+                    for ci in child_indices:
+                        if match_matrix[ci] and match_matrix[ci][0][0] == active_id:
+                            # This active is the best match for this child
+                            valid_children.append(ci)
+                    
+                    if len(valid_children) >= 2:
+                        split_events.append((active_id, valid_children))
+            
+            # ============================================
+            # APPLY EVENTS AND REGULAR MATCHING
+            # ============================================
+            
+            # Process merges first (they consume multiple active structs)
+            for curr_idx, parent_ids in merge_events:
+                if curr_idx in matched_current_indices:
+                    continue
+                    
+                # Check all parents are still available
+                available_parents = [pid for pid in parent_ids if pid in active and pid not in matched_active_ids]
+                if len(available_parents) < 2:
+                    continue  # Not enough parents left, skip merge
+                
+                # Create merged structure
+                curr_struct = current_structs[curr_idx]
+                merged = self._create_tracked_structure(curr_struct, struct_class, t, struct_type)
+                merged['parent_ids'] = available_parents
+                merged['status'] = 'active'
+                
+                # Mark parents as merged
+                for pid in available_parents:
+                    parent = active.pop(pid)
+                    parent['status'] = 'merged'
+                    parent['child_ids'] = [merged['id']]
+                    self.completed_structures[struct_class].append(
+                        TrackedStructure(**{k: v for k, v in parent.items() if k != '_raw'})
+                    )
+                    matched_active_ids.add(pid)
+                
+                # Add merged structure
+                active[merged['id']] = merged
+                matched_current_indices.add(curr_idx)
+                self.merges += 1
+            
+            # Process splits (they consume one active struct, create multiple)
+            for active_id, child_indices in split_events:
+                if active_id in matched_active_ids:
+                    continue
+                
+                # Check children are available
+                available_children = [ci for ci in child_indices if ci not in matched_current_indices]
+                if len(available_children) < 2:
+                    continue  # Not enough children, skip split
+                
+                # Mark parent as split
+                parent = active.pop(active_id)
+                parent['status'] = 'split'
+                
+                child_ids = []
+                for ci in available_children:
+                    curr_struct = current_structs[ci]
+                    child = self._create_tracked_structure(curr_struct, struct_class, t, struct_type)
+                    child['parent_ids'] = [active_id]
+                    child_ids.append(child['id'])
+                    active[child['id']] = child
+                    matched_current_indices.add(ci)
+                
+                parent['child_ids'] = child_ids
+                self.completed_structures[struct_class].append(
+                    TrackedStructure(**{k: v for k, v in parent.items() if k != '_raw'})
+                )
+                matched_active_ids.add(active_id)
+                self.splits += 1
+            
+            # Build regular matches list (excluding merge/split participants)
+            matches = []
+            for curr_idx, match_list in match_matrix.items():
+                if curr_idx in matched_current_indices:
+                    continue
+                if match_list:
+                    best = match_list[0]  # (active_id, confidence, score, distance)
+                    if best[0] not in matched_active_ids:
+                        matches.append((curr_idx, best[0], best[1], best[2]))
             
             # Sort matches by score (highest first) to resolve conflicts
             matches.sort(key=lambda x: x[3], reverse=True)
@@ -379,11 +514,7 @@ class StructureTracker:
                 matched_active_ids.add(active_id)
                 matched_current_indices.add(curr_idx)
             
-            # Check for merge events (multiple active → one current)
-            # Conservative: only if 2 active structures are very close to same current
-            # (Skip for v1 - complex to get right)
-            
-            # Handle disappeared structures
+            # Handle disappeared structures (not matched, merged, or split)
             for active_id in list(active.keys()):
                 if active_id not in matched_active_ids:
                     # Structure disappeared
@@ -394,7 +525,7 @@ class StructureTracker:
                     )
                     self.deaths += 1
             
-            # Handle new births
+            # Handle new births (current structs not matched to anything)
             for curr_idx, curr_struct in enumerate(current_structs):
                 if curr_idx not in matched_current_indices:
                     # New structure born
