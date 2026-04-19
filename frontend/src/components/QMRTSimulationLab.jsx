@@ -39,7 +39,262 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-// Field visualization (2D heatmap)
+// Enhanced Field visualization with structure overlays
+const FieldHeatmapWithOverlays = ({ 
+  data, 
+  title, 
+  colorScheme = 'heat',
+  structures = {},
+  gridSize,
+  showStrainNodes = false,
+  showClusters = false,
+  showParticleNodes = false,
+  showVortices = false,
+  onStructureClick = () => {}
+}) => {
+  const [hoveredStructure, setHoveredStructure] = useState(null);
+  
+  if (!data || data.length === 0) {
+    return (
+      <div className="h-32 flex items-center justify-center text-muted-foreground text-xs">
+        No data
+      </div>
+    );
+  }
+
+  const displaySize = data.length;
+  const maxVal = Math.max(...data.flat());
+  const minVal = Math.min(...data.flat());
+  const range = maxVal - minVal || 1;
+  
+  // Scale factor from original grid to display grid
+  const scale = gridSize ? displaySize / gridSize : 1;
+  const pixelSize = Math.min(displaySize * 6, 200);
+  const cellSize = pixelSize / displaySize;
+
+  // Convert grid position to pixel position
+  const toPixel = (pos) => {
+    if (!pos || pos.length < 2) return { x: 0, y: 0 };
+    return {
+      x: (pos[0] * scale) * cellSize,
+      y: (pos[1] * scale) * cellSize
+    };
+  };
+
+  return (
+    <div className="space-y-1 relative">
+      <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">{title}</p>
+      <div 
+        className="relative mx-auto border border-border/30 rounded-sm overflow-hidden"
+        style={{ width: `${pixelSize}px`, height: `${pixelSize}px` }}
+      >
+        {/* Base heatmap grid */}
+        <div 
+          className="grid gap-0 absolute inset-0"
+          style={{ gridTemplateColumns: `repeat(${displaySize}, 1fr)` }}
+        >
+          {data.map((row, i) => 
+            row.map((value, j) => {
+              const normalized = (value - minVal) / range;
+              const intensity = Math.floor(normalized * 255);
+              let bgColor;
+              if (colorScheme === 'heat') {
+                bgColor = `rgb(${intensity}, ${Math.floor(intensity * 0.3)}, ${255 - intensity})`;
+              } else if (colorScheme === 'blue') {
+                bgColor = `rgb(${255 - intensity}, ${255 - intensity}, 255)`;
+              } else {
+                bgColor = `rgb(${intensity}, ${intensity}, ${intensity})`;
+              }
+              return (
+                <div
+                  key={`${i}-${j}`}
+                  className="aspect-square"
+                  style={{ backgroundColor: bgColor }}
+                />
+              );
+            })
+          )}
+        </div>
+        
+        {/* SVG Overlay for structures */}
+        <svg 
+          className="absolute inset-0" 
+          width={pixelSize} 
+          height={pixelSize}
+          style={{ pointerEvents: 'none' }}
+        >
+          {/* Strain Nodes - Orange diamonds */}
+          {showStrainNodes && structures.strain_nodes?.map((node, i) => {
+            const { x, y } = toPixel(node.position);
+            const size = 4 + node.stability * 4;
+            return (
+              <g key={`strain-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+                <polygon
+                  points={`${x},${y-size} ${x+size},${y} ${x},${y+size} ${x-size},${y}`}
+                  fill="rgba(249, 115, 22, 0.8)"
+                  stroke="#fff"
+                  strokeWidth="0.5"
+                  onMouseEnter={() => setHoveredStructure({ type: 'strain', data: node, x, y })}
+                  onMouseLeave={() => setHoveredStructure(null)}
+                  onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'strain', data: node }); }}
+                />
+              </g>
+            );
+          })}
+          
+          {/* Coherence Clusters - Green circles with radius */}
+          {showClusters && structures.coherence_clusters?.map((cluster, i) => {
+            const { x, y } = toPixel(cluster.center);
+            const radius = Math.max(4, cluster.size * scale * cellSize);
+            return (
+              <g key={`cluster-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={radius}
+                  fill="rgba(74, 222, 128, 0.2)"
+                  stroke="#4ade80"
+                  strokeWidth="1.5"
+                  strokeDasharray="3,2"
+                  onMouseEnter={() => setHoveredStructure({ type: 'cluster', data: cluster, x, y })}
+                  onMouseLeave={() => setHoveredStructure(null)}
+                  onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'cluster', data: cluster }); }}
+                />
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={3}
+                  fill="#4ade80"
+                  style={{ pointerEvents: 'none' }}
+                />
+              </g>
+            );
+          })}
+          
+          {/* Particle Nodes - Colored by type */}
+          {showParticleNodes && structures.particle_nodes?.map((particle, i) => {
+            const { x, y } = toPixel(particle.position);
+            let fill, stroke;
+            switch(particle.structure_type) {
+              case 'stable':
+                fill = 'rgba(168, 85, 247, 0.9)';
+                stroke = '#fff';
+                break;
+              case 'proto-particle':
+                fill = 'rgba(234, 179, 8, 0.9)';
+                stroke = '#fff';
+                break;
+              default: // transient
+                fill = 'rgba(156, 163, 175, 0.7)';
+                stroke = '#9ca3af';
+            }
+            return (
+              <g key={`particle-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={6}
+                  fill={fill}
+                  stroke={stroke}
+                  strokeWidth="1.5"
+                  onMouseEnter={() => setHoveredStructure({ type: 'particle', data: particle, x, y })}
+                  onMouseLeave={() => setHoveredStructure(null)}
+                  onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'particle', data: particle }); }}
+                />
+                {/* Inner dot for stable particles */}
+                {particle.structure_type === 'stable' && (
+                  <circle cx={x} cy={y} r={2} fill="#fff" style={{ pointerEvents: 'none' }} />
+                )}
+              </g>
+            );
+          })}
+          
+          {/* Torsion Vortices - Cyan spirals with chirality indicator */}
+          {showVortices && structures.torsion_vortices?.map((vortex, i) => {
+            const { x, y } = toPixel(vortex.position);
+            const r = Math.max(4, vortex.radius * scale * cellSize);
+            const chirality = vortex.chirality > 0 ? 1 : -1;
+            return (
+              <g key={`vortex-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill="rgba(0, 212, 255, 0.1)"
+                  stroke="#00d4ff"
+                  strokeWidth="2"
+                  onMouseEnter={() => setHoveredStructure({ type: 'vortex', data: vortex, x, y })}
+                  onMouseLeave={() => setHoveredStructure(null)}
+                  onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'vortex', data: vortex }); }}
+                />
+                {/* Chirality arrow */}
+                <path
+                  d={chirality > 0 
+                    ? `M${x-3},${y-1} L${x},${y-4} L${x+3},${y-1}` 
+                    : `M${x-3},${y+1} L${x},${y+4} L${x+3},${y+1}`}
+                  fill="none"
+                  stroke="#00d4ff"
+                  strokeWidth="1.5"
+                  style={{ pointerEvents: 'none' }}
+                />
+              </g>
+            );
+          })}
+        </svg>
+        
+        {/* Hover tooltip */}
+        {hoveredStructure && (
+          <div 
+            className="absolute z-50 bg-card/95 backdrop-blur-md border border-border rounded-sm p-2 shadow-xl pointer-events-none"
+            style={{ 
+              left: Math.min(hoveredStructure.x + 10, pixelSize - 120),
+              top: Math.min(hoveredStructure.y + 10, pixelSize - 80),
+              minWidth: '110px'
+            }}
+          >
+            <div className="text-xs font-mono uppercase font-bold mb-1" style={{
+              color: hoveredStructure.type === 'strain' ? '#f97316' :
+                     hoveredStructure.type === 'cluster' ? '#4ade80' :
+                     hoveredStructure.type === 'particle' ? '#a855f7' : '#00d4ff'
+            }}>
+              {hoveredStructure.type}
+            </div>
+            {hoveredStructure.type === 'strain' && (
+              <>
+                <div className="text-xs">E: {hoveredStructure.data.energy_density?.toFixed(3)}</div>
+                <div className="text-xs">σ: {(hoveredStructure.data.stability * 100).toFixed(0)}%</div>
+              </>
+            )}
+            {hoveredStructure.type === 'cluster' && (
+              <>
+                <div className="text-xs">Φ: {hoveredStructure.data.coherence_strength?.toFixed(3)}</div>
+                <div className="text-xs">n: {hoveredStructure.data.member_count}</div>
+              </>
+            )}
+            {hoveredStructure.type === 'particle' && (
+              <>
+                <div className="text-xs">type: {hoveredStructure.data.structure_type}</div>
+                <div className="text-xs">m: {hoveredStructure.data.effective_mass?.toFixed(2)}</div>
+                <div className="text-xs text-muted-foreground">
+                  {hoveredStructure.data.has_vortex && '+vortex '}
+                  {hoveredStructure.data.has_cluster && '+cluster'}
+                </div>
+              </>
+            )}
+            {hoveredStructure.type === 'vortex' && (
+              <>
+                <div className="text-xs">ω: {hoveredStructure.data.strength?.toFixed(3)}</div>
+                <div className="text-xs">χ: {hoveredStructure.data.chirality > 0 ? '+1' : '-1'}</div>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// Simple Field visualization (2D heatmap) - kept for backward compatibility
 const FieldHeatmap = ({ data, title, colorScheme = 'heat' }) => {
   if (!data || data.length === 0) {
     return (
@@ -201,6 +456,15 @@ export const QMRTSimulationLab = () => {
   const [lambdaRelax, setLambdaRelax] = useState(0.5);
   const [gammaWave, setGammaWave] = useState(0.01);
   const [steps, setSteps] = useState(300);
+  
+  // Overlay toggles
+  const [showStrainNodes, setShowStrainNodes] = useState(true);
+  const [showClusters, setShowClusters] = useState(true);
+  const [showParticleNodes, setShowParticleNodes] = useState(true);
+  const [showVortices, setShowVortices] = useState(true);
+  
+  // Selected structure for inspector
+  const [selectedStructure, setSelectedStructure] = useState(null);
   
   // Playback
   const intervalRef = useRef(null);
@@ -884,35 +1148,287 @@ export const QMRTSimulationLab = () => {
               </TabsContent>
               
               {/* Fields Tab */}
-              <TabsContent value="fields" className="space-y-4">
+              <TabsContent value="fields" className="space-y-4" data-testid="fields-tab-content">
+                {/* Overlay Toggles */}
+                <Card className="bg-card/50 border-border/50">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-mono uppercase">Structure Overlays</CardTitle>
+                    <CardDescription className="text-xs">Toggle structure markers on field heatmaps</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-4">
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          checked={showStrainNodes} 
+                          onChange={(e) => setShowStrainNodes(e.target.checked)}
+                          className="w-4 h-4 accent-orange-500"
+                          data-testid="toggle-strain"
+                        />
+                        <Flame className="w-4 h-4 text-orange-400" />
+                        <span className="text-xs font-mono">Strain Nodes</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          checked={showClusters} 
+                          onChange={(e) => setShowClusters(e.target.checked)}
+                          className="w-4 h-4 accent-green-500"
+                          data-testid="toggle-clusters"
+                        />
+                        <CircleDot className="w-4 h-4 text-green-400" />
+                        <span className="text-xs font-mono">Clusters</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          checked={showParticleNodes} 
+                          onChange={(e) => setShowParticleNodes(e.target.checked)}
+                          className="w-4 h-4 accent-purple-500"
+                          data-testid="toggle-particles"
+                        />
+                        <Target className="w-4 h-4 text-purple-400" />
+                        <span className="text-xs font-mono">Particle Nodes</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          checked={showVortices} 
+                          onChange={(e) => setShowVortices(e.target.checked)}
+                          className="w-4 h-4 accent-cyan-500"
+                          data-testid="toggle-vortices"
+                        />
+                        <Hexagon className="w-4 h-4 text-cyan-400" />
+                        <span className="text-xs font-mono">Vortices</span>
+                      </label>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Field Visualization with Overlays */}
                 <Card className="bg-card/50 border-border/50">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-mono uppercase">
                       Field Visualization (t = {currentMeasurement.t?.toFixed(2) || 0})
                     </CardTitle>
                     <CardDescription className="text-xs">
-                      {dimension === '3d' ? 'Central slices of 3D fields' : '2D field distributions'}
+                      {dimension === '3d' ? 'Central slices of 3D fields (hover structures for details)' : '2D field distributions (hover structures for details)'}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
                       {dimension === '2d' ? (
                         <>
-                          <FieldHeatmap data={currentSnapshot.rho} title="ρ (Energy)" colorScheme="heat" />
-                          <FieldHeatmap data={currentSnapshot.c_eff} title="c_eff (Speed)" colorScheme="blue" />
-                          <FieldHeatmap data={currentSnapshot.tau} title="τ (Medium)" colorScheme="gray" />
+                          <FieldHeatmapWithOverlays 
+                            data={currentSnapshot.rho} 
+                            title="ρ (Energy)" 
+                            colorScheme="heat"
+                            structures={result?.structures}
+                            gridSize={gridSize}
+                            showStrainNodes={showStrainNodes}
+                            showClusters={showClusters}
+                            showParticleNodes={showParticleNodes}
+                            showVortices={showVortices}
+                            onStructureClick={setSelectedStructure}
+                          />
+                          <FieldHeatmapWithOverlays 
+                            data={currentSnapshot.c_eff} 
+                            title="c_eff (Speed)" 
+                            colorScheme="blue"
+                            structures={result?.structures}
+                            gridSize={gridSize}
+                            showStrainNodes={showStrainNodes}
+                            showClusters={showClusters}
+                            showParticleNodes={showParticleNodes}
+                            showVortices={showVortices}
+                            onStructureClick={setSelectedStructure}
+                          />
+                          <FieldHeatmapWithOverlays 
+                            data={currentSnapshot.tau} 
+                            title="τ (Medium)" 
+                            colorScheme="gray"
+                            structures={result?.structures}
+                            gridSize={gridSize}
+                            showStrainNodes={showStrainNodes}
+                            showClusters={showClusters}
+                            showParticleNodes={showParticleNodes}
+                            showVortices={showVortices}
+                            onStructureClick={setSelectedStructure}
+                          />
                         </>
                       ) : (
                         <>
-                          <FieldHeatmap data={currentSnapshot.rho_xy} title="ρ (XY slice)" colorScheme="heat" />
-                          <FieldHeatmap data={currentSnapshot.rho_xz} title="ρ (XZ slice)" colorScheme="heat" />
-                          <FieldHeatmap data={currentSnapshot.rho_yz} title="ρ (YZ slice)" colorScheme="heat" />
-                          <FieldHeatmap data={currentSnapshot.c_eff_xy} title="c_eff (XY)" colorScheme="blue" />
+                          <FieldHeatmapWithOverlays 
+                            data={currentSnapshot.rho_xy} 
+                            title="ρ (XY slice)" 
+                            colorScheme="heat"
+                            structures={result?.structures}
+                            gridSize={Math.min(gridSize, 50)}
+                            showStrainNodes={showStrainNodes}
+                            showClusters={showClusters}
+                            showParticleNodes={showParticleNodes}
+                            showVortices={showVortices}
+                            onStructureClick={setSelectedStructure}
+                          />
+                          <FieldHeatmapWithOverlays 
+                            data={currentSnapshot.rho_xz} 
+                            title="ρ (XZ slice)" 
+                            colorScheme="heat"
+                            structures={result?.structures}
+                            gridSize={Math.min(gridSize, 50)}
+                            showStrainNodes={showStrainNodes}
+                            showClusters={showClusters}
+                            showParticleNodes={showParticleNodes}
+                            showVortices={showVortices}
+                            onStructureClick={setSelectedStructure}
+                          />
+                          <FieldHeatmapWithOverlays 
+                            data={currentSnapshot.rho_yz} 
+                            title="ρ (YZ slice)" 
+                            colorScheme="heat"
+                            structures={result?.structures}
+                            gridSize={Math.min(gridSize, 50)}
+                            showStrainNodes={showStrainNodes}
+                            showClusters={showClusters}
+                            showParticleNodes={showParticleNodes}
+                            showVortices={showVortices}
+                            onStructureClick={setSelectedStructure}
+                          />
+                          <FieldHeatmapWithOverlays 
+                            data={currentSnapshot.c_eff_xy} 
+                            title="c_eff (XY)" 
+                            colorScheme="blue"
+                            structures={result?.structures}
+                            gridSize={Math.min(gridSize, 50)}
+                            showStrainNodes={showStrainNodes}
+                            showClusters={showClusters}
+                            showParticleNodes={showParticleNodes}
+                            showVortices={showVortices}
+                            onStructureClick={setSelectedStructure}
+                          />
                         </>
                       )}
                     </div>
                   </CardContent>
                 </Card>
+                
+                {/* Structure Inspector Panel */}
+                {selectedStructure && (
+                  <Card className="bg-card/50 border-border/50 border-l-4" style={{
+                    borderLeftColor: selectedStructure.type === 'strain' ? '#f97316' :
+                                     selectedStructure.type === 'cluster' ? '#4ade80' :
+                                     selectedStructure.type === 'particle' ? '#a855f7' : '#00d4ff'
+                  }}>
+                    <CardHeader className="pb-2">
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-sm font-mono uppercase flex items-center gap-2">
+                          {selectedStructure.type === 'strain' && <Flame className="w-4 h-4 text-orange-400" />}
+                          {selectedStructure.type === 'cluster' && <CircleDot className="w-4 h-4 text-green-400" />}
+                          {selectedStructure.type === 'particle' && <Target className="w-4 h-4 text-purple-400" />}
+                          {selectedStructure.type === 'vortex' && <Hexagon className="w-4 h-4 text-cyan-400" />}
+                          {selectedStructure.type} Inspector
+                        </CardTitle>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          onClick={() => setSelectedStructure(null)}
+                          className="h-6 w-6 p-0"
+                          data-testid="inspector-close-btn"
+                        >
+                          <XCircle className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono">
+                        <div>
+                          <span className="text-muted-foreground">Position:</span>
+                          <div className="font-bold">
+                            ({(selectedStructure.data.position || selectedStructure.data.center)?.map(p => 
+                              typeof p === 'number' ? p.toFixed(1) : p
+                            ).join(', ')})
+                          </div>
+                        </div>
+                        
+                        {selectedStructure.type === 'strain' && (
+                          <>
+                            <div>
+                              <span className="text-muted-foreground">Energy Density:</span>
+                              <div className="font-bold">{selectedStructure.data.energy_density?.toFixed(4)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Gradient:</span>
+                              <div className="font-bold">{selectedStructure.data.gradient_magnitude?.toFixed(4)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Stability:</span>
+                              <div className="font-bold">{(selectedStructure.data.stability * 100).toFixed(1)}%</div>
+                            </div>
+                          </>
+                        )}
+                        
+                        {selectedStructure.type === 'cluster' && (
+                          <>
+                            <div>
+                              <span className="text-muted-foreground">Coherence:</span>
+                              <div className="font-bold">{selectedStructure.data.coherence_strength?.toFixed(4)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Members:</span>
+                              <div className="font-bold">{selectedStructure.data.member_count}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Size:</span>
+                              <div className="font-bold">{selectedStructure.data.size?.toFixed(2)}</div>
+                            </div>
+                          </>
+                        )}
+                        
+                        {selectedStructure.type === 'particle' && (
+                          <>
+                            <div>
+                              <span className="text-muted-foreground">Type:</span>
+                              <div className="font-bold">{selectedStructure.data.structure_type}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Effective Mass:</span>
+                              <div className="font-bold">{selectedStructure.data.effective_mass?.toFixed(3)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Stability:</span>
+                              <div className="font-bold">{(selectedStructure.data.stability_score * 100).toFixed(1)}%</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Linked:</span>
+                              <div className="font-bold">
+                                {selectedStructure.data.has_vortex && <Badge variant="outline" className="mr-1 text-cyan-400">+vortex</Badge>}
+                                {selectedStructure.data.has_cluster && <Badge variant="outline" className="text-green-400">+cluster</Badge>}
+                                {!selectedStructure.data.has_vortex && !selectedStructure.data.has_cluster && 'None'}
+                              </div>
+                            </div>
+                          </>
+                        )}
+                        
+                        {selectedStructure.type === 'vortex' && (
+                          <>
+                            <div>
+                              <span className="text-muted-foreground">Strength:</span>
+                              <div className="font-bold">{selectedStructure.data.strength?.toFixed(4)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Radius:</span>
+                              <div className="font-bold">{selectedStructure.data.radius?.toFixed(2)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Chirality:</span>
+                              <div className="font-bold">{selectedStructure.data.chirality > 0 ? '+1 (CW)' : '-1 (CCW)'}</div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
                 
                 {/* Current values */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
