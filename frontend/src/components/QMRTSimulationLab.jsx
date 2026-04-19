@@ -1023,6 +1023,116 @@ export const QMRTSimulationLab = () => {
     return null;
   }, [selectedTrackedId, result]);
   
+  // Helper to find any tracked structure by ID (for lineage navigation)
+  const findTrackedById = useCallback((structId) => {
+    if (!structId || !result?.tracked_structures) return null;
+    
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      const found = (result.tracked_structures[structType] || []).find(s => s.id === structId);
+      if (found) return found;
+    }
+    return null;
+  }, [result]);
+  
+  // Navigate to a related structure (parent or child) and optionally jump to its birth time
+  const navigateToStructure = useCallback((structId, jumpToTime = true) => {
+    const targetStruct = findTrackedById(structId);
+    if (targetStruct) {
+      setSelectedTrackedId(structId);
+      
+      if (jumpToTime && targetStruct.birth_time != null && result?.measurements) {
+        // Find the closest timeline index to the birth time
+        const targetTime = targetStruct.birth_time;
+        let closestIdx = 0;
+        let minDiff = Math.abs((result.measurements[0]?.t || 0) - targetTime);
+        
+        for (let i = 1; i < result.measurements.length; i++) {
+          const diff = Math.abs((result.measurements[i]?.t || 0) - targetTime);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = i;
+          }
+        }
+        
+        setPlaybackIndex(closestIdx);
+      }
+      
+      toast.info(`Navigated to ${structId}`);
+    }
+  }, [findTrackedById, result, setSelectedTrackedId, setPlaybackIndex]);
+  
+  // Derive lineage info for selected structure
+  const selectedLineageInfo = useMemo(() => {
+    if (!selectedTracked) return null;
+    
+    const info = {
+      eventType: 'none',
+      eventTime: null,
+      parents: [],
+      children: []
+    };
+    
+    // Determine event type based on parent_ids and child_ids
+    const hasParents = selectedTracked.parent_ids?.length > 0;
+    const hasChildren = selectedTracked.child_ids?.length > 0;
+    
+    if (hasParents && selectedTracked.parent_ids.length >= 2) {
+      // This structure was created from a merge
+      info.eventType = 'merge';
+      info.eventTime = selectedTracked.birth_time; // Merge happened at birth
+    } else if (hasChildren && selectedTracked.child_ids.length >= 2) {
+      // This structure split into children
+      info.eventType = 'split';
+      // Find the split time from the first child's birth
+      const firstChild = findTrackedById(selectedTracked.child_ids[0]);
+      if (firstChild) {
+        info.eventTime = firstChild.birth_time;
+      }
+    } else if (hasParents && selectedTracked.parent_ids.length === 1) {
+      // Single parent - could be from a split
+      const parent = findTrackedById(selectedTracked.parent_ids[0]);
+      if (parent && parent.child_ids?.length >= 2) {
+        info.eventType = 'split-child';
+        info.eventTime = selectedTracked.birth_time;
+      }
+    } else if (hasChildren && selectedTracked.child_ids.length === 1) {
+      // Single child - could be from a merge
+      const child = findTrackedById(selectedTracked.child_ids[0]);
+      if (child && child.parent_ids?.length >= 2) {
+        info.eventType = 'merge-parent';
+        info.eventTime = child.birth_time;
+      }
+    }
+    
+    // Resolve parent details
+    if (hasParents) {
+      info.parents = selectedTracked.parent_ids.map(pid => {
+        const parent = findTrackedById(pid);
+        return {
+          id: pid,
+          birthTime: parent?.birth_time,
+          lastSeenTime: parent?.last_seen_time,
+          status: parent?.status || 'unknown'
+        };
+      });
+    }
+    
+    // Resolve children details
+    if (hasChildren) {
+      info.children = selectedTracked.child_ids.map(cid => {
+        const child = findTrackedById(cid);
+        return {
+          id: cid,
+          birthTime: child?.birth_time,
+          lastSeenTime: child?.last_seen_time,
+          status: child?.status || 'unknown'
+        };
+      });
+    }
+    
+    return info;
+  }, [selectedTracked, findTrackedById]);
+  
   // Prepare radar data
   const radarData = result ? [
     { subject: 'Balance', value: result.balance_achieved ? 1 : 0, fullMark: 1 },
@@ -2227,6 +2337,96 @@ export const QMRTSimulationLab = () => {
                                     title={`t=${h.t?.toFixed(2)}: ${(h.stability * 100 || 0).toFixed(0)}%`}
                                   />
                                 ))}
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Lineage Section (Merge/Split) */}
+                          {selectedLineageInfo && (selectedLineageInfo.parents.length > 0 || selectedLineageInfo.children.length > 0) && (
+                            <div className="mt-4 pt-4 border-t border-border/30">
+                              <div className="text-xs font-mono uppercase text-muted-foreground mb-3 flex items-center gap-2">
+                                <Sparkles className="w-3 h-3" />
+                                Lineage
+                                {selectedLineageInfo.eventType !== 'none' && (
+                                  <Badge 
+                                    variant="outline" 
+                                    className={
+                                      selectedLineageInfo.eventType === 'merge' || selectedLineageInfo.eventType === 'merge-parent'
+                                        ? 'text-cyan-400 border-cyan-400/50'
+                                        : selectedLineageInfo.eventType === 'split' || selectedLineageInfo.eventType === 'split-child'
+                                        ? 'text-orange-400 border-orange-400/50'
+                                        : ''
+                                    }
+                                  >
+                                    {selectedLineageInfo.eventType === 'merge' && 'Merged'}
+                                    {selectedLineageInfo.eventType === 'merge-parent' && 'Merged Into'}
+                                    {selectedLineageInfo.eventType === 'split' && 'Split'}
+                                    {selectedLineageInfo.eventType === 'split-child' && 'Split From'}
+                                  </Badge>
+                                )}
+                                {selectedLineageInfo.eventTime != null && (
+                                  <span className="text-muted-foreground ml-2">
+                                    @ t = {selectedLineageInfo.eventTime.toFixed(2)}
+                                  </span>
+                                )}
+                              </div>
+                              
+                              <div className="space-y-3">
+                                {/* Parents */}
+                                {selectedLineageInfo.parents.length > 0 && (
+                                  <div>
+                                    <span className="text-xs text-muted-foreground block mb-1">Parents:</span>
+                                    <div className="space-y-1">
+                                      {selectedLineageInfo.parents.map(parent => (
+                                        <button
+                                          key={parent.id}
+                                          onClick={() => navigateToStructure(parent.id, true)}
+                                          className="flex items-center gap-2 text-xs font-mono px-2 py-1 rounded bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-colors w-full text-left"
+                                          data-testid={`lineage-parent-${parent.id}`}
+                                        >
+                                          <Target className="w-3 h-3" />
+                                          <span className="font-bold">{parent.id}</span>
+                                          <span className="text-muted-foreground">
+                                            (t = {parent.birthTime?.toFixed(2) ?? '?'} → {parent.lastSeenTime?.toFixed(2) ?? '?'})
+                                          </span>
+                                          {parent.status && parent.status !== 'unknown' && (
+                                            <Badge variant="outline" className="ml-auto text-[10px] py-0">
+                                              {parent.status}
+                                            </Badge>
+                                          )}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                                
+                                {/* Children */}
+                                {selectedLineageInfo.children.length > 0 && (
+                                  <div>
+                                    <span className="text-xs text-muted-foreground block mb-1">Children:</span>
+                                    <div className="space-y-1">
+                                      {selectedLineageInfo.children.map(child => (
+                                        <button
+                                          key={child.id}
+                                          onClick={() => navigateToStructure(child.id, true)}
+                                          className="flex items-center gap-2 text-xs font-mono px-2 py-1 rounded bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 border border-orange-500/30 transition-colors w-full text-left"
+                                          data-testid={`lineage-child-${child.id}`}
+                                        >
+                                          <CircleDot className="w-3 h-3" />
+                                          <span className="font-bold">{child.id}</span>
+                                          <span className="text-muted-foreground">
+                                            (t = {child.birthTime?.toFixed(2) ?? '?'} → {child.lastSeenTime?.toFixed(2) ?? '?'})
+                                          </span>
+                                          {child.status && child.status !== 'unknown' && (
+                                            <Badge variant="outline" className="ml-auto text-[10px] py-0">
+                                              {child.status}
+                                            </Badge>
+                                          )}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           )}

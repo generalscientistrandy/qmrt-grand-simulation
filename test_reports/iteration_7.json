@@ -1,0 +1,81 @@
+{
+  "summary": "QMRT Simulation Lab merge/split lineage display feature testing completed. All 9 features tested and verified working. Fixed a bug where timeline scrubber navigation was not working due to incorrect property name (result.timeline vs result.measurements).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_6.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Fixed bug: navigateToStructure function was using result.timeline which doesn't exist - changed to result.measurements",
+    "Structure Time Tracking section correctly displays Births, Deaths, Merges, Splits counts",
+    "Lineage section appears in inspector when structure has parent_ids or child_ids",
+    "Event Type badges correctly show 'Merged', 'Split', 'Merged Into', 'Split From'",
+    "Event Time displays @ T = [time] when merge/split occurred",
+    "Parent/Child buttons have correct data-testid attributes (lineage-parent-{id}, lineage-child-{id})",
+    "Click-through navigation works - clicking parent/child button navigates to that structure",
+    "Timeline scrubber now correctly jumps to birth time of selected structure after fix"
+  ],
+  "updated_files": [
+    "/app/frontend/src/components/QMRTSimulationLab.jsx"
+  ],
+  "success_rate": {
+    "backend": "100% (API returns correct merge/split data with parent_ids and child_ids)",
+    "frontend": "100% (all 9 lineage features verified)"
+  },
+  "seed_data_creation": "None - tests run simulations dynamically",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Lineage display feature fully tested. Key testids: lineage-parent-{id}, lineage-child-{id}. Inspector panel shows TIME TRACKING section with status, birth/last_seen times, and LINEAGE section with event type badge and parent/child buttons. Timeline scrubber navigation now works correctly after fix.",
+  "features_tested": {
+    "structure_time_tracking_section": {
+      "status": "PASS",
+      "details": "Shows Births (219), Deaths (184), Merges (49), Splits (42), Avg Life (0.26) in Fields tab"
+    },
+    "click_structure_marker_opens_inspector": {
+      "status": "PASS",
+      "details": "Clicking SVG polygon/circle markers on heatmaps opens inspector panel"
+    },
+    "lineage_section_appears": {
+      "status": "PASS",
+      "details": "Lineage section appears when structure has parent_ids or child_ids"
+    },
+    "parents_display_with_details": {
+      "status": "PASS",
+      "details": "Parents shown with ID, time range (birth → last_seen), and status badge (merged)"
+    },
+    "children_display_with_details": {
+      "status": "PASS",
+      "details": "Children shown with ID, time range (birth → last_seen), and status badge (disappeared)"
+    },
+    "event_type_badge": {
+      "status": "PASS",
+      "details": "Event Type badge shows 'Merged', 'Split', 'Merged Into', 'Split From' with correct colors (cyan for merge, orange for split)"
+    },
+    "event_time_display": {
+      "status": "PASS",
+      "details": "Event Time displays @ T = [time] when merge/split occurred"
+    },
+    "click_through_navigation": {
+      "status": "PASS",
+      "details": "Clicking parent/child button navigates to that structure and shows toast notification"
+    },
+    "timeline_scrubber_jumps_to_birth_time": {
+      "status": "PASS",
+      "details": "After fix, timeline scrubber correctly jumps to birth time of selected structure (e.g., t=0.00 → t=0.40)"
+    }
+  },
+  "bug_fixed": {
+    "file": "/app/frontend/src/components/QMRTSimulationLab.jsx",
+    "line": "1043-1055",
+    "issue": "navigateToStructure function was checking result.timeline which doesn't exist in API response",
+    "fix": "Changed result.timeline to result.measurements to correctly find timeline index for birth time navigation"
+  }
+}
