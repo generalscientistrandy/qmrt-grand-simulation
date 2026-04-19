@@ -1,29 +1,35 @@
-## Current Status: LINEAGE EVENT VISUAL EMPHASIS COMPLETE
+## Current Status: LEGACY VISUALIZER DEPRECATED
 
 **Date: December 2025**
 
-### Latest Achievement: Subtle Merge/Split Visual Emphasis During Animation
+### Latest Achievement: MesoscopicVisualizer.js Deprecated
 
-Added optional visual layer for discovering merge/split events without requiring the inspector:
+Validation pass completed successfully, legacy components removed:
 
-**Lineage Event Visuals:**
-- "Lineage Events" toggle in Structure Overlays section (enabled by default)
-- Merge: cyan dashed lines connecting parents → child, with glow effect
-- Split: orange dashed lines branching parent → children, with burst effect
-- Fade window: 0.3 time units around event time
-- Confidence-gated: only high-confidence matches shown
-- SVG animations: stroke dash animation, radius pulsing, opacity fading
+**Validation Results:**
+- ✓ Merge cases: Parents → child relationships verified (high confidence)
+- ✓ Split cases: Parent → children branching verified (medium confidence)
+- ✓ 3D positions: All structures have z coordinates
+- ✓ Burst rate: Max 6 events at once (reasonable)
+- ✓ Low-confidence filtering: 0 low-confidence structures
+- ✓ UI components: Toggle, counters, heatmaps all functional
 
-**Implementation Details:**
-- `showLineageEvents` state (default: true)
-- `activeLineageEvents` useMemo computes visible events at current time
-- Lines rendered in SVG layer within FieldHeatmapWithOverlays
-- Colors: cyan (#22d3ee) for merges, orange (#fb923c) for splits
+**Deprecated Files:**
+- `/app/frontend/src/components/MesoscopicVisualizer.js` (669 lines) - DELETED
+- `/app/frontend/src/components/Dashboard.js` (208 lines) - DELETED
 
-**Bug Fix:**
-- Moved `activeLineageEvents` after `findTrackedById` to fix initialization error
+**Remaining Components:**
+- `QMRTSimulationLab.jsx` - Primary unified simulation lab
+- `Layout.js`, `WorldCard.js`, `WorldDetailModal.js`, etc. - Supporting components
 
-**Testing:** 6/6 features verified (frontend 100%)
+**Why Deprecated:**
+- QMRTSimulationLab fully replaces MesoscopicVisualizer functionality
+- Dashboard.js was not routed/used anywhere
+- No breaking changes to the application
+
+---
+
+## Previous Status: LINEAGE EVENT VISUAL EMPHASIS COMPLETE
 
 ---
 

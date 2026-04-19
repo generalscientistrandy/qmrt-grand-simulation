@@ -2,7 +2,13 @@
 
 ## December 2025
 
-### Lineage Event Visual Emphasis (Latest)
+### Legacy Visualizer Deprecated (Latest)
+- **Deleted**: `MesoscopicVisualizer.js` (669 lines) - fully replaced by QMRTSimulationLab
+- **Deleted**: `Dashboard.js` (208 lines) - dead code, not routed
+- **Validated**: Merge/split detection, 3D positions, burst rates, low-confidence filtering
+- **Result**: Single unified simulation lab, no legacy code
+
+### Lineage Event Visual Emphasis
 - **Added**: Subtle visual emphasis for merge/split events during animation
 - **Added**: "Lineage Events" toggle in Structure Overlays section (cyan sparkles icon)
 - **Added**: Merge visuals: cyan dashed lines connecting parents to merged child, with glow effect
