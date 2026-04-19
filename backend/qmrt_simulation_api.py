@@ -10,17 +10,63 @@ Clean API for running 2D and 3D QMRT simulations with full metrics:
 - Spacetime coupling (I_TS)
 - Causal geometry
 - Emergent structures (vortices, clusters, nodes)
+
+Mesoscopic Structures (legacy integration):
+- Torsion vortices
+- Strain energy nodes
+- Coherence clusters
+- Particle-like nodes
 """
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-from typing import List, Dict, Optional, Literal
+from typing import List, Dict, Optional, Literal, Tuple
 import numpy as np
 from scipy.ndimage import gaussian_filter, label
 from scipy.stats import pearsonr
 import time
+import math
 
 router = APIRouter(prefix="/qmrt-sim", tags=["QMRT Simulation"])
+
+
+# ============================================================
+# MESOSCOPIC STRUCTURE DATA CLASSES
+# ============================================================
+
+class TorsionVortexData(BaseModel):
+    """Emergent vortex structure in torsion field"""
+    position: List[int]
+    strength: float
+    radius: float
+    chirality: int  # +1 or -1
+    
+class StrainNodeData(BaseModel):
+    """Localized strain energy concentration"""
+    position: List[int]
+    energy_density: float
+    gradient_magnitude: float
+    stability: float
+    
+class CoherenceClusterData(BaseModel):
+    """Phase coherence cluster"""
+    center: List[float]
+    size: float
+    coherence_strength: float
+    member_count: int
+    phase_value: float
+
+class ParticleNodeData(BaseModel):
+    """Emergent particle-like structure"""
+    id: str
+    position: List[float]
+    density_concentration: float
+    strain_energy: float
+    effective_mass: float
+    stability_score: float
+    structure_type: str  # 'stable', 'transient', 'proto-particle'
+    has_vortex: bool
+    has_cluster: bool
 
 
 # ============================================================
@@ -51,22 +97,34 @@ class TimePoint(BaseModel):
     I_TS: float
     isotropy_cv: float
     confinement: float
-    # Emergent structures
+    # Emergent structures counts
     vortex_count: int = 0
     cluster_count: int = 0
-    node_count: int = 0
+    strain_node_count: int = 0
+    particle_node_count: int = 0
     mean_density: float = 1.0
     density_variance: float = 0.0
 
 
+class StructuresSnapshot(BaseModel):
+    """Mesoscopic structures at a point in time."""
+    t: float
+    torsion_vortices: List[TorsionVortexData] = []
+    strain_nodes: List[StrainNodeData] = []
+    coherence_clusters: List[CoherenceClusterData] = []
+    particle_nodes: List[ParticleNodeData] = []
+
+
 class SimulationResult(BaseModel):
-    """Complete simulation result."""
+    """Complete simulation result with unified metrics + structures."""
     dimension: str
     config: Dict
     duration_seconds: float
+    
+    # Time series measurements (new QMRT metrics)
     measurements: List[TimePoint]
     
-    # Final metrics
+    # Final metrics summary
     balance_achieved: bool
     balance_E_cv: float
     
@@ -84,10 +142,14 @@ class SimulationResult(BaseModel):
     rho_PS: float
     rho_OS: float
     
-    # Emergent structures summary
+    # === MESOSCOPIC STRUCTURES (legacy data) ===
+    structures: StructuresSnapshot  # Final snapshot of all structures
+    
+    # Structure summary counts
     total_vortices: int = 0
     total_clusters: int = 0
-    total_nodes: int = 0
+    total_strain_nodes: int = 0
+    total_particle_nodes: int = 0
     stable_nodes: int = 0
     proto_nodes: int = 0
     transient_nodes: int = 0
@@ -243,6 +305,245 @@ class QMRTSimulator2D:
             'c_eff': c_eff[::step, ::step].tolist(),
             'tau': self.tau[::step, ::step].tolist(),
         }
+    
+    # ============================================================
+    # MESOSCOPIC STRUCTURE DETECTION (2D)
+    # ============================================================
+    
+    def detect_torsion_vortices(self, vortex_threshold: float = 0.03) -> List[Dict]:
+        """
+        Detect vortex structures using vorticity (curl of velocity-like field).
+        In 2D, we use the scalar curl of the velocity field.
+        """
+        vortices = []
+        
+        # Compute vorticity: ∂v_y/∂x - ∂v_x/∂y
+        # Use phi_dot gradient as velocity proxy
+        vx = np.roll(self.phi_dot, -1, axis=0) - np.roll(self.phi_dot, 1, axis=0)
+        vy = np.roll(self.phi_dot, -1, axis=1) - np.roll(self.phi_dot, 1, axis=1)
+        
+        # Curl in 2D is scalar: ω = ∂v_y/∂x - ∂v_x/∂y
+        dvx_dy = np.roll(vx, -1, axis=1) - np.roll(vx, 1, axis=1)
+        dvy_dx = np.roll(vy, -1, axis=0) - np.roll(vy, 1, axis=0)
+        vorticity = dvy_dx - dvx_dy
+        vorticity_mag = np.abs(vorticity)
+        
+        # Find local maxima above threshold
+        for i in range(2, self.size - 2):
+            for j in range(2, self.size - 2):
+                strength = vorticity_mag[i, j]
+                
+                if strength > vortex_threshold:
+                    # Check if local maximum
+                    local_region = vorticity_mag[i-1:i+2, j-1:j+2]
+                    if strength >= np.max(local_region):
+                        chirality = 1 if vorticity[i, j] > 0 else -1
+                        
+                        # Estimate radius (half-strength decay)
+                        radius = self._estimate_vortex_radius_2d(vorticity_mag, i, j, strength)
+                        
+                        vortices.append({
+                            'position': [i, j],
+                            'strength': float(strength),
+                            'radius': float(radius),
+                            'chirality': int(chirality)
+                        })
+        
+        return vortices
+    
+    def _estimate_vortex_radius_2d(self, vort_mag: np.ndarray, ci: int, cj: int, 
+                                   center_strength: float) -> float:
+        """Estimate vortex radius from vorticity decay."""
+        for r in range(1, min(10, self.size // 4)):
+            samples = []
+            for di in [-r, 0, r]:
+                for dj in [-r, 0, r]:
+                    if di == dj == 0:
+                        continue
+                    ni, nj = ci + di, cj + dj
+                    if 0 <= ni < self.size and 0 <= nj < self.size:
+                        samples.append(vort_mag[ni, nj])
+            
+            if samples and np.mean(samples) < center_strength * 0.5:
+                return float(r)
+        return 1.0
+    
+    def detect_strain_energy_nodes(self, strain_threshold: float = 0.01) -> List[Dict]:
+        """Detect localized strain energy concentrations."""
+        strain_nodes = []
+        
+        # Compute strain energy density from density gradient
+        rho = self.phi**2 + self.phi_dot**2
+        grad_x = np.roll(rho, -1, axis=0) - rho
+        grad_y = np.roll(rho, -1, axis=1) - rho
+        strain_energy = grad_x**2 + grad_y**2
+        
+        # Find local maxima above threshold
+        for i in range(2, self.size - 2):
+            for j in range(2, self.size - 2):
+                energy = strain_energy[i, j]
+                
+                if energy > strain_threshold:
+                    local_region = strain_energy[i-1:i+2, j-1:j+2]
+                    if energy >= np.max(local_region):
+                        grad_mag = np.sqrt(grad_x[i, j]**2 + grad_y[i, j]**2)
+                        stability = self._compute_node_stability_2d(strain_energy, i, j)
+                        
+                        strain_nodes.append({
+                            'position': [i, j],
+                            'energy_density': float(energy),
+                            'gradient_magnitude': float(grad_mag),
+                            'stability': float(stability)
+                        })
+        
+        return strain_nodes
+    
+    def _compute_node_stability_2d(self, energy_field: np.ndarray, ci: int, cj: int) -> float:
+        """Compute stability of energy concentration."""
+        center_energy = energy_field[ci, cj]
+        
+        window = 3
+        i1, i2 = max(0, ci-window), min(self.size, ci+window+1)
+        j1, j2 = max(0, cj-window), min(self.size, cj+window+1)
+        
+        local_region = energy_field[i1:i2, j1:j2]
+        mean_local = np.mean(local_region)
+        std_local = np.std(local_region)
+        
+        if std_local > 0:
+            stability = (center_energy - mean_local) / std_local
+            return float(min(1.0, max(0.0, stability / 3.0)))
+        return 0.0
+    
+    def detect_coherence_clusters(self, coherence_threshold: float = 0.02) -> List[Dict]:
+        """Detect phase coherence clustering."""
+        clusters = []
+        
+        # Use smoothed energy density as coherence proxy
+        rho = self.phi**2 + self.phi_dot**2
+        coherence = gaussian_filter(rho, sigma=2.0)
+        
+        # Find regions of high coherence
+        for i in range(3, self.size - 3):
+            for j in range(3, self.size - 3):
+                if coherence[i, j] > coherence_threshold:
+                    window = 3
+                    local_region = coherence[i-window:i+window+1, j-window:j+window+1]
+                    
+                    if coherence[i, j] >= np.max(local_region):
+                        cluster = self._characterize_cluster_2d(coherence, i, j, window, coherence_threshold)
+                        if cluster:
+                            clusters.append(cluster)
+        
+        return clusters
+    
+    def _characterize_cluster_2d(self, coherence: np.ndarray, ci: int, cj: int, 
+                                  window: int, threshold: float) -> Optional[Dict]:
+        """Characterize a coherence cluster."""
+        i1, i2 = max(0, ci-window), min(self.size, ci+window+1)
+        j1, j2 = max(0, cj-window), min(self.size, cj+window+1)
+        
+        local_region = coherence[i1:i2, j1:j2]
+        threshold_mask = local_region > threshold * 0.5
+        member_count = int(np.sum(threshold_mask))
+        
+        if member_count < 3:  # Minimum cluster size for 2D
+            return None
+        
+        coords = np.array(np.where(threshold_mask))
+        weights = local_region[threshold_mask]
+        
+        if len(weights) == 0:
+            return None
+        
+        center_local = np.average(coords, axis=1, weights=weights)
+        center_global = [float(center_local[0] + i1), float(center_local[1] + j1)]
+        
+        size = float(np.sqrt(np.mean((coords - center_local[:, None])**2)))
+        coherence_strength = float(np.mean(local_region[threshold_mask]))
+        phase_value = float(np.mean(self.phi[i1:i2, j1:j2][threshold_mask]))
+        
+        return {
+            'center': center_global,
+            'size': size,
+            'coherence_strength': coherence_strength,
+            'member_count': member_count,
+            'phase_value': phase_value
+        }
+    
+    def identify_particle_nodes(self, strain_nodes: List[Dict], vortices: List[Dict],
+                                clusters: List[Dict]) -> List[Dict]:
+        """Identify emergent particle-like structures from co-located features."""
+        particle_nodes = []
+        rho = self.phi**2 + self.phi_dot**2
+        
+        for idx, strain in enumerate(strain_nodes):
+            pos = strain['position']
+            i, j = pos[0], pos[1]
+            
+            # Find nearby vortex
+            has_vortex = False
+            for vortex in vortices:
+                vpos = vortex['position']
+                dist = math.sqrt((i - vpos[0])**2 + (j - vpos[1])**2)
+                if dist < 3:
+                    has_vortex = True
+                    break
+            
+            # Find nearby cluster
+            has_cluster = False
+            for cluster in clusters:
+                cpos = cluster['center']
+                dist = math.sqrt((i - cpos[0])**2 + (j - cpos[1])**2)
+                if dist < 3:
+                    has_cluster = True
+                    break
+            
+            if has_vortex or has_cluster:
+                density_conc = float(rho[i, j] - np.mean(rho))
+                effective_mass = density_conc * strain['energy_density']
+                
+                stability = strain['stability']
+                if has_vortex:
+                    stability += 0.2
+                if has_cluster:
+                    stability += 0.3
+                stability = min(1.0, stability)
+                
+                if stability > 0.7:
+                    structure_type = 'stable'
+                elif stability > 0.4:
+                    structure_type = 'proto-particle'
+                else:
+                    structure_type = 'transient'
+                
+                particle_nodes.append({
+                    'id': f"node_2d_{idx}",
+                    'position': [float(i), float(j)],
+                    'density_concentration': density_conc,
+                    'strain_energy': strain['energy_density'],
+                    'effective_mass': effective_mass,
+                    'stability_score': stability,
+                    'structure_type': structure_type,
+                    'has_vortex': has_vortex,
+                    'has_cluster': has_cluster
+                })
+        
+        return particle_nodes
+    
+    def detect_all_structures(self) -> Dict:
+        """Detect all mesoscopic structures and return unified data."""
+        vortices = self.detect_torsion_vortices()
+        strain_nodes = self.detect_strain_energy_nodes()
+        clusters = self.detect_coherence_clusters()
+        particle_nodes = self.identify_particle_nodes(strain_nodes, vortices, clusters)
+        
+        return {
+            'torsion_vortices': vortices,
+            'strain_nodes': strain_nodes,
+            'coherence_clusters': clusters,
+            'particle_nodes': particle_nodes
+        }
 
 
 class QMRTSimulator3D:
@@ -395,6 +696,265 @@ class QMRTSimulator3D:
             'rho_yz': rho[mid, :, :][::step, ::step].tolist(),
             'c_eff_xy': c_eff[:, :, mid][::step, ::step].tolist(),
         }
+    
+    # ============================================================
+    # MESOSCOPIC STRUCTURE DETECTION (3D)
+    # ============================================================
+    
+    def _compute_curl_3d(self, vx: np.ndarray, vy: np.ndarray, vz: np.ndarray) -> np.ndarray:
+        """Compute curl of a 3D vector field."""
+        # curl_x = ∂vz/∂y - ∂vy/∂z
+        dvz_dy = np.roll(vz, -1, axis=1) - np.roll(vz, 1, axis=1)
+        dvy_dz = np.roll(vy, -1, axis=2) - np.roll(vy, 1, axis=2)
+        curl_x = dvz_dy - dvy_dz
+        
+        # curl_y = ∂vx/∂z - ∂vz/∂x
+        dvx_dz = np.roll(vx, -1, axis=2) - np.roll(vx, 1, axis=2)
+        dvz_dx = np.roll(vz, -1, axis=0) - np.roll(vz, 1, axis=0)
+        curl_y = dvx_dz - dvz_dx
+        
+        # curl_z = ∂vy/∂x - ∂vx/∂y
+        dvy_dx = np.roll(vy, -1, axis=0) - np.roll(vy, 1, axis=0)
+        dvx_dy = np.roll(vx, -1, axis=1) - np.roll(vx, 1, axis=1)
+        curl_z = dvy_dx - dvx_dy
+        
+        return np.stack([curl_x, curl_y, curl_z], axis=-1)
+    
+    def detect_torsion_vortices(self, vortex_threshold: float = 0.03) -> List[Dict]:
+        """Detect vortex structures in 3D using vorticity."""
+        vortices = []
+        
+        # Compute velocity-like field from phi_dot gradients
+        vx = np.roll(self.phi_dot, -1, axis=0) - np.roll(self.phi_dot, 1, axis=0)
+        vy = np.roll(self.phi_dot, -1, axis=1) - np.roll(self.phi_dot, 1, axis=1)
+        vz = np.roll(self.phi_dot, -1, axis=2) - np.roll(self.phi_dot, 1, axis=2)
+        
+        vorticity = self._compute_curl_3d(vx, vy, vz)
+        vorticity_mag = np.linalg.norm(vorticity, axis=-1)
+        
+        # Find local maxima above threshold
+        for i in range(2, self.size - 2):
+            for j in range(2, self.size - 2):
+                for k in range(2, self.size - 2):
+                    strength = vorticity_mag[i, j, k]
+                    
+                    if strength > vortex_threshold:
+                        local_region = vorticity_mag[i-1:i+2, j-1:j+2, k-1:k+2]
+                        if strength >= np.max(local_region):
+                            # Chirality from dominant vorticity component
+                            vort_vec = vorticity[i, j, k]
+                            chirality = 1 if vort_vec[2] > 0 else -1
+                            
+                            radius = self._estimate_vortex_radius_3d(vorticity_mag, i, j, k, strength)
+                            
+                            vortices.append({
+                                'position': [i, j, k],
+                                'strength': float(strength),
+                                'radius': float(radius),
+                                'chirality': int(chirality)
+                            })
+        
+        return vortices
+    
+    def _estimate_vortex_radius_3d(self, vort_mag: np.ndarray, ci: int, cj: int, ck: int,
+                                    center_strength: float) -> float:
+        """Estimate vortex radius from vorticity decay."""
+        for r in range(1, min(10, self.size // 4)):
+            samples = []
+            for di in [-r, 0, r]:
+                for dj in [-r, 0, r]:
+                    for dk in [-r, 0, r]:
+                        if di == dj == dk == 0:
+                            continue
+                        ni, nj, nk = ci + di, cj + dj, ck + dk
+                        if 0 <= ni < self.size and 0 <= nj < self.size and 0 <= nk < self.size:
+                            samples.append(vort_mag[ni, nj, nk])
+            
+            if samples and np.mean(samples) < center_strength * 0.5:
+                return float(r)
+        return 1.0
+    
+    def detect_strain_energy_nodes(self, strain_threshold: float = 0.01) -> List[Dict]:
+        """Detect localized strain energy concentrations in 3D."""
+        strain_nodes = []
+        
+        rho = self.phi**2 + self.phi_dot**2
+        grad_x = np.roll(rho, -1, axis=0) - rho
+        grad_y = np.roll(rho, -1, axis=1) - rho
+        grad_z = np.roll(rho, -1, axis=2) - rho
+        strain_energy = grad_x**2 + grad_y**2 + grad_z**2
+        
+        for i in range(2, self.size - 2):
+            for j in range(2, self.size - 2):
+                for k in range(2, self.size - 2):
+                    energy = strain_energy[i, j, k]
+                    
+                    if energy > strain_threshold:
+                        local_region = strain_energy[i-1:i+2, j-1:j+2, k-1:k+2]
+                        if energy >= np.max(local_region):
+                            grad_mag = np.sqrt(grad_x[i, j, k]**2 + grad_y[i, j, k]**2 + grad_z[i, j, k]**2)
+                            stability = self._compute_node_stability_3d(strain_energy, i, j, k)
+                            
+                            strain_nodes.append({
+                                'position': [i, j, k],
+                                'energy_density': float(energy),
+                                'gradient_magnitude': float(grad_mag),
+                                'stability': float(stability)
+                            })
+        
+        return strain_nodes
+    
+    def _compute_node_stability_3d(self, energy_field: np.ndarray, ci: int, cj: int, ck: int) -> float:
+        """Compute stability of energy concentration."""
+        center_energy = energy_field[ci, cj, ck]
+        
+        window = 3
+        i1, i2 = max(0, ci-window), min(self.size, ci+window+1)
+        j1, j2 = max(0, cj-window), min(self.size, cj+window+1)
+        k1, k2 = max(0, ck-window), min(self.size, ck+window+1)
+        
+        local_region = energy_field[i1:i2, j1:j2, k1:k2]
+        mean_local = np.mean(local_region)
+        std_local = np.std(local_region)
+        
+        if std_local > 0:
+            stability = (center_energy - mean_local) / std_local
+            return float(min(1.0, max(0.0, stability / 3.0)))
+        return 0.0
+    
+    def detect_coherence_clusters(self, coherence_threshold: float = 0.02) -> List[Dict]:
+        """Detect phase coherence clustering in 3D."""
+        clusters = []
+        
+        rho = self.phi**2 + self.phi_dot**2
+        coherence = gaussian_filter(rho, sigma=2.0)
+        
+        for i in range(3, self.size - 3):
+            for j in range(3, self.size - 3):
+                for k in range(3, self.size - 3):
+                    if coherence[i, j, k] > coherence_threshold:
+                        window = 3
+                        local_region = coherence[i-window:i+window+1, j-window:j+window+1, k-window:k+window+1]
+                        
+                        if coherence[i, j, k] >= np.max(local_region):
+                            cluster = self._characterize_cluster_3d(coherence, i, j, k, window, coherence_threshold)
+                            if cluster:
+                                clusters.append(cluster)
+        
+        return clusters
+    
+    def _characterize_cluster_3d(self, coherence: np.ndarray, ci: int, cj: int, ck: int,
+                                  window: int, threshold: float) -> Optional[Dict]:
+        """Characterize a coherence cluster in 3D."""
+        i1, i2 = max(0, ci-window), min(self.size, ci+window+1)
+        j1, j2 = max(0, cj-window), min(self.size, cj+window+1)
+        k1, k2 = max(0, ck-window), min(self.size, ck+window+1)
+        
+        local_region = coherence[i1:i2, j1:j2, k1:k2]
+        threshold_mask = local_region > threshold * 0.5
+        member_count = int(np.sum(threshold_mask))
+        
+        if member_count < 5:  # Minimum cluster size for 3D
+            return None
+        
+        coords = np.array(np.where(threshold_mask))
+        weights = local_region[threshold_mask]
+        
+        if len(weights) == 0:
+            return None
+        
+        center_local = np.average(coords, axis=1, weights=weights)
+        center_global = [
+            float(center_local[0] + i1), 
+            float(center_local[1] + j1),
+            float(center_local[2] + k1)
+        ]
+        
+        size = float(np.sqrt(np.mean((coords - center_local[:, None])**2)))
+        coherence_strength = float(np.mean(local_region[threshold_mask]))
+        phase_value = float(np.mean(self.phi[i1:i2, j1:j2, k1:k2][threshold_mask]))
+        
+        return {
+            'center': center_global,
+            'size': size,
+            'coherence_strength': coherence_strength,
+            'member_count': member_count,
+            'phase_value': phase_value
+        }
+    
+    def identify_particle_nodes(self, strain_nodes: List[Dict], vortices: List[Dict],
+                                clusters: List[Dict]) -> List[Dict]:
+        """Identify emergent particle-like structures from co-located features in 3D."""
+        particle_nodes = []
+        rho = self.phi**2 + self.phi_dot**2
+        
+        for idx, strain in enumerate(strain_nodes):
+            pos = strain['position']
+            i, j, k = pos[0], pos[1], pos[2]
+            
+            # Find nearby vortex
+            has_vortex = False
+            for vortex in vortices:
+                vpos = vortex['position']
+                dist = math.sqrt((i - vpos[0])**2 + (j - vpos[1])**2 + (k - vpos[2])**2)
+                if dist < 3:
+                    has_vortex = True
+                    break
+            
+            # Find nearby cluster
+            has_cluster = False
+            for cluster in clusters:
+                cpos = cluster['center']
+                dist = math.sqrt((i - cpos[0])**2 + (j - cpos[1])**2 + (k - cpos[2])**2)
+                if dist < 3:
+                    has_cluster = True
+                    break
+            
+            if has_vortex or has_cluster:
+                density_conc = float(rho[i, j, k] - np.mean(rho))
+                effective_mass = density_conc * strain['energy_density']
+                
+                stability = strain['stability']
+                if has_vortex:
+                    stability += 0.2
+                if has_cluster:
+                    stability += 0.3
+                stability = min(1.0, stability)
+                
+                if stability > 0.7:
+                    structure_type = 'stable'
+                elif stability > 0.4:
+                    structure_type = 'proto-particle'
+                else:
+                    structure_type = 'transient'
+                
+                particle_nodes.append({
+                    'id': f"node_3d_{idx}",
+                    'position': [float(i), float(j), float(k)],
+                    'density_concentration': density_conc,
+                    'strain_energy': strain['energy_density'],
+                    'effective_mass': effective_mass,
+                    'stability_score': stability,
+                    'structure_type': structure_type,
+                    'has_vortex': has_vortex,
+                    'has_cluster': has_cluster
+                })
+        
+        return particle_nodes
+    
+    def detect_all_structures(self) -> Dict:
+        """Detect all mesoscopic structures and return unified data."""
+        vortices = self.detect_torsion_vortices()
+        strain_nodes = self.detect_strain_energy_nodes()
+        clusters = self.detect_coherence_clusters()
+        particle_nodes = self.identify_particle_nodes(strain_nodes, vortices, clusters)
+        
+        return {
+            'torsion_vortices': vortices,
+            'strain_nodes': strain_nodes,
+            'coherence_clusters': clusters,
+            'particle_nodes': particle_nodes
+        }
 
 
 # ============================================================
@@ -403,7 +963,7 @@ class QMRTSimulator3D:
 
 @router.post("/run", response_model=SimulationResult)
 async def run_simulation(config: SimulationConfig):
-    """Run a QMRT simulation with full metrics."""
+    """Run a QMRT simulation with full metrics and mesoscopic structures."""
     
     start_time = time.time()
     
@@ -437,6 +997,21 @@ async def run_simulation(config: SimulationConfig):
         if step % config.sample_interval == 0:
             t = step * sim.dt
             m = sim.measure(t)
+            
+            # Detect structures at this timestep for counts
+            structures = sim.detect_all_structures()
+            
+            # Add structure counts to measurement
+            m['vortex_count'] = len(structures['torsion_vortices'])
+            m['cluster_count'] = len(structures['coherence_clusters'])
+            m['strain_node_count'] = len(structures['strain_nodes'])
+            m['particle_node_count'] = len(structures['particle_nodes'])
+            
+            # Add density stats
+            rho = sim.phi**2 + sim.phi_dot**2
+            m['mean_density'] = float(np.mean(rho))
+            m['density_variance'] = float(np.var(rho))
+            
             measurements.append(TimePoint(**{k: v for k, v in m.items() 
                                             if k not in ['rho_RS', 'rho_PS', 'rho_OS']}))
             
@@ -468,6 +1043,24 @@ async def run_simulation(config: SimulationConfig):
     # Get final correlations
     final_m = sim.measure(config.steps * sim.dt)
     
+    # === FINAL MESOSCOPIC STRUCTURES SNAPSHOT ===
+    final_structures = sim.detect_all_structures()
+    final_time = config.steps * sim.dt
+    
+    # Build structures snapshot
+    structures_snapshot = StructuresSnapshot(
+        t=float(final_time),
+        torsion_vortices=[TorsionVortexData(**v) for v in final_structures['torsion_vortices']],
+        strain_nodes=[StrainNodeData(**s) for s in final_structures['strain_nodes']],
+        coherence_clusters=[CoherenceClusterData(**c) for c in final_structures['coherence_clusters']],
+        particle_nodes=[ParticleNodeData(**p) for p in final_structures['particle_nodes']]
+    )
+    
+    # Count particle node types
+    stable_count = sum(1 for p in final_structures['particle_nodes'] if p['structure_type'] == 'stable')
+    proto_count = sum(1 for p in final_structures['particle_nodes'] if p['structure_type'] == 'proto-particle')
+    transient_count = sum(1 for p in final_structures['particle_nodes'] if p['structure_type'] == 'transient')
+    
     return SimulationResult(
         dimension=config.dimension,
         config=config.model_dump(),
@@ -489,6 +1082,16 @@ async def run_simulation(config: SimulationConfig):
         rho_RS=final_m['rho_RS'],
         rho_PS=final_m['rho_PS'],
         rho_OS=final_m['rho_OS'],
+        
+        # Mesoscopic structures
+        structures=structures_snapshot,
+        total_vortices=len(final_structures['torsion_vortices']),
+        total_clusters=len(final_structures['coherence_clusters']),
+        total_strain_nodes=len(final_structures['strain_nodes']),
+        total_particle_nodes=len(final_structures['particle_nodes']),
+        stable_nodes=stable_count,
+        proto_nodes=proto_count,
+        transient_nodes=transient_count,
         
         field_snapshots=field_snapshots,
     )

@@ -8,11 +8,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
+  AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
+  ScatterChart, Scatter, ZAxis
 } from 'recharts';
 import { 
   Play, Pause, RotateCcw, Zap, Activity, Atom, Box, Square,
-  Loader2, CheckCircle2, XCircle, Info, TrendingUp
+  Loader2, CheckCircle2, XCircle, Info, TrendingUp, CircleDot, 
+  Hexagon, Target, Flame
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -104,6 +106,86 @@ const MetricCard = ({ label, value, unit, icon: Icon, color, status }) => (
     </div>
   </div>
 );
+
+// Structure count card
+const StructureCountCard = ({ label, count, icon: Icon, color, description }) => (
+  <div className={`p-4 rounded-sm border ${color} bg-opacity-10`}>
+    <div className="flex items-center gap-2 mb-2">
+      <Icon className="w-5 h-5" style={{ color: color.includes('cyan') ? '#00d4ff' : color.includes('orange') ? '#f97316' : color.includes('green') ? '#4ade80' : '#a855f7' }} />
+      <span className="text-sm font-mono uppercase">{label}</span>
+    </div>
+    <div className="text-3xl font-mono font-bold mb-1">{count}</div>
+    <p className="text-xs text-muted-foreground">{description}</p>
+  </div>
+);
+
+// Structure list item
+const StructureItem = ({ type, data, index }) => {
+  const getTypeIcon = () => {
+    switch(type) {
+      case 'vortex': return <Hexagon className="w-4 h-4 text-cyan-400" />;
+      case 'strain': return <Flame className="w-4 h-4 text-orange-400" />;
+      case 'cluster': return <CircleDot className="w-4 h-4 text-green-400" />;
+      case 'particle': return <Target className="w-4 h-4 text-purple-400" />;
+      default: return <Atom className="w-4 h-4" />;
+    }
+  };
+
+  const formatPosition = (pos) => {
+    if (!pos) return 'N/A';
+    return `(${pos.map(p => typeof p === 'number' ? p.toFixed(1) : p).join(', ')})`;
+  };
+
+  return (
+    <div className="flex items-center gap-3 p-2 rounded-sm bg-card/30 border border-border/30">
+      {getTypeIcon()}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono uppercase text-muted-foreground">#{index + 1}</span>
+          <span className="text-xs font-mono">{formatPosition(data.position || data.center)}</span>
+        </div>
+        <div className="flex flex-wrap gap-2 mt-1">
+          {type === 'vortex' && (
+            <>
+              <Badge variant="outline" className="text-xs">ω: {data.strength?.toFixed(3)}</Badge>
+              <Badge variant="outline" className="text-xs">r: {data.radius?.toFixed(1)}</Badge>
+              <Badge variant={data.chirality > 0 ? "default" : "secondary"} className="text-xs">
+                {data.chirality > 0 ? '+' : '-'}χ
+              </Badge>
+            </>
+          )}
+          {type === 'strain' && (
+            <>
+              <Badge variant="outline" className="text-xs">E: {data.energy_density?.toFixed(4)}</Badge>
+              <Badge variant="outline" className="text-xs">∇: {data.gradient_magnitude?.toFixed(3)}</Badge>
+              <Badge variant="outline" className="text-xs">σ: {(data.stability * 100).toFixed(0)}%</Badge>
+            </>
+          )}
+          {type === 'cluster' && (
+            <>
+              <Badge variant="outline" className="text-xs">Φ: {data.coherence_strength?.toFixed(3)}</Badge>
+              <Badge variant="outline" className="text-xs">n: {data.member_count}</Badge>
+              <Badge variant="outline" className="text-xs">r: {data.size?.toFixed(1)}</Badge>
+            </>
+          )}
+          {type === 'particle' && (
+            <>
+              <Badge 
+                variant={data.structure_type === 'stable' ? 'default' : data.structure_type === 'proto-particle' ? 'secondary' : 'outline'}
+                className="text-xs"
+              >
+                {data.structure_type}
+              </Badge>
+              <Badge variant="outline" className="text-xs">m: {data.effective_mass?.toFixed(3)}</Badge>
+              {data.has_vortex && <Badge variant="outline" className="text-xs text-cyan-400">+vortex</Badge>}
+              {data.has_cluster && <Badge variant="outline" className="text-xs text-green-400">+cluster</Badge>}
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const QMRTSimulationLab = () => {
   // Simulation state
@@ -387,10 +469,11 @@ export const QMRTSimulationLab = () => {
         <div className="lg:col-span-3 space-y-6">
           {result ? (
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 mb-4">
+              <TabsList className="grid w-full grid-cols-5 mb-4">
                 <TabsTrigger value="overview" className="font-mono text-xs uppercase">Overview</TabsTrigger>
                 <TabsTrigger value="temporal" className="font-mono text-xs uppercase">Temporal</TabsTrigger>
                 <TabsTrigger value="spatial" className="font-mono text-xs uppercase">Spatial</TabsTrigger>
+                <TabsTrigger value="structures" className="font-mono text-xs uppercase" data-testid="tab-structures">Structures</TabsTrigger>
                 <TabsTrigger value="fields" className="font-mono text-xs uppercase">Fields</TabsTrigger>
               </TabsList>
               
@@ -426,6 +509,26 @@ export const QMRTSimulationLab = () => {
                     color={result.geometry_confined ? 'border-green-500/50 bg-green-500' : 'border-yellow-500/50 bg-yellow-500'}
                     status={result.geometry_confined}
                   />
+                </div>
+                
+                {/* Structure Summary Row */}
+                <div className="grid grid-cols-4 gap-3">
+                  <div className="p-2 rounded-sm border border-cyan-500/30 bg-cyan-500/5 text-center">
+                    <div className="text-lg font-mono font-bold text-cyan-400">{result.total_vortices || 0}</div>
+                    <div className="text-xs text-muted-foreground">Vortices</div>
+                  </div>
+                  <div className="p-2 rounded-sm border border-orange-500/30 bg-orange-500/5 text-center">
+                    <div className="text-lg font-mono font-bold text-orange-400">{result.total_strain_nodes || 0}</div>
+                    <div className="text-xs text-muted-foreground">Strain Nodes</div>
+                  </div>
+                  <div className="p-2 rounded-sm border border-green-500/30 bg-green-500/5 text-center">
+                    <div className="text-lg font-mono font-bold text-green-400">{result.total_clusters || 0}</div>
+                    <div className="text-xs text-muted-foreground">Clusters</div>
+                  </div>
+                  <div className="p-2 rounded-sm border border-purple-500/30 bg-purple-500/5 text-center">
+                    <div className="text-lg font-mono font-bold text-purple-400">{result.total_particle_nodes || 0}</div>
+                    <div className="text-xs text-muted-foreground">Particles</div>
+                  </div>
                 </div>
                 
                 {/* Radar Chart + Correlations */}
@@ -589,6 +692,195 @@ export const QMRTSimulationLab = () => {
                     </ResponsiveContainer>
                   </CardContent>
                 </Card>
+              </TabsContent>
+              
+              {/* Structures Tab (Mesoscopic Legacy Data) */}
+              <TabsContent value="structures" className="space-y-4" data-testid="structures-tab-content">
+                {/* Structure Summary Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <StructureCountCard 
+                    label="Torsion Vortices" 
+                    count={result.total_vortices || 0}
+                    icon={Hexagon}
+                    color="border-cyan-500/50 bg-cyan-500"
+                    description="Rotational flow structures in the medium"
+                  />
+                  <StructureCountCard 
+                    label="Strain Nodes" 
+                    count={result.total_strain_nodes || 0}
+                    icon={Flame}
+                    color="border-orange-500/50 bg-orange-500"
+                    description="Localized energy concentrations"
+                  />
+                  <StructureCountCard 
+                    label="Coherence Clusters" 
+                    count={result.total_clusters || 0}
+                    icon={CircleDot}
+                    color="border-green-500/50 bg-green-500"
+                    description="Phase-correlated regions"
+                  />
+                  <StructureCountCard 
+                    label="Particle Nodes" 
+                    count={result.total_particle_nodes || 0}
+                    icon={Target}
+                    color="border-purple-500/50 bg-purple-500"
+                    description="Emergent particle-like structures"
+                  />
+                </div>
+                
+                {/* Particle Node Type Breakdown */}
+                {result.total_particle_nodes > 0 && (
+                  <Card className="bg-card/50 border-border/50">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-mono uppercase">Particle Node Classification</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="text-center p-3 rounded-sm bg-green-500/10 border border-green-500/30">
+                          <div className="text-2xl font-mono font-bold text-green-400">{result.stable_nodes || 0}</div>
+                          <div className="text-xs text-muted-foreground">Stable</div>
+                        </div>
+                        <div className="text-center p-3 rounded-sm bg-yellow-500/10 border border-yellow-500/30">
+                          <div className="text-2xl font-mono font-bold text-yellow-400">{result.proto_nodes || 0}</div>
+                          <div className="text-xs text-muted-foreground">Proto-particle</div>
+                        </div>
+                        <div className="text-center p-3 rounded-sm bg-gray-500/10 border border-gray-500/30">
+                          <div className="text-2xl font-mono font-bold text-gray-400">{result.transient_nodes || 0}</div>
+                          <div className="text-xs text-muted-foreground">Transient</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+                
+                {/* Structure Evolution Chart */}
+                <Card className="bg-card/50 border-border/50">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-mono uppercase">Structure Count Evolution</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ResponsiveContainer width="100%" height={200}>
+                      <LineChart data={result.measurements}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                        <XAxis dataKey="t" stroke="rgba(255,255,255,0.5)" tick={{ fontSize: 10 }} />
+                        <YAxis stroke="rgba(255,255,255,0.5)" tick={{ fontSize: 10 }} />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend wrapperStyle={{ fontSize: '10px' }} />
+                        <Line type="monotone" dataKey="vortex_count" name="Vortices" stroke="#00d4ff" strokeWidth={2} dot={false} />
+                        <Line type="monotone" dataKey="cluster_count" name="Clusters" stroke="#4ade80" strokeWidth={2} dot={false} />
+                        <Line type="monotone" dataKey="strain_node_count" name="Strain" stroke="#f97316" strokeWidth={2} dot={false} />
+                        <Line type="monotone" dataKey="particle_node_count" name="Particles" stroke="#a855f7" strokeWidth={2} dot={false} />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
+                
+                {/* Detailed Structure Lists */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Torsion Vortices */}
+                  <Card className="bg-card/50 border-border/50">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-mono uppercase flex items-center gap-2">
+                        <Hexagon className="w-4 h-4 text-cyan-400" />
+                        Torsion Vortices ({result.structures?.torsion_vortices?.length || 0})
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2 max-h-48 overflow-y-auto">
+                        {result.structures?.torsion_vortices?.length > 0 ? (
+                          result.structures.torsion_vortices.slice(0, 10).map((v, i) => (
+                            <StructureItem key={i} type="vortex" data={v} index={i} />
+                          ))
+                        ) : (
+                          <p className="text-xs text-muted-foreground text-center py-4">No vortices detected</p>
+                        )}
+                        {(result.structures?.torsion_vortices?.length || 0) > 10 && (
+                          <p className="text-xs text-muted-foreground text-center">
+                            +{result.structures.torsion_vortices.length - 10} more
+                          </p>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Coherence Clusters */}
+                  <Card className="bg-card/50 border-border/50">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-mono uppercase flex items-center gap-2">
+                        <CircleDot className="w-4 h-4 text-green-400" />
+                        Coherence Clusters ({result.structures?.coherence_clusters?.length || 0})
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2 max-h-48 overflow-y-auto">
+                        {result.structures?.coherence_clusters?.length > 0 ? (
+                          result.structures.coherence_clusters.slice(0, 10).map((c, i) => (
+                            <StructureItem key={i} type="cluster" data={c} index={i} />
+                          ))
+                        ) : (
+                          <p className="text-xs text-muted-foreground text-center py-4">No clusters detected</p>
+                        )}
+                        {(result.structures?.coherence_clusters?.length || 0) > 10 && (
+                          <p className="text-xs text-muted-foreground text-center">
+                            +{result.structures.coherence_clusters.length - 10} more
+                          </p>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Strain Nodes */}
+                  <Card className="bg-card/50 border-border/50">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-mono uppercase flex items-center gap-2">
+                        <Flame className="w-4 h-4 text-orange-400" />
+                        Strain Energy Nodes ({result.structures?.strain_nodes?.length || 0})
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2 max-h-48 overflow-y-auto">
+                        {result.structures?.strain_nodes?.length > 0 ? (
+                          result.structures.strain_nodes.slice(0, 10).map((s, i) => (
+                            <StructureItem key={i} type="strain" data={s} index={i} />
+                          ))
+                        ) : (
+                          <p className="text-xs text-muted-foreground text-center py-4">No strain nodes detected</p>
+                        )}
+                        {(result.structures?.strain_nodes?.length || 0) > 10 && (
+                          <p className="text-xs text-muted-foreground text-center">
+                            +{result.structures.strain_nodes.length - 10} more
+                          </p>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Particle Nodes */}
+                  <Card className="bg-card/50 border-border/50">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-mono uppercase flex items-center gap-2">
+                        <Target className="w-4 h-4 text-purple-400" />
+                        Particle-Like Nodes ({result.structures?.particle_nodes?.length || 0})
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2 max-h-48 overflow-y-auto">
+                        {result.structures?.particle_nodes?.length > 0 ? (
+                          result.structures.particle_nodes.slice(0, 10).map((p, i) => (
+                            <StructureItem key={i} type="particle" data={p} index={i} />
+                          ))
+                        ) : (
+                          <p className="text-xs text-muted-foreground text-center py-4">No particle nodes detected</p>
+                        )}
+                        {(result.structures?.particle_nodes?.length || 0) > 10 && (
+                          <p className="text-xs text-muted-foreground text-center">
+                            +{result.structures.particle_nodes.length - 10} more
+                          </p>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </TabsContent>
               
               {/* Fields Tab */}
