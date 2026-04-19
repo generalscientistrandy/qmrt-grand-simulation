@@ -2,7 +2,17 @@
 
 ## December 2025
 
-### Timeline Animation Mode (Latest)
+### 3D Slice Projection (Latest)
+- **Added**: Slice-based structure filtering for 3D views
+- **Added**: Coordinate projection: XY (filter z), XZ (filter y), YZ (filter x)
+- **Added**: Distance-based opacity fading: `opacity = max(0, 1 - |d| / δ)`
+- **Added**: Cluster radius scaling for slice intersection visualization
+- **Added**: Slice Thickness slider (1-10 units, default 3)
+- **Added**: Debug "Show all z" toggle (yellow, secondary)
+- **Added**: Hover tooltip shows slice type, distance, and projection warnings
+- **Tested**: 3D simulation with 503 births, 487 deaths, all four slice views working
+
+### Timeline Animation Mode
 - **Added**: Play/pause button with time display
 - **Added**: Timeline scrubber for manual navigation
 - **Added**: Speed control slider (20ms-500ms per frame, shown as Nx)

@@ -1,4 +1,33 @@
-## Current Status: TIMELINE ANIMATION MODE COMPLETE
+## Current Status: 3D SLICE PROJECTION COMPLETE
+
+**Date: December 2025**
+
+### Latest Achievement: 3D Slice Projection System
+
+Added proper 3D structure visualization with slice-based filtering:
+
+**Slice Projection Features:**
+- XY/XZ/YZ slice views with proper coordinate mapping
+- Configurable slice thickness (1-10 grid units, default 3)
+- Distance-based opacity fading: `opacity = max(0, 1 - |d| / δ)`
+- Cluster radius scaling for slice intersection: `r_visible = sqrt(r² - d²)`
+- Debug "Show all z" toggle for validation
+
+**Hover Tooltip Enhancements:**
+- Slice type indicator (XY/XZ/YZ)
+- Slice distance display
+- "Debug" tag when showAllZ enabled
+- "⚠ projected" warning for off-center clusters
+
+**3D Slice Controls:**
+- Slice Thickness slider (1-10 units)
+- Debug: Show all z checkbox (yellow, clearly secondary)
+
+**Testing:** 3D simulation completed with 503 births, 487 deaths tracked. Fields tab shows all four slice views (ρ XY, ρ XZ, ρ YZ, c_eff XY) with proper overlays.
+
+---
+
+## Previous Status: TIMELINE ANIMATION MODE COMPLETE
 
 **Date: December 2025**
 

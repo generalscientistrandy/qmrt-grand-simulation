@@ -56,6 +56,11 @@ const FieldHeatmapWithOverlays = ({
   getStructureState = () => 'active',
   eventFilter = { showBirths: true, showDeaths: true, showActive: true, selectedOnly: false },
   trackedStructures = null,
+  // 3D slice projection props
+  sliceAxis = null, // 'xy', 'xz', 'yz', or null for 2D
+  slicePosition = 0, // Position of the slice center (e.g., z value for XY slice)
+  sliceThickness = 3, // How far from center to include structures
+  showAllZ = false, // Debug mode to show all structures regardless of slice
   onStructureClick = () => {}
 }) => {
   const [hoveredStructure, setHoveredStructure] = useState(null);
@@ -78,19 +83,97 @@ const FieldHeatmapWithOverlays = ({
   const pixelSize = Math.min(displaySize * 6, 200);
   const cellSize = pixelSize / displaySize;
 
-  // Convert grid position to pixel position
-  const toPixel = (pos) => {
-    if (!pos || pos.length < 2) return { x: 0, y: 0 };
+  // ============================================
+  // 3D SLICE PROJECTION HELPERS
+  // ============================================
+  
+  // Get the perpendicular axis index for each slice type
+  const getSliceAxisIndex = () => {
+    if (sliceAxis === 'xy') return 2; // z is perpendicular
+    if (sliceAxis === 'xz') return 1; // y is perpendicular
+    if (sliceAxis === 'yz') return 0; // x is perpendicular
+    return null;
+  };
+  
+  // Project 3D position to 2D based on slice type
+  const projectPosition = (pos) => {
+    if (!pos || pos.length < 2) return { x: 0, y: 0, sliceDistance: 0, inSlice: true };
+    
+    // 2D mode - no projection needed
+    if (!sliceAxis || pos.length < 3) {
+      return { 
+        x: pos[0], 
+        y: pos[1], 
+        sliceDistance: 0, 
+        inSlice: true,
+        opacity: 1.0
+      };
+    }
+    
+    // 3D slice projection
+    let projX, projY, sliceDistance;
+    const perpAxis = getSliceAxisIndex();
+    
+    if (sliceAxis === 'xy') {
+      // XY slice: show x,y, filter by z
+      projX = pos[0];
+      projY = pos[1];
+      sliceDistance = Math.abs(pos[2] - slicePosition);
+    } else if (sliceAxis === 'xz') {
+      // XZ slice: show x,z (z maps to y in display), filter by y
+      projX = pos[0];
+      projY = pos[2];
+      sliceDistance = Math.abs(pos[1] - slicePosition);
+    } else if (sliceAxis === 'yz') {
+      // YZ slice: show y,z (y maps to x, z maps to y in display), filter by x
+      projX = pos[1];
+      projY = pos[2];
+      sliceDistance = Math.abs(pos[0] - slicePosition);
+    }
+    
+    // Check if within slice thickness
+    const inSlice = showAllZ || sliceDistance <= sliceThickness;
+    
+    // Calculate opacity based on distance (normalized fade)
+    // opacity = max(0, 1 - |d| / δ)
+    const opacity = showAllZ ? 0.3 : Math.max(0, 1 - sliceDistance / sliceThickness);
+    
     return {
-      x: (pos[0] * scale) * cellSize,
-      y: (pos[1] * scale) * cellSize
+      x: projX,
+      y: projY,
+      sliceDistance,
+      inSlice,
+      opacity
     };
   };
   
-  // Convert trajectory to SVG path
+  // Convert projected position to pixel coordinates
+  const toPixel = (pos) => {
+    const projected = projectPosition(pos);
+    return {
+      x: (projected.x * scale) * cellSize,
+      y: (projected.y * scale) * cellSize,
+      sliceDistance: projected.sliceDistance,
+      inSlice: projected.inSlice,
+      opacity: projected.opacity
+    };
+  };
+  
+  // Convert trajectory to SVG path (2D only for now)
   const trajectoryToPath = (points) => {
     if (!points || points.length < 2) return '';
-    const scaled = points.map(p => toPixel(p));
+    // For 3D, only show trajectory if most points are in slice
+    if (sliceAxis && points[0]?.length >= 3) {
+      const inSliceCount = points.filter(p => {
+        const proj = projectPosition(p);
+        return proj.inSlice;
+      }).length;
+      if (inSliceCount < points.length * 0.3) return ''; // Skip if <30% in slice
+    }
+    const scaled = points.map(p => {
+      const proj = projectPosition(p);
+      return { x: (proj.x * scale) * cellSize, y: (proj.y * scale) * cellSize };
+    });
     return scaled.map((pt, i) => `${i === 0 ? 'M' : 'L'}${pt.x},${pt.y}`).join(' ');
   };
   
@@ -205,7 +288,12 @@ const FieldHeatmapWithOverlays = ({
           
           {/* Strain Nodes - Orange diamonds */}
           {showStrainNodes && structures.strain_nodes?.map((node, i) => {
-            const { x, y } = toPixel(node.position);
+            const pixelData = toPixel(node.position);
+            const { x, y, sliceDistance, inSlice, opacity: sliceOpacity } = pixelData;
+            
+            // Skip if not in slice (unless showAllZ)
+            if (!inSlice) return null;
+            
             const size = 4 + (node.stability || 0.5) * 4;
             const tracked = findTrackedForStruct(node.position, 'strain_nodes');
             
@@ -213,15 +301,22 @@ const FieldHeatmapWithOverlays = ({
             
             const animStyle = getAnimationStyle(tracked);
             const state = tracked ? getStructureState(tracked) : 'active';
+            const baseOpacity = state === 'death' ? 0.4 : 0.8;
+            const finalOpacity = baseOpacity * sliceOpacity;
             
             return (
-              <g key={`strain-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
+              <g key={`strain-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle, opacity: finalOpacity }}>
                 <polygon
                   points={`${x},${y-size} ${x+size},${y} ${x},${y+size} ${x-size},${y}`}
-                  fill={state === 'birth' ? 'rgba(74, 222, 128, 0.9)' : state === 'death' ? 'rgba(249, 115, 22, 0.4)' : 'rgba(249, 115, 22, 0.8)'}
+                  fill={state === 'birth' ? 'rgba(74, 222, 128, 0.9)' : state === 'death' ? 'rgba(249, 115, 22, 0.5)' : 'rgba(249, 115, 22, 1)'}
                   stroke={state === 'birth' ? '#4ade80' : '#fff'}
                   strokeWidth={state === 'birth' ? 2 : 0.5}
-                  onMouseEnter={() => setHoveredStructure({ type: 'strain', data: node, x, y, state })}
+                  onMouseEnter={() => setHoveredStructure({ 
+                    type: 'strain', data: node, x, y, state,
+                    sliceDistance: sliceAxis ? sliceDistance : null,
+                    sliceAxis,
+                    showAllZ
+                  })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'strain', data: node }); }}
                 />
@@ -237,17 +332,30 @@ const FieldHeatmapWithOverlays = ({
           
           {/* Coherence Clusters - Green circles with radius */}
           {showClusters && structures.coherence_clusters?.map((cluster, i) => {
-            const { x, y } = toPixel(cluster.center);
-            const radius = Math.max(4, (cluster.size || 2) * scale * cellSize);
+            const pixelData = toPixel(cluster.center);
+            const { x, y, sliceDistance, inSlice, opacity: sliceOpacity } = pixelData;
+            
+            // Skip if not in slice
+            if (!inSlice) return null;
+            
+            // For 3D, scale radius based on how much of the cluster intersects the slice
+            // This is an approximation: radius visible ≈ sqrt(r² - d²) where d is slice distance
+            let effectiveRadius = cluster.size || 2;
+            if (sliceAxis && sliceDistance > 0 && effectiveRadius > sliceDistance) {
+              effectiveRadius = Math.sqrt(Math.pow(effectiveRadius, 2) - Math.pow(sliceDistance, 2));
+            }
+            const radius = Math.max(4, effectiveRadius * scale * cellSize);
+            
             const tracked = findTrackedForStruct(cluster.center, 'coherence_clusters');
             
             if (!shouldShowStructure(tracked, tracked?.id)) return null;
             
             const animStyle = getAnimationStyle(tracked);
             const state = tracked ? getStructureState(tracked) : 'active';
+            const finalOpacity = sliceOpacity;
             
             return (
-              <g key={`cluster-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
+              <g key={`cluster-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle, opacity: finalOpacity }}>
                 <circle
                   cx={x}
                   cy={y}
@@ -256,7 +364,13 @@ const FieldHeatmapWithOverlays = ({
                   stroke={state === 'birth' ? '#fff' : '#4ade80'}
                   strokeWidth={state === 'birth' ? 2 : 1.5}
                   strokeDasharray="3,2"
-                  onMouseEnter={() => setHoveredStructure({ type: 'cluster', data: cluster, x, y, state })}
+                  onMouseEnter={() => setHoveredStructure({ 
+                    type: 'cluster', data: cluster, x, y, state,
+                    sliceDistance: sliceAxis ? sliceDistance : null,
+                    sliceAxis,
+                    showAllZ,
+                    isSliceProjection: sliceAxis !== null && sliceDistance > 0
+                  })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'cluster', data: cluster }); }}
                 />
@@ -279,7 +393,12 @@ const FieldHeatmapWithOverlays = ({
           
           {/* Particle Nodes - Colored by type */}
           {showParticleNodes && structures.particle_nodes?.map((particle, i) => {
-            const { x, y } = toPixel(particle.position);
+            const pixelData = toPixel(particle.position);
+            const { x, y, sliceDistance, inSlice, opacity: sliceOpacity } = pixelData;
+            
+            // Skip if not in slice
+            if (!inSlice) return null;
+            
             const tracked = findTrackedForStruct(particle.position, 'particle_nodes');
             
             if (!shouldShowStructure(tracked, tracked?.id)) return null;
@@ -310,8 +429,10 @@ const FieldHeatmapWithOverlays = ({
               }
             }
             
+            const finalOpacity = sliceOpacity;
+            
             return (
-              <g key={`particle-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
+              <g key={`particle-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle, opacity: finalOpacity }}>
                 <circle
                   cx={x}
                   cy={y}
@@ -319,7 +440,12 @@ const FieldHeatmapWithOverlays = ({
                   fill={fill}
                   stroke={stroke}
                   strokeWidth={state === 'birth' ? 2.5 : 1.5}
-                  onMouseEnter={() => setHoveredStructure({ type: 'particle', data: particle, x, y, state })}
+                  onMouseEnter={() => setHoveredStructure({ 
+                    type: 'particle', data: particle, x, y, state,
+                    sliceDistance: sliceAxis ? sliceDistance : null,
+                    sliceAxis,
+                    showAllZ
+                  })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'particle', data: particle }); }}
                 />
@@ -338,7 +464,12 @@ const FieldHeatmapWithOverlays = ({
           
           {/* Torsion Vortices - Cyan spirals with chirality indicator */}
           {showVortices && structures.torsion_vortices?.map((vortex, i) => {
-            const { x, y } = toPixel(vortex.position);
+            const pixelData = toPixel(vortex.position);
+            const { x, y, sliceDistance, inSlice, opacity: sliceOpacity } = pixelData;
+            
+            // Skip if not in slice
+            if (!inSlice) return null;
+            
             const r = Math.max(4, (vortex.radius || 1) * scale * cellSize);
             const chirality = vortex.chirality > 0 ? 1 : -1;
             const tracked = findTrackedForStruct(vortex.position, 'torsion_vortices');
@@ -347,9 +478,10 @@ const FieldHeatmapWithOverlays = ({
             
             const animStyle = getAnimationStyle(tracked);
             const state = tracked ? getStructureState(tracked) : 'active';
+            const finalOpacity = sliceOpacity;
             
             return (
-              <g key={`vortex-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
+              <g key={`vortex-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle, opacity: finalOpacity }}>
                 <circle
                   cx={x}
                   cy={y}
@@ -357,7 +489,12 @@ const FieldHeatmapWithOverlays = ({
                   fill={state === 'birth' ? 'rgba(74, 222, 128, 0.2)' : state === 'death' ? 'rgba(0, 212, 255, 0.05)' : 'rgba(0, 212, 255, 0.1)'}
                   stroke={state === 'birth' ? '#4ade80' : state === 'death' ? 'rgba(0, 212, 255, 0.4)' : '#00d4ff'}
                   strokeWidth={state === 'birth' ? 3 : 2}
-                  onMouseEnter={() => setHoveredStructure({ type: 'vortex', data: vortex, x, y, state })}
+                  onMouseEnter={() => setHoveredStructure({ 
+                    type: 'vortex', data: vortex, x, y, state,
+                    sliceDistance: sliceAxis ? sliceDistance : null,
+                    sliceAxis,
+                    showAllZ
+                  })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'vortex', data: vortex }); }}
                 />
@@ -433,6 +570,21 @@ const FieldHeatmapWithOverlays = ({
                 <div className="text-xs">ω: {hoveredStructure.data.strength?.toFixed(3)}</div>
                 <div className="text-xs">χ: {hoveredStructure.data.chirality > 0 ? '+1' : '-1'}</div>
               </>
+            )}
+            {/* Slice distance info for 3D */}
+            {hoveredStructure.sliceAxis && (
+              <div className="mt-1 pt-1 border-t border-border/30">
+                <div className="text-xs text-muted-foreground">
+                  {hoveredStructure.sliceAxis.toUpperCase()} slice
+                </div>
+                <div className="text-xs">
+                  d: {hoveredStructure.sliceDistance?.toFixed(1)}
+                  {hoveredStructure.showAllZ && <span className="text-yellow-400 ml-1">(debug)</span>}
+                </div>
+                {hoveredStructure.isSliceProjection && (
+                  <div className="text-xs text-yellow-500">⚠ projected</div>
+                )}
+              </div>
             )}
           </div>
         )}
@@ -610,6 +762,10 @@ export const QMRTSimulationLab = () => {
   const [showParticleNodes, setShowParticleNodes] = useState(true);
   const [showVortices, setShowVortices] = useState(true);
   const [showTrajectories, setShowTrajectories] = useState(true);
+  
+  // 3D slice projection controls
+  const [sliceThickness, setSliceThickness] = useState(3);
+  const [showAllZ, setShowAllZ] = useState(false);
   
   // Selected structure for inspector
   const [selectedStructure, setSelectedStructure] = useState(null);
@@ -1695,6 +1851,36 @@ export const QMRTSimulationLab = () => {
                         </label>
                       </div>
                     </div>
+                    
+                    {/* 3D Slice Controls - only show for 3D mode */}
+                    {dimension === '3d' && (
+                      <div className="mt-4 pt-3 border-t border-border/30">
+                        <div className="flex items-center gap-4">
+                          <div className="flex-1">
+                            <div className="flex justify-between text-xs mb-1">
+                              <span className="text-muted-foreground">Slice Thickness</span>
+                              <span className="font-mono">{sliceThickness} units</span>
+                            </div>
+                            <Slider
+                              value={[sliceThickness]}
+                              onValueChange={([v]) => setSliceThickness(v)}
+                              min={1}
+                              max={10}
+                              step={1}
+                            />
+                          </div>
+                          <label className="flex items-center gap-2 cursor-pointer border-l border-border/50 pl-4">
+                            <input 
+                              type="checkbox" 
+                              checked={showAllZ}
+                              onChange={(e) => setShowAllZ(e.target.checked)}
+                              className="w-4 h-4 accent-yellow-500"
+                            />
+                            <span className="text-xs font-mono text-yellow-400">Debug: Show all z</span>
+                          </label>
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
                 
@@ -1785,6 +1971,10 @@ export const QMRTSimulationLab = () => {
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
                             trackedStructures={result?.tracked_structures}
+                            sliceAxis="xy"
+                            slicePosition={Math.min(gridSize, 50) / 2}
+                            sliceThickness={sliceThickness}
+                            showAllZ={showAllZ}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -1803,6 +1993,10 @@ export const QMRTSimulationLab = () => {
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
                             trackedStructures={result?.tracked_structures}
+                            sliceAxis="xz"
+                            slicePosition={Math.min(gridSize, 50) / 2}
+                            sliceThickness={sliceThickness}
+                            showAllZ={showAllZ}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -1821,6 +2015,10 @@ export const QMRTSimulationLab = () => {
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
                             trackedStructures={result?.tracked_structures}
+                            sliceAxis="yz"
+                            slicePosition={Math.min(gridSize, 50) / 2}
+                            sliceThickness={sliceThickness}
+                            showAllZ={showAllZ}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
@@ -1839,6 +2037,10 @@ export const QMRTSimulationLab = () => {
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
                             trackedStructures={result?.tracked_structures}
+                            sliceAxis="xy"
+                            slicePosition={Math.min(gridSize, 50) / 2}
+                            sliceThickness={sliceThickness}
+                            showAllZ={showAllZ}
                             onStructureClick={handleStructureClick}
                           />
                         </>
