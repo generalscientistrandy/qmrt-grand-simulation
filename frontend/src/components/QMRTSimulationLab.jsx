@@ -874,6 +874,15 @@ export const QMRTSimulationLab = () => {
   // Animation state
   const [animationSpeed, setAnimationSpeed] = useState(100); // ms per frame
   const [showLineageEvents, setShowLineageEvents] = useState(true); // Show merge/split visual emphasis
+  
+  // Event density graph overlays
+  const [showRhoOverlay, setShowRhoOverlay] = useState(true); // Overlay ρ on event density
+  const [showSOverlay, setShowSOverlay] = useState(false); // Overlay S on event density
+  
+  // Structure age/status filters
+  const [ageFilter, setAgeFilter] = useState('all'); // 'all', 'newborn', 'longlived', 'merge_candidates'
+  const [ageThreshold, setAgeThreshold] = useState(2.0); // Time threshold for long-lived
+  
   const [eventFilter, setEventFilter] = useState({
     showBirths: true,
     showDeaths: true,
@@ -998,6 +1007,98 @@ export const QMRTSimulationLab = () => {
     
     return { births, deaths };
   }, [result, currentTime]);
+  
+  // Compute event density data for the entire timeline (for the graph)
+  const eventDensityData = useMemo(() => {
+    if (!result?.measurements || !result?.tracked_structures) return [];
+    
+    // Get all event times
+    const birthsByTime = {};
+    const deathsByTime = {};
+    const mergesByTime = {};
+    const splitsByTime = {};
+    
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      for (const tracked of (result.tracked_structures[structType] || [])) {
+        // Round to sample interval
+        const birthBucket = Math.round(tracked.birth_time * 10) / 10;
+        birthsByTime[birthBucket] = (birthsByTime[birthBucket] || 0) + 1;
+        
+        if (tracked.status === 'disappeared') {
+          const deathBucket = Math.round(tracked.last_seen_time * 10) / 10;
+          deathsByTime[deathBucket] = (deathsByTime[deathBucket] || 0) + 1;
+        }
+        
+        // Merges (child has 2+ parents)
+        if (tracked.parent_ids?.length >= 2) {
+          const mergeBucket = Math.round(tracked.birth_time * 10) / 10;
+          mergesByTime[mergeBucket] = (mergesByTime[mergeBucket] || 0) + 1;
+        }
+        
+        // Splits (parent has 2+ children)
+        if (tracked.child_ids?.length >= 2) {
+          const firstChild = result.tracked_structures[structType]?.find(s => s.id === tracked.child_ids[0]);
+          if (firstChild) {
+            const splitBucket = Math.round(firstChild.birth_time * 10) / 10;
+            splitsByTime[splitBucket] = (splitsByTime[splitBucket] || 0) + 1;
+          }
+        }
+      }
+    }
+    
+    // Combine with measurements timeline
+    return result.measurements.map((m, idx) => {
+      const t = Math.round(m.t * 10) / 10;
+      return {
+        t: m.t,
+        births: birthsByTime[t] || 0,
+        deaths: deathsByTime[t] || 0,
+        merges: mergesByTime[t] || 0,
+        splits: splitsByTime[t] || 0,
+        rho_mean: m.E_total ? m.E_total / (result.config?.grid_size || 60) ** (result.config?.dimension === '3d' ? 3 : 2) : 0,
+        S_total: m.S_total || 0,
+        // Normalize for overlay display
+        rho_normalized: m.E_total ? Math.min(1, m.E_total / 300) : 0,
+        S_normalized: m.S_total ? Math.min(1, m.S_total / 0.5) : 0
+      };
+    });
+  }, [result]);
+  
+  // Filter structures by age/status
+  const filteredTrackedStructures = useMemo(() => {
+    if (!result?.tracked_structures) return null;
+    if (ageFilter === 'all') return result.tracked_structures;
+    
+    const filtered = {};
+    
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      filtered[structType] = (result.tracked_structures[structType] || []).filter(tracked => {
+        const age = (tracked.last_seen_time || currentTime) - tracked.birth_time;
+        const isNewborn = age < 0.5; // Born within last 0.5 time units
+        const isLongLived = age >= ageThreshold;
+        const isMergeCandidate = (tracked.parent_ids?.length >= 2) || (tracked.child_ids?.length >= 2);
+        
+        switch (ageFilter) {
+          case 'newborn':
+            return isNewborn;
+          case 'longlived':
+            return isLongLived;
+          case 'merge_candidates':
+            return isMergeCandidate;
+          default:
+            return true;
+        }
+      });
+    }
+    
+    // Preserve totals
+    filtered.total_births = result.tracked_structures.total_births;
+    filtered.total_deaths = result.tracked_structures.total_deaths;
+    filtered.total_merges = result.tracked_structures.total_merges;
+    filtered.total_splits = result.tracked_structures.total_splits;
+    
+    return filtered;
+  }, [result, ageFilter, ageThreshold, currentTime]);
   
   // Jump to specific events
   const jumpToFirstBirth = useCallback(() => {
@@ -1606,6 +1707,56 @@ export const QMRTSimulationLab = () => {
                     </label>
                   </div>
                 </div>
+                
+                {/* Age/Status Filters */}
+                <div className="space-y-2 pt-2 border-t border-border/30">
+                  <div className="text-xs text-muted-foreground">Structure Age Filter</div>
+                  <div className="flex flex-wrap gap-2">
+                    <button 
+                      onClick={() => setAgeFilter('all')}
+                      className={`text-xs px-2 py-1 rounded ${ageFilter === 'all' ? 'bg-white/20 text-white' : 'text-muted-foreground hover:text-white'}`}
+                      data-testid="filter-all"
+                    >
+                      All
+                    </button>
+                    <button 
+                      onClick={() => setAgeFilter('newborn')}
+                      className={`text-xs px-2 py-1 rounded ${ageFilter === 'newborn' ? 'bg-cyan-500/30 text-cyan-400' : 'text-muted-foreground hover:text-cyan-400'}`}
+                      data-testid="filter-newborn"
+                    >
+                      Newborn
+                    </button>
+                    <button 
+                      onClick={() => setAgeFilter('longlived')}
+                      className={`text-xs px-2 py-1 rounded ${ageFilter === 'longlived' ? 'bg-green-500/30 text-green-400' : 'text-muted-foreground hover:text-green-400'}`}
+                      data-testid="filter-longlived"
+                    >
+                      Long-lived
+                    </button>
+                    <button 
+                      onClick={() => setAgeFilter('merge_candidates')}
+                      className={`text-xs px-2 py-1 rounded ${ageFilter === 'merge_candidates' ? 'bg-yellow-500/30 text-yellow-400' : 'text-muted-foreground hover:text-yellow-400'}`}
+                      data-testid="filter-merge-candidates"
+                    >
+                      Merge/Split
+                    </button>
+                  </div>
+                  {ageFilter === 'longlived' && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-muted-foreground">Age ≥</span>
+                      <input 
+                        type="number" 
+                        value={ageThreshold}
+                        onChange={(e) => setAgeThreshold(parseFloat(e.target.value) || 1)}
+                        className="w-12 text-xs bg-background/50 border border-border/50 rounded px-1 py-0.5"
+                        min="0.5"
+                        step="0.5"
+                        data-testid="age-threshold-input"
+                      />
+                      <span className="text-[10px] text-muted-foreground">time units</span>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </CardContent>
@@ -1757,6 +1908,82 @@ export const QMRTSimulationLab = () => {
                   <MetricCard label="P (Persistence)" value={result.persistence_P_mean} color="border-purple-500/50 bg-purple-500" />
                   <MetricCard label="O (Ordering)" value={result.ordering_O_mean} color="border-blue-500/50 bg-blue-500" />
                 </div>
+                
+                {/* Event Density Graph */}
+                <Card className="bg-card/50 border-border/50">
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-sm font-mono uppercase flex items-center gap-2">
+                        <Activity className="w-4 h-4 text-cyan-400" />
+                        Event Density Over Time
+                      </CardTitle>
+                      <div className="flex items-center gap-3">
+                        <label className="flex items-center gap-1.5 cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            checked={showRhoOverlay} 
+                            onChange={(e) => setShowRhoOverlay(e.target.checked)}
+                            className="w-3 h-3 accent-amber-500"
+                            data-testid="toggle-rho-overlay"
+                          />
+                          <span className="text-[10px] font-mono text-amber-400">ρ</span>
+                        </label>
+                        <label className="flex items-center gap-1.5 cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            checked={showSOverlay} 
+                            onChange={(e) => setShowSOverlay(e.target.checked)}
+                            className="w-3 h-3 accent-green-500"
+                            data-testid="toggle-s-overlay"
+                          />
+                          <span className="text-[10px] font-mono text-green-400">S</span>
+                        </label>
+                      </div>
+                    </div>
+                    <CardDescription className="text-[10px] text-muted-foreground">
+                      Births (cyan) · Deaths (red) · Merges (yellow) · Splits (orange) | Overlay: ρ (amber), S (green)
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ResponsiveContainer width="100%" height={200}>
+                      <AreaChart data={eventDensityData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                        <XAxis dataKey="t" stroke="rgba(255,255,255,0.5)" tick={{ fontSize: 10 }} />
+                        <YAxis 
+                          yAxisId="events" 
+                          stroke="rgba(255,255,255,0.5)" 
+                          tick={{ fontSize: 10 }} 
+                          orientation="left"
+                          label={{ value: 'Events', angle: -90, position: 'insideLeft', fontSize: 10, fill: 'rgba(255,255,255,0.5)' }}
+                        />
+                        <YAxis 
+                          yAxisId="field" 
+                          stroke="rgba(255,255,255,0.3)" 
+                          tick={{ fontSize: 10 }} 
+                          orientation="right"
+                          domain={[0, 1]}
+                          hide={!showRhoOverlay && !showSOverlay}
+                        />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend wrapperStyle={{ fontSize: '10px' }} />
+                        
+                        {/* Event bars as stacked areas */}
+                        <Area yAxisId="events" type="stepAfter" dataKey="births" name="Births" stackId="1" stroke="#22d3ee" fill="#22d3ee" fillOpacity={0.6} />
+                        <Area yAxisId="events" type="stepAfter" dataKey="deaths" name="Deaths" stackId="2" stroke="#ef4444" fill="#ef4444" fillOpacity={0.5} />
+                        <Area yAxisId="events" type="stepAfter" dataKey="merges" name="Merges" stackId="3" stroke="#eab308" fill="#eab308" fillOpacity={0.7} />
+                        <Area yAxisId="events" type="stepAfter" dataKey="splits" name="Splits" stackId="4" stroke="#f97316" fill="#f97316" fillOpacity={0.6} />
+                        
+                        {/* Field overlays as lines */}
+                        {showRhoOverlay && (
+                          <Line yAxisId="field" type="monotone" dataKey="rho_normalized" name="ρ (norm)" stroke="#fbbf24" strokeWidth={2} dot={false} strokeDasharray="5 3" />
+                        )}
+                        {showSOverlay && (
+                          <Line yAxisId="field" type="monotone" dataKey="S_normalized" name="S (norm)" stroke="#4ade80" strokeWidth={2} dot={false} />
+                        )}
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
                 
                 <Card className="bg-card/50 border-border/50">
                   <CardHeader className="pb-2">
@@ -2208,7 +2435,7 @@ export const QMRTSimulationLab = () => {
                             selectedTrackedId={selectedTrackedId}
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
-                            trackedStructures={result?.tracked_structures}
+                            trackedStructures={filteredTrackedStructures}
                             lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
@@ -2227,7 +2454,7 @@ export const QMRTSimulationLab = () => {
                             selectedTrackedId={selectedTrackedId}
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
-                            trackedStructures={result?.tracked_structures}
+                            trackedStructures={filteredTrackedStructures}
                             lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
@@ -2246,7 +2473,7 @@ export const QMRTSimulationLab = () => {
                             selectedTrackedId={selectedTrackedId}
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
-                            trackedStructures={result?.tracked_structures}
+                            trackedStructures={filteredTrackedStructures}
                             lineageEvents={activeLineageEvents}
                             onStructureClick={handleStructureClick}
                           />
@@ -2268,7 +2495,7 @@ export const QMRTSimulationLab = () => {
                             selectedTrackedId={selectedTrackedId}
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
-                            trackedStructures={result?.tracked_structures}
+                            trackedStructures={filteredTrackedStructures}
                             sliceAxis="xy"
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
@@ -2291,7 +2518,7 @@ export const QMRTSimulationLab = () => {
                             selectedTrackedId={selectedTrackedId}
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
-                            trackedStructures={result?.tracked_structures}
+                            trackedStructures={filteredTrackedStructures}
                             sliceAxis="xz"
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
@@ -2314,7 +2541,7 @@ export const QMRTSimulationLab = () => {
                             selectedTrackedId={selectedTrackedId}
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
-                            trackedStructures={result?.tracked_structures}
+                            trackedStructures={filteredTrackedStructures}
                             sliceAxis="yz"
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
@@ -2337,7 +2564,7 @@ export const QMRTSimulationLab = () => {
                             selectedTrackedId={selectedTrackedId}
                             getStructureState={getStructureState}
                             eventFilter={eventFilter}
-                            trackedStructures={result?.tracked_structures}
+                            trackedStructures={filteredTrackedStructures}
                             sliceAxis="xy"
                             slicePosition={Math.min(gridSize, 50) / 2}
                             sliceThickness={sliceThickness}
