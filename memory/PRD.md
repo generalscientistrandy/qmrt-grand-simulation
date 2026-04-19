@@ -1,4 +1,42 @@
-## Current Status: STRUCTURE OVERLAYS COMPLETE
+## Current Status: STRUCTURE TIME TRACKING COMPLETE
+
+**Date: December 2025**
+
+### Latest Achievement: Structure Time Tracking System
+
+Added comprehensive structure lifecycle tracking:
+
+**Backend (StructureTracker class):**
+- Per-frame structure detection with ID matching
+- Spatial proximity + type consistency + similarity scoring
+- Track: birth_time, last_seen_time, age, status (active/disappeared)
+- Match confidence: high/medium/low
+- Trajectory recording (position over time)
+- History recording (stability/energy over time)
+
+**API Response Structure:**
+```json
+{
+  "structures": { /* final snapshot */ },
+  "structures_timeline": [ /* sampled history per frame */ ],
+  "tracked_structures": { /* persistent object histories */ },
+  "tracking_births": 128,
+  "tracking_deaths": 84,
+  "tracking_avg_lifetime": 1.47
+}
+```
+
+**Frontend Features:**
+- Structure Time Tracking stats card (Births, Deaths, Merges, Splits, Avg Life)
+- Trajectories toggle overlay
+- Enhanced inspector with tracking section (ID, Status, Birth, Last Seen, Age, Confidence)
+- Stability history mini-chart
+
+**Testing:** Backend curl tests passed, frontend screenshots verified
+
+---
+
+## Previous Status: STRUCTURE OVERLAYS COMPLETE
 
 **Date: December 2025**
 

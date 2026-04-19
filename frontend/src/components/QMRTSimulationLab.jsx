@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -50,6 +50,9 @@ const FieldHeatmapWithOverlays = ({
   showClusters = false,
   showParticleNodes = false,
   showVortices = false,
+  trajectories = [],
+  showTrajectories = false,
+  selectedTrackedId = null,
   onStructureClick = () => {}
 }) => {
   const [hoveredStructure, setHoveredStructure] = useState(null);
@@ -79,6 +82,13 @@ const FieldHeatmapWithOverlays = ({
       x: (pos[0] * scale) * cellSize,
       y: (pos[1] * scale) * cellSize
     };
+  };
+  
+  // Convert trajectory to SVG path
+  const trajectoryToPath = (points) => {
+    if (!points || points.length < 2) return '';
+    const scaled = points.map(p => toPixel(p));
+    return scaled.map((pt, i) => `${i === 0 ? 'M' : 'L'}${pt.x},${pt.y}`).join(' ');
   };
 
   return (
@@ -123,6 +133,19 @@ const FieldHeatmapWithOverlays = ({
           height={pixelSize}
           style={{ pointerEvents: 'none' }}
         >
+          {/* Trajectories (rendered first, behind structures) */}
+          {showTrajectories && trajectories.map((traj, i) => (
+            <path
+              key={`traj-${traj.id}`}
+              d={trajectoryToPath(traj.points)}
+              fill="none"
+              stroke={traj.isSelected ? '#fff' : traj.color}
+              strokeWidth={traj.isSelected ? 2 : 1}
+              strokeOpacity={traj.isSelected ? 0.9 : 0.4}
+              strokeDasharray={traj.status === 'disappeared' ? '2,2' : 'none'}
+            />
+          ))}
+          
           {/* Strain Nodes - Orange diamonds */}
           {showStrainNodes && structures.strain_nodes?.map((node, i) => {
             const { x, y } = toPixel(node.position);
@@ -462,9 +485,11 @@ export const QMRTSimulationLab = () => {
   const [showClusters, setShowClusters] = useState(true);
   const [showParticleNodes, setShowParticleNodes] = useState(true);
   const [showVortices, setShowVortices] = useState(true);
+  const [showTrajectories, setShowTrajectories] = useState(true);
   
   // Selected structure for inspector
   const [selectedStructure, setSelectedStructure] = useState(null);
+  const [selectedTrackedId, setSelectedTrackedId] = useState(null);
   
   // Playback
   const intervalRef = useRef(null);
@@ -530,6 +555,85 @@ export const QMRTSimulationLab = () => {
   
   const currentMeasurement = result?.measurements?.[playbackIndex] || {};
   const currentSnapshot = result?.field_snapshots?.[Math.floor(playbackIndex / 5)] || {};
+  const currentTimelineFrame = result?.structures_timeline?.[playbackIndex] || null;
+  
+  // Find tracked structure by ID or approximate position match
+  const findTrackedStructure = useCallback((type, data) => {
+    if (!result?.tracked_structures) return null;
+    
+    const structMap = {
+      'strain': 'strain_nodes',
+      'cluster': 'coherence_clusters', 
+      'particle': 'particle_nodes',
+      'vortex': 'torsion_vortices'
+    };
+    
+    const structList = result.tracked_structures[structMap[type]] || [];
+    const pos = data.position || data.center;
+    
+    // Find by closest current position
+    let closest = null;
+    let minDist = Infinity;
+    
+    for (const tracked of structList) {
+      const tPos = tracked.current_position;
+      if (tPos && pos) {
+        const dist = Math.sqrt(
+          Math.pow(tPos[0] - pos[0], 2) + 
+          Math.pow(tPos[1] - pos[1], 2)
+        );
+        if (dist < minDist && dist < 5) {
+          minDist = dist;
+          closest = tracked;
+        }
+      }
+    }
+    
+    return closest;
+  }, [result]);
+  
+  // Handle structure selection with tracking lookup
+  const handleStructureClick = useCallback((structInfo) => {
+    setSelectedStructure(structInfo);
+    const tracked = findTrackedStructure(structInfo.type, structInfo.data);
+    setSelectedTrackedId(tracked?.id || null);
+  }, [findTrackedStructure]);
+  
+  // Get all trajectories for overlay
+  const allTrajectories = useMemo(() => {
+    if (!result?.tracked_structures || !showTrajectories) return [];
+    
+    const trajectories = [];
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      const color = structType === 'strain_nodes' ? '#f97316' :
+                    structType === 'particle_nodes' ? '#a855f7' :
+                    structType === 'coherence_clusters' ? '#4ade80' : '#00d4ff';
+      
+      for (const tracked of (result.tracked_structures[structType] || [])) {
+        if (tracked.trajectory && tracked.trajectory.length > 1) {
+          trajectories.push({
+            id: tracked.id,
+            points: tracked.trajectory,
+            color,
+            status: tracked.status,
+            isSelected: tracked.id === selectedTrackedId
+          });
+        }
+      }
+    }
+    return trajectories;
+  }, [result, showTrajectories, selectedTrackedId]);
+  
+  // Get current tracked structure for inspector
+  const selectedTracked = useMemo(() => {
+    if (!selectedTrackedId || !result?.tracked_structures) return null;
+    
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      const found = (result.tracked_structures[structType] || []).find(s => s.id === selectedTrackedId);
+      if (found) return found;
+    }
+    return null;
+  }, [selectedTrackedId, result]);
   
   // Prepare radar data
   const radarData = result ? [
@@ -1149,11 +1253,47 @@ export const QMRTSimulationLab = () => {
               
               {/* Fields Tab */}
               <TabsContent value="fields" className="space-y-4" data-testid="fields-tab-content">
+                {/* Tracking Statistics */}
+                {result?.tracked_structures && (
+                  <Card className="bg-card/50 border-border/50 border-l-4 border-l-primary">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-mono uppercase flex items-center gap-2">
+                        <Activity className="w-4 h-4" />
+                        Structure Time Tracking
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-5 gap-4 text-center">
+                        <div>
+                          <div className="text-xl font-mono font-bold text-green-400">{result.tracking_births}</div>
+                          <div className="text-xs text-muted-foreground">Births</div>
+                        </div>
+                        <div>
+                          <div className="text-xl font-mono font-bold text-red-400">{result.tracking_deaths}</div>
+                          <div className="text-xs text-muted-foreground">Deaths</div>
+                        </div>
+                        <div>
+                          <div className="text-xl font-mono font-bold text-yellow-400">{result.tracking_merges}</div>
+                          <div className="text-xs text-muted-foreground">Merges</div>
+                        </div>
+                        <div>
+                          <div className="text-xl font-mono font-bold text-blue-400">{result.tracking_splits}</div>
+                          <div className="text-xs text-muted-foreground">Splits</div>
+                        </div>
+                        <div>
+                          <div className="text-xl font-mono font-bold text-purple-400">{result.tracking_avg_lifetime?.toFixed(2)}</div>
+                          <div className="text-xs text-muted-foreground">Avg Life</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+                
                 {/* Overlay Toggles */}
                 <Card className="bg-card/50 border-border/50">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-mono uppercase">Structure Overlays</CardTitle>
-                    <CardDescription className="text-xs">Toggle structure markers on field heatmaps</CardDescription>
+                    <CardDescription className="text-xs">Toggle structure markers and trajectories on field heatmaps</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-4">
@@ -1201,6 +1341,19 @@ export const QMRTSimulationLab = () => {
                         <Hexagon className="w-4 h-4 text-cyan-400" />
                         <span className="text-xs font-mono">Vortices</span>
                       </label>
+                      <div className="border-l border-border/50 pl-4">
+                        <label className="flex items-center gap-2 cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            checked={showTrajectories} 
+                            onChange={(e) => setShowTrajectories(e.target.checked)}
+                            className="w-4 h-4 accent-white"
+                            data-testid="toggle-trajectories"
+                          />
+                          <TrendingUp className="w-4 h-4 text-white" />
+                          <span className="text-xs font-mono">Trajectories</span>
+                        </label>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -1229,7 +1382,10 @@ export const QMRTSimulationLab = () => {
                             showClusters={showClusters}
                             showParticleNodes={showParticleNodes}
                             showVortices={showVortices}
-                            onStructureClick={setSelectedStructure}
+                            trajectories={allTrajectories}
+                            showTrajectories={showTrajectories}
+                            selectedTrackedId={selectedTrackedId}
+                            onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.c_eff} 
@@ -1241,7 +1397,10 @@ export const QMRTSimulationLab = () => {
                             showClusters={showClusters}
                             showParticleNodes={showParticleNodes}
                             showVortices={showVortices}
-                            onStructureClick={setSelectedStructure}
+                            trajectories={allTrajectories}
+                            showTrajectories={showTrajectories}
+                            selectedTrackedId={selectedTrackedId}
+                            onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.tau} 
@@ -1253,7 +1412,10 @@ export const QMRTSimulationLab = () => {
                             showClusters={showClusters}
                             showParticleNodes={showParticleNodes}
                             showVortices={showVortices}
-                            onStructureClick={setSelectedStructure}
+                            trajectories={allTrajectories}
+                            showTrajectories={showTrajectories}
+                            selectedTrackedId={selectedTrackedId}
+                            onStructureClick={handleStructureClick}
                           />
                         </>
                       ) : (
@@ -1268,7 +1430,10 @@ export const QMRTSimulationLab = () => {
                             showClusters={showClusters}
                             showParticleNodes={showParticleNodes}
                             showVortices={showVortices}
-                            onStructureClick={setSelectedStructure}
+                            trajectories={allTrajectories}
+                            showTrajectories={showTrajectories}
+                            selectedTrackedId={selectedTrackedId}
+                            onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.rho_xz} 
@@ -1280,7 +1445,10 @@ export const QMRTSimulationLab = () => {
                             showClusters={showClusters}
                             showParticleNodes={showParticleNodes}
                             showVortices={showVortices}
-                            onStructureClick={setSelectedStructure}
+                            trajectories={allTrajectories}
+                            showTrajectories={showTrajectories}
+                            selectedTrackedId={selectedTrackedId}
+                            onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.rho_yz} 
@@ -1292,7 +1460,10 @@ export const QMRTSimulationLab = () => {
                             showClusters={showClusters}
                             showParticleNodes={showParticleNodes}
                             showVortices={showVortices}
-                            onStructureClick={setSelectedStructure}
+                            trajectories={allTrajectories}
+                            showTrajectories={showTrajectories}
+                            selectedTrackedId={selectedTrackedId}
+                            onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.c_eff_xy} 
@@ -1304,7 +1475,10 @@ export const QMRTSimulationLab = () => {
                             showClusters={showClusters}
                             showParticleNodes={showParticleNodes}
                             showVortices={showVortices}
-                            onStructureClick={setSelectedStructure}
+                            trajectories={allTrajectories}
+                            showTrajectories={showTrajectories}
+                            selectedTrackedId={selectedTrackedId}
+                            onStructureClick={handleStructureClick}
                           />
                         </>
                       )}
@@ -1426,6 +1600,75 @@ export const QMRTSimulationLab = () => {
                           </>
                         )}
                       </div>
+                      
+                      {/* Tracking Information */}
+                      {selectedTracked && (
+                        <div className="mt-4 pt-4 border-t border-border/50">
+                          <div className="text-xs font-mono uppercase text-muted-foreground mb-2 flex items-center gap-2">
+                            <Activity className="w-3 h-3" />
+                            Time Tracking ({selectedTracked.id})
+                          </div>
+                          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-xs font-mono">
+                            <div>
+                              <span className="text-muted-foreground">Status:</span>
+                              <div className="font-bold">
+                                <Badge variant={selectedTracked.status === 'active' ? 'default' : 'secondary'}>
+                                  {selectedTracked.status}
+                                </Badge>
+                              </div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Birth:</span>
+                              <div className="font-bold">t = {selectedTracked.birth_time?.toFixed(2)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Last Seen:</span>
+                              <div className="font-bold">t = {selectedTracked.last_seen_time?.toFixed(2)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Age:</span>
+                              <div className="font-bold text-primary">{selectedTracked.age?.toFixed(2)}</div>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Confidence:</span>
+                              <div className="font-bold">
+                                <Badge variant={
+                                  selectedTracked.match_confidence === 'high' ? 'default' : 
+                                  selectedTracked.match_confidence === 'medium' ? 'secondary' : 'outline'
+                                }>
+                                  {selectedTracked.match_confidence}
+                                </Badge>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Trajectory summary */}
+                          {selectedTracked.trajectory?.length > 1 && (
+                            <div className="mt-3">
+                              <span className="text-xs text-muted-foreground">
+                                Trajectory: {selectedTracked.trajectory.length} points
+                              </span>
+                            </div>
+                          )}
+                          
+                          {/* Stability history mini-chart (if available) */}
+                          {selectedTracked.history?.length > 1 && (
+                            <div className="mt-3">
+                              <span className="text-xs text-muted-foreground">Stability History:</span>
+                              <div className="flex items-end gap-px h-8 mt-1">
+                                {selectedTracked.history.slice(-20).map((h, i) => (
+                                  <div 
+                                    key={i}
+                                    className="flex-1 bg-primary/60 rounded-t-sm"
+                                    style={{ height: `${(h.stability || 0) * 100}%` }}
+                                    title={`t=${h.t?.toFixed(2)}: ${(h.stability * 100 || 0).toFixed(0)}%`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 )}

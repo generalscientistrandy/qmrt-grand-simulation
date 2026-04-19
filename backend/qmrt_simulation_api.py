@@ -70,6 +70,382 @@ class ParticleNodeData(BaseModel):
 
 
 # ============================================================
+# STRUCTURE TRACKING DATA CLASSES
+# ============================================================
+
+class StructureHistoryPoint(BaseModel):
+    """Single history point for a tracked structure."""
+    t: float
+    position: List[float]
+    stability: Optional[float] = None
+    energy: Optional[float] = None
+    mass: Optional[float] = None
+    size: Optional[float] = None
+    strength: Optional[float] = None
+
+
+class TrackedStructure(BaseModel):
+    """Persistent structure tracked across frames."""
+    id: str
+    structure_class: str  # 'strain_node', 'particle_node', 'cluster', 'vortex'
+    birth_time: float
+    last_seen_time: float
+    age: float
+    status: str  # 'active', 'disappeared', 'merged', 'split'
+    match_confidence: str  # 'high', 'medium', 'low'
+    trajectory: List[List[float]]  # [[x, y, t], ...] or [[x, y, z, t], ...]
+    history: List[StructureHistoryPoint]
+    parent_ids: List[str] = []
+    child_ids: List[str] = []
+    # Latest properties (for quick access)
+    current_position: List[float]
+    current_stability: Optional[float] = None
+    current_energy: Optional[float] = None
+
+
+class TimelineSnapshot(BaseModel):
+    """Structures at a single timestep in the timeline."""
+    t: float
+    strain_nodes: List[Dict] = []
+    particle_nodes: List[Dict] = []
+    coherence_clusters: List[Dict] = []
+    torsion_vortices: List[Dict] = []
+
+
+class TrackedStructuresCollection(BaseModel):
+    """All tracked structures organized by type."""
+    strain_nodes: List[TrackedStructure] = []
+    particle_nodes: List[TrackedStructure] = []
+    coherence_clusters: List[TrackedStructure] = []
+    torsion_vortices: List[TrackedStructure] = []
+    
+    # Summary stats
+    total_births: int = 0
+    total_deaths: int = 0
+    total_merges: int = 0
+    total_splits: int = 0
+    avg_lifetime: float = 0.0
+
+
+# ============================================================
+# STRUCTURE TRACKER
+# ============================================================
+
+class StructureTracker:
+    """
+    Tracks structure persistence across simulation frames.
+    Uses spatial proximity + type consistency for matching.
+    """
+    
+    def __init__(self, dimension: str = '2d', match_threshold: float = 5.0):
+        self.dimension = dimension
+        self.match_threshold = match_threshold  # Max distance for same-structure match
+        self.id_counter = {'strain': 0, 'particle': 0, 'cluster': 0, 'vortex': 0}
+        
+        # Active structures (currently being tracked)
+        self.active_structures: Dict[str, Dict] = {
+            'strain_nodes': {},
+            'particle_nodes': {},
+            'coherence_clusters': {},
+            'torsion_vortices': {}
+        }
+        
+        # Completed structures (disappeared or merged)
+        self.completed_structures: Dict[str, List[TrackedStructure]] = {
+            'strain_nodes': [],
+            'particle_nodes': [],
+            'coherence_clusters': [],
+            'torsion_vortices': []
+        }
+        
+        # Timeline of structure snapshots
+        self.timeline: List[TimelineSnapshot] = []
+        
+        # Event counters
+        self.births = 0
+        self.deaths = 0
+        self.merges = 0
+        self.splits = 0
+    
+    def _generate_id(self, struct_type: str) -> str:
+        """Generate unique structure ID."""
+        prefix = {'strain': 'sn', 'particle': 'pn', 'cluster': 'cc', 'vortex': 'tv'}[struct_type]
+        self.id_counter[struct_type] += 1
+        return f"{prefix}_{self.id_counter[struct_type]}"
+    
+    def _get_position(self, struct: Dict, struct_class: str) -> List[float]:
+        """Extract position from structure dict."""
+        if struct_class == 'coherence_clusters':
+            return struct.get('center', [0, 0])
+        return [float(x) for x in struct.get('position', [0, 0])]
+    
+    def _compute_distance(self, pos1: List[float], pos2: List[float]) -> float:
+        """Compute Euclidean distance between positions."""
+        return math.sqrt(sum((a - b)**2 for a, b in zip(pos1, pos2)))
+    
+    def _compute_similarity(self, struct1: Dict, struct2: Dict, struct_class: str) -> float:
+        """Compute similarity score (0-1) between two structures."""
+        similarity = 1.0
+        
+        if struct_class == 'strain_nodes':
+            # Compare energy and stability
+            e1 = struct1.get('energy_density', 0)
+            e2 = struct2.get('energy_density', 0)
+            s1 = struct1.get('stability', 0)
+            s2 = struct2.get('stability', 0)
+            if e1 > 0 and e2 > 0:
+                similarity *= min(e1, e2) / max(e1, e2)
+            if s1 > 0 and s2 > 0:
+                similarity *= min(s1, s2) / max(s1, s2)
+                
+        elif struct_class == 'particle_nodes':
+            # Compare mass and stability
+            m1 = struct1.get('effective_mass', 0)
+            m2 = struct2.get('effective_mass', 0)
+            s1 = struct1.get('stability_score', 0)
+            s2 = struct2.get('stability_score', 0)
+            if abs(m1) > 0.01 and abs(m2) > 0.01:
+                similarity *= min(abs(m1), abs(m2)) / max(abs(m1), abs(m2))
+            if s1 > 0 and s2 > 0:
+                similarity *= min(s1, s2) / max(s1, s2)
+                
+        elif struct_class == 'coherence_clusters':
+            # Compare size and coherence
+            sz1 = struct1.get('size', 1)
+            sz2 = struct2.get('size', 1)
+            c1 = struct1.get('coherence_strength', 0)
+            c2 = struct2.get('coherence_strength', 0)
+            if sz1 > 0 and sz2 > 0:
+                similarity *= min(sz1, sz2) / max(sz1, sz2)
+            if c1 > 0 and c2 > 0:
+                similarity *= min(c1, c2) / max(c1, c2)
+                
+        elif struct_class == 'torsion_vortices':
+            # Compare strength and chirality
+            str1 = struct1.get('strength', 0)
+            str2 = struct2.get('strength', 0)
+            chi1 = struct1.get('chirality', 1)
+            chi2 = struct2.get('chirality', 1)
+            if str1 > 0 and str2 > 0:
+                similarity *= min(str1, str2) / max(str1, str2)
+            # Chirality must match
+            if chi1 != chi2:
+                similarity *= 0.1  # Heavy penalty for chirality mismatch
+        
+        return similarity
+    
+    def _match_confidence(self, distance: float, similarity: float) -> str:
+        """Determine match confidence level."""
+        if distance < self.match_threshold * 0.3 and similarity > 0.8:
+            return 'high'
+        elif distance < self.match_threshold * 0.7 and similarity > 0.5:
+            return 'medium'
+        else:
+            return 'low'
+    
+    def _create_tracked_structure(self, struct: Dict, struct_class: str, t: float, 
+                                   struct_type: str) -> Dict:
+        """Create new tracked structure entry."""
+        pos = self._get_position(struct, struct_class)
+        
+        history_point = {
+            't': t,
+            'position': pos,
+            'stability': struct.get('stability', struct.get('stability_score')),
+            'energy': struct.get('energy_density', struct.get('strain_energy')),
+            'mass': struct.get('effective_mass'),
+            'size': struct.get('size'),
+            'strength': struct.get('strength')
+        }
+        
+        traj_point = pos + [t]
+        
+        return {
+            'id': self._generate_id(struct_type),
+            'structure_class': struct_class,
+            'birth_time': t,
+            'last_seen_time': t,
+            'age': 0.0,
+            'status': 'active',
+            'match_confidence': 'high',
+            'trajectory': [traj_point],
+            'history': [history_point],
+            'parent_ids': [],
+            'child_ids': [],
+            'current_position': pos,
+            'current_stability': history_point['stability'],
+            'current_energy': history_point['energy'],
+            '_raw': struct  # Keep raw data for matching
+        }
+    
+    def _update_tracked_structure(self, tracked: Dict, struct: Dict, struct_class: str, 
+                                   t: float, confidence: str):
+        """Update existing tracked structure with new observation."""
+        pos = self._get_position(struct, struct_class)
+        
+        history_point = {
+            't': t,
+            'position': pos,
+            'stability': struct.get('stability', struct.get('stability_score')),
+            'energy': struct.get('energy_density', struct.get('strain_energy')),
+            'mass': struct.get('effective_mass'),
+            'size': struct.get('size'),
+            'strength': struct.get('strength')
+        }
+        
+        traj_point = pos + [t]
+        
+        tracked['last_seen_time'] = t
+        tracked['age'] = t - tracked['birth_time']
+        tracked['trajectory'].append(traj_point)
+        tracked['history'].append(history_point)
+        tracked['current_position'] = pos
+        tracked['current_stability'] = history_point['stability']
+        tracked['current_energy'] = history_point['energy']
+        tracked['match_confidence'] = confidence
+        tracked['_raw'] = struct
+    
+    def process_frame(self, structures: Dict, t: float):
+        """Process a single frame of structure data."""
+        
+        # Store timeline snapshot
+        timeline_snap = TimelineSnapshot(
+            t=t,
+            strain_nodes=structures.get('strain_nodes', []),
+            particle_nodes=structures.get('particle_nodes', []),
+            coherence_clusters=structures.get('coherence_clusters', []),
+            torsion_vortices=structures.get('torsion_vortices', [])
+        )
+        self.timeline.append(timeline_snap)
+        
+        # Process each structure class
+        struct_type_map = {
+            'strain_nodes': 'strain',
+            'particle_nodes': 'particle',
+            'coherence_clusters': 'cluster',
+            'torsion_vortices': 'vortex'
+        }
+        
+        for struct_class, struct_type in struct_type_map.items():
+            current_structs = structures.get(struct_class, [])
+            active = self.active_structures[struct_class]
+            
+            # Track which active structures were matched
+            matched_active_ids = set()
+            matched_current_indices = set()
+            
+            # Try to match current structures to active ones
+            matches = []
+            for curr_idx, curr_struct in enumerate(current_structs):
+                curr_pos = self._get_position(curr_struct, struct_class)
+                
+                best_match = None
+                best_score = -1
+                
+                for active_id, active_struct in active.items():
+                    if active_id in matched_active_ids:
+                        continue
+                    
+                    active_pos = active_struct['current_position']
+                    distance = self._compute_distance(curr_pos, active_pos)
+                    
+                    if distance <= self.match_threshold:
+                        similarity = self._compute_similarity(curr_struct, active_struct['_raw'], struct_class)
+                        score = similarity * (1 - distance / self.match_threshold)
+                        
+                        if score > best_score:
+                            best_score = score
+                            confidence = self._match_confidence(distance, similarity)
+                            best_match = (active_id, confidence, score)
+                
+                if best_match:
+                    matches.append((curr_idx, best_match[0], best_match[1], best_match[2]))
+            
+            # Sort matches by score (highest first) to resolve conflicts
+            matches.sort(key=lambda x: x[3], reverse=True)
+            
+            # Apply matches (greedy, best-first)
+            for curr_idx, active_id, confidence, _ in matches:
+                if curr_idx in matched_current_indices or active_id in matched_active_ids:
+                    continue
+                
+                self._update_tracked_structure(
+                    active[active_id], 
+                    current_structs[curr_idx], 
+                    struct_class, 
+                    t, 
+                    confidence
+                )
+                matched_active_ids.add(active_id)
+                matched_current_indices.add(curr_idx)
+            
+            # Check for merge events (multiple active → one current)
+            # Conservative: only if 2 active structures are very close to same current
+            # (Skip for v1 - complex to get right)
+            
+            # Handle disappeared structures
+            for active_id in list(active.keys()):
+                if active_id not in matched_active_ids:
+                    # Structure disappeared
+                    disappeared = active.pop(active_id)
+                    disappeared['status'] = 'disappeared'
+                    self.completed_structures[struct_class].append(
+                        TrackedStructure(**{k: v for k, v in disappeared.items() if k != '_raw'})
+                    )
+                    self.deaths += 1
+            
+            # Handle new births
+            for curr_idx, curr_struct in enumerate(current_structs):
+                if curr_idx not in matched_current_indices:
+                    # New structure born
+                    new_tracked = self._create_tracked_structure(
+                        curr_struct, struct_class, t, struct_type
+                    )
+                    active[new_tracked['id']] = new_tracked
+                    self.births += 1
+    
+    def finalize(self, final_time: float) -> TrackedStructuresCollection:
+        """Finalize tracking and return results."""
+        result = TrackedStructuresCollection(
+            total_births=self.births,
+            total_deaths=self.deaths,
+            total_merges=self.merges,
+            total_splits=self.splits
+        )
+        
+        # Collect all structures (active + completed)
+        for struct_class in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+            all_structs = []
+            
+            # Add completed structures
+            all_structs.extend(self.completed_structures[struct_class])
+            
+            # Add active structures (still alive at end)
+            for tracked in self.active_structures[struct_class].values():
+                tracked['age'] = final_time - tracked['birth_time']
+                all_structs.append(
+                    TrackedStructure(**{k: v for k, v in tracked.items() if k != '_raw'})
+                )
+            
+            setattr(result, struct_class, all_structs)
+        
+        # Compute average lifetime
+        all_lifetimes = []
+        for struct_class in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+            for s in getattr(result, struct_class):
+                all_lifetimes.append(s.age)
+        
+        if all_lifetimes:
+            result.avg_lifetime = sum(all_lifetimes) / len(all_lifetimes)
+        
+        return result
+    
+    def get_timeline(self) -> List[TimelineSnapshot]:
+        """Return the timeline of structure snapshots."""
+        return self.timeline
+
+
+# ============================================================
 # MODELS
 # ============================================================
 
@@ -156,6 +532,17 @@ class SimulationResult(BaseModel):
     
     # Field snapshots (for visualization)
     field_snapshots: List[Dict]
+    
+    # === STRUCTURE TIME TRACKING ===
+    structures_timeline: List[TimelineSnapshot] = []  # Sampled history
+    tracked_structures: Optional[TrackedStructuresCollection] = None  # Persistent object histories
+    
+    # Tracking summary
+    tracking_births: int = 0
+    tracking_deaths: int = 0
+    tracking_merges: int = 0
+    tracking_splits: int = 0
+    tracking_avg_lifetime: float = 0.0
 
 
 # ============================================================
@@ -963,7 +1350,7 @@ class QMRTSimulator3D:
 
 @router.post("/run", response_model=SimulationResult)
 async def run_simulation(config: SimulationConfig):
-    """Run a QMRT simulation with full metrics and mesoscopic structures."""
+    """Run a QMRT simulation with full metrics, mesoscopic structures, and time tracking."""
     
     start_time = time.time()
     
@@ -987,6 +1374,12 @@ async def run_simulation(config: SimulationConfig):
         )
         sim.add_pulse()
     
+    # Initialize structure tracker
+    tracker = StructureTracker(
+        dimension=config.dimension,
+        match_threshold=5.0  # Grid units for structure matching
+    )
+    
     # Run simulation
     measurements = []
     field_snapshots = []
@@ -998,8 +1391,11 @@ async def run_simulation(config: SimulationConfig):
             t = step * sim.dt
             m = sim.measure(t)
             
-            # Detect structures at this timestep for counts
+            # Detect structures at this timestep
             structures = sim.detect_all_structures()
+            
+            # Feed structures to tracker for time tracking
+            tracker.process_frame(structures, t)
             
             # Add structure counts to measurement
             m['vortex_count'] = len(structures['torsion_vortices'])
@@ -1061,6 +1457,10 @@ async def run_simulation(config: SimulationConfig):
     proto_count = sum(1 for p in final_structures['particle_nodes'] if p['structure_type'] == 'proto-particle')
     transient_count = sum(1 for p in final_structures['particle_nodes'] if p['structure_type'] == 'transient')
     
+    # === FINALIZE STRUCTURE TRACKING ===
+    tracked_structures = tracker.finalize(final_time)
+    structures_timeline = tracker.get_timeline()
+    
     return SimulationResult(
         dimension=config.dimension,
         config=config.model_dump(),
@@ -1083,7 +1483,7 @@ async def run_simulation(config: SimulationConfig):
         rho_PS=final_m['rho_PS'],
         rho_OS=final_m['rho_OS'],
         
-        # Mesoscopic structures
+        # Mesoscopic structures (final snapshot)
         structures=structures_snapshot,
         total_vortices=len(final_structures['torsion_vortices']),
         total_clusters=len(final_structures['coherence_clusters']),
@@ -1094,6 +1494,15 @@ async def run_simulation(config: SimulationConfig):
         transient_nodes=transient_count,
         
         field_snapshots=field_snapshots,
+        
+        # Structure time tracking
+        structures_timeline=structures_timeline,
+        tracked_structures=tracked_structures,
+        tracking_births=tracked_structures.total_births,
+        tracking_deaths=tracked_structures.total_deaths,
+        tracking_merges=tracked_structures.total_merges,
+        tracking_splits=tracked_structures.total_splits,
+        tracking_avg_lifetime=tracked_structures.avg_lifetime,
     )
 
 

@@ -2,7 +2,20 @@
 
 ## December 2025
 
-### Structure Position Overlays (Latest)
+### Structure Time Tracking (Latest)
+- **Added**: `StructureTracker` class with frame-to-frame ID matching
+- **Added**: Per-structure tracking: id, birth_time, last_seen_time, age, status, match_confidence
+- **Added**: Trajectory recording (position history over time)
+- **Added**: Stability/energy history recording per structure
+- **Added**: API response: structures_timeline, tracked_structures, tracking_* summary stats
+- **Added**: Frontend: Structure Time Tracking stats card
+- **Added**: Frontend: Trajectories toggle and trajectory overlay lines
+- **Added**: Frontend: Enhanced inspector with tracking section (ID, Status, Birth, Age, Confidence)
+- **Added**: Frontend: Stability history mini-chart in inspector
+- **Matching Algorithm**: Spatial proximity + type consistency + similarity scoring
+- **Confidence Levels**: high (close + similar), medium, low
+
+### Structure Position Overlays
 - **Added**: `FieldHeatmapWithOverlays` component with interactive SVG overlays
 - **Added**: Toggle controls for strain nodes, clusters, particle nodes, vortices
 - **Added**: Hover tooltips showing type-specific details (E, σ, Φ, n, ω, χ)
