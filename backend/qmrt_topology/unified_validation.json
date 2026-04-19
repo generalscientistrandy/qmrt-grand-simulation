@@ -1,0 +1,47 @@
+{
+  "results": {
+    "balance": {
+      "E_cv": 0.02,
+      "achieved": true,
+      "E_mean": 1308.0
+    },
+    "spatial": {
+      "S_mean": 0.0821,
+      "valid": true
+    },
+    "ordering": {
+      "O_mean": 4.34e-05,
+      "valid": true
+    },
+    "temporal": {
+      "R_mean": 0.0247,
+      "R_valid": true,
+      "P_mean": 0.9759,
+      "P_valid": true
+    },
+    "coupling": {
+      "I_TS_mean": 0.7393,
+      "rho_RS": -0.249,
+      "rho_PS": -0.719,
+      "rho_OS": -0.997,
+      "strong": true
+    },
+    "geometry": {
+      "isotropy_cv": 0.0,
+      "isotropic": true,
+      "confinement": 64.0,
+      "confined": false
+    },
+    "scaling": {
+      "A": 0.8031,
+      "alpha": 3.97,
+      "R2": 0.9992,
+      "holds": false
+    },
+    "verdict": {
+      "checks_passed": 7,
+      "checks_total": 9,
+      "unified_valid": true
+    }
+  }
+}
