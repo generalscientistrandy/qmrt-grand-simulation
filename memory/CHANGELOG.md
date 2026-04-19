@@ -2,7 +2,20 @@
 
 ## December 2025
 
-### 3D Slice Projection (Latest)
+### Merge/Split Lineage Display (Latest)
+- **Added**: Lineage Section in structure inspector showing merge/split relationships
+- **Added**: Parents display with ID, time range (birth → last_seen), and status badge
+- **Added**: Children display with ID, time range (birth → last_seen), and status badge
+- **Added**: Event Type badges: 'Merged', 'Split', 'Merged Into', 'Split From' (cyan/orange colors)
+- **Added**: Event Time display showing when merge/split occurred (@ t = X.XX)
+- **Added**: Click-through navigation: clicking parent/child button navigates to that structure
+- **Added**: Auto-scrub to birth time: timeline jumps to selected structure's birth time
+- **Added**: Helper functions: `findTrackedById`, `navigateToStructure`, `selectedLineageInfo`
+- **Fixed**: Timeline navigation now uses `result.measurements` instead of non-existent `result.timeline`
+- **Data-testids**: `lineage-parent-{id}`, `lineage-child-{id}` for test automation
+- **Tested**: 9/9 lineage features verified (backend 100%, frontend 100%)
+
+### 3D Slice Projection
 - **Added**: Slice-based structure filtering for 3D views
 - **Added**: Coordinate projection: XY (filter z), XZ (filter y), YZ (filter x)
 - **Added**: Distance-based opacity fading: `opacity = max(0, 1 - |d| / δ)`

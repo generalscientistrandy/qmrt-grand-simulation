@@ -1,33 +1,42 @@
-## Current Status: 3D SLICE PROJECTION COMPLETE
+## Current Status: MERGE/SPLIT LINEAGE DISPLAY COMPLETE
 
 **Date: December 2025**
 
-### Latest Achievement: 3D Slice Projection System
+### Latest Achievement: Merge/Split Lineage Display in Structure Inspector
 
-Added proper 3D structure visualization with slice-based filtering:
+Added comprehensive lineage visualization for structure merge/split events:
 
-**Slice Projection Features:**
-- XY/XZ/YZ slice views with proper coordinate mapping
-- Configurable slice thickness (1-10 grid units, default 3)
-- Distance-based opacity fading: `opacity = max(0, 1 - |d| / δ)`
-- Cluster radius scaling for slice intersection: `r_visible = sqrt(r² - d²)`
-- Debug "Show all z" toggle for validation
+**Lineage Section Features:**
+- Parents display with ID, time range (birth → last_seen), and status badge
+- Children display with ID, time range (birth → last_seen), and status badge
+- Event Type badges: 'Merged', 'Split', 'Merged Into', 'Split From' (cyan/orange colors)
+- Event Time display showing when merge/split occurred (@ t = X.XX)
+- Click-through navigation: clicking parent/child button navigates to that structure
+- Auto-scrub to birth time: timeline jumps to selected structure's birth time
 
-**Hover Tooltip Enhancements:**
-- Slice type indicator (XY/XZ/YZ)
-- Slice distance display
-- "Debug" tag when showAllZ enabled
-- "⚠ projected" warning for off-center clusters
+**Helper Functions Added:**
+- `findTrackedById(structId)` - Lookup any tracked structure by ID
+- `navigateToStructure(structId, jumpToTime)` - Navigate and optionally auto-scrub
+- `selectedLineageInfo` - Derived lineage data for selected structure
 
-**3D Slice Controls:**
-- Slice Thickness slider (1-10 units)
-- Debug: Show all z checkbox (yellow, clearly secondary)
+**Bug Fix:**
+- Timeline navigation now uses `result.measurements` (corrected from non-existent `result.timeline`)
 
-**Testing:** 3D simulation completed with 503 births, 487 deaths tracked. Fields tab shows all four slice views (ρ XY, ρ XZ, ρ YZ, c_eff XY) with proper overlays.
+**Testing:** 9/9 lineage features verified (backend 100%, frontend 100%)
+
+**Data-testids:** `lineage-parent-{id}`, `lineage-child-{id}`
+
+### Remaining Tasks:
+- (P1) Visual validation pass - confirm lineage displays correctly during animation
+- (P2) Deprecate MesoscopicVisualizer.js - after user confirms unified lab is adequate replacement
+- (P3) Short-path validation tests - targeted short simulations (70% methodology)
+- (P3) Long-path exploratory runs - extended simulations for late-time emergence
+- (P4) Mean-field / action-guided simulation framework tests
+- (P5) Quantum/topology expansion
 
 ---
 
-## Previous Status: TIMELINE ANIMATION MODE COMPLETE
+## Previous Status: 3D SLICE PROJECTION COMPLETE
 
 **Date: December 2025**
 
