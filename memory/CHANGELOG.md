@@ -2,7 +2,20 @@
 
 ## December 2025
 
-### Structure Time Tracking (Latest)
+### Timeline Animation Mode (Latest)
+- **Added**: Play/pause button with time display
+- **Added**: Timeline scrubber for manual navigation
+- **Added**: Speed control slider (20ms-500ms per frame, shown as Nx)
+- **Added**: Event navigation buttons (jump to first birth, next event, final frame)
+- **Added**: Event count badges showing births/deaths at current frame
+- **Added**: Animation filters (Births, Deaths, Active, Selected)
+- **Added**: Birth effect - green glow/pulse on newly born structures
+- **Added**: Death effect - fade out with grayscale
+- **Added**: Structures animate with timeline (use structures_timeline not just final snapshot)
+- **Added**: Hover tooltips show structure state (birth/active/death)
+- **Tested**: Screenshots verified all animation controls working
+
+### Structure Time Tracking
 - **Added**: `StructureTracker` class with frame-to-frame ID matching
 - **Added**: Per-structure tracking: id, birth_time, last_seen_time, age, status, match_confidence
 - **Added**: Trajectory recording (position history over time)

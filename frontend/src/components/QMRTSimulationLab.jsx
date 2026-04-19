@@ -14,7 +14,7 @@ import {
 import { 
   Play, Pause, RotateCcw, Zap, Activity, Atom, Box, Square,
   Loader2, CheckCircle2, XCircle, Info, TrendingUp, CircleDot, 
-  Hexagon, Target, Flame
+  Hexagon, Target, Flame, SkipForward, SkipBack, FastForward, Sparkles
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -53,6 +53,9 @@ const FieldHeatmapWithOverlays = ({
   trajectories = [],
   showTrajectories = false,
   selectedTrackedId = null,
+  getStructureState = () => 'active',
+  eventFilter = { showBirths: true, showDeaths: true, showActive: true, selectedOnly: false },
+  trackedStructures = null,
   onStructureClick = () => {}
 }) => {
   const [hoveredStructure, setHoveredStructure] = useState(null);
@@ -89,6 +92,60 @@ const FieldHeatmapWithOverlays = ({
     if (!points || points.length < 2) return '';
     const scaled = points.map(p => toPixel(p));
     return scaled.map((pt, i) => `${i === 0 ? 'M' : 'L'}${pt.x},${pt.y}`).join(' ');
+  };
+  
+  // Find tracked structure for a given structure position
+  const findTrackedForStruct = (pos, structType) => {
+    if (!trackedStructures) return null;
+    const list = trackedStructures[structType] || [];
+    let closest = null;
+    let minDist = 5;
+    for (const t of list) {
+      const tPos = t.current_position;
+      if (tPos && pos) {
+        const dist = Math.sqrt(Math.pow(tPos[0]-pos[0],2) + Math.pow(tPos[1]-pos[1],2));
+        if (dist < minDist) {
+          minDist = dist;
+          closest = t;
+        }
+      }
+    }
+    return closest;
+  };
+  
+  // Check if structure should be visible based on filter and state
+  const shouldShowStructure = (tracked, structId = null) => {
+    if (eventFilter.selectedOnly && selectedTrackedId && structId !== selectedTrackedId) {
+      return false;
+    }
+    if (!tracked) return eventFilter.showActive;
+    
+    const state = getStructureState(tracked);
+    if (state === 'birth') return eventFilter.showBirths;
+    if (state === 'death') return eventFilter.showDeaths;
+    if (state === 'active') return eventFilter.showActive;
+    if (state === 'unborn' || state === 'dead') return false;
+    return eventFilter.showActive;
+  };
+  
+  // Get animation style based on state
+  const getAnimationStyle = (tracked) => {
+    if (!tracked) return {};
+    const state = getStructureState(tracked);
+    
+    if (state === 'birth') {
+      return { 
+        filter: 'drop-shadow(0 0 4px rgba(74, 222, 128, 0.8))',
+        animation: 'pulse 0.5s ease-in-out'
+      };
+    }
+    if (state === 'death') {
+      return { 
+        opacity: 0.4,
+        filter: 'grayscale(0.5)'
+      };
+    }
+    return {};
   };
 
   return (
@@ -149,18 +206,31 @@ const FieldHeatmapWithOverlays = ({
           {/* Strain Nodes - Orange diamonds */}
           {showStrainNodes && structures.strain_nodes?.map((node, i) => {
             const { x, y } = toPixel(node.position);
-            const size = 4 + node.stability * 4;
+            const size = 4 + (node.stability || 0.5) * 4;
+            const tracked = findTrackedForStruct(node.position, 'strain_nodes');
+            
+            if (!shouldShowStructure(tracked, tracked?.id)) return null;
+            
+            const animStyle = getAnimationStyle(tracked);
+            const state = tracked ? getStructureState(tracked) : 'active';
+            
             return (
-              <g key={`strain-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+              <g key={`strain-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
                 <polygon
                   points={`${x},${y-size} ${x+size},${y} ${x},${y+size} ${x-size},${y}`}
-                  fill="rgba(249, 115, 22, 0.8)"
-                  stroke="#fff"
-                  strokeWidth="0.5"
-                  onMouseEnter={() => setHoveredStructure({ type: 'strain', data: node, x, y })}
+                  fill={state === 'birth' ? 'rgba(74, 222, 128, 0.9)' : state === 'death' ? 'rgba(249, 115, 22, 0.4)' : 'rgba(249, 115, 22, 0.8)'}
+                  stroke={state === 'birth' ? '#4ade80' : '#fff'}
+                  strokeWidth={state === 'birth' ? 2 : 0.5}
+                  onMouseEnter={() => setHoveredStructure({ type: 'strain', data: node, x, y, state })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'strain', data: node }); }}
                 />
+                {state === 'birth' && (
+                  <circle cx={x} cy={y} r={size + 4} fill="none" stroke="#4ade80" strokeWidth="1" opacity="0.5">
+                    <animate attributeName="r" from={size} to={size + 8} dur="0.5s" repeatCount="1" />
+                    <animate attributeName="opacity" from="0.8" to="0" dur="0.5s" repeatCount="1" />
+                  </circle>
+                )}
               </g>
             );
           })}
@@ -168,18 +238,25 @@ const FieldHeatmapWithOverlays = ({
           {/* Coherence Clusters - Green circles with radius */}
           {showClusters && structures.coherence_clusters?.map((cluster, i) => {
             const { x, y } = toPixel(cluster.center);
-            const radius = Math.max(4, cluster.size * scale * cellSize);
+            const radius = Math.max(4, (cluster.size || 2) * scale * cellSize);
+            const tracked = findTrackedForStruct(cluster.center, 'coherence_clusters');
+            
+            if (!shouldShowStructure(tracked, tracked?.id)) return null;
+            
+            const animStyle = getAnimationStyle(tracked);
+            const state = tracked ? getStructureState(tracked) : 'active';
+            
             return (
-              <g key={`cluster-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+              <g key={`cluster-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
                 <circle
                   cx={x}
                   cy={y}
                   r={radius}
-                  fill="rgba(74, 222, 128, 0.2)"
-                  stroke="#4ade80"
-                  strokeWidth="1.5"
+                  fill={state === 'birth' ? 'rgba(74, 222, 128, 0.4)' : state === 'death' ? 'rgba(74, 222, 128, 0.1)' : 'rgba(74, 222, 128, 0.2)'}
+                  stroke={state === 'birth' ? '#fff' : '#4ade80'}
+                  strokeWidth={state === 'birth' ? 2 : 1.5}
                   strokeDasharray="3,2"
-                  onMouseEnter={() => setHoveredStructure({ type: 'cluster', data: cluster, x, y })}
+                  onMouseEnter={() => setHoveredStructure({ type: 'cluster', data: cluster, x, y, state })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'cluster', data: cluster }); }}
                 />
@@ -187,9 +264,15 @@ const FieldHeatmapWithOverlays = ({
                   cx={x}
                   cy={y}
                   r={3}
-                  fill="#4ade80"
+                  fill={state === 'death' ? 'rgba(74, 222, 128, 0.4)' : '#4ade80'}
                   style={{ pointerEvents: 'none' }}
                 />
+                {state === 'birth' && (
+                  <circle cx={x} cy={y} r={radius} fill="none" stroke="#fff" strokeWidth="2" opacity="0.5">
+                    <animate attributeName="r" from={radius} to={radius + 10} dur="0.5s" repeatCount="1" />
+                    <animate attributeName="opacity" from="0.8" to="0" dur="0.5s" repeatCount="1" />
+                  </circle>
+                )}
               </g>
             );
           })}
@@ -197,36 +280,57 @@ const FieldHeatmapWithOverlays = ({
           {/* Particle Nodes - Colored by type */}
           {showParticleNodes && structures.particle_nodes?.map((particle, i) => {
             const { x, y } = toPixel(particle.position);
+            const tracked = findTrackedForStruct(particle.position, 'particle_nodes');
+            
+            if (!shouldShowStructure(tracked, tracked?.id)) return null;
+            
+            const animStyle = getAnimationStyle(tracked);
+            const state = tracked ? getStructureState(tracked) : 'active';
+            
             let fill, stroke;
-            switch(particle.structure_type) {
-              case 'stable':
-                fill = 'rgba(168, 85, 247, 0.9)';
-                stroke = '#fff';
-                break;
-              case 'proto-particle':
-                fill = 'rgba(234, 179, 8, 0.9)';
-                stroke = '#fff';
-                break;
-              default: // transient
-                fill = 'rgba(156, 163, 175, 0.7)';
-                stroke = '#9ca3af';
+            if (state === 'birth') {
+              fill = 'rgba(74, 222, 128, 0.9)';
+              stroke = '#fff';
+            } else if (state === 'death') {
+              fill = 'rgba(156, 163, 175, 0.4)';
+              stroke = '#666';
+            } else {
+              switch(particle.structure_type) {
+                case 'stable':
+                  fill = 'rgba(168, 85, 247, 0.9)';
+                  stroke = '#fff';
+                  break;
+                case 'proto-particle':
+                  fill = 'rgba(234, 179, 8, 0.9)';
+                  stroke = '#fff';
+                  break;
+                default:
+                  fill = 'rgba(156, 163, 175, 0.7)';
+                  stroke = '#9ca3af';
+              }
             }
+            
             return (
-              <g key={`particle-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+              <g key={`particle-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
                 <circle
                   cx={x}
                   cy={y}
                   r={6}
                   fill={fill}
                   stroke={stroke}
-                  strokeWidth="1.5"
-                  onMouseEnter={() => setHoveredStructure({ type: 'particle', data: particle, x, y })}
+                  strokeWidth={state === 'birth' ? 2.5 : 1.5}
+                  onMouseEnter={() => setHoveredStructure({ type: 'particle', data: particle, x, y, state })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'particle', data: particle }); }}
                 />
-                {/* Inner dot for stable particles */}
-                {particle.structure_type === 'stable' && (
+                {particle.structure_type === 'stable' && state !== 'death' && (
                   <circle cx={x} cy={y} r={2} fill="#fff" style={{ pointerEvents: 'none' }} />
+                )}
+                {state === 'birth' && (
+                  <circle cx={x} cy={y} r={6} fill="none" stroke="#4ade80" strokeWidth="2" opacity="0.5">
+                    <animate attributeName="r" from="6" to="14" dur="0.5s" repeatCount="1" />
+                    <animate attributeName="opacity" from="0.8" to="0" dur="0.5s" repeatCount="1" />
+                  </circle>
                 )}
               </g>
             );
@@ -235,31 +339,43 @@ const FieldHeatmapWithOverlays = ({
           {/* Torsion Vortices - Cyan spirals with chirality indicator */}
           {showVortices && structures.torsion_vortices?.map((vortex, i) => {
             const { x, y } = toPixel(vortex.position);
-            const r = Math.max(4, vortex.radius * scale * cellSize);
+            const r = Math.max(4, (vortex.radius || 1) * scale * cellSize);
             const chirality = vortex.chirality > 0 ? 1 : -1;
+            const tracked = findTrackedForStruct(vortex.position, 'torsion_vortices');
+            
+            if (!shouldShowStructure(tracked, tracked?.id)) return null;
+            
+            const animStyle = getAnimationStyle(tracked);
+            const state = tracked ? getStructureState(tracked) : 'active';
+            
             return (
-              <g key={`vortex-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer' }}>
+              <g key={`vortex-${i}`} style={{ pointerEvents: 'visiblePainted', cursor: 'pointer', ...animStyle }}>
                 <circle
                   cx={x}
                   cy={y}
                   r={r}
-                  fill="rgba(0, 212, 255, 0.1)"
-                  stroke="#00d4ff"
-                  strokeWidth="2"
-                  onMouseEnter={() => setHoveredStructure({ type: 'vortex', data: vortex, x, y })}
+                  fill={state === 'birth' ? 'rgba(74, 222, 128, 0.2)' : state === 'death' ? 'rgba(0, 212, 255, 0.05)' : 'rgba(0, 212, 255, 0.1)'}
+                  stroke={state === 'birth' ? '#4ade80' : state === 'death' ? 'rgba(0, 212, 255, 0.4)' : '#00d4ff'}
+                  strokeWidth={state === 'birth' ? 3 : 2}
+                  onMouseEnter={() => setHoveredStructure({ type: 'vortex', data: vortex, x, y, state })}
                   onMouseLeave={() => setHoveredStructure(null)}
                   onClick={(e) => { e.stopPropagation(); onStructureClick({ type: 'vortex', data: vortex }); }}
                 />
-                {/* Chirality arrow */}
                 <path
                   d={chirality > 0 
                     ? `M${x-3},${y-1} L${x},${y-4} L${x+3},${y-1}` 
                     : `M${x-3},${y+1} L${x},${y+4} L${x+3},${y+1}`}
                   fill="none"
-                  stroke="#00d4ff"
+                  stroke={state === 'death' ? 'rgba(0, 212, 255, 0.4)' : '#00d4ff'}
                   strokeWidth="1.5"
                   style={{ pointerEvents: 'none' }}
                 />
+                {state === 'birth' && (
+                  <circle cx={x} cy={y} r={r} fill="none" stroke="#4ade80" strokeWidth="2" opacity="0.5">
+                    <animate attributeName="r" from={r} to={r + 8} dur="0.5s" repeatCount="1" />
+                    <animate attributeName="opacity" from="0.8" to="0" dur="0.5s" repeatCount="1" />
+                  </circle>
+                )}
               </g>
             );
           })}
@@ -275,12 +391,20 @@ const FieldHeatmapWithOverlays = ({
               minWidth: '110px'
             }}
           >
-            <div className="text-xs font-mono uppercase font-bold mb-1" style={{
+            <div className="text-xs font-mono uppercase font-bold mb-1 flex items-center gap-1" style={{
               color: hoveredStructure.type === 'strain' ? '#f97316' :
                      hoveredStructure.type === 'cluster' ? '#4ade80' :
                      hoveredStructure.type === 'particle' ? '#a855f7' : '#00d4ff'
             }}>
               {hoveredStructure.type}
+              {hoveredStructure.state && hoveredStructure.state !== 'active' && (
+                <span className={`text-[10px] px-1 rounded ${
+                  hoveredStructure.state === 'birth' ? 'bg-green-500/20 text-green-400' :
+                  hoveredStructure.state === 'death' ? 'bg-red-500/20 text-red-400' : ''
+                }`}>
+                  {hoveredStructure.state}
+                </span>
+              )}
             </div>
             {hoveredStructure.type === 'strain' && (
               <>
@@ -491,6 +615,15 @@ export const QMRTSimulationLab = () => {
   const [selectedStructure, setSelectedStructure] = useState(null);
   const [selectedTrackedId, setSelectedTrackedId] = useState(null);
   
+  // Animation state
+  const [animationSpeed, setAnimationSpeed] = useState(100); // ms per frame
+  const [eventFilter, setEventFilter] = useState({
+    showBirths: true,
+    showDeaths: true,
+    showActive: true,
+    selectedOnly: false
+  });
+  
   // Playback
   const intervalRef = useRef(null);
   
@@ -548,14 +681,113 @@ export const QMRTSimulationLab = () => {
           }
           return prev + 1;
         });
-      }, 100);
+      }, animationSpeed);
     }
     return () => clearInterval(intervalRef.current);
-  }, [isPlaying, result]);
+  }, [isPlaying, result, animationSpeed]);
   
+  // Current frame data - MUST be defined BEFORE any dependent hooks
   const currentMeasurement = result?.measurements?.[playbackIndex] || {};
   const currentSnapshot = result?.field_snapshots?.[Math.floor(playbackIndex / 5)] || {};
   const currentTimelineFrame = result?.structures_timeline?.[playbackIndex] || null;
+  
+  // Get current timeline time
+  const currentTime = currentMeasurement.t || 0;
+  
+  // Find structures that are active/born/died at current time
+  const getStructureState = useCallback((tracked) => {
+    if (!tracked || currentTime === undefined) return 'unknown';
+    
+    const birthTime = tracked.birth_time;
+    const lastSeen = tracked.last_seen_time;
+    const epsilon = 0.05; // Time tolerance
+    
+    if (Math.abs(currentTime - birthTime) < epsilon) return 'birth';
+    if (tracked.status === 'disappeared' && Math.abs(currentTime - lastSeen) < epsilon) return 'death';
+    if (currentTime >= birthTime && currentTime <= lastSeen) return 'active';
+    if (currentTime < birthTime) return 'unborn';
+    return 'dead';
+  }, [currentTime]);
+  
+  // Get structures visible at current timeline frame
+  const currentFrameStructures = useMemo(() => {
+    if (!currentTimelineFrame) return null;
+    return {
+      strain_nodes: currentTimelineFrame.strain_nodes || [],
+      particle_nodes: currentTimelineFrame.particle_nodes || [],
+      coherence_clusters: currentTimelineFrame.coherence_clusters || [],
+      torsion_vortices: currentTimelineFrame.torsion_vortices || []
+    };
+  }, [currentTimelineFrame]);
+  
+  // Find events (births/deaths) at current time
+  const currentEvents = useMemo(() => {
+    if (!result?.tracked_structures) return { births: [], deaths: [] };
+    
+    const births = [];
+    const deaths = [];
+    const epsilon = 0.05;
+    
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      for (const tracked of (result.tracked_structures[structType] || [])) {
+        if (Math.abs(currentTime - tracked.birth_time) < epsilon) {
+          births.push({ ...tracked, structType });
+        }
+        if (tracked.status === 'disappeared' && Math.abs(currentTime - tracked.last_seen_time) < epsilon) {
+          deaths.push({ ...tracked, structType });
+        }
+      }
+    }
+    
+    return { births, deaths };
+  }, [result, currentTime]);
+  
+  // Jump to specific events
+  const jumpToFirstBirth = useCallback(() => {
+    if (!result?.tracked_structures) return;
+    
+    let minBirthTime = Infinity;
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      for (const tracked of (result.tracked_structures[structType] || [])) {
+        if (tracked.birth_time < minBirthTime) {
+          minBirthTime = tracked.birth_time;
+        }
+      }
+    }
+    
+    if (minBirthTime < Infinity && result.measurements) {
+      const idx = result.measurements.findIndex(m => m.t >= minBirthTime);
+      if (idx >= 0) setPlaybackIndex(idx);
+    }
+  }, [result]);
+  
+  const jumpToNextEvent = useCallback(() => {
+    if (!result?.tracked_structures || !result.measurements) return;
+    
+    const events = [];
+    for (const structType of ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']) {
+      for (const tracked of (result.tracked_structures[structType] || [])) {
+        events.push({ t: tracked.birth_time, type: 'birth' });
+        if (tracked.status === 'disappeared') {
+          events.push({ t: tracked.last_seen_time, type: 'death' });
+        }
+      }
+    }
+    
+    events.sort((a, b) => a.t - b.t);
+    const nextEvent = events.find(e => e.t > currentTime + 0.01);
+    
+    if (nextEvent) {
+      const idx = result.measurements.findIndex(m => m.t >= nextEvent.t);
+      if (idx >= 0) setPlaybackIndex(idx);
+    }
+  }, [result, currentTime]);
+  
+  const jumpToFinalFrame = useCallback(() => {
+    if (result?.measurements) {
+      setPlaybackIndex(result.measurements.length - 1);
+    }
+  }, [result]);
   
   // Find tracked structure by ID or approximate position match
   const findTrackedStructure = useCallback((type, data) => {
@@ -799,6 +1031,7 @@ export const QMRTSimulationLab = () => {
             {/* Playback Controls */}
             {result && (
               <div className="space-y-3 pt-3 border-t border-border/50">
+                {/* Main playback controls */}
                 <div className="flex items-center gap-2">
                   <Button
                     variant="outline"
@@ -814,6 +1047,7 @@ export const QMRTSimulationLab = () => {
                     size="sm"
                     onClick={resetPlayback}
                     className="font-mono text-xs"
+                    title="Reset to start"
                   >
                     <RotateCcw className="w-4 h-4" />
                   </Button>
@@ -821,6 +1055,8 @@ export const QMRTSimulationLab = () => {
                     t = {currentMeasurement.t?.toFixed(2) || '0.00'}
                   </span>
                 </div>
+                
+                {/* Timeline scrubber */}
                 <Slider
                   value={[playbackIndex]}
                   onValueChange={([v]) => setPlaybackIndex(v)}
@@ -828,6 +1064,110 @@ export const QMRTSimulationLab = () => {
                   max={Math.max((result.measurements?.length || 1) - 1, 0)}
                   step={1}
                 />
+                
+                {/* Event navigation */}
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={jumpToFirstBirth}
+                    className="font-mono text-xs h-7 px-2"
+                    title="Jump to first birth"
+                  >
+                    <SkipBack className="w-3 h-3 mr-1" />
+                    <Sparkles className="w-3 h-3" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={jumpToNextEvent}
+                    className="font-mono text-xs h-7 px-2"
+                    title="Jump to next event"
+                  >
+                    <SkipForward className="w-3 h-3" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={jumpToFinalFrame}
+                    className="font-mono text-xs h-7 px-2"
+                    title="Jump to end"
+                  >
+                    <FastForward className="w-3 h-3" />
+                  </Button>
+                  
+                  {/* Current events indicator */}
+                  <div className="ml-auto flex items-center gap-1 text-xs">
+                    {currentEvents.births.length > 0 && (
+                      <Badge variant="outline" className="text-green-400 h-5 px-1">
+                        +{currentEvents.births.length}
+                      </Badge>
+                    )}
+                    {currentEvents.deaths.length > 0 && (
+                      <Badge variant="outline" className="text-red-400 h-5 px-1">
+                        -{currentEvents.deaths.length}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Speed control */}
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-muted-foreground">Speed</span>
+                    <span className="font-mono">{(1000/animationSpeed).toFixed(1)}x</span>
+                  </div>
+                  <Slider
+                    value={[animationSpeed]}
+                    onValueChange={([v]) => setAnimationSpeed(v)}
+                    min={20}
+                    max={500}
+                    step={20}
+                  />
+                </div>
+                
+                {/* Event filters */}
+                <div className="space-y-2">
+                  <div className="text-xs text-muted-foreground">Animation Filters</div>
+                  <div className="flex flex-wrap gap-2">
+                    <label className="flex items-center gap-1 cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        checked={eventFilter.showBirths}
+                        onChange={(e) => setEventFilter(f => ({...f, showBirths: e.target.checked}))}
+                        className="w-3 h-3 accent-green-500"
+                      />
+                      <span className="text-xs text-green-400">Births</span>
+                    </label>
+                    <label className="flex items-center gap-1 cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        checked={eventFilter.showDeaths}
+                        onChange={(e) => setEventFilter(f => ({...f, showDeaths: e.target.checked}))}
+                        className="w-3 h-3 accent-red-500"
+                      />
+                      <span className="text-xs text-red-400">Deaths</span>
+                    </label>
+                    <label className="flex items-center gap-1 cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        checked={eventFilter.showActive}
+                        onChange={(e) => setEventFilter(f => ({...f, showActive: e.target.checked}))}
+                        className="w-3 h-3 accent-blue-500"
+                      />
+                      <span className="text-xs text-blue-400">Active</span>
+                    </label>
+                    <label className="flex items-center gap-1 cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        checked={eventFilter.selectedOnly}
+                        onChange={(e) => setEventFilter(f => ({...f, selectedOnly: e.target.checked}))}
+                        className="w-3 h-3 accent-purple-500"
+                      />
+                      <span className="text-xs text-purple-400">Selected</span>
+                    </label>
+                  </div>
+                </div>
               </div>
             )}
           </CardContent>
@@ -1376,7 +1716,7 @@ export const QMRTSimulationLab = () => {
                             data={currentSnapshot.rho} 
                             title="ρ (Energy)" 
                             colorScheme="heat"
-                            structures={result?.structures}
+                            structures={currentFrameStructures || result?.structures}
                             gridSize={gridSize}
                             showStrainNodes={showStrainNodes}
                             showClusters={showClusters}
@@ -1385,13 +1725,16 @@ export const QMRTSimulationLab = () => {
                             trajectories={allTrajectories}
                             showTrajectories={showTrajectories}
                             selectedTrackedId={selectedTrackedId}
+                            getStructureState={getStructureState}
+                            eventFilter={eventFilter}
+                            trackedStructures={result?.tracked_structures}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.c_eff} 
                             title="c_eff (Speed)" 
                             colorScheme="blue"
-                            structures={result?.structures}
+                            structures={currentFrameStructures || result?.structures}
                             gridSize={gridSize}
                             showStrainNodes={showStrainNodes}
                             showClusters={showClusters}
@@ -1400,13 +1743,16 @@ export const QMRTSimulationLab = () => {
                             trajectories={allTrajectories}
                             showTrajectories={showTrajectories}
                             selectedTrackedId={selectedTrackedId}
+                            getStructureState={getStructureState}
+                            eventFilter={eventFilter}
+                            trackedStructures={result?.tracked_structures}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.tau} 
                             title="τ (Medium)" 
                             colorScheme="gray"
-                            structures={result?.structures}
+                            structures={currentFrameStructures || result?.structures}
                             gridSize={gridSize}
                             showStrainNodes={showStrainNodes}
                             showClusters={showClusters}
@@ -1415,6 +1761,9 @@ export const QMRTSimulationLab = () => {
                             trajectories={allTrajectories}
                             showTrajectories={showTrajectories}
                             selectedTrackedId={selectedTrackedId}
+                            getStructureState={getStructureState}
+                            eventFilter={eventFilter}
+                            trackedStructures={result?.tracked_structures}
                             onStructureClick={handleStructureClick}
                           />
                         </>
@@ -1424,7 +1773,7 @@ export const QMRTSimulationLab = () => {
                             data={currentSnapshot.rho_xy} 
                             title="ρ (XY slice)" 
                             colorScheme="heat"
-                            structures={result?.structures}
+                            structures={currentFrameStructures || result?.structures}
                             gridSize={Math.min(gridSize, 50)}
                             showStrainNodes={showStrainNodes}
                             showClusters={showClusters}
@@ -1433,13 +1782,16 @@ export const QMRTSimulationLab = () => {
                             trajectories={allTrajectories}
                             showTrajectories={showTrajectories}
                             selectedTrackedId={selectedTrackedId}
+                            getStructureState={getStructureState}
+                            eventFilter={eventFilter}
+                            trackedStructures={result?.tracked_structures}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.rho_xz} 
                             title="ρ (XZ slice)" 
                             colorScheme="heat"
-                            structures={result?.structures}
+                            structures={currentFrameStructures || result?.structures}
                             gridSize={Math.min(gridSize, 50)}
                             showStrainNodes={showStrainNodes}
                             showClusters={showClusters}
@@ -1448,13 +1800,16 @@ export const QMRTSimulationLab = () => {
                             trajectories={allTrajectories}
                             showTrajectories={showTrajectories}
                             selectedTrackedId={selectedTrackedId}
+                            getStructureState={getStructureState}
+                            eventFilter={eventFilter}
+                            trackedStructures={result?.tracked_structures}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.rho_yz} 
                             title="ρ (YZ slice)" 
                             colorScheme="heat"
-                            structures={result?.structures}
+                            structures={currentFrameStructures || result?.structures}
                             gridSize={Math.min(gridSize, 50)}
                             showStrainNodes={showStrainNodes}
                             showClusters={showClusters}
@@ -1463,13 +1818,16 @@ export const QMRTSimulationLab = () => {
                             trajectories={allTrajectories}
                             showTrajectories={showTrajectories}
                             selectedTrackedId={selectedTrackedId}
+                            getStructureState={getStructureState}
+                            eventFilter={eventFilter}
+                            trackedStructures={result?.tracked_structures}
                             onStructureClick={handleStructureClick}
                           />
                           <FieldHeatmapWithOverlays 
                             data={currentSnapshot.c_eff_xy} 
                             title="c_eff (XY)" 
                             colorScheme="blue"
-                            structures={result?.structures}
+                            structures={currentFrameStructures || result?.structures}
                             gridSize={Math.min(gridSize, 50)}
                             showStrainNodes={showStrainNodes}
                             showClusters={showClusters}
@@ -1478,6 +1836,9 @@ export const QMRTSimulationLab = () => {
                             trajectories={allTrajectories}
                             showTrajectories={showTrajectories}
                             selectedTrackedId={selectedTrackedId}
+                            getStructureState={getStructureState}
+                            eventFilter={eventFilter}
+                            trackedStructures={result?.tracked_structures}
                             onStructureClick={handleStructureClick}
                           />
                         </>
