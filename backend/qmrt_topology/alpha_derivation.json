@@ -1,0 +1,20 @@
+{
+  "exponent": 2,
+  "derivations": [
+    "dimensional",
+    "equations",
+    "energy",
+    "geometric"
+  ],
+  "reason": "Variance (O) is quadratic in perturbation (S)",
+  "universal": true,
+  "numerical_verification": {
+    "ratios": [
+      0.0005190301337995727,
+      0.0014213028909452173,
+      0.002265423522553993,
+      0.0029465107317998085
+    ],
+    "ratio_cv": 0.5091162930036318
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "light_cone": {
+    "isotropic": true,
+    "isotropy_cv": 0.0,
+    "wavefront_radius": 3.0
+  },
+  "confinement": {
+    "confined": true,
+    "final_confinement": 98.8
+  },
+  "lensing": {
+    "toward_lens": true,
+    "deflection": 12.0
+  },
+  "balance": {
+    "balanced": true,
+    "late_cv": 0.0219
+  },
+  "summary": {
+    "tests_passed": 4,
+    "total_tests": 4,
+    "validated": true
+  }
+}
