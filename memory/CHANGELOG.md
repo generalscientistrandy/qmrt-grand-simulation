@@ -2,7 +2,19 @@
 
 ## December 2025
 
-### Merge/Split Lineage Display (Latest)
+### Lineage Event Visual Emphasis (Latest)
+- **Added**: Subtle visual emphasis for merge/split events during animation
+- **Added**: "Lineage Events" toggle in Structure Overlays section (cyan sparkles icon)
+- **Added**: Merge visuals: cyan dashed lines connecting parents to merged child, with glow effect
+- **Added**: Split visuals: orange dashed lines branching from parent to children, with burst effect
+- **Added**: Fade window of 0.3 time units for event visibility
+- **Added**: Confidence gating: low-confidence matches are skipped
+- **Added**: SVG animations: dashed stroke animation, radius pulsing, opacity fading
+- **Fixed**: Moved `activeLineageEvents` after `findTrackedById` to fix initialization error
+- **Data-testids**: `toggle-lineage-events`
+- **Tested**: 6/6 lineage visual features verified (frontend 100%)
+
+### Merge/Split Lineage Display
 - **Added**: Lineage Section in structure inspector showing merge/split relationships
 - **Added**: Parents display with ID, time range (birth → last_seen), and status badge
 - **Added**: Children display with ID, time range (birth → last_seen), and status badge

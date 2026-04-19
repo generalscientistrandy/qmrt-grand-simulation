@@ -1,38 +1,33 @@
-## Current Status: MERGE/SPLIT LINEAGE DISPLAY COMPLETE
+## Current Status: LINEAGE EVENT VISUAL EMPHASIS COMPLETE
 
 **Date: December 2025**
 
-### Latest Achievement: Merge/Split Lineage Display in Structure Inspector
+### Latest Achievement: Subtle Merge/Split Visual Emphasis During Animation
 
-Added comprehensive lineage visualization for structure merge/split events:
+Added optional visual layer for discovering merge/split events without requiring the inspector:
 
-**Lineage Section Features:**
-- Parents display with ID, time range (birth → last_seen), and status badge
-- Children display with ID, time range (birth → last_seen), and status badge
-- Event Type badges: 'Merged', 'Split', 'Merged Into', 'Split From' (cyan/orange colors)
-- Event Time display showing when merge/split occurred (@ t = X.XX)
-- Click-through navigation: clicking parent/child button navigates to that structure
-- Auto-scrub to birth time: timeline jumps to selected structure's birth time
+**Lineage Event Visuals:**
+- "Lineage Events" toggle in Structure Overlays section (enabled by default)
+- Merge: cyan dashed lines connecting parents → child, with glow effect
+- Split: orange dashed lines branching parent → children, with burst effect
+- Fade window: 0.3 time units around event time
+- Confidence-gated: only high-confidence matches shown
+- SVG animations: stroke dash animation, radius pulsing, opacity fading
 
-**Helper Functions Added:**
-- `findTrackedById(structId)` - Lookup any tracked structure by ID
-- `navigateToStructure(structId, jumpToTime)` - Navigate and optionally auto-scrub
-- `selectedLineageInfo` - Derived lineage data for selected structure
+**Implementation Details:**
+- `showLineageEvents` state (default: true)
+- `activeLineageEvents` useMemo computes visible events at current time
+- Lines rendered in SVG layer within FieldHeatmapWithOverlays
+- Colors: cyan (#22d3ee) for merges, orange (#fb923c) for splits
 
 **Bug Fix:**
-- Timeline navigation now uses `result.measurements` (corrected from non-existent `result.timeline`)
+- Moved `activeLineageEvents` after `findTrackedById` to fix initialization error
 
-**Testing:** 9/9 lineage features verified (backend 100%, frontend 100%)
+**Testing:** 6/6 features verified (frontend 100%)
 
-**Data-testids:** `lineage-parent-{id}`, `lineage-child-{id}`
+---
 
-### Remaining Tasks:
-- (P1) Visual validation pass - confirm lineage displays correctly during animation
-- (P2) Deprecate MesoscopicVisualizer.js - after user confirms unified lab is adequate replacement
-- (P3) Short-path validation tests - targeted short simulations (70% methodology)
-- (P3) Long-path exploratory runs - extended simulations for late-time emergence
-- (P4) Mean-field / action-guided simulation framework tests
-- (P5) Quantum/topology expansion
+## Previous Status: MERGE/SPLIT LINEAGE DISPLAY COMPLETE
 
 ---
 
