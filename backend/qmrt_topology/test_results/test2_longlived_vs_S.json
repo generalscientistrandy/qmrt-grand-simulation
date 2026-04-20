@@ -1,0 +1,31 @@
+{
+  "test_name": "Long-lived Nodes vs S (Organization)",
+  "test_type": "longlived_vs_S", 
+  "date": "2025-12",
+  "hypothesis": "Persistent structures align with higher S (spatial organization)",
+  "config": {
+    "dimension": "2d",
+    "size": 40,
+    "alpha": 0.5,
+    "steps": 250,
+    "n_runs": 20
+  },
+  "results": {
+    "lifetime_S_correlation": 0.834,
+    "lifetime_S_p_value": 0.000000,
+    "lifetime_P_correlation": -0.772,
+    "lifetime_P_p_value": 0.000000,
+    "short_lived_mean_S": 1.486,
+    "long_lived_mean_S": 4.662,
+    "S_effect_size_cohens_d": 0.810,
+    "n_short_lived": 580,
+    "n_long_lived": 700,
+    "lifetime_threshold": 3.20
+  },
+  "interpretation": {
+    "main_finding": "Strong POSITIVE correlation between structure lifetime and spatial organization (S)",
+    "effect": "Long-lived structures occupy regions with 3.1x higher S than short-lived",
+    "significance": "p < 0.000001, large effect size (d=0.81)"
+  },
+  "conclusion": "Persistence is driven by spatial organization. Combined with Test 1, this shows: Birth occurs in high-energy/gradient regions, Persistence requires high spatial organization."
+}

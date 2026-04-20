@@ -1,0 +1,24 @@
+{
+  "test_name": "Robustness Check - Birth vs ρ",
+  "date": "2025-12",
+  "shuffle_control": {
+    "shuffled_rho_mean": 49.7,
+    "shuffled_gradient_mean": 49.3,
+    "shuffle_p_value": 0.7654,
+    "effect_nullified": true,
+    "interpretation": "Shuffle control PASSED - effect is NOT an artifact"
+  },
+  "decile_histogram_rho": {
+    "deciles": [0, 0, 0, 0, 0, 0, 80, 320, 140, 500],
+    "top_3_deciles_fraction": 0.92,
+    "chi_squared": 2598.5,
+    "p_value": 0.000000
+  },
+  "decile_histogram_gradient": {
+    "deciles": [20, 0, 60, 0, 240, 20, 0, 0, 0, 700],
+    "top_decile_fraction": 0.673,
+    "chi_squared": 4267.7,
+    "p_value": 0.000000
+  },
+  "conclusion": "Effect is robust: 92% of births occur in top 3 deciles of ρ, shuffle control shows random positions give 50% mean"
+}

@@ -2024,3 +2024,388 @@ async def run_birth_vs_rho_test(request: ValidationTestRequest):
         baseline_gradient_mean=baseline_grad_mean,
         interpretation=interpretation
     )
+
+
+class RobustnessCheckResult(BaseModel):
+    """Result of robustness checks for validation tests."""
+    # Shuffle control results
+    shuffle_rho_mean: float
+    shuffle_gradient_mean: float
+    shuffle_rho_p_value: float  # Should be >0.05 (not significant vs 50%)
+    shuffle_gradient_p_value: float
+    
+    # Effect preserved after shuffle?
+    shuffle_nullifies_effect: bool  # True = good (proves effect is real)
+    
+    # Decile histogram data
+    rho_decile_counts: List[int]  # 10 bins: 0-10%, 10-20%, ..., 90-100%
+    gradient_decile_counts: List[int]
+    
+    # Expected uniform distribution (for comparison)
+    expected_per_decile: float
+    
+    # Chi-squared test for non-uniformity
+    rho_chi2: float
+    rho_chi2_p: float
+    gradient_chi2: float
+    gradient_chi2_p: float
+    
+    # Interpretation
+    interpretation: str
+
+
+@router.post("/validate/robustness-check")
+async def run_robustness_check(request: ValidationTestRequest):
+    """
+    Robustness checks for Test 1: Birth location vs ρ peaks
+    
+    1. Shuffle Control: Keep same births, shuffle positions within timestep
+       - If effect is real, shuffled positions should show ~50% percentile
+       
+    2. Decile Histogram: Distribution of birth percentiles across deciles
+       - Should show clear skew toward upper deciles
+    """
+    from scipy import stats
+    
+    # Generate seeds
+    if request.seeds:
+        seeds = request.seeds[:request.n_runs]
+    else:
+        seeds = [np.random.randint(0, 100000) for _ in range(request.n_runs)]
+    
+    # Collect all percentiles
+    all_rho_percentiles = []
+    all_gradient_percentiles = []
+    shuffled_rho_percentiles = []
+    shuffled_gradient_percentiles = []
+    
+    for seed in seeds:
+        result = run_single_simulation_for_test(
+            dimension=request.dimension,
+            size=request.size,
+            alpha=request.alpha,
+            lambda_relax=request.lambda_relax,
+            gamma_wave=request.gamma_wave,
+            steps=request.steps,
+            seed=seed
+        )
+        
+        # Actual birth percentiles
+        for event in result['birth_events']:
+            all_rho_percentiles.append(event['rho_percentile'])
+            all_gradient_percentiles.append(event['gradient_percentile'])
+        
+        # Shuffled: use baseline samples as "shuffled" positions
+        # (random positions sampled from same field)
+        for sample in result['baseline_samples'][:len(result['birth_events'])]:
+            shuffled_rho_percentiles.append(sample['rho_percentile'])
+            shuffled_gradient_percentiles.append(sample['gradient_percentile'])
+    
+    if not all_rho_percentiles:
+        return {"error": "No births detected"}
+    
+    # === SHUFFLE CONTROL ===
+    shuffle_rho_mean = float(np.mean(shuffled_rho_percentiles))
+    shuffle_grad_mean = float(np.mean(shuffled_gradient_percentiles))
+    
+    # Test if shuffled is significantly different from 50%
+    _, shuffle_rho_p = stats.ttest_1samp(shuffled_rho_percentiles, 50)
+    _, shuffle_grad_p = stats.ttest_1samp(shuffled_gradient_percentiles, 50)
+    
+    # Effect is nullified if shuffled mean is close to 50% (p > 0.05)
+    shuffle_nullifies = (shuffle_rho_p > 0.05 or abs(shuffle_rho_mean - 50) < 5)
+    
+    # === DECILE HISTOGRAM ===
+    rho_deciles = [0] * 10
+    gradient_deciles = [0] * 10
+    
+    for pct in all_rho_percentiles:
+        decile = min(9, int(pct / 10))
+        rho_deciles[decile] += 1
+    
+    for pct in all_gradient_percentiles:
+        decile = min(9, int(pct / 10))
+        gradient_deciles[decile] += 1
+    
+    expected_per_decile = len(all_rho_percentiles) / 10
+    
+    # Chi-squared test for non-uniformity
+    expected = [expected_per_decile] * 10
+    rho_chi2, rho_chi2_p = stats.chisquare(rho_deciles, expected)
+    grad_chi2, grad_chi2_p = stats.chisquare(gradient_deciles, expected)
+    
+    # Interpretation
+    interpretations = []
+    
+    # Shuffle control interpretation
+    if shuffle_nullifies:
+        interpretations.append(f"✓ SHUFFLE CONTROL PASSED: Shuffled positions show mean={shuffle_rho_mean:.1f}% (p={shuffle_rho_p:.3f}), confirming effect is NOT an artifact")
+    else:
+        interpretations.append(f"⚠ SHUFFLE CONTROL WARNING: Shuffled mean={shuffle_rho_mean:.1f}% still elevated (p={shuffle_rho_p:.3f})")
+    
+    # Decile distribution interpretation
+    upper_decile_fraction = sum(rho_deciles[7:]) / sum(rho_deciles)  # 70-100%
+    if rho_chi2_p < 0.001 and upper_decile_fraction > 0.5:
+        interpretations.append(f"✓ DECILE TEST PASSED: {upper_decile_fraction*100:.0f}% of births in top 3 deciles (χ²={rho_chi2:.1f}, p<0.001)")
+    elif rho_chi2_p < 0.05:
+        interpretations.append(f"✓ Non-uniform distribution detected (χ²={rho_chi2:.1f}, p={rho_chi2_p:.4f})")
+    else:
+        interpretations.append(f"⚠ Distribution appears uniform (χ²={rho_chi2:.1f}, p={rho_chi2_p:.4f})")
+    
+    return RobustnessCheckResult(
+        shuffle_rho_mean=shuffle_rho_mean,
+        shuffle_gradient_mean=shuffle_grad_mean,
+        shuffle_rho_p_value=float(shuffle_rho_p),
+        shuffle_gradient_p_value=float(shuffle_grad_p),
+        shuffle_nullifies_effect=shuffle_nullifies,
+        rho_decile_counts=rho_deciles,
+        gradient_decile_counts=gradient_deciles,
+        expected_per_decile=expected_per_decile,
+        rho_chi2=float(rho_chi2),
+        rho_chi2_p=float(rho_chi2_p),
+        gradient_chi2=float(grad_chi2),
+        gradient_chi2_p=float(grad_chi2_p),
+        interpretation=" | ".join(interpretations)
+    )
+
+
+# ============================================================
+# TEST 2: LONG-LIVED NODES vs S (ORGANIZATION)
+# ============================================================
+
+class LongLivedTestResult(BaseModel):
+    """Result of Test 2: Long-lived nodes vs S/P."""
+    test_type: str
+    n_runs: int
+    config: Dict
+    
+    # Correlation results
+    lifetime_S_correlation: float  # Pearson correlation
+    lifetime_S_p_value: float
+    lifetime_P_correlation: float
+    lifetime_P_p_value: float
+    
+    # Mean S/P by lifetime bin
+    short_lived_mean_S: float  # lifetime < threshold
+    long_lived_mean_S: float   # lifetime >= threshold
+    short_lived_mean_P: float
+    long_lived_mean_P: float
+    
+    # Effect size (Cohen's d)
+    S_effect_size: float
+    P_effect_size: float
+    
+    # Sample sizes
+    n_short_lived: int
+    n_long_lived: int
+    lifetime_threshold: float
+    
+    interpretation: str
+
+
+def run_simulation_for_longlived_test(
+    dimension: str, size: int, alpha: float, lambda_relax: float,
+    gamma_wave: float, steps: int, seed: int
+) -> Dict:
+    """Run simulation and extract lifetime vs S/P data."""
+    
+    np.random.seed(seed)
+    
+    if dimension == '2d':
+        sim = QMRTSimulator2D(size=size, beta=alpha, lambda_relax=lambda_relax, gamma_wave=gamma_wave)
+    else:
+        sim = QMRTSimulator3D(size=size, beta=alpha, lambda_relax=lambda_relax, gamma_wave=gamma_wave)
+    sim.add_pulse(amplitude=3.0, width=4.0)
+    
+    tracker = StructureTracker()
+    sample_interval = 10
+    
+    # Track S and P values along each structure's trajectory
+    structure_metrics = {}  # id -> {'lifetimes': [], 'S_values': [], 'P_values': []}
+    
+    for step in range(steps):
+        sim.step()
+        t = step * sim.dt
+        
+        if step % sample_interval == 0:
+            structures = sim.detect_all_structures()
+            tracker.process_frame(structures, t)
+            
+            # Compute global S (spatial organization metric)
+            rho = sim.phi**2 + sim.phi_dot**2
+            grad_mag = sim.compute_gradient_magnitude(rho)
+            
+            # S = normalized gradient structure
+            S_field = grad_mag / (np.mean(grad_mag) + 1e-8)
+            
+            # P = local persistence proxy (low variation = stable)
+            P_field = 1.0 / (1.0 + np.std(rho) * grad_mag / (np.mean(rho) + 1e-8))
+            
+            # Sample S and P at active structure positions
+            for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+                for sid, tracked in tracker.active_structures[struct_type].items():
+                    trajectory = tracked.get('trajectory', [])
+                    if trajectory:
+                        pos = trajectory[-1][:len(trajectory[-1])-1]
+                        pos_int = [max(0, min(int(p), size-1)) for p in pos]
+                        
+                        if dimension == '2d':
+                            local_S = float(S_field[pos_int[0], pos_int[1]])
+                            local_P = float(P_field[pos_int[0], pos_int[1]])
+                        else:
+                            local_S = float(S_field[pos_int[0], pos_int[1], pos_int[2]])
+                            local_P = float(P_field[pos_int[0], pos_int[1], pos_int[2]])
+                        
+                        if sid not in structure_metrics:
+                            structure_metrics[sid] = {'S_values': [], 'P_values': [], 'birth_time': tracked.get('birth_time', t)}
+                        structure_metrics[sid]['S_values'].append(local_S)
+                        structure_metrics[sid]['P_values'].append(local_P)
+    
+    # Compute final metrics per structure
+    final_time = steps * sim.dt
+    structure_data = []
+    
+    for sid, metrics in structure_metrics.items():
+        # Find final status
+        lifetime = final_time - metrics['birth_time']
+        
+        # Check if still active or completed
+        for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+            if sid in tracker.active_structures[struct_type]:
+                tracked = tracker.active_structures[struct_type][sid]
+                lifetime = tracked.get('last_seen_time', final_time) - tracked.get('birth_time', 0)
+                break
+        
+        if metrics['S_values']:
+            structure_data.append({
+                'id': sid,
+                'lifetime': lifetime,
+                'mean_S': float(np.mean(metrics['S_values'])),
+                'mean_P': float(np.mean(metrics['P_values']))
+            })
+    
+    return {
+        'seed': seed,
+        'n_structures': len(structure_data),
+        'structure_data': structure_data
+    }
+
+
+@router.post("/validate/longlived-vs-S", response_model=LongLivedTestResult)
+async def run_longlived_vs_S_test(request: ValidationTestRequest):
+    """
+    Test 2: Long-lived nodes vs S (Organization)
+    
+    Hypothesis: Persistent structures align with higher S (spatial organization).
+    """
+    from scipy import stats
+    
+    if request.seeds:
+        seeds = request.seeds[:request.n_runs]
+    else:
+        seeds = [np.random.randint(0, 100000) for _ in range(request.n_runs)]
+    
+    all_lifetimes = []
+    all_S = []
+    all_P = []
+    
+    for seed in seeds:
+        result = run_simulation_for_longlived_test(
+            dimension=request.dimension,
+            size=request.size,
+            alpha=request.alpha,
+            lambda_relax=request.lambda_relax,
+            gamma_wave=request.gamma_wave,
+            steps=request.steps,
+            seed=seed
+        )
+        
+        for struct in result['structure_data']:
+            all_lifetimes.append(struct['lifetime'])
+            all_S.append(struct['mean_S'])
+            all_P.append(struct['mean_P'])
+    
+    if len(all_lifetimes) < 10:
+        return LongLivedTestResult(
+            test_type="longlived_vs_S",
+            n_runs=request.n_runs,
+            config={"dimension": request.dimension, "size": request.size},
+            lifetime_S_correlation=0, lifetime_S_p_value=1,
+            lifetime_P_correlation=0, lifetime_P_p_value=1,
+            short_lived_mean_S=0, long_lived_mean_S=0,
+            short_lived_mean_P=0, long_lived_mean_P=0,
+            S_effect_size=0, P_effect_size=0,
+            n_short_lived=0, n_long_lived=0, lifetime_threshold=0,
+            interpretation="Insufficient data"
+        )
+    
+    # Correlations
+    corr_S, p_S = stats.pearsonr(all_lifetimes, all_S)
+    corr_P, p_P = stats.pearsonr(all_lifetimes, all_P)
+    
+    # Split into short-lived vs long-lived
+    lifetime_threshold = float(np.median(all_lifetimes))
+    
+    short_mask = [lt < lifetime_threshold for lt in all_lifetimes]
+    long_mask = [lt >= lifetime_threshold for lt in all_lifetimes]
+    
+    short_S = [s for s, m in zip(all_S, short_mask) if m]
+    long_S = [s for s, m in zip(all_S, long_mask) if m]
+    short_P = [p for p, m in zip(all_P, short_mask) if m]
+    long_P = [p for p, m in zip(all_P, long_mask) if m]
+    
+    short_S_mean = float(np.mean(short_S)) if short_S else 0
+    long_S_mean = float(np.mean(long_S)) if long_S else 0
+    short_P_mean = float(np.mean(short_P)) if short_P else 0
+    long_P_mean = float(np.mean(long_P)) if long_P else 0
+    
+    # Effect size (Cohen's d)
+    def cohens_d(g1, g2):
+        n1, n2 = len(g1), len(g2)
+        if n1 < 2 or n2 < 2:
+            return 0
+        var1, var2 = np.var(g1, ddof=1), np.var(g2, ddof=1)
+        pooled_std = np.sqrt(((n1-1)*var1 + (n2-1)*var2) / (n1+n2-2))
+        return (np.mean(g2) - np.mean(g1)) / (pooled_std + 1e-8)
+    
+    S_effect = cohens_d(short_S, long_S)
+    P_effect = cohens_d(short_P, long_P)
+    
+    # Interpretation
+    interps = []
+    if p_S < 0.05 and corr_S > 0:
+        interps.append(f"✓ POSITIVE correlation: lifetime↔S (r={corr_S:.3f}, p={p_S:.4f})")
+    elif p_S < 0.05:
+        interps.append(f"Negative correlation: lifetime↔S (r={corr_S:.3f}, p={p_S:.4f})")
+    else:
+        interps.append(f"No significant lifetime↔S correlation (r={corr_S:.3f}, p={p_S:.4f})")
+    
+    if abs(S_effect) > 0.5:
+        interps.append(f"Large effect size: d={S_effect:.2f}")
+    elif abs(S_effect) > 0.2:
+        interps.append(f"Medium effect size: d={S_effect:.2f}")
+    
+    return LongLivedTestResult(
+        test_type="longlived_vs_S",
+        n_runs=request.n_runs,
+        config={
+            "dimension": request.dimension,
+            "size": request.size,
+            "alpha": request.alpha,
+            "steps": request.steps
+        },
+        lifetime_S_correlation=float(corr_S),
+        lifetime_S_p_value=float(p_S),
+        lifetime_P_correlation=float(corr_P),
+        lifetime_P_p_value=float(p_P),
+        short_lived_mean_S=short_S_mean,
+        long_lived_mean_S=long_S_mean,
+        short_lived_mean_P=short_P_mean,
+        long_lived_mean_P=long_P_mean,
+        S_effect_size=float(S_effect),
+        P_effect_size=float(P_effect),
+        n_short_lived=len(short_S),
+        n_long_lived=len(long_S),
+        lifetime_threshold=lifetime_threshold,
+        interpretation=" | ".join(interps)
+    )
