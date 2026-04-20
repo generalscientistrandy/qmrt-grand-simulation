@@ -1661,3 +1661,366 @@ async def get_simulation_info():
             "gamma": "Wave damping (γ)",
         }
     }
+
+
+# ============================================================
+# VALIDATION TESTING INFRASTRUCTURE
+# ============================================================
+
+class ValidationTestRequest(BaseModel):
+    """Request for running validation tests."""
+    test_type: Literal["birth_vs_rho", "longlived_vs_S", "merge_vs_gradient"]
+    n_runs: int = Field(default=20, ge=5, le=100)
+    dimension: Literal["2d", "3d"] = "2d"
+    size: int = Field(default=40, ge=20, le=60)
+    alpha: float = Field(default=0.5, ge=0.1, le=1.0)
+    lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0)
+    gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1)
+    steps: int = Field(default=200, ge=100, le=500)
+    seeds: Optional[List[int]] = None  # If None, generate random seeds
+
+class BirthLocationSample(BaseModel):
+    """Sample data for a single birth event."""
+    structure_id: str
+    structure_type: str
+    birth_time: float
+    position: List[float]
+    local_rho: float
+    local_gradient: float
+    rho_percentile: float  # What percentile of global rho distribution
+    gradient_percentile: float
+
+class ValidationTestResult(BaseModel):
+    """Result of a validation test."""
+    test_type: str
+    n_runs: int
+    config: Dict
+    
+    # Aggregated statistics
+    mean_rho_percentile: float
+    std_rho_percentile: float
+    mean_gradient_percentile: float
+    std_gradient_percentile: float
+    
+    # Enrichment ratios (vs 50th percentile baseline)
+    rho_enrichment: float
+    gradient_enrichment: float
+    
+    # Statistical significance
+    rho_p_value: float
+    gradient_p_value: float
+    
+    # Confidence intervals (95%)
+    rho_ci_low: float
+    rho_ci_high: float
+    gradient_ci_low: float
+    gradient_ci_high: float
+    
+    # Per-run data for detailed analysis
+    per_run_stats: List[Dict]
+    
+    # Baseline comparison
+    baseline_rho_mean: float
+    baseline_gradient_mean: float
+    
+    # Interpretation
+    interpretation: str
+
+
+def compute_local_field_values(rho: np.ndarray, position: List[float]) -> Tuple[float, float]:
+    """Compute local ρ and |∇ρ| at a position."""
+    pos = [int(round(p)) for p in position]
+    
+    # Clamp to valid range
+    shape = rho.shape
+    pos = [max(0, min(p, s - 1)) for p, s in zip(pos, shape)]
+    
+    # Local ρ value
+    if len(pos) == 2:
+        local_rho = float(rho[pos[0], pos[1]])
+    else:
+        local_rho = float(rho[pos[0], pos[1], pos[2]])
+    
+    # Compute gradient magnitude using central differences
+    grad_x = np.gradient(rho, axis=0)
+    grad_y = np.gradient(rho, axis=1)
+    
+    if len(pos) == 2:
+        gradient_mag = float(np.sqrt(grad_x[pos[0], pos[1]]**2 + grad_y[pos[0], pos[1]]**2))
+    else:
+        grad_z = np.gradient(rho, axis=2)
+        gradient_mag = float(np.sqrt(
+            grad_x[pos[0], pos[1], pos[2]]**2 + 
+            grad_y[pos[0], pos[1], pos[2]]**2 + 
+            grad_z[pos[0], pos[1], pos[2]]**2
+        ))
+    
+    return local_rho, gradient_mag
+
+
+def compute_percentile(value: float, distribution: np.ndarray) -> float:
+    """Compute what percentile a value falls in within a distribution."""
+    flat = distribution.flatten()
+    return float(np.sum(flat <= value) / len(flat) * 100)
+
+
+def run_single_simulation_for_test(
+    dimension: str,
+    size: int,
+    alpha: float,
+    lambda_relax: float,
+    gamma_wave: float,
+    steps: int,
+    seed: int
+) -> Dict:
+    """Run a single simulation and extract birth location data."""
+    
+    # Set random seed for reproducibility
+    np.random.seed(seed)
+    
+    # Create simulator based on dimension
+    if dimension == '2d':
+        sim = QMRTSimulator2D(
+            size=size,
+            beta=alpha,
+            lambda_relax=lambda_relax,
+            gamma_wave=gamma_wave
+        )
+        # Add initial pulse
+        sim.add_pulse(amplitude=3.0, width=4.0)
+    else:
+        sim = QMRTSimulator3D(
+            size=size,
+            beta=alpha,
+            lambda_relax=lambda_relax,
+            gamma_wave=gamma_wave
+        )
+        sim.add_pulse(amplitude=3.0, width=4.0)
+    
+    # Structure tracker
+    tracker = StructureTracker()
+    
+    # Storage for birth events
+    birth_events = []
+    
+    # Run simulation
+    sample_interval = 10
+    
+    for step in range(steps):
+        sim.step()
+        t = step * sim.dt
+        
+        # Detect structures at sample intervals
+        if step % sample_interval == 0:
+            structures = sim.detect_all_structures()
+            
+            # Get current field state for percentile calculations
+            rho = sim.phi**2 + sim.phi_dot**2
+            grad_rho_mag = sim.compute_gradient_magnitude(rho)
+            
+            # Track structures and capture birth events
+            tracker.process_frame(structures, t)
+            
+            # Check for new births this frame
+            for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+                for sid, tracked in tracker.active_structures[struct_type].items():
+                    # tracked is a dict with TrackedStructure fields
+                    # Check if this structure was just born (birth_time == current time)
+                    birth_time = tracked.get('birth_time', 0)
+                    if abs(birth_time - t) < 0.01:
+                        trajectory = tracked.get('trajectory', [])
+                        pos = trajectory[0][:len(trajectory[0])-1] if trajectory else [size//2] * (2 if dimension == '2d' else 3)
+                        local_rho, local_grad = compute_local_field_values(rho, pos)
+                        rho_pct = compute_percentile(local_rho, rho)
+                        grad_pct = compute_percentile(local_grad, grad_rho_mag)
+                        
+                        birth_events.append({
+                            'structure_id': sid,
+                            'structure_type': struct_type,
+                            'birth_time': t,
+                            'position': [float(p) for p in pos],
+                            'local_rho': local_rho,
+                            'local_gradient': local_grad,
+                            'rho_percentile': rho_pct,
+                            'gradient_percentile': grad_pct
+                        })
+    
+    # Final field state for baseline sampling
+    rho = sim.phi**2 + sim.phi_dot**2
+    grad_rho_mag = sim.compute_gradient_magnitude(rho)
+    
+    # Generate random baseline samples (same count as births, random positions)
+    n_baseline = max(len(birth_events), 20)
+    baseline_samples = []
+    for _ in range(n_baseline):
+        if dimension == '2d':
+            pos = [float(np.random.randint(0, size)), float(np.random.randint(0, size))]
+        else:
+            pos = [float(np.random.randint(0, size)) for _ in range(3)]
+        local_rho, local_grad = compute_local_field_values(rho, pos)
+        rho_pct = compute_percentile(local_rho, rho)
+        grad_pct = compute_percentile(local_grad, grad_rho_mag)
+        baseline_samples.append({
+            'rho_percentile': rho_pct,
+            'gradient_percentile': grad_pct
+        })
+    
+    return {
+        'seed': seed,
+        'n_births': len(birth_events),
+        'birth_events': birth_events,
+        'baseline_samples': baseline_samples,
+        'mean_rho_percentile': float(np.mean([e['rho_percentile'] for e in birth_events])) if birth_events else 50.0,
+        'mean_gradient_percentile': float(np.mean([e['gradient_percentile'] for e in birth_events])) if birth_events else 50.0,
+        'baseline_rho_mean': float(np.mean([s['rho_percentile'] for s in baseline_samples])),
+        'baseline_gradient_mean': float(np.mean([s['gradient_percentile'] for s in baseline_samples]))
+    }
+
+
+@router.post("/validate/birth-vs-rho", response_model=ValidationTestResult)
+async def run_birth_vs_rho_test(request: ValidationTestRequest):
+    """
+    Test 1: Birth location vs ρ peaks
+    
+    Hypothesis: Structures are more likely to be born in high-ρ or high-∇ρ regions.
+    
+    Measures enrichment ratio and statistical significance against random baseline.
+    """
+    from scipy import stats
+    
+    # Generate seeds if not provided
+    if request.seeds:
+        seeds = request.seeds[:request.n_runs]
+    else:
+        seeds = [np.random.randint(0, 100000) for _ in range(request.n_runs)]
+    
+    # Run simulations
+    per_run_stats = []
+    all_rho_percentiles = []
+    all_gradient_percentiles = []
+    all_baseline_rho = []
+    all_baseline_gradient = []
+    
+    for i, seed in enumerate(seeds):
+        result = run_single_simulation_for_test(
+            dimension=request.dimension,
+            size=request.size,
+            alpha=request.alpha,
+            lambda_relax=request.lambda_relax,
+            gamma_wave=request.gamma_wave,
+            steps=request.steps,
+            seed=seed
+        )
+        
+        per_run_stats.append({
+            'run': i + 1,
+            'seed': seed,
+            'n_births': result['n_births'],
+            'mean_rho_percentile': result['mean_rho_percentile'],
+            'mean_gradient_percentile': result['mean_gradient_percentile'],
+            'baseline_rho_mean': result['baseline_rho_mean'],
+            'baseline_gradient_mean': result['baseline_gradient_mean']
+        })
+        
+        # Collect all birth percentiles
+        for event in result['birth_events']:
+            all_rho_percentiles.append(event['rho_percentile'])
+            all_gradient_percentiles.append(event['gradient_percentile'])
+        
+        # Collect baseline
+        for sample in result['baseline_samples']:
+            all_baseline_rho.append(sample['rho_percentile'])
+            all_baseline_gradient.append(sample['gradient_percentile'])
+    
+    # Compute aggregated statistics
+    if all_rho_percentiles:
+        mean_rho_pct = float(np.mean(all_rho_percentiles))
+        std_rho_pct = float(np.std(all_rho_percentiles))
+        mean_grad_pct = float(np.mean(all_gradient_percentiles))
+        std_grad_pct = float(np.std(all_gradient_percentiles))
+        
+        # Enrichment vs 50th percentile (neutral expectation)
+        rho_enrichment = mean_rho_pct / 50.0
+        gradient_enrichment = mean_grad_pct / 50.0
+        
+        # Statistical test: are births significantly above random?
+        # One-sample t-test against mean of 50 (random expectation)
+        rho_t, rho_p = stats.ttest_1samp(all_rho_percentiles, 50)
+        grad_t, grad_p = stats.ttest_1samp(all_gradient_percentiles, 50)
+        
+        # Also compare to actual baseline distribution
+        baseline_rho_mean = float(np.mean(all_baseline_rho))
+        baseline_grad_mean = float(np.mean(all_baseline_gradient))
+        
+        # 95% confidence intervals (bootstrap-like using std error)
+        n = len(all_rho_percentiles)
+        se_rho = std_rho_pct / np.sqrt(n)
+        se_grad = std_grad_pct / np.sqrt(n)
+        rho_ci_low = mean_rho_pct - 1.96 * se_rho
+        rho_ci_high = mean_rho_pct + 1.96 * se_rho
+        grad_ci_low = mean_grad_pct - 1.96 * se_grad
+        grad_ci_high = mean_grad_pct + 1.96 * se_grad
+        
+        # Interpretation
+        interpretations = []
+        if rho_p < 0.05 and mean_rho_pct > 50:
+            interpretations.append(f"Births SIGNIFICANTLY cluster in HIGH-ρ regions (mean={mean_rho_pct:.1f}%, p={rho_p:.4f})")
+        elif rho_p < 0.05 and mean_rho_pct < 50:
+            interpretations.append(f"Births SIGNIFICANTLY cluster in LOW-ρ regions (mean={mean_rho_pct:.1f}%, p={rho_p:.4f})")
+        else:
+            interpretations.append(f"No significant ρ preference (mean={mean_rho_pct:.1f}%, p={rho_p:.4f})")
+        
+        if grad_p < 0.05 and mean_grad_pct > 50:
+            interpretations.append(f"Births SIGNIFICANTLY cluster in HIGH-GRADIENT regions (mean={mean_grad_pct:.1f}%, p={grad_p:.4f})")
+        elif grad_p < 0.05 and mean_grad_pct < 50:
+            interpretations.append(f"Births SIGNIFICANTLY cluster in LOW-GRADIENT regions (mean={mean_grad_pct:.1f}%, p={grad_p:.4f})")
+        else:
+            interpretations.append(f"No significant gradient preference (mean={mean_grad_pct:.1f}%, p={grad_p:.4f})")
+        
+        interpretation = " | ".join(interpretations)
+    else:
+        # No births detected
+        mean_rho_pct = 50.0
+        std_rho_pct = 0.0
+        mean_grad_pct = 50.0
+        std_grad_pct = 0.0
+        rho_enrichment = 1.0
+        gradient_enrichment = 1.0
+        rho_p = 1.0
+        grad_p = 1.0
+        rho_ci_low = 50.0
+        rho_ci_high = 50.0
+        grad_ci_low = 50.0
+        grad_ci_high = 50.0
+        baseline_rho_mean = 50.0
+        baseline_grad_mean = 50.0
+        interpretation = "No births detected across runs"
+    
+    return ValidationTestResult(
+        test_type="birth_vs_rho",
+        n_runs=request.n_runs,
+        config={
+            "dimension": request.dimension,
+            "size": request.size,
+            "alpha": request.alpha,
+            "lambda_relax": request.lambda_relax,
+            "gamma_wave": request.gamma_wave,
+            "steps": request.steps
+        },
+        mean_rho_percentile=mean_rho_pct,
+        std_rho_percentile=std_rho_pct,
+        mean_gradient_percentile=mean_grad_pct,
+        std_gradient_percentile=std_grad_pct,
+        rho_enrichment=rho_enrichment,
+        gradient_enrichment=gradient_enrichment,
+        rho_p_value=float(rho_p),
+        gradient_p_value=float(grad_p),
+        rho_ci_low=rho_ci_low,
+        rho_ci_high=rho_ci_high,
+        gradient_ci_low=grad_ci_low,
+        gradient_ci_high=grad_ci_high,
+        per_run_stats=per_run_stats,
+        baseline_rho_mean=baseline_rho_mean,
+        baseline_gradient_mean=baseline_grad_mean,
+        interpretation=interpretation
+    )

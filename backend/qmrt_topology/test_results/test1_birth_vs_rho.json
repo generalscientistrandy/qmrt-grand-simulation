@@ -1,0 +1,31 @@
+{
+  "test_name": "Birth Location vs ρ Peaks",
+  "test_type": "birth_vs_rho",
+  "date": "2025-12",
+  "hypothesis": "Structures are more likely to be born in high-ρ or high-∇ρ regions",
+  "config": {
+    "dimension": "2d",
+    "size": 40,
+    "alpha": 0.5,
+    "lambda_relax": 0.5,
+    "gamma_wave": 0.01,
+    "steps": 200,
+    "n_runs": 20
+  },
+  "results": {
+    "total_births": 1040,
+    "rho_mean_percentile": 85.8,
+    "rho_ci_95": [85.0, 86.5],
+    "rho_p_value": 0.000000,
+    "rho_enrichment": 1.72,
+    "gradient_mean_percentile": 77.5,
+    "gradient_ci_95": [75.7, 79.2],
+    "gradient_p_value": 0.000000,
+    "gradient_enrichment": 1.55
+  },
+  "interpretation": {
+    "rho": "Births SIGNIFICANTLY cluster in HIGH-ρ regions",
+    "gradient": "Births SIGNIFICANTLY cluster in HIGH-GRADIENT regions"
+  },
+  "conclusion": "Structure emergence is statistically coupled to medium state (energy density and gradient), NOT appearing arbitrarily. This supports the QMRT framework hypothesis that structures emerge from field conditions."
+}
