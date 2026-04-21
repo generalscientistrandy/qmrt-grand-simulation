@@ -1669,7 +1669,7 @@ async def get_simulation_info():
 
 class ValidationTestRequest(BaseModel):
     """Request for running validation tests."""
-    test_type: Literal["birth_vs_rho", "longlived_vs_S", "merge_vs_gradient"]
+    test_type: Literal["birth_vs_rho", "longlived_vs_S", "merge_vs_gradient"] = "birth_vs_rho"
     n_runs: int = Field(default=20, ge=5, le=100)
     dimension: Literal["2d", "3d"] = "2d"
     size: int = Field(default=40, ge=20, le=60)
@@ -1678,6 +1678,17 @@ class ValidationTestRequest(BaseModel):
     gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1)
     steps: int = Field(default=200, ge=100, le=500)
     seeds: Optional[List[int]] = None  # If None, generate random seeds
+
+class SimpleTestRequest(BaseModel):
+    """Simplified request for tests that don't need test_type."""
+    n_runs: int = Field(default=20, ge=5, le=100)
+    dimension: Literal["2d", "3d"] = "2d"
+    size: int = Field(default=40, ge=20, le=60)
+    alpha: float = Field(default=0.5, ge=0.1, le=1.0)
+    lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0)
+    gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1)
+    steps: int = Field(default=200, ge=100, le=500)
+    seeds: Optional[List[int]] = None
 
 class BirthLocationSample(BaseModel):
     """Sample data for a single birth event."""
@@ -2407,5 +2418,517 @@ async def run_longlived_vs_S_test(request: ValidationTestRequest):
         n_short_lived=len(short_S),
         n_long_lived=len(long_S),
         lifetime_threshold=lifetime_threshold,
+        interpretation=" | ".join(interps)
+    )
+
+
+# ============================================================
+# PARTIAL CORRELATION CHECK: Is S independent of ρ?
+# ============================================================
+
+class PartialCorrelationResult(BaseModel):
+    """Result of partial correlation analysis."""
+    # Raw correlations
+    lifetime_S_correlation: float
+    lifetime_rho_correlation: float
+    S_rho_correlation: float
+    
+    # Partial correlations (controlling for confound)
+    partial_lifetime_S_given_rho: float  # Key metric
+    partial_lifetime_rho_given_S: float
+    
+    # P-values
+    partial_lifetime_S_p_value: float
+    partial_lifetime_rho_p_value: float
+    
+    # Independence check
+    S_is_independent_of_rho: bool  # True if partial corr still significant
+    
+    interpretation: str
+
+
+def partial_correlation(x, y, z):
+    """
+    Compute partial correlation between x and y, controlling for z.
+    r_xy.z = (r_xy - r_xz * r_yz) / sqrt((1 - r_xz^2)(1 - r_yz^2))
+    """
+    from scipy import stats
+    
+    r_xy, _ = stats.pearsonr(x, y)
+    r_xz, _ = stats.pearsonr(x, z)
+    r_yz, _ = stats.pearsonr(y, z)
+    
+    numerator = r_xy - r_xz * r_yz
+    denominator = np.sqrt((1 - r_xz**2) * (1 - r_yz**2))
+    
+    if denominator < 1e-10:
+        return 0.0, 1.0
+    
+    partial_r = numerator / denominator
+    
+    # Approximate p-value using Fisher's z transformation
+    n = len(x)
+    df = n - 3  # degrees of freedom for partial correlation
+    if df <= 0:
+        return partial_r, 1.0
+    
+    # t-statistic
+    t_stat = partial_r * np.sqrt(df / (1 - partial_r**2 + 1e-10))
+    p_value = 2 * (1 - stats.t.cdf(abs(t_stat), df))
+    
+    return float(partial_r), float(p_value)
+
+
+def run_simulation_for_partial_corr(
+    dimension: str, size: int, alpha: float, lambda_relax: float,
+    gamma_wave: float, steps: int, seed: int
+) -> Dict:
+    """Run simulation and extract lifetime, S, and ρ data for partial correlation."""
+    
+    np.random.seed(seed)
+    
+    if dimension == '2d':
+        sim = QMRTSimulator2D(size=size, beta=alpha, lambda_relax=lambda_relax, gamma_wave=gamma_wave)
+    else:
+        sim = QMRTSimulator3D(size=size, beta=alpha, lambda_relax=lambda_relax, gamma_wave=gamma_wave)
+    sim.add_pulse(amplitude=3.0, width=4.0)
+    
+    tracker = StructureTracker()
+    sample_interval = 10
+    
+    structure_metrics = {}
+    
+    for step in range(steps):
+        sim.step()
+        t = step * sim.dt
+        
+        if step % sample_interval == 0:
+            structures = sim.detect_all_structures()
+            tracker.process_frame(structures, t)
+            
+            rho = sim.phi**2 + sim.phi_dot**2
+            grad_mag = sim.compute_gradient_magnitude(rho)
+            S_field = grad_mag / (np.mean(grad_mag) + 1e-8)
+            
+            for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+                for sid, tracked in tracker.active_structures[struct_type].items():
+                    trajectory = tracked.get('trajectory', [])
+                    if trajectory:
+                        pos = trajectory[-1][:len(trajectory[-1])-1]
+                        pos_int = [max(0, min(int(p), size-1)) for p in pos]
+                        
+                        if dimension == '2d':
+                            local_S = float(S_field[pos_int[0], pos_int[1]])
+                            local_rho = float(rho[pos_int[0], pos_int[1]])
+                        else:
+                            local_S = float(S_field[pos_int[0], pos_int[1], pos_int[2]])
+                            local_rho = float(rho[pos_int[0], pos_int[1], pos_int[2]])
+                        
+                        if sid not in structure_metrics:
+                            structure_metrics[sid] = {
+                                'S_values': [], 'rho_values': [],
+                                'birth_time': tracked.get('birth_time', t)
+                            }
+                        structure_metrics[sid]['S_values'].append(local_S)
+                        structure_metrics[sid]['rho_values'].append(local_rho)
+    
+    final_time = steps * sim.dt
+    structure_data = []
+    
+    for sid, metrics in structure_metrics.items():
+        lifetime = final_time - metrics['birth_time']
+        
+        for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+            if sid in tracker.active_structures[struct_type]:
+                tracked = tracker.active_structures[struct_type][sid]
+                lifetime = tracked.get('last_seen_time', final_time) - tracked.get('birth_time', 0)
+                break
+        
+        if metrics['S_values'] and metrics['rho_values']:
+            structure_data.append({
+                'id': sid,
+                'lifetime': lifetime,
+                'mean_S': float(np.mean(metrics['S_values'])),
+                'mean_rho': float(np.mean(metrics['rho_values']))
+            })
+    
+    return {'seed': seed, 'structure_data': structure_data}
+
+
+@router.post("/validate/partial-correlation", response_model=PartialCorrelationResult)
+async def run_partial_correlation_check(request: SimpleTestRequest):
+    """
+    Partial Correlation Check: Is S independent of ρ?
+    
+    Computes partial correlation of lifetime↔S controlling for ρ.
+    If still significant, S is a distinct organizing variable.
+    """
+    from scipy import stats
+    
+    if request.seeds:
+        seeds = request.seeds[:request.n_runs]
+    else:
+        seeds = [np.random.randint(0, 100000) for _ in range(request.n_runs)]
+    
+    all_lifetimes = []
+    all_S = []
+    all_rho = []
+    
+    for seed in seeds:
+        result = run_simulation_for_partial_corr(
+            dimension=request.dimension,
+            size=request.size,
+            alpha=request.alpha,
+            lambda_relax=request.lambda_relax,
+            gamma_wave=request.gamma_wave,
+            steps=request.steps,
+            seed=seed
+        )
+        
+        for struct in result['structure_data']:
+            all_lifetimes.append(struct['lifetime'])
+            all_S.append(struct['mean_S'])
+            all_rho.append(struct['mean_rho'])
+    
+    if len(all_lifetimes) < 20:
+        return PartialCorrelationResult(
+            lifetime_S_correlation=0, lifetime_rho_correlation=0, S_rho_correlation=0,
+            partial_lifetime_S_given_rho=0, partial_lifetime_rho_given_S=0,
+            partial_lifetime_S_p_value=1, partial_lifetime_rho_p_value=1,
+            S_is_independent_of_rho=False,
+            interpretation="Insufficient data"
+        )
+    
+    # Raw correlations
+    r_lifetime_S, _ = stats.pearsonr(all_lifetimes, all_S)
+    r_lifetime_rho, _ = stats.pearsonr(all_lifetimes, all_rho)
+    r_S_rho, _ = stats.pearsonr(all_S, all_rho)
+    
+    # Partial correlations
+    partial_lifetime_S, p_partial_S = partial_correlation(all_lifetimes, all_S, all_rho)
+    partial_lifetime_rho, p_partial_rho = partial_correlation(all_lifetimes, all_rho, all_S)
+    
+    # Independence check: S is independent if partial correlation is still significant
+    S_independent = p_partial_S < 0.05 and partial_lifetime_S > 0.1
+    
+    # Interpretation
+    interps = []
+    interps.append(f"Raw correlations: lifetime↔S={r_lifetime_S:.3f}, lifetime↔ρ={r_lifetime_rho:.3f}, S↔ρ={r_S_rho:.3f}")
+    
+    if S_independent:
+        interps.append(f"✓ S IS INDEPENDENT: Partial r(lifetime,S|ρ)={partial_lifetime_S:.3f}, p={p_partial_S:.4f}")
+        interps.append("S is a DISTINCT organizing variable, not just another form of energy")
+    else:
+        if p_partial_S >= 0.05:
+            interps.append(f"⚠ S effect diminished when controlling for ρ: partial r={partial_lifetime_S:.3f}, p={p_partial_S:.4f}")
+        else:
+            interps.append(f"Weak partial correlation: r={partial_lifetime_S:.3f}")
+    
+    return PartialCorrelationResult(
+        lifetime_S_correlation=float(r_lifetime_S),
+        lifetime_rho_correlation=float(r_lifetime_rho),
+        S_rho_correlation=float(r_S_rho),
+        partial_lifetime_S_given_rho=partial_lifetime_S,
+        partial_lifetime_rho_given_S=partial_lifetime_rho,
+        partial_lifetime_S_p_value=p_partial_S,
+        partial_lifetime_rho_p_value=p_partial_rho,
+        S_is_independent_of_rho=S_independent,
+        interpretation=" | ".join(interps)
+    )
+
+
+# ============================================================
+# TEST 3: MERGE ACTIVITY vs ∇ρ (GRADIENT)
+# ============================================================
+
+class MergeTestResult(BaseModel):
+    """Result of Test 3: Merge activity vs gradient."""
+    test_type: str
+    n_runs: int
+    config: Dict
+    
+    # Merge statistics
+    n_merges: int
+    n_births: int  # For comparison
+    
+    # Gradient percentiles
+    merge_gradient_mean: float
+    merge_gradient_ci_low: float
+    merge_gradient_ci_high: float
+    
+    birth_gradient_mean: float  # Comparison baseline
+    random_gradient_mean: float
+    
+    # Enrichment ratios
+    merge_vs_random_enrichment: float
+    merge_vs_birth_enrichment: float
+    
+    # Statistical tests
+    merge_vs_random_p: float
+    merge_vs_birth_p: float
+    
+    # ρ comparison (to show gradient dominates)
+    merge_rho_mean: float
+    birth_rho_mean: float
+    
+    interpretation: str
+
+
+def run_simulation_for_merge_test(
+    dimension: str, size: int, alpha: float, lambda_relax: float,
+    gamma_wave: float, steps: int, seed: int
+) -> Dict:
+    """Run simulation and extract merge location data."""
+    
+    np.random.seed(seed)
+    
+    if dimension == '2d':
+        sim = QMRTSimulator2D(size=size, beta=alpha, lambda_relax=lambda_relax, gamma_wave=gamma_wave)
+    else:
+        sim = QMRTSimulator3D(size=size, beta=alpha, lambda_relax=lambda_relax, gamma_wave=gamma_wave)
+    sim.add_pulse(amplitude=3.0, width=4.0)
+    
+    tracker = StructureTracker()
+    sample_interval = 10
+    
+    # Store field snapshots at each sample time
+    field_snapshots = {}  # time -> (rho, grad_mag)
+    birth_data = {}  # structure_id -> {time, position}
+    
+    for step in range(steps):
+        sim.step()
+        t = step * sim.dt
+        
+        if step % sample_interval == 0:
+            structures = sim.detect_all_structures()
+            
+            # Get field state
+            rho = sim.phi**2 + sim.phi_dot**2
+            grad_mag = sim.compute_gradient_magnitude(rho)
+            field_snapshots[round(t, 2)] = (rho.copy(), grad_mag.copy())
+            
+            # Track structures
+            tracker.process_frame(structures, t)
+            
+            # Record birth positions
+            for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+                for sid, tracked in tracker.active_structures[struct_type].items():
+                    if sid not in birth_data:
+                        trajectory = tracked.get('trajectory', [])
+                        if trajectory:
+                            pos = trajectory[0][:len(trajectory[0])-1]
+                            birth_data[sid] = {
+                                'birth_time': tracked.get('birth_time', t),
+                                'position': pos
+                            }
+    
+    # After simulation: analyze completed and active structures
+    merge_events = []
+    birth_events = []
+    
+    # Get final field state for percentile calculations
+    final_rho = sim.phi**2 + sim.phi_dot**2
+    final_grad = sim.compute_gradient_magnitude(final_rho)
+    
+    # Process all tracked structures
+    all_structures = {}
+    for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+        # Active structures
+        for sid, tracked in tracker.active_structures[struct_type].items():
+            all_structures[sid] = tracked
+        # Completed structures
+        for tracked in tracker.completed_structures[struct_type]:
+            all_structures[tracked.id] = {
+                'id': tracked.id,
+                'parent_ids': tracked.parent_ids,
+                'birth_time': tracked.birth_time,
+                'trajectory': tracked.trajectory
+            }
+    
+    for sid, tracked in all_structures.items():
+        parent_ids = tracked.get('parent_ids', [])
+        trajectory = tracked.get('trajectory', [])
+        birth_time = tracked.get('birth_time', 0)
+        
+        if not trajectory:
+            continue
+        
+        pos = trajectory[0][:len(trajectory[0])-1]
+        pos_int = [max(0, min(int(p), size-1)) for p in pos]
+        
+        # Use field snapshot closest to birth time if available
+        t_key = round(birth_time, 1)
+        if t_key in field_snapshots:
+            rho, grad_mag = field_snapshots[t_key]
+        else:
+            rho, grad_mag = final_rho, final_grad
+        
+        if dimension == '2d':
+            local_rho = float(rho[pos_int[0], pos_int[1]])
+            local_grad = float(grad_mag[pos_int[0], pos_int[1]])
+        else:
+            local_rho = float(rho[pos_int[0], pos_int[1], pos_int[2]])
+            local_grad = float(grad_mag[pos_int[0], pos_int[1], pos_int[2]])
+        
+        rho_pct = compute_percentile(local_rho, rho)
+        grad_pct = compute_percentile(local_grad, grad_mag)
+        
+        event_data = {
+            'id': sid,
+            'time': birth_time,
+            'rho_percentile': rho_pct,
+            'gradient_percentile': grad_pct
+        }
+        
+        if len(parent_ids) >= 2:
+            merge_events.append(event_data)
+        else:
+            birth_events.append(event_data)
+    
+    # Random baseline
+    n_samples = max(len(merge_events) + len(birth_events), 30)
+    random_samples = []
+    for _ in range(n_samples):
+        if dimension == '2d':
+            pos = [np.random.randint(0, size), np.random.randint(0, size)]
+            local_grad = float(final_grad[pos[0], pos[1]])
+        else:
+            pos = [np.random.randint(0, size) for _ in range(3)]
+            local_grad = float(final_grad[pos[0], pos[1], pos[2]])
+        
+        grad_pct = compute_percentile(local_grad, final_grad)
+        random_samples.append({'gradient_percentile': grad_pct})
+    
+    return {
+        'seed': seed,
+        'merge_events': merge_events,
+        'birth_events': birth_events,
+        'random_samples': random_samples
+    }
+
+
+@router.post("/validate/merge-vs-gradient", response_model=MergeTestResult)
+async def run_merge_vs_gradient_test(request: ValidationTestRequest):
+    """
+    Test 3: Merge Activity vs ∇ρ (Gradient)
+    
+    Hypothesis: Merges occur in high-gradient interaction zones.
+    Compares merge locations to both random baseline AND birth locations.
+    """
+    from scipy import stats
+    
+    if request.seeds:
+        seeds = request.seeds[:request.n_runs]
+    else:
+        seeds = [np.random.randint(0, 100000) for _ in range(request.n_runs)]
+    
+    all_merge_grad = []
+    all_merge_rho = []
+    all_birth_grad = []
+    all_birth_rho = []
+    all_random_grad = []
+    
+    for seed in seeds:
+        result = run_simulation_for_merge_test(
+            dimension=request.dimension,
+            size=request.size,
+            alpha=request.alpha,
+            lambda_relax=request.lambda_relax,
+            gamma_wave=request.gamma_wave,
+            steps=request.steps,
+            seed=seed
+        )
+        
+        for m in result['merge_events']:
+            all_merge_grad.append(m['gradient_percentile'])
+            all_merge_rho.append(m['rho_percentile'])
+        
+        for b in result['birth_events']:
+            all_birth_grad.append(b['gradient_percentile'])
+            all_birth_rho.append(b['rho_percentile'])
+        
+        for r in result['random_samples']:
+            all_random_grad.append(r['gradient_percentile'])
+    
+    n_merges = len(all_merge_grad)
+    n_births = len(all_birth_grad)
+    
+    if n_merges < 5:
+        return MergeTestResult(
+            test_type="merge_vs_gradient",
+            n_runs=request.n_runs,
+            config={"dimension": request.dimension, "size": request.size},
+            n_merges=n_merges, n_births=n_births,
+            merge_gradient_mean=50, merge_gradient_ci_low=50, merge_gradient_ci_high=50,
+            birth_gradient_mean=50, random_gradient_mean=50,
+            merge_vs_random_enrichment=1, merge_vs_birth_enrichment=1,
+            merge_vs_random_p=1, merge_vs_birth_p=1,
+            merge_rho_mean=50, birth_rho_mean=50,
+            interpretation="Insufficient merge events for analysis"
+        )
+    
+    # Statistics
+    merge_grad_mean = float(np.mean(all_merge_grad))
+    merge_grad_std = float(np.std(all_merge_grad))
+    birth_grad_mean = float(np.mean(all_birth_grad)) if all_birth_grad else 50
+    random_grad_mean = float(np.mean(all_random_grad))
+    
+    merge_rho_mean = float(np.mean(all_merge_rho))
+    birth_rho_mean = float(np.mean(all_birth_rho)) if all_birth_rho else 50
+    
+    # Confidence interval
+    se = merge_grad_std / np.sqrt(n_merges)
+    ci_low = merge_grad_mean - 1.96 * se
+    ci_high = merge_grad_mean + 1.96 * se
+    
+    # Enrichment
+    merge_vs_random = merge_grad_mean / (random_grad_mean + 1e-8)
+    merge_vs_birth = merge_grad_mean / (birth_grad_mean + 1e-8)
+    
+    # Statistical tests
+    _, p_vs_random = stats.ttest_ind(all_merge_grad, all_random_grad)
+    _, p_vs_birth = stats.ttest_ind(all_merge_grad, all_birth_grad) if all_birth_grad else (0, 1)
+    
+    # Interpretation
+    interps = []
+    
+    if p_vs_random < 0.05 and merge_grad_mean > random_grad_mean:
+        interps.append(f"✓ Merges occur in HIGH-GRADIENT regions: {merge_grad_mean:.1f}% vs random {random_grad_mean:.1f}% (p={p_vs_random:.4f})")
+    else:
+        interps.append(f"No significant gradient enrichment for merges (p={p_vs_random:.4f})")
+    
+    if p_vs_birth < 0.05 and merge_grad_mean > birth_grad_mean:
+        interps.append(f"✓ Merges have HIGHER gradient than births: {merge_grad_mean:.1f}% vs {birth_grad_mean:.1f}% (p={p_vs_birth:.4f})")
+    elif p_vs_birth < 0.05:
+        interps.append(f"Merges have lower gradient than births (p={p_vs_birth:.4f})")
+    else:
+        interps.append(f"Merge and birth gradients similar (p={p_vs_birth:.4f})")
+    
+    # Check if gradient dominates over ρ
+    if merge_grad_mean > merge_rho_mean:
+        interps.append(f"Gradient dominates: ∇ρ={merge_grad_mean:.1f}% > ρ={merge_rho_mean:.1f}%")
+    
+    return MergeTestResult(
+        test_type="merge_vs_gradient",
+        n_runs=request.n_runs,
+        config={
+            "dimension": request.dimension,
+            "size": request.size,
+            "alpha": request.alpha,
+            "steps": request.steps
+        },
+        n_merges=n_merges,
+        n_births=n_births,
+        merge_gradient_mean=merge_grad_mean,
+        merge_gradient_ci_low=ci_low,
+        merge_gradient_ci_high=ci_high,
+        birth_gradient_mean=birth_grad_mean,
+        random_gradient_mean=random_grad_mean,
+        merge_vs_random_enrichment=merge_vs_random,
+        merge_vs_birth_enrichment=merge_vs_birth,
+        merge_vs_random_p=float(p_vs_random),
+        merge_vs_birth_p=float(p_vs_birth),
+        merge_rho_mean=merge_rho_mean,
+        birth_rho_mean=birth_rho_mean,
         interpretation=" | ".join(interps)
     )

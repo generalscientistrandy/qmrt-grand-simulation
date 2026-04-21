@@ -1,0 +1,21 @@
+{
+  "test_name": "Partial Correlation Check - S Independence",
+  "date": "2025-12",
+  "purpose": "Verify S (spatial organization) is independent of ρ (energy density)",
+  "results": {
+    "raw_correlations": {
+      "lifetime_S": 0.834,
+      "lifetime_rho": 0.298,
+      "S_rho": -0.125
+    },
+    "partial_correlations": {
+      "lifetime_S_given_rho": 0.919,
+      "lifetime_S_given_rho_p_value": 0.000000,
+      "lifetime_rho_given_S": 0.733,
+      "lifetime_rho_given_S_p_value": 0.000000
+    },
+    "S_is_independent": true
+  },
+  "interpretation": "S is a DISTINCT organizing variable. Partial correlation r(lifetime,S|ρ) = 0.919 is STRONGER than raw correlation r=0.834. S and ρ are nearly uncorrelated (r=-0.125).",
+  "conclusion": "S captures spatial organization that is independent of energy density. This validates that persistence is driven by structural organization, not just being in high-energy regions."
+}

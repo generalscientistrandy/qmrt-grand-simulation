@@ -1,0 +1,33 @@
+{
+  "test_name": "Merge Activity vs Gradient",
+  "test_type": "merge_vs_gradient",
+  "date": "2025-12",
+  "hypothesis": "Merges occur in high-gradient interaction zones (∇ρ dominates)",
+  "config": {
+    "dimension": "2d",
+    "size": 40,
+    "alpha": 0.5,
+    "steps": 300,
+    "n_runs": 20
+  },
+  "results": {
+    "n_merges": 320,
+    "n_births": 1940,
+    "merge_gradient_mean": 83.3,
+    "merge_gradient_ci_95": [80.7, 85.9],
+    "birth_gradient_mean": 77.6,
+    "random_gradient_mean": 49.3,
+    "merge_vs_random_enrichment": 1.69,
+    "merge_vs_random_p": 0.000000,
+    "merge_vs_birth_enrichment": 1.07,
+    "merge_vs_birth_p": 0.000007,
+    "merge_rho_mean": 74.5,
+    "gradient_dominates": true
+  },
+  "interpretation": {
+    "main_finding": "Merges occur in HIGH-GRADIENT regions (83.3% vs random 49.3%)",
+    "comparison_to_births": "Merges have HIGHER gradient than births (83.3% vs 77.6%)",
+    "mechanism": "Gradient DOMINATES over energy density for merge events"
+  },
+  "conclusion": "Merges are interaction-driven events occurring in high-gradient zones, not random collisions. This completes the emergence chain: Birth (high ρ + ∇ρ) → Persistence (high S) → Interaction (high ∇ρ)"
+}
