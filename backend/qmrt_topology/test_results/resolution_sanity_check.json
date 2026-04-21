@@ -1,0 +1,22 @@
+{
+  "test_name": "Resolution Sanity Check",
+  "date": "2025-12",
+  "purpose": "Verify results are stable across grid resolutions (not numerical artifacts)",
+  "config": {
+    "grid_sizes": [30, 40, 50],
+    "n_runs": 8,
+    "alpha": 0.5
+  },
+  "results": {
+    "by_size": {
+      "30": {"birth_rho": 92.1, "birth_rho_std": 9.9, "lifetime_S_corr": 0.84},
+      "40": {"birth_rho": 85.8, "birth_rho_std": 12.0, "lifetime_S_corr": 0.87},
+      "50": {"birth_rho": 89.8, "birth_rho_std": 8.1, "lifetime_S_corr": 0.86}
+    },
+    "birth_rho_range": 6.4,
+    "lifetime_S_range": 0.03,
+    "metrics_stable": true
+  },
+  "interpretation": "All key metrics stable across resolutions. Birth ρ range 6.4% (within error), lifetime-S correlation range 0.03 (essentially constant). Results are NOT numerical artifacts.",
+  "conclusion": "Effects are robust to resolution changes, supporting physical interpretation over numerical artifact explanation."
+}

@@ -1,0 +1,28 @@
+{
+  "test_name": "Alpha Sweep - Coupling Strength Validation",
+  "date": "2025-12",
+  "purpose": "Test if coupling strength (α) modulates emergence intensity",
+  "config": {
+    "alpha_values": [0.2, 0.4, 0.6, 0.8, 1.0],
+    "n_runs_per_alpha": 8,
+    "dimension": "2d",
+    "size": 40,
+    "steps": 200
+  },
+  "results": {
+    "alpha_points": [
+      {"alpha": 0.2, "birth_rho": 79.0, "merge_gradient": 98.1, "lifetime_S_corr": 0.824},
+      {"alpha": 0.4, "birth_rho": 83.2, "merge_gradient": 98.8, "lifetime_S_corr": 0.834},
+      {"alpha": 0.6, "birth_rho": 85.4, "merge_gradient": 97.5, "lifetime_S_corr": 0.846},
+      {"alpha": 0.8, "birth_rho": 90.4, "merge_gradient": 100.0, "lifetime_S_corr": 0.867},
+      {"alpha": 1.0, "birth_rho": 92.2, "merge_gradient": 82.2, "lifetime_S_corr": 0.862}
+    ],
+    "trends": {
+      "birth_rho": "increasing",
+      "merge_gradient": "non_monotonic",
+      "lifetime_S_corr": "stable"
+    }
+  },
+  "interpretation": "Birth ρ enrichment INCREASES with α (79% → 92%). Lifetime-S correlation remains STABLE (0.82-0.87). Coupling strength modulates emergence intensity.",
+  "conclusion": "Higher coupling strength leads to stronger energy-dependent birth, confirming α controls emergence intensity."
+}

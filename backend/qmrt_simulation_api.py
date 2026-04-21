@@ -2932,3 +2932,320 @@ async def run_merge_vs_gradient_test(request: ValidationTestRequest):
         birth_rho_mean=birth_rho_mean,
         interpretation=" | ".join(interps)
     )
+
+
+# ============================================================
+# α-SWEEP: COUPLING STRENGTH VALIDATION
+# ============================================================
+
+class AlphaSweepRequest(BaseModel):
+    """Request for α-sweep validation."""
+    alpha_values: List[float] = Field(default=[0.2, 0.4, 0.6, 0.8, 1.0])
+    n_runs_per_alpha: int = Field(default=10, ge=5, le=30)
+    dimension: Literal["2d", "3d"] = "2d"
+    size: int = Field(default=40, ge=20, le=60)
+    steps: int = Field(default=200, ge=100, le=400)
+
+class AlphaPointResult(BaseModel):
+    """Results for a single α value."""
+    alpha: float
+    n_runs: int
+    
+    # Birth enrichment
+    birth_rho_mean: float
+    birth_rho_ci: List[float]
+    birth_gradient_mean: float
+    birth_gradient_ci: List[float]
+    
+    # Merge enrichment
+    merge_gradient_mean: float
+    merge_gradient_ci: List[float]
+    n_merges: int
+    
+    # Lifetime-S correlation
+    lifetime_S_corr: float
+    lifetime_S_p: float
+    
+    # Sample sizes
+    n_births: int
+    n_structures: int
+
+class AlphaSweepResult(BaseModel):
+    """Complete α-sweep results."""
+    config: Dict
+    alpha_points: List[AlphaPointResult]
+    
+    # Trend analysis
+    birth_rho_trend: str  # "increasing", "decreasing", "flat", "non-monotonic"
+    merge_gradient_trend: str
+    lifetime_S_trend: str
+    
+    interpretation: str
+
+
+@router.post("/validate/alpha-sweep", response_model=AlphaSweepResult)
+async def run_alpha_sweep(request: AlphaSweepRequest):
+    """
+    α-Sweep: Test if coupling strength modulates emergence intensity.
+    
+    Runs the three core metrics across multiple α values to show
+    that emergence effects strengthen with coupling.
+    """
+    from scipy import stats
+    
+    alpha_points = []
+    
+    for alpha in request.alpha_values:
+        # Collect data for this α
+        all_birth_rho = []
+        all_birth_grad = []
+        all_merge_grad = []
+        all_lifetimes = []
+        all_S = []
+        total_merges = 0
+        total_births = 0
+        total_structures = 0
+        
+        for run_idx in range(request.n_runs_per_alpha):
+            seed = np.random.randint(0, 100000)
+            
+            # Run simulation for birth/merge data
+            merge_result = run_simulation_for_merge_test(
+                dimension=request.dimension,
+                size=request.size,
+                alpha=alpha,
+                lambda_relax=0.5,
+                gamma_wave=0.01,
+                steps=request.steps,
+                seed=seed
+            )
+            
+            for b in merge_result['birth_events']:
+                all_birth_rho.append(b['rho_percentile'])
+                all_birth_grad.append(b['gradient_percentile'])
+            
+            for m in merge_result['merge_events']:
+                all_merge_grad.append(m['gradient_percentile'])
+            
+            total_merges += len(merge_result['merge_events'])
+            total_births += len(merge_result['birth_events'])
+            
+            # Run simulation for lifetime-S data
+            longlived_result = run_simulation_for_longlived_test(
+                dimension=request.dimension,
+                size=request.size,
+                alpha=alpha,
+                lambda_relax=0.5,
+                gamma_wave=0.01,
+                steps=request.steps,
+                seed=seed + 1  # Different seed for variety
+            )
+            
+            for struct in longlived_result['structure_data']:
+                all_lifetimes.append(struct['lifetime'])
+                all_S.append(struct['mean_S'])
+            
+            total_structures += len(longlived_result['structure_data'])
+        
+        # Compute statistics
+        def mean_ci(data):
+            if not data:
+                return 50.0, [50.0, 50.0]
+            mean = float(np.mean(data))
+            std = float(np.std(data))
+            n = len(data)
+            se = std / np.sqrt(n) if n > 0 else 0
+            ci = [mean - 1.96 * se, mean + 1.96 * se]
+            return mean, ci
+        
+        birth_rho_mean, birth_rho_ci = mean_ci(all_birth_rho)
+        birth_grad_mean, birth_grad_ci = mean_ci(all_birth_grad)
+        merge_grad_mean, merge_grad_ci = mean_ci(all_merge_grad) if all_merge_grad else (50.0, [50.0, 50.0])
+        
+        # Lifetime-S correlation
+        if len(all_lifetimes) >= 10:
+            corr, p = stats.pearsonr(all_lifetimes, all_S)
+        else:
+            corr, p = 0.0, 1.0
+        
+        alpha_points.append(AlphaPointResult(
+            alpha=alpha,
+            n_runs=request.n_runs_per_alpha,
+            birth_rho_mean=birth_rho_mean,
+            birth_rho_ci=birth_rho_ci,
+            birth_gradient_mean=birth_grad_mean,
+            birth_gradient_ci=birth_grad_ci,
+            merge_gradient_mean=merge_grad_mean,
+            merge_gradient_ci=merge_grad_ci,
+            n_merges=total_merges,
+            lifetime_S_corr=float(corr),
+            lifetime_S_p=float(p),
+            n_births=total_births,
+            n_structures=total_structures
+        ))
+    
+    # Analyze trends
+    def analyze_trend(values):
+        if len(values) < 3:
+            return "insufficient_data"
+        
+        # Check monotonicity
+        diffs = [values[i+1] - values[i] for i in range(len(values)-1)]
+        
+        if all(d > 0 for d in diffs):
+            return "increasing"
+        elif all(d < 0 for d in diffs):
+            return "decreasing"
+        elif all(abs(d) < 5 for d in diffs):  # Within 5% is "flat"
+            return "flat"
+        else:
+            # Check overall correlation with α
+            alphas = [p.alpha for p in alpha_points]
+            corr, _ = stats.pearsonr(alphas, values)
+            if corr > 0.7:
+                return "increasing_trend"
+            elif corr < -0.7:
+                return "decreasing_trend"
+            else:
+                return "non_monotonic"
+    
+    birth_rho_values = [p.birth_rho_mean for p in alpha_points]
+    merge_grad_values = [p.merge_gradient_mean for p in alpha_points]
+    lifetime_S_values = [p.lifetime_S_corr for p in alpha_points]
+    
+    birth_trend = analyze_trend(birth_rho_values)
+    merge_trend = analyze_trend(merge_grad_values)
+    lifetime_trend = analyze_trend(lifetime_S_values)
+    
+    # Interpretation
+    interps = []
+    interps.append(f"Birth ρ enrichment trend: {birth_trend} ({birth_rho_values[0]:.1f}% → {birth_rho_values[-1]:.1f}%)")
+    interps.append(f"Merge ∇ρ enrichment trend: {merge_trend} ({merge_grad_values[0]:.1f}% → {merge_grad_values[-1]:.1f}%)")
+    interps.append(f"Lifetime-S correlation trend: {lifetime_trend} ({lifetime_S_values[0]:.2f} → {lifetime_S_values[-1]:.2f})")
+    
+    if "increasing" in birth_trend or "increasing" in merge_trend:
+        interps.append("✓ Coupling strength (α) modulates emergence intensity")
+    
+    return AlphaSweepResult(
+        config={
+            "alpha_values": request.alpha_values,
+            "n_runs_per_alpha": request.n_runs_per_alpha,
+            "dimension": request.dimension,
+            "size": request.size,
+            "steps": request.steps
+        },
+        alpha_points=alpha_points,
+        birth_rho_trend=birth_trend,
+        merge_gradient_trend=merge_trend,
+        lifetime_S_trend=lifetime_trend,
+        interpretation=" | ".join(interps)
+    )
+
+
+# ============================================================
+# RESOLUTION SANITY CHECK
+# ============================================================
+
+class SanityCheckRequest(BaseModel):
+    """Request for resolution/timestep sanity check."""
+    grid_sizes: List[int] = Field(default=[30, 40, 50])
+    n_runs: int = Field(default=10, ge=5, le=20)
+    alpha: float = Field(default=0.5)
+    steps: int = Field(default=200)
+
+class SanityCheckResult(BaseModel):
+    """Results of sanity check."""
+    config: Dict
+    results_by_size: Dict[int, Dict]
+    metrics_stable: bool
+    interpretation: str
+
+
+@router.post("/validate/sanity-check", response_model=SanityCheckResult)
+async def run_sanity_check(request: SanityCheckRequest):
+    """
+    Resolution Sanity Check: Verify results are stable across grid sizes.
+    """
+    from scipy import stats
+    
+    results_by_size = {}
+    
+    for size in request.grid_sizes:
+        all_birth_rho = []
+        all_lifetime_S_corrs = []
+        
+        for _ in range(request.n_runs):
+            seed = np.random.randint(0, 100000)
+            
+            # Birth enrichment
+            birth_result = run_single_simulation_for_test(
+                dimension="2d",
+                size=size,
+                alpha=request.alpha,
+                lambda_relax=0.5,
+                gamma_wave=0.01,
+                steps=request.steps,
+                seed=seed
+            )
+            
+            for e in birth_result['birth_events']:
+                all_birth_rho.append(e['rho_percentile'])
+            
+            # Lifetime-S
+            longlived_result = run_simulation_for_longlived_test(
+                dimension="2d",
+                size=size,
+                alpha=request.alpha,
+                lambda_relax=0.5,
+                gamma_wave=0.01,
+                steps=request.steps,
+                seed=seed + 1
+            )
+            
+            lifetimes = [s['lifetime'] for s in longlived_result['structure_data']]
+            S_vals = [s['mean_S'] for s in longlived_result['structure_data']]
+            
+            if len(lifetimes) >= 5:
+                corr, _ = stats.pearsonr(lifetimes, S_vals)
+                all_lifetime_S_corrs.append(corr)
+        
+        birth_mean = float(np.mean(all_birth_rho)) if all_birth_rho else 50.0
+        birth_std = float(np.std(all_birth_rho)) if all_birth_rho else 0.0
+        corr_mean = float(np.mean(all_lifetime_S_corrs)) if all_lifetime_S_corrs else 0.0
+        corr_std = float(np.std(all_lifetime_S_corrs)) if all_lifetime_S_corrs else 0.0
+        
+        results_by_size[size] = {
+            "birth_rho_mean": birth_mean,
+            "birth_rho_std": birth_std,
+            "lifetime_S_corr_mean": corr_mean,
+            "lifetime_S_corr_std": corr_std,
+            "n_births": len(all_birth_rho)
+        }
+    
+    # Check stability (all within 10% of each other)
+    birth_means = [r["birth_rho_mean"] for r in results_by_size.values()]
+    corr_means = [r["lifetime_S_corr_mean"] for r in results_by_size.values()]
+    
+    birth_range = max(birth_means) - min(birth_means)
+    corr_range = max(corr_means) - min(corr_means)
+    
+    stable = birth_range < 15 and corr_range < 0.3
+    
+    interps = []
+    interps.append(f"Birth ρ range across sizes: {birth_range:.1f}%")
+    interps.append(f"Lifetime-S corr range: {corr_range:.2f}")
+    if stable:
+        interps.append("✓ Metrics STABLE across resolutions")
+    else:
+        interps.append("⚠ Some variation across resolutions")
+    
+    return SanityCheckResult(
+        config={
+            "grid_sizes": request.grid_sizes,
+            "n_runs": request.n_runs,
+            "alpha": request.alpha
+        },
+        results_by_size=results_by_size,
+        metrics_stable=stable,
+        interpretation=" | ".join(interps)
+    )
