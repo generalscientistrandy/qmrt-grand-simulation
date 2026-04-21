@@ -1,4 +1,50 @@
-## Current Status: PAPER 2 PHASE 1 — LONG-PATH DYNAMICS COMPLETE
+## Current Status: PAPER 2 — REPRODUCIBILITY & ALPHA SWEEP COMPLETE
+
+**Date: April 2026**
+
+### Latest Achievement: Multi-Seed Reproducibility & α-Sweep Analysis
+
+Completed Phase 1 data collection for Paper 2:
+
+**Key Finding 1: Deterministic System**
+- The QMRT simulation is **fully deterministic** (no stochastic noise)
+- 15 seeds tested at α=0.5, 6000 steps → ALL produced identical results
+- **Reproducibility is guaranteed** by determinism
+
+**Key Finding 2: All α Values Show Transient Regime**
+- α sweep across [0.2, 0.8] → ALL produce **transient** regime at 6000 steps
+- System has NOT converged to traditional steady state
+- But shows **dynamic equilibrium** (birth-death ratio = 0.994)
+
+**Key Finding 3: Strong Correlations with α**
+- Structure count vs α: r = **0.952**
+- S (late) vs α: r = **0.982**
+- I_TS (late) vs α: r = **0.941**
+- Total births vs α: r = **0.944**
+
+**Physical Interpretation:**
+Higher coupling (α) produces:
+- More structures
+- More spatial organization (S)
+- Stronger spacetime coupling (I_TS)
+- More activity (births/deaths)
+
+**Critical Observation:**
+System reaches **population equilibrium** but S keeps declining:
+- Early S: 0.036 → Late S: 0.003 (at α=0.5)
+- Suggests ongoing energy dissipation affecting organization
+
+**Publication-Ready Data Generated:**
+- `/app/backend/qmrt_topology/test_results/paper2/`
+  - `reproducibility_alpha05_6000steps.json`
+  - `alpha_sweep_6000steps.json`
+  - `timeseries_alpha*.json` (7 files, one per α)
+  - `REPRODUCIBILITY_REPORT.md`
+  - `ALPHA_SWEEP_REPORT.md`
+
+---
+
+## Previous Status: PAPER 2 PHASE 1 — LONG-PATH DYNAMICS COMPLETE
 
 **Date: December 2025**
 
