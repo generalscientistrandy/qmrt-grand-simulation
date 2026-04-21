@@ -1,7 +1,10 @@
 import React from 'react';
-import { Atom, Zap, Activity } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Atom, Zap, Activity, Clock } from 'lucide-react';
 
 export const Layout = ({ children }) => {
+  const location = useLocation();
+  
   return (
     <div className="min-h-screen bg-[#050505] grid-background">
       {/* Header */}
@@ -9,18 +12,51 @@ export const Layout = ({ children }) => {
         <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-primary/10 border border-primary/50 rounded-sm flex items-center justify-center glow-primary">
-                <Atom className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold tracking-tight uppercase" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                  QMRT Simulation
-                </h1>
-                <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                  Emergent Spacetime Physics
-                </p>
-              </div>
+              <Link to="/" className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-primary/10 border border-primary/50 rounded-sm flex items-center justify-center glow-primary">
+                  <Atom className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold tracking-tight uppercase" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                    QMRT Simulation
+                  </h1>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                    Emergent Spacetime Physics
+                  </p>
+                </div>
+              </Link>
             </div>
+            
+            {/* Navigation */}
+            <nav className="flex items-center gap-2">
+              <Link 
+                to="/" 
+                className={`px-3 py-1.5 rounded-sm text-xs font-mono uppercase transition-colors ${
+                  location.pathname === '/' 
+                    ? 'bg-primary/20 text-primary border border-primary/50' 
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/20'
+                }`}
+              >
+                <span className="flex items-center gap-1.5">
+                  <Atom className="w-3 h-3" />
+                  Paper 1
+                </span>
+              </Link>
+              <Link 
+                to="/longpath" 
+                className={`px-3 py-1.5 rounded-sm text-xs font-mono uppercase transition-colors ${
+                  location.pathname === '/longpath' 
+                    ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50' 
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/20'
+                }`}
+              >
+                <span className="flex items-center gap-1.5">
+                  <Clock className="w-3 h-3" />
+                  Paper 2
+                </span>
+              </Link>
+            </nav>
+            
             <div className="flex items-center gap-6">
               <div className="hidden md:flex items-center gap-2 text-xs">
                 <Activity className="w-4 h-4 text-green-500" />

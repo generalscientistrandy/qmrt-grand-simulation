@@ -3146,6 +3146,710 @@ async def run_alpha_sweep(request: AlphaSweepRequest):
 # RESOLUTION SANITY CHECK
 # ============================================================
 
+# ============================================================
+# PAPER 2: LONG-PATH DYNAMICS
+# ============================================================
+
+class LongPathConfig(BaseModel):
+    """Configuration for extended long-path dynamics simulation."""
+    dimension: Literal["2d", "3d"] = "2d"
+    size: int = Field(default=50, ge=30, le=80, description="Grid size")
+    alpha: float = Field(default=0.5, ge=0.1, le=0.9, description="Backreaction coupling")
+    lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0, description="Relaxation rate")
+    gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1, description="Wave damping")
+    steps: int = Field(default=3000, ge=500, le=10000, description="Simulation steps (10-20x normal)")
+    sample_interval: int = Field(default=10, ge=5, le=50, description="Measurement interval")
+    seed: Optional[int] = None  # For reproducibility
+
+
+class TimeSeriesPoint(BaseModel):
+    """Single timestep in the long-path time series."""
+    t: float
+    
+    # Structure counts
+    total_structures: int
+    strain_node_count: int
+    cluster_count: int
+    vortex_count: int
+    particle_node_count: int
+    
+    # Event counts (this timestep)
+    births: int
+    deaths: int
+    merges: int
+    splits: int
+    
+    # Lifetime statistics (rolling)
+    mean_lifetime: float
+    max_lifetime: float
+    median_lifetime: float
+    
+    # QMRT metrics
+    S_mean: float
+    I_TS: float
+    
+    # Energy statistics
+    rho_mean: float
+    rho_std: float
+    E_total: float
+
+
+class LongPathAnalysis(BaseModel):
+    """Analysis of long-path dynamics time series."""
+    # Time windows
+    early_window: Tuple[float, float]  # (start, end) in time units
+    late_window: Tuple[float, float]
+    
+    # Steady state detection
+    structure_count_stabilized: bool
+    stabilization_time: Optional[float]  # When it stabilized (if it did)
+    
+    # Rolling statistics (late phase)
+    structure_count_mean: float
+    structure_count_std: float
+    structure_count_cv: float  # Coefficient of variation
+    
+    event_rate_mean: float  # (births + deaths + merges + splits) / time
+    event_rate_std: float
+    
+    # Lifetime distribution analysis
+    lifetime_distribution_type: str  # 'exponential', 'heavy_tail', 'bimodal', 'unknown'
+    lifetime_mean: float
+    lifetime_median: float
+    lifetime_std: float
+    lifetime_max: float
+    
+    # S and I_TS over time
+    S_early_mean: float
+    S_late_mean: float
+    S_trend: str  # 'increasing', 'decreasing', 'stable', 'oscillating'
+    
+    I_TS_early_mean: float
+    I_TS_late_mean: float
+    I_TS_trend: str
+    
+    # Autocorrelation (detect oscillations)
+    structure_count_autocorr_lag1: float
+    structure_count_autocorr_lag5: float
+    structure_count_autocorr_lag10: float
+    event_rate_autocorr_lag1: float
+    
+    # Regime classification
+    regime: str  # 'convergent', 'oscillatory', 'steady_churn', 'transient'
+    regime_confidence: float
+    
+    # Interpretation
+    interpretation: str
+
+
+class LongPathResult(BaseModel):
+    """Complete result of long-path dynamics simulation."""
+    config: Dict
+    duration_seconds: float
+    total_timesteps: int
+    total_time_units: float
+    
+    # Full time series
+    time_series: List[TimeSeriesPoint]
+    
+    # Lifetime data for all structures (for histogram)
+    all_lifetimes: List[float]
+    
+    # Analysis
+    analysis: LongPathAnalysis
+    
+    # Summary statistics
+    total_births: int
+    total_deaths: int
+    total_merges: int
+    total_splits: int
+    final_structure_count: int
+
+
+def compute_autocorrelation(series: List[float], lag: int) -> float:
+    """Compute autocorrelation at a given lag."""
+    if len(series) <= lag + 1:
+        return 0.0
+    
+    n = len(series)
+    mean = np.mean(series)
+    var = np.var(series)
+    
+    if var < 1e-10:
+        return 0.0
+    
+    autocov = np.sum((np.array(series[:-lag]) - mean) * (np.array(series[lag:]) - mean)) / (n - lag)
+    return float(autocov / var)
+
+
+def classify_lifetime_distribution(lifetimes: List[float]) -> str:
+    """Classify the type of lifetime distribution."""
+    if len(lifetimes) < 10:
+        return "insufficient_data"
+    
+    arr = np.array(lifetimes)
+    mean_val = np.mean(arr)
+    median_val = np.median(arr)
+    std_val = np.std(arr)
+    max_val = np.max(arr)
+    
+    # Heavy tail: mean >> median, high max/mean ratio
+    skewness_proxy = (mean_val - median_val) / (std_val + 1e-10)
+    tail_ratio = max_val / (mean_val + 1e-10)
+    
+    if skewness_proxy > 0.5 and tail_ratio > 5:
+        return "heavy_tail"
+    elif abs(skewness_proxy) < 0.3 and tail_ratio < 3:
+        return "exponential"
+    else:
+        # Check for bimodality using histogram
+        hist, _ = np.histogram(arr, bins=10)
+        peaks = 0
+        for i in range(1, len(hist) - 1):
+            if hist[i] > hist[i-1] and hist[i] > hist[i+1]:
+                peaks += 1
+        if peaks >= 2:
+            return "bimodal"
+        return "unknown"
+
+
+def detect_trend(values: List[float], window_size: int = 20) -> str:
+    """Detect trend in a time series: increasing, decreasing, stable, or oscillating."""
+    if len(values) < window_size * 2:
+        return "insufficient_data"
+    
+    arr = np.array(values)
+    
+    # Compare early vs late windows
+    early_mean = np.mean(arr[:window_size])
+    late_mean = np.mean(arr[-window_size:])
+    
+    rel_change = (late_mean - early_mean) / (early_mean + 1e-10)
+    
+    # Check for oscillation via autocorrelation
+    autocorr_lag5 = compute_autocorrelation(values, 5)
+    autocorr_lag10 = compute_autocorrelation(values, 10)
+    
+    # Oscillation if lag5 is negative but lag10 is positive (periodic)
+    if autocorr_lag5 < -0.2 and autocorr_lag10 > 0.1:
+        return "oscillating"
+    
+    if abs(rel_change) < 0.1:
+        return "stable"
+    elif rel_change > 0.1:
+        return "increasing"
+    else:
+        return "decreasing"
+
+
+def classify_regime(
+    structure_cv: float,
+    event_rate_cv: float,
+    structure_autocorr: float,
+    S_trend: str,
+    stabilized: bool
+) -> Tuple[str, float]:
+    """
+    Classify the system behavior regime.
+    
+    Returns: (regime_name, confidence)
+    """
+    scores = {
+        "convergent": 0.0,
+        "oscillatory": 0.0,
+        "steady_churn": 0.0,
+        "transient": 0.0
+    }
+    
+    # Convergent: low CV, stabilized, stable trends
+    if stabilized:
+        scores["convergent"] += 0.3
+    if structure_cv < 0.1:
+        scores["convergent"] += 0.3
+    if S_trend == "stable":
+        scores["convergent"] += 0.2
+    
+    # Oscillatory: high autocorrelation, periodic
+    if abs(structure_autocorr) > 0.5:
+        scores["oscillatory"] += 0.4
+    if structure_cv > 0.15 and structure_cv < 0.5:
+        scores["oscillatory"] += 0.2
+    
+    # Steady churn: moderate CV, low autocorrelation, high event rate
+    if event_rate_cv > 0.2 and structure_cv < 0.3:
+        scores["steady_churn"] += 0.3
+    if abs(structure_autocorr) < 0.2:
+        scores["steady_churn"] += 0.2
+    
+    # Transient: high CV, not stabilized, changing trends
+    if not stabilized:
+        scores["transient"] += 0.3
+    if structure_cv > 0.3:
+        scores["transient"] += 0.2
+    if S_trend in ["increasing", "decreasing"]:
+        scores["transient"] += 0.2
+    
+    # Pick highest scoring regime
+    best_regime = max(scores, key=scores.get)
+    total_score = sum(scores.values())
+    confidence = scores[best_regime] / (total_score + 0.01) if total_score > 0 else 0.5
+    
+    return best_regime, min(1.0, confidence)
+
+
+@router.post("/longpath/run", response_model=LongPathResult)
+async def run_long_path_simulation(config: LongPathConfig):
+    """
+    Paper 2 Phase 1: Long-Path Dynamics Simulation
+    
+    Runs an extended simulation (10-20× normal length) and tracks:
+    - Structure count over time
+    - Event rates (births/deaths/merges/splits)
+    - Lifetime distribution
+    - S and I_TS evolution
+    - Autocorrelation (oscillation detection)
+    
+    Classifies system behavior:
+    - Convergent: reaches steady state
+    - Oscillatory: periodic fluctuations
+    - Steady churn: constant reorganization without convergence
+    - Transient: still evolving
+    """
+    import time as time_module
+    
+    start_time = time_module.time()
+    
+    # Set seed for reproducibility
+    if config.seed is not None:
+        np.random.seed(config.seed)
+    
+    # Create simulator
+    if config.dimension == "2d":
+        sim = QMRTSimulator2D(
+            size=config.size,
+            beta=config.alpha,
+            lambda_relax=config.lambda_relax,
+            gamma_wave=config.gamma_wave,
+        )
+        sim.add_pulse()
+    else:
+        size_3d = min(config.size, 50)
+        sim = QMRTSimulator3D(
+            size=size_3d,
+            beta=config.alpha,
+            lambda_relax=config.lambda_relax,
+            gamma_wave=config.gamma_wave,
+        )
+        sim.add_pulse()
+    
+    # Structure tracker
+    tracker = StructureTracker(dimension=config.dimension, match_threshold=5.0)
+    
+    # Time series storage
+    time_series = []
+    
+    # Track events per interval
+    prev_births = 0
+    prev_deaths = 0
+    prev_merges = 0
+    prev_splits = 0
+    
+    # Run simulation
+    for step in range(config.steps):
+        sim.step()
+        
+        if step % config.sample_interval == 0:
+            t = step * sim.dt
+            
+            # Detect structures
+            structures = sim.detect_all_structures()
+            tracker.process_frame(structures, t)
+            
+            # Current counts
+            strain_count = len(structures['strain_nodes'])
+            cluster_count = len(structures['coherence_clusters'])
+            vortex_count = len(structures['torsion_vortices'])
+            particle_count = len(structures['particle_nodes'])
+            total_count = strain_count + cluster_count + vortex_count + particle_count
+            
+            # Events since last sample
+            births = tracker.births - prev_births
+            deaths = tracker.deaths - prev_deaths
+            merges = tracker.merges - prev_merges
+            splits = tracker.splits - prev_splits
+            
+            prev_births = tracker.births
+            prev_deaths = tracker.deaths
+            prev_merges = tracker.merges
+            prev_splits = tracker.splits
+            
+            # Compute current lifetimes of active structures
+            current_lifetimes = []
+            for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+                for tracked in tracker.active_structures[struct_type].values():
+                    age = t - tracked['birth_time']
+                    if age > 0:
+                        current_lifetimes.append(age)
+            
+            mean_lifetime = float(np.mean(current_lifetimes)) if current_lifetimes else 0.0
+            max_lifetime = float(np.max(current_lifetimes)) if current_lifetimes else 0.0
+            median_lifetime = float(np.median(current_lifetimes)) if current_lifetimes else 0.0
+            
+            # QMRT metrics
+            measurement = sim.measure(t)
+            
+            # Energy stats
+            rho = sim.phi**2 + sim.phi_dot**2
+            rho_mean = float(np.mean(rho))
+            rho_std = float(np.std(rho))
+            
+            time_series.append(TimeSeriesPoint(
+                t=t,
+                total_structures=total_count,
+                strain_node_count=strain_count,
+                cluster_count=cluster_count,
+                vortex_count=vortex_count,
+                particle_node_count=particle_count,
+                births=births,
+                deaths=deaths,
+                merges=merges,
+                splits=splits,
+                mean_lifetime=mean_lifetime,
+                max_lifetime=max_lifetime,
+                median_lifetime=median_lifetime,
+                S_mean=measurement['S_total'],
+                I_TS=measurement['I_TS'],
+                rho_mean=rho_mean,
+                rho_std=rho_std,
+                E_total=measurement['E_total']
+            ))
+    
+    # Finalize tracking
+    final_time = config.steps * sim.dt
+    tracked = tracker.finalize(final_time)
+    
+    # Collect all lifetimes from completed + active structures
+    all_lifetimes = []
+    for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+        for s in getattr(tracked, struct_type):
+            if s.age > 0:
+                all_lifetimes.append(s.age)
+    
+    # ============================================================
+    # ANALYSIS
+    # ============================================================
+    
+    n_points = len(time_series)
+    
+    # Define early and late windows (first 20% vs last 20%)
+    early_end_idx = max(1, int(0.2 * n_points))
+    late_start_idx = max(early_end_idx + 1, int(0.8 * n_points))
+    
+    early_window = (time_series[0].t, time_series[early_end_idx - 1].t)
+    late_window = (time_series[late_start_idx].t, time_series[-1].t)
+    
+    # Extract series for analysis
+    structure_counts = [p.total_structures for p in time_series]
+    event_rates = [p.births + p.deaths + p.merges + p.splits for p in time_series]
+    S_values = [p.S_mean for p in time_series]
+    I_TS_values = [p.I_TS for p in time_series]
+    
+    # Late phase statistics
+    late_structure_counts = structure_counts[late_start_idx:]
+    late_event_rates = event_rates[late_start_idx:]
+    late_S = S_values[late_start_idx:]
+    late_I_TS = I_TS_values[late_start_idx:]
+    
+    # Early phase statistics
+    early_S = S_values[:early_end_idx]
+    early_I_TS = I_TS_values[:early_end_idx]
+    
+    # Structure count stats
+    sc_mean = float(np.mean(late_structure_counts)) if late_structure_counts else 0.0
+    sc_std = float(np.std(late_structure_counts)) if late_structure_counts else 0.0
+    sc_cv = sc_std / (sc_mean + 1e-10)
+    
+    # Event rate stats
+    er_mean = float(np.mean(late_event_rates)) if late_event_rates else 0.0
+    er_std = float(np.std(late_event_rates)) if late_event_rates else 0.0
+    
+    # Steady state detection: check if late phase variance is significantly lower than early
+    if len(structure_counts) > 20:
+        early_variance = np.var(structure_counts[:early_end_idx])
+        late_variance = np.var(late_structure_counts)
+        stabilized = late_variance < early_variance * 0.5 and sc_cv < 0.2
+        
+        # Find stabilization time (when variance drops below threshold)
+        stabilization_time = None
+        if stabilized:
+            window = max(5, n_points // 20)
+            for i in range(window, n_points - window):
+                local_cv = np.std(structure_counts[i:i+window]) / (np.mean(structure_counts[i:i+window]) + 1e-10)
+                if local_cv < 0.15:
+                    stabilization_time = time_series[i].t
+                    break
+    else:
+        stabilized = False
+        stabilization_time = None
+    
+    # Lifetime distribution analysis
+    lifetime_type = classify_lifetime_distribution(all_lifetimes)
+    lt_mean = float(np.mean(all_lifetimes)) if all_lifetimes else 0.0
+    lt_median = float(np.median(all_lifetimes)) if all_lifetimes else 0.0
+    lt_std = float(np.std(all_lifetimes)) if all_lifetimes else 0.0
+    lt_max = float(np.max(all_lifetimes)) if all_lifetimes else 0.0
+    
+    # S and I_TS trends
+    S_trend = detect_trend(S_values)
+    I_TS_trend = detect_trend(I_TS_values)
+    
+    S_early_mean = float(np.mean(early_S)) if early_S else 0.0
+    S_late_mean = float(np.mean(late_S)) if late_S else 0.0
+    I_TS_early_mean = float(np.mean(early_I_TS)) if early_I_TS else 0.0
+    I_TS_late_mean = float(np.mean(late_I_TS)) if late_I_TS else 0.0
+    
+    # Autocorrelation
+    sc_autocorr_1 = compute_autocorrelation(structure_counts, 1)
+    sc_autocorr_5 = compute_autocorrelation(structure_counts, 5)
+    sc_autocorr_10 = compute_autocorrelation(structure_counts, 10)
+    er_autocorr_1 = compute_autocorrelation(event_rates, 1)
+    
+    # Regime classification
+    regime, regime_conf = classify_regime(
+        sc_cv, 
+        er_std / (er_mean + 1e-10),
+        sc_autocorr_5,
+        S_trend,
+        stabilized
+    )
+    
+    # Build interpretation
+    interps = []
+    
+    if regime == "convergent":
+        interps.append(f"System CONVERGES to steady state (CV={sc_cv:.2f})")
+    elif regime == "oscillatory":
+        interps.append(f"System shows OSCILLATORY behavior (autocorr@5={sc_autocorr_5:.2f})")
+    elif regime == "steady_churn":
+        interps.append(f"System in STEADY CHURN (continuous reorganization, event rate≈{er_mean:.1f}/step)")
+    else:
+        interps.append("System still in TRANSIENT phase (not yet converged)")
+    
+    interps.append(f"Lifetime distribution: {lifetime_type} (mean={lt_mean:.2f}, max={lt_max:.2f})")
+    interps.append(f"S trend: {S_trend} ({S_early_mean:.3f} → {S_late_mean:.3f})")
+    interps.append(f"I_TS trend: {I_TS_trend} ({I_TS_early_mean:.3f} → {I_TS_late_mean:.3f})")
+    
+    analysis = LongPathAnalysis(
+        early_window=early_window,
+        late_window=late_window,
+        structure_count_stabilized=stabilized,
+        stabilization_time=stabilization_time,
+        structure_count_mean=sc_mean,
+        structure_count_std=sc_std,
+        structure_count_cv=sc_cv,
+        event_rate_mean=er_mean,
+        event_rate_std=er_std,
+        lifetime_distribution_type=lifetime_type,
+        lifetime_mean=lt_mean,
+        lifetime_median=lt_median,
+        lifetime_std=lt_std,
+        lifetime_max=lt_max,
+        S_early_mean=S_early_mean,
+        S_late_mean=S_late_mean,
+        S_trend=S_trend,
+        I_TS_early_mean=I_TS_early_mean,
+        I_TS_late_mean=I_TS_late_mean,
+        I_TS_trend=I_TS_trend,
+        structure_count_autocorr_lag1=sc_autocorr_1,
+        structure_count_autocorr_lag5=sc_autocorr_5,
+        structure_count_autocorr_lag10=sc_autocorr_10,
+        event_rate_autocorr_lag1=er_autocorr_1,
+        regime=regime,
+        regime_confidence=regime_conf,
+        interpretation=" | ".join(interps)
+    )
+    
+    duration = time_module.time() - start_time
+    
+    return LongPathResult(
+        config=config.model_dump(),
+        duration_seconds=duration,
+        total_timesteps=len(time_series),
+        total_time_units=final_time,
+        time_series=time_series,
+        all_lifetimes=all_lifetimes,
+        analysis=analysis,
+        total_births=tracked.total_births,
+        total_deaths=tracked.total_deaths,
+        total_merges=tracked.total_merges,
+        total_splits=tracked.total_splits,
+        final_structure_count=time_series[-1].total_structures if time_series else 0
+    )
+
+
+# ============================================================
+# MULTI-SEED LONG-PATH RUNS
+# ============================================================
+
+class MultiSeedLongPathRequest(BaseModel):
+    """Request for running long-path simulations with multiple seeds."""
+    dimension: Literal["2d", "3d"] = "2d"
+    size: int = Field(default=50, ge=30, le=80)
+    alpha: float = Field(default=0.5, ge=0.1, le=0.9)
+    lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0)
+    gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1)
+    steps: int = Field(default=3000, ge=500, le=10000)
+    sample_interval: int = Field(default=10, ge=5, le=50)
+    n_seeds: int = Field(default=5, ge=2, le=20)
+    seeds: Optional[List[int]] = None
+
+
+class MultiSeedLongPathResult(BaseModel):
+    """Aggregated result from multiple long-path runs."""
+    config: Dict
+    n_seeds: int
+    total_duration_seconds: float
+    
+    # Per-seed results (summary only, not full time series)
+    per_seed_summaries: List[Dict]
+    
+    # Aggregated regime distribution
+    regime_distribution: Dict[str, int]  # regime -> count
+    dominant_regime: str
+    regime_agreement: float  # Fraction agreeing on dominant
+    
+    # Aggregated statistics (mean ± std across seeds)
+    lifetime_mean_across_seeds: float
+    lifetime_std_across_seeds: float
+    lifetime_distribution_consensus: str
+    
+    structure_count_mean_across_seeds: float
+    structure_count_std_across_seeds: float
+    
+    S_late_mean_across_seeds: float
+    I_TS_late_mean_across_seeds: float
+    
+    # Interpretation
+    interpretation: str
+
+
+@router.post("/longpath/multi-seed", response_model=MultiSeedLongPathResult)
+async def run_multi_seed_long_path(request: MultiSeedLongPathRequest):
+    """
+    Run long-path simulations with multiple seeds to assess reproducibility
+    and consensus on regime classification.
+    """
+    import time as time_module
+    
+    start_time = time_module.time()
+    
+    # Generate seeds if not provided
+    if request.seeds:
+        seeds = request.seeds[:request.n_seeds]
+    else:
+        seeds = [np.random.randint(0, 100000) for _ in range(request.n_seeds)]
+    
+    per_seed_summaries = []
+    regimes = []
+    lifetime_means = []
+    structure_counts = []
+    S_late_values = []
+    I_TS_late_values = []
+    lifetime_types = []
+    
+    for seed in seeds:
+        # Create config for this seed
+        config = LongPathConfig(
+            dimension=request.dimension,
+            size=request.size,
+            alpha=request.alpha,
+            lambda_relax=request.lambda_relax,
+            gamma_wave=request.gamma_wave,
+            steps=request.steps,
+            sample_interval=request.sample_interval,
+            seed=seed
+        )
+        
+        # Run simulation (call the endpoint function directly)
+        result = await run_long_path_simulation(config)
+        
+        # Extract summary
+        summary = {
+            "seed": seed,
+            "regime": result.analysis.regime,
+            "regime_confidence": result.analysis.regime_confidence,
+            "lifetime_mean": result.analysis.lifetime_mean,
+            "lifetime_distribution_type": result.analysis.lifetime_distribution_type,
+            "structure_count_mean": result.analysis.structure_count_mean,
+            "structure_count_cv": result.analysis.structure_count_cv,
+            "S_late_mean": result.analysis.S_late_mean,
+            "I_TS_late_mean": result.analysis.I_TS_late_mean,
+            "total_births": result.total_births,
+            "total_deaths": result.total_deaths
+        }
+        per_seed_summaries.append(summary)
+        
+        regimes.append(result.analysis.regime)
+        lifetime_means.append(result.analysis.lifetime_mean)
+        structure_counts.append(result.analysis.structure_count_mean)
+        S_late_values.append(result.analysis.S_late_mean)
+        I_TS_late_values.append(result.analysis.I_TS_late_mean)
+        lifetime_types.append(result.analysis.lifetime_distribution_type)
+    
+    # Aggregate regime distribution
+    regime_dist = {}
+    for r in regimes:
+        regime_dist[r] = regime_dist.get(r, 0) + 1
+    
+    dominant_regime = max(regime_dist, key=regime_dist.get)
+    regime_agreement = regime_dist[dominant_regime] / len(regimes)
+    
+    # Lifetime distribution consensus
+    type_counts = {}
+    for lt in lifetime_types:
+        type_counts[lt] = type_counts.get(lt, 0) + 1
+    lifetime_consensus = max(type_counts, key=type_counts.get)
+    
+    duration = time_module.time() - start_time
+    
+    # Build interpretation
+    interps = []
+    interps.append(f"Regime consensus: {dominant_regime} ({regime_agreement*100:.0f}% agreement)")
+    interps.append(f"Lifetime type: {lifetime_consensus}")
+    interps.append(f"Structure count: {np.mean(structure_counts):.1f} ± {np.std(structure_counts):.1f}")
+    interps.append(f"S late-phase: {np.mean(S_late_values):.4f} ± {np.std(S_late_values):.4f}")
+    
+    return MultiSeedLongPathResult(
+        config={
+            "dimension": request.dimension,
+            "size": request.size,
+            "alpha": request.alpha,
+            "lambda_relax": request.lambda_relax,
+            "gamma_wave": request.gamma_wave,
+            "steps": request.steps,
+            "n_seeds": request.n_seeds
+        },
+        n_seeds=len(seeds),
+        total_duration_seconds=duration,
+        per_seed_summaries=per_seed_summaries,
+        regime_distribution=regime_dist,
+        dominant_regime=dominant_regime,
+        regime_agreement=regime_agreement,
+        lifetime_mean_across_seeds=float(np.mean(lifetime_means)),
+        lifetime_std_across_seeds=float(np.std(lifetime_means)),
+        lifetime_distribution_consensus=lifetime_consensus,
+        structure_count_mean_across_seeds=float(np.mean(structure_counts)),
+        structure_count_std_across_seeds=float(np.std(structure_counts)),
+        S_late_mean_across_seeds=float(np.mean(S_late_values)),
+        I_TS_late_mean_across_seeds=float(np.mean(I_TS_late_values)),
+        interpretation=" | ".join(interps)
+    )
+
+
+# ============================================================
+# RESOLUTION SANITY CHECK
+# ============================================================
+
 class SanityCheckRequest(BaseModel):
     """Request for resolution/timestep sanity check."""
     grid_sizes: List[int] = Field(default=[30, 40, 50])

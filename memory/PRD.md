@@ -1,4 +1,60 @@
-## Current Status: EVENT DENSITY GRAPH + AGE FILTERS COMPLETE
+## Current Status: PAPER 2 PHASE 1 — LONG-PATH DYNAMICS COMPLETE
+
+**Date: December 2025**
+
+### Latest Achievement: Long-Path Dynamics Simulation System
+
+Implemented Phase 1 of Paper 2 — extended time simulations (10-20× normal length) to analyze temporal behavior before spatial pattern interpretation.
+
+**New Backend Endpoints:**
+- `POST /api/qmrt-sim/longpath/run` — Single long-path simulation with comprehensive analysis
+- `POST /api/qmrt-sim/longpath/multi-seed` — Multi-seed runs for regime consensus
+
+**Per-Timestep Metrics Tracked:**
+- Structure counts (total, by type)
+- Event counts (births, deaths, merges, splits)
+- Lifetime statistics (mean, median, max)
+- QMRT metrics (S, I_TS)
+- Energy statistics (ρ_mean, ρ_std, E_total)
+
+**Analysis Computed:**
+- Rolling averages and variance
+- Autocorrelation at lag 1, 5, 10 (oscillation detection)
+- Lifetime distribution classification (exponential, heavy_tail, bimodal, unknown)
+- Trend detection (increasing, decreasing, stable, oscillating)
+- Steady state detection with stabilization time
+
+**Regime Classification:**
+- **Convergent**: Reaches steady state (low CV, stabilized)
+- **Oscillatory**: Periodic fluctuations (high autocorrelation)
+- **Steady Churn**: Continuous reorganization without convergence
+- **Transient**: Still evolving (high CV, not stabilized)
+
+**Frontend (LongPathDynamics.jsx):**
+- Configuration panel (dimension, grid size, α, steps, sample interval, seeds)
+- Single Run / Multi-Seed mode toggle
+- Analysis Summary cards (regime, stabilized, structure count, lifetime type, S/I_TS trends)
+- 4 Core Plots:
+  1. Structure Count vs Time (area chart)
+  2. Event Rates vs Time (bar + line chart)
+  3. S and I_TS vs Time (line chart)
+  4. Lifetime Evolution (area chart)
+- Lifetime Distribution Histogram
+- Multi-seed results table with per-seed breakdown
+
+**Navigation:**
+- Paper 1 / Paper 2 tabs in header
+- Route: `/longpath` for Long-Path Dynamics
+
+**Core Questions Addressable:**
+1. Does structure count stabilize or keep cycling?
+2. Heavy-tail vs exponential lifetime distribution?
+3. Do event rates decay, plateau, or oscillate?
+4. Does S and I_TS organization increase over time?
+
+---
+
+## Previous Status: EVENT DENSITY GRAPH + AGE FILTERS COMPLETE
 
 **Date: December 2025**
 
