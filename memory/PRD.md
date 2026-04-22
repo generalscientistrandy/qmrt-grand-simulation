@@ -1,42 +1,42 @@
-## Current Status: PAPER 3 — FINALIZED
+## Current Status: THEORY BOUNDARIES ESTABLISHED
 
 **Date: April 2026**
 
-### Paper 3: "Localization of Organization via Coupling Asymmetry"
+### Two Branches Fully Characterized
 
-**Core Claim:**
-> Spatial asymmetry in coupling strength β localizes organization (S contrast up to 32×) while energy remains uniform. Multiple biased regions show no interaction—they are parameter-induced organization wells, not particles.
+| Branch | Field | Localization | Interaction | Topology |
+|--------|-------|--------------|-------------|----------|
+| **A** (Real scalar) | φ ∈ ℝ | ✓ (14-32×) | ✗ | ✗ |
+| **B** (Complex scalar) | ψ ∈ ℂ | ✗ | ✓ | ✓ |
 
-**Key Results:**
-| Method | S Contrast | ρ Contrast | Interaction |
-|--------|------------|------------|-------------|
-| External driving | 1.4× | ~1× | N/A |
-| β asymmetry (single) | 14-32× | ~1× | N/A |
-| β asymmetry (multiple) | 14× each | ~1× | **None** |
+### Key Finding
+**Localization and interaction are separable mechanisms.**
+- β-asymmetry localizes organization (Branch A)
+- Vortices provide interaction (Branch B)
+- But β does NOT control vortices
 
-**Threshold:** β contrast ≥ 1.33× (linear scaling above)
+### Theoretical Boundary
+> "Neither Branch A nor Branch B alone yields matter-like behavior. Matter-like behavior requires a mechanism that couples topological defects to spatially localized organization."
 
-**What the model CAN do:**
-- ✓ Localize organization persistently
-- ✓ Decouple energy from organization
-- ✓ Create regional differentiation
+### Papers Complete
+| Paper | Topic | Status |
+|-------|-------|--------|
+| Paper 1 | Formation statistics | ✓ Complete |
+| Paper 2 | Energy sustains organization | ✓ Complete |
+| Paper 3 | β localizes S (no interaction) | ✓ Complete |
 
-**What the model CANNOT do:**
-- ✗ Produce interaction between regions
-- ✗ Create conservation-like behavior
-- ✗ Support particle dynamics
+### Files
+- `/THEORY_BOUNDARIES.md` — Complete summary
+- `/BRANCH_A_COMPLETE.md` — Real scalar closure
+- `/phase5/BRANCH_B_RESULTS.md` — Complex scalar results
+- `/paper3/PAPER3_final.md` — Localization paper
 
-**Files:**
-- `/paper3/PAPER3_final.md` — Complete finalized paper
-- `/phase4/THRESHOLD_ANALYSIS.md` — Quantitative threshold study
-- `/phase4/MULTISPOT_INTERACTION.md` — Multi-spot independence proof
-- `/combined/OVERVIEW.md` — Updated 3-paper summary
-
-**Next Branch:** Vortex/topological test (do vortices provide the missing interaction?)
+### Next Branch (If Desired)
+**Branch C**: Explicit vortex-β coupling to test if localization and interaction can be unified.
 
 ---
 
-## Previous Status: PAPER 3 — REVISED DRAFT COMPLETE (Major Upgrade)
+## Previous Status: PAPER 3 — FINALIZED
 
 **Date: April 2026**
 
