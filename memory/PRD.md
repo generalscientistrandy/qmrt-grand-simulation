@@ -1,4 +1,44 @@
-## Current Status: PAPER 2 — DRAFT COMPLETE
+## Current Status: PAPER 2 — FINAL POLISH COMPLETE & PACKAGED
+
+**Date: April 2026**
+
+### Latest Achievement: Paper 2 Finalized and Packaged with Paper 1
+
+**Paper 2 Final Polish:**
+- Abstract tightened to ~130 words
+- Definitions box added (S, I_TS, Activity, Power)
+- Reproducibility section (grid size, timestep, determinism)
+- Limitations section explicit
+- Conclusion: 2 crisp takeaways + implication
+
+**Polished Figures:**
+- `fig1_S_decay_final.png` — S(t) with late-time window shaded, "S → 0" annotation
+- `fig3_activity_vs_S_final.png` — Clear separation labels, "Activity ≠ Organization" box
+- `fig5_power_vs_S_final.png` — Error bars, fit with CI: S ∝ P^(0.15 ± 0.03)
+
+**Package Structure:**
+```
+/paper1/
+  PAPER1_draft.md
+  VALIDATION_REPORT.md
+  figures/
+
+/paper2/
+  PAPER2_final.md
+  ROBUSTNESS_CONTROLS_REPORT.md
+  figures/
+
+/combined/
+  OVERVIEW.md (connection diagram, summary)
+```
+
+**Core Claims (Final):**
+- Paper 1: "Structure formation follows statistical laws"
+- Paper 2: "Organization requires sustained energy input; activity ≠ organization"
+
+---
+
+## Previous Status: PAPER 2 — DRAFT COMPLETE
 
 **Date: April 2026**
 
