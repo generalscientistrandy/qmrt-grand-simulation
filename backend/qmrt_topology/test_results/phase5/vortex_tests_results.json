@@ -1,0 +1,46 @@
+{
+  "pinning": {
+    "biased": {
+      "mean_count_inside": 0.0,
+      "mean_count_outside": 0.0,
+      "density_inside": 0.0,
+      "density_outside": 0.0,
+      "density_ratio": 0.0,
+      "mean_lifetime_inside": 0,
+      "mean_lifetime_outside": 0,
+      "lifetime_ratio": 0.0,
+      "n_lifetimes_inside": 0,
+      "n_lifetimes_outside": 0
+    },
+    "uniform": {
+      "mean_count_inside": 0.0,
+      "mean_count_outside": 0.0,
+      "density_inside": 0.0,
+      "density_outside": 0.0,
+      "density_ratio": 0.0,
+      "mean_lifetime_inside": 0,
+      "mean_lifetime_outside": 0,
+      "lifetime_ratio": 0.0,
+      "n_lifetimes_inside": 0,
+      "n_lifetimes_outside": 0
+    }
+  },
+  "mobility": {
+    "with_gradient": {
+      "n_tracked": 0,
+      "error": "insufficient_data"
+    },
+    "no_gradient": {
+      "n_tracked": 0,
+      "error": "insufficient_data"
+    }
+  },
+  "interaction": {
+    "same": {
+      "error": "no_valid_data"
+    },
+    "opposite": {
+      "error": "no_valid_data"
+    }
+  }
+}

@@ -4784,6 +4784,56 @@ class BiasedMediumSimulator2D:
             'grad_inside': float(np.mean(grad_c[inside])) if np.sum(inside) > 0 else 0,
             'grad_outside': float(np.mean(grad_c[outside])) if np.sum(outside) > 0 else 0,
         }
+    
+    def detect_torsion_vortices(self, vortex_threshold: float = 0.03) -> List[Dict]:
+        """
+        Detect vortex structures using vorticity (curl of velocity-like field).
+        """
+        vortices = []
+        
+        # Compute vorticity: use phi_dot gradient as velocity proxy
+        vx = np.roll(self.phi_dot, -1, axis=0) - np.roll(self.phi_dot, 1, axis=0)
+        vy = np.roll(self.phi_dot, -1, axis=1) - np.roll(self.phi_dot, 1, axis=1)
+        
+        # Curl in 2D: ω = ∂v_y/∂x - ∂v_x/∂y
+        dvx_dy = np.roll(vx, -1, axis=1) - np.roll(vx, 1, axis=1)
+        dvy_dx = np.roll(vy, -1, axis=0) - np.roll(vy, 1, axis=0)
+        vorticity = dvy_dx - dvx_dy
+        vorticity_mag = np.abs(vorticity)
+        
+        # Find local maxima above threshold
+        for i in range(2, self.size - 2):
+            for j in range(2, self.size - 2):
+                strength = vorticity_mag[i, j]
+                
+                if strength > vortex_threshold:
+                    local_region = vorticity_mag[i-1:i+2, j-1:j+2]
+                    if strength >= np.max(local_region):
+                        chirality = 1 if vorticity[i, j] > 0 else -1
+                        
+                        # Estimate radius
+                        radius = 2.0  # Default
+                        for r in range(1, min(10, self.size // 4)):
+                            samples = []
+                            for di in [-r, 0, r]:
+                                for dj in [-r, 0, r]:
+                                    if di == dj == 0:
+                                        continue
+                                    ni, nj = i + di, j + dj
+                                    if 0 <= ni < self.size and 0 <= nj < self.size:
+                                        samples.append(vorticity_mag[ni, nj])
+                            if samples and np.mean(samples) < strength * 0.5:
+                                radius = float(r)
+                                break
+                        
+                        vortices.append({
+                            'position': [i, j],
+                            'strength': float(strength),
+                            'radius': float(radius),
+                            'chirality': int(chirality)
+                        })
+        
+        return vortices
 
 
 class BiasedMediumConfig(BaseModel):
