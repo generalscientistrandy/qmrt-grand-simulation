@@ -1,8 +1,8 @@
 # QMRT Papers: Overview
 
-## Two-Paper Arc
+## Three-Paper Arc
 
-This package contains two complementary papers investigating emergent structure in a dynamical medium model (QMRT).
+This package contains three complementary papers investigating emergent structure in a dynamical medium model (QMRT).
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -28,6 +28,20 @@ This package contains two complementary papers investigating emergent structure 
 │  • Periodic ≈ Random: energy magnitude dominates               │
 │  • S_late ∝ P^0.15                                              │
 └─────────────────────────────────────────────────────────────────┘
+                              │
+                              │ Organization requires driving, but...
+                              │ what is its spatial structure?
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                         PAPER 3                                 │
+│          "Spatial Coherence and Constraints"                    │
+│                                                                 │
+│  • Driving creates 70× gradient magnitude                       │
+│  • Driving creates 135× directional coherence                   │
+│  • Cluster morphology UNCHANGED (AR ~ 2-3)                      │
+│  • Localized driving FAILS (waves spread energy)               │
+│  • Theoretical constraint: no matter-like localization         │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -40,18 +54,22 @@ This package contains two complementary papers investigating emergent structure 
 ### Paper 2
 > Structure maintenance requires sustained energy input. Activity ≠ Organization: event rates persist while spatial coherence decays without driving.
 
+### Paper 3
+> Driving creates gradient coherence (70× magnitude, 135× alignment) without morphological elongation. Linear wave dynamics cannot localize energy—matter-like structures require nonlinear or topological mechanisms.
+
 ---
 
 ## Connection
 
-| Question | Paper 1 | Paper 2 |
-|----------|---------|---------|
-| What causes births? | ρ peaks | — |
-| What determines persistence? | S level | — |
-| What causes merges? | ∇ρ gradients | — |
-| Does organization persist? | — | No (decays to 0) |
-| What sustains organization? | — | Energy input |
-| Does activity = organization? | — | No (separation) |
+| Question | Paper 1 | Paper 2 | Paper 3 |
+|----------|---------|---------|---------|
+| What causes births? | ρ peaks | — | — |
+| What determines persistence? | S level | — | — |
+| What causes merges? | ∇ρ gradients | — | — |
+| Does organization persist? | — | No (decays to 0) | — |
+| What sustains organization? | — | Energy input | — |
+| What is the spatial structure? | — | — | Aligned blobs, not filaments |
+| Can organization be localized? | — | — | No (waves spread) |
 
 ---
 
@@ -71,6 +89,14 @@ This package contains two complementary papers investigating emergent structure 
 | Driven | 0.002 | 0.80 |
 | Periodic vs Random | 0.97 ratio | — |
 
+### Paper 3 Spatial Structure
+| Metric | Undriven | Driven | Ratio |
+|--------|----------|--------|-------|
+| Gradient magnitude | 1.2 | 84.0 | **70×** |
+| Directional coherence | 0.001 | 0.186 | **135×** |
+| Cluster aspect ratio | 2.2 | 2.3 | ~1× |
+| Localization contrast | — | 1.4× | **Fails** |
+
 ---
 
 ## Implications
@@ -79,6 +105,19 @@ This package contains two complementary papers investigating emergent structure 
 2. **Activity does not imply organization** — these decouple
 3. **Energy magnitude governs maintenance** (not temporal pattern)
 4. **Organization is non-conserved** — requires throughput
+5. **Driving creates coherence, not morphology** — gradients align, shapes don't elongate
+6. **Localization is not supported** — wave propagation spreads energy
+
+---
+
+## Theoretical Constraint (Paper 3)
+
+> **Linear wave propagation + relaxation dynamics cannot produce matter-like localized structures.**
+
+For localization, future models require:
+- Topological defects (vortex cores as "matter")
+- Nonlinear self-interaction (solitons via φ⁴ terms)
+- Modified dispersion (non-propagating modes)
 
 ---
 
@@ -89,24 +128,23 @@ This package contains two complementary papers investigating emergent structure 
   PAPER1_draft.md
   VALIDATION_REPORT.md
   figures/
-    fig1_birth_histogram.png
-    fig2_lifetime_S.png
-    ...
   data/
-    *.json
 
 /paper2/
   PAPER2_final.md
   figures/
-    fig1_S_decay.png
-    fig2_ITS_decay.png
-    fig3_activity_vs_S.png
-    fig4_energy_matched.png
-    fig5_power_vs_S.png
   data/
-    robustness_controls.json
-    structural_decay_analysis.json
-    ...
+
+/paper3/
+  PAPER3_draft.md
+  LOCALIZED_DRIVING_REPORT.md
+  data/
+    extended_cluster_analysis.json
+    localized_driving_result.json
+
+/phase2/
+  EXTENDED_ANALYSIS_REPORT.md (directional coherence findings)
+  CLUSTER_ANALYSIS_REPORT.md
 
 /combined/
   OVERVIEW.md (this file)
@@ -114,22 +152,18 @@ This package contains two complementary papers investigating emergent structure 
 
 ---
 
-## Next Steps (Phase 2)
+## Next Steps: Topological Approach
 
-With temporal dynamics established, the next phase addresses spatial patterns:
+With the current model's constraints established, the next theory branch investigates:
 
-1. **Cluster metrics** (no labels yet):
-   - Cluster persistence time
-   - Cluster size distribution
-   - Spatial correlation anisotropy
+**"Matter as Topological Defects"**
 
-2. **Driven vs undriven comparison**:
-   - Do clusters only persist under driving?
-   - Does cluster size scale with power?
+Instead of "matter = localized energy", explore "matter = vortex cores":
+- Vortices are already detected in the model
+- They have chirality, stability scores
+- They may provide natural localization via topology
 
-3. **Filament-like behavior** (if metrics support):
-   - Based on anisotropy + connectivity
-   - Not visual interpretation
+This approach is motivated by the Paper 3 finding that simple localization fails.
 
 ---
 
@@ -154,7 +188,20 @@ With temporal dynamics established, the next phase addresses spatial patterns:
 │  Energy input sustains structure                            │
 └─────────────────────────────────────────────────────────────┘
 
-                    S_late ∝ P^0.15
+           PAPER 3: What is the spatial structure?
+
+┌─────────────────────────────────────────────────────────────┐
+│                  DRIVEN SPATIAL STRUCTURE                   │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Gradient magnitude: ████████████████████  (70×)     │   │
+│  │ Directional coherence: █████████████████  (135×)    │   │
+│  │ Morphology (AR): ██░░░░░░░░░░░░░░░░░░░░  (~1×)      │   │
+│  │ Localization: ░░░░░░░░░░░░░░░░░░░░░░░░  (FAILS)    │   │
+│  └─────────────────────────────────────────────────────┘   │
+│  Aligned blobs, not filaments. Waves spread, can't localize │
+└─────────────────────────────────────────────────────────────┘
+
+              S_late ∝ P^0.15 | Coherence = 0.19
 ```
 
 ---

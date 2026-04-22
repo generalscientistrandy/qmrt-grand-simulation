@@ -1,4 +1,47 @@
-## Current Status: PHASE 2 — CLUSTER METRICS ANALYSIS COMPLETE
+## Current Status: PAPER 3 — DRAFT COMPLETE
+
+**Date: April 2026**
+
+### Latest Achievement: Paper 3 Drafted with Two Key Results
+
+**Positive Result: Directional Coherence Discovery**
+| Metric | Undriven | Driven | Ratio |
+|--------|----------|--------|-------|
+| Gradient magnitude | 1.2 | 84.0 | **70×** |
+| Directional coherence | 0.001 | 0.186 | **135×** |
+| Cluster aspect ratio | 2.2 | 2.3 | ~1× |
+
+Driving creates strong, aligned gradient structures ("aligned blobs") without morphological elongation.
+
+**Negative Result: Localization Constraint**
+Localized driving experiment failed to produce matter-like structures:
+- Initial S contrast: 36×
+- Late S contrast: ~1.4× (organization spreads)
+- Even with D_medium=0, localization fails
+- **Cause**: Wave equation naturally propagates energy outward
+
+**Theoretical Constraint:**
+> Linear wave propagation + relaxation dynamics cannot produce matter-like localized structures.
+
+**Paper 3 Structure:**
+1. Gradient magnitude enhancement (70×)
+2. Directional coherence (135×)  
+3. Morphology unchanged (AR ~2-3)
+4. Localization experiment and failure
+5. Theoretical constraint for future work
+
+**Files:**
+- `/paper3/PAPER3_draft.md`
+- `/phase3/LOCALIZED_DRIVING_REPORT.md`
+- `/combined/OVERVIEW.md` (updated with 3-paper arc)
+
+**Next Steps:**
+1. Polish Paper 3 figures
+2. Topological approach: "matter = vortex cores" (future work)
+
+---
+
+## Previous Status: PHASE 2 — CLUSTER METRICS ANALYSIS COMPLETE
 
 **Date: April 2026**
 
