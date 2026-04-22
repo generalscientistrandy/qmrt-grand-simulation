@@ -1,47 +1,44 @@
-## Current Status: PAPER 3 — DRAFT COMPLETE
+## Current Status: PAPER 3 — REVISED DRAFT COMPLETE (Major Upgrade)
 
 **Date: April 2026**
 
-### Latest Achievement: Paper 3 Drafted with Two Key Results
+### Latest Achievement: Paper 3 Reframed with Biased Medium Discovery
 
-**Positive Result: Directional Coherence Discovery**
-| Metric | Undriven | Driven | Ratio |
-|--------|----------|--------|-------|
-| Gradient magnitude | 1.2 | 84.0 | **70×** |
-| Directional coherence | 0.001 | 0.186 | **135×** |
-| Cluster aspect ratio | 2.2 | 2.3 | ~1× |
+**OLD Paper 3**: "Coherence without localization" (negative result)
+**NEW Paper 3**: "Localization through embedded asymmetry" (positive result)
 
-Driving creates strong, aligned gradient structures ("aligned blobs") without morphological elongation.
+**Core Finding:**
+| Method | S Contrast | Works? |
+|--------|------------|--------|
+| Localized external driving | 1.4× | NO |
+| **Biased medium (β asymmetry)** | **14-32×** | **YES** |
 
-**Negative Result: Localization Constraint**
-Localized driving experiment failed to produce matter-like structures:
-- Initial S contrast: 36×
-- Late S contrast: ~1.4× (organization spreads)
-- Even with D_medium=0, localization fails
-- **Cause**: Wave equation naturally propagates energy outward
+**Key Physics:**
+- Energy spreads uniformly (waves propagate) → ρ contrast ~1.0×
+- Organization concentrates where β is higher → S contrast up to 32×
+- **Energy and organization decouple**
 
-**Theoretical Constraint:**
-> Linear wave propagation + relaxation dynamics cannot produce matter-like localized structures.
+**Threshold Analysis:**
+- Controlling parameter: **β (backreaction coupling)**
+- Threshold: β contrast ≥ **1.33×** (33% stronger coupling inside)
+- Scaling: **Linear** (no phase transition): S ≈ 2 + 4×(β_contrast - 1)
+- γ and λ alone have negligible effect
 
-**Paper 3 Structure:**
-1. Gradient magnitude enhancement (70×)
-2. Directional coherence (135×)  
-3. Morphology unchanged (AR ~2-3)
-4. Localization experiment and failure
-5. Theoretical constraint for future work
+**Matter Interpretation:**
+> "Matter = region where organization concentrates due to stronger β, not where energy is trapped"
 
 **Files:**
-- `/paper3/PAPER3_draft.md`
-- `/phase3/LOCALIZED_DRIVING_REPORT.md`
-- `/combined/OVERVIEW.md` (updated with 3-paper arc)
+- `/paper3/PAPER3_revised_draft.md` — New draft
+- `/phase4/THRESHOLD_ANALYSIS.md` — Quantitative threshold study
+- `/phase4/BIASED_MEDIUM_REPORT.md` — Initial discovery
 
 **Next Steps:**
-1. Polish Paper 3 figures
-2. Topological approach: "matter = vortex cores" (future work)
+1. Test multiple biased spots (interaction?)
+2. Connect to vortices (do they form in biased regions?)
 
 ---
 
-## Previous Status: PHASE 2 — CLUSTER METRICS ANALYSIS COMPLETE
+## Previous Status: PAPER 3 — DRAFT COMPLETE
 
 **Date: April 2026**
 
