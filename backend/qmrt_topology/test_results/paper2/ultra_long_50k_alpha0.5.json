@@ -1,0 +1,35 @@
+{
+  "config": {
+    "alpha": 0.5,
+    "steps": 50000
+  },
+  "duration": 16.416829824447632,
+  "timestamp": "2026-04-22T01:07:32.662844",
+  "analysis": {
+    "alpha": 0.5,
+    "n_samples": 1000,
+    "total_time": 1998.0,
+    "s_fit": {
+      "V0": 0.09414895403252001,
+      "V_floor": 0.0004949167724601865,
+      "tau": 58.2337531765612,
+      "half_life": 40.36456182775716,
+      "r2": 0.866180728092216
+    },
+    "floor_stability": {
+      "q3_to_q4_change_pct": 91.89699863142266,
+      "status": "STILL DECAYING (> 15% change)"
+    },
+    "scale_separation": {
+      "S_retention_pct": 0.3051301127261997,
+      "I_TS_retention_pct": 86.49496327288556,
+      "interpretation": "SCALE SEPARATION: Fine structure (S) degrades, coarse coupling (I_TS) survives"
+    },
+    "late_time_stats": {
+      "S_mean": 2.0093905397900427e-06,
+      "S_std": 1.3947295590579728e-06,
+      "I_TS_mean": 0.8649137847885535,
+      "I_TS_std": 0.08086208637683287
+    }
+  }
+}

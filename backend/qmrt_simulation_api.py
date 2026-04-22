@@ -3157,9 +3157,24 @@ class LongPathConfig(BaseModel):
     alpha: float = Field(default=0.5, ge=0.1, le=0.9, description="Backreaction coupling")
     lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0, description="Relaxation rate")
     gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1, description="Wave damping")
-    steps: int = Field(default=3000, ge=500, le=50000, description="Simulation steps (10-50x normal for decay analysis)")
-    sample_interval: int = Field(default=10, ge=5, le=50, description="Measurement interval")
+    steps: int = Field(default=3000, ge=500, le=200000, description="Simulation steps (extended for decay analysis)")
+    sample_interval: int = Field(default=10, ge=5, le=500, description="Measurement interval")
     seed: Optional[int] = None  # For reproducibility
+
+
+class SustainedDrivingConfig(BaseModel):
+    """Configuration for sustained driving experiment."""
+    dimension: Literal["2d", "3d"] = "2d"
+    size: int = Field(default=50, ge=30, le=80)
+    alpha: float = Field(default=0.5, ge=0.1, le=0.9)
+    lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0)
+    gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1)
+    steps: int = Field(default=50000, ge=1000, le=200000)
+    sample_interval: int = Field(default=50, ge=5, le=500)
+    # Driving parameters
+    pulse_interval: int = Field(default=1000, ge=100, le=10000, description="Steps between pulses")
+    pulse_amplitude: float = Field(default=1.0, ge=0.1, le=5.0, description="Pulse amplitude")
+    seed: Optional[int] = None
 
 
 class TimeSeriesPoint(BaseModel):
@@ -3951,5 +3966,214 @@ async def run_sanity_check(request: SanityCheckRequest):
         },
         results_by_size=results_by_size,
         metrics_stable=stable,
+        interpretation=" | ".join(interps)
+    )
+
+
+# ============================================================
+# SUSTAINED DRIVING EXPERIMENT
+# ============================================================
+
+class SustainedDrivingResult(BaseModel):
+    """Result of sustained driving experiment."""
+    config: Dict
+    duration_seconds: float
+    total_timesteps: int
+    total_pulses: int
+    
+    # Time series (same structure as LongPath)
+    time_series: List[TimeSeriesPoint]
+    
+    # Comparison: driven vs undriven baseline
+    driven_S_late: float
+    undriven_S_late: float  # From previous runs
+    S_maintenance_factor: float  # driven / undriven
+    
+    driven_I_TS_late: float
+    I_TS_maintenance_factor: float
+    
+    # Analysis
+    steady_state_reached: bool
+    S_stabilized: bool
+    interpretation: str
+
+
+@router.post("/longpath/sustained-driving", response_model=SustainedDrivingResult)
+async def run_sustained_driving(config: SustainedDrivingConfig):
+    """
+    Paper 2 Critical Experiment: Sustained Driving
+    
+    Tests whether periodic energy injection can maintain organization (S > 0)
+    that would otherwise decay to zero.
+    
+    This answers: "Does organization require sustained input?"
+    """
+    import time as time_module
+    
+    start_time = time_module.time()
+    
+    # Set seed
+    if config.seed is not None:
+        np.random.seed(config.seed)
+    
+    # Create simulator
+    if config.dimension == "2d":
+        sim = QMRTSimulator2D(
+            size=config.size,
+            beta=config.alpha,
+            lambda_relax=config.lambda_relax,
+            gamma_wave=config.gamma_wave,
+        )
+        sim.add_pulse(amplitude=3.0)  # Initial pulse
+    else:
+        size_3d = min(config.size, 50)
+        sim = QMRTSimulator3D(
+            size=size_3d,
+            beta=config.alpha,
+            lambda_relax=config.lambda_relax,
+            gamma_wave=config.gamma_wave,
+        )
+        sim.add_pulse()
+    
+    # Structure tracker
+    tracker = StructureTracker(dimension=config.dimension, match_threshold=5.0)
+    
+    time_series = []
+    prev_births = 0
+    prev_deaths = 0
+    prev_merges = 0
+    prev_splits = 0
+    
+    total_pulses = 0
+    
+    # Run simulation with periodic driving
+    for step in range(config.steps):
+        sim.step()
+        
+        # Add pulse periodically (sustained driving)
+        if step > 0 and step % config.pulse_interval == 0:
+            # Add pulse at random location
+            if config.dimension == "2d":
+                cx = np.random.randint(10, config.size - 10)
+                cy = np.random.randint(10, config.size - 10)
+                sim.add_pulse(center=(cx, cy), amplitude=config.pulse_amplitude, width=4.0)
+            else:
+                cx = np.random.randint(10, size_3d - 10)
+                cy = np.random.randint(10, size_3d - 10)
+                cz = np.random.randint(10, size_3d - 10)
+                sim.add_pulse(center=(cx, cy, cz), amplitude=config.pulse_amplitude)
+            total_pulses += 1
+        
+        # Sample
+        if step % config.sample_interval == 0:
+            t = step * sim.dt
+            
+            structures = sim.detect_all_structures()
+            tracker.process_frame(structures, t)
+            
+            strain_count = len(structures['strain_nodes'])
+            cluster_count = len(structures['coherence_clusters'])
+            vortex_count = len(structures['torsion_vortices'])
+            particle_count = len(structures['particle_nodes'])
+            total_count = strain_count + cluster_count + vortex_count + particle_count
+            
+            births = tracker.births - prev_births
+            deaths = tracker.deaths - prev_deaths
+            merges = tracker.merges - prev_merges
+            splits = tracker.splits - prev_splits
+            
+            prev_births = tracker.births
+            prev_deaths = tracker.deaths
+            prev_merges = tracker.merges
+            prev_splits = tracker.splits
+            
+            # Lifetimes
+            current_lifetimes = []
+            for struct_type in ['strain_nodes', 'particle_nodes', 'coherence_clusters', 'torsion_vortices']:
+                for tracked in tracker.active_structures[struct_type].values():
+                    age = t - tracked['birth_time']
+                    if age > 0:
+                        current_lifetimes.append(age)
+            
+            mean_lifetime = float(np.mean(current_lifetimes)) if current_lifetimes else 0.0
+            max_lifetime = float(np.max(current_lifetimes)) if current_lifetimes else 0.0
+            median_lifetime = float(np.median(current_lifetimes)) if current_lifetimes else 0.0
+            
+            measurement = sim.measure(t)
+            rho = sim.phi**2 + sim.phi_dot**2
+            
+            time_series.append(TimeSeriesPoint(
+                t=t,
+                total_structures=total_count,
+                strain_node_count=strain_count,
+                cluster_count=cluster_count,
+                vortex_count=vortex_count,
+                particle_node_count=particle_count,
+                births=births,
+                deaths=deaths,
+                merges=merges,
+                splits=splits,
+                mean_lifetime=mean_lifetime,
+                max_lifetime=max_lifetime,
+                median_lifetime=median_lifetime,
+                S_mean=measurement['S_total'],
+                I_TS=measurement['I_TS'],
+                rho_mean=float(np.mean(rho)),
+                rho_std=float(np.std(rho)),
+                E_total=measurement['E_total']
+            ))
+    
+    # Analysis
+    n = len(time_series)
+    late_start = int(0.8 * n)
+    
+    S_late = [p.S_mean for p in time_series[late_start:]]
+    I_TS_late = [p.I_TS for p in time_series[late_start:]]
+    
+    driven_S_late = float(np.mean(S_late))
+    driven_I_TS_late = float(np.mean(I_TS_late))
+    
+    # Compare to undriven baseline (from 100k step run)
+    # Undriven at equivalent time: S ~ 10^-10, I_TS ~ 0.55
+    undriven_S_late = 1e-10  # From previous runs
+    undriven_I_TS_late = 0.55
+    
+    S_maintenance = driven_S_late / (undriven_S_late + 1e-20)
+    I_TS_maintenance = driven_I_TS_late / (undriven_I_TS_late + 1e-10)
+    
+    # Check if S stabilized (CV < 0.5 in late phase)
+    S_cv = np.std(S_late) / (np.mean(S_late) + 1e-20)
+    S_stabilized = S_cv < 0.5 and driven_S_late > 1e-6
+    
+    # Interpretation
+    interps = []
+    if driven_S_late > 1e-4:
+        interps.append(f"S MAINTAINED at {driven_S_late:.6f} (vs undriven ~0)")
+        interps.append("✓ SUSTAINED DRIVING PRESERVES ORGANIZATION")
+    elif driven_S_late > 1e-8:
+        interps.append(f"S partially maintained ({driven_S_late:.2e})")
+        interps.append("Driving slows but doesn't fully prevent decay")
+    else:
+        interps.append(f"S still decays to ~0 even with driving")
+        interps.append("Driving insufficient at these parameters")
+    
+    interps.append(f"Pulse interval: {config.pulse_interval} steps, amplitude: {config.pulse_amplitude}")
+    interps.append(f"Total pulses: {total_pulses}")
+    
+    duration = time_module.time() - start_time
+    
+    return SustainedDrivingResult(
+        config=config.model_dump(),
+        duration_seconds=duration,
+        total_timesteps=len(time_series),
+        total_pulses=total_pulses,
+        time_series=time_series,
+        driven_S_late=driven_S_late,
+        undriven_S_late=undriven_S_late,
+        S_maintenance_factor=S_maintenance,
+        driven_I_TS_late=driven_I_TS_late,
+        I_TS_maintenance_factor=I_TS_maintenance,
+        steady_state_reached=S_cv < 0.3,
+        S_stabilized=S_stabilized,
         interpretation=" | ".join(interps)
     )

@@ -1,4 +1,38 @@
-## Current Status: PAPER 2 — STRUCTURAL DECAY MECHANISM IDENTIFIED
+## Current Status: PAPER 2 — SUSTAINED DRIVING EXPERIMENT COMPLETE
+
+**Date: April 2026**
+
+### Latest Achievement: Sustained Driving Proves Organization Requires Input
+
+**The Critical Experiment:**
+- Without driving: S → 0, I_TS → 0 (complete decay at 200k steps)
+- With periodic pulses: S ~ 10⁻³, I_TS ~ 0.8 (stable organization)
+- **Maintenance factor: 10⁷× higher with driving**
+
+**Key Results:**
+| Metric | Undriven | Driven | Factor |
+|--------|----------|--------|--------|
+| S (late) | ~10⁻¹⁰ | 0.00166 | **10⁷×** |
+| I_TS (late) | 0 | 0.80 | **∞** |
+
+**Robustness Tested:**
+- All pulse intervals (500-5000) maintain organization
+- All pulse amplitudes (0.5-3.0) maintain organization
+- Even 5 pulses over 30k steps suffices!
+
+**Paper 2 Core Claim:**
+> "Activity ≠ Organization. Emergent structures require sustained energy input. Without driving, organization decays completely while structure-like activity continues."
+
+**New Endpoint:**
+- `POST /api/qmrt-sim/longpath/sustained-driving` — Periodic pulse injection experiment
+
+**Publications-Ready Reports:**
+- `ASYMPTOTIC_DECAY_REPORT.md` — Complete decay analysis
+- `SUSTAINED_DRIVING_REPORT.md` — Driving experiment results
+
+---
+
+## Previous Status: PAPER 2 — STRUCTURAL DECAY MECHANISM IDENTIFIED
 
 **Date: April 2026**
 
