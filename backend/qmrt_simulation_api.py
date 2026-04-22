@@ -4177,3 +4177,415 @@ async def run_sustained_driving(config: SustainedDrivingConfig):
         S_stabilized=S_stabilized,
         interpretation=" | ".join(interps)
     )
+
+
+# ============================================================
+# LOCALIZED DRIVING EXPERIMENT (Matter vs Space Test)
+# ============================================================
+
+class LocalizedDrivingConfig(BaseModel):
+    """Configuration for localized driving experiment - testing matter vs space hypothesis."""
+    dimension: Literal["2d"] = "2d"  # Start with 2D for clarity
+    size: int = Field(default=80, ge=50, le=120, description="Grid size (larger to see contrast)")
+    alpha: float = Field(default=0.5, ge=0.1, le=0.9)
+    lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0)
+    gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1)
+    D_medium: float = Field(default=0.1, ge=0.0, le=0.5, description="Medium diffusion coefficient - KEY for localization")
+    steps: int = Field(default=30000, ge=5000, le=100000)
+    sample_interval: int = Field(default=100, ge=10, le=500)
+    
+    # Driving region parameters
+    driven_region_center: Optional[List[int]] = None  # If None, use grid center
+    driven_region_radius: float = Field(default=8.0, ge=3.0, le=20.0, description="Radius of driven region")
+    
+    # Driving parameters
+    pulse_interval: int = Field(default=500, ge=50, le=5000, description="Steps between pulses")
+    pulse_amplitude: float = Field(default=1.5, ge=0.1, le=5.0, description="Pulse amplitude")
+    
+    seed: Optional[int] = None
+
+
+class SpatialMetrics(BaseModel):
+    """Spatial metrics comparing driven vs undriven regions."""
+    # Inside driven region
+    S_inside: float
+    rho_inside: float
+    gradient_mag_inside: float
+    structure_count_inside: int
+    
+    # Outside driven region (background)
+    S_outside: float
+    rho_outside: float
+    gradient_mag_outside: float
+    structure_count_outside: int
+    
+    # Contrast ratios
+    S_contrast: float  # S_inside / S_outside
+    rho_contrast: float
+    gradient_contrast: float
+    structure_contrast: float
+    
+    # Boundary metrics
+    boundary_gradient: float  # Gradient at the boundary
+    leakage_fraction: float  # How much organization leaked outside
+
+
+class LocalizedTimePoint(BaseModel):
+    """Single timestep in localized driving experiment."""
+    t: float
+    step: int
+    
+    # Global metrics
+    S_global: float
+    E_total: float
+    
+    # Spatial comparison
+    spatial: SpatialMetrics
+    
+    # Structure distribution
+    structures_inside: int
+    structures_outside: int
+    total_structures: int
+    
+    # Event tracking
+    births: int
+    deaths: int
+
+
+class LocalizedDrivingResult(BaseModel):
+    """Result of localized driving experiment."""
+    config: Dict
+    duration_seconds: float
+    total_timesteps: int
+    total_pulses: int
+    
+    # Driven region info
+    driven_center: List[int]
+    driven_radius: float
+    driven_area_fraction: float  # Fraction of grid that's driven
+    
+    # Time series
+    time_series: List[LocalizedTimePoint]
+    
+    # Late-time analysis (last 20%)
+    late_S_inside: float
+    late_S_outside: float
+    late_S_contrast: float
+    
+    late_rho_inside: float
+    late_rho_outside: float
+    late_rho_contrast: float
+    
+    late_structures_inside: float
+    late_structures_outside: float
+    
+    # Key results
+    localization_maintained: bool  # Did structure stay localized?
+    spread_rate: float  # Rate at which organization spreads outward
+    boundary_sharpness: float  # How sharp is the matter/space boundary?
+    
+    # Interpretation
+    interpretation: List[str]
+    experiment_outcome: str  # 'localized_stable', 'spreads', 'decays', 'insufficient'
+
+
+def compute_spatial_mask_2d(size: int, center: Tuple[int, int], radius: float) -> np.ndarray:
+    """Create a binary mask for the driven region."""
+    x, y = np.meshgrid(np.arange(size), np.arange(size), indexing='ij')
+    r = np.sqrt((x - center[0])**2 + (y - center[1])**2)
+    return r <= radius
+
+
+def compute_spatial_metrics_2d(
+    sim: QMRTSimulator2D, 
+    mask: np.ndarray, 
+    structures: Dict
+) -> SpatialMetrics:
+    """Compute metrics comparing inside vs outside the driven region."""
+    
+    c_eff = sim.compute_c_eff()
+    rho = sim.phi**2 + sim.phi_dot**2
+    
+    # Compute gradient magnitude
+    grad_x = np.roll(c_eff, -1, axis=0) - c_eff
+    grad_y = np.roll(c_eff, -1, axis=1) - c_eff
+    grad_mag = np.sqrt(grad_x**2 + grad_y**2)
+    
+    # Inside mask
+    inside = mask
+    outside = ~mask
+    
+    # Mean values inside/outside
+    c_inside = c_eff[inside]
+    c_outside = c_eff[outside]
+    
+    # S metric (coefficient of variation of c_eff)
+    S_inside = np.std(c_inside) / (np.mean(c_inside) + 1e-10) if len(c_inside) > 0 else 0
+    S_outside = np.std(c_outside) / (np.mean(c_outside) + 1e-10) if len(c_outside) > 0 else 0
+    
+    rho_inside = float(np.mean(rho[inside])) if np.sum(inside) > 0 else 0
+    rho_outside = float(np.mean(rho[outside])) if np.sum(outside) > 0 else 0
+    
+    grad_inside = float(np.mean(grad_mag[inside])) if np.sum(inside) > 0 else 0
+    grad_outside = float(np.mean(grad_mag[outside])) if np.sum(outside) > 0 else 0
+    
+    # Count structures inside/outside
+    def count_structures_in_mask(structs: List[Dict], mask: np.ndarray) -> int:
+        count = 0
+        for s in structs:
+            pos = s.get('position', s.get('center', [0, 0]))
+            i, j = int(pos[0]), int(pos[1])
+            if 0 <= i < mask.shape[0] and 0 <= j < mask.shape[1]:
+                if mask[i, j]:
+                    count += 1
+        return count
+    
+    all_structs = (
+        structures.get('strain_nodes', []) +
+        structures.get('coherence_clusters', []) +
+        structures.get('torsion_vortices', []) +
+        structures.get('particle_nodes', [])
+    )
+    
+    struct_inside = count_structures_in_mask(all_structs, inside)
+    struct_outside = count_structures_in_mask(all_structs, outside)
+    
+    # Compute boundary gradient (ring around driven region)
+    # Use a ring from radius to radius+2
+    x, y = np.meshgrid(np.arange(mask.shape[0]), np.arange(mask.shape[1]), indexing='ij')
+    center = np.array(np.where(mask)).mean(axis=1)
+    r = np.sqrt((x - center[0])**2 + (y - center[1])**2)
+    
+    # Find the radius of the driven region
+    driven_radius = np.sqrt(np.sum(mask) / np.pi)
+    boundary_ring = (r >= driven_radius - 1) & (r <= driven_radius + 3)
+    boundary_gradient = float(np.mean(grad_mag[boundary_ring])) if np.sum(boundary_ring) > 0 else 0
+    
+    # Leakage: fraction of high-gradient (organization) that's outside
+    high_grad_threshold = np.percentile(grad_mag, 90)
+    high_grad_mask = grad_mag > high_grad_threshold
+    leakage = np.sum(high_grad_mask & outside) / (np.sum(high_grad_mask) + 1e-10)
+    
+    return SpatialMetrics(
+        S_inside=float(S_inside),
+        rho_inside=rho_inside,
+        gradient_mag_inside=grad_inside,
+        structure_count_inside=struct_inside,
+        S_outside=float(S_outside),
+        rho_outside=rho_outside,
+        gradient_mag_outside=grad_outside,
+        structure_count_outside=struct_outside,
+        S_contrast=float(S_inside / (S_outside + 1e-10)),
+        rho_contrast=float(rho_inside / (rho_outside + 1e-10)),
+        gradient_contrast=float(grad_inside / (grad_outside + 1e-10)),
+        structure_contrast=float((struct_inside + 1) / (struct_outside + 1)),
+        boundary_gradient=boundary_gradient,
+        leakage_fraction=float(leakage)
+    )
+
+
+@router.post("/longpath/localized-driving", response_model=LocalizedDrivingResult)
+async def run_localized_driving(config: LocalizedDrivingConfig):
+    """
+    Phase 3 Critical Experiment: Localized Driving
+    
+    Tests the "matter vs space" hypothesis:
+    - Apply periodic driving ONLY to a small region
+    - Leave the rest undriven (background/"space")
+    - Measure: Does a stable localized structure form?
+    
+    Possible outcomes:
+    A) Localized stable structure forms → "matter-like" behavior
+    B) Driven region spreads everywhere → no localization
+    C) Structure forms but decays → driving insufficient
+    
+    This is the key test for whether the medium supports persistent,
+    localized pockets of organization.
+    """
+    import time as time_module
+    
+    start_time = time_module.time()
+    
+    # Set seed
+    if config.seed is not None:
+        np.random.seed(config.seed)
+    
+    size = config.size
+    
+    # Driven region center
+    if config.driven_region_center is not None:
+        driven_center = tuple(config.driven_region_center)
+    else:
+        driven_center = (size // 2, size // 2)
+    
+    driven_radius = config.driven_region_radius
+    
+    # Create spatial mask for driven region
+    driven_mask = compute_spatial_mask_2d(size, driven_center, driven_radius)
+    driven_area = np.sum(driven_mask)
+    total_area = size * size
+    driven_fraction = driven_area / total_area
+    
+    # Create simulator
+    sim = QMRTSimulator2D(
+        size=size,
+        beta=config.alpha,
+        lambda_relax=config.lambda_relax,
+        gamma_wave=config.gamma_wave,
+        D_medium=config.D_medium,  # KEY parameter for localization
+    )
+    
+    # Initial pulse in driven region only
+    sim.add_pulse(center=driven_center, amplitude=3.0, width=driven_radius * 0.5)
+    
+    # Structure tracker
+    tracker = StructureTracker(dimension='2d', match_threshold=5.0)
+    
+    time_series = []
+    prev_births = 0
+    prev_deaths = 0
+    total_pulses = 1  # Count initial pulse
+    
+    # Run simulation
+    for step in range(config.steps):
+        sim.step()
+        
+        # Add pulse periodically - ONLY IN DRIVEN REGION
+        if step > 0 and step % config.pulse_interval == 0:
+            # Random position WITHIN driven region
+            angle = np.random.uniform(0, 2 * np.pi)
+            r = np.random.uniform(0, driven_radius * 0.8)  # Stay inside
+            cx = int(driven_center[0] + r * np.cos(angle))
+            cy = int(driven_center[1] + r * np.sin(angle))
+            cx = np.clip(cx, 5, size - 5)
+            cy = np.clip(cy, 5, size - 5)
+            
+            sim.add_pulse(center=(cx, cy), amplitude=config.pulse_amplitude, width=3.0)
+            total_pulses += 1
+        
+        # Sample
+        if step % config.sample_interval == 0:
+            t = step * sim.dt
+            
+            structures = sim.detect_all_structures()
+            tracker.process_frame(structures, t)
+            
+            # Compute spatial metrics
+            spatial = compute_spatial_metrics_2d(sim, driven_mask, structures)
+            
+            births = tracker.births - prev_births
+            deaths = tracker.deaths - prev_deaths
+            prev_births = tracker.births
+            prev_deaths = tracker.deaths
+            
+            total_structs = (
+                len(structures['strain_nodes']) +
+                len(structures['coherence_clusters']) +
+                len(structures['torsion_vortices']) +
+                len(structures['particle_nodes'])
+            )
+            
+            measurement = sim.measure(t)
+            
+            time_series.append(LocalizedTimePoint(
+                t=t,
+                step=step,
+                S_global=measurement['S_total'],
+                E_total=measurement['E_total'],
+                spatial=spatial,
+                structures_inside=spatial.structure_count_inside,
+                structures_outside=spatial.structure_count_outside,
+                total_structures=total_structs,
+                births=births,
+                deaths=deaths
+            ))
+    
+    # Late-time analysis (last 20%)
+    n = len(time_series)
+    late_start = int(0.8 * n)
+    late_series = time_series[late_start:]
+    
+    late_S_inside = float(np.mean([p.spatial.S_inside for p in late_series]))
+    late_S_outside = float(np.mean([p.spatial.S_outside for p in late_series]))
+    late_S_contrast = late_S_inside / (late_S_outside + 1e-10)
+    
+    late_rho_inside = float(np.mean([p.spatial.rho_inside for p in late_series]))
+    late_rho_outside = float(np.mean([p.spatial.rho_outside for p in late_series]))
+    late_rho_contrast = late_rho_inside / (late_rho_outside + 1e-10)
+    
+    late_struct_inside = float(np.mean([p.structures_inside for p in late_series]))
+    late_struct_outside = float(np.mean([p.structures_outside for p in late_series]))
+    
+    # Compute spread rate (how leakage changes over time)
+    early_leakage = np.mean([p.spatial.leakage_fraction for p in time_series[:int(0.2*n)]])
+    late_leakage = np.mean([p.spatial.leakage_fraction for p in late_series])
+    spread_rate = (late_leakage - early_leakage) / (time_series[-1].t - time_series[0].t + 1e-10)
+    
+    # Boundary sharpness (higher = sharper)
+    late_boundary_grad = float(np.mean([p.spatial.boundary_gradient for p in late_series]))
+    late_grad_outside = float(np.mean([p.spatial.gradient_mag_outside for p in late_series]))
+    boundary_sharpness = late_boundary_grad / (late_grad_outside + 1e-10)
+    
+    # Determine outcome
+    interpretation = []
+    
+    # Check if localization is maintained
+    localization_maintained = (
+        late_S_contrast > 2.0 and  # Inside has 2x more organization
+        late_leakage < 0.5 and  # Less than half leaked out
+        late_S_inside > 1e-4  # Organization actually exists
+    )
+    
+    if localization_maintained:
+        if late_S_contrast > 10:
+            outcome = 'localized_stable'
+            interpretation.append(f"STRONG LOCALIZATION: S contrast = {late_S_contrast:.1f}x")
+            interpretation.append("Driven region maintains organization while background decays")
+            interpretation.append("This supports 'matter = localized sustained organization'")
+        else:
+            outcome = 'localized_stable'
+            interpretation.append(f"LOCALIZATION ACHIEVED: S contrast = {late_S_contrast:.1f}x")
+            interpretation.append("Moderate differentiation between driven and background")
+    elif late_leakage > 0.7:
+        outcome = 'spreads'
+        interpretation.append(f"SPREADING: Organization leaked out (leakage = {late_leakage:.2f})")
+        interpretation.append("System does not support localization - energy spreads everywhere")
+    elif late_S_inside < 1e-6:
+        outcome = 'decays'
+        interpretation.append(f"DECAY: Even driven region lost organization (S = {late_S_inside:.2e})")
+        interpretation.append("Driving insufficient or decay too fast")
+    else:
+        outcome = 'insufficient'
+        interpretation.append(f"INCONCLUSIVE: S contrast = {late_S_contrast:.1f}x")
+        interpretation.append("Some localization but not strong enough")
+    
+    interpretation.append(f"Driven area: {driven_fraction*100:.1f}% of grid (radius={driven_radius})")
+    interpretation.append(f"Boundary sharpness: {boundary_sharpness:.2f}")
+    interpretation.append(f"Spread rate: {spread_rate:.4f}/time unit")
+    interpretation.append(f"Total pulses: {total_pulses}")
+    
+    duration = time_module.time() - start_time
+    
+    return LocalizedDrivingResult(
+        config=config.model_dump(),
+        duration_seconds=duration,
+        total_timesteps=len(time_series),
+        total_pulses=total_pulses,
+        driven_center=list(driven_center),
+        driven_radius=driven_radius,
+        driven_area_fraction=float(driven_fraction),
+        time_series=time_series,
+        late_S_inside=late_S_inside,
+        late_S_outside=late_S_outside,
+        late_S_contrast=late_S_contrast,
+        late_rho_inside=late_rho_inside,
+        late_rho_outside=late_rho_outside,
+        late_rho_contrast=late_rho_contrast,
+        late_structures_inside=late_struct_inside,
+        late_structures_outside=late_struct_outside,
+        localization_maintained=localization_maintained,
+        spread_rate=spread_rate,
+        boundary_sharpness=boundary_sharpness,
+        interpretation=interpretation,
+        experiment_outcome=outcome
+    )
