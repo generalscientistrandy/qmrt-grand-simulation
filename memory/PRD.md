@@ -1,4 +1,37 @@
-## Current Status: PAPER 2 — ROBUSTNESS CONTROLS COMPLETE
+## Current Status: PAPER 2 — DRAFT COMPLETE
+
+**Date: April 2026**
+
+### Latest Achievement: Paper 2 Draft and Publication Figures Generated
+
+**Core Claim (Final Wording):**
+> "Sustained energy input maintains nonzero spatial organization (S) and coupling (I_TS) in the long-time limit, whereas undriven dynamics exhibit asymptotic decay of organization despite persistent activity. For matched total input energy, periodic and randomized driving produce comparable late-time organization, indicating that input magnitude—not temporal structure—dominates in this regime."
+
+**5 Publication Figures Generated:**
+1. `fig1_S_decay.png` — S(t) undriven vs driven (log scale)
+2. `fig2_ITS_decay.png` — I_TS(t) evolution
+3. `fig3_activity_vs_S.png` — Activity vs Organization separation
+4. `fig4_energy_matched.png` — Periodic vs Random control
+5. `fig5_power_vs_S.png` — S_late vs input power (S ∝ P^0.15)
+
+**Paper 2 Structure:**
+1. Setup (deterministic long-path, definitions)
+2. Undriven dynamics (asymptotic decay, activity ≠ organization)
+3. Driven dynamics (sustained S, I_TS)
+4. Controls (energy-matched, correlation length)
+5. Scaling (power dependence)
+6. Discussion & Conclusion
+
+**Key Supporting Statement:**
+> "These results indicate a separation between kinetic activity (event rates) and coherent organization (S), suggesting that the latter is a non-conserved quantity requiring continuous energetic support."
+
+**Files:**
+- `PAPER2_draft.md` — Full paper draft
+- `fig1-5*.png` — Publication figures
+
+---
+
+## Previous Status: PAPER 2 — ROBUSTNESS CONTROLS COMPLETE
 
 **Date: April 2026**
 
