@@ -1,0 +1,119 @@
+{
+  "timestamp": "2026-04-22T01:41:58.949627",
+  "energy_matched_control": {
+    "undriven": {
+      "S": 5.991999834228931e-05,
+      "I_TS": 0.85651016666591,
+      "xi": 12.3
+    },
+    "periodic": {
+      "S": 0.002051381988687655,
+      "I_TS": 0.7928885558488212,
+      "xi": 10.38
+    },
+    "random": {
+      "S": 0.0021121121889301733,
+      "I_TS": 0.793811611397543,
+      "xi": 10.84
+    },
+    "interpretation": "PERIODIC \u2248 RANDOM: Energy magnitude matters more than structure"
+  },
+  "duty_cycle": [
+    {
+      "interval": 500,
+      "amplitude": 1.0,
+      "duty": 0.2,
+      "power": 0.002,
+      "S_late": 0.0019206050245977623,
+      "I_TS_late": 0.783334553130101
+    },
+    {
+      "interval": 500,
+      "amplitude": 2.0,
+      "duty": 0.2,
+      "power": 0.008,
+      "S_late": 0.002150654184652114,
+      "I_TS_late": 0.7834347811348031
+    },
+    {
+      "interval": 500,
+      "amplitude": 3.0,
+      "duty": 0.2,
+      "power": 0.018,
+      "S_late": 0.0022148697590426403,
+      "I_TS_late": 0.7833730722580616
+    },
+    {
+      "interval": 1000,
+      "amplitude": 1.0,
+      "duty": 0.1,
+      "power": 0.001,
+      "S_late": 0.002530313259912078,
+      "I_TS_late": 0.7968545914362748
+    },
+    {
+      "interval": 1000,
+      "amplitude": 2.0,
+      "duty": 0.1,
+      "power": 0.004,
+      "S_late": 0.0031432506098093586,
+      "I_TS_late": 0.797066151065416
+    },
+    {
+      "interval": 1000,
+      "amplitude": 3.0,
+      "duty": 0.1,
+      "power": 0.009,
+      "S_late": 0.003338597644558447,
+      "I_TS_late": 0.7966662191682935
+    },
+    {
+      "interval": 2000,
+      "amplitude": 1.0,
+      "duty": 0.05,
+      "power": 0.0005,
+      "S_late": 0.002361286228591563,
+      "I_TS_late": 0.7946415794019899
+    },
+    {
+      "interval": 2000,
+      "amplitude": 2.0,
+      "duty": 0.05,
+      "power": 0.002,
+      "S_late": 0.0033957096925382345,
+      "I_TS_late": 0.7937596086743774
+    },
+    {
+      "interval": 2000,
+      "amplitude": 3.0,
+      "duty": 0.05,
+      "power": 0.0045,
+      "S_late": 0.0038223866506218603,
+      "I_TS_late": 0.7932673141189927
+    },
+    {
+      "interval": 4000,
+      "amplitude": 1.0,
+      "duty": 0.025,
+      "power": 0.00025,
+      "S_late": 0.001936666848013658,
+      "I_TS_late": 0.7986097652058338
+    },
+    {
+      "interval": 4000,
+      "amplitude": 2.0,
+      "duty": 0.025,
+      "power": 0.001,
+      "S_late": 0.003216577769618978,
+      "I_TS_late": 0.7978068576110272
+    },
+    {
+      "interval": 4000,
+      "amplitude": 3.0,
+      "duty": 0.025,
+      "power": 0.00225,
+      "S_late": 0.003992078646728148,
+      "I_TS_late": 0.800242453334161
+    }
+  ]
+}

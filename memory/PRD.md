@@ -1,4 +1,41 @@
-## Current Status: PAPER 2 — SUSTAINED DRIVING EXPERIMENT COMPLETE
+## Current Status: PAPER 2 — ROBUSTNESS CONTROLS COMPLETE
+
+**Date: April 2026**
+
+### Latest Achievement: Energy-Matched Control & Activity vs Organization
+
+**1. Energy-Matched Control:**
+| Condition | S_late |
+|-----------|--------|
+| Undriven | 6.0×10⁻⁵ |
+| Periodic driving | 0.00205 |
+| Random driving (energy-matched) | 0.00211 |
+
+**Key finding**: Periodic ≈ Random → **Energy magnitude matters, not timing structure**
+
+**2. Activity vs Organization Confirmed:**
+- Activity (late/early): 0.80 (persists)
+- S (late/early): 0.003 (decays 300×)
+- **✓ Activity ≠ Organization**
+
+**3. Correlation Length (ξ):**
+- Undriven: ξ = 12.3 (uniform field, misleading)
+- Driven: ξ = 10-11 (real structural correlations)
+
+**4. Duty Cycle Analysis:**
+- Optimal: interval=4000, amp=3.0 → S=0.004
+- Power (amp²/interval) correlates with S_late
+
+**Corrected Paper 2 Claim:**
+> "Organization requires sustained **energy** input (periodic or random). Activity persists while organization decays without driving."
+
+**Files:**
+- `robustness_controls.json`
+- `ROBUSTNESS_CONTROLS_REPORT.md`
+
+---
+
+## Previous Status: PAPER 2 — SUSTAINED DRIVING EXPERIMENT COMPLETE
 
 **Date: April 2026**
 
