@@ -1,0 +1,192 @@
+{
+  "test1_absolute": {
+    "undriven": {
+      "0.1": {
+        "n_clusters": 1,
+        "mean_size": 2475.0,
+        "mean_ar": 1.0000121274478349,
+        "elongated_frac": 0.0
+      },
+      "0.5": {
+        "n_clusters": 1,
+        "mean_size": 2299.0,
+        "mean_ar": 1.0043208167883106,
+        "elongated_frac": 0.0
+      },
+      "1.0": {
+        "n_clusters": 1,
+        "mean_size": 1684.0,
+        "mean_ar": 1.000911555587929,
+        "elongated_frac": 0.0
+      },
+      "2.0": {
+        "n_clusters": 4,
+        "mean_size": 52.0,
+        "mean_ar": 2.5923616613140315,
+        "elongated_frac": 0.0
+      },
+      "5.0": {
+        "n_clusters": 0,
+        "mean_size": 0,
+        "mean_ar": 0,
+        "elongated_frac": 0
+      }
+    },
+    "driven": {
+      "0.1": {
+        "n_clusters": 1,
+        "mean_size": 2500.0,
+        "mean_ar": 1.0,
+        "elongated_frac": 0.0
+      },
+      "0.5": {
+        "n_clusters": 1,
+        "mean_size": 2500.0,
+        "mean_ar": 1.0,
+        "elongated_frac": 0.0
+      },
+      "1.0": {
+        "n_clusters": 1,
+        "mean_size": 2500.0,
+        "mean_ar": 1.0,
+        "elongated_frac": 0.0
+      },
+      "2.0": {
+        "n_clusters": 1,
+        "mean_size": 2500.0,
+        "mean_ar": 1.0,
+        "elongated_frac": 0.0
+      },
+      "5.0": {
+        "n_clusters": 1,
+        "mean_size": 2499.0,
+        "mean_ar": 1.0005909155787758,
+        "elongated_frac": 0.0
+      }
+    }
+  },
+  "test2_multiscale": {
+    "undriven": {
+      "80": {
+        "n_clusters": 4,
+        "mean_ar": 1.8750201427427262,
+        "max_ar": 1.8750201427427264,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      },
+      "85": {
+        "n_clusters": 4,
+        "mean_ar": 1.9806682791325783,
+        "max_ar": 1.9917796610598395,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      },
+      "90": {
+        "n_clusters": 4,
+        "mean_ar": 2.2364164355657787,
+        "max_ar": 2.237220419306713,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      },
+      "95": {
+        "n_clusters": 4,
+        "mean_ar": 3.294744653573663,
+        "max_ar": 3.415650255319866,
+        "elongated_frac": 1.0,
+        "highly_elongated_frac": 0.0
+      },
+      "99": {
+        "n_clusters": 1,
+        "mean_ar": 4.0824829046386295,
+        "max_ar": 4.0824829046386295,
+        "elongated_frac": 1.0,
+        "highly_elongated_frac": 0.0
+      }
+    },
+    "driven": {
+      "80": {
+        "n_clusters": 3,
+        "mean_ar": 1.92592615520973,
+        "max_ar": 2.7437681914055436,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      },
+      "85": {
+        "n_clusters": 4,
+        "mean_ar": 1.7187996998334274,
+        "max_ar": 2.1422903381664846,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      },
+      "90": {
+        "n_clusters": 4,
+        "mean_ar": 1.7560344178295197,
+        "max_ar": 2.111482034027352,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      },
+      "95": {
+        "n_clusters": 3,
+        "mean_ar": 1.470039639956947,
+        "max_ar": 1.8370693360472474,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      },
+      "99": {
+        "n_clusters": 2,
+        "mean_ar": 1.9357346796210808,
+        "max_ar": 2.7102289126004173,
+        "elongated_frac": 0.0,
+        "highly_elongated_frac": 0.0
+      }
+    }
+  },
+  "test3_coherence": {
+    "undriven": {
+      "early_coherence": 0.001222953373905962,
+      "late_coherence": 0.0013736678067656583,
+      "coherence_change": 0.00015071443285969636
+    },
+    "driven": {
+      "early_coherence": 0.11954847550427398,
+      "late_coherence": 0.18577778670879178,
+      "coherence_change": 0.06622931120451779
+    }
+  },
+  "test4_spatial": {
+    "undriven": {
+      "xi_horizontal": 10,
+      "xi_vertical": 10,
+      "xi_radial": 10,
+      "anisotropy_ratio": 0.9900990099009901
+    },
+    "driven": {
+      "xi_horizontal": 14,
+      "xi_vertical": 13,
+      "xi_radial": 13,
+      "anisotropy_ratio": 1.0687022900763359
+    }
+  },
+  "test5_larger_grid": {
+    "undriven": {
+      "n_clusters": 8,
+      "mean_size": 125.0,
+      "max_size": "252",
+      "mean_ar": 3.7244377922384153,
+      "max_ar": 5.477225575051661,
+      "elongated_frac": 0.5,
+      "highly_elongated_frac": 0.5,
+      "spatial_anisotropy": 0.9965635738831614
+    },
+    "driven": {
+      "n_clusters": 7,
+      "mean_size": 142.85714285714286,
+      "max_size": "390",
+      "mean_ar": 2.807394853784954,
+      "max_ar": 5.139206870081713,
+      "elongated_frac": 0.2857142857142857,
+      "highly_elongated_frac": 0.14285714285714285,
+      "spatial_anisotropy": 1.1180124223602483
+    }
+  }
+}
