@@ -1,0 +1,182 @@
+{
+  "alpha_0.3": {
+    "config": {
+      "alpha": 0.3,
+      "steps": 20000
+    },
+    "duration": 14.47603988647461,
+    "analysis": {
+      "s_decay_fit": {
+        "exponential": {
+          "params": {
+            "S0": 0.058420033359989514,
+            "tau": 66.882107610789
+          },
+          "r2": 0.8421406905487677,
+          "half_life": 46.35914432032526,
+          "asymptotic_S": 0
+        },
+        "power_law": {
+          "params": {
+            "S0": 3014.771008541011,
+            "beta": 2.3342454700486095,
+            "t0": 99.99999999999999
+          },
+          "r2": 0.8380059118215558,
+          "decay_exponent": 2.3342454700486095,
+          "asymptotic_S": 0
+        },
+        "plateau": {
+          "params": {
+            "S0": 0.059530172761985696,
+            "S_floor": 0.0009617882616014777,
+            "tau": 62.33805203332389
+          },
+          "r2": 0.8468709889957233,
+          "half_life": 43.20944500849762,
+          "asymptotic_S": 0.0009617882616014777
+        },
+        "best_model": "plateau",
+        "best_r2": 0.8468709889957233
+      },
+      "s_per_structure": {
+        "early_mean": 0.002015267876456216,
+        "mid_mean": 0.00018882660268156634,
+        "late_mean": 4.9454406542581166e-05,
+        "relative_change": -0.9754600841573707
+      },
+      "energy_evolution": {
+        "early_cv": 0.19147978306257488,
+        "mid_cv": 0.007559404376592307,
+        "late_cv": 0.0018993512593665455,
+        "interpretation": "Energy HOMOGENIZING \u2192 system flattening"
+      },
+      "I_TS_evolution": {
+        "early": 0.8282511190761915,
+        "mid": 0.8429223758171875,
+        "late": 0.8427862711704804
+      }
+    },
+    "final_regime": "transient"
+  },
+  "alpha_0.5": {
+    "config": {
+      "alpha": 0.5,
+      "steps": 20000
+    },
+    "duration": 14.830712795257568,
+    "analysis": {
+      "s_decay_fit": {
+        "exponential": {
+          "params": {
+            "S0": 0.09019753091360763,
+            "tau": 61.92348797439773
+          },
+          "r2": 0.8314562183442225,
+          "half_life": 42.92209109989147,
+          "asymptotic_S": 0
+        },
+        "power_law": {
+          "params": {
+            "S0": 7593.178933684028,
+            "beta": 2.4428163116313932,
+            "t0": 99.99999999999999
+          },
+          "r2": 0.8259252838415105,
+          "decay_exponent": 2.4428163116313932,
+          "asymptotic_S": 0
+        },
+        "plateau": {
+          "params": {
+            "S0": 0.09171720002453007,
+            "S_floor": 0.0013692314502713927,
+            "tau": 58.110906334865426
+          },
+          "r2": 0.835836139955996,
+          "half_life": 40.27941088579503,
+          "asymptotic_S": 0.0013692314502713927
+        },
+        "best_model": "plateau",
+        "best_r2": 0.835836139955996
+      },
+      "s_per_structure": {
+        "early_mean": 0.002710228057007353,
+        "mid_mean": 0.00021751070715502765,
+        "late_mean": 5.425337567036552e-05,
+        "relative_change": -0.9799819526152836
+      },
+      "energy_evolution": {
+        "early_cv": 0.18727582462391404,
+        "mid_cv": 0.006937348347124174,
+        "late_cv": 0.0017609027207605016,
+        "interpretation": "Energy HOMOGENIZING \u2192 system flattening"
+      },
+      "I_TS_evolution": {
+        "early": 0.8474753095105019,
+        "mid": 0.8569851734933571,
+        "late": 0.8557285878729803
+      }
+    },
+    "final_regime": "transient"
+  },
+  "alpha_0.7": {
+    "config": {
+      "alpha": 0.7,
+      "steps": 20000
+    },
+    "duration": 14.530817985534668,
+    "analysis": {
+      "s_decay_fit": {
+        "exponential": {
+          "params": {
+            "S0": 0.11686155518422166,
+            "tau": 59.843529360267254
+          },
+          "r2": 0.8229547666508912,
+          "half_life": 41.480373650825555,
+          "asymptotic_S": 0
+        },
+        "power_law": {
+          "params": {
+            "S0": 12234.679243775407,
+            "beta": 2.491319247316648,
+            "t0": 99.99999999976326
+          },
+          "r2": 0.816456212616463,
+          "decay_exponent": 2.491319247316648,
+          "asymptotic_S": 0
+        },
+        "plateau": {
+          "params": {
+            "S0": 0.11871485173486665,
+            "S_floor": 0.0017112863857791179,
+            "tau": 56.32897892097202
+          },
+          "r2": 0.8271674125560342,
+          "half_life": 39.04427292289235,
+          "asymptotic_S": 0.0017112863857791179
+        },
+        "best_model": "plateau",
+        "best_r2": 0.8271674125560342
+      },
+      "s_per_structure": {
+        "early_mean": 0.0033577719694175986,
+        "mid_mean": 0.0002325959373128815,
+        "late_mean": 6.16738167291878e-05,
+        "relative_change": -0.9816324886102573
+      },
+      "energy_evolution": {
+        "early_cv": 0.18686967748127306,
+        "mid_cv": 0.006761049085584543,
+        "late_cv": 0.0017148390585336373,
+        "interpretation": "Energy HOMOGENIZING \u2192 system flattening"
+      },
+      "I_TS_evolution": {
+        "early": 0.858057774170036,
+        "mid": 0.8655130027656184,
+        "late": 0.8651914877534438
+      }
+    },
+    "final_regime": "transient"
+  }
+}

@@ -1,4 +1,43 @@
-## Current Status: PAPER 2 — REPRODUCIBILITY & ALPHA SWEEP COMPLETE
+## Current Status: PAPER 2 — STRUCTURAL DECAY MECHANISM IDENTIFIED
+
+**Date: April 2026**
+
+### Latest Achievement: S(t) Curve Fitting & Decay Mechanism Analysis
+
+Ran extended simulations (20,000 steps) and performed curve fitting to understand WHY S declines even when births ≈ deaths.
+
+**Key Discovery: Plateau Decay Model**
+```
+S(t) = S_floor + (S₀ - S_floor) × exp(-t/τ)
+```
+
+S decays to a **non-zero floor**, not zero. Best fit R² ~ 0.84 across all α.
+
+| α | S_floor | τ (time constant) | Half-life |
+|---|---------|-------------------|-----------|
+| 0.3 | 0.00096 | 62.3 | 43.2 |
+| 0.5 | 0.00137 | 58.1 | 40.3 |
+| 0.7 | 0.00171 | 56.3 | 39.0 |
+
+**Physical Mechanism Identified:**
+1. **Energy homogenization**: CV(ρ) drops 99% (0.19 → 0.002)
+2. **True structural degradation**: S/N drops 98%
+3. **I_TS remains stable**: Spacetime coupling persists
+4. **Higher α → higher S_floor**: More coupling preserves more organization
+
+**Paper 2 Core Claim:**
+- "Event balance without structural equilibrium"
+- "Organization requires sustained input, not just energy balance"
+- Structures are continuously recycled but each generation is weaker
+
+**Publication-Ready Data:**
+- `structural_decay_analysis.json`
+- `extended_timeseries_alpha*.json` (3 files, 20k steps each)
+- `STRUCTURAL_DECAY_REPORT.md`
+
+---
+
+## Previous Status: PAPER 2 — REPRODUCIBILITY & ALPHA SWEEP COMPLETE
 
 **Date: April 2026**
 

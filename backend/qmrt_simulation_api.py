@@ -3157,7 +3157,7 @@ class LongPathConfig(BaseModel):
     alpha: float = Field(default=0.5, ge=0.1, le=0.9, description="Backreaction coupling")
     lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0, description="Relaxation rate")
     gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1, description="Wave damping")
-    steps: int = Field(default=3000, ge=500, le=10000, description="Simulation steps (10-20x normal)")
+    steps: int = Field(default=3000, ge=500, le=50000, description="Simulation steps (10-50x normal for decay analysis)")
     sample_interval: int = Field(default=10, ge=5, le=50, description="Measurement interval")
     seed: Optional[int] = None  # For reproducibility
 
@@ -3698,7 +3698,7 @@ class MultiSeedLongPathRequest(BaseModel):
     alpha: float = Field(default=0.5, ge=0.1, le=0.9)
     lambda_relax: float = Field(default=0.5, ge=0.1, le=1.0)
     gamma_wave: float = Field(default=0.01, ge=0.001, le=0.1)
-    steps: int = Field(default=3000, ge=500, le=10000)
+    steps: int = Field(default=3000, ge=500, le=50000)
     sample_interval: int = Field(default=10, ge=5, le=50)
     n_seeds: int = Field(default=5, ge=2, le=20)
     seeds: Optional[List[int]] = None
