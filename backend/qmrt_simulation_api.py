@@ -4589,3 +4589,467 @@ async def run_localized_driving(config: LocalizedDrivingConfig):
         interpretation=interpretation,
         experiment_outcome=outcome
     )
+
+
+
+# ============================================================
+# BIASED MEDIUM EXPERIMENT (Matter from Imbalance)
+# ============================================================
+
+class BiasedMediumSimulator2D:
+    """
+    2D QMRT simulator with SPATIALLY VARYING parameters.
+    
+    Instead of uniform γ, β, λ across the grid, we allow spatial fields:
+    - γ(x,y): wave damping
+    - β(x,y): backreaction coupling
+    - λ(x,y): relaxation rate
+    
+    This tests the hypothesis:
+    "Structure emerges from imbalance, not external driving"
+    """
+    
+    def __init__(self, size=60, c_0=2.0, tau_0=1.0, D_medium=0.1, dt=0.04):
+        self.size = size
+        self.c_0 = c_0
+        self.tau_0 = tau_0
+        self.D_medium = D_medium
+        self.dt = dt
+        
+        # Fields
+        self.phi = np.zeros((size, size))
+        self.phi_dot = np.zeros((size, size))
+        self.tau = np.ones((size, size)) * tau_0
+        self.tau_prev = self.tau.copy()
+        
+        # SPATIALLY VARYING PARAMETERS (initialized to uniform)
+        self.gamma_field = np.ones((size, size)) * 0.01  # Wave damping
+        self.beta_field = np.ones((size, size)) * 0.5    # Backreaction coupling
+        self.lambda_field = np.ones((size, size)) * 0.5  # Relaxation rate
+        
+        self.source_center = (size // 2, size // 2)
+    
+    def set_biased_region(self, center, radius, 
+                          gamma_inside=None, beta_inside=None, lambda_inside=None,
+                          gamma_outside=None, beta_outside=None, lambda_outside=None):
+        """
+        Create a biased region with different parameters inside vs outside.
+        
+        Example: Lower damping inside (γ_in < γ_out) → energy persists longer there
+        """
+        x, y = np.meshgrid(np.arange(self.size), np.arange(self.size), indexing='ij')
+        r = np.sqrt((x - center[0])**2 + (y - center[1])**2)
+        mask = r <= radius
+        
+        if gamma_inside is not None and gamma_outside is not None:
+            self.gamma_field[mask] = gamma_inside
+            self.gamma_field[~mask] = gamma_outside
+        
+        if beta_inside is not None and beta_outside is not None:
+            self.beta_field[mask] = beta_inside
+            self.beta_field[~mask] = beta_outside
+        
+        if lambda_inside is not None and lambda_outside is not None:
+            self.lambda_field[mask] = lambda_inside
+            self.lambda_field[~mask] = lambda_outside
+    
+    def set_multiple_bias_spots(self, spots, radius,
+                                 gamma_spot=None, beta_spot=None, lambda_spot=None,
+                                 gamma_bg=None, beta_bg=None, lambda_bg=None):
+        """
+        Create multiple biased spots (potential matter sites).
+        
+        spots: list of (x, y) centers
+        """
+        # Set background first
+        if gamma_bg is not None:
+            self.gamma_field[:] = gamma_bg
+        if beta_bg is not None:
+            self.beta_field[:] = beta_bg
+        if lambda_bg is not None:
+            self.lambda_field[:] = lambda_bg
+        
+        # Then set spots
+        x, y = np.meshgrid(np.arange(self.size), np.arange(self.size), indexing='ij')
+        for cx, cy in spots:
+            r = np.sqrt((x - cx)**2 + (y - cy)**2)
+            mask = r <= radius
+            if gamma_spot is not None:
+                self.gamma_field[mask] = gamma_spot
+            if beta_spot is not None:
+                self.beta_field[mask] = beta_spot
+            if lambda_spot is not None:
+                self.lambda_field[mask] = lambda_spot
+    
+    def compute_c_eff(self):
+        return np.clip(self.c_0 * self.tau / self.tau_0, 0.3, self.c_0 * 1.5)
+    
+    def compute_tau_eq(self, rho):
+        """Tau equilibrium with SPATIALLY VARYING beta."""
+        rho_smooth = gaussian_filter(rho, sigma=2.0)
+        rho_max = np.max(rho_smooth) + 1e-10
+        return self.tau_0 / (1 + self.beta_field * rho_smooth / rho_max)
+    
+    def compute_laplacian(self, f):
+        return (np.roll(f, 1, 0) + np.roll(f, -1, 0) +
+                np.roll(f, 1, 1) + np.roll(f, -1, 1) - 4*f)
+    
+    def compute_gradient_magnitude(self, f):
+        gx = np.roll(f, -1, 0) - f
+        gy = np.roll(f, -1, 1) - f
+        return np.sqrt(gx**2 + gy**2)
+    
+    def step(self):
+        """Step with SPATIALLY VARYING parameters."""
+        self.tau_prev = self.tau.copy()
+        rho = self.phi**2 + self.phi_dot**2
+        
+        # Tau evolution with spatial lambda
+        tau_eq = self.compute_tau_eq(rho)
+        lap_tau = self.compute_laplacian(self.tau)
+        dtau_dt = -self.lambda_field * (self.tau - tau_eq) + self.D_medium * lap_tau
+        self.tau += dtau_dt * self.dt
+        self.tau = np.clip(self.tau, 0.1, 2.0)
+        
+        # Phi evolution with spatial gamma
+        c_eff = self.compute_c_eff()
+        lap_phi = self.compute_laplacian(self.phi)
+        acc = c_eff**2 * lap_phi - self.gamma_field * self.phi_dot
+        self.phi_dot += acc * self.dt
+        self.phi += self.phi_dot * self.dt
+    
+    def add_pulse(self, center=None, amplitude=3.0, width=4.0):
+        if center is None:
+            center = self.source_center
+        x, y = np.meshgrid(np.arange(self.size), np.arange(self.size), indexing='ij')
+        r = np.sqrt((x - center[0])**2 + (y - center[1])**2)
+        self.phi_dot += amplitude * np.exp(-r**2 / (2*width**2))
+        self.source_center = center
+    
+    def add_uniform_noise(self, amplitude=0.1):
+        """Add small uniform noise to seed structure everywhere."""
+        self.phi_dot += np.random.uniform(-amplitude, amplitude, (self.size, self.size))
+    
+    def measure(self, t):
+        """Measure with spatial breakdown."""
+        c_eff = self.compute_c_eff()
+        rho = self.phi**2 + self.phi_dot**2
+        
+        # Energy
+        grad_phi = self.compute_gradient_magnitude(self.phi)
+        E_kinetic = 0.5 * np.sum(self.phi_dot**2)
+        E_gradient = 0.5 * np.sum(c_eff**2 * grad_phi**2)
+        E_total = E_kinetic + E_gradient
+        
+        # Spatial S
+        c_mean = np.mean(c_eff)
+        c_std = np.std(c_eff)
+        S_metric = c_std / (c_mean + 1e-10)
+        grad_c = self.compute_gradient_magnitude(c_eff)
+        S_grad = np.mean(grad_c)
+        S_total = np.sqrt(S_metric**2 + S_grad**2)
+        
+        return {
+            't': float(t),
+            'E_total': float(E_total),
+            'E_kinetic': float(E_kinetic),
+            'E_gradient': float(E_gradient),
+            'S_total': float(S_total),
+            'rho_mean': float(np.mean(rho)),
+            'rho_max': float(np.max(rho)),
+            'rho_std': float(np.std(rho)),
+        }
+    
+    def measure_by_region(self, mask):
+        """Measure metrics separately for inside/outside mask."""
+        rho = self.phi**2 + self.phi_dot**2
+        c_eff = self.compute_c_eff()
+        grad_c = self.compute_gradient_magnitude(c_eff)
+        
+        inside = mask
+        outside = ~mask
+        
+        c_inside = c_eff[inside]
+        c_outside = c_eff[outside]
+        
+        S_inside = np.std(c_inside) / (np.mean(c_inside) + 1e-10) if len(c_inside) > 0 else 0
+        S_outside = np.std(c_outside) / (np.mean(c_outside) + 1e-10) if len(c_outside) > 0 else 0
+        
+        return {
+            'S_inside': float(S_inside),
+            'S_outside': float(S_outside),
+            'S_contrast': float(S_inside / (S_outside + 1e-10)),
+            'rho_inside': float(np.mean(rho[inside])) if np.sum(inside) > 0 else 0,
+            'rho_outside': float(np.mean(rho[outside])) if np.sum(outside) > 0 else 0,
+            'grad_inside': float(np.mean(grad_c[inside])) if np.sum(inside) > 0 else 0,
+            'grad_outside': float(np.mean(grad_c[outside])) if np.sum(outside) > 0 else 0,
+        }
+
+
+class BiasedMediumConfig(BaseModel):
+    """Configuration for biased medium experiment."""
+    size: int = Field(default=80, ge=50, le=120)
+    steps: int = Field(default=20000, ge=5000, le=100000)
+    sample_interval: int = Field(default=100, ge=10, le=500)
+    D_medium: float = Field(default=0.05, ge=0.0, le=0.2)
+    
+    # Bias region geometry
+    bias_center: Optional[List[int]] = None  # If None, use grid center
+    bias_radius: float = Field(default=10.0, ge=3.0, le=25.0)
+    
+    # PARAMETER CONTRASTS (inside vs outside the biased region)
+    # Lower gamma inside = less damping = energy persists longer
+    gamma_inside: float = Field(default=0.005, ge=0.001, le=0.1)
+    gamma_outside: float = Field(default=0.02, ge=0.001, le=0.1)
+    
+    # Higher beta inside = stronger backreaction = more structure
+    beta_inside: float = Field(default=0.7, ge=0.1, le=0.9)
+    beta_outside: float = Field(default=0.3, ge=0.1, le=0.9)
+    
+    # Lower lambda inside = slower relaxation = structure persists
+    lambda_inside: float = Field(default=0.3, ge=0.1, le=1.0)
+    lambda_outside: float = Field(default=0.7, ge=0.1, le=1.0)
+    
+    # Initial condition: pulse or noise
+    initial_condition: Literal["pulse_center", "pulse_bias", "uniform_noise", "random_spots"] = "uniform_noise"
+    noise_amplitude: float = Field(default=0.5, ge=0.01, le=2.0)
+    
+    seed: Optional[int] = None
+
+
+class BiasedMediumTimePoint(BaseModel):
+    """Single timestep in biased medium experiment."""
+    t: float
+    step: int
+    
+    # Global
+    S_global: float
+    E_total: float
+    rho_mean: float
+    rho_max: float
+    
+    # Regional
+    S_inside: float
+    S_outside: float
+    S_contrast: float
+    rho_inside: float
+    rho_outside: float
+    rho_contrast: float
+
+
+class BiasedMediumResult(BaseModel):
+    """Result of biased medium experiment."""
+    config: Dict
+    duration_seconds: float
+    
+    # Bias region info
+    bias_center: List[int]
+    bias_radius: float
+    bias_area_fraction: float
+    
+    # Parameter contrasts
+    gamma_contrast: float  # gamma_outside / gamma_inside
+    beta_contrast: float   # beta_inside / beta_outside
+    lambda_contrast: float # lambda_outside / lambda_inside
+    
+    # Time series
+    time_series: List[BiasedMediumTimePoint]
+    
+    # Late-time analysis
+    late_S_inside: float
+    late_S_outside: float
+    late_S_contrast: float
+    late_rho_inside: float
+    late_rho_outside: float
+    late_rho_contrast: float
+    
+    # Key results
+    structure_preferentially_forms_inside: bool
+    structure_persists_inside: bool
+    localization_achieved: bool
+    
+    # Interpretation
+    interpretation: List[str]
+    experiment_outcome: str  # 'localized', 'spreads', 'no_structure', 'inconclusive'
+
+
+@router.post("/biased-medium/run", response_model=BiasedMediumResult)
+async def run_biased_medium(config: BiasedMediumConfig):
+    """
+    Phase 4 Experiment: Biased Medium
+    
+    Tests the hypothesis: "Structure emerges from imbalance, not external driving"
+    
+    Instead of driving a region externally, we embed asymmetry INTO the medium:
+    - Lower γ inside (less damping → energy persists)
+    - Higher β inside (stronger coupling → more structure)
+    - Lower λ inside (slower relaxation → structure persists)
+    
+    NO external pulses after initialization - structure must emerge from imbalance.
+    """
+    import time as time_module
+    
+    start_time = time_module.time()
+    
+    if config.seed is not None:
+        np.random.seed(config.seed)
+    
+    size = config.size
+    
+    # Bias region center
+    if config.bias_center is not None:
+        bias_center = tuple(config.bias_center)
+    else:
+        bias_center = (size // 2, size // 2)
+    
+    bias_radius = config.bias_radius
+    
+    # Create mask for analysis
+    x, y = np.meshgrid(np.arange(size), np.arange(size), indexing='ij')
+    r = np.sqrt((x - bias_center[0])**2 + (y - bias_center[1])**2)
+    bias_mask = r <= bias_radius
+    bias_area = np.sum(bias_mask)
+    total_area = size * size
+    bias_fraction = bias_area / total_area
+    
+    # Create simulator
+    sim = BiasedMediumSimulator2D(size=size, D_medium=config.D_medium)
+    
+    # Set biased region parameters
+    sim.set_biased_region(
+        center=bias_center,
+        radius=bias_radius,
+        gamma_inside=config.gamma_inside,
+        gamma_outside=config.gamma_outside,
+        beta_inside=config.beta_inside,
+        beta_outside=config.beta_outside,
+        lambda_inside=config.lambda_inside,
+        lambda_outside=config.lambda_outside
+    )
+    
+    # Initial condition
+    if config.initial_condition == "pulse_center":
+        sim.add_pulse(center=(size//2, size//2), amplitude=3.0, width=5.0)
+    elif config.initial_condition == "pulse_bias":
+        sim.add_pulse(center=bias_center, amplitude=3.0, width=bias_radius*0.5)
+    elif config.initial_condition == "uniform_noise":
+        sim.add_uniform_noise(amplitude=config.noise_amplitude)
+    elif config.initial_condition == "random_spots":
+        # Random small pulses everywhere
+        n_spots = 20
+        for _ in range(n_spots):
+            cx = np.random.randint(5, size-5)
+            cy = np.random.randint(5, size-5)
+            sim.add_pulse(center=(cx, cy), amplitude=config.noise_amplitude, width=2.0)
+    
+    # Run simulation - NO FURTHER DRIVING
+    time_series = []
+    
+    for step in range(config.steps):
+        sim.step()
+        
+        if step % config.sample_interval == 0:
+            t = step * sim.dt
+            
+            m = sim.measure(t)
+            regional = sim.measure_by_region(bias_mask)
+            
+            time_series.append(BiasedMediumTimePoint(
+                t=t,
+                step=step,
+                S_global=m['S_total'],
+                E_total=m['E_total'],
+                rho_mean=m['rho_mean'],
+                rho_max=m['rho_max'],
+                S_inside=regional['S_inside'],
+                S_outside=regional['S_outside'],
+                S_contrast=regional['S_contrast'],
+                rho_inside=regional['rho_inside'],
+                rho_outside=regional['rho_outside'],
+                rho_contrast=regional['rho_inside'] / (regional['rho_outside'] + 1e-10)
+            ))
+    
+    # Late-time analysis (last 20%)
+    n = len(time_series)
+    late_start = int(0.8 * n)
+    late_series = time_series[late_start:]
+    
+    late_S_inside = float(np.mean([p.S_inside for p in late_series]))
+    late_S_outside = float(np.mean([p.S_outside for p in late_series]))
+    late_S_contrast = late_S_inside / (late_S_outside + 1e-10)
+    
+    late_rho_inside = float(np.mean([p.rho_inside for p in late_series]))
+    late_rho_outside = float(np.mean([p.rho_outside for p in late_series]))
+    late_rho_contrast = late_rho_inside / (late_rho_outside + 1e-10)
+    
+    # Compare early vs late to detect preferential formation
+    early_series = time_series[:int(0.2 * n)]
+    early_S_contrast = float(np.mean([p.S_contrast for p in early_series])) if early_series else 1.0
+    
+    # Determine outcome
+    interpretation = []
+    
+    # Did structure preferentially form inside?
+    structure_forms_inside = late_S_contrast > 1.5 and late_S_inside > late_S_outside
+    
+    # Did structure persist?
+    structure_persists = late_S_inside > 0.001  # Threshold for "meaningful" structure
+    
+    # Contrast thresholds
+    gamma_contrast = config.gamma_outside / config.gamma_inside
+    beta_contrast = config.beta_inside / config.beta_outside
+    lambda_contrast = config.lambda_outside / config.lambda_inside
+    
+    # Determine localization
+    localization_achieved = (
+        late_S_contrast > 2.0 and
+        late_rho_contrast > 1.5 and
+        structure_persists
+    )
+    
+    if localization_achieved:
+        outcome = 'localized'
+        interpretation.append(f"LOCALIZATION ACHIEVED: S contrast = {late_S_contrast:.2f}x")
+        interpretation.append("Structure preferentially forms and persists in biased region")
+        interpretation.append("This supports: 'matter = regions of stable imbalance'")
+    elif structure_forms_inside and not structure_persists:
+        outcome = 'decays'
+        interpretation.append(f"Structure formed inside (early contrast = {early_S_contrast:.2f}x)")
+        interpretation.append(f"But decayed over time (late S = {late_S_inside:.6f})")
+        interpretation.append("Imbalance alone insufficient - needs stronger contrast or nonlinearity")
+    elif late_S_contrast < 1.2:
+        outcome = 'spreads'
+        interpretation.append(f"No preferential formation: S contrast = {late_S_contrast:.2f}x")
+        interpretation.append("Structure spreads uniformly despite parameter imbalance")
+    else:
+        outcome = 'inconclusive'
+        interpretation.append(f"Partial effect: S contrast = {late_S_contrast:.2f}x")
+        interpretation.append("Some preference for biased region but not strong localization")
+    
+    interpretation.append(f"Parameter contrasts: γ={gamma_contrast:.1f}x, β={beta_contrast:.1f}x, λ={lambda_contrast:.1f}x")
+    interpretation.append(f"Biased region: {bias_fraction*100:.1f}% of grid")
+    
+    duration = time_module.time() - start_time
+    
+    return BiasedMediumResult(
+        config=config.model_dump(),
+        duration_seconds=duration,
+        bias_center=list(bias_center),
+        bias_radius=bias_radius,
+        bias_area_fraction=float(bias_fraction),
+        gamma_contrast=gamma_contrast,
+        beta_contrast=beta_contrast,
+        lambda_contrast=lambda_contrast,
+        time_series=time_series,
+        late_S_inside=late_S_inside,
+        late_S_outside=late_S_outside,
+        late_S_contrast=late_S_contrast,
+        late_rho_inside=late_rho_inside,
+        late_rho_outside=late_rho_outside,
+        late_rho_contrast=late_rho_contrast,
+        structure_preferentially_forms_inside=structure_forms_inside,
+        structure_persists_inside=structure_persists,
+        localization_achieved=localization_achieved,
+        interpretation=interpretation,
+        experiment_outcome=outcome
+    )
