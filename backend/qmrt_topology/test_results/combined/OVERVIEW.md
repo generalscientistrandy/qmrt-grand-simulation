@@ -30,17 +30,18 @@ This package contains three complementary papers investigating emergent structur
 └─────────────────────────────────────────────────────────────────┘
                               │
                               │ Organization requires driving, but...
-                              │ what is its spatial structure?
+                              │ can it be localized?
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                         PAPER 3                                 │
-│          "Spatial Coherence and Constraints"                    │
+│      "Localization via Coupling Asymmetry"                      │
 │                                                                 │
-│  • Driving creates 70× gradient magnitude                       │
-│  • Driving creates 135× directional coherence                   │
-│  • Cluster morphology UNCHANGED (AR ~ 2-3)                      │
-│  • Localized driving FAILS (waves spread energy)               │
-│  • Theoretical constraint: no matter-like localization         │
+│  • External driving FAILS to localize (S contrast 1.4×)        │
+│  • β asymmetry SUCCEEDS (S contrast 14-32×)                    │
+│  • Energy uniform, organization localized (DECOUPLING)          │
+│  • Threshold: β contrast ≥ 1.33×, linear scaling               │
+│  • Multiple regions: NO INTERACTION                             │
+│  • Result: ORGANIZATION WELLS, not particles                    │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -55,7 +56,7 @@ This package contains three complementary papers investigating emergent structur
 > Structure maintenance requires sustained energy input. Activity ≠ Organization: event rates persist while spatial coherence decays without driving.
 
 ### Paper 3
-> Driving creates gradient coherence (70× magnitude, 135× alignment) without morphological elongation. Linear wave dynamics cannot localize energy—matter-like structures require nonlinear or topological mechanisms.
+> Spatial asymmetry in coupling strength β localizes organization (S contrast up to 32×) while energy remains uniform. Multiple biased regions show no interaction—they are parameter-induced organization wells, not particles. Matter-like behavior requires physics beyond the current model.
 
 ---
 
@@ -68,8 +69,8 @@ This package contains three complementary papers investigating emergent structur
 | What causes merges? | ∇ρ gradients | — | — |
 | Does organization persist? | — | No (decays to 0) | — |
 | What sustains organization? | — | Energy input | — |
-| What is the spatial structure? | — | — | Aligned blobs, not filaments |
-| Can organization be localized? | — | — | No (waves spread) |
+| Can organization be localized? | — | — | YES (via β asymmetry) |
+| Do localized regions interact? | — | — | NO (independent wells) |
 
 ---
 
@@ -89,13 +90,16 @@ This package contains three complementary papers investigating emergent structur
 | Driven | 0.002 | 0.80 |
 | Periodic vs Random | 0.97 ratio | — |
 
-### Paper 3 Spatial Structure
-| Metric | Undriven | Driven | Ratio |
-|--------|----------|--------|-------|
-| Gradient magnitude | 1.2 | 84.0 | **70×** |
-| Directional coherence | 0.001 | 0.186 | **135×** |
-| Cluster aspect ratio | 2.2 | 2.3 | ~1× |
-| Localization contrast | — | 1.4× | **Fails** |
+### Paper 3 Localization
+| Method | S Contrast | ρ Contrast | Interaction? |
+|--------|------------|------------|--------------|
+| External driving | 1.4× | ~1× | N/A |
+| β asymmetry (single) | 14-32× | ~1× | N/A |
+| β asymmetry (multiple) | 14× each | ~1× | **None** |
+
+| Parameter | Threshold | Scaling |
+|-----------|-----------|---------|
+| β contrast | ≥ 1.33× | Linear: S ≈ 2 + 4×(β-1) |
 
 ---
 
@@ -105,18 +109,28 @@ This package contains three complementary papers investigating emergent structur
 2. **Activity does not imply organization** — these decouple
 3. **Energy magnitude governs maintenance** (not temporal pattern)
 4. **Organization is non-conserved** — requires throughput
-5. **Driving creates coherence, not morphology** — gradients align, shapes don't elongate
-6. **Localization is not supported** — wave propagation spreads energy
+5. **Energy and organization decouple** — same energy, different structure based on local β
+6. **Localization via β asymmetry works** — up to 32× S contrast
+7. **No interaction between localized regions** — organization wells, not particles
 
 ---
 
 ## Theoretical Constraint (Paper 3)
 
-> **Linear wave propagation + relaxation dynamics cannot produce matter-like localized structures.**
+> **β asymmetry localizes organization, but produces independent wells, not interacting particles.**
 
-For localization, future models require:
+The current model CAN:
+- Localize organization (via β asymmetry)
+- Decouple energy from organization
+- Create persistent regional differentiation
+
+The current model CANNOT:
+- Produce interaction between localized regions
+- Create conservation-like behavior
+- Support particle dynamics
+
+For matter-like structures, future models require:
 - Topological defects (vortex cores as "matter")
-- Nonlinear self-interaction (solitons via φ⁴ terms)
 - Modified dispersion (non-propagating modes)
 
 ---
