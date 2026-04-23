@@ -1,4 +1,42 @@
-## Current Status: β-SUPPRESSION MECHANISM IDENTIFIED — CHANNEL DISRUPTION DOMINANT
+## Current Status: BRANCH F TESTED — Spatial Separation Principle Validated
+
+**Date: December 2025**
+
+### Key Result: Spatial separation is CORRECT, but regeneration rate insufficient
+
+Branch F tested spatial separation of regeneration and stabilization zones:
+
+| Test | Result | Details |
+|------|--------|---------|
+| **Test 1: Regeneration Location** | ✓ PASS | 100% nucleation in low-β zones, 0% in high-β |
+| **Test 2: Migration/Capture** | ✓ PASS | Net drift +0.06 toward higher β, 25% lifetime increase |
+| **Test 3: Population Sustain** | ✗ FAIL | Population 0.0, births ~20 (vs ~1200 in pure Branch E) |
+
+### The Core Finding
+
+> "Spatial separation is the correct principle. The failure is regeneration rate, not localization mechanics."
+
+**What works:**
+- Vortices nucleate where intended (low-β / high-coupling interior)
+- Vortices migrate in correct direction (toward high-β periphery)
+- Lifetime gradients exist as designed
+
+**What fails:**
+- Regeneration rate ~60× lower than pure Branch E
+- β-weighted Laplacian disrupts full Branch E dynamics
+- Missing medium dynamics (tau) and oscillators (chi_1, chi_2) from simplified model
+
+### Implication
+
+The Branch F principle is correct, but implementation must preserve full Branch E dynamics. Next approach should integrate spatial variation into the complete Branch E system rather than simplifying it.
+
+### Files
+- `/phase5/BRANCH_F_SPATIAL_SEPARATION_REPORT.md` — Full analysis
+- `branch_f_spatial_separation.py`, `branch_f_alternative.py`
+
+---
+
+## Previous Status: β-SUPPRESSION MECHANISM IDENTIFIED — CHANNEL DISRUPTION DOMINANT
 
 **Date: December 2025**
 
@@ -28,34 +66,13 @@ The mechanism by which β wells suppress topological regeneration has been **def
 - Vortex at boundary drifted +37.8 grid units OUTWARD
 - Even structures that form are expelled
 
-### The Irony
-
-β wells successfully extend individual vortex lifetime (Branch C result: ~5× longer), but this comes at the cost of disrupting the medium's ability to remember and regenerate topology (Branch E mechanism).
-
 ### Scientific Statement
 
-> "β wells suppress topological regeneration NOT by damping remnants faster or shortening vortex lifetime, but by impairing channel self-selection (53% rate) and increasing local dispersion that dilutes phase gradients. The ∇β gradient force further ejects any structures that form near well boundaries."
-
-### Implications for New Coupling Strategy
-
-Any successful combination must:
-1. **Preserve channel self-selection speed** — Cannot use high-β uniformly
-2. **Maintain localized phase gradients** — Need damping, not dispersion  
-3. **Avoid gradient ejection** — Sharp β boundaries push structures out
-
-**Potential approaches to explore:**
-- β wells with resonance decoupled (separate length scales)
-- Inverted structure: low-β wells in high-β background (slower dispersion inside)
-- Dynamic β that responds to topology (only activate after stable vortex forms)
-- Spatial separation: localization region ≠ regeneration region
+> "β wells suppress topological regeneration NOT by damping remnants faster or shortening vortex lifetime, but by impairing channel self-selection (53% rate) and increasing local dispersion that dilutes phase gradients."
 
 ### Files
-- `/phase5/BETA_SUPPRESSION_MECHANISM_REPORT.md` — Full mechanism analysis (NEW)
-- `/phase5/BRANCH_CE_BOUNDARY_REPORT.md` — Boundary discovery
+- `/phase5/BETA_SUPPRESSION_MECHANISM_REPORT.md` — Full mechanism analysis
 - `beta_suppression_mechanism.py` — Diagnostic implementation
-
-### Next Priority: Design New Coupling Strategy
-Based on mechanism analysis, formulate a principled coupling that co-aligns localization with topological memory without interference.
 
 ---
 

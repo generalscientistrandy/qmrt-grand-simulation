@@ -1,0 +1,326 @@
+[
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.4,
+      "beta_ratio": 2.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.6000000000000001,
+      "beta_ratio": 3.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 10,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 20,
+      "interior_radius_frac": 0.4
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.2
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.3
+    }
+  },
+  {
+    "late_population": 0.0,
+    "total_births": 3,
+    "max_population": 2,
+    "params": {
+      "beta_interior": 0.2,
+      "beta_periphery": 0.8,
+      "beta_ratio": 4.0,
+      "transition_width": 30,
+      "interior_radius_frac": 0.4
+    }
+  }
+]
