@@ -1,0 +1,71 @@
+{
+  "uniform": {
+    "coupling_center": 0.5,
+    "coupling_edge": 0.5,
+    "total_births": 10472,
+    "interior_births": 4654,
+    "transition_births": 5030,
+    "periphery_births": 788,
+    "total_deaths": 10428,
+    "mean_lifetime": 27.673091676256234,
+    "late_population": 65.72916666666667,
+    "population_history_last10": [
+      0,
+      8,
+      6,
+      6,
+      26,
+      52,
+      48,
+      44,
+      32,
+      44
+    ]
+  },
+  "spatial": {
+    "coupling_center": 0.6,
+    "coupling_edge": 0.3,
+    "total_births": 15721,
+    "interior_births": 7646,
+    "transition_births": 7373,
+    "periphery_births": 702,
+    "total_deaths": 15609,
+    "mean_lifetime": 28.19687359856493,
+    "late_population": 108.91666666666667,
+    "population_history_last10": [
+      36,
+      50,
+      72,
+      80,
+      110,
+      92,
+      54,
+      78,
+      92,
+      112
+    ]
+  },
+  "strong": {
+    "coupling_center": 0.8,
+    "coupling_edge": 0.2,
+    "total_births": 21035,
+    "interior_births": 13436,
+    "transition_births": 7008,
+    "periphery_births": 591,
+    "total_deaths": 20776,
+    "mean_lifetime": 28.16952252599153,
+    "late_population": 136.625,
+    "population_history_last10": [
+      160,
+      215,
+      237,
+      221,
+      259,
+      246,
+      299,
+      295,
+      278,
+      259
+    ]
+  }
+}

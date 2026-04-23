@@ -1,42 +1,50 @@
-## Current Status: BRANCH F TESTED — Spatial Separation Principle Validated
+## Current Status: BRANCH F v2 SUCCESS — First Localized Regeneration Achieved
 
 **Date: December 2025**
 
-### Key Result: Spatial separation is CORRECT, but regeneration rate insufficient
+### Key Result: Spatial Channel Coupling + Full Branch E Dynamics = Co-alignment
 
-Branch F tested spatial separation of regeneration and stabilization zones:
+| Metric | Uniform Baseline | Strong Spatial (0.8/0.2) | Change |
+|--------|------------------|--------------------------|--------|
+| Total Births | 10,472 | **21,035** | +101% |
+| Late Population | 65.7 | **136.6** | +108% |
+| Interior Birth % | 44.4% | **63.9%** | +44% |
+| Periphery Birth % | 7.5% | **2.8%** | -63% |
 
-| Test | Result | Details |
-|------|--------|---------|
-| **Test 1: Regeneration Location** | ✓ PASS | 100% nucleation in low-β zones, 0% in high-β |
-| **Test 2: Migration/Capture** | ✓ PASS | Net drift +0.06 toward higher β, 25% lifetime increase |
-| **Test 3: Population Sustain** | ✗ FAIL | Population 0.0, births ~20 (vs ~1200 in pure Branch E) |
+### The Breakthrough
 
-### The Core Finding
+Previous Branch F attempts failed because they simplified Branch E dynamics. Branch F v2 uses:
+- **Full Branch E wave equation**: c_eff² × Laplacian (not β-weighted)
+- **Dynamic tau field**: Medium responds to energy density
+- **Oscillators**: chi_1, chi_2 coupling present
+- **Spatial coupling only**: Channel coupling varies, wave dynamics uniform
 
-> "Spatial separation is the correct principle. The failure is regeneration rate, not localization mechanics."
+### Scientific Claim
 
-**What works:**
-- Vortices nucleate where intended (low-β / high-coupling interior)
-- Vortices migrate in correct direction (toward high-β periphery)
-- Lifetime gradients exist as designed
+> "Spatially varying channel coupling in a topological memory medium can localize vortex regeneration to preferred regions while maintaining or enhancing the total regeneration rate."
 
-**What fails:**
-- Regeneration rate ~60× lower than pure Branch E
-- β-weighted Laplacian disrupts full Branch E dynamics
-- Missing medium dynamics (tau) and oscillators (chi_1, chi_2) from simplified model
+### What This Achieves
 
-### Implication
-
-The Branch F principle is correct, but implementation must preserve full Branch E dynamics. Next approach should integrate spatial variation into the complete Branch E system rather than simplifying it.
+| Property | Status |
+|----------|--------|
+| Sustained population | ✓ 136.6 (vs 0.0 with simplified) |
+| Localized regeneration | ✓ 64% interior, 3% periphery |
+| Preserved regeneration rate | ✓ 21,000 births (2× baseline) |
+| Spatial separation principle | ✓ VALIDATED |
 
 ### Files
-- `/phase5/BRANCH_F_SPATIAL_SEPARATION_REPORT.md` — Full analysis
-- `branch_f_spatial_separation.py`, `branch_f_alternative.py`
+- `/phase5/BRANCH_F_V2_SUCCESS_REPORT.md` — Full analysis
+- `branch_f_v2.py` — Implementation
+
+### Next Steps
+- Verify at longer timescales (10k+ steps)
+- Test vortex migration between zones
+- Push localization ratio higher (target 80%+)
+- Integrate into Paper 4
 
 ---
 
-## Previous Status: β-SUPPRESSION MECHANISM IDENTIFIED — CHANNEL DISRUPTION DOMINANT
+## Previous Status: BRANCH F (v1) TESTED — Mechanism validated, rate insufficient
 
 **Date: December 2025**
 
