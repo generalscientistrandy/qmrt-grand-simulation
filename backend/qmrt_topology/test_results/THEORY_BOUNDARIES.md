@@ -122,11 +122,13 @@ To unify localization and interaction:
 
 ## Theoretical Boundary Statement
 
-> **The QMRT framework exhibits two separable phenomena:**
-> 1. **Organization localization** (controlled by β-asymmetry, no interaction)
-> 2. **Topological interaction** (vortex dynamics, not controlled by β)
->
-> **These do not automatically couple.** Matter-like behavior—persistent, localized, interacting structures—requires additional physics that links topology to the medium's spatial properties.
+> **Localization (via β-asymmetry) and interaction (via topology) arise from distinct structural features of the field. In the current formulations, no intrinsic mechanism couples these features.**
+
+This establishes that:
+- Energy flow, organization, and interaction are **three independent axes**
+- Branch A realizes organization without interaction
+- Branch B realizes interaction without localization
+- Matter-like behavior requires **co-localization** of all three
 
 ---
 
