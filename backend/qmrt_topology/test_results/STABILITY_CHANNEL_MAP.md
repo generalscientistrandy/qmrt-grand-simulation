@@ -28,30 +28,46 @@ The QMRT research program has naturally organized into three distinct theoretica
 ## Branch Comparison Matrix
 
 ```
-                    ┌─────────────┬─────────────┬─────────────┐
-                    │  BRANCH A   │  BRANCH B   │  BRANCH C   │
-                    │ Real Scalar │   Complex   │   Coupled   │
-                    │             │   Scalar    │   Complex   │
-┌───────────────────┼─────────────┼─────────────┼─────────────┤
-│ 1. Coherence      │     ✗       │     ✓       │     ✓       │
-│                   │ (no phase)  │  (U(1))     │  (U(1))     │
-├───────────────────┼─────────────┼─────────────┼─────────────┤
-│ 2. Localization   │     ✓       │     ✗       │   partial   │
-│                   │ (β-wells)   │ (uniform)   │  (β-wells)  │
-├───────────────────┼─────────────┼─────────────┼─────────────┤
-│ 3. Topology       │     ✗       │     ✓       │     ✓       │
-│                   │ (no defects)│ (vortices)  │ (vortices)  │
-├───────────────────┼─────────────┼─────────────┼─────────────┤
-│ 4. Interaction    │     ✗       │     ✓       │     ✓       │
-│                   │ (no contact)│(annihilate) │(annihilate) │
-├───────────────────┼─────────────┼─────────────┼─────────────┤
-│ 5. Lifetime       │   partial   │   limited   │     ✓       │
-│    Stabilization  │(local S↑)   │(decay only) │  (1.5-2×)   │
-├───────────────────┼─────────────┼─────────────┼─────────────┤
-│ COMPOSITE         │     ✗       │     ✗       │   partial   │
-│ (Matter-like)     │             │             │             │
-└───────────────────┴─────────────┴─────────────┴─────────────┘
+                    ┌─────────────┬─────────────┬─────────────┬─────────────┐
+                    │  BRANCH A   │  BRANCH B   │  BRANCH C   │  BRANCH E   │
+                    │ Real Scalar │   Complex   │   Coupled   │  Resonance  │
+                    │             │   Scalar    │   Complex   │  Contrast   │
+┌───────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│ 1. Coherence      │     ✗       │     ✓       │     ✓       │     ✓       │
+│                   │ (no phase)  │  (U(1))     │  (U(1))     │  (U(1))     │
+├───────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│ 2. Localization   │     ✓       │     ✗       │   partial   │   partial   │
+│                   │ (β-wells)   │ (uniform)   │  (β-wells)  │ (freq wells)│
+├───────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│ 3. Topology       │     ✗       │     ✓       │     ✓       │     ✓       │
+│                   │ (no defects)│ (vortices)  │ (vortices)  │ (vortices)  │
+├───────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│ 4. Interaction    │     ✗       │     ✓       │     ✓       │     ✓       │
+│                   │ (no contact)│(annihilate) │(annihilate) │ (suppressed)│
+├───────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│ 5. Lifetime       │   partial   │   limited   │     ✓       │     ✓✓      │
+│    Stabilization  │(local S↑)   │(decay only) │  (1.5-2×)   │ (2× single) │
+├───────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│ 6. Annihilation   │     N/A     │     ✗       │     ✗       │     ✓✓✓     │
+│    Suppression    │             │ (rapid)     │ (rapid)     │ (32-48×)    │
+├───────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│ COMPOSITE         │     ✗       │     ✗       │   partial   │  **strong** │
+│ (Matter-like)     │             │             │             │             │
+└───────────────────┴─────────────┴─────────────┴─────────────┴─────────────┘
 ```
+
+### Branch E Key Discovery
+
+**Adaptive resonance differentiation suppresses topological annihilation.**
+
+| Mode | Single Vortex | Pair Lifetime |
+|------|---------------|---------------|
+| Baseline | 1850 | 80 |
+| Partitioned | 3850 (2×) | 80 (1×) |
+| Self-selecting | 3900 (2×) | 2600 (32×) |
+| Combined | 3950 (2×) | 3840 (48×) |
+
+The breakthrough: Self-selection allows vortices to dynamically differentiate their frequency signature, dramatically suppressing pair annihilation.
 
 ---
 
