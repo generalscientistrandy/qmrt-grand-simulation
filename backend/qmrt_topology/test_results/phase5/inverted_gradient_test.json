@@ -1,0 +1,16 @@
+{
+  "ORIGINAL (high center)": {
+    "mean_radial_displacement": -2.586080945789119,
+    "late_population": 654.6145833333334,
+    "late_interior_fraction": 0.5600146396575593,
+    "late_periphery_fraction": 0.01012045892143914,
+    "n_tracks": 10452
+  },
+  "INVERTED (high edge)": {
+    "mean_radial_displacement": -1.1019951936469319,
+    "late_population": 343.6458333333333,
+    "late_interior_fraction": 0.02797817520460746,
+    "late_periphery_fraction": 0.4394665050015157,
+    "n_tracks": 6290
+  }
+}
