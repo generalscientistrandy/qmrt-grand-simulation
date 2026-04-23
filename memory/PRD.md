@@ -1,42 +1,47 @@
-## Current Status: THEORY BOUNDARIES ESTABLISHED
+## Current Status: STABILITY HIERARCHY FRAMEWORK ESTABLISHED
 
 **Date: April 2026**
 
-### Two Branches Fully Characterized
+### Key Discovery: Stability is a Hierarchy of Layers
 
-| Branch | Field | Localization | Interaction | Topology |
-|--------|-------|--------------|-------------|----------|
-| **A** (Real scalar) | φ ∈ ℝ | ✓ (14-32×) | ✗ | ✗ |
-| **B** (Complex scalar) | ψ ∈ ℂ | ✗ | ✓ | ✓ |
+| Layer | Question | Status |
+|-------|----------|--------|
+| 1. Dynamic Persistence | Does it exist? | ✓ All branches |
+| 2. Structural Coherence | Is it organized? | ✓ With driving |
+| 3. Localized Persistence | Does it stay in place? | ✓ With β-asymmetry |
+| 4. Interactive Persistence | Does it interact? | ✓ Complex scalar |
+| 5. Matter-Like | All together? | ✗ Not yet |
 
-### Key Finding
-**Localization and interaction are separable mechanisms.**
-- β-asymmetry localizes organization (Branch A)
-- Vortices provide interaction (Branch B)
-- But β does NOT control vortices
+### Branch C Finding: Intrinsic β-Vortex Coupling
+High-β regions increase vortex lifetime **7.5×** (no coupling) to **11.4×** (with coupling).
+This links Layer 3 (localization) to Layer 4 (interaction) through τ_eq.
 
-### Theoretical Boundary
-> "Neither Branch A nor Branch B alone yields matter-like behavior. Matter-like behavior requires a mechanism that couples topological defects to spatially localized organization."
+### Results Mapped to Layers
 
-### Papers Complete
-| Paper | Topic | Status |
-|-------|-------|--------|
-| Paper 1 | Formation statistics | ✓ Complete |
-| Paper 2 | Energy sustains organization | ✓ Complete |
-| Paper 3 | β localizes S (no interaction) | ✓ Complete |
+| Branch | L1 | L2 | L3 | L4 | L5 |
+|--------|----|----|----|----|----| 
+| Paper 3 (β wells) | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Branch B (Vortices) | ✓ | — | ✗ | ✓ | ✗ |
+| Branch C (Coupled) | ✓ | — | partial | ✓ | ✗ |
+
+### Theoretical Statement
+> "Matter-like behavior requires multiple stability layers to align simultaneously. Current branches achieve different layers separately. The β-τ_eq mechanism links layers 3-4, suggesting the coupling exists but isn't strong enough yet."
 
 ### Files
-- `/THEORY_BOUNDARIES.md` — Complete summary
-- `/BRANCH_A_COMPLETE.md` — Real scalar closure
-- `/phase5/BRANCH_B_RESULTS.md` — Complex scalar results
-- `/paper3/PAPER3_final.md` — Localization paper
+- `/STABILITY_HIERARCHY.md` — Framework document
+- `/THEORY_BOUNDARIES.md` — Branch comparisons
+- `/phase5/BRANCH_C_RESULTS.md` — Coupling discovery
 
-### Next Branch (If Desired)
-**Branch C**: Explicit vortex-β coupling to test if localization and interaction can be unified.
+### Stability Ladder Test (For Future Work)
+1. Does it increase lifetime?
+2. Does it preserve organization?
+3. Does it localize that organization?
+4. Does it allow interaction?
+5. Does it keep all of the above at once?
 
 ---
 
-## Previous Status: PAPER 3 — FINALIZED
+## Previous Status: THEORY BOUNDARIES ESTABLISHED
 
 **Date: April 2026**
 
