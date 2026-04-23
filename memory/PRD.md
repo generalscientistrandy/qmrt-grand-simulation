@@ -1,62 +1,49 @@
-## Current Status: BRANCH E MECHANISM REFINED — TOPOLOGICAL MEMORY
+## Current Status: BRANCH C+E BOUNDARY — Organization and Topological Memory Antagonistic
 
 **Date: December 2025**
 
-### Key Result: Topological Memory with Remnant Amplification
+### Key Result: β Wells Suppress, Not Enhance, Topological Regeneration
 
-Branch E mechanism has been refined through detailed analysis:
+Direct combination of Branch C (β-coupling) and Branch E (resonance self-selection) does NOT co-align:
 
-**Original claim (superseded):**
-> "Adaptive resonance differentiation suppresses topological annihilation"
+| Mode | Late Population | Inside Wells | Localization |
+|------|-----------------|--------------|--------------|
+| β-only (C) | 0.0 | 0.0 | N/A |
+| Resonance-only (E) | **4.8** | 0.2 | 0.36 |
+| **Combined (C+E)** | **2.4** | **0.0** | **0.00** |
 
-**Corrected claim:**
-> "Self-selection does not create topology ex nihilo. Instead, it preserves residual phase structure and selectively amplifies it, producing recurrent vortex regeneration and a sustained fluctuating defect population."
+### The Boundary
 
-### Three Mechanisms Separated
+> "In the current formulation, β-localized organization and resonance-based topological memory do not co-align. Their direct combination suppresses, rather than enhances, localized topological regeneration."
 
-| Mechanism | Observed? |
-|-----------|-----------|
-| Immortal defects | ❌ NO |
-| Annihilation suppression | ❌ NO |
-| **Topological memory + remnant amplification** | ✅ YES |
+**Evidence:**
+- Combined mode has FEWER vortices than resonance-only (2.4 vs 4.8)
+- Zero vortices inside β wells (localization ratio = 0.00)
+- Nucleation strongly biased AWAY from wells (0.24× expected)
+- Zero hotspots inside wells in combined mode
 
-### Quantitative Results
+### Inter-Layer Boundary Confirmed
 
-| Metric | Baseline | Self-Selecting |
-|--------|----------|----------------|
-| Nucleation rate | 2.5/1000 steps | **37.25/1000 steps** (15×) |
-| Nucleation hotspots | 0 | **8 locations** |
-| Late population | 0 (EXTINCT) | **6.3 ± 3.6** (maintained) |
-| Topology between rebirths | Returns to baseline | Never returns (0.13-0.40) |
-
-### Key Findings
-
-1. **Annihilation is NOT suppressed** — Vortex pairs approach and annihilate identically in both modes
-2. **Residual phase structure persists** — Topology indicator never returns to baseline after annihilation
-3. **Spatial memory exists** — Same locations repeatedly nucleate (hotspots near original positions)
-4. **Population-level stability achieved** — Mean ~6 vortices maintained vs extinction
-
-### Theory Progression
-
-| Paper/Branch | Key Finding |
-|--------------|-------------|
-| Paper 1 | Structure formation rules |
-| Paper 2 | Organization needs energy |
-| Paper 3 | β asymmetry localizes organization |
-| **Branch E** | **Self-selection maintains topology through remnant amplification** |
-| **Next test** | **Can β wells + topological memory co-align?** |
+| Layer Pair | Can Combine? |
+|------------|--------------|
+| Coherence + Topology | ✓ |
+| Organization + Coherence | ✓ |
+| Topology + Resonance | ✓ |
+| **Organization + Topological Memory** | **✗ Antagonistic** |
 
 ### Files
-- `/phase5/BRANCH_E_MECHANISM_DISCOVERY.md` — Full mechanism analysis
-- `/phase5/BRANCH_E_RESONANCE_REPORT.md` — Updated with mechanism correction
-- `regeneration_analysis.py` — Population and hotspot analysis
+- `/phase5/BRANCH_CE_BOUNDARY_REPORT.md` — Full boundary analysis
+- `branch_ce_combined_test.py` — Test implementation
 
-### Next Priority: Branch C + E Combined Test
-Question: Can β-localized organization wells convert remnant amplification into localized, stable topological populations?
+### Next Priority: Investigate Suppression Mechanism
+Why do β wells suppress regeneration?
+- Dispersion modification?
+- Channel assignment interference?
+- Phase memory disruption?
 
 ---
 
-## Previous Status: BRANCH E VALIDATED — RESONANCE CONTRAST STABILIZATION
+## Previous Status: BRANCH E MECHANISM REFINED — TOPOLOGICAL MEMORY
 
 **Date: December 2025**
 
