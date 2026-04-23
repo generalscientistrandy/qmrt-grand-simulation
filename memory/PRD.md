@@ -1,4 +1,55 @@
-## Current Status: STABILITY HIERARCHY FRAMEWORK ESTABLISHED
+## Current Status: BRANCH C DECISIVE TESTS COMPLETE — PARTIAL CO-ALIGNMENT
+
+**Date: December 2025**
+
+### Key Result: β is a STABILIZER, not a TRAP
+
+Decisive tests for Branch C (Coupled Complex Scalar) completed with clear findings:
+
+| Test | Result | Verdict |
+|------|--------|---------|
+| Test 1A (Seeded Persistence) | Pairs annihilate regardless of β | ✗ FAIL |
+| Test 2B (Pinning/Residence) | Lifetime extended 1.4× in β-weighted | ✓ PASS |
+| Test 3 (Pair Protection) | Inside-well lifetime 1.67× longer | ✓ PASS |
+
+### Core Theoretical Statement
+> "In the coupled complex-scalar branch, β influences topological defect lifetime but does not generate pinning or overcome intrinsic vortex-antivortex annihilation. Thus β acts as a **stabilizing channel** rather than a **confinement mechanism**."
+
+### What β-Coupling DOES:
+- ✓ Extends single-vortex lifetime by 1.5-2×
+- ✓ Provides partial protection for vortices inside β-wells
+- ✓ Modifies dispersion dynamics
+
+### What β-Coupling DOES NOT Do:
+- ✗ Pin vortices (no stable equilibrium positions)
+- ✗ Prevent close-pair annihilation
+- ✗ Create drift force toward high-β
+- ✗ Generate true confinement
+
+### Stability Channel Map Summary
+
+| Branch | Coherence | Localization | Topology | Interaction | Lifetime | Composite |
+|--------|-----------|--------------|----------|-------------|----------|-----------|
+| A (Real) | ✗ | ✓ | ✗ | ✗ | partial | ✗ |
+| B (Complex) | ✓ | ✗ | ✓ | ✓ | limited | ✗ |
+| C (Coupled) | ✓ | partial | ✓ | ✓ | ✓ (1.5-2×) | **partial** |
+
+### Files
+- `/phase5/BRANCH_C_DECISIVE_REPORT.md` — Full decisive test analysis
+- `/STABILITY_CHANNEL_MAP.md` — Comparative branch analysis
+- `/decisive_tests_refined.py` — Test implementation
+
+### Next Decision Point
+Branch C achieves partial co-alignment. Full composite stability (matter-like behavior) would require:
+- True confinement mechanism (not just slower decay)
+- Charge separation (way to keep opposite charges apart)
+- Dynamic equilibrium (balance between creation and annihilation)
+
+This likely requires going beyond minimal wave-equation modifications (potential Branch D).
+
+---
+
+## Previous Status: STABILITY HIERARCHY FRAMEWORK ESTABLISHED
 
 **Date: April 2026**
 
