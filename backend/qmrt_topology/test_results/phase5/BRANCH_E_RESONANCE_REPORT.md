@@ -1,8 +1,29 @@
 # Branch E: Resonance Contrast Stabilization
 
 **Date:** December 2025  
-**Status:** VALIDATED — New stabilization channel identified  
-**Key Result:** Adaptive resonance differentiation suppresses topological annihilation
+**Status:** VALIDATED — Mechanism refined through detailed analysis  
+**Key Result:** Topological memory with remnant amplification maintains a fluctuating, nonzero defect population
+
+---
+
+## ⚠️ MECHANISM UPDATE (December 2025)
+
+**Previous interpretation (superseded):**
+> "Adaptive resonance differentiation suppresses topological annihilation"
+
+**Corrected interpretation:**
+> "Self-selection does not create topology ex nihilo. Instead, it preserves residual phase structure and selectively amplifies it, producing recurrent vortex regeneration and a sustained fluctuating defect population."
+
+The original "32× pair lifetime" result was misleading. Detailed mechanism analysis revealed:
+- ❌ Annihilation is NOT suppressed (pairs still annihilate at step ~100)
+- ❌ Spontaneous nucleation does NOT occur (topology never returns to baseline)
+- ✅ Residual phase structure persists after annihilation
+- ✅ Self-selection amplifies these remnants back into full vortices
+- ✅ This maintains a nonzero fluctuating population (vs extinction in baseline)
+
+See `/phase5/BRANCH_E_MECHANISM_DISCOVERY.md` for full analysis.
+
+---
 
 ---
 

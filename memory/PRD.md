@@ -1,52 +1,62 @@
-## Current Status: BRANCH E VALIDATED — RESONANCE CONTRAST STABILIZATION
+## Current Status: BRANCH E MECHANISM REFINED — TOPOLOGICAL MEMORY
 
 **Date: December 2025**
 
-### Key Result: Adaptive Resonance Differentiation Suppresses Topological Annihilation
+### Key Result: Topological Memory with Remnant Amplification
 
-Branch E introduces **resonance contrast** as a new stabilization channel. The breakthrough finding:
+Branch E mechanism has been refined through detailed analysis:
 
-| Mode | Single Vortex | Pair Lifetime | Improvement |
-|------|---------------|---------------|-------------|
-| Baseline | 1850 | 80 | 1× |
-| A (Partitioned) | 3850 | 80 | 2× single, 1× pair |
-| B (Self-selecting) | 3900 | 2600 | 2× single, **32× pair** |
-| **C (Combined)** | **3950** | **3840** | **2× single, 48× pair** |
+**Original claim (superseded):**
+> "Adaptive resonance differentiation suppresses topological annihilation"
 
-### Core Theoretical Statement
-> "Topological defects can persist longer when they occupy a distinct resonance channel from the background medium. Adaptive resonance differentiation is particularly effective at suppressing pair annihilation."
+**Corrected claim:**
+> "Self-selection does not create topology ex nihilo. Instead, it preserves residual phase structure and selectively amplifies it, producing recurrent vortex regeneration and a sustained fluctuating defect population."
 
-### What Branch E Achieves
-- ✓ 2× single vortex lifetime (all modes)
-- ✓ **32-48× pair lifetime** (self-selection and combined)
-- ✓ Structures can spontaneously generate protected frequency niches
-- ✓ Annihilation suppression (the key breakthrough)
+### Three Mechanisms Separated
 
-### Stability Hierarchy (Updated)
-| Layer | Mechanism | Best Branch |
-|-------|-----------|-------------|
-| 1. Dynamical | Excitations persist | All |
-| 2. Coherence | Phase maintained | B, C, E |
-| 3. Localization | Spatially concentrated | A, C, E |
-| 4. Topology | Conserved winding | B, C, E |
-| 5. Interaction | Defects influence each other | B, C, E |
-| 6. **Resonance** | **Distinct frequency channel** | **E (new)** |
-| 7. Composite | All aligned | **Partial in E** |
+| Mechanism | Observed? |
+|-----------|-----------|
+| Immortal defects | ❌ NO |
+| Annihilation suppression | ❌ NO |
+| **Topological memory + remnant amplification** | ✅ YES |
+
+### Quantitative Results
+
+| Metric | Baseline | Self-Selecting |
+|--------|----------|----------------|
+| Nucleation rate | 2.5/1000 steps | **37.25/1000 steps** (15×) |
+| Nucleation hotspots | 0 | **8 locations** |
+| Late population | 0 (EXTINCT) | **6.3 ± 3.6** (maintained) |
+| Topology between rebirths | Returns to baseline | Never returns (0.13-0.40) |
+
+### Key Findings
+
+1. **Annihilation is NOT suppressed** — Vortex pairs approach and annihilate identically in both modes
+2. **Residual phase structure persists** — Topology indicator never returns to baseline after annihilation
+3. **Spatial memory exists** — Same locations repeatedly nucleate (hotspots near original positions)
+4. **Population-level stability achieved** — Mean ~6 vortices maintained vs extinction
+
+### Theory Progression
+
+| Paper/Branch | Key Finding |
+|--------------|-------------|
+| Paper 1 | Structure formation rules |
+| Paper 2 | Organization needs energy |
+| Paper 3 | β asymmetry localizes organization |
+| **Branch E** | **Self-selection maintains topology through remnant amplification** |
+| **Next test** | **Can β wells + topological memory co-align?** |
 
 ### Files
-- `/phase5/BRANCH_E_RESONANCE_REPORT.md` — Full report
-- `/STABILITY_CHANNEL_MAP.md` — Updated with Branch E
-- `resonance_contrast_tests.py` — Test implementation
+- `/phase5/BRANCH_E_MECHANISM_DISCOVERY.md` — Full mechanism analysis
+- `/phase5/BRANCH_E_RESONANCE_REPORT.md` — Updated with mechanism correction
+- `regeneration_analysis.py` — Population and hotspot analysis
 
-### Next Priority
-Investigate the pair stabilization mechanism in detail:
-- How does self-selection alter vortex-antivortex approach?
-- Does channel divergence correlate with separation?
-- What is the physical mechanism of annihilation suppression?
+### Next Priority: Branch C + E Combined Test
+Question: Can β-localized organization wells convert remnant amplification into localized, stable topological populations?
 
 ---
 
-## Previous Status: BRANCH C DECISIVE TESTS COMPLETE — PARTIAL CO-ALIGNMENT
+## Previous Status: BRANCH E VALIDATED — RESONANCE CONTRAST STABILIZATION
 
 **Date: December 2025**
 
