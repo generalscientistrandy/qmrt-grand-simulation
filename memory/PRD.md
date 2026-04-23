@@ -1,4 +1,65 @@
-## Current Status: BRANCH C+E BOUNDARY — Organization and Topological Memory Antagonistic
+## Current Status: β-SUPPRESSION MECHANISM IDENTIFIED — CHANNEL DISRUPTION DOMINANT
+
+**Date: December 2025**
+
+### Key Result: β Wells Suppress Regeneration via Channel Self-Selection Disruption
+
+The mechanism by which β wells suppress topological regeneration has been **definitively identified**:
+
+| Mechanism | Inside β Well | Outside β Well | Verdict |
+|-----------|---------------|----------------|---------|
+| Channel Growth Rate | +0.1215 (300 steps) | +0.2287 (300 steps) | **53% slower inside** |
+| Dispersion Spread | 5.3 → 15.5 | 5.3 → 0.0 | **Spreads inside, damps outside** |
+| Boundary Drift | +37.8 outward | N/A | **Ejects structures** |
+| Vortex Lifetime | 1980 steps | 400 steps | **5× longer inside** (not the issue) |
+
+### The Suppression Mechanism
+
+**Primary (DOMINANT)**: Channel self-selection operates at **53% rate** inside β wells
+- Higher wave speed (c_eff ~ √β ≈ 1.8× faster) causes oscillator phases to mix rapidly
+- Prevents the slow frequency differentiation required for stable channel formation
+- Resonance memory mechanism fails to develop
+
+**Secondary**: Dispersion spreading dilutes phase gradients
+- Inside wells: perturbations SPREAD (width 0 → 15.5) instead of damping in place
+- Washes out localized phase structure needed as regeneration seeds
+
+**Tertiary**: ∇β·∇ψ gradient term ejects vortices from wells
+- Vortex at boundary drifted +37.8 grid units OUTWARD
+- Even structures that form are expelled
+
+### The Irony
+
+β wells successfully extend individual vortex lifetime (Branch C result: ~5× longer), but this comes at the cost of disrupting the medium's ability to remember and regenerate topology (Branch E mechanism).
+
+### Scientific Statement
+
+> "β wells suppress topological regeneration NOT by damping remnants faster or shortening vortex lifetime, but by impairing channel self-selection (53% rate) and increasing local dispersion that dilutes phase gradients. The ∇β gradient force further ejects any structures that form near well boundaries."
+
+### Implications for New Coupling Strategy
+
+Any successful combination must:
+1. **Preserve channel self-selection speed** — Cannot use high-β uniformly
+2. **Maintain localized phase gradients** — Need damping, not dispersion  
+3. **Avoid gradient ejection** — Sharp β boundaries push structures out
+
+**Potential approaches to explore:**
+- β wells with resonance decoupled (separate length scales)
+- Inverted structure: low-β wells in high-β background (slower dispersion inside)
+- Dynamic β that responds to topology (only activate after stable vortex forms)
+- Spatial separation: localization region ≠ regeneration region
+
+### Files
+- `/phase5/BETA_SUPPRESSION_MECHANISM_REPORT.md` — Full mechanism analysis (NEW)
+- `/phase5/BRANCH_CE_BOUNDARY_REPORT.md` — Boundary discovery
+- `beta_suppression_mechanism.py` — Diagnostic implementation
+
+### Next Priority: Design New Coupling Strategy
+Based on mechanism analysis, formulate a principled coupling that co-aligns localization with topological memory without interference.
+
+---
+
+## Previous Status: BRANCH C+E BOUNDARY — Organization and Topological Memory Antagonistic
 
 **Date: December 2025**
 
@@ -21,25 +82,6 @@ Direct combination of Branch C (β-coupling) and Branch E (resonance self-select
 - Zero vortices inside β wells (localization ratio = 0.00)
 - Nucleation strongly biased AWAY from wells (0.24× expected)
 - Zero hotspots inside wells in combined mode
-
-### Inter-Layer Boundary Confirmed
-
-| Layer Pair | Can Combine? |
-|------------|--------------|
-| Coherence + Topology | ✓ |
-| Organization + Coherence | ✓ |
-| Topology + Resonance | ✓ |
-| **Organization + Topological Memory** | **✗ Antagonistic** |
-
-### Files
-- `/phase5/BRANCH_CE_BOUNDARY_REPORT.md` — Full boundary analysis
-- `branch_ce_combined_test.py` — Test implementation
-
-### Next Priority: Investigate Suppression Mechanism
-Why do β wells suppress regeneration?
-- Dispersion modification?
-- Channel assignment interference?
-- Phase memory disruption?
 
 ---
 
