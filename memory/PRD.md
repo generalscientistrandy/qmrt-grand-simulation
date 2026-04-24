@@ -1,45 +1,48 @@
-## Current Status: PAPER 4 FINAL DRAFT COMPLETE
+## Current Status: PAPER 4 FROZEN — Program Phase Complete
 
 **Date: December 2025**
 
-### Paper 4: Causal Attractor Control of Topological Defect Populations
+### Papers 1-4 Complete
 
-**Status**: FINAL DRAFT with figures
+| Paper | Topic | Core Finding |
+|-------|-------|--------------|
+| 1 | Formation | Statistical lifecycle rules for structures |
+| 2 | Sustained Organization | Energy input required for persistence |
+| 3 | Localization | β-coupling localizes but no matter-like behavior |
+| **4** | **Causal Attractor** | **Coupling gradients control topological populations** |
 
-**Core thesis**: Coupling gradients act as causal attractors for topological defect populations, regulating where defects regenerate, drift, and survive.
+### Paper 4 Package (FROZEN)
 
-### Key Evidence
+```
+/qmrt_topology/papers/paper_4_package/
+├── PAPER_4_FINAL.md (DO NOT EDIT)
+├── figures/ (5 PNGs)
+├── Supporting reports (5 MDs)
+└── README.md
+```
 
-| Result | Metric |
-|--------|--------|
-| Localized regeneration | 64% interior births (vs 44% uniform) |
-| Directed transport | -2.59 mean drift toward high coupling |
-| Survival advantage | 146 steps (interior) vs 56 (periphery) |
-| **Causal proof** | Inverted gradient reverses all effects |
+### Program Overview
 
-### Figures (5 complete)
-1. Localization comparison (births, population, regional fractions)
-2. Long-time behavior (12k steps population + localization)
-3. Migration dynamics (drift distribution + mean by zone)
-4. Causal inversion test (FLIP + REVERSAL annotated)
-5. Lifetime by zone (★ marking longest in each config)
+`/qmrt_topology/papers/program_overview/PAPERS_1_4_OVERVIEW.md`
 
-### Paper Structure
-- Abstract: Polished, precise, bounded
-- Introduction: Program context + branch arc + central question
-- Methods: Model, profiles, observables, causal test design
-- Results: 5 sections with figures and tables
-- Interpretation: Shown vs inferred, causal mechanism, boundaries
-- Limitations: Explicit (2D, statistical, no bound states)
-- Conclusion: Three takeaways + future directions
+### What Has Been Established
+1. Formation is statistical, not random
+2. Persistence requires driving
+3. Localization is achievable via coupling
+4. Topological populations can be causally controlled
 
-### Files
-- `/phase5/PAPER_4_DRAFT.md` — Final draft
-- `/phase5/figures/` — 5 PNG figures
+### What Has NOT Been Established
+- Matter-like bound-state behavior
+- Conserved defect populations
+- 3D validation
+- Higher-order defect structures
+
+### Next Research Phase (NOT drafting)
+1. 3D validation of causal attractor mechanism
+2. Defect-defect interaction studies
+3. Paper 5 decision based on 3D results
 
 ---
-
-## Previous: Causal Control Demonstrated
 
 **Date: December 2025**
 
