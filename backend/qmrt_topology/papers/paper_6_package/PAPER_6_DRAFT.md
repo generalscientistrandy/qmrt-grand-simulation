@@ -2,7 +2,7 @@
 
 ## Geometric Structure and Driven Dynamics of the QMRT Medium
 
-**Status**: DRAFT (Refined)  
+**Status**: FROZEN  
 **Date**: December 2025
 
 ---

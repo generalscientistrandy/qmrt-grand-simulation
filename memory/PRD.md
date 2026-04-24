@@ -1,61 +1,47 @@
-## Current Status: PHASE 9 COMPLETE — Driven Non-Equilibrium Scaffold
+## Current Status: PAPER 6 FROZEN — Proto-Spacetime Scaffold
 
 **Date: December 2025**
 
-### Phase 9 Summary: The Scaffold is a Driven NESS
+### Paper 6 Complete
 
-| Gate | Finding |
-|------|---------|
-| Gate 1 | Undriven scaffold DECAYS (population 245 → 30) |
-| Gate 2 | Driven scaffold REBUILDS, approaches ~1D |
-| Gate 3 | Driven scaffold approaches STEADY STATE (~180-200 defects) |
+**Title**: The Proto-Spacetime Scaffold: Geometric Structure and Driven Dynamics of the QMRT Medium
 
----
+**Core thesis**:
+> The proto-spacetime regime of the QMRT medium is a driven, metric-like, filamentary non-equilibrium scaffold: it exhibits relational geometry, robust ~1D organization, phase-dependent control structure, and bounded carrying capacity under sustained driving.
 
-### Core Finding
+**Three central results**:
+1. The proto-spacetime regime exists (Phase 6-7)
+2. It is robustly filamentary (Phase 7-8)
+3. It is a driven non-equilibrium scaffold (Phase 9)
 
-> **The filamentary proto-spacetime scaffold is a driven non-equilibrium steady structure: without continuous injection it decays, while under sustained driving it rebuilds and approaches a stable filamentary regime with bounded population and persistent local structure.**
-
----
-
-### Quantitative Estimates (Provisional)
-
-| Parameter | Estimate |
-|-----------|----------|
-| Carrying capacity | ~180–200 defects |
-| Steady-state dimension | ~1.1–1.2 |
-| Late-time triangles | ~3,500–4,000 |
-
----
-
-### Milestone Documents
-- `/qmrt_topology/papers/PHASE_9_CONCLUSION.md`
-- `/qmrt_topology/papers/PHASE_9_GATE2_DRIVEN_MILESTONE.md`
+**Package**: `/qmrt_topology/papers/paper_6_package/`
 
 ---
 
 ### Program Arc Complete
 
-| Level | Phase | Achievement |
-|-------|-------|-------------|
+| Level | Phase/Paper | Achievement |
+|-------|-------------|-------------|
 | 1 | Papers 1-5 | Active selective environment |
 | 2 | Phase 6 | Proto-spacetime organizational regime |
-| 3 | Phase 7 | Metric-like filamentary geometry + organizational phases |
-| 4 | Phase 8 | Robust ~1D boundary (stabilization mechanisms fail) |
-| **5** | **Phase 9** | **Driven non-equilibrium filamentary scaffold** |
+| 3 | Phase 7 | Metric-like filamentary geometry |
+| 4 | Phase 8 | Robust ~1D boundary |
+| 5 | Phase 9 | Driven non-equilibrium scaffold |
+| **6** | **Paper 6** | **Synthesis: Proto-spacetime scaffold** |
 
 ---
 
-### Conceptual Summary
+### Next: "Why Filamentary?" Framework Note
 
-The proto-spacetime scaffold is now fully characterized:
-- **What it is**: Metric-like filamentary relational structure (~1D)
-- **How it organizes**: Hybrid DoF control with regime-dependent phases
-- **Why it persists**: Driven non-equilibrium maintenance, not conservative equilibrium
+Open interpretive questions:
+- Why is ~1D preferred?
+- Is dimensionality emerging by layered branching or constrained DoFs?
+- Why does forcing enrich local structure but not global dimension?
+- What mechanism would be needed to move beyond filamentary regime?
 
 ---
 
-### Previous: Phase 8 Summary
+### Previous: Phase 9 Summary
 
 | Stage | Question | Result | Key Metric |
 |-------|----------|--------|------------|
