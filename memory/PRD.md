@@ -1,42 +1,27 @@
-## Current Status: PHASE 7 COMPLETE — Geometric Structure of Proto-Spacetime
+## Current Status: PHASE 8 COMPLETE — Robust Filamentary Boundary
 
 **Date: December 2025**
 
-### Phase 7 Summary: Five Gates Completed
+### Phase 8 Summary: Negative Boundary Result
 
-| Gate | Question | Result |
-|------|----------|--------|
-| Gate 1 | Does the network have metric-like properties? | ✓ YES (r=0.85 graph-Euclidean correlation) |
-| Gate 2 | Is ~1D dimension universal across forcing? | ✓ YES (d=1.01–1.15 across all axes) |
-| Gate 3 | Can extreme forcing break the ~1D barrier? | ✗ NO (d=1.10–1.21 even under triple extreme) |
-| Gate 4 | Which DoFs carry organizational behavior? | HYBRID (position ≈ coupling ≈ resonance) |
-| Gate 5 | Is the DoF hierarchy universal? | ✗ NO (three organizational phases detected) |
+| Gate | Mechanism | Dimension | Triangles | Edges | Verdict |
+|------|-----------|-----------|-----------|-------|---------|
+| Gate 1 | Cross-link stabilization | 1.18→1.33 | -52% | -35% | FALSE POSITIVE |
+| Gate 2 | Loop/motif stabilization | 1.18→1.51 | -72% | -53% | FALSE POSITIVE |
+
+**Both mechanisms produced the same artifact**: dimension increased through sparse diffusion, not true 2D enrichment.
 
 ---
 
-### Core Findings
+### Core Finding
 
-**1. Metric-like filamentary geometry**
-> The proto-spacetime regime exhibits robust filamentary metric-like geometry: graph distance faithfully encodes spatial distance, but the network grows one-dimensionally (~1D) within 3D space.
-
-**2. Spatial dimension vs. degrees of freedom**
-> What are often described as extra dimensions may, in some frameworks, be more naturally interpreted as additional degrees of freedom of the underlying medium rather than literal spatial directions.
-
-**3. Multiple organizational phases**
-| Phase | Regime | DoF Hierarchy |
-|-------|--------|---------------|
-| HYBRID | Baseline, Pressure, Contrast | position ≈ coupling ≈ resonance |
-| RESONANCE | Confinement Extreme | channel_assignment dominates |
-| GEOMETRIC | Triple Extreme | radial_dist dominates |
+> **Within the current mechanism family, attempts to promote higher-dimensional organization do not produce true 2D enrichment. Instead, they suppress local structure and create sparser networks that artifactually inflate effective dimension estimates. The ~1D filamentary regime is robust.**
 
 ---
 
 ### Milestone Documents
-- `/qmrt_topology/papers/PHASE_7_GATE1_METRIC_MILESTONE.md`
-- `/qmrt_topology/papers/PHASE_7_GATE2_DIMENSION_MILESTONE.md`
-- `/qmrt_topology/papers/PHASE_7_GATE3_ROBUSTNESS_MILESTONE.md`
-- `/qmrt_topology/papers/PHASE_7_GATE4_DOF_MILESTONE.md`
-- `/qmrt_topology/papers/PHASE_7_GATE5_PHASES_MILESTONE.md`
+- `/qmrt_topology/papers/PHASE_7_CONCLUSION.md`
+- `/qmrt_topology/papers/PHASE_8_CONCLUSION.md`
 
 ---
 
@@ -46,31 +31,20 @@
 |-------|-------|-------------|
 | 1 | Papers 1-5 | Active selective environment |
 | 2 | Phase 6 | Proto-spacetime organizational regime |
-| **3** | **Phase 7** | **Metric-like filamentary geometry + organizational phases** |
+| 3 | Phase 7 | Metric-like filamentary geometry + organizational phases |
+| **4** | **Phase 8** | **Robust ~1D boundary (stabilization mechanisms fail)** |
 
 ---
 
-### Open Question: Breaking the ~1D Barrier
+### Open Question: Seeded-Structure Persistence
 
-All organizational phases maintain ~1D spatial structure. Breaking to higher dimensions may require:
-- **Recursive branching layers** that promote cross-filament connectivity
-- **Cross-link stabilization** mechanisms
-- **Sheet/volume-filling** organizational modes
-
-Conceptual direction:
-| Layer | Connectivity | Dimension |
-|-------|--------------|-----------|
-| 1 | Filaments | ~1D |
-| 2 | Branch-of-filament | ~2D |
-| 3 | Branch-of-sheet | ~3D |
+One remaining test to distinguish:
+- **Emergence failure**: Medium cannot spontaneously generate 2D (current evidence)
+- **Intrinsic 1D**: Medium actively collapses seeded 2D back to 1D (stronger conclusion)
 
 ---
 
-### Previous: Phase 6 Complete
-
----
-
-### Previous: Phase 6 Complete
+### Previous: Phase 7 Summary
 
 | Stage | Question | Result | Key Metric |
 |-------|----------|--------|------------|
