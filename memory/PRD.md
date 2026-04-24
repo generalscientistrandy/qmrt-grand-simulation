@@ -1,46 +1,45 @@
-## Current Status: PAPER 4 DRAFT COMPLETE — Causal Attractor Control
+## Current Status: PAPER 4 FINAL DRAFT COMPLETE
 
 **Date: December 2025**
 
 ### Paper 4: Causal Attractor Control of Topological Defect Populations
 
-**Core claim**: Spatially varying channel coupling creates a causal attractor landscape for topological defects, biasing their regeneration, transport, and survival toward high-coupling regions.
+**Status**: FINAL DRAFT with figures
 
-### Key Results Included
+**Core thesis**: Coupling gradients act as causal attractors for topological defect populations, regulating where defects regenerate, drift, and survive.
 
-| Result | Evidence |
-|--------|----------|
-| Localized regeneration | 64% interior births with strong gradient |
-| Directed transport | Mean drift -2.59 toward high coupling |
+### Key Evidence
+
+| Result | Metric |
+|--------|--------|
+| Localized regeneration | 64% interior births (vs 44% uniform) |
+| Directed transport | -2.59 mean drift toward high coupling |
 | Survival advantage | 146 steps (interior) vs 56 (periphery) |
 | **Causal proof** | Inverted gradient reverses all effects |
 
-### The Decisive Test
-
-| Metric | Original | Inverted |
-|--------|----------|----------|
-| Interior population | **56%** | 3% |
-| Periphery population | 1% | **44%** |
-| Interior-born drift | -2.59 | **+5.24** |
+### Figures (5 complete)
+1. Localization comparison (births, population, regional fractions)
+2. Long-time behavior (12k steps population + localization)
+3. Migration dynamics (drift distribution + mean by zone)
+4. Causal inversion test (FLIP + REVERSAL annotated)
+5. Lifetime by zone (★ marking longest in each config)
 
 ### Paper Structure
-
-1. Abstract — Clean causal claim
-2. Introduction — Program context (Papers 1-3) + Branch context (B, C, E, C+E failure)
-3. Methods — Branch F v2 model, spatial profiles, observables, causal test design
-4. Results — 5 subsections with quantitative tables
-5. Mechanistic Interpretation — Unified attractor picture
-6. Relation to Earlier Branches — Why F v2 succeeds where C+E failed
-7. Limitations — Explicit boundaries (2D only, not matter-like, etc.)
-8. Conclusion — Three principal results
+- Abstract: Polished, precise, bounded
+- Introduction: Program context + branch arc + central question
+- Methods: Model, profiles, observables, causal test design
+- Results: 5 sections with figures and tables
+- Interpretation: Shown vs inferred, causal mechanism, boundaries
+- Limitations: Explicit (2D, statistical, no bound states)
+- Conclusion: Three takeaways + future directions
 
 ### Files
-- `/phase5/PAPER_4_DRAFT.md` — Complete draft
-- All supporting reports and test scripts
+- `/phase5/PAPER_4_DRAFT.md` — Final draft
+- `/phase5/figures/` — 5 PNG figures
 
 ---
 
-## Previous: CAUSAL CONTROL DEMONSTRATED — Coupling Gradient Directs Defect Transport
+## Previous: Causal Control Demonstrated
 
 **Date: December 2025**
 

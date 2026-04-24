@@ -2,25 +2,17 @@
 
 **Substrate Lab — QMRT Theory Program**  
 **Date**: December 2025  
-**Status**: DRAFT v2
+**Status**: FINAL DRAFT
 
 ---
 
 ## Abstract
 
-Prior work established that topological defects in complex scalar fields can maintain fluctuating populations through resonance self-selection and remnant amplification (Branch E). However, spatial control over defect localization proved elusive: direct combination of β-coupling with topological memory was antagonistic (Branch C+E). Here we show that spatially varying *channel coupling*—the parameter controlling core-filling suppression—creates a causal attractor for topological defects without disrupting the regeneration mechanism.
+We investigate whether spatially varying channel coupling can regulate the behavior of topological defect populations in a medium with topological memory. Earlier branches of the program established separate ingredients: topological defects can exist and interact, coupling asymmetry can localize organization, and resonance self-selection can maintain a fluctuating defect population through remnant amplification. However, direct combination of these mechanisms proved antagonistic, suppressing rather than enhancing regeneration.
 
-**What is shown:**
-- Nonzero long-time population (~1500 defects at equilibrium)
-- Nucleation biased toward high-coupling regions (64% of births in interior with strong gradient)
-- Mean radial drift of -2.59 toward high-coupling center
-- Longest lifetime in high-coupling region (146 vs 56 steps)
-- Inverting the coupling gradient reverses drift direction (+5.24 outward) and flips population localization (56% interior → 44% periphery)
+In Branch F v2, we preserve the full topological-memory dynamics while introducing spatial variation only in the channel-coupling pathway. We find that this produces a robust, nonuniform defect population: birth rates increase, late-time populations are sustained, and regeneration is biased toward high-coupling regions. Long-time runs show stable statistical maintenance rather than extinction, and migration analysis reveals net drift toward high-coupling zones. Most decisively, inverting the coupling gradient reverses both transport direction and population localization.
 
-**What is inferred:**
-The coupling gradient functions as an attractor landscape—defects are born preferentially in, drift toward, and survive longest in high-coupling regions.
-
-Branch F v2 provides the first robust co-alignment of topological memory with spatial control in the current program, demonstrating that coupling gradients can causally regulate where topological defect populations regenerate, drift, and persist.
+These results demonstrate that coupling gradients act as causal attractors for topological defect populations, regulating where defects regenerate, drift, and survive. Within the present 2D model, this provides the first robust co-alignment of topological memory with spatial control, while remaining distinct from matter-like bound-state behavior or conserved defect dynamics.
 
 ---
 
@@ -28,7 +20,7 @@ Branch F v2 provides the first robust co-alignment of topological memory with sp
 
 ### 1.1 Program Context
 
-This paper is the fourth in a series investigating organized structure formation in continuous scalar fields. Paper 1 established statistical lifecycle rules for coherent structures. Paper 2 showed that sustained organization requires energy input. Paper 3 demonstrated that β-asymmetry localizes organization but does not produce matter-like interactions.
+This paper is the fourth in a series investigating organized structure formation in continuous scalar fields. Paper 1 established statistical lifecycle rules for coherent structures. Paper 2 showed that sustained organization requires energy input. Paper 3 demonstrated that β-asymmetry localizes organization but does not produce matter-like bound-state behavior.
 
 ### 1.2 Topological Branch Context
 
@@ -41,9 +33,7 @@ The topological branch of this program explored defects in complex scalar fields
 
 ### 1.3 This Paper
 
-We ask: *Can spatial parameter variation control defect populations without disrupting regeneration?*
-
-The answer is yes, but the parameter must be chosen carefully. Varying β (wave dynamics) disrupts self-selection. Varying channel coupling (core-protection strength) does not. Branch F v2 implements this insight.
+The specific question addressed here is whether a spatial coupling landscape can do more than merely modify local organization. In particular, we ask whether it can causally regulate a topological population that is already capable of persistence through remnant amplification. The central result of this paper is that it can: Branch F v2 shows that spatially varying channel coupling creates an attractor landscape that biases defect regeneration, transport, and survival toward high-coupling regions. This claim is tested directly through a gradient-inversion experiment, which reverses both the direction of defect drift and the location of population concentration.
 
 ---
 
@@ -86,7 +76,9 @@ The decisive test: if the coupling gradient causally determines behavior, invert
 
 ### 3.1 Spatial Coupling Localizes Regeneration
 
-**[Figure 1 placeholder: Spatial localization of defect births and late-time population]**
+![Figure 1](figures/figure_1_localization.png)
+
+**Figure 1.** Spatially varying channel coupling increases total births and biases regeneration toward high-coupling regions.
 
 | Metric | Uniform | Spatial (0.8/0.2) |
 |--------|---------|-------------------|
@@ -99,7 +91,9 @@ Spatial coupling doubles birth rate and concentrates 64% of births in the high-c
 
 ### 3.2 Long-Time Behavior
 
-**[Figure 2 placeholder: Population and localization vs time over 20,000 steps]**
+![Figure 2](figures/figure_2_longtime.png)
+
+**Figure 2.** Long-time runs show sustained nonzero defect populations and persistent spatial localization.
 
 | Phase | Population | Interior % |
 |-------|------------|------------|
@@ -112,7 +106,9 @@ Robustness: CV = 0.09 across seeds; CV = 0.09 across damping variations.
 
 ### 3.3 Directed Transport
 
-**[Figure 3 placeholder: Radial drift distribution and mean displacement by birth zone]**
+![Figure 3](figures/figure_3_migration.png)
+
+**Figure 3.** Migration statistics reveal net drift toward high-coupling zones.
 
 | Metric | Value |
 |--------|-------|
@@ -125,7 +121,9 @@ Net drift is toward the high-coupling center.
 
 ### 3.4 Causal Inversion Test
 
-**[Figure 4 placeholder: Original vs inverted gradient comparison]**
+![Figure 4](figures/figure_4_causal.png)
+
+**Figure 4.** Inverting the coupling gradient reverses both drift direction and population localization, demonstrating causal attractor control.
 
 | Metric | Original | Inverted |
 |--------|----------|----------|
@@ -141,7 +139,9 @@ This confirms causal control.
 
 ### 3.5 Survival Follows High Coupling
 
-**[Figure 5 placeholder: Lifetime by zone across configurations]**
+![Figure 5](figures/figure_5_lifetime.png)
+
+**Figure 5.** Defect lifetime is maximized in the high-coupling region across tested configurations.
 
 | Configuration | Interior | Transition | Periphery | Longest |
 |---------------|----------|------------|-----------|---------|
@@ -166,7 +166,7 @@ The high-coupling zone has the longest lifetime in all configurations.
 - The coupling gradient acts as an attractor landscape
 - High coupling creates a region where defects preferentially appear, move toward, and survive
 
-### 4.2 Unified Mechanism
+### 4.2 Causal Attractor Mechanism
 
 The three effects (birth bias, drift, survival) all point toward high-coupling regions. This suggests a single mechanism: differential regeneration and protection success creates an effective potential landscape for defect populations.
 
@@ -175,8 +175,8 @@ The three effects (birth bias, drift, survival) all point toward high-coupling r
 This result does not demonstrate:
 - Conserved particles
 - Stable bound states
-- Matter-like dynamics
-- Universal spacetime emergence
+- Matter-like bound-state behavior
+- Universal topological population structure emergence
 
 The claim is specific: coupling gradients provide causal spatial control over topological populations.
 
@@ -199,34 +199,18 @@ The key insight: vary the right parameter.
 
 - 2D simulations only
 - Defects are not conserved (statistical maintenance)
-- No matter-like bound states demonstrated
+- No matter-like bound-state behavior demonstrated
 - Channel coupling is a model construct
 
 ---
 
 ## 7. Conclusion
 
-1. Spatially varying channel coupling produces robust, nonuniform topological populations.
+This paper establishes that spatially varying channel coupling can exert causal control over topological defect populations in a medium with topological memory. In Branch F v2, the coupling landscape does not merely correlate with defect behavior; it regulates where defects are regenerated, the direction in which they drift, and the regions in which they survive longest.
 
-2. The coupling gradient causally controls defect nucleation, transport, and survival—all three effects reverse when the gradient is inverted.
+The strongest evidence comes from the inverted-gradient test: reversing the coupling profile reverses both transport direction and population localization. This demonstrates that the attractor is generated by the coupling gradient itself rather than by an incidental feature of the initial condition or domain geometry.
 
-3. This is the first successful co-alignment of topological memory with spatial control in the program.
-
-The result demonstrates that structured media can regulate topology not only through *whether* defects exist, but through *where* they persist.
-
----
-
-## Figures
-
-**Figure 1.** Spatial localization of defect births and late-time population under uniform vs spatially varying channel coupling.
-
-**Figure 2.** Long-time evolution (20,000 steps) of total defect population and interior localization fraction.
-
-**Figure 3.** Radial displacement distribution and mean drift by birth zone, showing net inward transport.
-
-**Figure 4.** Causal inversion test: original (high-center) vs inverted (high-edge) coupling gradient, showing reversal of population localization and drift direction.
-
-**Figure 5.** Mean lifetime by zone across four configurations, showing high-coupling zone always has longest survival.
+At the same time, the result remains bounded. The maintained defect population is statistical rather than conserved, the model is currently restricted to two spatial dimensions, and no matter-like bound states are produced. Even with these limitations, Branch F v2 marks the first successful co-alignment of topological memory with spatial control in the present research program. The next steps are to test whether the same causal attractor mechanism survives in 3D and whether defect-defect interactions under this controlled topology can approach more matter-like dynamics.
 
 ---
 
