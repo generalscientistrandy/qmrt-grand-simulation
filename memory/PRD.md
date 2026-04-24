@@ -62,18 +62,35 @@ The inverted (periphery-high) configuration decays at late time due to boundary 
 2. Persistence requires driving
 3. Localization is achievable via coupling
 4. Topological populations can be causally controlled
-5. **3D validation of causal attractor mechanism** ✓ NEW
+5. **3D validation of causal attractor mechanism** ✓
+6. **Attractor controls population, not interaction law** ✓ NEW
+7. **Medium is an "active selective environment"** ✓ NEW (conceptual milestone)
+
+### Conceptual Milestone: Active Selective Environment
+
+The medium exhibits life-like organizational behavior:
+- Memory (remnant amplification)
+- Regeneration (channel self-selection)
+- Selection (coupling-dependent persistence)
+- Spatial preference (attractor landscapes)
+- Population-level persistence (statistics, not individuals)
+
+See: `/qmrt_topology/papers/ACTIVE_SELECTIVE_ENVIRONMENT_MILESTONE.md`
 
 ### What Has NOT Been Established
 - Matter-like bound-state behavior
 - Conserved defect populations
-- Defect-defect interactions inside attractor landscape
-- Higher-order defect structures
+- Population-level statistics (spacing, clustering, competition)
+- Biological life, heredity, metabolism, open-ended evolution
 
 ### Next Research Phase
 1. ~~3D validation of causal attractor mechanism~~ ✓ COMPLETE
-2. **Defect-defect interaction studies** ← NEXT
-3. Paper 5 decision based on interaction results
+2. ~~Defect-defect interaction studies (Stage 1)~~ ✓ COMPLETE
+3. **Population-level statistics** ← NEXT
+   - Inside vs outside attractor regimes
+   - Long-time equilibrium
+   - Competition for attractor space
+4. Paper 5 decision based on population results
 
 ---
 
