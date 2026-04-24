@@ -1,46 +1,46 @@
-## Current Status: CAUSAL CONTROL DEMONSTRATED — Coupling Gradient Directs Defect Transport
+## Current Status: PAPER 4 DRAFT COMPLETE — Causal Attractor Control
 
 **Date: December 2025**
 
-### The Decisive Result: Inverted Gradient Test
+### Paper 4: Causal Attractor Control of Topological Defect Populations
 
-| Metric | Original (high center) | Inverted (high edge) |
-|--------|------------------------|----------------------|
+**Core claim**: Spatially varying channel coupling creates a causal attractor landscape for topological defects, biasing their regeneration, transport, and survival toward high-coupling regions.
+
+### Key Results Included
+
+| Result | Evidence |
+|--------|----------|
+| Localized regeneration | 64% interior births with strong gradient |
+| Directed transport | Mean drift -2.59 toward high coupling |
+| Survival advantage | 146 steps (interior) vs 56 (periphery) |
+| **Causal proof** | Inverted gradient reverses all effects |
+
+### The Decisive Test
+
+| Metric | Original | Inverted |
+|--------|----------|----------|
 | Interior population | **56%** | 3% |
 | Periphery population | 1% | **44%** |
-| Interior-born drift | -2.59 (inward) | **+5.24 (outward)** |
+| Interior-born drift | -2.59 | **+5.24** |
 
-**Population localization completely flipped. Interior-born vortices reversed drift direction.**
+### Paper Structure
 
-### The Unifying Principle
-
-> **Vortices always drift toward regions of higher channel coupling.**
-
-- Original (high center): vortices drift inward
-- Inverted (high edge): interior-born vortices drift **outward**
-- Population concentrates where coupling is highest
-
-### Strengthened Scientific Claim
-
-> "In a topological-memory medium, the channel coupling gradient generates a directional attractor: topological defects both nucleate preferentially in high-coupling regions AND drift toward high-coupling regions regardless of birth location. Inverting the gradient inverts the attractor direction."
-
-This is now **causally demonstrated**, not just correlational.
-
-### Drift by Birth Zone (Inverted Case)
-
-| Birth Zone | Coupling | Mean Δr | Direction |
-|------------|----------|---------|-----------|
-| Interior | 0.2 (low) | **+5.24** | OUTWARD |
-| Transition | 0.5 (mid) | +0.47 | ~neutral |
-| Periphery | 0.8 (high) | -2.88 | inward |
+1. Abstract — Clean causal claim
+2. Introduction — Program context (Papers 1-3) + Branch context (B, C, E, C+E failure)
+3. Methods — Branch F v2 model, spatial profiles, observables, causal test design
+4. Results — 5 subsections with quantitative tables
+5. Mechanistic Interpretation — Unified attractor picture
+6. Relation to Earlier Branches — Why F v2 succeeds where C+E failed
+7. Limitations — Explicit boundaries (2D only, not matter-like, etc.)
+8. Conclusion — Three principal results
 
 ### Files
-- `/phase5/INVERTED_GRADIENT_CAUSAL_REPORT.md`
-- `branch_f_v2_inverted.py`
+- `/phase5/PAPER_4_DRAFT.md` — Complete draft
+- All supporting reports and test scripts
 
 ---
 
-## Previous: BRANCH F v2 VERIFIED — Localized Attractor, Not Two-Zone Migration
+## Previous: CAUSAL CONTROL DEMONSTRATED — Coupling Gradient Directs Defect Transport
 
 **Date: December 2025**
 
