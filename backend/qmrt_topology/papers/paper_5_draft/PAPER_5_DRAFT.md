@@ -122,7 +122,7 @@ Mean nearest-neighbor distance:
 
 ### 3.4 Niche Interpretation
 
-The interior and periphery function as **distinct ecological niches**:
+The interior and periphery function as **distinct ecological niches** (see **Figure 1**):
 
 | Property | Interior Niche | Periphery Niche |
 |----------|----------------|-----------------|
@@ -132,6 +132,9 @@ The interior and periphery function as **distinct ecological niches**:
 | Selective pressure | Favors persistence | Neutral/unfavorable |
 
 This is niche differentiation: the same underlying physics produces qualitatively different population regimes depending on location relative to the attractor.
+
+![Figure 1](figures/fig1_regional_ecology.png)
+*Figure 1: Regional ecology comparison. (A) Population density is 3.5–5.4× higher in the interior. (B) Turnover rate is ~3× lower in the interior. (C) Nearest-neighbor spacing is ~2.7× tighter in the interior.*
 
 ---
 
@@ -174,7 +177,7 @@ The short relaxation time indicates rapid decorrelation—the system does not ha
 
 ### 4.5 NESS Classification
 
-The population dynamics are consistent with a **non-equilibrium steady state (NESS)**:
+The population dynamics are consistent with a **non-equilibrium steady state (NESS)** (see **Figures 2 and 3**):
 
 | NESS Property | Evidence |
 |---------------|----------|
@@ -182,6 +185,12 @@ The population dynamics are consistent with a **non-equilibrium steady state (NE
 | Non-equilibrium | Continuous birth-death-regeneration |
 | Fluctuations | Large, episodic bursts |
 | No detailed balance | Driven by channel regeneration |
+
+![Figure 2](figures/fig2_population_trace.png)
+*Figure 2: Long-time population dynamics showing episodic bursts. The population exhibits statistical stationarity around a late-time mean (dashed line) with intermittent high-activity periods.*
+
+![Figure 3](figures/fig3_ness_stationarity.png)
+*Figure 3: NESS characterization. (A) Windowed mean remains approximately constant, confirming stationarity. (B) Windowed variance with autocorrelation inset showing rapid decorrelation.*
 
 ---
 
@@ -227,13 +236,34 @@ This indicates **inward migration pressure**: the attractor draws defects from t
 - **Interior volume**: ~7,238 voxels
 - **Carrying capacity**: ~31 defects, or ~1 defect per 230 voxels
 
-The interior functions as a **limited habitat** that saturates under population pressure.
+The interior functions as a **limited habitat** that saturates under population pressure (see **Figure 4**).
+
+![Figure 4](figures/fig4_carrying_capacity.png)
+*Figure 4: Carrying capacity evidence. (A) Population time evolution under natural vs forced (9 vortices injected) conditions. (B) Late-time comparison showing interior saturation and periphery spillover.*
 
 ---
 
 ## 6. Interpretation: Active Selective Environment
 
-### 6.1 The Ecological Analogy
+### 6.1 Distinguishing Shown from Interpreted
+
+Before presenting the ecological interpretation, we distinguish direct measurements from interpretive framing:
+
+**Directly Shown (Quantitative Measurements)**:
+- Density contrast: Interior 3.5–5.4× denser than periphery
+- Turnover contrast: Interior 3× lower turnover rate
+- Spacing contrast: Interior 2.7× tighter NN spacing
+- Stationarity: Mean population approximately constant over 4000 steps
+- Saturation: Interior does not scale proportionally with injection
+
+**Interpreted (Conceptual Framework)**:
+- "Ecological niche" as an organizing concept
+- "Carrying capacity" as a saturation mechanism
+- "Active selective environment" as a system classification
+
+The measurements stand independently; the interpretation provides a coherent conceptual framework.
+
+### 6.2 The Ecological Analogy
 
 The attractor landscape creates population structure analogous to ecological systems:
 
@@ -246,7 +276,7 @@ The attractor landscape creates population structure analogous to ecological sys
 | Selection | Differential persistence by region |
 | NESS | Birth-death-regeneration equilibrium |
 
-### 6.2 What the Attractor Controls
+### 6.3 What the Attractor Controls
 
 The attractor operates through **selection**, not force modification:
 
@@ -262,7 +292,7 @@ The attractor operates through **selection**, not force modification:
 | Interaction law | Annihilation timing coupling-independent |
 | Individual trajectories | Defects still move freely |
 
-### 6.3 The Active Selective Environment
+### 6.4 The Active Selective Environment
 
 Combining this with earlier findings, the medium exhibits:
 
@@ -318,7 +348,7 @@ Or equivalently:
 
 ### 8.2 The Paper 5 Thesis
 
-> **Topological defect populations in the 3D causal attractor regime exhibit population-ecology structure, including niche differentiation, finite carrying capacity, and non-equilibrium steady-state dynamics.**
+> **Within the 3D causal attractor regime, topological defect populations exhibit structured population-level behavior characterized by regional niche differentiation, finite carrying capacity, and non-equilibrium steady-state dynamics.**
 
 ### 8.3 Program Arc
 
