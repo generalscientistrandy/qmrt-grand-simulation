@@ -1,8 +1,40 @@
-## Current Status: PAPER 4 FROZEN — Program Phase Complete
+## Current Status: 3D CAUSAL ATTRACTOR VALIDATED — Phase 5 Gate Passed
 
 **Date: December 2025**
 
-### Papers 1-4 Complete
+### Major Milestone: 3D Validation Complete
+
+The causal attractor mechanism has been **successfully validated in 3D**. This completes the Phase 5 gate.
+
+| Stage | Question | Result | Key Metric |
+|-------|----------|--------|------------|
+| 1 | Does topology survive in 3D? | ✓ PASS | Nonzero vortex lines maintained |
+| 2 | Does spatial coupling bias 3D populations? | ✓ PASS | Interior density 11.44× periphery |
+| 3 | Does inverting gradient invert bias? | ✓ PASS | Periphery 79.7% during active phase |
+
+### Core Claim (Now 3D-Validated)
+
+> **"In 3D, spatial coupling gradients act as causal attractors for topological defect populations. Reversing the gradient reverses the region of preferential occupation during the active defect phase."**
+
+### Important Nuance (Stage 3)
+
+The inverted (periphery-high) configuration decays at late time due to boundary effects, but the **active-phase bias reversal is clear**. The causal result is about directional control, not equal long-time stability in all geometries.
+
+### 3D Validation Report
+
+`/qmrt_topology/test_results/phase5/3D_CAUSAL_ATTRACTOR_REPORT.md`
+
+### 3D Scripts
+
+| Script | Purpose | Status |
+|--------|---------|--------|
+| `branch_e_3d.py` | Stage 1: Topological memory baseline | ✓ Complete |
+| `branch_f_3d.py` | Stage 2: Spatial coupling bias | ✓ Complete |
+| `branch_f_3d_inverted.py` | Stage 3: Inverted gradient (causal proof) | ✓ Complete |
+
+---
+
+## Papers 1-4 Complete (FROZEN)
 
 | Paper | Topic | Core Finding |
 |-------|-------|--------------|
@@ -25,22 +57,23 @@
 
 `/qmrt_topology/papers/program_overview/PAPERS_1_4_OVERVIEW.md`
 
-### What Has Been Established
+### What Has Been Established (Updated)
 1. Formation is statistical, not random
 2. Persistence requires driving
 3. Localization is achievable via coupling
 4. Topological populations can be causally controlled
+5. **3D validation of causal attractor mechanism** ✓ NEW
 
 ### What Has NOT Been Established
 - Matter-like bound-state behavior
 - Conserved defect populations
-- 3D validation
+- Defect-defect interactions inside attractor landscape
 - Higher-order defect structures
 
-### Next Research Phase (NOT drafting)
-1. 3D validation of causal attractor mechanism
-2. Defect-defect interaction studies
-3. Paper 5 decision based on 3D results
+### Next Research Phase
+1. ~~3D validation of causal attractor mechanism~~ ✓ COMPLETE
+2. **Defect-defect interaction studies** ← NEXT
+3. Paper 5 decision based on interaction results
 
 ---
 
