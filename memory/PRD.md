@@ -1,26 +1,50 @@
-## Current Status: PAPER 5 DRAFT COMPLETE — Population Ecology Established
+## Current Status: PAPERS 1-5 COMPLETE — Program Arc Finished
 
 **Date: December 2025**
 
-### Major Milestone: Paper 5 Drafted
+### Program Summary
 
-Paper 5 establishes that topological defect populations exhibit **population-ecology structure** under attractor control:
+The five-paper QMRT program is complete:
 
-| Finding | Result |
-|---------|--------|
-| Niche differentiation | Interior 3.5-5.4× denser, 3× lower turnover |
+| Paper | Result |
+|-------|--------|
+| 1 | Formation rules |
+| 2 | Persistence requires energy |
+| 3 | Localization of organization |
+| 4 | Causal attractor control |
+| **5** | **Population ecology under attractor control** |
+
+### Paper 5 Thesis
+
+> "Within the 3D causal attractor regime, topological defect populations exhibit structured population-level behavior characterized by regional niche differentiation, finite carrying capacity, and non-equilibrium steady-state dynamics."
+
+### Key Findings (Paper 5)
+
+| Finding | Measurement |
+|---------|-------------|
+| Niche differentiation | Interior 3.5–5.4× denser, 3× lower turnover |
 | NESS dynamics | Statistical stationarity with episodic bursts |
 | Carrying capacity | Interior saturates at ~31 defects |
 
-**Paper 5 Thesis**: "Topological defect populations in the 3D causal attractor regime exhibit population-ecology structure, including niche differentiation, finite carrying capacity, and non-equilibrium steady-state dynamics."
+### Frozen Packages
 
-**Draft location**: `/qmrt_topology/papers/paper_5_draft/PAPER_5_DRAFT.md`
+- `/qmrt_topology/papers/paper_4_package/PAPER_4_FINAL.md`
+- `/qmrt_topology/papers/paper_5_package/PAPER_5_FINAL.md`
+- `/qmrt_topology/papers/program_overview/PAPERS_1_5_OVERVIEW.md`
+
+### Active Selective Environment (Established)
+
+The medium exhibits:
+- Memory (remnant amplification)
+- Regeneration (channel self-selection)
+- Selection (coupling-dependent persistence)
+- Niche structure (regional differentiation)
+- Carrying capacity (finite saturation)
+- NESS dynamics (statistical stationarity)
 
 ---
 
-### Previous Milestone: 3D Validation Complete
-
-The causal attractor mechanism was **successfully validated in 3D**.
+## Previous Milestone: 3D Validation Complete
 
 | Stage | Question | Result | Key Metric |
 |-------|----------|--------|------------|
