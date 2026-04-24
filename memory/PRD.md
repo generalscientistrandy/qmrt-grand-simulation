@@ -1,50 +1,38 @@
-## Current Status: PAPERS 1-5 COMPLETE — Program Arc Finished
+## Current Status: PHASE 6 COMPLETE — Proto-Spacetime Organizational Regime
 
 **Date: December 2025**
 
-### Program Summary
+### Phase 6 Milestone Achieved
 
-The five-paper QMRT program is complete:
+Phase 6 establishes **proto-spacetime organizational behavior**:
 
-| Paper | Result |
-|-------|--------|
-| 1 | Formation rules |
-| 2 | Persistence requires energy |
-| 3 | Localization of organization |
-| 4 | Causal attractor control |
-| **5** | **Population ecology under attractor control** |
+| Gate | Finding |
+|------|---------|
+| 1 | Higher-order collective structure (g(r)=76, clustering) |
+| 2 | Persistent relational networks (94% giant component, hub structure) |
+| 3 | Hierarchical multi-scale organization |
+| 4 | Forcing-induced regime transitions |
 
-### Paper 5 Thesis
+**New regimes under forcing**:
+- Pressure → Hub-dominated fragmentation
+- Confinement → Sharp geometric boundaries
+- Steep gradients → No change (natural scale selection)
 
-> "Within the 3D causal attractor regime, topological defect populations exhibit structured population-level behavior characterized by regional niche differentiation, finite carrying capacity, and non-equilibrium steady-state dynamics."
-
-### Key Findings (Paper 5)
-
-| Finding | Measurement |
-|---------|-------------|
-| Niche differentiation | Interior 3.5–5.4× denser, 3× lower turnover |
-| NESS dynamics | Statistical stationarity with episodic bursts |
-| Carrying capacity | Interior saturates at ~31 defects |
-
-### Frozen Packages
-
-- `/qmrt_topology/papers/paper_4_package/PAPER_4_FINAL.md`
-- `/qmrt_topology/papers/paper_5_package/PAPER_5_FINAL.md`
-- `/qmrt_topology/papers/program_overview/PAPERS_1_5_OVERVIEW.md`
-
-### Active Selective Environment (Established)
-
-The medium exhibits:
-- Memory (remnant amplification)
-- Regeneration (channel self-selection)
-- Selection (coupling-dependent persistence)
-- Niche structure (regional differentiation)
-- Carrying capacity (finite saturation)
-- NESS dynamics (statistical stationarity)
+**Milestone note**: `/qmrt_topology/papers/PHASE_6_PROTO_SPACETIME_MILESTONE.md`
 
 ---
 
-## Previous Milestone: 3D Validation Complete
+### Program Arc
+
+| Level | Phase | Achievement |
+|-------|-------|-------------|
+| 1 | Papers 1-5 | Active selective environment |
+| **2** | **Phase 6** | **Proto-spacetime organizational regime** |
+| 3 | (Future) | Geometric/metric structure? |
+
+---
+
+### Papers 1-5 Complete (FROZEN)
 
 | Stage | Question | Result | Key Metric |
 |-------|----------|--------|------------|
