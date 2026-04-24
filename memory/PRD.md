@@ -1,10 +1,26 @@
-## Current Status: 3D CAUSAL ATTRACTOR VALIDATED — Phase 5 Gate Passed
+## Current Status: PAPER 5 DRAFT COMPLETE — Population Ecology Established
 
 **Date: December 2025**
 
-### Major Milestone: 3D Validation Complete
+### Major Milestone: Paper 5 Drafted
 
-The causal attractor mechanism has been **successfully validated in 3D**. This completes the Phase 5 gate.
+Paper 5 establishes that topological defect populations exhibit **population-ecology structure** under attractor control:
+
+| Finding | Result |
+|---------|--------|
+| Niche differentiation | Interior 3.5-5.4× denser, 3× lower turnover |
+| NESS dynamics | Statistical stationarity with episodic bursts |
+| Carrying capacity | Interior saturates at ~31 defects |
+
+**Paper 5 Thesis**: "Topological defect populations in the 3D causal attractor regime exhibit population-ecology structure, including niche differentiation, finite carrying capacity, and non-equilibrium steady-state dynamics."
+
+**Draft location**: `/qmrt_topology/papers/paper_5_draft/PAPER_5_DRAFT.md`
+
+---
+
+### Previous Milestone: 3D Validation Complete
+
+The causal attractor mechanism was **successfully validated in 3D**.
 
 | Stage | Question | Result | Key Metric |
 |-------|----------|--------|------------|
@@ -83,14 +99,19 @@ See: `/qmrt_topology/papers/ACTIVE_SELECTIVE_ENVIRONMENT_MILESTONE.md`
 - Population-level statistics (spacing, clustering, competition)
 - Biological life, heredity, metabolism, open-ended evolution
 
-### Next Research Phase
+### Completed Research Phases
 1. ~~3D validation of causal attractor mechanism~~ ✓ COMPLETE
 2. ~~Defect-defect interaction studies (Stage 1)~~ ✓ COMPLETE
-3. **Population-level statistics** ← NEXT
-   - Inside vs outside attractor regimes
-   - Long-time equilibrium
-   - Competition for attractor space
-4. Paper 5 decision based on population results
+3. ~~Population-level statistics~~ ✓ COMPLETE
+   - Niche differentiation ✓
+   - Long-time equilibrium (NESS) ✓
+   - Carrying capacity ✓
+4. ~~Paper 5 draft~~ ✓ COMPLETE
+
+### Next Steps
+1. **Paper 5 review and refinement** — User feedback on draft
+2. **Figure generation** — Publication-quality figures for Paper 5
+3. **Paper 5 freeze** — Finalize and package
 
 ---
 
