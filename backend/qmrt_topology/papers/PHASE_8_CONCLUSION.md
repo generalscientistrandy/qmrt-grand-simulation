@@ -151,5 +151,33 @@ This is a negative but valuable result. It suggests that:
 
 ---
 
+## Methodological Insight
+
+The strongest results in this program came from **observing natural behavior**, not engineering outcomes:
+- Papers 1-5: Let the medium show its active selective properties
+- Phase 6: Let organizational regimes emerge naturally
+- Phase 7: Measured geometry without trying to change it
+
+Phase 8's forced promotion attempts produced artifacts, not insights.
+
+---
+
+## Recommended Direction: Natural Scaffold Evolution
+
+Rather than forcing higher-dimensional organization, the next step is to:
+
+> **Let the medium follow its natural dynamics and determine whether richer structure emerges ON TOP OF the native filamentary scaffold.**
+
+Better questions than "can we make it 2D":
+1. What is the natural attractor of the geometry?
+2. Is the filamentary state truly stable over long times?
+3. What kinds of motifs naturally appear along the 1D scaffold?
+4. Do higher-order structures emerge on the scaffold without replacing it?
+5. Does pressure/confinement change statistics without changing dimension?
+
+This keeps the program faithful to the medium instead of imposing expectations onto it.
+
+---
+
 **Phase 8 Status: FROZEN (Negative Boundary Result)**  
 **Date: December 2025**

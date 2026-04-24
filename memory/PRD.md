@@ -36,11 +36,17 @@
 
 ---
 
-### Open Question: Seeded-Structure Persistence
+### Recommended Direction: Natural Scaffold Evolution
 
-One remaining test to distinguish:
-- **Emergence failure**: Medium cannot spontaneously generate 2D (current evidence)
-- **Intrinsic 1D**: Medium actively collapses seeded 2D back to 1D (stronger conclusion)
+Rather than forcing higher-dimensional organization:
+
+> **Let the medium follow its natural dynamics and determine whether richer structure emerges ON TOP OF the native filamentary scaffold.**
+
+Better questions:
+1. What is the natural attractor of the geometry?
+2. What motifs naturally appear along the 1D scaffold?
+3. Do higher-order structures build on the scaffold without replacing it?
+4. How does the filamentary regime behave over long times?
 
 ---
 
