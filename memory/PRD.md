@@ -1,56 +1,61 @@
-## Current Status: PHASE 8 COMPLETE — Robust Filamentary Boundary
+## Current Status: PHASE 9 COMPLETE — Driven Non-Equilibrium Scaffold
 
 **Date: December 2025**
 
-### Phase 8 Summary: Negative Boundary Result
+### Phase 9 Summary: The Scaffold is a Driven NESS
 
-| Gate | Mechanism | Dimension | Triangles | Edges | Verdict |
-|------|-----------|-----------|-----------|-------|---------|
-| Gate 1 | Cross-link stabilization | 1.18→1.33 | -52% | -35% | FALSE POSITIVE |
-| Gate 2 | Loop/motif stabilization | 1.18→1.51 | -72% | -53% | FALSE POSITIVE |
-
-**Both mechanisms produced the same artifact**: dimension increased through sparse diffusion, not true 2D enrichment.
+| Gate | Finding |
+|------|---------|
+| Gate 1 | Undriven scaffold DECAYS (population 245 → 30) |
+| Gate 2 | Driven scaffold REBUILDS, approaches ~1D |
+| Gate 3 | Driven scaffold approaches STEADY STATE (~180-200 defects) |
 
 ---
 
 ### Core Finding
 
-> **Within the current mechanism family, attempts to promote higher-dimensional organization do not produce true 2D enrichment. Instead, they suppress local structure and create sparser networks that artifactually inflate effective dimension estimates. The ~1D filamentary regime is robust.**
+> **The filamentary proto-spacetime scaffold is a driven non-equilibrium steady structure: without continuous injection it decays, while under sustained driving it rebuilds and approaches a stable filamentary regime with bounded population and persistent local structure.**
+
+---
+
+### Quantitative Estimates (Provisional)
+
+| Parameter | Estimate |
+|-----------|----------|
+| Carrying capacity | ~180–200 defects |
+| Steady-state dimension | ~1.1–1.2 |
+| Late-time triangles | ~3,500–4,000 |
 
 ---
 
 ### Milestone Documents
-- `/qmrt_topology/papers/PHASE_7_CONCLUSION.md`
-- `/qmrt_topology/papers/PHASE_8_CONCLUSION.md`
+- `/qmrt_topology/papers/PHASE_9_CONCLUSION.md`
+- `/qmrt_topology/papers/PHASE_9_GATE2_DRIVEN_MILESTONE.md`
 
 ---
 
-### Program Level Progression
+### Program Arc Complete
 
 | Level | Phase | Achievement |
 |-------|-------|-------------|
 | 1 | Papers 1-5 | Active selective environment |
 | 2 | Phase 6 | Proto-spacetime organizational regime |
 | 3 | Phase 7 | Metric-like filamentary geometry + organizational phases |
-| **4** | **Phase 8** | **Robust ~1D boundary (stabilization mechanisms fail)** |
+| 4 | Phase 8 | Robust ~1D boundary (stabilization mechanisms fail) |
+| **5** | **Phase 9** | **Driven non-equilibrium filamentary scaffold** |
 
 ---
 
-### Recommended Direction: Natural Scaffold Evolution
+### Conceptual Summary
 
-Rather than forcing higher-dimensional organization:
-
-> **Let the medium follow its natural dynamics and determine whether richer structure emerges ON TOP OF the native filamentary scaffold.**
-
-Better questions:
-1. What is the natural attractor of the geometry?
-2. What motifs naturally appear along the 1D scaffold?
-3. Do higher-order structures build on the scaffold without replacing it?
-4. How does the filamentary regime behave over long times?
+The proto-spacetime scaffold is now fully characterized:
+- **What it is**: Metric-like filamentary relational structure (~1D)
+- **How it organizes**: Hybrid DoF control with regime-dependent phases
+- **Why it persists**: Driven non-equilibrium maintenance, not conservative equilibrium
 
 ---
 
-### Previous: Phase 7 Summary
+### Previous: Phase 8 Summary
 
 | Stage | Question | Result | Key Metric |
 |-------|----------|--------|------------|
