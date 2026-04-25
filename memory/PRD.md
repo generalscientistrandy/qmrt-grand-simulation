@@ -35,14 +35,14 @@ The transition is primarily driven by **GEOMETRIC PACKING** (r = +0.990):
 **Testable prediction**:
 > Interior-only analysis should show different transition dynamics than full-domain analysis.
 
-**Phase 11g: Cross-Sector Interaction (COMPLETE — Decisive Result)**
-- Distance ratio (+-/same): **1.007** → NEUTRAL (no attraction/repulsion)
-- NN same-sign enrichment: **1.065** → NO PREFERENCE
-- Mixing enrichment: **0.982** → RANDOM
-- **CONCLUSION: Balance is STATISTICAL, not RELATIONAL**
+**Phase 11h: Phase-Frequency Separation (COMPLETE — Important Negative Result)**
+- Phase offset: **0.570π ± 0.237** (NOT consistently π-opposed)
+- Channel separation: **0.024** (within noise of 0.114)
+- Remnant/τ separation: ~0
+- **CONCLUSION: Sign distinction is TOPOLOGICAL (local vorticity), NOT wave-phase opposition**
 
 **Theoretical Implication:**
-> "The global 50/50 balance between + and - sectors is maintained by equal creation rates, not by interaction dynamics. Opposite-sign defects do NOT attract or repel each other — they coexist as independent, non-interacting populations. Balance is a statistical property of the medium's creation mechanism, not an emergent relational force."
+> "The current simulator's + and - sectors are distinguished by local topological winding, not global phase opposition or frequency channel separation. The 'matter/antimatter' distinction is purely topological. To test phase-opposed, frequency-separated coexistence, additional mechanisms would be needed (phase coherence, explicit channel structure)."
 
 ### Files
 - `/app/backend/qmrt_topology/papers/PHASE_11_CONCLUSIONS.md`
@@ -50,7 +50,8 @@ The transition is primarily driven by **GEOMETRIC PACKING** (r = +0.990):
 - `/app/backend/qmrt_topology/papers/PHASE_11E_DOMAIN_SCALING.md`
 - `/app/backend/qmrt_topology/papers/PHASE_11F_SIGNED_EXPANSION.md`
 - `/app/backend/qmrt_topology/papers/PHASE_11G_CROSS_SECTOR_INTERACTION.md`
-- `/app/backend/phase11_*.py` (7 test scripts)
+- `/app/backend/qmrt_topology/papers/PHASE_11H_PHASE_FREQUENCY.md`
+- `/app/backend/phase11_*.py` (8 test scripts)
 
 ---
 
