@@ -24,8 +24,16 @@ The transition is primarily driven by **GEOMETRIC PACKING** (r = +0.990):
 **Theoretical statement**:
 > "Organizational development proceeds through staggered branch maturation driven by geometric packing. Loop structure dominates at low density, establishing the dimensional scaffold. As density increases, clustering emerges automatically from triangle formation. This is a geometric threshold, not a temporal or memory-driven transition."
 
+**Phase 11e: Domain Scaling Test (COMPLETE — Unexpected Result)**
+- 64³ grid: Transition at ~250 defects (not ~950 as predicted)
+- Simple packing-density scaling is REFUTED
+- Transition is governed by **attractor geometry** (coupling gradient dynamics), not raw packing
+
+**Refined Theoretical Statement:**
+> "Geometry remains the leading branch, but the relevant geometry is the attractor landscape created by the coupling gradient — not simple defect packing density. The transition from loops to clustering is shaped by how structure forms within the high-coupling interior region."
+
 **Testable prediction**:
-> Larger grids (96³) should shift the transition population upward proportionally, confirming the geometric packing mechanism.
+> Interior-only analysis should show different transition dynamics than full-domain analysis.
 
 ### Files
 - `/app/backend/qmrt_topology/papers/PHASE_11_CONCLUSIONS.md`
