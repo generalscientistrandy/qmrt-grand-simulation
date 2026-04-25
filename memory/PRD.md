@@ -23,11 +23,31 @@
 **Corrected Position:**
 > "The simulator has reached pre-matter topological organization. True phase-opposed branch-pairs remain an untested extension requiring new mechanisms (phase coherence, channel structure)."
 
-**The Branch-Pair Hypothesis (Future Direction):**
-> "Each organizational branch may have paired phase-opposed realizations. The true degree-of-freedom structure is not 'one branch per layer' but 'branch-pairs per layer' (A/A-opposed, B/B-opposed)."
+### Phase 12: Emergent Properties of Topological Dual-Sector Organization
 
-**The Right Future Test:**
-> "For a given organizational branch, do there exist two persistent phase-coherent realizations that are not reducible to simple winding sign?"
+**Phase 12a: Long-Time Balance Persistence (COMPLETE)**
+- 4000 steps, 27 valid measurements
+- Average balance: **0.950** (robust)
+- Drift: **None significant** (p=0.346)
+- Balance recovers after each oscillatory collapse
+- **CONCLUSION: Statistical balance is asymptotically stable**
+
+**Phase 12 Theory-Guided Answers (from Phase 11 evidence):**
+
+1. **Scaffold Stability**: No evidence ± sectors affect persistence through interaction (11g). Scaffold lifetime governed by attractor geometry, driving, density.
+
+2. **Dimensional Branching**: Probably not strongly influenced by balance. Sweet-spot (~1.1D→1.7D) controlled by driving rate and structural development.
+
+3. **Transition Dynamics**: Only weakly dependent on balance (if at all). Transition is attractor-geometry driven (11d/11e).
+
+4. **Long-Time Balance**: ✓ CONFIRMED — Persists over 4000+ steps with no drift.
+
+5. **Sector-Scaffold Correlation**: Both sectors likely contribute similarly (topological winding, not different interaction laws).
+
+### Files
+- `/app/backend/qmrt_topology/papers/PHASE_11_COMPLETE_MILESTONE.md`
+- `/app/backend/qmrt_topology/papers/PHASE_12A_LONG_TIME_BALANCE.md`
+- `/app/backend/phase12_long_time_balance_test.py`
 
 ---
 
