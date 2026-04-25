@@ -1,11 +1,29 @@
 # Dimensional Branching: Branch Transition Threshold Study
 
 **Date**: December 2025  
-**Status**: COMPLETE - Key Findings Documented
+**Status**: PROVISIONAL — Requires Peak-State Validation
 
 ---
 
-## Executive Summary
+## ⚠️ Important Note
+
+The findings in this document are based on early-time measurements that may not capture the system's sustained branch state. The methodology has since been revised to account for oscillatory build-up/collapse dynamics.
+
+**What is provisional:**
+- The specific threshold (~340-350)
+- The monotonic crossover claim
+- The exact dimension values
+
+**What remains plausible:**
+- Effective dimension is not fixed
+- Higher-dimensional organization is accessible under some conditions
+- The system exhibits developmental dynamics (not instant regime switching)
+
+See: `DIMENSIONAL_BRANCHING_METHODOLOGY_NOTES.md` for the revised interpretation.
+
+---
+
+## Executive Summary (Provisional)
 
 The Branch-Transition Threshold Study confirms the **Dimensional Branching Hypothesis**: the medium's effective dimension is not a fixed spatial constant but an **activated degree-of-freedom count** that rises with sustained driving.
 
