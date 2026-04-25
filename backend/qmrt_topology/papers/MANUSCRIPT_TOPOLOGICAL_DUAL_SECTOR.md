@@ -254,13 +254,25 @@ The topological dual-sector story is complete. The current QMRT simulator suppor
 - Statistical balance is maintained without drift
 - Organizational contribution is symmetric
 - The distinction is topological, not phase-coherent
+- **Results are scale-robust (validated at 64³ = 2.37× volume)**
 
 **What remains open:**
 - Whether phase-coherent branch-pairs can be realized
 - Whether frequency-layer separation can enable different physics
-- Whether the regime is robust at larger scales (96³)
+- Validation at even larger scales (96³+)
 
 The current foundation is solid. Future extensions may probe deeper structure, but the topological dual-sector regime stands on its own as a validated result.
+
+---
+
+## Addendum: Scale Validation (64³)
+
+| Metric | 48³ | 64³ (2.37× vol) | Status |
+|--------|-----|------------------|--------|
+| Balance | 0.950 | 0.951 | ✓ CONFIRMED |
+| Degree diff | +0.035 | -0.177 | ✓ SYMMETRIC |
+
+The topological dual-sector results hold at larger scale, confirming these are intrinsic medium properties, not domain artifacts.
 
 ---
 

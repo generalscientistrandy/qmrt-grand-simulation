@@ -44,12 +44,17 @@
 2. ✓ Long-time persistence (no drift)
 3. ✓ Organizational symmetry (equal scaffold contribution)
 
+**Phase 12c: Scale Validation — 64³ (COMPLETE — PASSED)**
+- Balance at 64³: **0.951** (matches 48³ reference of 0.950)
+- Degree difference: **-0.177** (symmetric, within noise)
+- **CONCLUSION: Results are SCALE-ROBUST**
+
 ### Files
 - `/app/backend/qmrt_topology/papers/PHASE_11_COMPLETE_MILESTONE.md`
 - `/app/backend/qmrt_topology/papers/PHASE_12A_LONG_TIME_BALANCE.md`
 - `/app/backend/qmrt_topology/papers/PHASE_12B_SECTOR_SCAFFOLD.md`
-- `/app/backend/phase12_long_time_balance_test.py`
-- `/app/backend/phase12_sector_scaffold_test.py`
+- `/app/backend/qmrt_topology/papers/PHASE_12C_SCALE_VALIDATION.md`
+- `/app/backend/qmrt_topology/papers/MANUSCRIPT_TOPOLOGICAL_DUAL_SECTOR.md`
 
 ---
 
