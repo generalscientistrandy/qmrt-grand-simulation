@@ -2,7 +2,7 @@
 
 **Date: December 2025**
 
-### Phase 11: Staggered Branch Activation (COMPLETE)
+### Phase 11: Staggered Branch Activation + Transition Mechanism (COMPLETE)
 
 **Core finding**:
 > Spacetime expansion in QMRT is best described as **staggered branch activation** — different organizational features (connectivity, loops, clustering) mature at different rates, with a characteristic transition at ~400 defects.
@@ -14,14 +14,26 @@
 4. **Dimension does NOT increase** during later clustering-dominated development
 5. **Dimension negatively correlates with population** (r = -0.334)
 
+**Phase 11d: Transition Mechanism (COMPLETE)**
+The transition is primarily driven by **GEOMETRIC PACKING** (r = +0.990):
+- High density → more triangles → clustering dominates
+- Low density → stretched structure → loops dominate
+- Memory fields (Remnant r=-0.958, Channel r=-0.869) are secondary
+- τ dynamics (r=-0.772) are tertiary consequences
+
 **Theoretical statement**:
-> "Organizational development proceeds through staggered branch maturation. Loop structure matures first, establishing the dimensional scaffold. Clustering matures later, representing organizational consolidation rather than dimensional expansion."
+> "Organizational development proceeds through staggered branch maturation driven by geometric packing. Loop structure dominates at low density, establishing the dimensional scaffold. As density increases, clustering emerges automatically from triangle formation. This is a geometric threshold, not a temporal or memory-driven transition."
+
+**Testable prediction**:
+> Larger grids (96³) should shift the transition population upward proportionally, confirming the geometric packing mechanism.
 
 ### Files
 - `/app/backend/qmrt_topology/papers/PHASE_11_CONCLUSIONS.md`
+- `/app/backend/qmrt_topology/papers/PHASE_11D_TRANSITION_MECHANISM.md`
 - `/app/backend/phase11_branch_activation_test.py`
 - `/app/backend/phase11_development_sequence_test.py`
 - `/app/backend/phase11_dominance_transition_test.py`
+- `/app/backend/phase11_transition_mechanism_test.py`
 
 ---
 
