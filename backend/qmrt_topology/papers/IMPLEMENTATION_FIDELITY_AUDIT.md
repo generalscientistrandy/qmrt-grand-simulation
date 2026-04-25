@@ -325,7 +325,53 @@ for step in range(3000):
 
 If defects appear without seeding or noise, the wave equation itself is unstable.
 
+## 13. Full-Mechanism vs Reduced Simulator: Comparison Results
+
+### Test Conducted (December 2025)
+
+Both simulators run with identical initial conditions:
+- Same random seed
+- Same vortex seeding
+- 1000 steps build with external driving
+- 2000 steps post-cutoff (no injection)
+
+### Results
+
+| Time Point | Full Mechanism | Reduced (Current) |
+|------------|---------------|-------------------|
+| End of build | ~20-30 defects | ~10-40 defects |
+| +200 steps | 976 | 819 |
+| +600 steps | 1217 | 980 |
+| +1000 steps | 1129 | 1111 |
+| +1800 steps | 190 | 1162 |
+| **Final** | **106** | **1114** |
+
+### Key Finding
+
+The full-mechanism simulator shows **decay after cutoff**, while the reduced simulator shows **sustained high population**.
+
+### Why?
+
+The dynamic τ (medium response to energy density) creates **self-limiting feedback**:
+- High energy regions → higher τ → higher c_eff → faster wave dispersion
+- This prevents runaway energy accumulation
+- The reduced model lacks this feedback, allowing momentum to sustain indefinitely
+
+### Implications
+
+1. **"Endogenous regeneration" is an artifact of the reduced model**
+   - It results from missing self-regulation, not from topological memory
+
+2. **The full QMRT mechanism is self-limiting**
+   - The τ dynamics prevent unbounded growth
+   - This is closer to the intended theory behavior
+
+3. **Previous results need reinterpretation**
+   - Papers 1-5 findings (validated with reduced model) may need review
+   - Phase 6-9 conclusions should specify which model was used
+
 ---
 
-**Audit Status**: COMPLETE  
+**Audit Status**: COMPLETE + MECHANISM COMPARISON DONE  
 **Date**: December 2025
+
