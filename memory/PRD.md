@@ -1,54 +1,45 @@
-## Current Status: FULL-MECHANISM VALIDATION COMPLETE
+## Current Status: PAPER 7 FROZEN — Dimensional Branching Complete
 
 **Date: December 2025**
 
-### Major Milestone: Implementation Fidelity Audit + Full-Mechanism Comparison
+### Paper 7: Dimensional Branching Under Full QMRT Mechanism (FROZEN)
 
-The simulation code was audited and a full-mechanism simulator implemented with:
-- Dynamic τ field (medium response to energy density)
-- Variable c_eff (wave speed varies with τ)
-- Active remnant field (topological memory)
+**Core thesis**:
+> Dimensional organization in the QMRT medium emerges as a driven regime property of population density and connectivity, bounded by τ self-regulation and not directly explained by simple geometric expansion of the scaffold.
 
-### Key Findings
+**Key findings**:
+1. Dimensional branching (~1.1D → ~1.7D) validated under full mechanism
+2. Sweet-spot driving rate at interval ~100
+3. τ self-regulation prevents post-cutoff persistence
+4. **Phase 10**: Geometric expansion ruled out as dimension driver
+5. Dimension is a regime property of internal structural organization
 
-#### 1. Driven-State Behavior: VALIDATED
-Both full and reduced models show **nearly identical behavior** during sustained driving:
-- Dimensional branching (~1.1 to ~1.7) occurs in both
-- Sweet-spot effect (interval ~100 optimal) occurs in both
-- Population dynamics are similar
-
-**Implication**: Phase 6-9 conclusions about driven scaffolds are likely valid.
-
-#### 2. Post-Cutoff Behavior: DIFFERS DRAMATICALLY
-
-| Metric | Full Mechanism | Reduced Model |
-|--------|---------------|---------------|
-| Post-cutoff population | Decays to ~100 | Stays at ~1100 |
-| "Endogenous regeneration" | NO | YES (artifact) |
-
-**Implication**: The "endogenous regeneration" finding was a reduced-model artifact.
-
-#### 3. τ Self-Regulation: New Phenomenon
-The dynamic τ creates self-limiting feedback preventing runaway growth.
-
-### Updated Finding Status
-
-| Finding | Status |
-|---------|--------|
-| Driven filamentary scaffold | ✓ VALIDATED |
-| Dimensional branching (~1D→~1.7D) | ✓ VALIDATED |
-| Sweet-spot driving effect | ✓ VALIDATED |
-| Post-cutoff "endogenous regeneration" | ✗ RETRACTED |
+**Retracted findings**:
+- Post-cutoff "endogenous regeneration" (reduced-model artifact)
+- Expansion-dimension coupling (oscillation artifact)
 
 ### Files
-- `/app/backend/full_mechanism_simulator.py`
-- `/app/backend/dimensional_branching_full_mechanism.py`
-- `/app/backend/qmrt_topology/papers/IMPLEMENTATION_FIDELITY_AUDIT.md`
-- `/app/backend/qmrt_topology/papers/DIMENSIONAL_BRANCHING_FULL_MECHANISM_VALIDATION.md`
+- `/app/backend/qmrt_topology/papers/paper_7_draft/PAPER_7_DRAFT.md` (FROZEN)
+- `/app/backend/qmrt_topology/papers/TAU_SELF_REGULATION_MILESTONE.md` (FROZEN)
+- `/app/backend/qmrt_topology/papers/PHASE_10_EXPANSION_RESULTS.md`
 
 ---
 
-### Previous: Methodology Milestone
+### Program Arc Complete Through Paper 7
+
+| Level | Phase/Paper | Achievement |
+|-------|-------------|-------------|
+| 1 | Papers 1-5 | Active selective environment |
+| 2 | Phase 6 | Proto-spacetime organizational regime |
+| 3 | Phase 7 | Metric-like filamentary geometry |
+| 4 | Phase 8 | Robust ~1D boundary |
+| 5 | Phase 9 | Driven non-equilibrium scaffold |
+| 6 | Paper 6 | Synthesis: Proto-spacetime scaffold |
+| 7 | **Paper 7** | **Dimensional branching + τ self-regulation + expansion test** |
+
+---
+
+### Previous Status: FULL-MECHANISM VALIDATION COMPLETE
 
 ### Previous: Phase 9 Summary
 
