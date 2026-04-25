@@ -9,7 +9,7 @@
 
 ## Abstract
 
-We report the emergence of a fully balanced topological dual-sector regime in a driven QMRT (Quark Medium Relativity Theory) simulator. Two populations distinguished by opposite topological winding (vorticity sign) emerge symmetrically, maintain ~50/50 balance without long-time drift, and contribute equivalently to scaffold organization. The sector distinction is topological rather than phase-opposed or functionally asymmetric. This establishes a validated pre-matter organizational regime with clear theoretical boundaries.
+We report the emergence of a fully balanced topological dual-sector regime in a driven QMRT (Quark Medium Relativity Theory) simulator. Two populations distinguished by opposite topological winding (vorticity sign) emerge symmetrically, maintain ~50/50 balance without long-time drift, and contribute equivalently to scaffold organization. The sector distinction is topological rather than phase-opposed or functionally asymmetric. This establishes a validated organizational regime with clear theoretical boundaries.
 
 ---
 
@@ -25,7 +25,7 @@ The QMRT program investigates how spacetime-like structures might emerge from an
 
 ### 1.2 This Work
 
-Phase 11-12 investigated whether the medium supports **dual-sector** organization — two distinguishable populations that might represent precursors to matter/antimatter-like structure. The key questions were:
+Phase 11-12 investigated whether the medium supports **dual-sector** organization — two distinguishable populations with opposite topological character. The key questions were:
 - Do two distinct sectors emerge?
 - Are they balanced?
 - Is the balance maintained dynamically?
@@ -140,19 +140,22 @@ ORGANIZATION: Symmetric (equal scaffold contribution)
 
 ### 4.2 What This Is
 
-This is a **pre-matter organizational regime**:
+This is a **topological organizational regime**:
 - Two distinguishable populations exist
-- They are balanced and stable
+- They are balanced and dynamically stable
 - They participate equally in structure formation
-- The distinction is a label, not a functional property
+- The distinction is a topological label, not a functional property
+- Balance arises from creation symmetry, not interaction
 
 ### 4.3 What This Is NOT
 
-This is **not yet matter/antimatter physics**:
-- No phase opposition
-- No frequency separation
-- No preferential interaction
-- No functional asymmetry
+This is **not a phase-coherent or interaction-mediated regime**:
+- No global phase opposition between sectors
+- No frequency/channel separation
+- No preferential interaction (attraction or repulsion)
+- No functional asymmetry in organizational role
+
+The distinction between sectors is purely topological (local winding), not wave-mechanical (global phase) or dynamical (interaction law).
 
 ---
 
@@ -176,7 +179,7 @@ This is **not yet matter/antimatter physics**:
 | Phase-opposed global branches | ✗ |
 | Frequency-layer separation | ✗ |
 | Relational balance enforcement | ✗ |
-| Matter/antimatter-level physics | ✗ |
+| Interaction-mediated dynamics | ✗ |
 
 ### 5.3 Future Extensions (Path B/C)
 
@@ -196,9 +199,9 @@ To test stronger dual-sector hypotheses:
 ### 6.2 Significance
 
 This establishes:
-1. A validated pre-matter organizational regime
+1. A validated topological dual-sector organizational regime
 2. Clear theoretical boundaries for the current model
-3. A foundation for future phase-coherent extensions
+3. A foundation for future phase-coherent extensions (if needed)
 
 ### 6.3 Key Numbers
 
@@ -244,8 +247,21 @@ This establishes:
 
 ## 8. Conclusion
 
-The topological dual-sector story is complete. The current QMRT simulator supports balanced, persistent, symmetric dual-sector organization distinguished by topological winding. This is a validated pre-matter regime with clear boundaries. Future extensions (phase coherence, branch-pairs) may access stronger matter/antimatter-like physics, but the current foundation is solid and publishable.
+The topological dual-sector story is complete. The current QMRT simulator supports balanced, persistent, symmetric dual-sector organization distinguished by topological winding. This is a validated organizational regime with clear theoretical boundaries.
+
+**What stands:**
+- Two topological sectors emerge reliably
+- Statistical balance is maintained without drift
+- Organizational contribution is symmetric
+- The distinction is topological, not phase-coherent
+
+**What remains open:**
+- Whether phase-coherent branch-pairs can be realized
+- Whether frequency-layer separation can enable different physics
+- Whether the regime is robust at larger scales (96³)
+
+The current foundation is solid. Future extensions may probe deeper structure, but the topological dual-sector regime stands on its own as a validated result.
 
 ---
 
-*Manuscript Draft Complete — December 2025*
+*Manuscript Draft — December 2025*
