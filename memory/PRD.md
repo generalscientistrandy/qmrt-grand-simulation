@@ -1,45 +1,52 @@
-## Current Status: PAPER 6 FROZEN — Proto-Spacetime Scaffold
+## Current Status: DIMENSIONAL BRANCHING CONFIRMED — Beyond Paper 6
 
 **Date: December 2025**
 
-### Paper 6 Complete
+### Dimensional Branching Study COMPLETE
 
-**Title**: The Proto-Spacetime Scaffold: Geometric Structure and Driven Dynamics of the QMRT Medium
+**Key Discovery**: The ~1D → ~2D transition is a **continuous crossover**, not a sharp phase transition. Effective dimension is an **activated degree-of-freedom count** that rises with sustained driving.
 
-**Core thesis**:
-> The proto-spacetime regime of the QMRT medium is a driven, metric-like, filamentary non-equilibrium scaffold: it exhibits relational geometry, robust ~1D organization, phase-dependent control structure, and bounded carrying capacity under sustained driving.
+**Transition Zone**: Injection interval ~340-350 (driving rate ~0.009 vortices/step)
 
-**Three central results**:
-1. The proto-spacetime regime exists (Phase 6-7)
-2. It is robustly filamentary (Phase 7-8)
-3. It is a driven non-equilibrium scaffold (Phase 9)
+| Driving Interval | Eff. Dimension | Regime |
+|------------------|----------------|--------|
+| 1000 | 0.90 | Filamentary |
+| 500 | 1.38 | Transitional |
+| **350** | **1.51** | **Boundary** |
+| **340** | **1.62** | **Transition** |
+| 300 | 1.67 | 2D-like |
+| 200 | 1.85 | 2D-like |
 
-**Package**: `/qmrt_topology/papers/paper_6_package/`
+**Scientific Statement**:
+> "Dimension is not a fixed spatial constant but an activated property. The medium's degrees of freedom are recruited progressively with increased driving, enabling a smooth transition from filamentary (~1D) to mesh-like (~2D) organization."
+
+**Key Signatures of Genuine 2D Branch**:
+- Dimension > 1.5 ✓
+- Triangle-per-node > 5.0 ✓
+- Graph-Euclidean correlation > 0.7 ✓ (NOT sparse-network artifact)
+
+**Files**:
+- `/app/backend/qmrt_topology/papers/DIMENSIONAL_BRANCHING_STUDY.md`
+- `/app/backend/qmrt_topology/papers/branch_transition_study_results.json`
+- `/app/backend/branch_transition_threshold_study.py`
 
 ---
 
-### Program Arc Complete
+### Updated Program Arc
 
 | Level | Phase/Paper | Achievement |
 |-------|-------------|-------------|
 | 1 | Papers 1-5 | Active selective environment |
 | 2 | Phase 6 | Proto-spacetime organizational regime |
 | 3 | Phase 7 | Metric-like filamentary geometry |
-| 4 | Phase 8 | Robust ~1D boundary |
+| 4 | Phase 8 | Robust ~1D boundary (for moderate driving) |
 | 5 | Phase 9 | Driven non-equilibrium scaffold |
-| **6** | **Paper 6** | **Synthesis: Proto-spacetime scaffold** |
+| 6 | Paper 6 | Synthesis: Proto-spacetime scaffold |
+| **7** | **Dimensional Branching** | **~1D→~2D continuous transition confirmed** |
 
 ---
 
-### Next: "Why Filamentary?" Framework Note
-
-Open interpretive questions:
-- Why is ~1D preferred?
-- Is dimensionality emerging by layered branching or constrained DoFs?
-- Why does forcing enrich local structure but not global dimension?
-- What mechanism would be needed to move beyond filamentary regime?
-
----
+### Previous Status: PAPER 6 FROZEN — Proto-Spacetime Scaffold
 
 ### Previous: Phase 9 Summary
 
