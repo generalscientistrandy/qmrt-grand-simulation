@@ -1,6 +1,29 @@
-## Current Status: PAPER 7 FROZEN — Dimensional Branching Complete
+## Current Status: PHASE 11 COMPLETE — Spacetime Capacity Expansion
 
 **Date: December 2025**
+
+### Phase 11: Staggered Branch Activation (COMPLETE)
+
+**Core finding**:
+> Spacetime expansion in QMRT is best described as **staggered branch activation** — different organizational features (connectivity, loops, clustering) mature at different rates, with a characteristic transition at ~400 defects.
+
+**Key results**:
+1. **Loop structure dominates at low population** (0-300 defects, L-C ratio +0.67 to +4.2)
+2. **Transition at ~400 defects** to Balanced/Clustering dominance
+3. **Dimension is a threshold property** — established early during loop-dominated phase
+4. **Dimension does NOT increase** during later clustering-dominated development
+5. **Dimension negatively correlates with population** (r = -0.334)
+
+**Theoretical statement**:
+> "Organizational development proceeds through staggered branch maturation. Loop structure matures first, establishing the dimensional scaffold. Clustering matures later, representing organizational consolidation rather than dimensional expansion."
+
+### Files
+- `/app/backend/qmrt_topology/papers/PHASE_11_CONCLUSIONS.md`
+- `/app/backend/phase11_branch_activation_test.py`
+- `/app/backend/phase11_development_sequence_test.py`
+- `/app/backend/phase11_dominance_transition_test.py`
+
+---
 
 ### Paper 7: Dimensional Branching Under Full QMRT Mechanism (FROZEN)
 
@@ -12,7 +35,8 @@
 2. Sweet-spot driving rate at interval ~100
 3. τ self-regulation prevents post-cutoff persistence
 4. **Phase 10**: Geometric expansion ruled out as dimension driver
-5. Dimension is a regime property of internal structural organization
+5. **Phase 11**: Staggered branch activation explains "expansion"
+6. Dimension is a regime property of internal structural organization
 
 **Retracted findings**:
 - Post-cutoff "endogenous regeneration" (reduced-model artifact)
@@ -25,7 +49,7 @@
 
 ---
 
-### Program Arc Complete Through Paper 7
+### Program Arc Complete Through Phase 11
 
 | Level | Phase/Paper | Achievement |
 |-------|-------------|-------------|
@@ -35,7 +59,9 @@
 | 4 | Phase 8 | Robust ~1D boundary |
 | 5 | Phase 9 | Driven non-equilibrium scaffold |
 | 6 | Paper 6 | Synthesis: Proto-spacetime scaffold |
-| 7 | **Paper 7** | **Dimensional branching + τ self-regulation + expansion test** |
+| 7 | Paper 7 | Dimensional branching + τ self-regulation |
+| 8 | Phase 10 | Geometric expansion ruled out |
+| 9 | **Phase 11** | **Staggered branch activation** |
 
 ---
 

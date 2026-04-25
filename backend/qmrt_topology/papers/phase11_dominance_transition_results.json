@@ -1,0 +1,171 @@
+{
+  "study": "branch_dominance_transition",
+  "hypothesis": "Population-dependent transition in organizational dominance",
+  "history": [
+    {
+      "valid": true,
+      "n": 76,
+      "mean_degree": 11.82857142857143,
+      "cycles_per_node": 4.942857142857143,
+      "mean_clustering": 0.7246213217221619,
+      "loop_vs_clust": 4.218235821134981,
+      "dominant": "Loop",
+      "dimension": 0.8920883819559148,
+      "step": 40
+    },
+    {
+      "valid": true,
+      "n": 184,
+      "mean_degree": 4.742857142857143,
+      "cycles_per_node": 1.4857142857142858,
+      "mean_clustering": 0.57854358117516,
+      "loop_vs_clust": 0.9071707045391257,
+      "dominant": "Loop",
+      "dimension": 1.2153457995586554,
+      "step": 120
+    },
+    {
+      "valid": true,
+      "n": 222,
+      "mean_degree": 4.114285714285714,
+      "cycles_per_node": 1.2285714285714286,
+      "mean_clustering": 0.5027705627705629,
+      "loop_vs_clust": 0.7258008658008658,
+      "dominant": "Loop",
+      "dimension": 1.0422370436011594,
+      "step": 200
+    },
+    {
+      "valid": true,
+      "n": 271,
+      "mean_degree": 3.3714285714285714,
+      "cycles_per_node": 0.8,
+      "mean_clustering": 0.4183908045977011,
+      "loop_vs_clust": 0.38160919540229893,
+      "dominant": "Loop",
+      "dimension": 1.1109319195397378,
+      "step": 280
+    },
+    {
+      "valid": true,
+      "n": 344,
+      "mean_degree": 3.742857142857143,
+      "cycles_per_node": 0.9857142857142858,
+      "mean_clustering": 0.485593220338983,
+      "loop_vs_clust": 0.5001210653753028,
+      "dominant": "Loop",
+      "dimension": 1.0865136039888175,
+      "step": 360
+    },
+    {
+      "valid": true,
+      "n": 451,
+      "mean_degree": 2.4857142857142858,
+      "cycles_per_node": 0.35714285714285715,
+      "mean_clustering": 0.35974842767295595,
+      "loop_vs_clust": -0.0026055705300987997,
+      "dominant": "Balanced",
+      "dimension": 1.0492407008931917,
+      "step": 440
+    },
+    {
+      "valid": true,
+      "n": 613,
+      "mean_degree": 2.657142857142857,
+      "cycles_per_node": 0.4857142857142857,
+      "mean_clustering": 0.3913388543823326,
+      "loop_vs_clust": 0.09437543133195309,
+      "dominant": "Balanced",
+      "dimension": 0.7819286079468724,
+      "step": 520
+    },
+    {
+      "valid": true,
+      "n": 664,
+      "mean_degree": 2.0285714285714285,
+      "cycles_per_node": 0.2571428571428571,
+      "mean_clustering": 0.5456521739130434,
+      "loop_vs_clust": -0.2885093167701863,
+      "dominant": "Clustering",
+      "dimension": 0.7165973864213485,
+      "step": 600
+    },
+    {
+      "valid": true,
+      "n": 754,
+      "mean_degree": 2.5142857142857142,
+      "cycles_per_node": 0.4142857142857143,
+      "mean_clustering": 0.5144654088050314,
+      "loop_vs_clust": -0.10017969451931713,
+      "dominant": "Clustering",
+      "dimension": 0.9210178951580184,
+      "step": 680
+    },
+    {
+      "valid": true,
+      "n": 792,
+      "mean_degree": 3.1142857142857143,
+      "cycles_per_node": 0.7,
+      "mean_clustering": 0.5293367346938775,
+      "loop_vs_clust": 0.1706632653061224,
+      "dominant": "Loop",
+      "dimension": 0.7416641428460327,
+      "step": 760
+    },
+    {
+      "valid": true,
+      "n": 811,
+      "mean_degree": 2.9714285714285715,
+      "cycles_per_node": 0.5857142857142857,
+      "mean_clustering": 0.43209876543209874,
+      "loop_vs_clust": 0.153615520282187,
+      "dominant": "Loop",
+      "dimension": 1.0563264099198808,
+      "step": 840
+    },
+    {
+      "valid": true,
+      "n": 842,
+      "mean_degree": 2.4857142857142858,
+      "cycles_per_node": 0.4,
+      "mean_clustering": 0.37916666666666665,
+      "loop_vs_clust": 0.02083333333333337,
+      "dominant": "Balanced",
+      "dimension": 0.8657040297437267,
+      "step": 920
+    },
+    {
+      "valid": true,
+      "n": 869,
+      "mean_degree": 2.857142857142857,
+      "cycles_per_node": 0.5571428571428572,
+      "mean_clustering": 0.43025210084033616,
+      "loop_vs_clust": 0.126890756302521,
+      "dominant": "Loop",
+      "dimension": 1.06282260747312,
+      "step": 1000
+    },
+    {
+      "valid": true,
+      "n": 879,
+      "mean_degree": 2.4571428571428573,
+      "cycles_per_node": 0.4,
+      "mean_clustering": 0.36739130434782613,
+      "loop_vs_clust": 0.03260869565217389,
+      "dominant": "Balanced",
+      "dimension": 1.027502183859429,
+      "step": 1080
+    },
+    {
+      "valid": true,
+      "n": 781,
+      "mean_degree": 2.9714285714285715,
+      "cycles_per_node": 0.6428571428571429,
+      "mean_clustering": 0.5007288629737608,
+      "loop_vs_clust": 0.14212827988338206,
+      "dominant": "Loop",
+      "dimension": 1.0569641729260535,
+      "step": 1160
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "study": "staggered_branch_activation",
+  "hypothesis": "Spacetime expansion is asynchronous branch development",
+  "history": [
+    {
+      "valid": true,
+      "n": 257,
+      "edges": 189,
+      "mean_degree": 4.725,
+      "giant_component_frac": 0.9625,
+      "cycle_rank": 113,
+      "cycles_per_node": 1.4125,
+      "tri_per_node": 1.85,
+      "mean_clustering": 0.5254182754182753,
+      "degree_entropy": 2.120104930355901,
+      "dimension": 1.25845438849051,
+      "step": 150
+    },
+    {
+      "valid": true,
+      "n": 10,
+      "edges": 8,
+      "mean_degree": 1.6,
+      "giant_component_frac": 0.6,
+      "cycle_rank": 2,
+      "cycles_per_node": 0.2,
+      "tri_per_node": 0.2,
+      "mean_clustering": 0.5833333333333334,
+      "degree_entropy": 1.4708084758221114,
+      "dimension": 0.3607910443190066,
+      "step": 300
+    },
+    {
+      "valid": true,
+      "n": 512,
+      "edges": 132,
+      "mean_degree": 3.3,
+      "giant_component_frac": 0.5625,
+      "cycle_rank": 59,
+      "cycles_per_node": 0.7375,
+      "tri_per_node": 1.0,
+      "mean_clustering": 0.5201633310328964,
+      "degree_entropy": 1.9542509417126022,
+      "dimension": 0.8773175157396474,
+      "step": 450
+    },
+    {
+      "valid": true,
+      "n": 11,
+      "edges": 3,
+      "mean_degree": 0.5454545454545454,
+      "giant_component_frac": 0.2727272727272727,
+      "cycle_rank": 0,
+      "cycles_per_node": 0.0,
+      "tri_per_node": 0.0,
+      "mean_clustering": 0.0,
+      "degree_entropy": 0.9164648852394712,
+      "dimension": 0.08150678211817589,
+      "step": 600
+    },
+    {
+      "valid": true,
+      "n": 779,
+      "edges": 109,
+      "mean_degree": 2.725,
+      "giant_component_frac": 0.6875,
+      "cycle_rank": 38,
+      "cycles_per_node": 0.475,
+      "tri_per_node": 0.45,
+      "mean_clustering": 0.3737373737373737,
+      "degree_entropy": 1.7304181566546795,
+      "dimension": 1.0361313179909628,
+      "step": 750
+    },
+    {
+      "valid": true,
+      "n": 938,
+      "edges": 111,
+      "mean_degree": 2.775,
+      "giant_component_frac": 0.4625,
+      "cycle_rank": 40,
+      "cycles_per_node": 0.5,
+      "tri_per_node": 0.55,
+      "mean_clustering": 0.46111111111111114,
+      "degree_entropy": 1.7432511710561562,
+      "dimension": 0.9357087574176454,
+      "step": 1050
+    },
+    {
+      "valid": true,
+      "n": 10,
+      "edges": 9,
+      "mean_degree": 1.8,
+      "giant_component_frac": 0.6,
+      "cycle_rank": 2,
+      "cycles_per_node": 0.2,
+      "tri_per_node": 0.2,
+      "mean_clustering": 0.4444444444444444,
+      "degree_entropy": 1.3138340327927471,
+      "dimension": 0.36918635826493307,
+      "step": 1200
+    },
+    {
+      "valid": true,
+      "n": 918,
+      "edges": 107,
+      "mean_degree": 2.675,
+      "giant_component_frac": 0.85,
+      "cycle_rank": 34,
+      "cycles_per_node": 0.425,
+      "tri_per_node": 0.475,
+      "mean_clustering": 0.44316939890710383,
+      "degree_entropy": 1.6846945173150818,
+      "dimension": 1.10108947599578,
+      "step": 1350
+    }
+  ],
+  "activation_times": {
+    "mean_degree": 150,
+    "giant_component_frac": 150,
+    "cycles_per_node": 150,
+    "tri_per_node": 150,
+    "mean_clustering": 150,
+    "degree_entropy": 150
+  },
+  "branch_means": {
+    "branch1": 150.0,
+    "branch2": 150.0,
+    "branch3": 150.0
+  }
+}
