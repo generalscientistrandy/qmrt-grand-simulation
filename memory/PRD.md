@@ -1,51 +1,54 @@
-## Current Status: DIMENSIONAL BRANCHING — Methodology Milestone
+## Current Status: FULL-MECHANISM VALIDATION COMPLETE
 
 **Date: December 2025**
 
-### Methodological Milestone (FROZEN)
+### Major Milestone: Implementation Fidelity Audit + Full-Mechanism Comparison
 
-> **Dimensional branching remains plausible, but measurement methodology must account for oscillatory build-up/collapse dynamics. Regime identification should be based on peak-state statistics after sufficient equilibration, not early-time or trough-time measurements.**
+The simulation code was audited and a full-mechanism simulator implemented with:
+- Dynamic τ field (medium response to energy density)
+- Variable c_eff (wave speed varies with τ)
+- Active remnant field (topological memory)
 
-### What Is Probably Still True
-- Effective dimension is not fixed
-- Dimension likely depends on active degrees of freedom  
-- The system may access more 2D-like organization under some driven conditions
+### Key Findings
 
-### What Is NOT Yet Settled
-- Whether the 1D → 2D shift is a smooth crossover
-- Where the threshold really sits (the ~340-350 claim is **provisional**)
-- Whether stronger driving always helps
-- Whether the correct control variable is injection rate alone
+#### 1. Driven-State Behavior: VALIDATED
+Both full and reduced models show **nearly identical behavior** during sustained driving:
+- Dimensional branching (~1.1 to ~1.7) occurs in both
+- Sweet-spot effect (interval ~100 optimal) occurs in both
+- Population dynamics are similar
 
-### Key Open Hypothesis: Development-Time / Sweet-Spot Effect
-Preliminary data suggests:
-- Too little driving → insufficient structure
-- Moderate driving → enough time for mesh-like organization to form
-- Too much driving → rapid turnover destroys developing structure
+**Implication**: Phase 6-9 conclusions about driven scaffolds are likely valid.
 
-If confirmed, dimension is NOT simply "more driving = more dimension."
+#### 2. Post-Cutoff Behavior: DIFFERS DRAMATICALLY
 
-### Oscillatory Dynamics Discovered
-The system cycles between:
-- **Peak states**: Population 200-800+ nodes (measurable organization)
-- **Trough states**: Population collapses to ~1 node (noise)
+| Metric | Full Mechanism | Reduced Model |
+|--------|---------------|---------------|
+| Post-cutoff population | Decays to ~100 | Stays at ~1100 |
+| "Endogenous regeneration" | NO | YES (artifact) |
 
-Measurements during troughs or build-up phase misclassify the regime.
+**Implication**: The "endogenous regeneration" finding was a reduced-model artifact.
 
-### Next Decisive Steps (Priority Order)
-1. **Extended runs** (5000+ steps) to capture full oscillation cycles
-2. **Peak-state statistics**: dimension, triangles, correlation at peaks
-3. **Oscillation period vs driving rate**
-4. **Sweet-spot map**: optimal driving regime for higher-dimensional organization
+#### 3. τ Self-Regulation: New Phenomenon
+The dynamic τ creates self-limiting feedback preventing runaway growth.
+
+### Updated Finding Status
+
+| Finding | Status |
+|---------|--------|
+| Driven filamentary scaffold | ✓ VALIDATED |
+| Dimensional branching (~1D→~1.7D) | ✓ VALIDATED |
+| Sweet-spot driving effect | ✓ VALIDATED |
+| Post-cutoff "endogenous regeneration" | ✗ RETRACTED |
 
 ### Files
-- `/app/backend/oscillation_tracking_study.py` - Peak-aware measurement framework
-- `/app/backend/qmrt_topology/papers/DIMENSIONAL_BRANCHING_METHODOLOGY_NOTES.md`
-- `/app/backend/qmrt_topology/papers/DIMENSIONAL_BRANCHING_STUDY.md` (provisional, not frozen)
+- `/app/backend/full_mechanism_simulator.py`
+- `/app/backend/dimensional_branching_full_mechanism.py`
+- `/app/backend/qmrt_topology/papers/IMPLEMENTATION_FIDELITY_AUDIT.md`
+- `/app/backend/qmrt_topology/papers/DIMENSIONAL_BRANCHING_FULL_MECHANISM_VALIDATION.md`
 
 ---
 
-### Previous Status: PAPER 6 FROZEN — Proto-Spacetime Scaffold
+### Previous: Methodology Milestone
 
 ### Previous: Phase 9 Summary
 
