@@ -53,14 +53,27 @@
 
 ---
 
-## READY FOR MANUSCRIPT SYNTHESIS
+## MANUSCRIPT SYNTHESIS COMPLETE
 
-The topological dual-sector story is now complete:
-- Geometry leads (attractor-shaped)
-- Dual sectors exist (topologically distinct)
-- Balance is statistical and asymptotically stable  
-- Sectors are organizationally symmetric
-- Sign is a label, not a functional property
+**Title:** "Topological Dual-Sector Emergence in QMRT"
+**File:** `/app/backend/qmrt_topology/papers/MANUSCRIPT_TOPOLOGICAL_DUAL_SECTOR.md`
+
+**Main Result:**
+> "The QMRT simulator supports a fully balanced topological dual-sector regime in which opposite winding sectors emerge symmetrically, persist without long-time drift, and contribute equivalently to scaffold organization. The sector distinction is topological rather than phase-opposed or functionally asymmetric."
+
+**Key Numbers:**
+| Metric | Value |
+|--------|-------|
+| Population balance | 0.95 |
+| Drift p-value | 0.35 |
+| Degree symmetry p | 0.96 |
+| Clustering symmetry p | 0.43 |
+| Hub symmetry p | 0.82 |
+
+**Theoretical Boundary:**
+- ✓ VALIDATED: Topological dual-sector, statistical balance, organizational symmetry
+- ✗ NOT SUPPORTED: Phase opposition, frequency separation, relational enforcement
+- → FUTURE: Phase coherence mechanisms, branch-pair hypothesis
 
 ---
 
