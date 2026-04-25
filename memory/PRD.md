@@ -35,26 +35,22 @@ The transition is primarily driven by **GEOMETRIC PACKING** (r = +0.990):
 **Testable prediction**:
 > Interior-only analysis should show different transition dynamics than full-domain analysis.
 
-**Phase 11f: Signed Branch Expansion (COMPLETE — Partial Support)**
-- Population balance: 0.906 (near-perfect 50/50 between + and - chirality)
-- Sector correlation: r = +0.014 (independent development)
-- Pattern: Alternating dominance with fluctuating complementarity
-- **Partial support for dual-branch**: Balanced sectors exist but develop independently
+**Phase 11g: Cross-Sector Interaction (COMPLETE — Decisive Result)**
+- Distance ratio (+-/same): **1.007** → NEUTRAL (no attraction/repulsion)
+- NN same-sign enrichment: **1.065** → NO PREFERENCE
+- Mixing enrichment: **0.982** → RANDOM
+- **CONCLUSION: Balance is STATISTICAL, not RELATIONAL**
 
-**Refined Interpretation:**
-> "Balanced dual sectors evolve independently, with compensating fluctuations preserving global balance. This is a weaker form of dual-branch expansion — branches are real and balanced, but organizational development is weakly coupled."
+**Theoretical Implication:**
+> "The global 50/50 balance between + and - sectors is maintained by equal creation rates, not by interaction dynamics. Opposite-sign defects do NOT attract or repel each other — they coexist as independent, non-interacting populations. Balance is a statistical property of the medium's creation mechanism, not an emergent relational force."
 
 ### Files
 - `/app/backend/qmrt_topology/papers/PHASE_11_CONCLUSIONS.md`
 - `/app/backend/qmrt_topology/papers/PHASE_11D_TRANSITION_MECHANISM.md`
 - `/app/backend/qmrt_topology/papers/PHASE_11E_DOMAIN_SCALING.md`
 - `/app/backend/qmrt_topology/papers/PHASE_11F_SIGNED_EXPANSION.md`
-- `/app/backend/phase11_branch_activation_test.py`
-- `/app/backend/phase11_development_sequence_test.py`
-- `/app/backend/phase11_dominance_transition_test.py`
-- `/app/backend/phase11_transition_mechanism_test.py`
-- `/app/backend/phase11_domain_scaling_test.py`
-- `/app/backend/phase11_signed_expansion_test.py`
+- `/app/backend/qmrt_topology/papers/PHASE_11G_CROSS_SECTOR_INTERACTION.md`
+- `/app/backend/phase11_*.py` (7 test scripts)
 
 ---
 
