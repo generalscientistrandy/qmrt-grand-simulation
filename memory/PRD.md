@@ -1,6 +1,69 @@
-## Current Status: PHASE 11 COMPLETE — Theoretical Boundary Milestone
+## Current Status: LAYERED ENERGY MODEL LAUNCH
 
 **Date: December 2025**
+
+---
+
+### Path B.1 Result: FAILED
+
+**Experiment**: Minimal phase-coupling mechanism tested at strengths 0.1, 0.2, 0.3
+
+| Coupling | Bimodal Score | Class Separation | W-C Corr | Verdict |
+|----------|---------------|------------------|----------|---------|
+| 0.1 | 0.501 | 0.038 | -0.019 | FAIL |
+| 0.2 | 0.500 | 0.039 | -0.008 | FAIL |
+| 0.3 | 0.502 | 0.034 | +0.011 | FAIL |
+
+**Key Finding**: No dose-response. Mechanism saturated at baseline. Local phase-coupling cannot produce global phase classes.
+
+**Path B Status**: FALSIFIED under minimal phase-coupling mechanism.
+
+---
+
+### Deeper Diagnosis: Flat Energy Model Problem
+
+The Path B failure revealed a more fundamental issue:
+
+> "The current simulator may correctly capture several organizational regimes while still underrepresenting the energetics that differentiate one layer from another."
+
+**What works**: Branching, balance, topology, geometry, scaffold dynamics
+**What's missing**: Layer-specific energy budgets, maintenance costs, transfer rules
+
+In a **zero-balanced layered universe**, equal energy across all layers is too crude.
+
+---
+
+### New Branch: Layered Energy Model
+
+**Launch Note**: `/app/backend/qmrt_topology/papers/LAYERED_ENERGY_MODEL_LAUNCH.md`
+
+**Core Variables per Layer**:
+- E_L (total energy)
+- B_L (bound energy for maintenance)
+- F_L (free energy for new organization)
+- M_L (maintenance cost)
+- T_{L→L'} (transfer rates)
+
+**Hypotheses**:
+1. Maintenance costs scale with complexity
+2. Free energy limits organization depth
+3. Layer transfer creates energy cascades
+4. Zero-balance enforces layer competition
+5. τ self-regulation is primitive layer-0 accounting
+
+**First Experiment**: Energy Audit — instrument current simulator to measure layer energy distribution before making changes.
+
+---
+
+### Branch Status Summary
+
+| Branch | Status | Notes |
+|--------|--------|-------|
+| Topological Dual-Sector | **FROZEN** | Organizationally valid on flat-energy substrate |
+| Path B (Phase-Coherent) | **FAILED** | Mechanism doesn't produce classes |
+| Layered Energy Model | **LAUNCH** | Architectural redesign of energy substrate |
+
+---
 
 ### Phase 11: Complete Series (FROZEN as Boundary Milestone)
 
