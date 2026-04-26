@@ -90,8 +90,11 @@
 - **Manuscript: FROZEN**
 
 ### NEXT EXTENSION BRANCH (Path B): Phase-Coherent Mechanisms
-- Status: NOT STARTED
-- Would test: Branch-pair hypothesis, global phase coherence
+- Status: **LAUNCHED** (gates defined, pre-implementation)
+- Launch note: `/app/backend/qmrt_topology/papers/PHASE_COHERENT_EXTENSION_LAUNCH.md`
+- First test: **B.1 — Persistent Phase-Class Test**
+- Key question: "Can defects separate into stable phase-coherent populations not reducible to winding sign?"
+- Gates: B.1 must pass before B.2; B.2 must pass before Path C
 - Clearly separate from frozen topological branch
 
 ---
