@@ -1,0 +1,95 @@
+{
+  "test": "mixed_strategy_focused",
+  "results": [
+    {
+      "rate": 0.1,
+      "remnant_frac": 0.0,
+      "avg_late_n": 0.0,
+      "creations": 11,
+      "sustained": false,
+      "entropy": 0.4742251559113801,
+      "mean_nn_dist": 2.9377208741481438,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.125,
+      "remnant_frac": 0.0,
+      "avg_late_n": 1.8333333333333333,
+      "creations": 41,
+      "sustained": true,
+      "entropy": 0.5150728566005076,
+      "mean_nn_dist": 1.3005860272560112,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.15,
+      "remnant_frac": 0.0,
+      "avg_late_n": 3.3333333333333335,
+      "creations": 49,
+      "sustained": true,
+      "entropy": 0.5565334230967592,
+      "mean_nn_dist": 0.9773510147250251,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.1,
+      "remnant_frac": 0.1,
+      "avg_late_n": 0.0,
+      "creations": 7,
+      "sustained": false,
+      "entropy": 0.35468087969500783,
+      "mean_nn_dist": 2.5794944181631396,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.125,
+      "remnant_frac": 0.1,
+      "avg_late_n": 2.1666666666666665,
+      "creations": 36,
+      "sustained": true,
+      "entropy": 0.5037700513240095,
+      "mean_nn_dist": 1.1412242645707902,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.15,
+      "remnant_frac": 0.1,
+      "avg_late_n": 8.166666666666666,
+      "creations": 60,
+      "sustained": true,
+      "entropy": 0.5751982408274074,
+      "mean_nn_dist": 1.2119797795696223,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.1,
+      "remnant_frac": 0.25,
+      "avg_late_n": 0.0,
+      "creations": 7,
+      "sustained": false,
+      "entropy": 0.35468087969500783,
+      "mean_nn_dist": 2.5794944181631396,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.125,
+      "remnant_frac": 0.25,
+      "avg_late_n": 0.0,
+      "creations": 14,
+      "sustained": false,
+      "entropy": 0.48271525464862863,
+      "mean_nn_dist": 3.1204219863720417,
+      "reocc_rate": 1.0
+    },
+    {
+      "rate": 0.15,
+      "remnant_frac": 0.25,
+      "avg_late_n": 2.1666666666666665,
+      "creations": 54,
+      "sustained": true,
+      "entropy": 0.6010822732217086,
+      "mean_nn_dist": 1.5143707599270113,
+      "reocc_rate": 1.0
+    }
+  ]
+}
