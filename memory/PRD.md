@@ -105,6 +105,9 @@ In a **zero-balanced layered universe**, equal energy across all layers is too c
 1. **τ-based energy accounting** — Validated and integrated (tau_response=0.02)
 2. **Future phase mechanism** — Only if fundamentally different approach proposed
 3. **Higher-layer auditors** — If τ proves insufficient for advanced organization
+4. **Branch inventory** — Living document tracking mechanism roles
+
+**Branch Inventory**: `/app/backend/qmrt_topology/papers/BRANCH_INVENTORY.md`
 
 ---
 
