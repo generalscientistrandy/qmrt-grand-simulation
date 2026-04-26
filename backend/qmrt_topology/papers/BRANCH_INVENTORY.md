@@ -91,10 +91,10 @@ This inventory tracks each mechanism's role in the coupled QMRT architecture. Pe
 
 | Aspect | Description |
 |--------|-------------|
-| **Purpose** | Implement regime-sensitive energy regulation |
-| **Role Type** | Regulator / Accountant |
+| **Purpose** | Maintenance-cost accounting — sorts, cools, stabilizes or dissipates structures |
+| **Role Type** | Accountant / Regulator (LATE-ACTIVATING) |
 | **What it does** | τ responds to local energy: high energy → high τ → faster dissipation (maintenance cost) |
-| **Timescale** | Continuous (relaxation timescale ~0.01), strengthens over developmental time |
+| **Timescale** | Continuous, but **activates AFTER organizational structure forms** |
 | **Partners** | All energy-containing structures, channel assignment (bound energy), topology |
 | **Failure Mode** | Weak τ response → flat energy landscape, no regime differentiation |
 | **Status** | **ACTIVE** (tau_response = 0.02) |
@@ -103,7 +103,7 @@ This inventory tracks each mechanism's role in the coupled QMRT architecture. Pe
 - `tau_response = 0.02` (amplified from 0.005)
 - `tau_relaxation = 0.01`
 
-**Key insight**: τ differentiates organizational regimes (loop vs clustering vs scaffold). Birth environment τ predicts defect lifetime (20% effect).
+**Key insight from branch audit**: τ activates LAST (step 151), after channel/remnant/geometry (step 51). It is **not the primary organizer** — it sorts, cools, and regulates structures once they exist. Birth environment τ predicts defect lifetime (20% effect), confirming its role as maintenance accountant.
 
 ---
 
@@ -265,20 +265,65 @@ This inventory tracks each mechanism's role in the coupled QMRT architecture. Pe
 |------------|-------------------|
 | Defect persistence | Creation + Channel + Geometry |
 | Population balance | Creation (symmetric) + Geometry |
-| Regime differentiation | τ + Driving (density) |
+| Regime differentiation | Fast Triad + τ (late) |
 | Scaffold formation | Remnant + Channel + Geometry |
 | Maintenance cost | τ + Damping + Wave dynamics |
 | Birth-environment effect | τ (at birth time) + subsequent dynamics |
 
 ---
 
+## The Fast Triad (Organizational Core)
+
+**Discovery from Branch Audit (Dec 2025)**
+
+The branch audit revealed that **Channel + Remnant + Geometry** activate together almost immediately (step 51), forming the "fast triad" — the primary organizational driver.
+
+```
+FAST TRIAD (activates first):
+  Geometry  → sorts WHERE structure forms
+  Channel   → stabilizes WHAT forms
+  Remnant   → provides MEMORY/continuity
+
+τ ACCOUNTING (activates later):
+  τ         → regulates COST and PERSISTENCE afterward
+```
+
+**Causal architecture**:
+```
+DRIVING → CREATION → [Fast Triad] → REGIME → τ responds
+                     (step 51)     (emerges)  (step 151)
+```
+
+τ is the maintenance accountant, not the prime mover.
+
+---
+
+## Collapse/Rebuild Cycles (Potential Hidden Branch)
+
+**Discovery from Branch Audit (Dec 2025)**
+
+The system shows intermittent **scaffold → sparse → scaffold** cycles:
+- Step 801: scaffold → sparse
+- Step 851: sparse → scaffold
+- Step 1201: scaffold → sparse
+- Step 1251: sparse → scaffold
+- (pattern continues)
+
+This is likely **not noise** but evidence of a real **transition/renewal branch**:
+- Formation phase → Depletion phase → Rebuild phase
+- Similar to oscillatory timing effects discovered earlier
+
+**Status**: Potential hidden branch — needs explicit investigation.
+
+---
+
 ## Open Questions
 
-1. **Higher-layer auditors**: Does τ alone suffice for complex organization, or are layer-specific auditors needed?
+1. **Collapse/rebuild cycles**: What controls the scaffold→sparse→scaffold transitions? Is there a hidden transition branch?
 
-2. **Scaffold dynamics**: What determines scaffold stability vs collapse? Is remnant sufficient?
+2. **Fast triad dynamics**: How do Channel, Remnant, and Geometry interact to produce organizational sorting?
 
-3. **Phase coherence**: Could phase coupling matter in combination with other branches, even though it fails alone?
+3. **τ fine-tuning role**: Now that τ is understood as late-activating accountant, what specifically does it regulate?
 
 4. **Scale effects**: Do branch interactions change at larger scales (96³)?
 
@@ -291,7 +336,8 @@ This inventory tracks each mechanism's role in the coupled QMRT architecture. Pe
 | Dec 2025 | Initial inventory created |
 | Dec 2025 | τ accounting updated to amplified baseline (0.02) |
 | Dec 2025 | Phase coupling marked CLOSED |
+| Dec 2025 | **Branch audit results integrated**: Fast Triad identified, τ role clarified as late-activating accountant, collapse cycles noted |
 
 ---
 
-*QMRT Branch Inventory — Living Document*
+*QMRT Branch Inventory (Current Revision) — Living Document*
