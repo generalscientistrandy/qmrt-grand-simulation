@@ -58,27 +58,43 @@
 
 ---
 
-## MANUSCRIPT SYNTHESIS COMPLETE
+## MANUSCRIPT FROZEN — FINAL
 
 **Title:** "Topological Dual-Sector Emergence in QMRT"
 **File:** `/app/backend/qmrt_topology/papers/MANUSCRIPT_TOPOLOGICAL_DUAL_SECTOR.md`
+**Status:** FROZEN — December 2025
 
-**Main Result:**
-> "The QMRT simulator supports a fully balanced topological dual-sector regime in which opposite winding sectors emerge symmetrically, persist without long-time drift, and contribute equivalently to scaffold organization. The sector distinction is topological rather than phase-opposed or functionally asymmetric."
+**Validated Results:**
+| Finding | Evidence |
+|---------|----------|
+| Two topological sectors emerge | ± vorticity populations |
+| Balance ~50/50 | 0.950 (48³), 0.951 (64³) |
+| Balance persists | No drift over 4000 steps |
+| Organizational symmetry | Degree p=0.96, Clustering p=0.43 |
+| Scale-robust | Confirmed at 2.37× volume |
 
-**Key Numbers:**
-| Metric | Value |
-|--------|-------|
-| Population balance | 0.95 |
-| Drift p-value | 0.35 |
-| Degree symmetry p | 0.96 |
-| Clustering symmetry p | 0.43 |
-| Hub symmetry p | 0.82 |
+**Clear Boundaries (What This Is NOT):**
+- NOT phase-opposed global branches
+- NOT frequency-layer separated
+- NOT interaction-mediated balance
+- NOT functionally asymmetric
 
-**Theoretical Boundary:**
-- ✓ VALIDATED: Topological dual-sector, statistical balance, organizational symmetry
-- ✗ NOT SUPPORTED: Phase opposition, frequency separation, relational enforcement
-- → FUTURE: Phase coherence mechanisms, branch-pair hypothesis
+---
+
+## PROGRAM STRUCTURE
+
+### FROZEN BRANCH: Topological Dual-Sector Emergence
+- Papers 1-7: Proto-spacetime scaffold
+- Phase 11: Dual-sector investigation + boundary
+- Phase 12: Long-time, symmetry, scale validation
+- **Manuscript: FROZEN**
+
+### NEXT EXTENSION BRANCH (Path B): Phase-Coherent Mechanisms
+- Status: NOT STARTED
+- Would test: Branch-pair hypothesis, global phase coherence
+- Clearly separate from frozen topological branch
+
+---
 
 ---
 

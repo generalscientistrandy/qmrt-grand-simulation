@@ -3,7 +3,7 @@
 **A Synthesis of Phase 11-12 Results**
 
 **Date: December 2025**
-**Status: MANUSCRIPT DRAFT**
+**Status: FROZEN — FINAL**
 
 ---
 
@@ -276,4 +276,4 @@ The topological dual-sector results hold at larger scale, confirming these are i
 
 ---
 
-*Manuscript Draft — December 2025*
+*Manuscript FROZEN — December 2025*
