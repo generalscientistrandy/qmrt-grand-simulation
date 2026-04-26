@@ -1,0 +1,11 @@
+{
+  "test": "remnant_creation_coupling",
+  "results": [
+    {
+      "type": "random",
+      "rate": 0.1,
+      "avg_late_n": 0.0,
+      "creations": 15,
+      "avg_remnant_at_creation": 0.8989603749835187,
+      "high_remnant_frac": 1.0,
+      "sustained": 
