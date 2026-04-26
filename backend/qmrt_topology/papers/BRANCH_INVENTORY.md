@@ -1,7 +1,25 @@
-# QMRT Branch Inventory
+# QMRT Branch Inventory (Current Revision)
 
 **Date: December 2025**
-**Status: LIVING DOCUMENT — Updated as branches are added/clarified**
+**Status: PROVISIONAL — Expected to expand as hidden branches are discovered**
+
+---
+
+## Inventory Principles
+
+1. **This inventory is incomplete** — New branches are often discovered when previously bundled mechanisms are separated by role, timescale, or interaction pattern
+
+2. **Future additions should be classified as**:
+   - **New branch** — A truly distinct role not already represented
+   - **Sub-branch** — A more specific mechanism inside a current branch
+   - **Branch interaction pattern** — A stable coupling between known branches
+
+3. **Likely undiscovered branches include**:
+   - Transition branches (regime switching control)
+   - Persistence branches (structure maintenance beyond damping)
+   - Coordination branches (mesoscopic organization)
+   - Selection branches (which structures survive to scaffold)
+   - Transfer branches (energy flow between layers)
 
 ---
 
