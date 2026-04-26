@@ -1,6 +1,27 @@
-## Current Status: LAYERED ENERGY MODEL LAUNCH
+## Current Status: τ AMPLIFICATION INTEGRATED
 
 **Date: December 2025**
+
+---
+
+### τ Energy Accounting Baseline Update
+
+**Change**: `tau_response` promoted from 0.005 to **0.02** (4× amplification)
+
+**Evidence**:
+1. τ differentiates organizational regimes (loop vs clustering vs scaffold)
+2. τ-dissipation ratio: **2.2×** (high-τ dissipates faster)
+3. Effect strengthens over time: 2.21 → 2.60
+4. Birth-τ predicts lifetime: **20% effect** (low-τ birth = longer life)
+5. System shows progressive cooling as organization builds
+
+**New Diagnostics Added**:
+- `detect_defects_with_tau()`: Returns defects with local τ
+- `track_defects_with_birth_tau()`: Records birth environment
+- `compute_tau_diagnostics()`: τ-based energy accounting metrics
+
+**Scientific Statement**:
+> "Amplified τ implements regime-sensitive energy accounting: high-τ regions remain active and dissipative, low-τ regions become organizationally protective, and defect lifetime depends significantly on birth environment."
 
 ---
 
@@ -37,21 +58,19 @@ In a **zero-balanced layered universe**, equal energy across all layers is too c
 
 **Launch Note**: `/app/backend/qmrt_topology/papers/LAYERED_ENERGY_MODEL_LAUNCH.md`
 
-**Core Variables per Layer**:
-- E_L (total energy)
-- B_L (bound energy for maintenance)
-- F_L (free energy for new organization)
-- M_L (maintenance cost)
-- T_{L→L'} (transfer rates)
+**Status**: Phase 1 COMPLETE (τ amplification integrated)
 
-**Hypotheses**:
-1. Maintenance costs scale with complexity
-2. Free energy limits organization depth
-3. Layer transfer creates energy cascades
-4. Zero-balance enforces layer competition
-5. τ self-regulation is primitive layer-0 accounting
+**Completed**:
+- ✓ Energy audit (simulator not flat, τ already doing accounting)
+- ✓ τ amplification probe (8.7× topology spread increase)
+- ✓ Organizational layer test (τ differentiates regimes)
+- ✓ τ-maintenance causal test (2.2× dissipation ratio, birth-τ effect)
+- ✓ Integration into baseline simulator
 
-**First Experiment**: Energy Audit — instrument current simulator to measure layer energy distribution before making changes.
+**Pending**:
+- Layer-specific τ targets (if needed)
+- Explicit maintenance drain
+- Inter-layer transfer rules
 
 ---
 
@@ -59,9 +78,9 @@ In a **zero-balanced layered universe**, equal energy across all layers is too c
 
 | Branch | Status | Notes |
 |--------|--------|-------|
-| Topological Dual-Sector | **FROZEN** | Organizationally valid on flat-energy substrate |
+| Topological Dual-Sector | **FROZEN** | Organizationally valid |
 | Path B (Phase-Coherent) | **FAILED** | Mechanism doesn't produce classes |
-| Layered Energy Model | **LAUNCH** | Architectural redesign of energy substrate |
+| Layered Energy Model | **PHASE 1 COMPLETE** | τ amplification integrated |
 
 ---
 

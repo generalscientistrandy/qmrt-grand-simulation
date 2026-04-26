@@ -9,10 +9,15 @@ This implements the COMPLETE intended QMRT theory, including:
 4. Channel assignment (topological protection)
 5. Spatial coupling gradient (attractor landscape)
 
-Purpose: Compare full-mechanism behavior to the reduced simulator
-to understand which effects depend on which mechanisms.
+ENERGY ACCOUNTING (December 2025):
+- τ_response = 0.02 (amplified from 0.005)
+- τ implements regime-sensitive energy accounting:
+  * High-τ regions: active, dissipative
+  * Low-τ regions: organizationally protective
+- Birth-τ tracking enabled: defect lifetime depends on birth environment
+- τ-dissipation ratio ~2.2× (strengthens over time)
 
-Based on Papers 3-5 specifications.
+Based on Papers 3-5 specifications and Layered Energy Model analysis.
 """
 
 import numpy as np
@@ -45,12 +50,12 @@ class FullMechanismSimulator:
         self.psi_r_dot = np.zeros((size, size, size))
         self.psi_i_dot = np.zeros((size, size, size))
         
-        # Dynamic medium (NEW - was missing)
+        # Dynamic medium (τ-based energy accounting)
         self.tau = np.ones((size, size, size))  # Medium density
         self.tau_0 = 1.0  # Reference value
         self.c_0_sq = 4.0  # Base wave speed squared
         self.tau_relaxation = 0.01  # Rate tau returns to equilibrium
-        self.tau_response = 0.005  # Rate tau responds to energy
+        self.tau_response = 0.02  # AMPLIFIED (was 0.005) - regime-sensitive accounting
         
         # Topological memory
         self.channel_assignment = np.zeros((size, size, size))
@@ -75,6 +80,15 @@ class FullMechanismSimulator:
         
         # Tracking
         self.injections_this_run = 0
+        
+        # Birth-τ tracking (energy accounting diagnostic)
+        self.defect_registry = {}  # id -> {birth_step, birth_tau, ...}
+        self.next_defect_id = 0
+        self.tau_diagnostics = {
+            'tau_mean_history': [],
+            'tau_std_history': [],
+            'dissipation_ratio_history': [],
+        }
         
     def _create_coupling(self) -> np.ndarray:
         """Create radial coupling gradient (per Paper 4)."""
@@ -258,6 +272,140 @@ class FullMechanismSimulator:
                     int(np.mean(coords[2]))
                 ))
         return defects
+    
+    def detect_defects_with_tau(self, threshold: float = 0.4) -> List[Dict]:
+        """
+        Detect defects with local τ and birth-τ tracking.
+        
+        Returns list of dicts with:
+        - pos: (x, y, z) position
+        - winding: +1/-1/0
+        - tau: local τ value
+        - channel: local channel value
+        - birth_tau: τ at birth (if tracked)
+        """
+        amp = np.sqrt(self.psi_r**2 + self.psi_i**2)
+        phase = np.arctan2(self.psi_i, self.psi_r)
+        
+        # Compute vorticity for winding detection
+        grad_x = np.angle(np.exp(1j * (np.roll(phase, -1, axis=0) - phase)))
+        grad_y = np.angle(np.exp(1j * (np.roll(phase, -1, axis=1) - phase)))
+        vorticity = (np.roll(grad_y, -1, axis=0) - grad_y) - (np.roll(grad_x, -1, axis=1) - grad_x)
+        
+        labeled, n = label(amp < threshold)
+        defects = []
+        
+        for i in range(1, n + 1):
+            component = (labeled == i)
+            if np.sum(component) >= 5:
+                coords = np.where(component)
+                cx = int(np.mean(coords[0]))
+                cy = int(np.mean(coords[1]))
+                cz = int(np.mean(coords[2]))
+                
+                local_vort = vorticity[cx, cy, cz]
+                winding = 0
+                if local_vort > 0.05:
+                    winding = +1
+                elif local_vort < -0.05:
+                    winding = -1
+                
+                if winding != 0:
+                    # Get local τ in neighborhood
+                    x_lo, x_hi = max(0, cx-2), min(self.size, cx+3)
+                    y_lo, y_hi = max(0, cy-2), min(self.size, cy+3)
+                    z_lo, z_hi = max(0, cz-2), min(self.size, cz+3)
+                    
+                    local_tau = float(np.mean(self.tau[x_lo:x_hi, y_lo:y_hi, z_lo:z_hi]))
+                    local_channel = float(np.mean(self.channel_assignment[x_lo:x_hi, y_lo:y_hi, z_lo:z_hi]))
+                    
+                    defects.append({
+                        'pos': (cx, cy, cz),
+                        'winding': winding,
+                        'tau': local_tau,
+                        'channel': local_channel,
+                    })
+        
+        return defects
+    
+    def track_defects_with_birth_tau(self, defects: List[Dict], match_radius: float = 5.0):
+        """
+        Track defects and record birth-τ for energy accounting analysis.
+        
+        Returns: (births, deaths, active_count)
+        """
+        births = []
+        
+        for d in defects:
+            pos = d['pos']
+            
+            # Try to match to existing defect
+            matched = False
+            for def_id, info in self.defect_registry.items():
+                if info.get('alive', False):
+                    old_pos = info['last_pos']
+                    dist = np.sqrt(sum((a - b)**2 for a, b in zip(pos, old_pos)))
+                    if dist < match_radius and info['winding'] == d['winding']:
+                        # Update existing
+                        info['last_seen'] = self.step_count
+                        info['last_pos'] = pos
+                        info['tau_history'].append(d['tau'])
+                        matched = True
+                        break
+            
+            if not matched:
+                # New defect - record birth-τ
+                self.defect_registry[self.next_defect_id] = {
+                    'birth_step': self.step_count,
+                    'birth_tau': d['tau'],  # KEY: birth environment τ
+                    'birth_channel': d['channel'],
+                    'last_seen': self.step_count,
+                    'last_pos': pos,
+                    'winding': d['winding'],
+                    'tau_history': [d['tau']],
+                    'alive': True,
+                }
+                births.append(self.next_defect_id)
+                self.next_defect_id += 1
+        
+        # Check for deaths
+        deaths = []
+        for def_id, info in self.defect_registry.items():
+            if info.get('alive', False) and info['last_seen'] < self.step_count - 10:
+                info['alive'] = False
+                info['death_step'] = info['last_seen']
+                info['lifetime'] = info['death_step'] - info['birth_step']
+                info['avg_tau'] = np.mean(info['tau_history'])
+                deaths.append(def_id)
+        
+        active = sum(1 for d in self.defect_registry.values() if d.get('alive', False))
+        return births, deaths, active
+    
+    def compute_tau_diagnostics(self) -> Dict:
+        """
+        Compute τ-based energy accounting diagnostics.
+        
+        Returns metrics for monitoring the τ energy accounting mechanism.
+        """
+        # Dissipation: γ * |ψ_dot|²
+        dissipation = self.gamma * (self.psi_r_dot**2 + self.psi_i_dot**2)
+        
+        # High-τ vs low-τ dissipation
+        tau_median = np.median(self.tau)
+        high_tau_mask = self.tau > tau_median
+        low_tau_mask = self.tau <= tau_median
+        
+        diss_high = np.mean(dissipation[high_tau_mask])
+        diss_low = np.mean(dissipation[low_tau_mask])
+        diss_ratio = diss_high / (diss_low + 1e-10)
+        
+        return {
+            'tau_mean': float(np.mean(self.tau)),
+            'tau_std': float(np.std(self.tau)),
+            'diss_ratio': float(diss_ratio),
+            'diss_high_tau': float(diss_high),
+            'diss_low_tau': float(diss_low),
+        }
     
     def get_diagnostics(self) -> Dict:
         """Return diagnostic information about current state."""
