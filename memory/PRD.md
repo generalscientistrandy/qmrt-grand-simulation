@@ -1,6 +1,16 @@
-## Current Status: τ AMPLIFICATION INTEGRATED
+## Current Status: τ AMPLIFICATION INTEGRATED + BRANCH-COMPOSITIONAL PRINCIPLE
 
 **Date: December 2025**
+
+---
+
+### Foundational Methodological Principle (NEW)
+
+> **"QMRT emergence is branch-compositional: higher-order phenomena are produced not by isolated mechanisms alone, but by branches with distinct purposes interacting on different timescales under shared energetic constraints."**
+
+**Key insight**: Isolated mechanism tests often look weak/partial/negative, but emergence comes from coupled interactions. Negative tests rule out **sufficiency**, not automatically **relevance**.
+
+**Documentation**: `/app/backend/qmrt_topology/papers/BRANCH_COMPOSITIONAL_EMERGENCE_PRINCIPLE.md`
 
 ---
 
