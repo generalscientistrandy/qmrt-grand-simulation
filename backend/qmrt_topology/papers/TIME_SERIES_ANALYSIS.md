@@ -73,16 +73,41 @@ The time series proves the strategies are fundamentally equivalent at this coupl
 
 ---
 
+## Limitation: Short Simulation Window
+
+The current verification was constrained by practical runtime limits. The external AI execution environment is limited to approximately 300 seconds of wall-clock simulation time, requiring reduced grid size, reduced seed count, and shortened time-series windows.
+
+Therefore, this result should be interpreted as a **short-horizon falsification attempt**, not a definitive long-horizon exclusion of remnant coupling.
+
+The correct conclusion is:
+
+> **Remnant → Creation coupling does not improve recovery-loop closure within the tested short-window regime.**
+
+It remains possible that remnant effects require:
+- Longer accumulation time
+- Larger grid scale  
+- Slower remnant decay
+- Stronger but non-overfitting memory fraction
+- **Stability-weighted remnant field** rather than raw topology history
+
+---
+
 ## Verdict
 
-### Remnant → Creation Coupling: NOT VALIDATED
+### Remnant → Creation Coupling: INCONCLUSIVE / LOW PRIORITY
 
-At 10-25% memory fraction with rate=0.15:
+At 10-25% memory fraction with rate=0.15 in short-window tests:
 - No improvement in sustainability threshold
 - No improvement in late-stage defect count
 - Time series shows identical trajectories
 
-The coupling does not provide functional benefit at tested parameters.
+**Status**: Moved to low-priority backlog while Damping → τ coupling is tested.
+
+**Future Direction**: Replace raw remnant with **stability-weighted remnant**:
+- Current (failed): "create where topology *existed*"
+- Future (to test): "create where topology *survived longest*"
+
+Raw remnants remember where topology was. Stability-weighted remnants remember where topology was *viable*. This distinction matters.
 
 ---
 

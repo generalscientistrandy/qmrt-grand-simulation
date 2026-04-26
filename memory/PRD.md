@@ -1,16 +1,68 @@
-## Current Status: τ AMPLIFICATION INTEGRATED + BRANCH-COMPOSITIONAL PRINCIPLE
+## Current Status: RECOVERY LOOP COUPLING TESTS IN PROGRESS
 
 **Date: December 2025**
 
 ---
 
-### Foundational Methodological Principle (NEW)
+### Latest Work: Recovery Loop Coupling Investigation
 
-> **"QMRT emergence is branch-compositional: higher-order phenomena are produced not by isolated mechanisms alone, but by branches with distinct purposes interacting on different timescales under shared energetic constraints."**
+**Goal**: Identify inter-branch couplings that close the recovery loop for self-sustaining topological organization.
 
-**Key insight**: Isolated mechanism tests often look weak/partial/negative, but emergence comes from coupled interactions. Negative tests rule out **sufficiency**, not automatically **relevance**.
+#### Completed Tests
 
-**Documentation**: `/app/backend/qmrt_topology/papers/BRANCH_COMPOSITIONAL_EMERGENCE_PRINCIPLE.md`
+| Coupling | Status | Result |
+|----------|--------|--------|
+| τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
+| Remnant → Creation | ? INCONCLUSIVE | No improvement in short-window tests |
+| Damping → τ | → IN PROGRESS | Preliminary tests show energy recycling works |
+
+#### Remnant → Creation Findings
+
+- **Pure remnant (100%)**: WORSE than random (overfits to dead sites)
+- **Mixed remnant (10-25%)**: No improvement in multi-seed, multi-time tests
+- **Limitation**: Cloud environment ~300s timeout constrains testing
+- **Status**: Moved to LOW PRIORITY backlog
+
+**Key insight**: "Memory of where topology *existed* ≠ memory of where topology *can be stable*."
+
+**Future direction**: Test **stability-weighted remnant** (where topology survived longest)
+
+#### Damping → τ Coupling (Current)
+
+**Mechanism**: `tau += damping_to_tau * damped_energy`
+
+**Hypothesis**: Recycling damped energy to τ can close the loop:
+```
+Topology → Energy → Damping → τ → Creation → Topology
+```
+
+**Status**: Preliminary tests show the mechanism works mechanically. Extended local testing required for threshold comparison.
+
+---
+
+### Local Testing Infrastructure
+
+Created `local_extended_test.py` for running long-horizon tests on personal computers:
+
+```bash
+# Remnant coupling (long horizon)
+python local_extended_test.py --test remnant --steps 5000 --seeds 10
+
+# Damping → τ coupling
+python local_extended_test.py --test damping --steps 3000
+
+# Stability-weighted remnant
+python local_extended_test.py --test stability_remnant --steps 5000
+```
+
+---
+
+### Key Documents
+
+- `/app/backend/qmrt_topology/papers/RECOVERY_LOOP_MAP.md` — Architecture roadmap (UPDATED)
+- `/app/backend/qmrt_topology/papers/TIME_SERIES_ANALYSIS.md` — Remnant coupling time series
+- `/app/backend/qmrt_topology/papers/DAMPING_TAU_PRELIMINARY.md` — Damping test results
+- `/app/backend/README.md` — Local testing instructions
 
 ---
 

@@ -282,12 +282,36 @@ All of the above acting together
 
 ## Recommended Implementation Order
 
-1. **τ → Creation** (DONE — tested, works)
-2. **Remnant → Creation location** (Regenerate at memory sites)
-3. **Damping → τ** (Recycle dissipated energy)
-4. **Channel release → τ** (Bound energy can return to available)
+1. **τ → Creation** — VALIDATED ✓
+   - Works at threshold=1.001, sustains activity with rate ≥ 0.10
+
+2. **Remnant → Creation location** — INCONCLUSIVE (LOW PRIORITY)
+   - Raw remnant placement: no improvement in short-window tests
+   - Limitation: cloud environment ~300s timeout constrains testing
+   - Future direction: test **stability-weighted remnant** (where topology *survived longest*, not where it *existed*)
+   - Status: Moved to backlog; not dead, needs long-horizon testing
+
+3. **Damping → τ** — NEXT (IN PROGRESS)
+   - Recycle dissipated energy back to τ field
+   - More directly tied to recovery-loop closure than memory guidance
+   - Implementation: `tau += damping_to_tau * damped_energy`
+
+4. **Channel release → τ** — PLANNED
+   - Bound energy can return to available pool
+   - Test after Damping → τ result
 
 Each adds one coupling to the network. Test after each to see when self-sustaining scaffold emerges.
+
+---
+
+## Coupling Status Summary
+
+| Coupling | Status | Notes |
+|----------|--------|-------|
+| τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
+| Remnant → Creation | ? INCONCLUSIVE | Short-window tests inconclusive; needs long-horizon |
+| Damping → τ | → NEXT | Energy recycling path |
+| Channel → τ | PLANNED | After Damping test |
 
 ---
 
@@ -295,6 +319,10 @@ Each adds one coupling to the network. Test after each to see when self-sustaini
 
 > "The current QMRT simulator has the branches needed for a recovery network, but lacks the inter-branch couplings that would close the regeneration loop. Self-sustaining organization requires not just individual mechanisms but a coupled network in which energy, memory, and topology feed back into each other."
 
+### Updated Insight (December 2025)
+
+> "Memory of where topology *existed* is not equivalent to memory of where topology *can be stable*. Raw remnant guidance may overfit to failure sites. Future tests should use stability-weighted remnant fields that track where topology *survived longest*."
+
 ---
 
-*Recovery Loop Map — December 2025*
+*Recovery Loop Map — December 2025 (Updated)*
