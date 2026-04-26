@@ -25,19 +25,25 @@
 
 ---
 
-### Path B.1 Result: FAILED
+### Path B.1 Result: CLOSED (Architectural Failure)
 
-**Experiment**: Minimal phase-coupling mechanism tested at strengths 0.1, 0.2, 0.3
+**Final Status**: Path B is closed under the current mechanism family.
 
-| Coupling | Bimodal Score | Class Separation | W-C Corr | Verdict |
-|----------|---------------|------------------|----------|---------|
-| 0.1 | 0.501 | 0.038 | -0.019 | FAIL |
-| 0.2 | 0.500 | 0.039 | -0.008 | FAIL |
-| 0.3 | 0.502 | 0.034 | +0.011 | FAIL |
+| Test | τ Response | Class Sep | Result |
+|------|------------|-----------|--------|
+| Original B.1 | 0.005 | 0.038 | FAIL |
+| Coupling sweep | 0.005 | 0.034-0.039 | FAIL (no dose-response) |
+| Retest with amplified τ | 0.02 | 0.023-0.028 | FAIL (unchanged) |
 
-**Key Finding**: No dose-response. Mechanism saturated at baseline. Local phase-coupling cannot produce global phase classes.
+**Closure Statement**:
+> "Minimal local phase coupling does not generate robust phase-coherent classes, and this failure persists even after strengthening the simulator's energy-accounting structure through amplified τ. The failure is architectural, not parametric."
 
-**Path B Status**: FALSIFIED under minimal phase-coupling mechanism.
+**Implications**:
+- τ amplification was correct (validated independently)
+- Phase-class failure is independent of energy accounting
+- Future phase-coherent work requires fundamentally different mechanism (non-local coordination, symmetry breaking)
+
+**Documentation**: `/app/backend/qmrt_topology/papers/PATH_B_CLOSURE.md`
 
 ---
 
@@ -78,9 +84,17 @@ In a **zero-balanced layered universe**, equal energy across all layers is too c
 
 | Branch | Status | Notes |
 |--------|--------|-------|
-| Topological Dual-Sector | **FROZEN** | Organizationally valid |
-| Path B (Phase-Coherent) | **FAILED** | Mechanism doesn't produce classes |
+| Topological Dual-Sector | **FROZEN** | Validated organizational regime |
+| Path B (Phase-Coherent) | **CLOSED** | Architectural failure confirmed |
 | Layered Energy Model | **PHASE 1 COMPLETE** | τ amplification integrated |
+
+---
+
+### What Remains Open
+
+1. **τ-based energy accounting** — Validated and integrated (tau_response=0.02)
+2. **Future phase mechanism** — Only if fundamentally different approach proposed
+3. **Higher-layer auditors** — If τ proves insufficient for advanced organization
 
 ---
 
