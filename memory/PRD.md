@@ -1,4 +1,4 @@
-## Current Status: RECOVERY LOOP COUPLING TESTS IN PROGRESS
+## Current Status: DAMPING → τ COUPLING VALIDATED
 
 **Date: December 2025**
 
@@ -13,55 +13,46 @@
 | Coupling | Status | Result |
 |----------|--------|--------|
 | τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
-| Remnant → Creation | ? INCONCLUSIVE | No improvement in short-window tests |
-| Damping → τ | → IN PROGRESS | Preliminary tests show energy recycling works |
+| Remnant → Creation | ✗ HARMFUL | -95% at T=200; field saturates |
+| Damping → τ | ✓ VALIDATED | **+519%** at T=200 with damping_to_tau=0.10 |
 
-#### Remnant → Creation Findings
+#### Damping → τ Coupling (VALIDATED)
 
-- **Pure remnant (100%)**: WORSE than random (overfits to dead sites)
-- **Mixed remnant (10-25%)**: No improvement in multi-seed, multi-time tests
-- **Limitation**: Cloud environment ~300s timeout constrains testing
-- **Status**: Moved to LOW PRIORITY backlog
+**Mechanism**: `tau += damping_to_tau * gamma * (psi_dot)^2`
 
-**Key insight**: "Memory of where topology *existed* ≠ memory of where topology *can be stable*."
+**Results** (time-accelerated test, dt=0.10, T=200):
 
-**Future direction**: Test **stability-weighted remnant** (where topology survived longest)
+| Coupling | Late N (T=100,200 avg) | vs Baseline |
+|----------|------------------------|-------------|
+| 0.00 (baseline) | 6.75 | - |
+| 0.03 | 28.50 | **+322%** |
+| 0.10 | 41.75 | **+519%** |
 
-#### Damping → τ Coupling (Current)
+**Key insight**: Activity-correlated energy recycling (where oscillation energy is dissipated) dramatically outperforms occupancy-based memory (where topology existed).
 
-**Mechanism**: `tau += damping_to_tau * damped_energy`
-
-**Hypothesis**: Recycling damped energy to τ can close the loop:
+**The loop is now partially closed**:
 ```
 Topology → Energy → Damping → τ → Creation → Topology
 ```
 
-**Status**: Preliminary tests show the mechanism works mechanically. Extended local testing required for threshold comparison.
+#### Remnant → Creation Findings (CLOSED - HARMFUL)
 
----
+- **Pure remnant (100%)**: WORSE than random (overfits to dead sites)
+- **25% remnant at T=200**: -95% defects (virtually extinct)
+- **Root cause**: Remnant field saturates to 1.0 everywhere by T=50
+- **Status**: Moved to BACKLOG; replaced by stability-weighted geometric memory concept
 
-### Local Testing Infrastructure
+#### Next Priority: Channel Release → τ
 
-Created `local_extended_test.py` for running long-horizon tests on personal computers:
-
-```bash
-# Remnant coupling (long horizon)
-python local_extended_test.py --test remnant --steps 5000 --seeds 10
-
-# Damping → τ coupling
-python local_extended_test.py --test damping --steps 3000
-
-# Stability-weighted remnant
-python local_extended_test.py --test stability_remnant --steps 5000
-```
+Test whether channel-bound energy can also recycle to τ when topology decays.
 
 ---
 
 ### Key Documents
 
 - `/app/backend/qmrt_topology/papers/RECOVERY_LOOP_MAP.md` — Architecture roadmap (UPDATED)
-- `/app/backend/qmrt_topology/papers/TIME_SERIES_ANALYSIS.md` — Remnant coupling time series
-- `/app/backend/qmrt_topology/papers/DAMPING_TAU_PRELIMINARY.md` — Damping test results
+- `/app/backend/qmrt_topology/papers/DAMPING_TAU_RESULTS.md` — Full damping test results
+- `/app/backend/qmrt_topology/papers/TIME_ACCELERATED_REMNANT_RESULTS.md` — Remnant saturation proof
 - `/app/backend/README.md` — Local testing instructions
 
 ---

@@ -1,0 +1,385 @@
+{
+  "test": "damping_tau_accelerated",
+  "parameters": {
+    "dt": 0.1,
+    "T_checkpoints": [
+      25,
+      50,
+      100,
+      200
+    ],
+    "coupling_strengths": [
+      0.0,
+      0.03,
+      0.1
+    ]
+  },
+  "results": {
+    "0.00": {
+      "25": [
+        {
+          "T": 25.000000000000085,
+          "step_count": 250,
+          "defects": 8,
+          "creations": 4,
+          "tau_mean": 1.0,
+          "tau_max": 1.0086623321502626,
+          "tau_std": 0.0019215158454616217,
+          "energy_total": 0.16093063585122552,
+          "total_damped": 5106.734981375149,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 25.000000000000085,
+          "step_count": 250,
+          "defects": 4,
+          "creations": 1,
+          "tau_mean": 1.0,
+          "tau_max": 1.00504752762504,
+          "tau_std": 0.001236815049736417,
+          "energy_total": 0.1302851420961484,
+          "total_damped": 4845.280460700559,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "50": [
+        {
+          "T": 50.00000000000044,
+          "step_count": 500,
+          "defects": 3,
+          "creations": 5,
+          "tau_mean": 1.0,
+          "tau_max": 1.004833224651007,
+          "tau_std": 0.001325438172518468,
+          "energy_total": 0.12866832090851607,
+          "total_damped": 10133.037516790897,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 50.00000000000044,
+          "step_count": 500,
+          "defects": 11,
+          "creations": 4,
+          "tau_mean": 1.0,
+          "tau_max": 1.0037118327630379,
+          "tau_std": 0.0009330514179270576,
+          "energy_total": 0.2547356326878602,
+          "total_damped": 9280.356265412996,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "100": [
+        {
+          "T": 100.09999999999859,
+          "step_count": 1001,
+          "defects": 1,
+          "creations": 8,
+          "tau_mean": 1.0,
+          "tau_max": 1.0380225057672852,
+          "tau_std": 0.0014994254235076298,
+          "energy_total": 0.09182071924263017,
+          "total_damped": 19358.59982936338,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 100.09999999999859,
+          "step_count": 1001,
+          "defects": 1,
+          "creations": 5,
+          "tau_mean": 1.0,
+          "tau_max": 1.0026401494692387,
+          "tau_std": 0.000559070044979086,
+          "energy_total": 0.11202675326112518,
+          "total_damped": 17080.543004020394,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "200": [
+        {
+          "T": 200.09999999999292,
+          "step_count": 2001,
+          "defects": 22,
+          "creations": 46,
+          "tau_mean": 0.9999988534292159,
+          "tau_max": 3.0,
+          "tau_std": 0.04056005056440915,
+          "energy_total": 0.12354971766128015,
+          "total_damped": 206268.7510208543,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 200.09999999999292,
+          "step_count": 2001,
+          "defects": 3,
+          "creations": 8,
+          "tau_mean": 1.0,
+          "tau_max": 1.0025522116555219,
+          "tau_std": 0.0004450661966547489,
+          "energy_total": 0.06579325765192898,
+          "total_damped": 33467.67047930793,
+          "total_recycled": 0.0,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ]
+    },
+    "0.03": {
+      "25": [
+        {
+          "T": 25.000000000000085,
+          "step_count": 250,
+          "defects": 3,
+          "creations": 7,
+          "tau_mean": 1.0015679235993116,
+          "tau_max": 1.0334264831433118,
+          "tau_std": 0.002569396348274331,
+          "energy_total": 0.20196459017941268,
+          "total_damped": 6124.792589926818,
+          "total_recycled": 183.74377769780455,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 25.000000000000085,
+          "step_count": 250,
+          "defects": 10,
+          "creations": 3,
+          "tau_mean": 1.0013623034240464,
+          "tau_max": 1.0257842614670825,
+          "tau_std": 0.0021209767534446896,
+          "energy_total": 0.25361469260152986,
+          "total_damped": 5389.9772534181175,
+          "total_recycled": 161.6993176025436,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "50": [
+        {
+          "T": 50.00000000000044,
+          "step_count": 500,
+          "defects": 1,
+          "creations": 10,
+          "tau_mean": 1.0035078858546551,
+          "tau_max": 1.055926835134673,
+          "tau_std": 0.004327071998287312,
+          "energy_total": 0.0901575809442921,
+          "total_damped": 18780.48543456553,
+          "total_recycled": 563.4145630369659,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 50.00000000000044,
+          "step_count": 500,
+          "defects": 6,
+          "creations": 5,
+          "tau_mean": 1.0024911385740327,
+          "tau_max": 1.0302140124793717,
+          "tau_std": 0.002511221105567835,
+          "energy_total": 0.1449593236276315,
+          "total_damped": 14333.202552850273,
+          "total_recycled": 429.99607658550775,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "100": [
+        {
+          "T": 100.09999999999859,
+          "step_count": 1001,
+          "defects": 42,
+          "creations": 145,
+          "tau_mean": 1.08297608912334,
+          "tau_max": 3.0,
+          "tau_std": 0.2355195901343472,
+          "energy_total": 0.1583570363084564,
+          "total_damped": 333016.7874106586,
+          "total_recycled": 9990.503622319759,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 100.09999999999859,
+          "step_count": 1001,
+          "defects": 2,
+          "creations": 11,
+          "tau_mean": 1.0084928798832604,
+          "tau_max": 1.2702426339547326,
+          "tau_std": 0.019897238575949064,
+          "energy_total": 0.08882999429466225,
+          "total_damped": 48647.02042756218,
+          "total_recycled": 1459.4106128268654,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "200": [
+        {
+          "T": 200.09999999999292,
+          "step_count": 2001,
+          "defects": 37,
+          "creations": 1033,
+          "tau_mean": 1.1365138567184911,
+          "tau_max": 3.0,
+          "tau_std": 0.41183532135367396,
+          "energy_total": 0.13721920745168056,
+          "total_damped": 2464398.9109520814,
+          "total_recycled": 73931.9673285625,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 200.09999999999292,
+          "step_count": 2001,
+          "defects": 33,
+          "creations": 715,
+          "tau_mean": 1.1340817443008429,
+          "tau_max": 3.0,
+          "tau_std": 0.40541525607462825,
+          "energy_total": 0.1337330687187121,
+          "total_damped": 1783594.5378461198,
+          "total_recycled": 53507.836135383695,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ]
+    },
+    "0.10": {
+      "25": [
+        {
+          "T": 25.000000000000085,
+          "step_count": 250,
+          "defects": 1,
+          "creations": 5,
+          "tau_mean": 1.004368309210322,
+          "tau_max": 1.0437884887451452,
+          "tau_std": 0.00325696298040119,
+          "energy_total": 0.14805592262634942,
+          "total_damped": 5444.045658581631,
+          "total_recycled": 544.4045658581631,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 25.000000000000085,
+          "step_count": 250,
+          "defects": 2,
+          "creations": 3,
+          "tau_mean": 1.0046655572154595,
+          "tau_max": 1.0746128411721858,
+          "tau_std": 0.004557526670391098,
+          "energy_total": 0.17175728124501366,
+          "total_damped": 5481.289498277882,
+          "total_recycled": 548.1289498277881,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "50": [
+        {
+          "T": 50.00000000000044,
+          "step_count": 500,
+          "defects": 1,
+          "creations": 9,
+          "tau_mean": 1.0046008567102442,
+          "tau_max": 1.0396850035247538,
+          "tau_std": 0.003117514291964979,
+          "energy_total": 0.20293703135011545,
+          "total_damped": 10744.480787301833,
+          "total_recycled": 1074.4480787301845,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 50.00000000000044,
+          "step_count": 500,
+          "defects": 3,
+          "creations": 11,
+          "tau_mean": 1.015451416196957,
+          "tau_max": 1.4377470030830524,
+          "tau_std": 0.029914498402896107,
+          "energy_total": 0.08341507858428185,
+          "total_damped": 18171.00282540165,
+          "total_recycled": 1817.1002825401672,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "100": [
+        {
+          "T": 100.09999999999859,
+          "step_count": 1001,
+          "defects": 56,
+          "creations": 59,
+          "tau_mean": 1.1062889906764284,
+          "tau_max": 3.0,
+          "tau_std": 0.30856115933834977,
+          "energy_total": 0.1603209444638841,
+          "total_damped": 108922.35293681215,
+          "total_recycled": 10892.235293681215,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 100.09999999999859,
+          "step_count": 1001,
+          "defects": 44,
+          "creations": 364,
+          "tau_mean": 1.2950264665744982,
+          "tau_max": 3.0,
+          "tau_std": 0.6663739552618165,
+          "energy_total": 0.11598685732297623,
+          "total_damped": 938394.4195515402,
+          "total_recycled": 93839.44195515395,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ],
+      "200": [
+        {
+          "T": 200.09999999999292,
+          "step_count": 2001,
+          "defects": 30,
+          "creations": 1038,
+          "tau_mean": 1.2839889952052062,
+          "tau_max": 3.0,
+          "tau_std": 0.7032167307640527,
+          "energy_total": 0.11762311872430771,
+          "total_damped": 3096985.0124783046,
+          "total_recycled": 309698.50124783034,
+          "explosion": false,
+          "explosion_reason": null
+        },
+        {
+          "T": 200.09999999999292,
+          "step_count": 2001,
+          "defects": 37,
+          "creations": 1359,
+          "tau_mean": 1.2930920200601301,
+          "tau_max": 3.0,
+          "tau_std": 0.7165034727539663,
+          "energy_total": 0.12411768723218286,
+          "total_damped": 4336278.2879898865,
+          "total_recycled": 433627.8287989884,
+          "explosion": false,
+          "explosion_reason": null
+        }
+      ]
+    }
+  }
+}

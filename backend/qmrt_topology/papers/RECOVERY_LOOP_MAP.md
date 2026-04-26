@@ -177,7 +177,9 @@ STATUS: TESTED — works with strong coupling (rate=0.5)
 ```
 Remnant holds blueprint → Creation preferentially at remnant sites → New defects → Remnant reinforced
 ```
-STATUS: NOT IMPLEMENTED — Remnant currently doesn't influence creation
+STATUS: ✗ HARMFUL — Raw remnant saturates by T=50, causes -95% defects at T=200
+REASON: "Memory of where topology existed" ≠ "memory of where topology can be stable"
+BACKLOG: Stability-weighted geometric memory (track where topology *survived longest*)
 
 **Loop 3: Channel → Creation → Channel (Bound-Energy Cycle)**
 ```
@@ -189,7 +191,9 @@ STATUS: NOT IMPLEMENTED — Channel doesn't release or trigger
 ```
 Damping removes energy → Energy goes to τ field → τ accumulates → Creation triggered
 ```
-STATUS: NOT IMPLEMENTED — Dissipated energy is lost
+STATUS: ✓ VALIDATED — **+519%** late-time defects with damping_to_tau=0.10
+MECHANISM: `tau += damping_to_tau * gamma * (psi_dot)^2`
+KEY INSIGHT: Activity-correlated recycling (not occupancy memory) drives regeneration
 
 ---
 
@@ -309,9 +313,9 @@ Each adds one coupling to the network. Test after each to see when self-sustaini
 | Coupling | Status | Notes |
 |----------|--------|-------|
 | τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
-| Remnant → Creation | ? INCONCLUSIVE | Short-window tests inconclusive; needs long-horizon |
-| Damping → τ | → NEXT | Energy recycling path |
-| Channel → τ | PLANNED | After Damping test |
+| Remnant → Creation | ✗ HARMFUL | -95% at T=200; field saturates, overfits to dead sites |
+| Damping → τ | ✓ VALIDATED | **+519%** at T=200; energy recycling closes loop |
+| Channel → τ | PLANNED | After Damping test — confirmed next priority |
 
 ---
 
@@ -321,7 +325,19 @@ Each adds one coupling to the network. Test after each to see when self-sustaini
 
 ### Updated Insight (December 2025)
 
-> "Memory of where topology *existed* is not equivalent to memory of where topology *can be stable*. Raw remnant guidance may overfit to failure sites. Future tests should use stability-weighted remnant fields that track where topology *survived longest*."
+> "Damping → τ coupling validates the activity-correlated energy recycling hypothesis. Dissipated oscillation energy, when returned to the τ field, dramatically improves late-time topological sustainability (+519% at damping_to_tau=0.10). This stands in sharp contrast to remnant-based memory, which saturates and harms sustainability (-95%). The key difference: damping responds to *where energy is being dissipated now*, while remnant remembers *where topology existed in the past*."
+
+### Recovery Loop Closure Progress
+
+| Loop | Status | Result |
+|------|--------|--------|
+| τ → Creation | ✓ CLOSED | Works at threshold=1.001 |
+| Energy → τ (standard) | ✓ CLOSED | tau_response=0.02 |
+| Damping → τ | ✓ CLOSED | **+519%** improvement |
+| Remnant → Creation | ✗ HARMFUL | Saturates, -95% |
+| Channel → τ | → NEXT | To be tested |
+
+**The recovery loop is partially closed.** The Damping → τ → Creation path works. Next: test Channel release → τ.
 
 ---
 
