@@ -1,0 +1,40 @@
+{
+  "test": "B.1_coupling_sweep",
+  "coupling_values": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "results": [
+    {
+      "coupling_strength": 0.1,
+      "valid_samples": 9,
+      "avg_bimodal_score": 0.5009624590576971,
+      "avg_class_separation": 0.037543587968435946,
+      "early_class_sep": 0.04245283018867925,
+      "late_class_sep": 0.04950396825396825,
+      "avg_winding_class_corr": -0.019007548691786367,
+      "avg_winding_independence": 0.1348541227529185
+    },
+    {
+      "coupling_strength": 0.2,
+      "valid_samples": 9,
+      "avg_bimodal_score": 0.4998159263705483,
+      "avg_class_separation": 0.03862922564178048,
+      "early_class_sep": 0.037037037037037035,
+      "late_class_sep": 0.044034974818171146,
+      "avg_winding_class_corr": -0.008398189453322756,
+      "avg_winding_independence": 0.13674556253420928
+    },
+    {
+      "coupling_strength": 0.3,
+      "valid_samples": 9,
+      "avg_bimodal_score": 0.5023481985386747,
+      "avg_class_separation": 0.034086340646547836,
+      "early_class_sep": 0.025,
+      "late_class_sep": 0.027922127355647443,
+      "avg_winding_class_corr": 0.010698572654761105,
+      "avg_winding_independence": 0.13889780189428577
+    }
+  ]
+}
