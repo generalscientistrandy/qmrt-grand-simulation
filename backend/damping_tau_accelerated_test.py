@@ -372,7 +372,7 @@ def run_coupling_sweep(n_seeds: int = 3, max_T: int = 200):
     print(f"Seeds = {n_seeds}")
     print()
     
-    coupling_strengths = [0.00, 0.01, 0.03, 0.05, 0.10]  # Full sweep
+    coupling_strengths = [0.00, 0.03, 0.05, 0.10, 0.15]  # T=500 validation sweep
     # Adaptive checkpoints based on max_T
     all_checkpoints = [25, 50, 100, 200, 500]
     T_checkpoints = [t for t in all_checkpoints if t <= max_T]
@@ -478,7 +478,7 @@ def analyze_results(all_results: Dict, T_checkpoints: List[float],
     print("=" * 80)
     print()
     
-    late_Ts = [100, 200]  # Use available late times
+    late_Ts = [200, 500]  # Extended late-time analysis
     
     baseline_late = []
     for T in late_Ts:
@@ -586,8 +586,8 @@ def main():
     print("  Topology → Energy → Damping → τ → Creation → Topology")
     print()
     
-    # Run with 3 seeds for fuller confirmation
-    all_results, T_checkpoints, coupling_strengths = run_coupling_sweep(n_seeds=3, max_T=200)
+    # Run T=500 validation with 5 seeds
+    all_results, T_checkpoints, coupling_strengths = run_coupling_sweep(n_seeds=5, max_T=500)
     
     # Analyze
     improvements = analyze_results(all_results, T_checkpoints, coupling_strengths)

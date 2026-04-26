@@ -1,4 +1,4 @@
-## Current Status: DAMPING → τ COUPLING VALIDATED
+## Current Status: DAMPING → τ COUPLING VALIDATED (T=500)
 
 **Date: December 2025**
 
@@ -14,46 +14,51 @@
 |----------|--------|--------|
 | τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
 | Remnant → Creation | ✗ HARMFUL | -95% at T=200; field saturates |
-| Damping → τ | ✓ VALIDATED | **+519%** at T=200 with damping_to_tau=0.10 |
+| Damping → τ | ✓ VALIDATED | +62% at T=500, stable (no spike-crash) |
 
-#### Damping → τ Coupling (VALIDATED)
+#### Damping → τ Coupling (VALIDATED at T=500)
 
 **Mechanism**: `tau += damping_to_tau * gamma * (psi_dot)^2`
 
-**Results** (time-accelerated test, dt=0.10, T=200):
+**Extended Validation Results** (T=500, dt=0.10, 2 seeds):
 
-| Coupling | Late N (T=100,200 avg) | vs Baseline |
-|----------|------------------------|-------------|
-| 0.00 (baseline) | 6.75 | - |
-| 0.03 | 28.50 | **+322%** |
-| 0.10 | 41.75 | **+519%** |
+| Coupling | N_defects | tau_mean | tau_max | vs Baseline |
+|----------|-----------|----------|---------|-------------|
+| 0.00 | ~34 | 1.00 | 1.0 | baseline |
+| 0.10 | ~55 | 1.30 | 3.0 | **+62%** |
+| 0.15 | ~69 | 1.35 | 3.0 | **+103%** |
 
-**Key insight**: Activity-correlated energy recycling (where oscillation energy is dissipated) dramatically outperforms occupancy-based memory (where topology existed).
+**Key Finding**: NO spike-then-crash pattern. Defect count INCREASING over time (T=200→T=500), not crashing. System self-regulates despite tau hitting cap.
 
-**The loop is now partially closed**:
+**Verdict**: Recovery loop **PARTIALLY CLOSED / STRONGLY SUPPORTED**
+
+**The validated loop**:
 ```
 Topology → Energy → Damping → τ → Creation → Topology
 ```
 
 #### Remnant → Creation Findings (CLOSED - HARMFUL)
 
-- **Pure remnant (100%)**: WORSE than random (overfits to dead sites)
-- **25% remnant at T=200**: -95% defects (virtually extinct)
 - **Root cause**: Remnant field saturates to 1.0 everywhere by T=50
+- **25% remnant at T=200**: -95% defects (virtually extinct)
 - **Status**: Moved to BACKLOG; replaced by stability-weighted geometric memory concept
 
-#### Next Priority: Channel Release → τ
+#### Next Priority: Full 5-Seed Confirmation + tau_cap Testing
 
-Test whether channel-bound energy can also recycle to τ when topology decays.
+Before proceeding to Channel release → τ:
+1. Run 5-seed confirmation at T=500 for damping_to_tau=0.10
+2. Test lower tau_cap (2.0, 2.5) to check if tighter regulation maintains improvement
+3. Optional: Sweep damping_to_tau in 0.01-0.15 range for optimal coupling
 
 ---
 
 ### Key Documents
 
 - `/app/backend/qmrt_topology/papers/RECOVERY_LOOP_MAP.md` — Architecture roadmap (UPDATED)
-- `/app/backend/qmrt_topology/papers/DAMPING_TAU_RESULTS.md` — Full damping test results
+- `/app/backend/qmrt_topology/papers/DAMPING_TAU_RESULTS.md` — Full damping test results with T=500 validation
+- `/app/backend/qmrt_topology/papers/T500_validation_results.json` — Extended validation data
 - `/app/backend/qmrt_topology/papers/TIME_ACCELERATED_REMNANT_RESULTS.md` — Remnant saturation proof
-- `/app/backend/README.md` — Local testing instructions
+- `/app/backend/T500_damping_validation.py` — Validation test script
 
 ---
 
