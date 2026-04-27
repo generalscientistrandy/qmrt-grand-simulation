@@ -333,11 +333,18 @@ Each adds one coupling to the network. Test after each to see when self-sustaini
 |------|--------|--------|
 | τ → Creation | ✓ CLOSED | Works at threshold=1.001 |
 | Energy → τ (standard) | ✓ CLOSED | tau_response=0.02 |
-| Damping → τ | ✓ CLOSED | **+519%** improvement |
+| Damping → τ | ✓ CLOSED | **+150-200%** with tau_cap=2.0, damping=0.15 |
+| tau_cap regulation | ✓ ESSENTIAL | Low cap (2.0) beats high cap (3.0) at strong coupling |
 | Remnant → Creation | ✗ HARMFUL | Saturates, -95% |
-| Channel → τ | → NEXT | To be tested |
+| Channel → τ | → AFTER FINE SWEEP | To be tested |
 
-**The recovery loop is partially closed.** The Damping → τ → Creation path works. Next: test Channel release → τ.
+**NEW OPTIMAL CONFIGURATION:**
+```python
+damping_to_tau = 0.15
+tau_cap = 2.0  # Essential regulation, not just safety
+```
+
+**The tau_cap finding**: At strong damping coupling, tau_cap=3.0 causes τ hot spots → over-concentrated creation → rapid annihilation → N=9 (worse than baseline). tau_cap=2.0 bounds τ → distributed creation → sustained topology → N=52.
 
 ---
 
