@@ -26,12 +26,20 @@ Topology → damping energy → REGULATED τ recharge → distributed creation �
 
 ---
 
-### Optimal Configuration
+### Optimal Configuration (Regulated Recovery v1.1)
 
 ```python
-REGULATED_RECOVERY_TAU_CAP = 2.0  # Essential regulation
-OPTIMAL_DAMPING_TO_TAU = 0.15     # Validated coupling
+REGULATED_RECOVERY_TAU_CAP = 1.8  # Updated from 2.0
+OPTIMAL_DAMPING_TO_TAU = 0.20     # Updated from 0.15
 ```
+
+| Metric | v1.0 (d=0.15, cap=2.0) | v1.1 (d=0.20, cap=1.8) | Improvement |
+|--------|------------------------|------------------------|-------------|
+| N_mean | 70.2 | 71.7 | +2% |
+| N_std | 8.8 | **5.2** | **-41%** |
+| tau_loc | 1.67 | **1.41** | **-16%** |
+
+v1.1 is **more stable** (lower variance) and **better distributed** (lower tau_localization).
 
 The τ cap is **part of the physics**, not just numerical protection.
 

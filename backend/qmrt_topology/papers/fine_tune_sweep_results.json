@@ -1,0 +1,45 @@
+{
+  "test": "fine_tune_sweep",
+  "date": "December 2025",
+  "parameters": {
+    "grid": 32,
+    "dt": 0.12,
+    "T_max": 500
+  },
+  "sweep": {
+    "dampings": [0.10, 0.15, 0.20],
+    "caps": [1.8, 2.0, 2.2]
+  },
+  "multi_seed_verified": {
+    "d0.15_cap1.8": {
+      "seeds": [10, 42, 99],
+      "N_mean": 71.0,
+      "N_std": 10.0,
+      "tau_loc_mean": 1.486
+    },
+    "d0.20_cap1.8": {
+      "seeds": [10, 42, 99],
+      "N_mean": 71.7,
+      "N_std": 5.2,
+      "tau_loc_mean": 1.414
+    },
+    "d0.15_cap2.0": {
+      "seeds": [10, 42, 99, 123, 456],
+      "N_mean": 70.2,
+      "N_std": 8.8,
+      "tau_loc_mean": 1.671,
+      "note": "From 5-seed confirmation"
+    }
+  },
+  "recommended_config": {
+    "name": "Regulated Recovery v1.1",
+    "damping_to_tau": 0.20,
+    "tau_cap": 1.8,
+    "rationale": "Lowest variance (5.2), lowest tau_localization (1.414), comparable N (71.7)"
+  },
+  "key_findings": [
+    "tau_cap=1.8 beats tau_cap=2.0 across all damping strengths",
+    "d=0.20 has lower variance than d=0.15",
+    "Lower cap → better distribution → higher sustained defect count"
+  ]
+}
