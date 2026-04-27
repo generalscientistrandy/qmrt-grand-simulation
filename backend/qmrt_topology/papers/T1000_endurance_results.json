@@ -1,0 +1,45 @@
+{
+  "test": "T1000_endurance_v1.1",
+  "date": "December 2025",
+  "status": "LOCKED_AS_PRIMARY",
+  "configuration": {
+    "name": "Regulated Recovery v1.1",
+    "damping_to_tau": 0.20,
+    "tau_cap": 1.8,
+    "grid": 32,
+    "dt": 0.12,
+    "T_max": 1000
+  },
+  "results": {
+    "seeds": [10, 42, 99, 123, 456],
+    "T500": {
+      "N_defects": [79, 68, 68, 87, 90],
+      "N_mean": 78.4,
+      "N_std": 9.5,
+      "tau_localization": 1.41
+    },
+    "T1000": {
+      "N_defects": [109, 102, 101, 62, 102],
+      "N_mean": 95.2,
+      "N_std": 17.6,
+      "tau_localization": [1.350, 1.366, 1.330, 1.350, 1.339],
+      "tau_loc_mean": 1.347
+    },
+    "trends": ["GROWING", "GROWING", "GROWING", "DECLINING", "STABLE"]
+  },
+  "summary": {
+    "N_change_T500_to_T1000": "+21%",
+    "tau_loc_change": "-4%",
+    "stable_or_growing": "4/5",
+    "extinctions": 0,
+    "collapses": 0
+  },
+  "decision_criteria": {
+    "N_stable_or_increases": {"passed": true, "value": "4/5 seeds"},
+    "no_spike_then_crash": {"passed": true, "value": "0/5 collapsed"},
+    "tau_localization_bounded": {"passed": true, "value": 1.35},
+    "no_extinctions": {"passed": true, "value": "0/5"}
+  },
+  "theoretical_statement": "Damping-to-τ recycling is constructive only when τ is bounded tightly enough to prevent localized over-recharge; under regulated τ, dissipated energy becomes a distributed creation resource rather than a hot-spot instability.",
+  "next_steps": ["Channel release → τ testing with v1.1 baseline"]
+}

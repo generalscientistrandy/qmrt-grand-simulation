@@ -1,13 +1,13 @@
-## Current Status: PRIMARY RECOVERY LOOP VALIDATED (5-Seed Confirmed)
+## Current Status: REGULATED RECOVERY v1.1 — LOCKED AS PRIMARY
 
 **Date: December 2025**
 
 ---
 
-### Validated Recovery Loop
+### Validated Recovery Loop (T=1000 Endurance Tested)
 
 ```
-Topology → damping energy → REGULATED τ recharge → distributed creation → sustained topology
+Topology → damping energy → REGULATED τ recharge → distributed creation → sustained/growing topology
 ```
 
 **Theoretical Statement:**
@@ -15,33 +15,32 @@ Topology → damping energy → REGULATED τ recharge → distributed creation �
 
 ---
 
-### 5-Seed Confirmation Results
-
-| Condition | N_defects (T=500) | tau_localization | Status |
-|-----------|-------------------|------------------|--------|
-| Baseline (d=0.00, cap=2.0) | 1.0 ± 0.0 | 1.00 | Extinction |
-| Optimal (d=0.15, cap=2.0) | **70.2 ± 8.8** | 1.67 | **Sustained** |
-
-**Improvement: +6920% (70× baseline)**
-
----
-
-### Optimal Configuration (Regulated Recovery v1.1)
+### Locked Configuration (Regulated Recovery v1.1)
 
 ```python
-REGULATED_RECOVERY_TAU_CAP = 1.8  # Updated from 2.0
-OPTIMAL_DAMPING_TO_TAU = 0.20     # Updated from 0.15
+REGULATED_RECOVERY_TAU_CAP = 1.8
+OPTIMAL_DAMPING_TO_TAU = 0.20
 ```
 
-| Metric | v1.0 (d=0.15, cap=2.0) | v1.1 (d=0.20, cap=1.8) | Improvement |
-|--------|------------------------|------------------------|-------------|
-| N_mean | 70.2 | 71.7 | +2% |
-| N_std | 8.8 | **5.2** | **-41%** |
-| tau_loc | 1.67 | **1.41** | **-16%** |
+### Evolution Summary
 
-v1.1 is **more stable** (lower variance) and **better distributed** (lower tau_localization).
+| Stage | T | N_mean | tau_loc | Status |
+|-------|---|--------|---------|--------|
+| 5-seed validation | 500 | 70.2 | 1.67 | v1.0 validated |
+| Fine-tune sweep | 500 | 71.7 | 1.41 | v1.1 identified |
+| **Endurance test** | **1000** | **95.2** | **1.35** | **v1.1 LOCKED** |
 
-The τ cap is **part of the physics**, not just numerical protection.
+### T=1000 Endurance Results (5 seeds)
+
+| Metric | Value |
+|--------|-------|
+| N_mean | 95.2 ± 17.6 |
+| tau_localization | 1.35 |
+| Trends | 3 GROWING, 1 STABLE, 1 DECLINING |
+| Extinctions | 0/5 |
+| Collapses | 0/5 |
+
+**Key**: Recovery loop is **net-positive** over long horizons (N increased 21% from T=500 to T=1000).
 
 #### Completed Tests
 
