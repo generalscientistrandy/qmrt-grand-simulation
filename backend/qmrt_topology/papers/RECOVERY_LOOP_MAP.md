@@ -187,13 +187,25 @@ Channel saturates → Releases energy → τ spike → Creation triggered → Ne
 ```
 STATUS: NOT IMPLEMENTED — Channel doesn't release or trigger
 
-**Loop 4: Damping → τ → Creation (Dissipation-Recycling)**
+**Loop 4: Damping → τ → Creation (Dissipation-Recycling) — PRIMARY VALIDATED LOOP**
 ```
-Damping removes energy → Energy goes to τ field → τ accumulates → Creation triggered
+Damping removes energy → Energy goes to REGULATED τ field → τ accumulates (bounded) → Distributed creation
 ```
-STATUS: ✓ VALIDATED — **+519%** late-time defects with damping_to_tau=0.10
-MECHANISM: `tau += damping_to_tau * gamma * (psi_dot)^2`
-KEY INSIGHT: Activity-correlated recycling (not occupancy memory) drives regeneration
+STATUS: ✓ CONFIRMED — **+6920%** (70× baseline) at T=500 with tau_cap=2.0, d=0.15
+
+MECHANISM: 
+```python
+tau += damping_to_tau * gamma * (psi_dot)^2
+tau = np.clip(tau, 0.5, tau_cap)  # tau_cap=2.0 is ESSENTIAL
+```
+
+KEY INSIGHT: 
+- τ regulation is part of the physics, not numerical protection
+- Unregulated (cap=3.0): N=9 (WORSE than baseline) — τ hot spots cause clustering
+- Regulated (cap=2.0): N=70 (BEST) — distributed τ enables distributed creation
+
+THEORETICAL STATEMENT:
+> "Damping-to-τ recycling is constructive only when τ is bounded tightly enough to prevent localized over-recharge; under regulated τ, dissipated energy becomes a distributed creation resource rather than a hot-spot instability."
 
 ---
 
@@ -314,8 +326,9 @@ Each adds one coupling to the network. Test after each to see when self-sustaini
 |----------|--------|-------|
 | τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
 | Remnant → Creation | ✗ HARMFUL | -95% at T=200; field saturates, overfits to dead sites |
-| Damping → τ | ✓ VALIDATED | **+519%** at T=200; energy recycling closes loop |
-| Channel → τ | PLANNED | After Damping test — confirmed next priority |
+| Damping → τ | ✓ CONFIRMED | **+6920%** (70×) at T=500 with tau_cap=2.0, d=0.15 |
+| τ regulation | ✓ ESSENTIAL | Part of physics; low cap (2.0) >> high cap (3.0) |
+| Channel → τ | PLANNED | After fine-tune sweep of damping params |
 
 ---
 

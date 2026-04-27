@@ -1,12 +1,39 @@
-## Current Status: DAMPING → τ COUPLING VALIDATED (T=500)
+## Current Status: PRIMARY RECOVERY LOOP VALIDATED (5-Seed Confirmed)
 
 **Date: December 2025**
 
 ---
 
-### Latest Work: Recovery Loop Coupling Investigation
+### Validated Recovery Loop
 
-**Goal**: Identify inter-branch couplings that close the recovery loop for self-sustaining topological organization.
+```
+Topology → damping energy → REGULATED τ recharge → distributed creation → sustained topology
+```
+
+**Theoretical Statement:**
+> "Damping-to-τ recycling is constructive only when τ is bounded tightly enough to prevent localized over-recharge; under regulated τ, dissipated energy becomes a distributed creation resource rather than a hot-spot instability."
+
+---
+
+### 5-Seed Confirmation Results
+
+| Condition | N_defects (T=500) | tau_localization | Status |
+|-----------|-------------------|------------------|--------|
+| Baseline (d=0.00, cap=2.0) | 1.0 ± 0.0 | 1.00 | Extinction |
+| Optimal (d=0.15, cap=2.0) | **70.2 ± 8.8** | 1.67 | **Sustained** |
+
+**Improvement: +6920% (70× baseline)**
+
+---
+
+### Optimal Configuration
+
+```python
+REGULATED_RECOVERY_TAU_CAP = 2.0  # Essential regulation
+OPTIMAL_DAMPING_TO_TAU = 0.15     # Validated coupling
+```
+
+The τ cap is **part of the physics**, not just numerical protection.
 
 #### Completed Tests
 
@@ -14,51 +41,33 @@
 |----------|--------|--------|
 | τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
 | Remnant → Creation | ✗ HARMFUL | -95% at T=200; field saturates |
-| Damping → τ | ✓ VALIDATED | +62% at T=500, stable (no spike-crash) |
+| Damping → τ | ✓ CONFIRMED | +6920% (70×) with tau_cap=2.0, d=0.15 |
+| τ regulation | ✓ ESSENTIAL | Low cap (2.0) >> high cap (3.0) |
 
-#### Damping → τ Coupling (VALIDATED at T=500)
+#### Two Damping → τ Regimes
 
-**Mechanism**: `tau += damping_to_tau * gamma * (psi_dot)^2`
+| Regime | tau_cap | Behavior | Outcome |
+|--------|---------|----------|---------|
+| Unregulated | 3.0 | τ hot spots | N=9 (WORSE than baseline) |
+| **Regulated** | **2.0** | Distributed τ | **N=70** (BEST) |
 
-**Extended Validation Results** (T=500, dt=0.10, 2 seeds):
+#### Next Priority: Fine-Tune Sweep
 
-| Coupling | N_defects | tau_mean | tau_max | vs Baseline |
-|----------|-----------|----------|---------|-------------|
-| 0.00 | ~34 | 1.00 | 1.0 | baseline |
-| 0.10 | ~55 | 1.30 | 3.0 | **+62%** |
-| 0.15 | ~69 | 1.35 | 3.0 | **+103%** |
-
-**Key Finding**: NO spike-then-crash pattern. Defect count INCREASING over time (T=200→T=500), not crashing. System self-regulates despite tau hitting cap.
-
-**Verdict**: Recovery loop **PARTIALLY CLOSED / STRONGLY SUPPORTED**
-
-**The validated loop**:
-```
-Topology → Energy → Damping → τ → Creation → Topology
-```
-
-#### Remnant → Creation Findings (CLOSED - HARMFUL)
-
-- **Root cause**: Remnant field saturates to 1.0 everywhere by T=50
-- **25% remnant at T=200**: -95% defects (virtually extinct)
-- **Status**: Moved to BACKLOG; replaced by stability-weighted geometric memory concept
-
-#### Next Priority: Full 5-Seed Confirmation + tau_cap Testing
-
-Before proceeding to Channel release → τ:
-1. Run 5-seed confirmation at T=500 for damping_to_tau=0.10
-2. Test lower tau_cap (2.0, 2.5) to check if tighter regulation maintains improvement
-3. Optional: Sweep damping_to_tau in 0.01-0.15 range for optimal coupling
+Before Channel release → τ:
+1. Sweep damping_to_tau: 0.10, 0.15, 0.20
+2. Sweep tau_cap: 1.8, 2.0, 2.2
+3. Track tau_localization_index = tau_max / tau_mean
+4. Prefer: high N, low variance, low tau_localization
 
 ---
 
 ### Key Documents
 
-- `/app/backend/qmrt_topology/papers/RECOVERY_LOOP_MAP.md` — Architecture roadmap (UPDATED)
-- `/app/backend/qmrt_topology/papers/DAMPING_TAU_RESULTS.md` — Full damping test results with T=500 validation
-- `/app/backend/qmrt_topology/papers/T500_validation_results.json` — Extended validation data
-- `/app/backend/qmrt_topology/papers/TIME_ACCELERATED_REMNANT_RESULTS.md` — Remnant saturation proof
-- `/app/backend/T500_damping_validation.py` — Validation test script
+- `/app/backend/qmrt_topology/papers/5_SEED_CONFIRMATION_RESULTS.md` — Primary validation (latest)
+- `/app/backend/qmrt_topology/papers/TAU_CAP_SENSITIVITY_RESULTS.md` — Critical cap finding
+- `/app/backend/qmrt_topology/papers/RECOVERY_LOOP_MAP.md` — Architecture roadmap
+- `/app/backend/qmrt_topology/papers/DAMPING_TAU_RESULTS.md` — Initial damping results
+- `/app/backend/regulated_recovery_confirmation.py` — Validated simulator code
 
 ---
 
