@@ -30,17 +30,17 @@ OPTIMAL_DAMPING_TO_TAU = 0.20
 | Fine-tune sweep | 500 | 71.7 | 1.41 | v1.1 identified |
 | **Endurance test** | **1000** | **95.2** | **1.35** | **v1.1 LOCKED** |
 
-### T=1000 Endurance Results (5 seeds)
+### Evolution Summary (Full Validation Chain)
 
-| Metric | Value |
-|--------|-------|
-| N_mean | 95.2 ± 17.6 |
-| tau_localization | 1.35 |
-| Trends | 3 GROWING, 1 STABLE, 1 DECLINING |
-| Extinctions | 0/5 |
-| Collapses | 0/5 |
+| T | N_mean | tau_loc | Status |
+|---|--------|---------|--------|
+| 500 | 71.7 | 1.41 | Growth phase |
+| 1000 | 104.0 | 1.35 | Peak / endurance validated |
+| **2000** | **97.7** | **1.31** | **Dynamic equilibrium** |
 
-**Key**: Recovery loop is **net-positive** over long horizons (N increased 21% from T=500 to T=1000).
+**late_N_slope = -0.0063** (near zero — quasi-steady state)
+
+**Key**: Recovery loop maintains topology through T=2000 without systemic decline.
 
 #### Completed Tests
 
