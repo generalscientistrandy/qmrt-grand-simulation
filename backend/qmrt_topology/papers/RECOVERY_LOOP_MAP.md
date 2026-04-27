@@ -326,9 +326,9 @@ Each adds one coupling to the network. Test after each to see when self-sustaini
 |----------|--------|-------|
 | τ → Creation | ✓ VALIDATED | Works at threshold=1.001 |
 | Remnant → Creation | ✗ HARMFUL | -95% at T=200; field saturates, overfits to dead sites |
-| Damping → τ | ✓ CONFIRMED | **+6920%** (70×) at T=500 with tau_cap=2.0, d=0.15 |
-| τ regulation | ✓ ESSENTIAL | Part of physics; low cap (2.0) >> high cap (3.0) |
-| Channel → τ | PLANNED | After fine-tune sweep of damping params |
+| Damping → τ | ✓ CONFIRMED | **+21%** T=500→1000 with tau_cap=1.8, d=0.20 |
+| τ regulation | ✓ ESSENTIAL | Part of physics; low cap (1.8) >> high cap (3.0) |
+| Channel → τ | ✗ HARMFUL | -15% to -17% vs baseline; decay-site focus backfires |
 
 ---
 
