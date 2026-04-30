@@ -66,36 +66,68 @@ Resonance is **activity-correlated** (like damping) but **more selective** (only
 
 ---
 
-## Candidate Configuration (v1.2)
+## 3-Seed Validation Results
 
-```python
-REGULATED_RECOVERY_TAU_CAP = 1.8      # v1.1 baseline
-OPTIMAL_DAMPING_TO_TAU = 0.20         # v1.1 baseline
-OPTIMAL_RESONANCE_TO_TAU = 0.01       # NEW secondary branch
-RECOVERY_MODE = "regulated_damping_resonance_v1_2"
-```
+**Status: ✗ NOT READY — Variance Too High**
 
-**Pending**: Multi-seed validation required before promotion.
+### Same-Seed Comparison
+
+| Seed | v1.1 (res=0.00) | v1.2 (res=0.01) | N change | tau_loc change |
+|------|-----------------|-----------------|----------|----------------|
+| 10 | N=109, loc=1.35 | N=119, loc=1.22 | +9% | -10% |
+| 42 | N=102, loc=1.37 | N=100, loc=1.21 | -2% | -11% |
+| 99 | N=101, loc=1.33 | (incomplete) | - | - |
+
+### Summary (2 seeds completed)
+
+| Metric | v1.1 Baseline | v1.2 Candidate | Change |
+|--------|---------------|----------------|--------|
+| N_mean | 105.5 | 109.5 | +3.8% |
+| **N_std** | **4.9** | **13.4** | **+173%** |
+| tau_loc | 1.358 | 1.216 | -10% |
+
+### Promotion Criteria
+
+| Criterion | Result | Status |
+|-----------|--------|--------|
+| N_mean improves | 109.5 > 105.5 | ✓ PASS |
+| **N_std acceptable** | **13.4 > 7.4** | **✗ FAIL** |
+| tau_loc improves | 1.216 < 1.358 | ✓ PASS |
+
+**Verdict**: v1.2 candidate **FAILS** on variance criterion.
 
 ---
 
-## Validation Requirements
+## Analysis
 
-Before locking v1.2:
+### The Variance Problem
 
-1. **3-seed confirmation at res=0.01, T=1000**
-   - Verify N improvement is consistent
-   - Verify tau_loc improvement is consistent
-   
-2. **T=2000 endurance test**
-   - Confirm long-horizon stability
-   - Check late_N_slope remains near zero
+Resonance coupling amplifies seed-dependent variation:
+- v1.1: Very consistent (std=4.9)
+- v1.2: Highly variable (std=13.4, +173%)
 
-3. **Acceptance criteria**
-   - N_mean > v1.1 baseline
-   - N_std ≤ v1.1 baseline
-   - tau_loc ≤ v1.1 baseline
-   - No collapse or extinction
+This suggests resonance introduces **stochastic sensitivity** — the coherence signal may be amplifying random initial conditions.
+
+### Trade-off
+
+| Benefit | Cost |
+|---------|------|
+| Better tau_localization (-10%) | Higher variance (+173%) |
+| Slightly higher N_mean (+3.8%) | Less predictable outcomes |
+
+---
+
+## Decision
+
+**? v1.2 candidate (res=0.01) is NOT READY for promotion.**
+
+v1.1 remains the locked production baseline.
+
+### Options for Future Testing
+
+1. **Weaker resonance (res=0.005)** — may reduce variance while preserving some distribution benefit
+2. **Smoothed coherence signal** — spatial averaging before τ coupling
+3. **Accept as optional enhancement** — use resonance only when distribution improvement is prioritized over consistency
 
 ---
 
