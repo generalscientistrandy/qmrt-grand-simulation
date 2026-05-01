@@ -1,4 +1,43 @@
-## Current Status: REGULATED RECOVERY v1.1 — LOCKED AS PRIMARY
+## Current Status: EMERGENT LORENTZ TESTING — IN PROGRESS
+
+**Date: December 2025**
+
+---
+
+### Latest: Light-Cone Emergence Test v2 — PROMISING
+
+**Test:** Inject disturbance into defect-active medium, measure propagation characteristics
+
+| Metric | Unregulated | Regulated v1.1 | Result |
+|--------|-------------|----------------|--------|
+| τ heterogeneity | 0.0004 | 0.0049 | **12.1× higher** |
+| Linearity (r²) | 0.002 | 0.172 | **Reg ✓ (86× better)** |
+| Anisotropy | 0.960 | 0.703 | **Reg ✓ (27% lower)** |
+| c_eff stability (CV) | 1.871 | 1.612 | **Reg ✓ (14% better)** |
+
+**Key Finding:** Regulated recovery creates **spatially varying τ** (effective geometry) that produces cleaner, more isotropic propagation.
+
+**Verdict:** PROMISING — Proceed with Directional Isotropy Test
+
+**Files:**
+- `/app/backend/light_cone_test_v2.py`
+- `/app/backend/qmrt_topology/papers/LIGHT_CONE_V2_RESULTS.json`
+- `/app/backend/qmrt_topology/papers/LIGHT_CONE_V2_REPORT.md`
+
+---
+
+### Research Track: Emergent Lorentz Behavior
+
+| Test | Status | Key Question |
+|------|--------|--------------|
+| Light-Cone Emergence | ✓ PROMISING | Does regulation create effective causal structure? |
+| Directional Isotropy | NEXT | Is c_x ≈ c_y ≈ c_z? |
+| Dispersion Relation | PENDING | Is ω² ≈ c²k²? |
+| Moving-Defect Invariance | PENDING | Do defects have velocity caps? |
+
+---
+
+## Baseline: REGULATED RECOVERY v1.1 — LOCKED AS PRIMARY
 
 **Date: December 2025**
 

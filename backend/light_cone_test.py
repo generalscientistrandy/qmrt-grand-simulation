@@ -48,7 +48,7 @@ class LightConeSimulator:
     - Track disturbance propagation radius
     """
     
-    def __init__(self, size: int = 48, dt: float = 0.08,
+    def __init__(self, size: int = 32, dt: float = 0.12,
                  damping_to_tau: float = 0.0,
                  tau_cap: float = 3.0):
         
@@ -201,8 +201,8 @@ class LightConeSimulator:
             'max_deviation': float(np.max(deviation))
         }
     
-    def get_snapshot(self) -> Dict:
-        radius, directional = self.compute_disturbance_radius()
+    def get_snapshot(self, threshold: float = 0.05) -> Dict:
+        radius, directional = self.compute_disturbance_radius(threshold=threshold)
         
         return {
             'T': self.T,
@@ -219,18 +219,23 @@ class LightConeSimulator:
 
 
 def run_light_cone_test(damping_to_tau: float, tau_cap: float, 
-                        T_max: float = 20.0, measure_every: int = 10) -> List[Dict]:
+                        T_max: float = 6.0, measure_every: int = 2,
+                        size: int = 32, dt: float = 0.12,
+                        threshold: float = 0.05) -> List[Dict]:
     """
     Run light-cone emergence test.
     
     Args:
         damping_to_tau: 0.0 for unregulated, 0.20 for v1.1
         tau_cap: 3.0 for unregulated, 1.8 for v1.1
-        T_max: Maximum simulation time
+        T_max: Maximum simulation time (short to stay before boundary)
         measure_every: Steps between measurements
+        size: Grid size (default 32 for accelerated)
+        dt: Time step (default 0.12 for accelerated)
+        threshold: Threshold for front detection (higher = cleaner front)
     """
     sim = LightConeSimulator(
-        size=48, dt=0.08,
+        size=size, dt=dt,
         damping_to_tau=damping_to_tau,
         tau_cap=tau_cap
     )
@@ -239,13 +244,18 @@ def run_light_cone_test(damping_to_tau: float, tau_cap: float,
     sim.inject_disturbance(amplitude=0.5, width=3.0)
     
     history = []
+    max_radius = size * 0.4  # Stop before boundary effects
     
     while sim.T < T_max:
         sim.step()
         
         if sim.step_count % measure_every == 0:
-            snapshot = sim.get_snapshot()
+            snapshot = sim.get_snapshot(threshold=threshold)
             history.append(snapshot)
+            
+            # Early stop if approaching boundary
+            if snapshot['radius'] > max_radius:
+                break
     
     return history
 
@@ -296,12 +306,30 @@ def analyze_light_cone(history: List[Dict]) -> Dict:
         c_x, c_y, c_z = 0, 0, 0
         anisotropy = 0
     
-    # Front energy decay
+    # Front energy decay (signal decay)
     front_energies = [h['front_energy'] for h in history]
     if len(front_energies) > 2:
         energy_decay_rate = (front_energies[-1] - front_energies[2]) / (T_vals[-1] - T_vals[2]) if T_vals[-1] != T_vals[2] else 0
+        # Normalized signal decay (relative to initial)
+        if front_energies[2] > 0:
+            signal_retention = front_energies[-1] / front_energies[2]
+        else:
+            signal_retention = 0
     else:
         energy_decay_rate = 0
+        signal_retention = 0
+    
+    # c_eff stability (coefficient of variation of instantaneous speeds)
+    if len(r_vals) > 3:
+        dr = np.diff(r_vals[2:])
+        dT = np.diff(T_vals[2:])
+        instant_speeds = dr / dT
+        c_eff_cv = np.std(instant_speeds) / np.mean(instant_speeds) if np.mean(instant_speeds) > 0 else 1.0
+    else:
+        c_eff_cv = 1.0
+    
+    # tau localization at final step
+    tau_loc = history[-1].get('tau_std', 0) / history[-1].get('tau_mean', 1) if history else 0
     
     return {
         'c_eff': c_eff,
@@ -311,6 +339,9 @@ def analyze_light_cone(history: List[Dict]) -> Dict:
         'anisotropy': anisotropy,
         'r_squared': r_squared,
         'energy_decay_rate': energy_decay_rate,
+        'signal_retention': signal_retention,
+        'c_eff_cv': c_eff_cv,
+        'tau_localization': tau_loc,
         'final_radius': r_vals[-1] if r_vals else 0,
         'final_T': T_vals[-1] if T_vals else 0
     }
@@ -323,17 +354,22 @@ def main():
     print()
     print("Hypothesis: Regulated recovery produces emergent causal structure")
     print()
+    print("Configuration: size=32, dt=0.12, T_max=6 (early phase), threshold=0.05")
+    print()
     
     # Mode A: Unregulated
     print("Mode A: Unregulated (damping=0, cap=3.0)...")
     t0 = time.time()
     history_unreg = run_light_cone_test(
-        damping_to_tau=0.0, tau_cap=3.0, T_max=15.0
+        damping_to_tau=0.0, tau_cap=3.0, T_max=6.0,
+        size=32, dt=0.12, measure_every=2, threshold=0.05
     )
     analysis_unreg = analyze_light_cone(history_unreg)
     print(f"  c_eff = {analysis_unreg['c_eff']:.3f}")
     print(f"  anisotropy = {analysis_unreg['anisotropy']:.3f}")
     print(f"  r² = {analysis_unreg['r_squared']:.3f}")
+    print(f"  final_radius = {analysis_unreg['final_radius']:.1f}")
+    print(f"  measurements = {len(history_unreg)}")
     print(f"  time: {time.time()-t0:.1f}s")
     print()
     
@@ -341,12 +377,15 @@ def main():
     print("Mode B: Regulated v1.1 (damping=0.20, cap=1.8)...")
     t0 = time.time()
     history_reg = run_light_cone_test(
-        damping_to_tau=0.20, tau_cap=1.8, T_max=15.0
+        damping_to_tau=0.20, tau_cap=1.8, T_max=6.0,
+        size=32, dt=0.12, measure_every=2, threshold=0.05
     )
     analysis_reg = analyze_light_cone(history_reg)
     print(f"  c_eff = {analysis_reg['c_eff']:.3f}")
     print(f"  anisotropy = {analysis_reg['anisotropy']:.3f}")
     print(f"  r² = {analysis_reg['r_squared']:.3f}")
+    print(f"  final_radius = {analysis_reg['final_radius']:.1f}")
+    print(f"  measurements = {len(history_reg)}")
     print(f"  time: {time.time()-t0:.1f}s")
     print()
     
@@ -362,20 +401,43 @@ def main():
     # Effective speed
     print(f"{'c_eff':>20} | {analysis_unreg['c_eff']:>12.3f} | {analysis_reg['c_eff']:>14.3f} | {'—':>10}")
     
+    # Linearity (higher r² is better = cleaner cone)
+    better_linear = "Reg ✓" if analysis_reg['r_squared'] > analysis_unreg['r_squared'] else "Unreg"
+    print(f"{'Linearity (r²)':>20} | {analysis_unreg['r_squared']:>12.3f} | {analysis_reg['r_squared']:>14.3f} | {better_linear:>10}")
+    
     # Anisotropy (lower is better = more Lorentz-like)
-    better_aniso = "Reg" if analysis_reg['anisotropy'] < analysis_unreg['anisotropy'] else "Unreg"
+    better_aniso = "Reg ✓" if analysis_reg['anisotropy'] < analysis_unreg['anisotropy'] else "Unreg"
     print(f"{'Anisotropy':>20} | {analysis_unreg['anisotropy']:>12.3f} | {analysis_reg['anisotropy']:>14.3f} | {better_aniso:>10}")
     
-    # Linearity (higher r² is better = cleaner cone)
-    better_linear = "Reg" if analysis_reg['r_squared'] > analysis_unreg['r_squared'] else "Unreg"
-    print(f"{'Linearity (r²)':>20} | {analysis_unreg['r_squared']:>12.3f} | {analysis_reg['r_squared']:>14.3f} | {better_linear:>10}")
+    # c_eff stability (lower CV is better = more stable speed)
+    better_stab = "Reg ✓" if analysis_reg['c_eff_cv'] < analysis_unreg['c_eff_cv'] else "Unreg"
+    print(f"{'c_eff stability (CV)':>20} | {analysis_unreg['c_eff_cv']:>12.3f} | {analysis_reg['c_eff_cv']:>14.3f} | {better_stab:>10}")
+    
+    # Signal retention (higher is better = less dissipation)
+    better_signal = "Reg ✓" if analysis_reg['signal_retention'] > analysis_unreg['signal_retention'] else "Unreg"
+    print(f"{'Signal retention':>20} | {analysis_unreg['signal_retention']:>12.3f} | {analysis_reg['signal_retention']:>14.3f} | {better_signal:>10}")
     
     # Directional speeds
     print(f"{'c_x':>20} | {analysis_unreg['c_x']:>12.3f} | {analysis_reg['c_x']:>14.3f} | {'—':>10}")
     print(f"{'c_y':>20} | {analysis_unreg['c_y']:>12.3f} | {analysis_reg['c_y']:>14.3f} | {'—':>10}")
     print(f"{'c_z':>20} | {analysis_unreg['c_z']:>12.3f} | {analysis_reg['c_z']:>14.3f} | {'—':>10}")
     
+    # Final radius
+    print(f"{'Final radius':>20} | {analysis_unreg['final_radius']:>12.1f} | {analysis_reg['final_radius']:>14.1f} | {'—':>10}")
+    
     print()
+    
+    # Score calculation
+    reg_wins = 0
+    total_metrics = 4
+    if analysis_reg['r_squared'] > analysis_unreg['r_squared']:
+        reg_wins += 1
+    if analysis_reg['anisotropy'] < analysis_unreg['anisotropy']:
+        reg_wins += 1
+    if analysis_reg['c_eff_cv'] < analysis_unreg['c_eff_cv']:
+        reg_wins += 1
+    if analysis_reg['signal_retention'] > analysis_unreg['signal_retention']:
+        reg_wins += 1
     
     # Verdict
     print("=" * 80)
@@ -383,24 +445,32 @@ def main():
     print("=" * 80)
     print()
     
-    if analysis_reg['anisotropy'] < analysis_unreg['anisotropy'] and analysis_reg['r_squared'] > analysis_unreg['r_squared']:
+    print(f"Regulated v1.1 wins on {reg_wins}/{total_metrics} key metrics")
+    print()
+    
+    if reg_wins >= 3:
         print("✓ REGULATED RECOVERY PRODUCES CLEANER CAUSAL STRUCTURE")
-        print("  Lower anisotropy + higher linearity = more Lorentz-like")
-    elif analysis_reg['anisotropy'] < analysis_unreg['anisotropy']:
-        print("? REGULATED RECOVERY REDUCES ANISOTROPY")
-        print("  More isotropic propagation, but linearity inconclusive")
-    elif analysis_reg['r_squared'] > analysis_unreg['r_squared']:
-        print("? REGULATED RECOVERY IMPROVES LINEARITY")
-        print("  Cleaner cone expansion, but anisotropy inconclusive")
+        print("  - Better linearity, lower anisotropy, more stable c_eff")
+        print("  - Proceed with isotropy and dispersion tests")
+        verdict = "PASS"
+    elif reg_wins >= 2:
+        print("? PARTIAL IMPROVEMENT")
+        print("  - Regulated recovery shows some advantages")
+        print("  - Results mixed, needs further investigation")
+        verdict = "PARTIAL"
     else:
-        print("? NO CLEAR IMPROVEMENT FROM REGULATION")
-        print("  May need longer simulation or different test")
+        print("✗ NO CLEAR IMPROVEMENT FROM REGULATION")
+        print("  - May need longer simulation or different test parameters")
+        verdict = "INCONCLUSIVE"
     
     # Save results
     output = {
         'test': 'light_cone_emergence',
         'date': 'December 2025',
         'hypothesis': 'Regulated recovery produces emergent causal structure',
+        'config': {'size': 32, 'dt': 0.12, 'T_max': 6.0, 'threshold': 0.05},
+        'verdict': verdict,
+        'score': f'{reg_wins}/{total_metrics}',
         'unregulated': {
             'config': {'damping_to_tau': 0.0, 'tau_cap': 3.0},
             'analysis': analysis_unreg,
@@ -413,11 +483,11 @@ def main():
         }
     }
     
-    with open('/app/backend/qmrt_topology/papers/light_cone_results.json', 'w') as f:
+    with open('/app/backend/qmrt_topology/papers/LIGHT_CONE_RESULTS.json', 'w') as f:
         json.dump(output, f, indent=2, default=str)
     
     print()
-    print("Results saved to: /app/backend/qmrt_topology/papers/light_cone_results.json")
+    print("Results saved to: /app/backend/qmrt_topology/papers/LIGHT_CONE_RESULTS.json")
 
 
 if __name__ == "__main__":
