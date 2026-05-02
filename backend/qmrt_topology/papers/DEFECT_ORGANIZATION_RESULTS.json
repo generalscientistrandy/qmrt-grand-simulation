@@ -1,0 +1,12 @@
+{
+  "test": "defect_organization_quick",
+  "checkpoints": [
+    100,
+    300,
+    500
+  ],
+  "summary": {
+    "unreg_N_500": 1.0,
+    "reg_N_500": 1.0
+  }
+}

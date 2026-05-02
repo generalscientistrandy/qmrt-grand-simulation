@@ -4,7 +4,26 @@
 
 ---
 
-### Latest: Dispersion Relation Test — EXCELLENT (R² > 0.99)
+### Latest: Defect Organization Test — INCONCLUSIVE
+
+**Finding:** System evolves to turbulent equilibrium, not countable defects.
+
+| Observation | Value |
+|------------|-------|
+| Creations by T=500 | ~20,000 |
+| N_defects detected | 1 (entire turbulent region) |
+| Curl magnitude mean | 4.63 (highly vortical) |
+| τ state | Saturated near cap (1.78/1.80) |
+
+**Key Insight:** The v1.1 equilibrium is a high-turnover **turbulent state**, not distinct static defects. The spatial organization question cannot be answered with current detection methods.
+
+**Files:**
+- `/app/backend/defect_organization_test.py`
+- `/app/backend/qmrt_topology/papers/DEFECT_ORGANIZATION_REPORT.md`
+
+---
+
+### Previous: Dispersion Relation Test — EXCELLENT (R² > 0.99)
 
 | Mode | c_eff | fit R² | Verdict |
 |------|-------|--------|---------|
@@ -57,8 +76,8 @@
 | Light-Cone Emergence | ✓ PROMISING | τ heterogeneity improves propagation |
 | Directional Isotropy | ✓ BASELINE | Solver isotropic; defects break symmetry |
 | Dispersion Relation | ✓ EXCELLENT | ω² = c²k² holds (R² > 0.99) |
-| Defect Organization | NEXT | Does v1.1 organize defects over time? |
-| Moving-Defect Invariance | PENDING | Do defects have velocity caps? |
+| Defect Organization | ✓ INCONCLUSIVE | Turbulent equilibrium, not countable defects |
+| Moving-Defect Invariance | NEXT | Do structures have velocity caps? |
 
 ---
 
