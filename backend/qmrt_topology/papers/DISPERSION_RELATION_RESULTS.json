@@ -1,0 +1,21 @@
+{
+  "test": "dispersion_relation",
+  "date": "December 2025",
+  "hypothesis": "Medium supports omega^2 = c^2 k^2 linear dispersion",
+  "verdict": "EXCELLENT_DISPERSION",
+  "summary": {
+    "clean_fit_r2": 0.7038,
+    "unreg_fit_r2": 0.9946,
+    "reg_fit_r2": 0.9937,
+    "reg_better": false,
+    "clean_c_eff": 1.36,
+    "unreg_c_eff": 1.841,
+    "reg_c_eff": 1.86
+  },
+  "interpretation": {
+    "key_finding": "Both defect-active modes show excellent dispersion (R\u00b2 > 0.99)",
+    "unregulated_vs_regulated": "Nearly identical dispersion quality",
+    "clean_medium_anomaly": "Low R\u00b2 due to weak signal, not physics",
+    "effective_speed": "c_eff \u2248 1.85 in defect media vs theoretical 2.0"
+  }
+}

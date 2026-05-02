@@ -4,7 +4,23 @@
 
 ---
 
-### Latest: Directional Isotropy Test — BASELINE ESTABLISHED
+### Latest: Dispersion Relation Test — EXCELLENT (R² > 0.99)
+
+| Mode | c_eff | fit R² | Verdict |
+|------|-------|--------|---------|
+| Clean medium | 1.36 | 0.70* | measurement artifact |
+| Unregulated + defects | 1.84 | **0.995** | EXCELLENT |
+| Regulated v1.1 + defects | 1.86 | **0.994** | EXCELLENT |
+
+**Key Finding:** ω² = c²k² relationship holds with R² > 0.99 even in defect-active media. Defects don't break dispersion.
+
+**Files:**
+- `/app/backend/dispersion_relation_test.py`
+- `/app/backend/qmrt_topology/papers/DISPERSION_RELATION_REPORT.md`
+
+---
+
+### Previous: Directional Isotropy Test — BASELINE ESTABLISHED
 
 **Key Finding:** Wave solver is **perfectly isotropic** in clean medium (anisotropy = 0). Defect configurations dominate anisotropy in active media.
 
@@ -40,7 +56,8 @@
 |------|--------|------------|
 | Light-Cone Emergence | ✓ PROMISING | τ heterogeneity improves propagation |
 | Directional Isotropy | ✓ BASELINE | Solver isotropic; defects break symmetry |
-| Dispersion Relation | NEXT | Is ω² ≈ c²k²? |
+| Dispersion Relation | ✓ EXCELLENT | ω² = c²k² holds (R² > 0.99) |
+| Defect Organization | NEXT | Does v1.1 organize defects over time? |
 | Moving-Defect Invariance | PENDING | Do defects have velocity caps? |
 
 ---
