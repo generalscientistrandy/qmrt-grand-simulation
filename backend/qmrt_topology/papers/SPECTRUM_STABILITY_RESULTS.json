@@ -1,0 +1,38 @@
+{
+  "test": "spectrum_stability",
+  "date": "December 2025",
+  "question": "Does the power spectrum stabilize over long time?",
+  "checkpoints": [
+    200,
+    400,
+    600
+  ],
+  "verdict": "STABLE_PHASE",
+  "summary": {
+    "final_cv": 0.1447941074552343,
+    "final_stable": true,
+    "cv_trend": "stable",
+    "energy_trend": "stationary",
+    "final_vib_energy": 18.5021925936394
+  },
+  "per_checkpoint": [
+    {
+      "T": 200,
+      "vib_energy": 19.01490623207221,
+      "spectrum_cv": 0.1642303211114443,
+      "stable": true
+    },
+    {
+      "T": 400,
+      "vib_energy": 18.82228003041822,
+      "spectrum_cv": 0.11889928361992255,
+      "stable": true
+    },
+    {
+      "T": 600,
+      "vib_energy": 18.5021925936394,
+      "spectrum_cv": 0.1447941074552343,
+      "stable": true
+    }
+  ]
+}
