@@ -4,23 +4,26 @@
 
 ---
 
-### Latest: Spectrum Stability Test — STABLE PHASE CONFIRMED ✓
+### Latest: Vibration Field Isotropy Test — ISOTROPIC ✓
 
-| Checkpoint | Vibration Energy | Spectrum CV | Stable |
-|------------|------------------|-------------|--------|
-| T=200 | 19.01 | 0.164 | ✓ |
-| T=400 | 18.82 | 0.119 | ✓ |
-| T=600 | 18.50 | 0.145 | ✓ |
+| Metric | Anisotropy | Status |
+|--------|------------|--------|
+| Gradient energy | **0.0051** | ✓ ISOTROPIC |
+| Velocity variance | **0.0030** | ✓ ISOTROPIC |
+| k-space power | **0.0022** | ✓ ISOTROPIC |
+| **Combined** | **0.0026** | ✓ **ISOTROPIC** |
 
-**Verdict:** The regulated recovery mechanism produces a **statistically stationary vibrational phase**—a true dynamical attractor with stable power spectrum and constant energy.
+**Major Finding:** The turbulent vibrational phase exhibits **emergent rotational symmetry** (anisotropy = 0.003 << 0.15 threshold), despite being driven by randomly-placed defects.
+
+**Gradient Energy:** E_x : E_y : E_z = 1.80 : 1.77 : 1.78 (ratio max/min = 1.013)
 
 **Files:**
-- `/app/backend/spectrum_stability_test.py`
-- `/app/backend/qmrt_topology/papers/SPECTRUM_STABILITY_REPORT.md`
+- `/app/backend/vibration_isotropy_test.py`
+- `/app/backend/qmrt_topology/papers/VIBRATION_ISOTROPY_REPORT.md`
 
 ---
 
-### Previous: Defect-Driven Vibration Source Test — NEW MODEL CONFIRMED (3/4)
+### Previous: Spectrum Stability Test — STABLE PHASE CONFIRMED ✓
 
 | Mode | c_eff | fit R² | Verdict |
 |------|-------|--------|---------|
@@ -74,8 +77,9 @@
 | Directional Isotropy | ✓ BASELINE | Solver isotropic; defects break symmetry |
 | Dispersion Relation | ✓ EXCELLENT | ω² = c²k² holds (R² > 0.99) |
 | Vibration Source | ✓ CONFIRMED | Defects are active sources; 4.4× recovery boost |
-| **Spectrum Stability** | **✓ STABLE** | **Stationary phase confirmed (CV ≈ 0.14)** |
-| Vibration Isotropy | NEXT | Is turbulent phase statistically isotropic? |
+| Spectrum Stability | ✓ STABLE | Stationary phase confirmed (CV ≈ 0.14) |
+| **Vibration Isotropy** | **✓ ISOTROPIC** | **Emergent rotational symmetry (aniso = 0.003)** |
+| Multi-Seed Validation | NEXT | Confirm isotropy across seeds |
 
 ---
 

@@ -1,0 +1,48 @@
+{
+  "test": "vibration_isotropy",
+  "date": "December 2025",
+  "question": "Is the stationary vibrational phase isotropic?",
+  "T_target": 300.0,
+  "n_samples": 10,
+  "verdict": "ISOTROPIC",
+  "analysis": {
+    "gradient": {
+      "mean": 0.005064259810541179,
+      "std": 0.001860610516534798
+    },
+    "velocity": {
+      "mean": 0.0030347786284624363,
+      "std": 0.0018684919413435954
+    },
+    "kspace": {
+      "mean": 0.0022481349736608227,
+      "std": 0.001096280044561087
+    },
+    "correlation": {
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "combined": {
+      "mean": 0.002586793353166109,
+      "std": 0.0007407268029963264
+    }
+  },
+  "thresholds": {
+    "strong": 0.15,
+    "moderate": 0.3,
+    "weak": 0.5
+  },
+  "last_sample": {
+    "gradient_energy": {
+      "x": 1.7954361062893538,
+      "y": 1.772659845318692,
+      "z": 1.7766414056697726
+    },
+    "correlation_length": {
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "combined_anisotropy": 0.003349891223993753
+  }
+}
