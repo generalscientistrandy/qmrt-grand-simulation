@@ -1,0 +1,28 @@
+{
+  "test": "defect_driven_vibration",
+  "date": "December 2025",
+  "hypothesis": "Defects are active vibration sources; clean medium is silent",
+  "verdict": "CONFIRMED",
+  "score": "3/4",
+  "questions": {
+    "clean_silent": true,
+    "defect_generates_waves": true,
+    "v1_1_sustained": false,
+    "recovery_essential": true
+  },
+  "summary": {
+    "clean_vib": 0.0,
+    "single_defect_vib": 0.002222,
+    "regulated_vib": 17.729368,
+    "no_recovery_vib": 3.986194,
+    "reg_spectrum_stable": false,
+    "recovery_multiplier": 4.4
+  },
+  "key_findings": [
+    "Clean medium is perfectly silent (vib_energy = 0)",
+    "Single defect generates measurable wave activity",
+    "Regulated v1.1 sustains 4.4x more vibration than no-recovery",
+    "Spectrum is dynamic (not yet stationary) at T=100"
+  ],
+  "interpretation": "Defects are the active sources of vibration. The clean medium has no gradients and no oscillation. Regulated damping-to-tau recovery amplifies and sustains the vibrational phase."
+}

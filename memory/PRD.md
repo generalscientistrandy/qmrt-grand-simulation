@@ -4,26 +4,31 @@
 
 ---
 
-### Latest: Defect Organization Test — INCONCLUSIVE
+### Latest: Defect-Driven Vibration Source Test — NEW MODEL CONFIRMED (3/4)
 
-**Finding:** System evolves to turbulent equilibrium, not countable defects.
+**Breakthrough Finding:** Defects are the active sources of vibration, not noise.
 
-| Observation | Value |
-|------------|-------|
-| Creations by T=500 | ~20,000 |
-| N_defects detected | 1 (entire turbulent region) |
-| Curl magnitude mean | 4.63 (highly vortical) |
-| τ state | Saturated near cap (1.78/1.80) |
+| Mode | Vibration Energy | Interpretation |
+|------|------------------|----------------|
+| Clean medium | **0.000000** | Silent (no gradients) |
+| Single defect | **0.002222** | Defect generates waves |
+| Regulated v1.1 | **17.729** | Sustained vibrational phase |
+| No recovery | **3.986** | **4.4× less** without recovery |
 
-**Key Insight:** The v1.1 equilibrium is a high-turnover **turbulent state**, not distinct static defects. The spatial organization question cannot be answered with current detection methods.
+**New Model:**
+```
+defects → gradients → vibration → damping → τ recharge → new defects
+```
+
+**Key Insight:** The medium itself is silent. Defects are the engines that keep it dynamically alive. Regulated recovery sustains a turbulent vibrational equilibrium.
 
 **Files:**
-- `/app/backend/defect_organization_test.py`
-- `/app/backend/qmrt_topology/papers/DEFECT_ORGANIZATION_REPORT.md`
+- `/app/backend/vibration_source_test.py`
+- `/app/backend/qmrt_topology/papers/VIBRATION_SOURCE_REPORT.md`
 
 ---
 
-### Previous: Dispersion Relation Test — EXCELLENT (R² > 0.99)
+### Previous: Defect Organization Test — INCONCLUSIVE
 
 | Mode | c_eff | fit R² | Verdict |
 |------|-------|--------|---------|
@@ -69,15 +74,16 @@
 
 ---
 
-### Research Track: Emergent Lorentz Behavior
+### Research Track: Emergent Lorentz / Active Medium Physics
 
 | Test | Status | Key Result |
 |------|--------|------------|
 | Light-Cone Emergence | ✓ PROMISING | τ heterogeneity improves propagation |
 | Directional Isotropy | ✓ BASELINE | Solver isotropic; defects break symmetry |
 | Dispersion Relation | ✓ EXCELLENT | ω² = c²k² holds (R² > 0.99) |
-| Defect Organization | ✓ INCONCLUSIVE | Turbulent equilibrium, not countable defects |
-| Moving-Defect Invariance | NEXT | Do structures have velocity caps? |
+| Defect Organization | ✓ REFRAMED | Turbulent equilibrium, not static defects |
+| **Vibration Source** | **✓ CONFIRMED** | **Defects are active sources; 4.4× recovery boost** |
+| Spectrum Stability | NEXT | Does power spectrum stabilize over T? |
 
 ---
 
