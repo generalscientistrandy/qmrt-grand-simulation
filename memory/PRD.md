@@ -4,35 +4,43 @@
 
 ---
 
-### Latest: Light-Cone Emergence Test v2 — PROMISING
+### Latest: Directional Isotropy Test — BASELINE ESTABLISHED
 
-**Test:** Inject disturbance into defect-active medium, measure propagation characteristics
+**Key Finding:** Wave solver is **perfectly isotropic** in clean medium (anisotropy = 0). Defect configurations dominate anisotropy in active media.
+
+| Medium Type | Anisotropy Index |
+|-------------|------------------|
+| Clean wave (zero initial) | **0.0000** (perfect) |
+| Unregulated + defects | ~0.96 |
+| Regulated v1.1 + defects | ~1.00 |
+
+**Conclusion:** Lorentz-like isotropy is built into the wave equation. Regulation does not improve defect-induced anisotropy.
+
+**Files:**
+- `/app/backend/directional_isotropy_test.py`
+- `/app/backend/qmrt_topology/papers/DIRECTIONAL_ISOTROPY_REPORT.md`
+
+---
+
+### Previous: Light-Cone Emergence Test v2 — PROMISING
 
 | Metric | Unregulated | Regulated v1.1 | Result |
 |--------|-------------|----------------|--------|
 | τ heterogeneity | 0.0004 | 0.0049 | **12.1× higher** |
 | Linearity (r²) | 0.002 | 0.172 | **Reg ✓ (86× better)** |
 | Anisotropy | 0.960 | 0.703 | **Reg ✓ (27% lower)** |
-| c_eff stability (CV) | 1.871 | 1.612 | **Reg ✓ (14% better)** |
 
-**Key Finding:** Regulated recovery creates **spatially varying τ** (effective geometry) that produces cleaner, more isotropic propagation.
-
-**Verdict:** PROMISING — Proceed with Directional Isotropy Test
-
-**Files:**
-- `/app/backend/light_cone_test_v2.py`
-- `/app/backend/qmrt_topology/papers/LIGHT_CONE_V2_RESULTS.json`
-- `/app/backend/qmrt_topology/papers/LIGHT_CONE_V2_REPORT.md`
+**Verdict:** PROMISING — Regulated recovery creates effective geometry with improved propagation metrics.
 
 ---
 
 ### Research Track: Emergent Lorentz Behavior
 
-| Test | Status | Key Question |
-|------|--------|--------------|
-| Light-Cone Emergence | ✓ PROMISING | Does regulation create effective causal structure? |
-| Directional Isotropy | NEXT | Is c_x ≈ c_y ≈ c_z? |
-| Dispersion Relation | PENDING | Is ω² ≈ c²k²? |
+| Test | Status | Key Result |
+|------|--------|------------|
+| Light-Cone Emergence | ✓ PROMISING | τ heterogeneity improves propagation |
+| Directional Isotropy | ✓ BASELINE | Solver isotropic; defects break symmetry |
+| Dispersion Relation | NEXT | Is ω² ≈ c²k²? |
 | Moving-Defect Invariance | PENDING | Do defects have velocity caps? |
 
 ---

@@ -1,0 +1,27 @@
+{
+  "test": "directional_isotropy",
+  "date": "December 2025",
+  "hypothesis": "Regulated recovery produces isotropic propagation",
+  "key_finding": "Wave solver is perfectly isotropic in clean medium; defect configurations dominate anisotropy",
+  "clean_medium": {
+    "anisotropy_index": 0.0,
+    "c_eff_mean": 2.667,
+    "c_eff_std": 0.0,
+    "all_directions_identical": true
+  },
+  "defect_active_comparison": {
+    "unregulated": {
+      "anisotropy_index": 0.964,
+      "c_eff_mean": 47.3,
+      "c_eff_std": 45.6
+    },
+    "regulated_v1_1": {
+      "anisotropy_index": 1.004,
+      "c_eff_mean": 17.2,
+      "c_eff_std": 17.3
+    }
+  },
+  "verdict": "BASELINE_ESTABLISHED",
+  "conclusion": "Isotropy is built into the wave equation. Defect-induced anisotropy dominates in active media. Regulation does not improve isotropy.",
+  "recommended_next": ["dispersion_relation_test", "moving_defect_invariance", "defect_organization_analysis"]
+}
