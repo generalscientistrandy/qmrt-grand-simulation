@@ -1,0 +1,2886 @@
+{
+  "test": "velocity_cap",
+  "date": "December 2025",
+  "baseline": "Regulated Recovery v1.1",
+  "configuration": {
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "boost_strengths": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "directions": [
+      "x",
+      "y",
+      "z",
+      "diagonal"
+    ],
+    "T_max": 100.0,
+    "grid_size": 32,
+    "dt": 0.12
+  },
+  "verdict": "PARTIAL_EVIDENCE",
+  "gaussian_cap_detected": true,
+  "tau_maxed_cap_detected": false,
+  "gaussian_analysis": {
+    "boost_strengths": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "avg_velocity": [
+      -1.489747725436955,
+      -0.8370029559716311,
+      -0.7596258512228905,
+      -1.2368071603541468,
+      -0.7770022426225993,
+      -1.1378596765022564
+    ],
+    "avg_anisotropy": [
+      0.7064614779295075,
+      0.7064851452700923,
+      0.7065455684671055,
+      0.706283885830385,
+      0.7064720901494348,
+      0.7066681217684369
+    ],
+    "avg_survival": [
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045
+    ],
+    "decay_rate": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "velocity_response": [
+      6.527447694653239,
+      0.515847364991604,
+      -1.9087252365250253,
+      1.83921967092619,
+      -1.4434297355186283
+    ],
+    "anisotropy_increase": 1.0002925054590874,
+    "survival_decrease": 1.0,
+    "max_stable_boost": 0.0,
+    "max_stable_velocity": 0.0,
+    "velocity_cap_detected": true,
+    "velocity_saturates": true,
+    "deformation_increases": false,
+    "survival_decreases": false
+  },
+  "tau_maxed_analysis": {
+    "boost_strengths": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "avg_velocity": [
+      -1.4902595710782138,
+      -1.475970779557678,
+      -1.5835196528758877,
+      -1.2436523307887066,
+      -1.4982638644471453,
+      -1.2624404606053796
+    ],
+    "avg_anisotropy": [
+      0.7069473696747345,
+      0.7066299562098496,
+      0.7065140935172303,
+      0.7064530023295834,
+      0.7064005466479748,
+      0.7068897454787207
+    ],
+    "avg_survival": [
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045,
+      5.0400000000000045
+    ],
+    "decay_rate": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "velocity_response": [
+      0.1428879152053586,
+      -0.7169924887880649,
+      1.3594692883487243,
+      -1.0184461346337548,
+      0.9432936153670628
+    ],
+    "anisotropy_increase": 0.9999184887044134,
+    "survival_decrease": 1.0,
+    "max_stable_boost": 0.0,
+    "max_stable_velocity": 0.0,
+    "velocity_cap_detected": false,
+    "velocity_saturates": false,
+    "deformation_increases": false,
+    "survival_decreases": false
+  },
+  "gaussian_runs": [
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -1.4408463620489065,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072885060837427,
+      "max_anisotropy": 0.7081903148659479,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -1.4408463620489065,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072885060837427,
+      "max_anisotropy": 0.7081903148659479,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -1.4408463620489065,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072885060837427,
+      "max_anisotropy": 0.7081903148659479,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -0.8961561266899649,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072323878991412,
+      "max_anisotropy": 0.7098608618924361,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -0.8961561266899649,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072323878991412,
+      "max_anisotropy": 0.7098608618924361,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -0.8961561266899649,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072323878991412,
+      "max_anisotropy": 0.7098608618924361,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -1.4408463620489067,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067997501364381,
+      "max_anisotropy": 0.7074780066823824,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -1.4408463620489067,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067997501364381,
+      "max_anisotropy": 0.7074780066823824,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -1.4408463620489067,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067997501364381,
+      "max_anisotropy": 0.7074780066823824,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -2.181142050960042,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045252675987076,
+      "max_anisotropy": 0.7236876611307621,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -2.181142050960042,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045252675987076,
+      "max_anisotropy": 0.7236876611307621,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2260216266815855,
+      "velocity_along_boost": -2.181142050960042,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045252675987076,
+      "max_anisotropy": 0.7236876611307621,
+      "energy_change": 0.15951256405883107,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.154251701267585,
+      "velocity_along_boost": -1.4414411356070675,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070588779750019,
+      "max_anisotropy": 0.7078932397827447,
+      "energy_change": 0.5368082688021254,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.154251701267585,
+      "velocity_along_boost": -1.4414411356070675,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070588779750019,
+      "max_anisotropy": 0.7078932397827447,
+      "energy_change": 0.5368082688021254,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.154251701267585,
+      "velocity_along_boost": -1.4414411356070675,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070588779750019,
+      "max_anisotropy": 0.7078932397827447,
+      "energy_change": 0.5368082688021254,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.22599171665364,
+      "velocity_along_boost": -1.4408443399862598,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070438155820598,
+      "max_anisotropy": 0.709931578291461,
+      "energy_change": 0.19173643514936067,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.22599171665364,
+      "velocity_along_boost": -1.4408443399862598,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070438155820598,
+      "max_anisotropy": 0.709931578291461,
+      "energy_change": 0.19173643514936067,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.22599171665364,
+      "velocity_along_boost": -1.4408443399862598,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070438155820598,
+      "max_anisotropy": 0.709931578291461,
+      "energy_change": 0.19173643514936067,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.1881743050991083,
+      "velocity_along_boost": 0.796388206028558,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071543001046896,
+      "max_anisotropy": 0.708618437356829,
+      "energy_change": 0.34303508984727493,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.1881743050991083,
+      "velocity_along_boost": 0.796388206028558,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071543001046896,
+      "max_anisotropy": 0.708618437356829,
+      "energy_change": 0.34303508984727493,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.1881743050991083,
+      "velocity_along_boost": 0.796388206028558,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071543001046896,
+      "max_anisotropy": 0.708618437356829,
+      "energy_change": 0.34303508984727493,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.154330589831719,
+      "velocity_along_boost": -1.262114554321755,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7046835874186183,
+      "max_anisotropy": 0.7232423046155267,
+      "energy_change": 0.49433071311197296,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.154330589831719,
+      "velocity_along_boost": -1.262114554321755,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7046835874186183,
+      "max_anisotropy": 0.7232423046155267,
+      "energy_change": 0.49433071311197296,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.154330589831719,
+      "velocity_along_boost": -1.262114554321755,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7046835874186183,
+      "max_anisotropy": 0.7232423046155267,
+      "energy_change": 0.49433071311197296,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.07779963297333,
+      "velocity_along_boost": -1.442074722189671,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072568543050542,
+      "max_anisotropy": 0.710448298453307,
+      "energy_change": 1.166490372641078,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.07779963297333,
+      "velocity_along_boost": -1.442074722189671,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072568543050542,
+      "max_anisotropy": 0.710448298453307,
+      "energy_change": 1.166490372641078,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.07779963297333,
+      "velocity_along_boost": -1.442074722189671,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072568543050542,
+      "max_anisotropy": 0.710448298453307,
+      "energy_change": 1.166490372641078,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.225835868064787,
+      "velocity_along_boost": 0.8957349758937756,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072743110755818,
+      "max_anisotropy": 0.7084085924546142,
+      "energy_change": 0.3604687842204055,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.225835868064787,
+      "velocity_along_boost": 0.8957349758937756,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072743110755818,
+      "max_anisotropy": 0.7084085924546142,
+      "energy_change": 0.3604687842204055,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.225835868064787,
+      "velocity_along_boost": 0.8957349758937756,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072743110755818,
+      "max_anisotropy": 0.7084085924546142,
+      "energy_change": 0.3604687842204055,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.12455270769299,
+      "velocity_along_boost": -0.5972964144205225,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071244960443206,
+      "max_anisotropy": 0.7085154062347786,
+      "energy_change": 0.6373512802331041,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.12455270769299,
+      "velocity_along_boost": -0.5972964144205225,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071244960443206,
+      "max_anisotropy": 0.7085154062347786,
+      "energy_change": 0.6373512802331041,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.12455270769299,
+      "velocity_along_boost": -0.5972964144205225,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071244960443206,
+      "max_anisotropy": 0.7085154062347786,
+      "energy_change": 0.6373512802331041,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.077844127247105,
+      "velocity_along_boost": -1.8948672441751437,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045266124434652,
+      "max_anisotropy": 0.7183941936557438,
+      "energy_change": 1.0839158761300376,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.077844127247105,
+      "velocity_along_boost": -1.8948672441751437,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045266124434652,
+      "max_anisotropy": 0.7183941936557438,
+      "energy_change": 1.0839158761300376,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.077844127247105,
+      "velocity_along_boost": -1.8948672441751437,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045266124434652,
+      "max_anisotropy": 0.7183941936557438,
+      "energy_change": 1.0839158761300376,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.03999266227575,
+      "velocity_along_boost": -1.442492644921732,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.707106887615953,
+      "max_anisotropy": 0.7078036337954523,
+      "energy_change": 2.2706385211728786,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.03999266227575,
+      "velocity_along_boost": -1.442492644921732,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.707106887615953,
+      "max_anisotropy": 0.7078036337954523,
+      "energy_change": 2.2706385211728786,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.03999266227575,
+      "velocity_along_boost": -1.442492644921732,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.707106887615953,
+      "max_anisotropy": 0.7078036337954523,
+      "energy_change": 2.2706385211728786,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.1543679222420886,
+      "velocity_along_boost": -1.4414931823264134,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069332504031589,
+      "max_anisotropy": 0.7077362611702277,
+      "energy_change": 0.9570602821836465,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.1543679222420886,
+      "velocity_along_boost": -1.4414931823264134,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069332504031589,
+      "max_anisotropy": 0.7077362611702277,
+      "energy_change": 0.9570602821836465,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.1543679222420886,
+      "velocity_along_boost": -1.4414931823264134,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069332504031589,
+      "max_anisotropy": 0.7077362611702277,
+      "energy_change": 0.9570602821836465,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.07779963297333,
+      "velocity_along_boost": -0.39760823075462126,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7073269821594488,
+      "max_anisotropy": 0.7087409918733304,
+      "energy_change": 1.166490372641078,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.07779963297333,
+      "velocity_along_boost": -0.39760823075462126,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7073269821594488,
+      "max_anisotropy": 0.7087409918733304,
+      "energy_change": 1.166490372641078,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.07779963297333,
+      "velocity_along_boost": -0.39760823075462126,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7073269821594488,
+      "max_anisotropy": 0.7087409918733304,
+      "energy_change": 1.166490372641078,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0399774138525406,
+      "velocity_along_boost": -1.665634583413821,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7037684231429792,
+      "max_anisotropy": 0.7098401621670271,
+      "energy_change": 2.192858328848075,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0399774138525406,
+      "velocity_along_boost": -1.665634583413821,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7037684231429792,
+      "max_anisotropy": 0.7098401621670271,
+      "energy_change": 2.192858328848075,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0399774138525406,
+      "velocity_along_boost": -1.665634583413821,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7037684231429792,
+      "max_anisotropy": 0.7098401621670271,
+      "energy_change": 2.192858328848075,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.040205605942926,
+      "velocity_along_boost": 3.524517538140111e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072180564166036,
+      "max_anisotropy": 0.7090957019711214,
+      "energy_change": 3.342045298157993,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.040205605942926,
+      "velocity_along_boost": 3.524517538140111e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072180564166036,
+      "max_anisotropy": 0.7090957019711214,
+      "energy_change": 3.342045298157993,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.040205605942926,
+      "velocity_along_boost": 3.524517538140111e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072180564166036,
+      "max_anisotropy": 0.7090957019711214,
+      "energy_change": 3.342045298157993,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.077987215951991,
+      "velocity_along_boost": -1.442190469639593,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070182578285202,
+      "max_anisotropy": 0.70787923740254,
+      "energy_change": 1.9308464849905675,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.077987215951991,
+      "velocity_along_boost": -1.442190469639593,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070182578285202,
+      "max_anisotropy": 0.70787923740254,
+      "energy_change": 1.9308464849905675,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.077987215951991,
+      "velocity_along_boost": -1.442190469639593,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070182578285202,
+      "max_anisotropy": 0.70787923740254,
+      "energy_change": 1.9308464849905675,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.039881664879284,
+      "velocity_along_boost": -1.7622587690700555e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071717583350923,
+      "max_anisotropy": 0.708137530810311,
+      "energy_change": 1.7161290001437504,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.039881664879284,
+      "velocity_along_boost": -1.7622587690700555e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071717583350923,
+      "max_anisotropy": 0.708137530810311,
+      "energy_change": 1.7161290001437504,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.039881664879284,
+      "velocity_along_boost": -1.7622587690700555e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071717583350923,
+      "max_anisotropy": 0.708137530810311,
+      "energy_change": 1.7161290001437504,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0402026657902685,
+      "velocity_along_boost": -1.6658185008508044,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7044802880175233,
+      "max_anisotropy": 0.7200782325582278,
+      "energy_change": 3.3328402609759076,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0402026657902685,
+      "velocity_along_boost": -1.6658185008508044,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7044802880175233,
+      "max_anisotropy": 0.7200782325582278,
+      "energy_change": 3.3328402609759076,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0402026657902685,
+      "velocity_along_boost": -1.6658185008508044,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7044802880175233,
+      "max_anisotropy": 0.7200782325582278,
+      "energy_change": 3.3328402609759076,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.040408158632447,
+      "velocity_along_boost": -1.4427864452130814,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072237580181737,
+      "max_anisotropy": 0.7088929734607835,
+      "energy_change": 4.322863552495376,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.040408158632447,
+      "velocity_along_boost": -1.4427864452130814,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072237580181737,
+      "max_anisotropy": 0.7088929734607835,
+      "energy_change": 4.322863552495376,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.040408158632447,
+      "velocity_along_boost": -1.4427864452130814,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072237580181737,
+      "max_anisotropy": 0.7088929734607835,
+      "energy_change": 4.322863552495376,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0402216099698904,
+      "velocity_along_boost": -1.4426545353887794,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067946991366497,
+      "max_anisotropy": 0.707913342722166,
+      "energy_change": 3.3414502391664875,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0402216099698904,
+      "velocity_along_boost": -1.4426545353887794,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067946991366497,
+      "max_anisotropy": 0.707913342722166,
+      "energy_change": 3.3414502391664875,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0402216099698904,
+      "velocity_along_boost": -1.4426545353887794,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067946991366497,
+      "max_anisotropy": 0.707913342722166,
+      "energy_change": 3.3414502391664875,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.03999266227575,
+      "velocity_along_boost": 3.524517538140111e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070427874916091,
+      "max_anisotropy": 0.7079784411890341,
+      "energy_change": 2.2706385211728786,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.03999266227575,
+      "velocity_along_boost": 3.524517538140111e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070427874916091,
+      "max_anisotropy": 0.7079784411890341,
+      "energy_change": 2.2706385211728786,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.03999266227575,
+      "velocity_along_boost": 3.524517538140111e-16,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070427874916091,
+      "max_anisotropy": 0.7079784411890341,
+      "energy_change": 2.2706385211728786,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0404221701465186,
+      "velocity_along_boost": -1.6659977254071638,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7056112424273148,
+      "max_anisotropy": 0.7189397948047136,
+      "energy_change": 4.398405788286545,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0404221701465186,
+      "velocity_along_boost": -1.6659977254071638,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7056112424273148,
+      "max_anisotropy": 0.7189397948047136,
+      "energy_change": 4.398405788286545,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "gaussian",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0404221701465186,
+      "velocity_along_boost": -1.6659977254071638,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7056112424273148,
+      "max_anisotropy": 0.7189397948047136,
+      "energy_change": 4.398405788286545,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    }
+  ],
+  "tau_maxed_runs": [
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -0.8971994235749235,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070683050422084,
+      "max_anisotropy": 0.7079405041678996,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -0.8971994235749235,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070683050422084,
+      "max_anisotropy": 0.7079405041678996,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -0.8971994235749235,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070683050422084,
+      "max_anisotropy": 0.7079405041678996,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -1.4409737078739107,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.70698066782769,
+      "max_anisotropy": 0.7076468737039738,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -1.4409737078739107,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.70698066782769,
+      "max_anisotropy": 0.7076468737039738,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -1.4409737078739107,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.70698066782769,
+      "max_anisotropy": 0.7076468737039738,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -1.4409737078739107,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072715757923544,
+      "max_anisotropy": 0.7084088628831111,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -1.4409737078739107,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072715757923544,
+      "max_anisotropy": 0.7084088628831111,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -1.4409737078739107,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072715757923544,
+      "max_anisotropy": 0.7084088628831111,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -2.1818914449901103,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7064689300366851,
+      "max_anisotropy": 0.7296390970348238,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -2.1818914449901103,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7064689300366851,
+      "max_anisotropy": 0.7296390970348238,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2266066694013347,
+      "velocity_along_boost": -2.1818914449901103,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7064689300366851,
+      "max_anisotropy": 0.7296390970348238,
+      "energy_change": 0.04740635897597634,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.188552571231454,
+      "velocity_along_boost": -1.4412993687119737,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072388962491503,
+      "max_anisotropy": 0.7086644750446274,
+      "energy_change": 0.32214956800869765,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.188552571231454,
+      "velocity_along_boost": -1.4412993687119737,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072388962491503,
+      "max_anisotropy": 0.7086644750446274,
+      "energy_change": 0.32214956800869765,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.188552571231454,
+      "velocity_along_boost": -1.4412993687119737,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072388962491503,
+      "max_anisotropy": 0.7086644750446274,
+      "energy_change": 0.32214956800869765,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2265888579370716,
+      "velocity_along_boost": -0.8971557616663688,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7068987490812801,
+      "max_anisotropy": 0.7077357058267207,
+      "energy_change": 0.06676572121031343,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2265888579370716,
+      "velocity_along_boost": -0.8971557616663688,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7068987490812801,
+      "max_anisotropy": 0.7077357058267207,
+      "energy_change": 0.06676572121031343,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2265888579370716,
+      "velocity_along_boost": -0.8971557616663688,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7068987490812801,
+      "max_anisotropy": 0.7077357058267207,
+      "energy_change": 0.06676572121031343,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.2262373869879664,
+      "velocity_along_boost": -1.4409456808182342,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069304533627387,
+      "max_anisotropy": 0.70793070516406,
+      "energy_change": 0.1816608690629915,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.2262373869879664,
+      "velocity_along_boost": -1.4409456808182342,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069304533627387,
+      "max_anisotropy": 0.70793070516406,
+      "energy_change": 0.1816608690629915,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.2262373869879664,
+      "velocity_along_boost": -1.4409456808182342,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069304533627387,
+      "max_anisotropy": 0.70793070516406,
+      "energy_change": 0.1816608690629915,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.1886259913240367,
+      "velocity_along_boost": -2.1244823070341345,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7054517261462291,
+      "max_anisotropy": 0.7224213122339185,
+      "energy_change": 0.29019987065713226,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.1886259913240367,
+      "velocity_along_boost": -2.1244823070341345,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7054517261462291,
+      "max_anisotropy": 0.7224213122339185,
+      "energy_change": 0.29019987065713226,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.1,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.1886259913240367,
+      "velocity_along_boost": -2.1244823070341345,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7054517261462291,
+      "max_anisotropy": 0.7224213122339185,
+      "energy_change": 0.29019987065713226,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.124793615962836,
+      "velocity_along_boost": -1.4418852017324502,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071533738532142,
+      "max_anisotropy": 0.7082007627461683,
+      "energy_change": 0.7767391202019918,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.124793615962836,
+      "velocity_along_boost": -1.4418852017324502,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071533738532142,
+      "max_anisotropy": 0.7082007627461683,
+      "energy_change": 0.7767391202019918,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.124793615962836,
+      "velocity_along_boost": -1.4418852017324502,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071533738532142,
+      "max_anisotropy": 0.7082007627461683,
+      "energy_change": 0.7767391202019918,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.226495818555957,
+      "velocity_along_boost": -1.4409726632083844,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071233641648904,
+      "max_anisotropy": 0.7087040165866789,
+      "energy_change": 0.1682455392522446,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.226495818555957,
+      "velocity_along_boost": -1.4409726632083844,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071233641648904,
+      "max_anisotropy": 0.7087040165866789,
+      "energy_change": 0.1682455392522446,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.226495818555957,
+      "velocity_along_boost": -1.4409726632083844,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071233641648904,
+      "max_anisotropy": 0.7087040165866789,
+      "energy_change": 0.1682455392522446,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.188408596299835,
+      "velocity_along_boost": -1.441294621561968,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071161342373271,
+      "max_anisotropy": 0.7098569315791242,
+      "energy_change": 0.39465731711417895,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.188408596299835,
+      "velocity_along_boost": -1.441294621561968,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071161342373271,
+      "max_anisotropy": 0.7098569315791242,
+      "energy_change": 0.39465731711417895,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.188408596299835,
+      "velocity_along_boost": -1.441294621561968,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071161342373271,
+      "max_anisotropy": 0.7098569315791242,
+      "energy_change": 0.39465731711417895,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.1248689514295296,
+      "velocity_along_boost": -2.0099261250007485,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7046635018134895,
+      "max_anisotropy": 0.7194201289923363,
+      "energy_change": 0.7093123006522888,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.1248689514295296,
+      "velocity_along_boost": -2.0099261250007485,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7046635018134895,
+      "max_anisotropy": 0.7194201289923363,
+      "energy_change": 0.7093123006522888,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.25,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.1248689514295296,
+      "velocity_along_boost": -2.0099261250007485,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7046635018134895,
+      "max_anisotropy": 0.7194201289923363,
+      "energy_change": 0.7093123006522888,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.04978458090826,
+      "velocity_along_boost": -1.4425845534803743,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071688740216935,
+      "max_anisotropy": 0.708283797310159,
+      "energy_change": 1.5915520176556108,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.04978458090826,
+      "velocity_along_boost": -1.4425845534803743,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071688740216935,
+      "max_anisotropy": 0.708283797310159,
+      "energy_change": 1.5915520176556108,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.04978458090826,
+      "velocity_along_boost": -1.4425845534803743,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071688740216935,
+      "max_anisotropy": 0.708283797310159,
+      "energy_change": 1.5915520176556108,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.1887802503450327,
+      "velocity_along_boost": -1.4413427587700274,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072619767272954,
+      "max_anisotropy": 0.7084710876210099,
+      "energy_change": 0.5285284357941862,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.1887802503450327,
+      "velocity_along_boost": -1.4413427587700274,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072619767272954,
+      "max_anisotropy": 0.7084710876210099,
+      "energy_change": 0.5285284357941862,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.1887802503450327,
+      "velocity_along_boost": -1.4413427587700274,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072619767272954,
+      "max_anisotropy": 0.7084710876210099,
+      "energy_change": 0.5285284357941862,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.124793615962836,
+      "velocity_along_boost": -0.5972286325884038,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070073828145981,
+      "max_anisotropy": 0.7073407686827333,
+      "energy_change": 0.7767391202019918,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.124793615962836,
+      "velocity_along_boost": -0.5972286325884038,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070073828145981,
+      "max_anisotropy": 0.7073407686827333,
+      "energy_change": 0.7767391202019918,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.124793615962836,
+      "velocity_along_boost": -0.5972286325884038,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7070073828145981,
+      "max_anisotropy": 0.7073407686827333,
+      "energy_change": 0.7767391202019918,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0616681143207884,
+      "velocity_along_boost": -1.493453378316021,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7043737757547467,
+      "max_anisotropy": 0.7138041864371873,
+      "energy_change": 1.5086334836365918,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0616681143207884,
+      "velocity_along_boost": -1.493453378316021,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7043737757547467,
+      "max_anisotropy": 0.7138041864371873,
+      "energy_change": 1.5086334836365918,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.5,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0616681143207884,
+      "velocity_along_boost": -1.493453378316021,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7043737757547467,
+      "max_anisotropy": 0.7138041864371873,
+      "energy_change": 1.5086334836365918,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0406247171164416,
+      "velocity_along_boost": -1.442939575185622,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069521975306302,
+      "max_anisotropy": 0.7078187674480819,
+      "energy_change": 2.4383785537195837,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0406247171164416,
+      "velocity_along_boost": -1.442939575185622,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069521975306302,
+      "max_anisotropy": 0.7078187674480819,
+      "energy_change": 2.4383785537195837,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0406247171164416,
+      "velocity_along_boost": -1.442939575185622,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7069521975306302,
+      "max_anisotropy": 0.7078187674480819,
+      "energy_change": 2.4383785537195837,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.154774177415157,
+      "velocity_along_boost": -1.4416989751746274,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067939702746081,
+      "max_anisotropy": 0.7078164785438213,
+      "energy_change": 1.120887316384788,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.154774177415157,
+      "velocity_along_boost": -1.4416989751746274,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067939702746081,
+      "max_anisotropy": 0.7078164785438213,
+      "energy_change": 1.120887316384788,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.154774177415157,
+      "velocity_along_boost": -1.4416989751746274,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7067939702746081,
+      "max_anisotropy": 0.7078164785438213,
+      "energy_change": 1.120887316384788,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0781734869489923,
+      "velocity_along_boost": -1.442297726077872,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7073026789764341,
+      "max_anisotropy": 0.7080530835385312,
+      "energy_change": 1.1786361799579343,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0781734869489923,
+      "velocity_along_boost": -1.442297726077872,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7073026789764341,
+      "max_anisotropy": 0.7080530835385312,
+      "energy_change": 1.1786361799579343,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0781734869489923,
+      "velocity_along_boost": -1.442297726077872,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7073026789764341,
+      "max_anisotropy": 0.7080530835385312,
+      "energy_change": 1.1786361799579343,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.040570922690185,
+      "velocity_along_boost": -1.6661191813504592,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045533398102272,
+      "max_anisotropy": 0.7091762960273583,
+      "energy_change": 2.375681819302819,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.040570922690185,
+      "velocity_along_boost": -1.6661191813504592,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045533398102272,
+      "max_anisotropy": 0.7091762960273583,
+      "energy_change": 2.375681819302819,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 0.75,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.040570922690185,
+      "velocity_along_boost": -1.6661191813504592,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7045533398102272,
+      "max_anisotropy": 0.7091762960273583,
+      "energy_change": 2.375681819302819,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.041024658233644,
+      "velocity_along_boost": -1.4432223762616434,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071261559933577,
+      "max_anisotropy": 0.7077308740707484,
+      "energy_change": 3.2593282700695623,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.041024658233644,
+      "velocity_along_boost": -1.4432223762616434,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071261559933577,
+      "max_anisotropy": 0.7077308740707484,
+      "energy_change": 3.2593282700695623,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.041024658233644,
+      "velocity_along_boost": -1.4432223762616434,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7071261559933577,
+      "max_anisotropy": 0.7077308740707484,
+      "energy_change": 3.2593282700695623,
+      "n_samples": 20,
+      "direction_name": "x"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0994927541914015,
+      "velocity_along_boost": -0.49749176096198205,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.707024029537475,
+      "max_anisotropy": 0.7079893473100825,
+      "energy_change": 1.9475341583395016,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0994927541914015,
+      "velocity_along_boost": -0.49749176096198205,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.707024029537475,
+      "max_anisotropy": 0.7079893473100825,
+      "energy_change": 1.9475341583395016,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0994927541914015,
+      "velocity_along_boost": -0.49749176096198205,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.707024029537475,
+      "max_anisotropy": 0.7079893473100825,
+      "energy_change": 1.9475341583395016,
+      "n_samples": 20,
+      "direction_name": "y"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 42,
+      "measured_velocity": 2.04978458090826,
+      "velocity_along_boost": -1.4425845534803743,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072036068885299,
+      "max_anisotropy": 0.7081844005865073,
+      "energy_change": 1.5915520176556108,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 123,
+      "measured_velocity": 2.04978458090826,
+      "velocity_along_boost": -1.4425845534803743,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072036068885299,
+      "max_anisotropy": 0.7081844005865073,
+      "energy_change": 1.5915520176556108,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seed": 456,
+      "measured_velocity": 2.04978458090826,
+      "velocity_along_boost": -1.4425845534803743,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7072036068885299,
+      "max_anisotropy": 0.7081844005865073,
+      "energy_change": 1.5915520176556108,
+      "n_samples": 20,
+      "direction_name": "z"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 42,
+      "measured_velocity": 2.0409921986331927,
+      "velocity_along_boost": -1.6664631517175181,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7062051894955207,
+      "max_anisotropy": 0.7280085241389189,
+      "energy_change": 3.252363618867295,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 123,
+      "measured_velocity": 2.0409921986331927,
+      "velocity_along_boost": -1.6664631517175181,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7062051894955207,
+      "max_anisotropy": 0.7280085241389189,
+      "energy_change": 3.252363618867295,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    },
+    {
+      "structure_type": "tau_maxed",
+      "boost_strength": 1.0,
+      "boost_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "seed": 456,
+      "measured_velocity": 2.0409921986331927,
+      "velocity_along_boost": -1.6664631517175181,
+      "survival_time": 5.040000000000004,
+      "decayed": true,
+      "mean_anisotropy": 0.7062051894955207,
+      "max_anisotropy": 0.7280085241389189,
+      "energy_change": 3.252363618867295,
+      "n_samples": 20,
+      "direction_name": "diagonal"
+    }
+  ]
+}
