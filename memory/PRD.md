@@ -4,26 +4,27 @@
 
 ---
 
-### Latest: Vibration Field Isotropy Test — ISOTROPIC ✓
+### Latest: Multi-Seed Isotropy Validation — ★ BREAKTHROUGH
 
-| Metric | Anisotropy | Status |
-|--------|------------|--------|
-| Gradient energy | **0.0051** | ✓ ISOTROPIC |
-| Velocity variance | **0.0030** | ✓ ISOTROPIC |
-| k-space power | **0.0022** | ✓ ISOTROPIC |
-| **Combined** | **0.0026** | ✓ **ISOTROPIC** |
+| Seed | Combined Anisotropy | Status |
+|------|---------------------|--------|
+| 42 | **0.0028** | STRONG ✓ |
+| 123 | **0.0044** | STRONG ✓ |
+| 456 | **0.0038** | STRONG ✓ |
+| 789 | **0.0027** | STRONG ✓ |
+| 1000 | **0.0037** | STRONG ✓ |
 
-**Major Finding:** The turbulent vibrational phase exhibits **emergent rotational symmetry** (anisotropy = 0.003 << 0.15 threshold), despite being driven by randomly-placed defects.
+**Aggregate:** Mean = **0.0035 ± 0.0006**, Max = 0.0044, **5/5 STRONG PASS**
 
-**Gradient Energy:** E_x : E_y : E_z = 1.80 : 1.77 : 1.78 (ratio max/min = 1.013)
+**Key Finding:** Despite z-axis biased vortex injection, all seeds produce near-perfect isotropy. This is **genuine emergent rotational symmetry** from statistical averaging.
 
 **Files:**
-- `/app/backend/vibration_isotropy_test.py`
-- `/app/backend/qmrt_topology/papers/VIBRATION_ISOTROPY_REPORT.md`
+- `/app/backend/multi_seed_isotropy_test.py`
+- `/app/backend/qmrt_topology/papers/MULTI_SEED_ISOTROPY_REPORT.md`
 
 ---
 
-### Previous: Spectrum Stability Test — STABLE PHASE CONFIRMED ✓
+### Previous: Vibration Field Isotropy Test — ISOTROPIC ✓
 
 | Mode | c_eff | fit R² | Verdict |
 |------|-------|--------|---------|
@@ -78,8 +79,9 @@
 | Dispersion Relation | ✓ EXCELLENT | ω² = c²k² holds (R² > 0.99) |
 | Vibration Source | ✓ CONFIRMED | Defects are active sources; 4.4× recovery boost |
 | Spectrum Stability | ✓ STABLE | Stationary phase confirmed (CV ≈ 0.14) |
-| **Vibration Isotropy** | **✓ ISOTROPIC** | **Emergent rotational symmetry (aniso = 0.003)** |
-| Multi-Seed Validation | NEXT | Confirm isotropy across seeds |
+| Vibration Isotropy | ✓ ISOTROPIC | Aniso = 0.003, emergent symmetry |
+| **Multi-Seed Isotropy** | **★ BREAKTHROUGH** | **Aniso = 0.0035 ± 0.0006 across 5 seeds** |
+| Moving Structure Test | NEXT | Velocity caps / effective c? |
 
 ---
 

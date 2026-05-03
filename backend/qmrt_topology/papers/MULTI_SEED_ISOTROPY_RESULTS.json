@@ -1,0 +1,75 @@
+{
+  "test": "multi_seed_isotropy",
+  "date": "December 2025",
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1000
+  ],
+  "verdict": "BREAKTHROUGH",
+  "thresholds": {
+    "minimum": 0.05,
+    "strong": 0.01
+  },
+  "aggregate": {
+    "mean_combined": 0.0034985431443832816,
+    "std_combined": 0.0006446634043299604,
+    "max_combined": 0.004445725942795281,
+    "all_pass": true,
+    "strong_pass_count": 5
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "combined_anisotropy": 0.0028199014732120655,
+      "gradient_anisotropy": 0.004193438883957132,
+      "velocity_anisotropy": 0.0025512937196084575,
+      "kspace_anisotropy": 0.0017149718160706074,
+      "E_ratio": 1.0096927004832328,
+      "vibration_energy": 18.975619860711312,
+      "creations": 16622
+    },
+    {
+      "seed": 123,
+      "combined_anisotropy": 0.004445725942795281,
+      "gradient_anisotropy": 0.005241961603836219,
+      "velocity_anisotropy": 0.005105214822379639,
+      "kspace_anisotropy": 0.0029900014021699887,
+      "E_ratio": 1.012113145946824,
+      "vibration_energy": 19.315538606950962,
+      "creations": 16615
+    },
+    {
+      "seed": 456,
+      "combined_anisotropy": 0.0037785650157057095,
+      "gradient_anisotropy": 0.0039459521729702345,
+      "velocity_anisotropy": 0.004918938072372216,
+      "kspace_anisotropy": 0.0024708048017746767,
+      "E_ratio": 1.0094764598587775,
+      "vibration_energy": 18.77767766698868,
+      "creations": 16619
+    },
+    {
+      "seed": 789,
+      "combined_anisotropy": 0.002728594507377892,
+      "gradient_anisotropy": 0.002779838497430731,
+      "velocity_anisotropy": 0.002614527752711604,
+      "kspace_anisotropy": 0.00279141727199134,
+      "E_ratio": 1.0064848234317982,
+      "vibration_energy": 18.177158375747275,
+      "creations": 16637
+    },
+    {
+      "seed": 1000,
+      "combined_anisotropy": 0.0037199287828254594,
+      "gradient_anisotropy": 0.004310550266394737,
+      "velocity_anisotropy": 0.003745706019697595,
+      "kspace_anisotropy": 0.003103530062384047,
+      "E_ratio": 1.0103349246881415,
+      "vibration_energy": 18.514787197552614,
+      "creations": 16626
+    }
+  ]
+}
