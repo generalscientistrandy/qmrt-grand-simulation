@@ -146,6 +146,8 @@ The QMRT medium has a **well-defined maximum signal speed** that depends on loca
 | **Signal Speed / Velocity Cap** | **★ CONFIRMED** | **c_eff = √(c₀²τ), scales correctly** |
 | **Creation-Wave Correlation** | **★ CONFIRMED** | **Corr = 0.811, 72% positive injection** |
 | **Boost Invariance** | **MEDIUM-DEPENDENT** | **c_eff law holds, asymmetry expected** |
+| Fresnel Drag | WEAK ANTI-DRAG | α = -0.067, R² = 0.45 (needs more seeds) |
+| **τ-Gradient Lensing** | **★ CONFIRMED** | **Corr = -1.000, 100% correct direction** |
 | Time Dilation / Length Contraction | PENDING | — |
 
 ---
@@ -164,11 +166,18 @@ Waves form statistically isotropic background
 Isotropic medium supports bounded signal speed c_eff(τ)
     ↓ (Boost Invariance Test ✓)
 c_eff law holds in boosted frames (medium-dependent)
+    ↓ (τ-Gradient Lensing Test ✓)
+Spatial τ gradients bend wave paths → effective refractive geometry
 ```
 
 ### Theoretical Claim (Updated December 2025)
 
-> "The regulated QMRT medium exhibits validated Lorentz-like ingredients in its rest frame: statistical rotational isotropy, bounded τ-dependent signal propagation, and a causal creation-to-wave energy chain. Boost invariance shows medium-dependent behavior consistent with wave propagation in a physical medium rather than vacuum Lorentz invariance."
+> "The regulated QMRT medium exhibits Lorentz-like ingredients in a preferred medium frame and supports τ-gradient lensing, where spatial τ gradients bend wave propagation through an effective refractive geometry."
+
+### Key Documents
+
+- **Master Summary:** `/app/backend/qmrt_topology/papers/QMRT_REGULATED_MEDIUM_LORENTZ_LIKE_SUMMARY.md`
+- **Technical Report:** `/app/backend/qmrt_topology/papers/QMRT_Regulated_Medium_Geometry_Report.md`
 
 ---
 
