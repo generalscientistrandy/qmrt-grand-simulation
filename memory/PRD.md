@@ -104,7 +104,24 @@ The QMRT medium has a **well-defined maximum signal speed** that depends on loca
 | Vibration Isotropy | ✓ ISOTROPIC | Aniso = 0.003, emergent symmetry |
 | **Multi-Seed Isotropy** | **★ BREAKTHROUGH** | **Aniso = 0.0035 ± 0.0006 across 5 seeds** |
 | **Signal Speed / Velocity Cap** | **★ CONFIRMED** | **c_eff = √(c₀²τ), scales correctly** |
-| Creation-Wave Correlation | NEXT | Causal link: creation → energy injection |
+| **Creation-Wave Correlation** | **★ CONFIRMED** | **Corr = 0.811, 72% positive injection** |
+| Boost Invariance | PENDING | — |
+
+---
+
+### Full Causal Chain (Now Validated)
+
+```
+Regulated τ recovery
+    ↓ (Creation-Wave Test ✓)
+Sustains defect creation
+    ↓ (Vibration Source Test ✓)
+Defects inject vibrational energy
+    ↓ (Multi-Seed Isotropy Test ✓)
+Waves form statistically isotropic background
+    ↓ (Signal Speed Test ✓)
+Isotropic medium supports bounded signal speed c_eff(τ)
+```
 
 ---
 
