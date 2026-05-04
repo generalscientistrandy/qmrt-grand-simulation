@@ -1,6 +1,46 @@
-## Current Status: EMERGENT LORENTZ TESTING — IN PROGRESS
+## Current Status: LORENTZ-LIKE PROPERTIES VALIDATED
 
 **Date: December 2025**
+
+### Final Claim
+
+> **"The regulated QMRT medium exhibits Lorentz-like ingredients in its preferred rest frame: sustained topological recovery, statistical rotational isotropy, bounded τ-dependent signal propagation, and a causal creation-to-wave energy chain. Boost tests show medium-dependent asymmetry rather than full vacuum Lorentz invariance, indicating a preferred medium frame."**
+
+### Master Summary Document
+
+**`/app/backend/qmrt_topology/papers/QMRT_REGULATED_MEDIUM_LORENTZ_LIKE_SUMMARY.md`**
+
+---
+
+### Directory Structure (Post-Refactoring)
+
+```
+/app/backend/
+├── full_mechanism_simulator.py   # CORE: Baseline simulator
+├── server.py                     # FastAPI server
+├── models.py                     # Data models
+├── engine_api.py                 # Engine interface
+├── [11 active Lorentz test files]
+├── archive/
+│   ├── branch_tests/     (16 files)
+│   ├── old_engines/      (14 files)
+│   └── experiments/      (97 files)
+└── qmrt_topology/
+    └── papers/           (All reports and JSON results)
+```
+
+**Active Test Files (15 total):**
+- `light_cone_test_v2.py`
+- `directional_isotropy_test.py`
+- `dispersion_relation_test.py`
+- `defect_organization_test.py`
+- `vibration_source_test.py`
+- `spectrum_stability_test.py`
+- `vibration_isotropy_test.py`
+- `multi_seed_isotropy_test.py`
+- `signal_speed_test.py`
+- `creation_wave_test.py`
+- `boost_invariance_test.py`
 
 ---
 
