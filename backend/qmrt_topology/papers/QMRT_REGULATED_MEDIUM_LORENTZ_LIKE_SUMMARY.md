@@ -2,13 +2,26 @@
 
 **Date:** December 2025  
 **Baseline:** Regulated Recovery v1.1  
-**Status:** VALIDATED LORENTZ-LIKE INGREDIENTS (Medium-Dependent)
+**Status:** VALIDATED LORENTZ-LIKE INGREDIENTS + EFFECTIVE GEOMETRY
 
 ---
 
-## Final Claim
+## Final Claim (Updated)
 
-> **"The regulated QMRT medium exhibits Lorentz-like ingredients in its preferred rest frame: sustained topological recovery, statistical rotational isotropy, bounded τ-dependent signal propagation, and a causal creation-to-wave energy chain. Boost tests show medium-dependent asymmetry rather than full vacuum Lorentz invariance, indicating a preferred medium frame."**
+> **"The regulated QMRT medium exhibits Lorentz-like ingredients in its preferred rest frame: sustained topological recovery, statistical rotational isotropy, bounded τ-dependent signal propagation, a causal creation-to-wave energy chain, and τ-gradient lensing analogous to curved spacetime. Boost tests show medium-dependent asymmetry rather than full vacuum Lorentz invariance, indicating a preferred medium frame."**
+
+---
+
+## Executive Summary of All Tests
+
+| Test | Status | Key Result |
+|------|--------|------------|
+| Rotational Isotropy | ★ VALIDATED | Anisotropy 0.0035 ± 0.0006 |
+| Signal Speed Law | ★ VALIDATED | c_eff = √(c₀²τ), scales correctly |
+| Creation-Wave Causality | ★ CONFIRMED | Corr = 0.811, 72% positive injection |
+| Boost Invariance | MEDIUM-DEPENDENT | Asymmetry corr = -0.844 |
+| Fresnel Drag | WEAK ANTI-DRAG | α = -0.067, R² = 0.45 |
+| **τ-Gradient Lensing** | **★ CONFIRMED** | **Corr = -1.000, 100% correct direction** |
 
 ---
 
