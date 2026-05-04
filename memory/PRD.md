@@ -105,7 +105,8 @@ The QMRT medium has a **well-defined maximum signal speed** that depends on loca
 | **Multi-Seed Isotropy** | **★ BREAKTHROUGH** | **Aniso = 0.0035 ± 0.0006 across 5 seeds** |
 | **Signal Speed / Velocity Cap** | **★ CONFIRMED** | **c_eff = √(c₀²τ), scales correctly** |
 | **Creation-Wave Correlation** | **★ CONFIRMED** | **Corr = 0.811, 72% positive injection** |
-| Boost Invariance | PENDING | — |
+| **Boost Invariance** | **MEDIUM-DEPENDENT** | **c_eff law holds, asymmetry expected** |
+| Time Dilation / Length Contraction | PENDING | — |
 
 ---
 
@@ -121,7 +122,13 @@ Defects inject vibrational energy
 Waves form statistically isotropic background
     ↓ (Signal Speed Test ✓)
 Isotropic medium supports bounded signal speed c_eff(τ)
+    ↓ (Boost Invariance Test ✓)
+c_eff law holds in boosted frames (medium-dependent)
 ```
+
+### Theoretical Claim (Updated December 2025)
+
+> "The regulated QMRT medium exhibits validated Lorentz-like ingredients in its rest frame: statistical rotational isotropy, bounded τ-dependent signal propagation, and a causal creation-to-wave energy chain. Boost invariance shows medium-dependent behavior consistent with wave propagation in a physical medium rather than vacuum Lorentz invariance."
 
 ---
 
