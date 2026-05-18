@@ -1,8 +1,38 @@
-## Current Status: 4D EXPANSION CONFIRMED — ★★★ THEORETICAL BREAKTHROUGH
+## Current Status: DIMENSIONAL UNLOCKING VALIDATED — ★★★ BREAKTHROUGH
 
 **Date: December 2025**
 
-### Latest: 4D Dimensional Expansion Test — ★★★ CONFIRMED
+### Latest: Dimensional Unlocking / Oversaturation Test — ★★★ VALIDATED
+
+**Dimensions unlock via internal pressure, not external forcing.**
+
+| Seed | Y Unlock T | Z Unlock T | Final D_eff | Mechanism |
+|------|------------|------------|-------------|-----------|
+| 42 | **T=169** | **T=215** | 2.99 | Pressure > threshold |
+| 123 | **T=270** | **T=289** | 2.96 | Pressure > threshold |
+
+**Transition sequence observed:**
+```
+1D phase (D_eff≈1.3) → pressure builds → Y UNLOCKS → 
+2D phase (D_eff≈2.0) → pressure builds → Z UNLOCKS → 
+3D phase (D_eff≈3.0)
+```
+
+**Scientific Statement:**
+> "Dimensional emergence proceeds by oversaturation-driven unlocking. Lower-dimensional phases persist while transverse degrees of freedom remain dynamically inaccessible. When defect/τ/strain pressure exceeds threshold, the next dimension ACTIVATES."
+
+**Implications:**
+- Early universe may have started 1D and expanded via oversaturation
+- Black holes may be "dimensional pressure release valves"
+- Missing gravity mechanism may emerge from pressure gradients
+
+**Files:**
+- `/app/backend/dimensional_unlocking_test.py`
+- `/app/backend/qmrt_topology/papers/DIMENSIONAL_UNLOCKING_REPORT.md`
+
+---
+
+### Previous: 4D Expansion — ★★★ CONFIRMED
 
 **The medium saturates at D_eff ≈ 4.0 when 4 dimensions are available.**
 
