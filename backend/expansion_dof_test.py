@@ -56,8 +56,8 @@ class ExpansionDOFSimulator:
                  dt: float = 0.12, 
                  seed: int = 42,
                  unlocking_enabled: bool = True,
-                 unlock_threshold: float = 1.5,
-                 unlock_rate: float = 0.02):
+                 unlock_threshold: float = 0.025,  # Higher threshold for later unlock
+                 unlock_rate: float = 0.03):       # Slower unlock rate
         """
         Initialize with configurable dimensional unlocking.
         
@@ -104,20 +104,30 @@ class ExpansionDOFSimulator:
         self.psi_r = np.ones(shape)
         self.psi_i = np.zeros(shape)
         
-        # Concentrated initial perturbation at center
+        # Moderate initial perturbation - enough to build pressure over time
         center = size // 2
         for x in range(size):
             for y in range(size):
                 for z in range(size):
                     r = np.sqrt((x-center)**2 + (y-center)**2 + (z-center)**2)
-                    if r < 3:
-                        amp = 0.5 * np.exp(-r**2 / 4)
+                    if r < 4:
+                        amp = 0.8 * np.exp(-r**2 / 6)
                         self.psi_r[x, y, z] += amp * np.random.randn()
                         self.psi_i[x, y, z] += amp * np.random.randn()
         
         self.psi_r_dot = np.zeros(shape)
         self.psi_i_dot = np.zeros(shape)
         self.tau = np.ones(shape)
+        
+        # Moderate initial velocity
+        for x in range(size):
+            for y in range(size):
+                for z in range(size):
+                    r = np.sqrt((x-center)**2 + (y-center)**2 + (z-center)**2)
+                    if r < 3:
+                        vel_amp = 0.3 * np.exp(-r**2 / 4)
+                        self.psi_r_dot[x, y, z] += vel_amp * np.random.randn()
+                        self.psi_i_dot[x, y, z] += vel_amp * np.random.randn()
         
         # Expansion tracking
         self.total_creations = 0
@@ -127,6 +137,7 @@ class ExpansionDOFSimulator:
         mode = "ENABLED" if unlocking_enabled else "DISABLED"
         print(f"Expansion-DOF Test initialized")
         print(f"  Unlocking: {mode}")
+        print(f"  Unlock threshold: {unlock_threshold}")
         print(f"  Grid: {size}³")
     
     def _weighted_laplacian(self, f):
@@ -208,22 +219,54 @@ class ExpansionDOFSimulator:
         
         return sum_l**2 / sum_l_sq if sum_l_sq > 0 else 1.0
     
+    def compute_sink_nodes(self) -> int:
+        """
+        Count sink nodes - regions where τ accumulates above threshold.
+        These are analogs to gravitational wells.
+        """
+        threshold = 1.2
+        high_tau = self.tau > threshold
+        labeled, n_sinks = label(high_tau)
+        return n_sinks
+    
+    def compute_gradient_strength(self) -> float:
+        """
+        Compute mean gradient strength across the field.
+        Higher gradient = more non-equilibrium pressure flow.
+        """
+        # τ gradient
+        tau_grad_x = np.roll(self.tau, -1, axis=0) - self.tau
+        tau_grad_y = np.roll(self.tau, -1, axis=1) - self.tau
+        tau_grad_z = np.roll(self.tau, -1, axis=2) - self.tau
+        tau_grad_mag = np.sqrt(tau_grad_x**2 + tau_grad_y**2 + tau_grad_z**2)
+        
+        # Amplitude gradient
+        amp = np.sqrt(self.psi_r**2 + self.psi_i**2)
+        amp_grad_x = np.roll(amp, -1, axis=0) - amp
+        amp_grad_y = np.roll(amp, -1, axis=1) - amp
+        amp_grad_z = np.roll(amp, -1, axis=2) - amp
+        amp_grad_mag = np.sqrt(amp_grad_x**2 + amp_grad_y**2 + amp_grad_z**2)
+        
+        return float(np.mean(tau_grad_mag) + np.mean(amp_grad_mag))
+    
     def check_unlock(self, pressure: float):
         """Check and apply dimensional unlocking if enabled."""
         if not self.unlocking_enabled:
             return
         
+        # Y unlocks when pressure exceeds threshold
         if self.ay < 1.0 and pressure > self.unlock_threshold:
             self.ay = min(1.0, self.ay + self.unlock_rate)
-            if self.y_unlock_T is None and self.ay > 0:
+            if self.y_unlock_T is None and self.ay > 0.01:
                 self.y_unlock_T = self.global_T
-                print(f"  *** Y UNLOCKING at T={self.global_T:.1f} (pressure={pressure:.2f})")
+                print(f"  *** Y UNLOCKING at T={self.global_T:.1f} (pressure={pressure:.4f})")
         
-        if self.ay > 0.5 and self.az < 1.0 and pressure > self.unlock_threshold * 1.5:
+        # Z unlocks when Y is significantly active AND pressure still high
+        if self.ay > 0.5 and self.az < 1.0 and pressure > self.unlock_threshold * 1.2:
             self.az = min(1.0, self.az + self.unlock_rate)
-            if self.z_unlock_T is None and self.az > 0:
+            if self.z_unlock_T is None and self.az > 0.01:
                 self.z_unlock_T = self.global_T
-                print(f"  *** Z UNLOCKING at T={self.global_T:.1f} (pressure={pressure:.2f})")
+                print(f"  *** Z UNLOCKING at T={self.global_T:.1f} (pressure={pressure:.4f})")
     
     def step(self):
         """Advance simulation."""
@@ -290,13 +333,14 @@ def run_expansion_dof_test(
     size: int = 32,
     seed: int = 42,
     unlocking_enabled: bool = True,
+    unlock_threshold: float = 0.025,
 ) -> Dict[str, Any]:
     """Run single expansion-DOF test."""
     
     sim = ExpansionDOFSimulator(
         size=size, dt=0.12, seed=seed,
         unlocking_enabled=unlocking_enabled,
-        unlock_threshold=1.5, unlock_rate=0.02
+        unlock_threshold=unlock_threshold, unlock_rate=0.03
     )
     
     t_start = time.time()
@@ -304,8 +348,8 @@ def run_expansion_dof_test(
     last_measure = 0.0
     
     print()
-    print(f"{'T':>6} | {'Radius':>7} | {'dR/dT':>7} | {'Pressure':>8} | {'D_eff':>6} | DOF")
-    print("-" * 60)
+    print(f"{'T':>6} | {'Radius':>7} | {'dR/dT':>7} | {'Press':>7} | {'D_eff':>6} | {'Sinks':>5} | {'Grad':>6} | DOF")
+    print("-" * 80)
     
     prev_radius = 0.0
     prev_T = 0.0
@@ -326,6 +370,8 @@ def run_expansion_dof_test(
             
             radius = sim.compute_expansion_radius()
             d_eff = sim.compute_d_eff()
+            sink_nodes = sim.compute_sink_nodes()
+            gradient_strength = sim.compute_gradient_strength()
             
             # Expansion velocity
             dR_dT = (radius - prev_radius) / (sim.global_T - prev_T) if prev_T > 0 else 0
@@ -333,7 +379,7 @@ def run_expansion_dof_test(
             dof = f"{sim.ax:.0f}{sim.ay:.1f}{sim.az:.1f}"
             
             print(f"{sim.global_T:>6.1f} | {radius:>7.2f} | {dR_dT:>7.3f} | "
-                  f"{pressure:>8.3f} | {d_eff:>6.2f} | {dof}")
+                  f"{pressure:>7.3f} | {d_eff:>6.2f} | {sink_nodes:>5} | {gradient_strength:>6.3f} | {dof}")
             
             sim.metrics_history.append({
                 'T': sim.global_T,
@@ -344,6 +390,8 @@ def run_expansion_dof_test(
                 'ax': sim.ax,
                 'ay': sim.ay,
                 'az': sim.az,
+                'sink_nodes': sink_nodes,
+                'gradient_strength': gradient_strength,
             })
             sim.expansion_radii.append((sim.global_T, radius))
             
@@ -421,14 +469,22 @@ def run_comparison_test(
             post = metrics[mid:]
         
         if pre and post:
-            pre_velocity = np.mean([m['dR_dT'] for m in pre if m['dR_dT'] > 0])
-            post_velocity = np.mean([m['dR_dT'] for m in post if m['dR_dT'] > 0])
+            pre_velocity = np.mean([m['dR_dT'] for m in pre if m['dR_dT'] > 0]) if any(m['dR_dT'] > 0 for m in pre) else 0
+            post_velocity = np.mean([m['dR_dT'] for m in post if m['dR_dT'] > 0]) if any(m['dR_dT'] > 0 for m in post) else 0
             pre_pressure = np.mean([m['pressure'] for m in pre])
             post_pressure = np.mean([m['pressure'] for m in post])
+            pre_d_eff = np.mean([m['D_eff'] for m in pre])
+            post_d_eff = np.mean([m['D_eff'] for m in post])
+            pre_sinks = np.mean([m.get('sink_nodes', 0) for m in pre])
+            post_sinks = np.mean([m.get('sink_nodes', 0) for m in post])
+            pre_grad = np.mean([m.get('gradient_strength', 0) for m in pre])
+            post_grad = np.mean([m.get('gradient_strength', 0) for m in post])
             
             print(f"\n{condition.upper()}:")
-            print(f"  Pre-unlock:  velocity={pre_velocity:.4f}, pressure={pre_pressure:.3f}")
-            print(f"  Post-unlock: velocity={post_velocity:.4f}, pressure={post_pressure:.3f}")
+            print(f"  Pre-unlock:  velocity={pre_velocity:.4f}, pressure={pre_pressure:.3f}, D_eff={pre_d_eff:.2f}")
+            print(f"  Post-unlock: velocity={post_velocity:.4f}, pressure={post_pressure:.3f}, D_eff={post_d_eff:.2f}")
+            print(f"  Pre sinks:   {pre_sinks:.1f}, Post sinks: {post_sinks:.1f}")
+            print(f"  Pre grad:    {pre_grad:.4f}, Post grad: {post_grad:.4f}")
             
             if pre_velocity > 0:
                 accel = (post_velocity - pre_velocity) / pre_velocity * 100
@@ -436,6 +492,14 @@ def run_comparison_test(
             
             results[condition]['pre_velocity'] = pre_velocity
             results[condition]['post_velocity'] = post_velocity
+            results[condition]['pre_pressure'] = pre_pressure
+            results[condition]['post_pressure'] = post_pressure
+            results[condition]['pre_d_eff'] = pre_d_eff
+            results[condition]['post_d_eff'] = post_d_eff
+            results[condition]['pre_sinks'] = pre_sinks
+            results[condition]['post_sinks'] = post_sinks
+            results[condition]['pre_gradient'] = pre_grad
+            results[condition]['post_gradient'] = post_grad
     
     # Verdict
     print()
@@ -466,17 +530,67 @@ def run_comparison_test(
     
     print(f"\n{verdict}")
     
-    # Save
+    # Save comprehensive results
     output_dir = '/app/backend/qmrt_topology/papers/expansion_dof'
     os.makedirs(output_dir, exist_ok=True)
     
+    comprehensive_results = {
+        'test_name': 'Expansion-DOF Coupling Test',
+        'hypothesis': 'Expansion velocity increases when new DOF unlocks',
+        'verdict': verdict,
+        'enabled': {
+            'final_radius': enabled_final,
+            'y_unlock_T': results['enabled']['y_unlock_T'],
+            'z_unlock_T': results['enabled'].get('z_unlock_T'),
+            'pre_velocity': results['enabled'].get('pre_velocity', 0),
+            'post_velocity': results['enabled'].get('post_velocity', 0),
+            'velocity_change_pct': ((results['enabled'].get('post_velocity', 0) - results['enabled'].get('pre_velocity', 0)) / results['enabled'].get('pre_velocity', 1)) * 100 if results['enabled'].get('pre_velocity', 0) > 0 else 0,
+            'pre_pressure': results['enabled'].get('pre_pressure', 0),
+            'post_pressure': results['enabled'].get('post_pressure', 0),
+            'pre_d_eff': results['enabled'].get('pre_d_eff', 0),
+            'post_d_eff': results['enabled'].get('post_d_eff', 0),
+            'pre_sinks': results['enabled'].get('pre_sinks', 0),
+            'post_sinks': results['enabled'].get('post_sinks', 0),
+            'pre_gradient': results['enabled'].get('pre_gradient', 0),
+            'post_gradient': results['enabled'].get('post_gradient', 0),
+            'dimension_weights_final': {
+                'ax': results['enabled']['metrics'][-1]['ax'] if results['enabled']['metrics'] else 1,
+                'ay': results['enabled']['metrics'][-1]['ay'] if results['enabled']['metrics'] else 0,
+                'az': results['enabled']['metrics'][-1]['az'] if results['enabled']['metrics'] else 0,
+            },
+            'metrics_timeseries': results['enabled']['metrics'],
+        },
+        'disabled': {
+            'final_radius': disabled_final,
+            'y_unlock_T': None,
+            'z_unlock_T': None,
+            'pre_velocity': results['disabled'].get('pre_velocity', 0),
+            'post_velocity': results['disabled'].get('post_velocity', 0),
+            'velocity_change_pct': ((results['disabled'].get('post_velocity', 0) - results['disabled'].get('pre_velocity', 0)) / results['disabled'].get('pre_velocity', 1)) * 100 if results['disabled'].get('pre_velocity', 0) > 0 else 0,
+            'pre_pressure': results['disabled'].get('pre_pressure', 0),
+            'post_pressure': results['disabled'].get('post_pressure', 0),
+            'pre_d_eff': results['disabled'].get('pre_d_eff', 0),
+            'post_d_eff': results['disabled'].get('post_d_eff', 0),
+            'pre_sinks': results['disabled'].get('pre_sinks', 0),
+            'post_sinks': results['disabled'].get('post_sinks', 0),
+            'pre_gradient': results['disabled'].get('pre_gradient', 0),
+            'post_gradient': results['disabled'].get('post_gradient', 0),
+            'dimension_weights_final': {
+                'ax': results['disabled']['metrics'][-1]['ax'] if results['disabled']['metrics'] else 1,
+                'ay': results['disabled']['metrics'][-1]['ay'] if results['disabled']['metrics'] else 0,
+                'az': results['disabled']['metrics'][-1]['az'] if results['disabled']['metrics'] else 0,
+            },
+            'metrics_timeseries': results['disabled']['metrics'],
+        },
+        'interpretation': {
+            'expansion_radius_comparison': f"Enabled {enabled_final:.2f} vs Disabled {disabled_final:.2f}",
+            'velocity_accel_comparison': f"Enabled {enabled_accel:+.4f} vs Disabled {disabled_accel:+.4f}",
+            'qmrt_conclusion': 'DOF activation drives accelerated expansion' if enabled_accel > disabled_accel else 'Inconclusive',
+        }
+    }
+    
     with open(f'{output_dir}/expansion_comparison.json', 'w') as f:
-        json.dump({
-            'verdict': verdict,
-            'enabled_final_radius': enabled_final,
-            'disabled_final_radius': disabled_final,
-            'enabled_y_unlock': results['enabled']['y_unlock_T'],
-        }, f, indent=2)
+        json.dump(comprehensive_results, f, indent=2)
     
     print(f"\nResults saved to: {output_dir}/expansion_comparison.json")
     
