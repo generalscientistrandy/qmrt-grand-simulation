@@ -1,4 +1,26 @@
-## Current Status: DARK-MATTER ANALOG CONFIRMED — ★★★★★ UNIFIED DARK SECTOR
+## Current Status: UNIFIED DARK SECTOR SYNTHESIS COMPLETE — ★★★★★
+
+**Date: December 2025**
+
+### Latest: Unified Cosmology Dark Sector Synthesis — COMPLETE
+
+**Master Document**: `/app/backend/qmrt_topology/papers/QMRT_UNIFIED_COSMOLOGY_DARK_SECTOR_SYNTHESIS.md`
+
+**Core Claim:**
+> In QMRT, dark-energy-like acceleration and dark-matter-like excess attraction/lensing arise from structured quark-medium dynamics rather than separate exotic components. Expansion acceleration is produced by progressive activation of accessible degrees of freedom, while dark-matter-like behavior is produced by τ-gradient medium structure around visible matter.
+
+| Test | Key Result | Status |
+|------|------------|--------|
+| **Dark Energy Analog** | +464.7% expansion velocity after DOF unlock | ✓ CONFIRMED |
+| **Dark Matter Analog** | Rotation slope +0.67, Lensing 3.07× | ✓ CONFIRMED |
+
+**Caution**: This establishes that the QMRT simulator CAN reproduce dark-sector-like behaviors. It does NOT yet prove real cosmological dark energy/matter are explained by QMRT.
+
+**Next Critical Test**: Bullet Cluster analog (does medium response separate from visible matter under collision?)
+
+---
+
+## Previous: DARK-MATTER ANALOG CONFIRMED — ★★★★★ UNIFIED DARK SECTOR
 
 **Date: December 2025**
 
