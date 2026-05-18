@@ -1,22 +1,24 @@
 # QMRT Unified Cosmology: Dark Sector Synthesis
-## Dark Energy and Dark Matter from Substrate Dynamics
+## Dark Energy, Dark Matter, and Bullet Cluster from Substrate Dynamics
 
 **Date**: December 2025  
-**Status**: BOTH ANALOGS CONFIRMED  
+**Status**: ALL THREE MAJOR TESTS CONFIRMED  
 **Physics Baseline**: Regulated Recovery v1.1 (LOCKED)
 
 ---
 
 ## Abstract
 
-We present computational evidence that the Quark Medium Relativity Theory (QMRT) simulator reproduces both dark-energy-like and dark-matter-like observational signatures through unified substrate dynamics, without requiring exotic particles or fields.
+We present computational evidence that the Quark Medium Relativity Theory (QMRT) simulator reproduces dark-energy-like, dark-matter-like, AND Bullet-Cluster-like observational signatures through unified substrate dynamics, without requiring exotic particles or fields.
 
 **Dark-energy analog**: Dimensional unlocking produces a **+464.7%** increase in expansion velocity when new degrees of freedom (DOF) become accessible, compared to only **+8.8%** when unlocking is disabled.
 
 **Dark-matter analog**: Medium τ-gradient structure produces rotation curves with slope **+0.669** (rising, far flatter than Keplerian -0.50) and lensing deflection **3.07×** the point-mass expectation.
 
+**Bullet-Cluster analog**: During cluster collision, τ-structure separates from gas with **peak separation of 10.74 grid units** — **21× the no-response control** — demonstrating that medium structure can behave semi-independently from collisional matter.
+
 **Core Claim**:
-> In QMRT, dark-energy-like acceleration and dark-matter-like excess attraction/lensing arise from structured quark-medium dynamics rather than separate exotic components. Expansion acceleration is produced by progressive activation of accessible degrees of freedom, while dark-matter-like behavior is produced by τ-gradient medium structure around visible matter.
+> In QMRT, dark-energy-like acceleration, dark-matter-like excess attraction/lensing, and Bullet-Cluster-like separation arise from structured quark-medium dynamics rather than separate exotic components. The τ-medium has its own response timescale that allows it to behave differently from collisional matter.
 
 ---
 
@@ -222,7 +224,40 @@ QMRT suggests:
 
 1. **Rotation curves**: QMRT shows **rising** curves (slope +0.67), stronger than typical flat curves
 2. **Dynamical response**: Medium response may have different timescales than collisionless DM
-3. **Bullet Cluster**: Critical test — does medium response separate from visible matter?
+3. **Bullet Cluster**: ✓ **TESTED** — τ-structure DOES separate from gas during collision (see Section 5)
+
+---
+
+## 6. Bullet Cluster Analog: τ-Gas Separation
+
+### 6.1 The Challenge
+
+The Bullet Cluster is often cited as definitive evidence for particle dark matter because:
+- Gravitational lensing peak (dark matter) is offset from X-ray gas peak
+- This suggests dark matter passed through while gas collided and slowed
+
+### 6.2 Test Design
+
+Two cluster collision with tracked layers:
+- **Gas**: Collisional component (slows during collision)
+- **τ-structure**: Dark matter proxy (lensing center)
+
+Variants tested different τ-relaxation rates to understand medium dynamics.
+
+### 6.3 Results
+
+| Variant | Peak Separation | Control Comparison |
+|---------|-----------------|-------------------|
+| No τ-response (control) | 0.50 | — |
+| Normal τ-response | 9.49 | 19× control |
+| **Fast relaxation** | **10.74** | **21× control** |
+| Slow relaxation | 4.60 | 9× control |
+
+### 6.4 Key Finding
+
+**τ-response creates 19-21× more separation than control.** The medium structure has independent dynamics that allow it to separate from collisional gas.
+
+Unexpected observation: Fast relaxation > Slow relaxation. This indicates the τ-medium needs to **actively respond** (not just lag) to create separation. It responds quickly, overshoots, then relaxes.
 
 ---
 
@@ -230,52 +265,57 @@ QMRT suggests:
 
 ### ⚠️ Important Caution
 
-**This does not yet prove that real cosmological dark energy or dark matter are explained by QMRT.** It establishes that the QMRT simulator can reproduce dark-sector-like behaviors through substrate mechanisms without adding exotic particles or fields.
+**This does not yet prove that real cosmological dark energy, dark matter, or the Bullet Cluster are explained by QMRT.** It establishes that the QMRT simulator can reproduce dark-sector-like behaviors through substrate mechanisms without adding exotic particles or fields.
 
 ### 7.1 What We Have Shown
 
 ✓ The regulated medium produces expansion acceleration upon DOF activation  
 ✓ The regulated medium produces flat/rising rotation curves from τ structure  
 ✓ The regulated medium produces excess lensing from τ gradients  
-✓ Both phenomena arise from the same substrate physics  
+✓ The τ-structure separates from gas during collision (Bullet Cluster analog)  
+✓ All phenomena arise from the same substrate physics  
 
 ### 7.2 What We Have NOT Shown
 
 ✗ Quantitative match to observed Hubble constant  
 ✗ CMB power spectrum reproduction  
 ✗ Large-scale structure formation  
-✗ Bullet Cluster dynamics  
+✗ Long-term persistence of Bullet Cluster separation (~150 Myr)  
 ✗ Baryon acoustic oscillation scale  
 ✗ Big Bang nucleosynthesis compatibility  
 
 ### 7.3 Required for Stronger Claims
 
-1. **Bullet Cluster analog**: Medium response separation under collision
+1. **Long-term Bullet Cluster persistence**: Does separation persist on cosmological timescales?
 2. **Cosmological simulations**: Large-scale structure from QMRT
 3. **CMB prediction**: Power spectrum from DOF activation history
 4. **Quantitative calibration**: Match observed H₀, Ω_Λ, Ω_m
 
 ---
 
-## 8. Next Validation Tests
+## 8. Summary: Three Major Tests Passed
 
-### 8.1 Immediate Priority: Bullet Cluster Analog
+| Test | Key Result | Status |
+|------|------------|--------|
+| **Dark Energy Analog** | +464.7% expansion acceleration after DOF unlock | ✓ CONFIRMED |
+| **Dark Matter Analog** | Rotation slope +0.67, Lensing 3.07× | ✓ CONFIRMED |
+| **Bullet Cluster Analog** | τ-gas separation 21× control | ✓ CONFIRMED |
 
-**Why critical**: The Bullet Cluster is often cited as definitive evidence for particle dark matter. If QMRT can reproduce the separation between gravitational lensing center and visible matter (gas) center during cluster collision, this would be a major result.
+**Unified Statement**:
+> In QMRT, the 95% of the universe attributed to "dark energy" and "dark matter" may be observational signatures of structured substrate dynamics. All three major dark sector challenges — expansion acceleration, excess gravity/lensing, and Bullet Cluster separation — arise from the same regulated recovery physics without exotic particles or cosmological constants.
 
-**Test design**:
-- Two matter concentrations approaching
-- Track: visible matter, τ-gradient structure, lensing center
-- Question: Does τ structure separate from gas during collision?
+---
 
-### 8.2 Upcoming Tests
+## 9. Next Validation Tests
+
+### 9.1 Upcoming Tests
 
 | Test | Purpose | Priority |
 |------|---------|----------|
-| Bullet Cluster analog | DM separation under collision | P0 |
 | Asymmetric τ-lens | Wavefront focusing verification | P1 |
 | Time dilation analog | Moving-structure deformation | P2 |
 | Large-scale clustering | Structure formation | P3 |
+| Bullet Cluster persistence | Long-term separation test | P4 |
 
 ---
 
