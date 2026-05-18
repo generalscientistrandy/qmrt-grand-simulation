@@ -1,29 +1,17 @@
-## Current Status: BULLET CLUSTER ANALOG CONFIRMED — ★★★★★ COMPLETE DARK SECTOR
+## Current Status: MANUSCRIPT PREPARED — ★★★★★ OSF-READY DRAFT
 
 **Date: December 2025**
 
-### Latest: Bullet Cluster Analog Test — ★★★★★ CONFIRMED
+### Latest: Dark Sector Simulation Report — COMPLETE
 
-**τ-structure separates from gas during collision — 21× more than control**
+**Master Document**: `/app/backend/qmrt_topology/papers/QMRT_Dark_Sector_Analog_Simulation_Report.md`
 
-| Variant | Peak Separation | Control Comparison |
-|---------|-----------------|-------------------|
-| No τ-response (control) | 0.50 | — |
-| Normal τ-response | 9.49 | **19×** control |
-| **Fast relaxation** | **10.74** | **21×** control |
-| Slow relaxation | 4.60 | 9× control |
+**Title**: "Simulation Evidence for Dark-Sector-Like Behavior in a Regulated QMRT Medium"
 
-**Key Finding:** τ-response is essential — creates 19-21× more separation than control. Unexpectedly, fast relaxation shows MORE separation than slow, indicating the τ-medium needs to **actively respond** (not just lag).
+**Core Finding:**
+> The QMRT simulator reproduces dark-sector-like behaviors through substrate mechanisms: accelerated expansion from dimensional degree-of-freedom activation, dark-matter-like excess rotation/lensing from τ-gradient medium structure, and Bullet-Cluster-like τ/gas separation during collision dynamics.
 
-**Files:**
-- `/app/backend/bullet_cluster_analog_test.py`
-- `/app/backend/qmrt_topology/papers/bullet_cluster/bullet_cluster_results.json`
-- `/app/backend/qmrt_topology/papers/BULLET_CLUSTER_ANALOG_REPORT.md`
-- `/app/backend/qmrt_topology/papers/bullet_cluster/figures/`
-
----
-
-## Summary: ALL THREE MAJOR DARK SECTOR TESTS CONFIRMED
+**Three Major Results Documented:**
 
 | Test | Key Result | Status |
 |------|------------|--------|
@@ -31,11 +19,12 @@
 | **Dark Matter Analog** | Rotation slope +0.67, Lensing 3.07× | ✓ CONFIRMED |
 | **Bullet Cluster Analog** | τ-gas separation 21× control | ✓ CONFIRMED |
 
-**Master Synthesis**: `/app/backend/qmrt_topology/papers/QMRT_UNIFIED_COSMOLOGY_DARK_SECTOR_SYNTHESIS.md`
+**Caution (Included in Manuscript):**
+> These results do not prove that real dark energy or dark matter are explained by QMRT. They establish that the QMRT simulation framework can generate analogous dark-sector signatures without adding exotic particles or a separate dark-energy field.
 
 ---
 
-## Previous: UNIFIED DARK SECTOR SYNTHESIS COMPLETE — ★★★★★
+## Previous: BULLET CLUSTER ANALOG CONFIRMED — ★★★★★ COMPLETE DARK SECTOR
 
 **Date: December 2025**
 
