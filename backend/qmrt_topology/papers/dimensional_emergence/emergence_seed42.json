@@ -1,0 +1,136 @@
+{
+  "config": {
+    "size": 48,
+    "dt": 0.1,
+    "initial_seed": 42,
+    "initial_condition": "line_seed",
+    "damping_to_tau": 0.2,
+    "tau_cap": 1.8,
+    "tau_creation_threshold": 1.001,
+    "creation_rate": 0.15,
+    "tau_response": 0.02,
+    "tau_relaxation": 0.01,
+    "c_0_sq": 4.0,
+    "gamma": 0.007
+  },
+  "global_T": 265.49999999999187,
+  "phase_T": 0.0,
+  "step_count": 2655,
+  "current_phase": "3D_stable",
+  "phase_stability_count": 5,
+  "transition_times": {
+    "T_1D_candidate": null,
+    "T_1D_stable": null,
+    "T_2D_candidate": null,
+    "T_2D_stable": null,
+    "T_3D_candidate": 50.00000000000044,
+    "T_3D_stable": 265.49999999999187
+  },
+  "phase_history": [
+    [
+      265.49999999999187,
+      "3D_stable"
+    ]
+  ],
+  "dimension_history": [
+    {
+      "global_T": 50.00000000000044,
+      "phase_T": 50.00000000000044,
+      "step_count": 500,
+      "current_phase": "3D_candidate",
+      "D_eff": 2.918053478546897,
+      "r2": 0.8166738929663884,
+      "r3": 0.6613266934208979,
+      "anisotropy": 0.3386733065791021,
+      "n_active": 11060,
+      "n_defects": 95,
+      "tau_mean": 1.1963974188895943,
+      "tau_std": 0.1609877371417681,
+      "tau_localization": 1.5045167864626656,
+      "total_creations": 1439,
+      "total_annihilations": 0
+    },
+    {
+      "global_T": 100.09999999999859,
+      "phase_T": 100.09999999999859,
+      "step_count": 1001,
+      "current_phase": "3D_candidate",
+      "D_eff": 2.879074918701581,
+      "r2": 0.8816124009335619,
+      "r3": 0.5966166043256037,
+      "anisotropy": 0.4033833956743963,
+      "n_active": 11060,
+      "n_defects": 794,
+      "tau_mean": 1.5941992363432496,
+      "tau_std": 0.31342092922860265,
+      "tau_localization": 1.1290935028477451,
+      "total_creations": 2942,
+      "total_annihilations": 0
+    },
+    {
+      "global_T": 150.19999999999575,
+      "phase_T": 150.19999999999575,
+      "step_count": 1502,
+      "current_phase": "3D_candidate",
+      "D_eff": 2.9779251186383395,
+      "r2": 0.9656706727789135,
+      "r3": 0.8161094706700485,
+      "anisotropy": 0.18389052932995154,
+      "n_active": 11060,
+      "n_defects": 978,
+      "tau_mean": 1.721457610582133,
+      "tau_std": 0.2268523875974287,
+      "tau_localization": 1.045625514642389,
+      "total_creations": 4445,
+      "total_annihilations": 0
+    },
+    {
+      "global_T": 200.2999999999929,
+      "phase_T": 200.2999999999929,
+      "step_count": 2003,
+      "current_phase": "3D_candidate",
+      "D_eff": 2.9862694350658208,
+      "r2": 0.9235158547649048,
+      "r3": 0.8466314038460383,
+      "anisotropy": 0.1533685961539617,
+      "n_active": 11060,
+      "n_defects": 884,
+      "tau_mean": 1.7448057388680445,
+      "tau_std": 0.19320785747428298,
+      "tau_localization": 1.031633470650872,
+      "total_creations": 5948,
+      "total_annihilations": 0
+    },
+    {
+      "global_T": 265.49999999999187,
+      "phase_T": 0.0,
+      "step_count": 2655,
+      "current_phase": "3D_stable",
+      "D_eff": 2.990125980000086,
+      "r2": 0.9232323061444373,
+      "r3": 0.8696437990487328,
+      "anisotropy": 0.1303562009512672,
+      "n_active": 11060,
+      "n_defects": 814,
+      "tau_mean": 1.7478848495259192,
+      "tau_std": 0.18963865834183233,
+      "tau_localization": 1.0298161234638632,
+      "total_creations": 7904,
+      "total_annihilations": 0
+    }
+  ],
+  "transition_log": [
+    {
+      "from_phase": "3D_candidate",
+      "to_phase": "3D_stable",
+      "global_T": 265.49999999999187,
+      "D_eff": 2.990125980000086,
+      "r2": 0.9232323061444373,
+      "r3": 0.8696437990487328,
+      "stability_count": 5
+    }
+  ],
+  "total_creations": 7904,
+  "total_annihilations": 0,
+  "rng_state": "saved_in_pickle"
+}

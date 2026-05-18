@@ -1,0 +1,53 @@
+{
+  "seed": 123,
+  "target_T": 10000.0,
+  "final_T": 125.29999999999715,
+  "final_step": 1253,
+  "current_phase": "3D_stable",
+  "completed": true,
+  "forced_save": false,
+  "final_metrics": {
+    "valid": true,
+    "D_eff": 2.926889427411163,
+    "r2": 0.8901035867765303,
+    "r3": 0.6746827785393009,
+    "eigenvalues": [
+      208.7296181070197,
+      185.79098174355363,
+      140.82627870789122
+    ],
+    "anisotropy": 0.3253172214606991,
+    "n_active": 11060,
+    "n_defects": 889,
+    "tau_mean": 1.6122077781199142,
+    "tau_std": 0.3192558050911453,
+    "tau_localization": 1.1164814017328963
+  },
+  "transition_times": {
+    "T_1D_candidate": null,
+    "T_1D_stable": null,
+    "T_2D_candidate": null,
+    "T_2D_stable": null,
+    "T_3D_candidate": 25.000000000000085,
+    "T_3D_stable": 125.29999999999715
+  },
+  "phase_history": [
+    [
+      125.29999999999715,
+      "3D_stable"
+    ]
+  ],
+  "transition_log": [
+    {
+      "from_phase": "3D_candidate",
+      "to_phase": "3D_stable",
+      "global_T": 125.29999999999715,
+      "D_eff": 2.926889427411163,
+      "r2": 0.8901035867765303,
+      "r3": 0.6746827785393009,
+      "stability_count": 5
+    }
+  ],
+  "total_creations": 3210,
+  "n_checkpoints": 5
+}
