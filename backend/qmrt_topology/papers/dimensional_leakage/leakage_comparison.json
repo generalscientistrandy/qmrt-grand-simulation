@@ -1,0 +1,20 @@
+{
+  "verdict": "NOT CONFIRMED: No clear leakage effect",
+  "modes": {
+    "closed": {
+      "gradient_retention": 1.4085270110199402,
+      "drift_retention": 0.9958016005502477,
+      "total_leakage": 0.0
+    },
+    "weak": {
+      "gradient_retention": 1.22307403809356,
+      "drift_retention": 1.1246497473573132,
+      "total_leakage": 10465.944844403659
+    },
+    "medium": {
+      "gradient_retention": 1.3620540095180287,
+      "drift_retention": 1.1291816680064914,
+      "total_leakage": 22973.94293751298
+    }
+  }
+}
