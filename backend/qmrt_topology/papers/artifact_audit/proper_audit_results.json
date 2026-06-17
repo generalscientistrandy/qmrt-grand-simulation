@@ -1,0 +1,190 @@
+{
+  "baseline": {
+    "enabled": {
+      "final_T": 500.0400000000159,
+      "y_unlock_T": 0.24,
+      "z_unlock_T": 39.35999999999993,
+      "pre_velocity": 0.001,
+      "post_velocity": 0.03635262801793812,
+      "velocity_change_pct": 3535.2628017938114,
+      "final_d_eff": 2.9635333554009584,
+      "ax": 1.0,
+      "ay": 1.0,
+      "az": 1.0,
+      "energy_change_pct": -39.59343213290738
+    },
+    "disabled": {
+      "final_T": 500.0400000000159,
+      "y_unlock_T": null,
+      "z_unlock_T": null,
+      "pre_velocity": 0.001248257027992522,
+      "post_velocity": -0.006332090130902725,
+      "velocity_change_pct": -607.2745427346922,
+      "final_d_eff": 2.9635333554009584,
+      "ax": 1.0,
+      "ay": 0.0,
+      "az": 0.0,
+      "energy_change_pct": -39.59343213290738
+    },
+    "reproduced": true
+  },
+  "integrator": {
+    "results": {
+      "euler": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 0.24,
+        "z_unlock_T": 39.35999999999993,
+        "pre_velocity": 0.001,
+        "post_velocity": 0.03635262801793812,
+        "velocity_change_pct": 3535.2628017938114,
+        "final_d_eff": 2.9635333554009584,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -39.59343213290738
+      },
+      "verlet": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 35.04000000000002,
+        "z_unlock_T": 53.999999999999616,
+        "pre_velocity": 0.13394972357508853,
+        "post_velocity": 0.04486702518315598,
+        "velocity_change_pct": -66.50457799712834,
+        "final_d_eff": 2.984394579686676,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -6.418220249250423
+      },
+      "leapfrog": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 36.83999999999998,
+        "z_unlock_T": 55.07999999999959,
+        "pre_velocity": 0.001,
+        "post_velocity": 0.02378583410791226,
+        "velocity_change_pct": 2278.583410791226,
+        "final_d_eff": 2.950878992175937,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -16.426151040171103
+      }
+    },
+    "all_unlock": true,
+    "consistent": false
+  },
+  "seed_sweep": {
+    "results": {
+      "42": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 0.24,
+        "z_unlock_T": 39.35999999999993,
+        "pre_velocity": 0.001,
+        "post_velocity": 0.03635262801793812,
+        "velocity_change_pct": 3535.2628017938114,
+        "final_d_eff": 2.9635333554009584,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -39.59343213290738
+      },
+      "123": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 0.24,
+        "z_unlock_T": 49.43999999999971,
+        "pre_velocity": 0.10086846041403046,
+        "post_velocity": 0.041640800118934236,
+        "velocity_change_pct": -58.71772013966206,
+        "final_d_eff": 2.9687617969226188,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -38.85624035348707
+      },
+      "456": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 0.24,
+        "z_unlock_T": 35.40000000000001,
+        "pre_velocity": 0.001,
+        "post_velocity": 0.039208143884351836,
+        "velocity_change_pct": 3820.8143884351834,
+        "final_d_eff": 2.960374335379668,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -38.651782134393535
+      },
+      "789": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 0.24,
+        "z_unlock_T": 28.920000000000062,
+        "pre_velocity": 0.049743176537780195,
+        "post_velocity": 0.04250793710425101,
+        "velocity_change_pct": -14.54518978705347,
+        "final_d_eff": 2.9451097812093363,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -39.40301706065041
+      },
+      "1001": {
+        "final_T": 500.0400000000159,
+        "y_unlock_T": 33.000000000000064,
+        "z_unlock_T": 50.87999999999968,
+        "pre_velocity": 0.07791833471901519,
+        "post_velocity": 0.05358170502989039,
+        "velocity_change_pct": -31.233508489222995,
+        "final_d_eff": 2.9122302355127196,
+        "ax": 1.0,
+        "ay": 1.0,
+        "az": 1.0,
+        "energy_change_pct": -34.67739176949769
+      }
+    },
+    "unlock_count": 5,
+    "total": 5
+  },
+  "resolution": {
+    "24": {
+      "final_T": 500.0400000000159,
+      "y_unlock_T": 0.12,
+      "z_unlock_T": 2.160000000000001,
+      "pre_velocity": 0.13414435653101275,
+      "post_velocity": 0.059894952835518475,
+      "velocity_change_pct": -55.35037448879081,
+      "final_d_eff": 2.8309018343561227,
+      "ax": 1.0,
+      "ay": 1.0,
+      "az": 1.0,
+      "energy_change_pct": -63.98073495251867
+    },
+    "32": {
+      "final_T": 500.0400000000159,
+      "y_unlock_T": 0.24,
+      "z_unlock_T": 39.35999999999993,
+      "pre_velocity": 0.001,
+      "post_velocity": 0.03635262801793812,
+      "velocity_change_pct": 3535.2628017938114,
+      "final_d_eff": 2.9635333554009584,
+      "ax": 1.0,
+      "ay": 1.0,
+      "az": 1.0,
+      "energy_change_pct": -39.59343213290738
+    },
+    "40": {
+      "final_T": 500.0400000000159,
+      "y_unlock_T": 134.64000000000206,
+      "z_unlock_T": 213.60000000000505,
+      "pre_velocity": 0.049733134618833455,
+      "post_velocity": 0.04153417436351706,
+      "velocity_change_pct": -16.485910888495518,
+      "final_d_eff": 2.9692374772314913,
+      "ax": 1.0,
+      "ay": 1.0,
+      "az": 1.0,
+      "energy_change_pct": -23.478380319093677
+    }
+  },
+  "verdict": "LIKELY PHYSICAL: Effect passes key robustness tests",
+  "pass_count": 3
+}

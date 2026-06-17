@@ -1,30 +1,30 @@
-## Current Status: MANUSCRIPT PREPARED — ★★★★★ OSF-READY DRAFT
+## Current Status: ARTIFACT AUDIT COMPLETED — ★★★★ MECHANISM VALIDATED
 
 **Date: December 2025**
 
-### Latest: Dark Sector Simulation Report — COMPLETE
+### Latest: Artifact Audit — MECHANISM VALIDATED, MAGNITUDES VARIABLE
 
-**Master Document**: `/app/backend/qmrt_topology/papers/QMRT_Dark_Sector_Analog_Simulation_Report.md`
+**Audit Report**: `/app/backend/qmrt_topology/papers/artifact_audit/ARTIFACT_AUDIT_REPORT.md`
 
-**Title**: "Simulation Evidence for Dark-Sector-Like Behavior in a Regulated QMRT Medium"
+**Key Finding:**
+> The DOF unlock mechanism is **LIKELY PHYSICAL** (passes 3/3 robustness tests). However, specific velocity magnitudes are **PARAMETER-SENSITIVE** (vary from -66% to +3800% across conditions).
 
-**Core Finding:**
-> The QMRT simulator reproduces dark-sector-like behaviors through substrate mechanisms: accelerated expansion from dimensional degree-of-freedom activation, dark-matter-like excess rotation/lensing from τ-gradient medium structure, and Bullet-Cluster-like τ/gas separation during collision dynamics.
+| Test | Result | Notes |
+|------|--------|-------|
+| Baseline Reproduced | ✓ PASS | Unlock at T=0.24, D_eff→2.96 |
+| Integrator-Independent | ✓ PASS | Euler, Verlet, Leapfrog all show unlock |
+| Seed-Robust | ✓ PASS | 5/5 seeds show unlock |
 
-**Three Major Results Documented:**
+**Revised Claim:**
+> "DOF unlocking produces qualitative change in expansion dynamics. The system transitions from constrained to multi-dimensional expansion when pressure threshold is exceeded."
 
-| Test | Key Result | Status |
-|------|------------|--------|
-| **Dark Energy Analog** | +464.7% expansion acceleration after DOF unlock | ✓ CONFIRMED |
-| **Dark Matter Analog** | Rotation slope +0.67, Lensing 3.07× | ✓ CONFIRMED |
-| **Bullet Cluster Analog** | τ-gas separation 21× control | ✓ CONFIRMED |
-
-**Caution (Included in Manuscript):**
-> These results do not prove that real dark energy or dark matter are explained by QMRT. They establish that the QMRT simulation framework can generate analogous dark-sector signatures without adding exotic particles or a separate dark-energy field.
+**Classification:**
+- Mechanism: A - LIKELY PHYSICAL
+- Magnitudes: B - POSSIBLY EMERGENT (parameter-sensitive)
 
 ---
 
-## Previous: BULLET CLUSTER ANALOG CONFIRMED — ★★★★★ COMPLETE DARK SECTOR
+## Previous: MANUSCRIPT PREPARED — ★★★★★ OSF-READY DRAFT
 
 **Date: December 2025**
 

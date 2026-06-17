@@ -1,0 +1,30 @@
+{
+  "verdict": "POSSIBLY ARTIFACT: Effect fails multiple tests",
+  "pass_count": 1,
+  "total_tests": 7,
+  "overall_classification": "POSSIBLY_EMERGENT",
+  "all_results": {
+    "baseline_control": [
+      {
+        "test": "Baseline Control",
+        "passed": false,
+        "metric": 0,
+        "baseline": -400.2781308657349,
+        "classification": "POSSIBLY_EMERGENT",
+        "notes": "Full QMRT: 0.0%, Disabled: -400.3%"
+      }
+    ],
+    "resolution_scaling": [
+      {
+        "test": "Resolution Scaling",
+        "passed": false,
+        "metric": 182.09968795111024,
+        "baseline": 208.90159262347564,
+        "classification": "RESOLUTION_ARTIFACT",
+        "notes": "CV=1.15, All show effect: False"
+      }
+    ],
+    "timestep_sensitivity": [
+      {
+        "test": "Timestep Sensitivity",
+        "passed": 
