@@ -1,0 +1,71 @@
+{
+  "test": "Dark Matter Analog",
+  "framework": "Emergent Physics",
+  "results": [
+    {
+      "seed": 42,
+      "rotation_slope": 0.4733738105654332,
+      "lensing_ratio": 0.3415049986460272,
+      "tau_max": 1.7935208882612472,
+      "final_T": 200.04000000000454
+    },
+    {
+      "seed": 123,
+      "rotation_slope": 0.4466805431427073,
+      "lensing_ratio": 0.24708677814141172,
+      "tau_max": 1.7854031391544398,
+      "final_T": 200.04000000000454
+    },
+    {
+      "seed": 456,
+      "rotation_slope": 0.47427997403725,
+      "lensing_ratio": 0.3104251458228595,
+      "tau_max": 1.8,
+      "final_T": 200.04000000000454
+    },
+    {
+      "seed": 789,
+      "rotation_slope": 0.38636745376390935,
+      "lensing_ratio": 0.14476208743918637,
+      "tau_max": 1.7951836394213954,
+      "final_T": 200.04000000000454
+    },
+    {
+      "seed": 1001,
+      "rotation_slope": 0.4126984771913199,
+      "lensing_ratio": 1.253905905670433,
+      "tau_max": 1.0668068498154932,
+      "final_T": 200.04000000000454
+    },
+    {
+      "seed": 2022,
+      "rotation_slope": 0.44967685864569334,
+      "lensing_ratio": 0.40665687090075603,
+      "tau_max": 1.8,
+      "final_T": 200.04000000000454
+    },
+    {
+      "seed": 3333,
+      "rotation_slope": 0.532035021707561,
+      "lensing_ratio": 0.28789303579791353,
+      "tau_max": 1.7945587723252778,
+      "final_T": 200.04000000000454
+    },
+    {
+      "seed": 4444,
+      "rotation_slope": 0.5047879580731063,
+      "lensing_ratio": 0.2036164748057479,
+      "tau_max": 1.8,
+      "final_T": 200.04000000000454
+    }
+  ],
+  "statistics": {
+    "rotation_robust_count": 8,
+    "lensing_robust_count": 1,
+    "mean_slope": 0.4599875121408725,
+    "std_slope": 0.04404676756636507,
+    "mean_lensing": 0.3994814121530419,
+    "std_lensing": 0.3317201538391121
+  },
+  "verdict": "PARTIAL: One mechanism robust, one uncertain"
+}
