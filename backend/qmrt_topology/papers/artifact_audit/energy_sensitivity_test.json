@@ -1,0 +1,43 @@
+{
+  "test": "Energy Conservation Sensitivity",
+  "question": "Does mechanism survive without energy band-aid?",
+  "results": [
+    {
+      "config": "Normal damping",
+      "gamma": 0.007,
+      "y_unlock_T": 0.24,
+      "final_d_eff": 1.015,
+      "energy_change_pct": -3.893081525297094
+    },
+    {
+      "config": "Zero damping",
+      "gamma": 0.0,
+      "y_unlock_T": 0.24,
+      "final_d_eff": 1.015,
+      "energy_change_pct": -23.539677739883118
+    },
+    {
+      "config": "Low damping",
+      "gamma": 0.002,
+      "y_unlock_T": 0.24,
+      "final_d_eff": 1.015,
+      "energy_change_pct": -13.730414709303334
+    },
+    {
+      "config": "High damping",
+      "gamma": 0.02,
+      "y_unlock_T": 0.24,
+      "final_d_eff": 1.195,
+      "energy_change_pct": -0.6991097781031113
+    },
+    {
+      "config": "Very high damping",
+      "gamma": 0.05,
+      "y_unlock_T": 0.24,
+      "final_d_eff": 1.5,
+      "energy_change_pct": -0.7543764046059718
+    }
+  ],
+  "verdict": "MECHANISM IS ROBUST: Survives without energy band-aid",
+  "mechanism_robust": true
+}

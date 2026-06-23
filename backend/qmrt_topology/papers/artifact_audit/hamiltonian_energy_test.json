@@ -1,0 +1,36 @@
+{
+  "wave_change": -462.15825722442605,
+  "formulations": [
+    {
+      "name": "\u03a3 \u03c4",
+      "key": "tau_sum",
+      "tau_change": 7.208491000448703,
+      "optimal_alpha": 64.11303797086774,
+      "total_change_pct": 0.0
+    },
+    {
+      "name": "\u03a3 (\u03c4-1)\u00b2",
+      "key": "tau_deviation_sq",
+      "tau_change": 0.0031447238023167012,
+      "optimal_alpha": 146963.067753027,
+      "total_change_pct": 0.0
+    },
+    {
+      "name": "\u03a3 log(\u03c4)",
+      "key": "tau_log",
+      "tau_change": 7.206930025049584,
+      "optimal_alpha": 64.12692444883929,
+      "total_change_pct": 0.0
+    },
+    {
+      "name": "\u03a3 \u03c4\u00b2",
+      "key": "tau_squared",
+      "tau_change": 14.420126724697184,
+      "optimal_alpha": 32.049528138535216,
+      "total_change_pct": 2.1827991111069623e-14
+    }
+  ],
+  "best_formulation": "\u03a3 \u03c4",
+  "best_alpha": 64.11303797086774,
+  "best_drift_pct": 0.0
+}

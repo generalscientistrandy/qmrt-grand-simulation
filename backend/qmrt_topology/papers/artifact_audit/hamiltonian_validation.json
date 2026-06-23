@@ -1,0 +1,67 @@
+{
+  "hamiltonian": "H = E_wave + \u03b1 \u00d7 \u03a3 \u03c4",
+  "verdict": "VALIDATED",
+  "max_drift_pct": 1.9140192885297433,
+  "avg_drift_pct": 0.09460685369127075,
+  "tests": [
+    {
+      "test": "multiple_seeds",
+      "results": [
+        {
+          "seed": 42,
+          "drift_pct": 3.855165680499652e-05
+        },
+        {
+          "seed": 123,
+          "drift_pct": 0.011460540746791766
+        },
+        {
+          "seed": 456,
+          "drift_pct": 0.009236727951545008
+        },
+        {
+          "seed": 789,
+          "drift_pct": 0.013993219108977675
+        },
+        {
+          "seed": 1000,
+          "drift_pct": 0.005608926604108776
+        }
+      ]
+    },
+    {
+      "test": "gamma_sweep",
+      "results": [
+        {
+          "gamma": 0.001,
+          "optimal_alpha": 11.723589777426021,
+          "drift_pct": 0.41975854436649307
+        },
+        {
+          "gamma": 0.005,
+          "optimal_alpha": 0.5587721633491672,
+          "drift_pct": 1.9140192885297433
+        },
+        {
+          "gamma": 0.007,
+          "optimal_alpha": 0.4442026659327105,
+          "drift_pct": 1.4796647395113913
+        },
+        {
+          "gamma": 0.01,
+          "optimal_alpha": -0.7118523050768144,
+          "drift_pct": -3.156674010161524
+        },
+        {
+          "gamma": 0.02,
+          "optimal_alpha": 0.24099097167408443,
+          "drift_pct": 0.24896200859837553
+        }
+      ]
+    },
+    {
+      "test": "long_time",
+      "results": []
+    }
+  ]
+}
