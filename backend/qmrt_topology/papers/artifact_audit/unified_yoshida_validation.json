@@ -1,0 +1,35 @@
+{
+  "test": "unified_yoshida_production",
+  "target_T": 2000,
+  "final_drift_pct": 98.02496309850257,
+  "final_creations": 82620,
+  "verdict": "CREATION_ADDS_ENERGY",
+  "checkpoints": [
+    {
+      "T": 100,
+      "drift_pct": 97.91059573807964,
+      "creations": 4130
+    },
+    {
+      "T": 500,
+      "drift_pct": 98.11383705268923,
+      "creations": 20830
+    },
+    {
+      "T": 1000,
+      "drift_pct": 97.82559280178593,
+      "creations": 41705
+    },
+    {
+      "T": 1500,
+      "drift_pct": 97.30548200178465,
+      "creations": 62580
+    },
+    {
+      "T": 2000,
+      "drift_pct": 98.02496309850257,
+      "creations": 82620
+    }
+  ],
+  "note": "Defect injection adds physical energy; H conservation is for wave+tau between creation events"
+}

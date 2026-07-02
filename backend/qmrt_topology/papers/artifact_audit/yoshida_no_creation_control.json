@@ -1,0 +1,33 @@
+{
+  "test": "yoshida_no_creation_control",
+  "target_T": 2000,
+  "final_drift_pct": 0.3631767826730826,
+  "verdict": "GOOD",
+  "checkpoints": [
+    {
+      "T": 100,
+      "drift_pct": 0.20500930106022358
+    },
+    {
+      "T": 500,
+      "drift_pct": 0.32362438609355837
+    },
+    {
+      "T": 1000,
+      "drift_pct": 0.3617907200429512
+    },
+    {
+      "T": 1500,
+      "drift_pct": 0.363128778923355
+    },
+    {
+      "T": 2000,
+      "drift_pct": 0.3631767826730826
+    }
+  ],
+  "comparison": {
+    "with_creation_drift_pct": 98.02,
+    "with_creation_injections": 82620,
+    "conclusion": "Drift is physical (injection), not integrator error"
+  }
+}
