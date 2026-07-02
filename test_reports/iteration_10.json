@@ -1,0 +1,64 @@
+{
+  "summary": "Validated QMRT Asymmetric τ-Lens Test v2 numerical results in tau_lens_results_v2.json. Verified the v1 focal_distance measurement bug is fixed, concentration metric behaves correctly, τ contrast in physical range, and asymmetric > symmetric focusing claim holds. Created pytest suite with 18 tests: 17 passed, 1 documented skip.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {
+        "endpoint": "asymmetric_tau_lens_test_v2.py::run_full_lens_test_v2",
+        "issue": "strong_asymmetric (τ_contrast≈1.33) concentration 1.173 is LOWER than asymmetric (τ_contrast≈0.89) at 1.218 and even lower than symmetric 1.191. Physically inconsistent with 'stronger lens → stronger focus'. Likely causes: (a) at high τ contrast the τ-clip [0.5, 2.5] saturates and distorts the Gaussian profile, (b) high asymmetry_factor=0.7 combined with strength=1.2 pushes lens into aberration regime, (c) wave dispersion dominates over refraction. Recommend sweeping strength/asymmetry to characterize the crossover."
+      },
+      {
+        "endpoint": "asymmetric_tau_lens_test_v2.py::measure_transverse_profile",
+        "issue": "Final FWHM=63 for ALL variants (equal to box_size-1). This means the transverse profile is spread across the full box at T=100 and FWHM ceases to discriminate focusing. Only early snapshots (T=10, lens variants) show localized FWHM≈16-17. Cause: periodic BCs (np.roll) cause wave to wrap around and fill the box at long times. Recommendation: report metrics at t_focus (when peak first localizes) or add absorbing boundary layer."
+      },
+      {
+        "endpoint": "asymmetric_tau_lens_test_v2.py::inject_planar_wave",
+        "issue": "baseline_intensity is computed as np.max(psi_r^2+psi_i^2) immediately after injection = amplitude^2 = 1.0 exactly. Thus 'amplification' = peak_intensity/1.0 = peak_intensity, making the metric identical to peak_intensity and not truly a normalized quantity. Consider using mean incident-wave intensity or a probe in the unlensed region instead."
+      },
+      {
+        "endpoint": "asymmetric_tau_lens_test_v2.py::find_focal_point_v2",
+        "issue": "'focal_x' returned is the peak-argmax (single voxel), but 'centroid_x' is also computed — the analysis section reports focal_x (peak_distance) not centroid. Control focal_x=45 (distance 24 from lens_x=21) is spuriously derived from noise since no_lens has no focusing. Consider using centroid_x consistently, or gate reporting when concentration<1.1."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_tau_lens_v2.py",
+    "/app/test_reports/pytest/pytest_tau_lens_v2_results.xml"
+  ],
+  "action_items": [
+    "Address strong_asymmetric anomaly: sweep lens_strength ∈ [0.4, 1.5] × asymmetry ∈ [0, 0.7] to find the optimal focusing point and document the aberration onset.",
+    "Fix FWHM saturation: measure transverse profile at the snapshot where concentration is maximal (not at final T=100), or add PML/absorbing boundary to prevent wrap-around.",
+    "Improve amplification metric: use mean incident intensity in the injection window or a reference probe well away from the lens (not just amplitude^2=1.0).",
+    "In final analysis report centroid_x rather than peak_x when concentration<1.1 to avoid noise-driven 'focal points' for control variant.",
+    "Increase τ clip range beyond [0.5, 2.5] or reduce lens_strength for strong variant so the Gaussian profile is not truncated; alternatively cap tau_contrast explicitly at 1.5 per the review's 0.8-1.5 target range."
+  ],
+  "critical_code_review_comments": [
+    "Nested 3-level Python loop in _create_asymmetric_lens (size^3 = 262k iters) is slow; vectorize with np.meshgrid — currently a hot path each test invocation.",
+    "Damping γ=0.002 is small but constant; combined with periodic BCs the energy accumulates rather than dissipating — hence peak intensity keeps growing (T=10: 0.3 → T=90: 22). Not truly a 'steady-state' focal measurement.",
+    "run_lens_test_v2 catches timeout by wall-clock but does not warn if target_T not reached — silent failure possible.",
+    "The verdict logic requires has_focus (amp>1.2 AND conc>control*1.1). control amp=21.6 and lens amp=23-24 gives amp>1.2 trivially because baseline=1.0. Amplification threshold is meaningless with current baseline definition.",
+    "Snapshot dumps entire transverse profile (64 floats) per timestep — bloats the JSON to hundreds of KB with redundant identical values in control (all voxels equal because plane wave hasn't broken symmetry). Consider storing only profile summary."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_tau_lens_v2.py"
+  ],
+  "success_rate": {
+    "backend": "94% (17/18 tests passed; 1 skip documents strong_asymmetric anomaly)",
+    "frontend": "N/A (not tested per request)"
+  },
+  "test_credentials": "N/A",
+  "seed_data_creation": "None; validated existing tau_lens_results_v2.json (seed=42).",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "The v2 measurement bug fix is confirmed: focal_distance now varies (24/30/30/31), lens concentration exceeds control, asymmetric > symmetric. However, three physics concerns remain: (1) strong_asymmetric under-performs asymmetric — likely aberration/clipping at high τ contrast, (2) FWHM=63 in all final snapshots means transverse localization is lost at T=100 due to periodic-BC wave spreading, (3) 'amplification' metric is a peak-intensity synonym because baseline=1.0. If main agent implements a v3, retest by re-running the simulator and re-running /app/backend/tests/test_tau_lens_v2.py; the test suite reads the JSON so no re-work needed.",
+  "rca of the issue": {
+    "reported_bug": "v1: focal_distance=16 for all variants — find_focal_point() returned search_start blindly.",
+    "verification": "Confirmed FIXED in v2: analysis.focal_distance = {no_lens:24, symmetric:30, asymmetric:30, strong_asymmetric:31}. find_focal_point_v2 uses np.argmax over 2D slice behind lens plus intensity centroid. Test test_focal_distance_not_all_identical passes.",
+    "residual_bug": "strong_asymmetric conc (1.173) < asymmetric (1.218). RCA: lens_strength=1.2 × asymmetry_factor up to 1.7 → tau values hit the [0.5, 2.5] clip, distorting the Gaussian and creating an off-axis skewed profile that scatters rather than focuses. Additionally the wide asymmetric τ profile bends rays past the on-axis focal point, so peak intensity is spread rather than concentrated. Mitigation: reduce strength to ≤0.9 for asymmetry ≥ 0.5, or widen clip range."
+  }
+}
