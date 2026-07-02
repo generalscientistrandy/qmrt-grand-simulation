@@ -415,9 +415,13 @@ class MesoscopicSubstrate:
         self.v_tau += 0.5 * a_tau_new * dt
         self.v_phi += 0.5 * a_phi_new * dt
         
-        # === Energy Renormalization (Zero-Balance Enforcement) ===
-        # If energy has drifted due to numerical errors or weak non-linearities,
-        # apply minimal correction to restore balance
+        # === Energy Renormalization (Required for Multi-Field Model) ===
+        # NOTE: This rescaling IS required for the mesoscopic 4-field model.
+        # The natural τ-energy conservation proven in December 2025 applies to
+        # the WAVE simulator (full_mechanism_simulator.py, etc.), not this
+        # multi-field mesoscopic model which has different energy dynamics.
+        #
+        # See: /app/backend/qmrt_topology/papers/artifact_audit/ENERGY_CONSERVATION_VALIDATION_REPORT.md
         energy_after = self._compute_total_energy()
         
         if energy_after > 0 and self.initial_energy > 0:

@@ -1,0 +1,7 @@
+{
+  "target_T": 500,
+  "dt": 0.12,
+  "verlet_drift_pct": 0.00221105996236041,
+  "yoshida_drift_pct": 0.0006389489878142786,
+  "improvement_factor": 3.4604639877809658
+}
